@@ -19,7 +19,7 @@ const Navbar = () => {
   ));
   return (
     <Row className="navbar">
-      <Col md={12}>
+      <Col xs>
         <Nav fill as="ul">
           {menu}
         </Nav>
