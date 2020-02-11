@@ -1,7 +1,8 @@
 import React from "react";
+import "./main.css";
 
 const Main = () => {
-  return <div style={{ backgroundColor: "red" }}>Main</div>;
+  return <div className="main-section"></div>;
 };
 
 export default Main;

@@ -1,7 +1,8 @@
 import React from "react";
+import "./about.css";
 
 const About = () => {
-  return <div style={{ backgroundColor: "green" }}>About</div>;
+  return <div className="about-section">About</div>;
 };
 
 export default About;

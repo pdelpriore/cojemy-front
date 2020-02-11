@@ -1,6 +1,7 @@
 import React from "react";
 import { capitalize } from "../../util/Util";
-import { Nav, Container, Row, Col } from "react-bootstrap";
+import { Nav, Row, Col } from "react-bootstrap";
+import "./navbar.css";
 
 const navItems = [
   { name: "quoi manger ?" },
@@ -17,15 +18,13 @@ const Navbar = () => {
     </Nav.Item>
   ));
   return (
-    <Container>
-      <Row>
-        <Col md={12}>
-          <Nav fill as="ul">
-            {menu}
-          </Nav>
-        </Col>
-      </Row>
-    </Container>
+    <Row>
+      <Col md={12}>
+        <Nav fill as="ul">
+          {menu}
+        </Nav>
+      </Col>
+    </Row>
   );
 };
 

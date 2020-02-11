@@ -1,7 +1,8 @@
 import React from "react";
+import "./contact.css";
 
 const Contact = () => {
-  return <div style={{ backgroundColor: "yellow" }}>Contact</div>;
+  return <div className="contact-section">Contact</div>;
 };
 
 export default Contact;
