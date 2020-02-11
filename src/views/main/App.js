@@ -1,10 +1,14 @@
 import React from "react";
+import { Container } from "react-bootstrap";
+import Navbar from "../../components/navbar/Navbar";
 
 const App = () => {
   return (
-    <div>
-      <h1>Test</h1>
-    </div>
+    <>
+      <Container>
+        <Navbar />
+      </Container>
+    </>
   );
 };
 
