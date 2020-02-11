@@ -18,7 +18,7 @@ const Navbar = () => {
     </Nav.Item>
   ));
   return (
-    <Row>
+    <Row className="navbar">
       <Col md={12}>
         <Nav fill as="ul">
           {menu}
