@@ -11,12 +11,18 @@ ul {
 li {
   display: block;
   margin-right: 5%;
+  font-family: "Nunito-Regular";
   text-align: center;
 }
 li:first-child {
   margin-right: 25%;
+  font-family: "Nunito-Bold";
+  font-size: x-large;
 }
 li:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 2px #f11213 solid;
   border-radius: 12% 12% 12% 12% / 14% 19% 18% 20%;
 }
