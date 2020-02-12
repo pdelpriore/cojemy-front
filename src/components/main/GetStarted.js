@@ -8,7 +8,9 @@ const GetStarted = () => {
       <div>
         <h1 className="main-text">Recherche une recette ?</h1>
         <h3 className="main-sub-text">Vous êtes en bon endroit</h3>
-        <Button variant="outline-danger">Commencez</Button>
+        <Button className="button" variant="outline-danger">
+          Commencez
+        </Button>
       </div>
     </div>
   );
