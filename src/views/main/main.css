@@ -1,4 +1,15 @@
 .main-section {
   height: 100vh;
-  background-color: red;
+  overflow: hidden;
+  background-color: #fbfcfe;
+}
+.shape-top {
+  position: relative;
+  clip-path: polygon();
+  background-color: teal;
+  height: 15vh;
+  width: 20vw;
+}
+.image {
+  width: 45vw;
 }
