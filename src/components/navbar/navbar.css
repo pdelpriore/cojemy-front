@@ -24,6 +24,9 @@ li:first-child {
   font-family: "Nunito-Bold";
   font-size: x-large;
 }
+li:first-child:hover {
+  cursor: pointer;
+}
 li:last-child {
   display: flex;
   justify-content: center;
