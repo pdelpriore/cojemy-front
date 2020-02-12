@@ -9,9 +9,14 @@ ul {
   list-style: none;
 }
 li {
-  display: inline;
-  padding-right: 5%;
+  display: block;
+  margin-right: 5%;
+  text-align: center;
 }
 li:first-child {
-  padding-right: 35%;
+  margin-right: 25%;
+}
+li:last-child {
+  border: 2px #f11213 solid;
+  border-radius: 12% 12% 12% 12% / 14% 19% 18% 20%;
 }
