@@ -22,7 +22,11 @@ li:first-child {
 li:last-child {
   display: flex;
   justify-content: center;
+  font-family: "Nunito-SemiBold";
   align-items: center;
-  border: 2px #f11213 solid;
+  border: 2px #76c63f solid;
   border-radius: 12% 12% 12% 12% / 14% 19% 18% 20%;
+}
+li:last-child:hover {
+  background-color: #f9e4ad;
 }
