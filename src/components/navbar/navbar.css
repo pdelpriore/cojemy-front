@@ -13,6 +13,10 @@ li {
   margin-right: 5%;
   font-family: "Nunito-Regular";
   text-align: center;
+  transition: 0.2s;
+}
+li:not(:first-child):hover {
+  transform: scale(1.1);
 }
 li:first-child {
   margin-right: 25%;
