@@ -1,6 +1,5 @@
 import React from "react";
-import { Image, Row, Col } from "react-bootstrap";
-import GetStarted from "../../components/main/GetStarted";
+import { Image, Row, Col, Button } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import "./main.css";
 
@@ -24,7 +23,15 @@ const Main = () => {
       <Row>
         <Col xs={1} />
         <Col xs={4}>
-          <GetStarted />
+          <div className="box">
+            <div>
+              <h1 className="main-text">Recherche une recette ?</h1>
+              <h3 className="main-sub-text">Vous êtes en bon endroit</h3>
+              <Button className="button" variant="outline-danger">
+                Commencez
+              </Button>
+            </div>
+          </div>
         </Col>
         <Col xs={6}>
           <Image
