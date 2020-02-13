@@ -1,6 +1,7 @@
 import React from "react";
 import { capitalize } from "../../util/Util";
 import { Nav, Row, Col } from "react-bootstrap";
+import { Link } from "react-scroll";
 import "./navbar.css";
 
 const navItems = [
@@ -14,7 +15,16 @@ const navItems = [
 const Navbar = () => {
   const menu = navItems.map(item => (
     <Nav.Item as="li" key={item.name}>
-      {capitalize(item.name)}
+      <Link
+        activeClass="active"
+        to={item.name}
+        spy={true}
+        smooth={true}
+        offset={0}
+        duration={500}
+      >
+        {capitalize(item.name)}
+      </Link>
     </Nav.Item>
   ));
   return (

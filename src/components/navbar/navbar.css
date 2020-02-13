@@ -19,6 +19,9 @@ li:not(:first-child):hover {
   transform: scale(1.1);
   cursor: pointer;
 }
+li:not(:first-child) > a.active {
+  border-bottom: 1px black solid;
+}
 li:first-child {
   margin-right: 25%;
   font-family: "Nunito-Bold";

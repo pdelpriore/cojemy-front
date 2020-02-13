@@ -5,7 +5,7 @@ import "./main.css";
 
 const Main = () => {
   return (
-    <div className="main-section">
+    <div className="main-section" id="quoi manger ?">
       <Row>
         <Col xs={2}>
           <div className="shape-top-left"></div>
