@@ -1,15 +1,18 @@
 import React from "react";
 import { capitalize } from "../../util/Util";
 import { Nav, Row, Col } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
 import "./navbar.css";
+
+//NavLink will be used for app navigation when user logged
 
 const navItems = [
   { name: "quoi manger ?" },
   { name: "à propos" },
   { name: "contact" },
-  { name: "se connecter" },
-  { name: "s'inscrire" }
+  { name: "se connecter", path: "/login" },
+  { name: "s'inscrire", path: "/signup" }
 ];
 
 const Navbar = () => {

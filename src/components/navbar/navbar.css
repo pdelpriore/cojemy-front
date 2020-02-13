@@ -20,7 +20,7 @@ li:not(:first-child):hover {
   cursor: pointer;
 }
 li:not(:first-child) > a.active {
-  border-bottom: 1px black solid;
+  border-bottom: 2px #333333 solid;
 }
 li:first-child {
   margin-right: 25%;
@@ -40,4 +40,8 @@ li:last-child {
 }
 li:last-child:hover {
   background-color: #f9e4ad;
+}
+a {
+  text-decoration: none;
+  color: #333333;
 }
