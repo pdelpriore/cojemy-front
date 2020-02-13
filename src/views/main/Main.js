@@ -1,11 +1,17 @@
 import React from "react";
 import { Image, Row, Col } from "react-bootstrap";
 import GetStarted from "../../components/main/GetStarted";
+import { useSpring, animated } from "react-spring";
 import "./main.css";
 
 const Main = () => {
+  const props = useSpring({
+    opacity: 1,
+    marginRight: 0,
+    from: { opacity: 0, marginRight: 300 }
+  });
   return (
-    <div className="main-section" id="quoi manger ?">
+    <animated.div style={props} className="main-section" id="quoi manger ?">
       <Row>
         <Col xs={2}>
           <div className="shape-top-left"></div>
@@ -28,7 +34,7 @@ const Main = () => {
         </Col>
         <Col xs={1} />
       </Row>
-    </div>
+    </animated.div>
   );
 };
 
