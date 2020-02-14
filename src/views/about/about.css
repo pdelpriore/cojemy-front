@@ -1,4 +1,24 @@
 .about-section {
   height: 100vh;
-  background-color: green;
+  background-color: #feff89;
+  overflow: hidden;
+}
+.about-area {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2%;
+  background-color: #e0c45c;
+  border-radius: 10px;
+  padding: 2%;
+}
+.image-area {
+  width: 130px;
+  height: 130px;
+  border: 2px #85203b solid;
+  object-fit: cover;
+}
+.text-area {
+  margin-left: 10%;
+  font-family: "Nunito-SemiBold";
+  color: #85203b;
 }
