@@ -5,10 +5,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
-import Main from "../main/Main";
-import About from "../about/About";
-import Contact from "../contact/Contact";
+import StartPage from "../../components/startPage/StartPage";
 
 //Switch will be used for app navigation when user logged
 
@@ -16,11 +13,9 @@ const App = () => {
   return (
     <>
       <Router>
-        <Navbar />
-        <Main />
-        <About />
-        <Contact />
-        <Switch></Switch>
+        <Switch>
+          <Route path="/" exact component={StartPage} />
+        </Switch>
       </Router>
     </>
   );
