@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import StartPage from "../../components/startPage/StartPage";
+import Home from "../../components/home/Home";
 
 //Switch will be used for app navigation when user logged
 
@@ -14,7 +14,7 @@ const App = () => {
     <>
       <Router>
         <Switch>
-          <Route path="/" exact component={StartPage} />
+          <Route path="/" exact component={Home} />
         </Switch>
       </Router>
     </>

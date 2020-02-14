@@ -4,7 +4,7 @@ import Main from "../../views/main/Main";
 import About from "../../views/about/About";
 import Contact from "../../views/contact/Contact";
 
-const StartPage = () => {
+const Home = () => {
   return (
     <>
       <Navbar />
@@ -15,4 +15,4 @@ const StartPage = () => {
   );
 };
 
-export default StartPage;
+export default Home;
