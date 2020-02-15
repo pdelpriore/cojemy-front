@@ -1,7 +1,7 @@
 .main-section {
   height: 100vh;
   overflow: hidden;
-  background-color: #fbfcfe;
+  background-color: #f5eded;
 }
 .shape-top-left {
   position: relative;
@@ -20,6 +20,7 @@
 }
 .image {
   width: 45vw;
+  border-radius: 25px;
 }
 .box {
   height: 50vh;
@@ -30,7 +31,7 @@
 .main-text {
   font-family: "Nunito-SemiBold";
   font-size: 3em;
-  color: #333333;
+  color: #000000;
 }
 .main-sub-text {
   font-family: "OpenSans-Regular";

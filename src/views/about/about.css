@@ -2,6 +2,7 @@
   height: 100vh;
   background-color: #feff89;
   overflow: hidden;
+  border-top: 1px #f11213 solid;
 }
 .about-area {
   display: flex;
