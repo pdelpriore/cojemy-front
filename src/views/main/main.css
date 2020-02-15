@@ -20,7 +20,6 @@
 }
 .image {
   width: 45vw;
-  border-radius: 25px;
 }
 .box {
   height: 50vh;
@@ -30,7 +29,7 @@
 }
 .main-text {
   font-family: "Nunito-SemiBold";
-  font-size: 3em;
+  font-size: 3.8em;
   color: #000000;
 }
 .main-sub-text {

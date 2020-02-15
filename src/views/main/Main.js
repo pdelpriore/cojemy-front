@@ -22,7 +22,7 @@ const Main = () => {
       </Row>
       <Row>
         <Col xs={1} />
-        <Col xs={4}>
+        <Col xs={5}>
           <div className="box">
             <div>
               <h1 className="main-text">Recherche une recette ?</h1>
@@ -36,10 +36,9 @@ const Main = () => {
         <Col xs={6}>
           <Image
             className="image"
-            src={require("../../assets/womancooking.jpg")}
+            src={require("../../assets/womancookingbackg.jpg")}
           />
         </Col>
-        <Col xs={1} />
       </Row>
     </animated.div>
   );
