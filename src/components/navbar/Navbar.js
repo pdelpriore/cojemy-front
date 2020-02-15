@@ -17,7 +17,7 @@ const navItems = [
   //{ name: "s'inscrire", path: "/signup" }
 ];
 
-const Navbar = () => {
+const Navbar = ({ path, url, isExact }) => {
   const menu = navItems.map(item =>
     item.name === "s'inscrire" ? (
       <Nav.Item as="li" className="signup" key={item.name}>
@@ -51,7 +51,7 @@ const Navbar = () => {
     <Row className="navbar">
       <Col xs>
         <Nav fill as="ul">
-          {menu}
+          {path === "/" && url === "/" && isExact ? menu : null}
         </Nav>
       </Col>
     </Row>

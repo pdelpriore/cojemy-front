@@ -4,10 +4,11 @@ import Main from "../../views/main/Main";
 import About from "../../views/about/About";
 import Contact from "../../views/contact/Contact";
 
-const Home = () => {
+const Home = ({ match }) => {
+  let { path, url, isExact } = match;
   return (
     <>
-      <Navbar />
+      <Navbar path={path} url={url} isExact={isExact} />
       <Main />
       <About />
       <Contact />
