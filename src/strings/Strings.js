@@ -1,6 +1,9 @@
 export const strings = Object.freeze({
+  path: {
+    HOME: "/"
+  },
   navbar: {
-    navItems: {
+    navHomeItems: {
       LOGO: "quoi manger ?",
       ABOUT: "en savoir plus",
       CONTACT: "contact"

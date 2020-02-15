@@ -4,7 +4,7 @@ import "./contact.css";
 
 const Contact = () => {
   return (
-    <div className="contact-section" id={strings.navbar.navItems.CONTACT}>
+    <div className="contact-section" id={strings.navbar.navHomeItems.CONTACT}>
       Contact
     </div>
   );

@@ -6,7 +6,7 @@ import "./about.css";
 
 const About = () => {
   return (
-    <div className="about-section" id={strings.navbar.navItems.ABOUT}>
+    <div className="about-section" id={strings.navbar.navHomeItems.ABOUT}>
       <Row className="mb-5" />
       <Row className="mb-5" />
       <Row>
