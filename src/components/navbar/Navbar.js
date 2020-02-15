@@ -16,20 +16,35 @@ const navItems = [
 ];
 
 const Navbar = () => {
-  const menu = navItems.map(item => (
-    <Nav.Item as="li" key={item.name}>
-      <Link
-        activeClass="active"
-        to={item.name}
-        spy={true}
-        smooth={true}
-        offset={0}
-        duration={500}
-      >
-        {capitalize(item.name)}
-      </Link>
-    </Nav.Item>
-  ));
+  const menu = navItems.map(item =>
+    item.name === "s'inscrire" ? (
+      <Nav.Item as="li" className="signup" key={item.name}>
+        <Link
+          activeClass="active"
+          to={item.name}
+          spy={true}
+          smooth={true}
+          offset={0}
+          duration={500}
+        >
+          {capitalize(item.name)}
+        </Link>
+      </Nav.Item>
+    ) : (
+      <Nav.Item as="li" key={item.name}>
+        <Link
+          activeClass="active"
+          to={item.name}
+          spy={true}
+          smooth={true}
+          offset={0}
+          duration={500}
+        >
+          {capitalize(item.name)}
+        </Link>
+      </Nav.Item>
+    )
+  );
   return (
     <Row className="navbar">
       <Col xs>

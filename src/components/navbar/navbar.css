@@ -30,7 +30,7 @@ li:first-child {
 li:first-child:hover {
   cursor: pointer;
 }
-li:last-child {
+.signup {
   display: flex;
   justify-content: center;
   font-family: "Nunito-SemiBold";
@@ -38,7 +38,7 @@ li:last-child {
   border: 2px #76c63f solid;
   border-radius: 12% 12% 12% 12% / 14% 19% 18% 20%;
 }
-li:last-child:hover {
+.signup:hover {
   background-color: #f9e4ad;
 }
 a {
