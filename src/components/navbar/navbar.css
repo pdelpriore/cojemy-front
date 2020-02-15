@@ -23,7 +23,7 @@ li:not(:first-child) > a.active {
   border-bottom: 2px #333333 solid;
 }
 li:first-child {
-  margin-right: 25%;
+  margin-right: 50%;
   font-family: "Nunito-Bold";
   font-size: x-large;
 }

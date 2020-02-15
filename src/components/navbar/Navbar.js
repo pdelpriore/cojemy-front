@@ -10,9 +10,10 @@ import "./navbar.css";
 const navItems = [
   { name: "quoi manger ?" },
   { name: "en savoir plus" },
-  { name: "contact" },
-  { name: "se connecter", path: "/login" },
-  { name: "s'inscrire", path: "/signup" }
+  { name: "contact" }
+  // options below will be used when user go to get started page
+  //{ name: "se connecter", path: "/login" },
+  //{ name: "s'inscrire", path: "/signup" }
 ];
 
 const Navbar = () => {
