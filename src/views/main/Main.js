@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, Row, Col, Button } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
+import { strings } from "../../strings/Strings";
 import "./main.css";
 
 const Main = () => {
@@ -10,7 +11,11 @@ const Main = () => {
     from: { opacity: 0, marginRight: 300 }
   });
   return (
-    <animated.div style={props} className="main-section" id="quoi manger ?">
+    <animated.div
+      style={props}
+      className="main-section"
+      id={strings.navbar.navItems.LOGO}
+    >
       <Row>
         <Col xs={2}>
           <div className="shape-top-left"></div>
@@ -25,10 +30,10 @@ const Main = () => {
         <Col xs={5}>
           <div className="box">
             <div>
-              <h1 className="main-text">Recherche une recette ?</h1>
-              <h3 className="main-sub-text">Vous êtes en bon endroit</h3>
+              <h1 className="main-text">{strings.main.MAIN_TEXT}</h1>
+              <h3 className="main-sub-text">{strings.main.MAIN_SUB_TEXT}</h3>
               <Button className="button" variant="outline-danger">
-                Commencez
+                {strings.main.BUTTON_TEXT}
               </Button>
             </div>
           </div>
@@ -36,7 +41,7 @@ const Main = () => {
         <Col xs={6}>
           <Image
             className="image"
-            src={require("../../assets/womancookingbackg.jpg")}
+            src={require("../../assets/imgs/womancookingbackg.jpg")}
           />
         </Col>
       </Row>
