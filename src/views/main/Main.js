@@ -2,6 +2,7 @@ import React from "react";
 import { Image, Row, Col, Button } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import { strings } from "../../strings/Strings";
+import { capitalizeFirst } from "../../util/Util";
 import "./main.css";
 
 const Main = () => {
@@ -30,10 +31,14 @@ const Main = () => {
         <Col xs={5}>
           <div className="box">
             <div>
-              <h1 className="main-text">{strings.main.MAIN_TEXT}</h1>
-              <h3 className="main-sub-text">{strings.main.MAIN_SUB_TEXT}</h3>
+              <h1 className="main-text">
+                {capitalizeFirst(strings.main.MAIN_TEXT)}
+              </h1>
+              <h3 className="main-sub-text">
+                {capitalizeFirst(strings.main.MAIN_SUB_TEXT)}
+              </h3>
               <Button className="button" variant="outline-danger">
-                {strings.main.BUTTON_TEXT}
+                {capitalizeFirst(strings.main.BUTTON_TEXT)}
               </Button>
             </div>
           </div>
