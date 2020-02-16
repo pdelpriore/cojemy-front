@@ -24,18 +24,22 @@
 .box {
   height: 50vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .main-text {
+  flex: 1;
   font-family: "Nunito-SemiBold";
   font-size: 3.2em;
   color: #000000;
 }
 .main-sub-text {
+  flex: 1;
   font-family: "OpenSans-Regular";
 }
 .button {
+  flex: 1;
   font-family: "OpenSans-Regular";
   margin-top: 2%;
 }
