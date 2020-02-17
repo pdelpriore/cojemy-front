@@ -27,7 +27,7 @@ const ContactForm = () => {
             <Form.Control
               className="text-family-message"
               as="textarea"
-              rows="6"
+              rows="7"
               onChange
               size="lg"
               name="message"
