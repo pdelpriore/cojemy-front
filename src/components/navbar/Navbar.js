@@ -18,7 +18,24 @@ const navHomeItems = [
 ];
 
 const Navbar = ({ path, url, isExact }) => {
-  const homeMenu = navHomeItems.map(item =>
+  const logo = navHomeItems.map(
+    item =>
+      item.name === strings.navbar.navHomeItems.LOGO && (
+        <Nav.Item as="li" className="logo" key={item.name}>
+          <Link
+            activeClass="active"
+            to={item.name}
+            spy={true}
+            smooth={true}
+            offset={0}
+            duration={500}
+          >
+            {capitalize(item.name)}
+          </Link>
+        </Nav.Item>
+      )
+  );
+  const homeMenu = navHomeItems.slice(1).map(item =>
     item.name === "s'inscrire" ? (
       <Nav.Item as="li" className="signup" key={item.name}>
         <Link
@@ -49,7 +66,12 @@ const Navbar = ({ path, url, isExact }) => {
   );
   return (
     <Row className="navbar">
-      <Col xs>
+      <Col xs={7}>
+        <Nav fill as="ul">
+          {logo}
+        </Nav>
+      </Col>
+      <Col xs={5}>
         <Nav fill as="ul">
           {path === strings.path.HOME && url === strings.path.HOME && isExact
             ? homeMenu

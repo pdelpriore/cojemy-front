@@ -1,4 +1,25 @@
 .contact-section {
   height: 100vh;
-  background-color: yellow;
+  background-color: #a7ff83;
+  overflow: hidden;
+}
+.first-section {
+  height: 60vh;
+  background-color: #a7ff83;
+}
+.second-section {
+  height: 40vh;
+  background-color: #086972;
+}
+.contact-text {
+  font-family: "Nunito-Bold";
+  font-size: 4rem;
+  color: #071a52;
+}
+.button-text {
+  font-family: "OpenSans-Regular";
+}
+.footer {
+  font-family: "OpenSans-Regular";
+  color: #071a52;
 }

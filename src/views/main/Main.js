@@ -31,6 +31,8 @@ const Main = () => {
         <Col xs={5}>
           <div className="box">
             <div>
+              <Row className="mb-5" />
+              <Row className="mb-5" />
               <h1 className="main-text">
                 {capitalizeFirst(strings.main.MAIN_TEXT)}
               </h1>

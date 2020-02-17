@@ -6,29 +6,27 @@
   height: 10%;
 }
 ul {
-  display: flex;
-  flex-wrap: wrap;
   list-style: none;
 }
 li {
-  flex: 1;
   font-family: "Nunito-SemiBold";
   text-align: center;
   transition: 0.2s;
 }
-li:not(:first-child):hover {
+li:not(.logo):hover {
   transform: scale(1.1);
   cursor: pointer;
 }
-li:not(:first-child) > a.active {
+li:not(.logo) > a.active {
   border-bottom: 2px #333333 solid;
 }
-li:first-child {
-  margin-right: 50%;
+.logo {
+  display: flex;
+  justify-content: left;
   font-family: "Nunito-Bold";
   font-size: x-large;
 }
-li:first-child:hover {
+.logo:hover {
   cursor: pointer;
 }
 .signup {

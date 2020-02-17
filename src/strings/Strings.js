@@ -19,5 +19,10 @@ export const strings = Object.freeze({
     SECOND_AREA: "partage tes recettes",
     THIRD_AREA: "contacte d'autres passionnés",
     FOURTH_AREA: "organise tes événements"
+  },
+  contact: {
+    FIRST_SECTION: "une question ?",
+    BUTTON_TEXT: "contacte nous",
+    FOOTER: "Paul Del Priore"
   }
 });
