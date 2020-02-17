@@ -40,8 +40,10 @@
 }
 .linkedin-icon {
   color: #071a52;
+  transition: 0.2s;
 }
 .linkedin-icon:hover {
+  transform: scale(1.2);
   cursor: pointer;
 }
 .social-icon {
