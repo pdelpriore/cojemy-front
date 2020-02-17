@@ -65,10 +65,7 @@ const Contact = () => {
                     <p className="footer-paragraph">
                       &#169; {new Date().getFullYear()} {strings.contact.FOOTER}
                     </p>
-                    <Nav.Link
-                      href="https://www.linkedin.com/in/paul-del-priore-9b8b1114b/"
-                      target="_blank"
-                    >
+                    <Nav.Link href={strings.path.LINKEDIN} target="_blank">
                       <FontAwesomeIcon
                         className="linkedin-icon"
                         icon={faLinkedin}
