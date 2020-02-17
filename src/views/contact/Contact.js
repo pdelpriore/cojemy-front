@@ -1,8 +1,10 @@
 import React from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Nav, Image } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import ContactForm from "../../forms/contact/ContactForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./contact.css";
 
 const Contact = () => {
@@ -36,11 +38,43 @@ const Contact = () => {
       <Row>
         <Col xs={12}>
           <div className="second-section">
-            <footer className="footer">
+            <footer>
+              <Row className="mb-3" />
               <Row>
-                <Col xs={1} />
-                <Col xs={11}>
-                  &#169; {new Date().getFullYear()} {strings.contact.FOOTER}
+                <Col xs={2} />
+                <Col xs={8}>
+                  <div className="social-area">
+                    <Image
+                      className="social-icon"
+                      src={require("../../assets/imgs/facebook2ret.jpg")}
+                      roundedCircle
+                    />
+                    <Image
+                      className="social-icon"
+                      src={require("../../assets/imgs/instagramret.jpg")}
+                      roundedCircle
+                    />
+                  </div>
+                </Col>
+                <Col xs={2} />
+              </Row>
+              <Row>
+                <Col xs={9} />
+                <Col xs={3}>
+                  <div className="footer-author">
+                    <p className="footer-paragraph">
+                      &#169; {new Date().getFullYear()} {strings.contact.FOOTER}
+                    </p>
+                    <Nav.Link
+                      href="https://www.linkedin.com/in/paul-del-priore-9b8b1114b/"
+                      target="_blank"
+                    >
+                      <FontAwesomeIcon
+                        className="linkedin-icon"
+                        icon={faLinkedin}
+                      />
+                    </Nav.Link>
+                  </div>
                 </Col>
               </Row>
             </footer>
