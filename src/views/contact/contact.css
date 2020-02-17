@@ -6,6 +6,7 @@
 .first-section {
   height: 60vh;
   background-color: #a7ff83;
+  border-bottom: 2px #071a52 solid;
 }
 .second-section {
   height: 40vh;
