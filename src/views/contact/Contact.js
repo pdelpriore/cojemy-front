@@ -26,9 +26,6 @@ const Contact = () => {
               <Col xs={5}>
                 <div className="form-section">
                   <ContactForm />
-                  <Button className="button-text" variant="outline-dark">
-                    {capitalizeFirst(strings.contact.BUTTON_TEXT)}
-                  </Button>
                 </div>
               </Col>
             </Row>
