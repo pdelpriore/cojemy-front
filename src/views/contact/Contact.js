@@ -2,11 +2,13 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
+import ContactForm from "../../forms/contact/ContactForm";
 import "./contact.css";
 
 const Contact = () => {
   return (
     <div className="contact-section" id={strings.navbar.navHomeItems.CONTACT}>
+      <Row className="mb-5" />
       <Row className="mb-5" />
       <Row className="mb-5" />
       <Row>
@@ -19,16 +21,14 @@ const Contact = () => {
                   {capitalizeFirst(strings.contact.FIRST_SECTION)}
                 </h1>
               </Col>
-              <Col xs={5} />
-            </Row>
-            <Row className="mt-5">
-              <Col xs={4} />
-              <Col xs={2}>
-                <Button className="button-text" variant="outline-danger">
-                  {strings.contact.BUTTON_TEXT}
-                </Button>
+              <Col xs={5}>
+                <div className="form-section">
+                  <ContactForm />
+                  <Button className="button-text" variant="outline-dark">
+                    {capitalizeFirst(strings.contact.BUTTON_TEXT)}
+                  </Button>
+                </div>
               </Col>
-              <Col xs={6} />
             </Row>
           </div>
         </Col>
@@ -37,7 +37,12 @@ const Contact = () => {
         <Col xs={12}>
           <div className="second-section">
             <footer className="footer">
-              &#169; {new Date().getFullYear()} {strings.contact.FOOTER}
+              <Row>
+                <Col xs={1} />
+                <Col xs={11}>
+                  &#169; {new Date().getFullYear()} {strings.contact.FOOTER}
+                </Col>
+              </Row>
             </footer>
           </div>
         </Col>

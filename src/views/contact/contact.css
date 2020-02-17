@@ -13,7 +13,7 @@
 }
 .contact-text {
   font-family: "Nunito-Bold";
-  font-size: 4rem;
+  font-size: 4.5vw;
   color: #071a52;
 }
 .button-text {
@@ -22,4 +22,10 @@
 .footer {
   font-family: "OpenSans-Regular";
   color: #071a52;
+}
+.form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }

@@ -22,7 +22,7 @@ export const strings = Object.freeze({
   },
   contact: {
     FIRST_SECTION: "une question ?",
-    BUTTON_TEXT: "contacte nous",
+    BUTTON_TEXT: "envoyer",
     FOOTER: "Paul Del Priore"
   }
 });
