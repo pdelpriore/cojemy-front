@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { capitalizeFirst } from "../../util/Util";
 
 const useContactForm = () => {
   const [inputs, setInputs] = useState({});
 
   const handleInputChange = e => {
     e.persist();
-    setInputs(inputs => ({ ...inputs, [e.target.name]: e.target.value }));
+    setInputs(inputs => ({
+      ...inputs,
+      [e.target.name]: capitalizeFirst(e.target.value)
+    }));
     console.log(`${inputs.subject}`);
     console.log(`${inputs.message}`);
   };
