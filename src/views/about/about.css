@@ -23,6 +23,7 @@
 }
 .text-area {
   flex: 6;
+  font-size: 3vw;
   margin-left: 10%;
   font-family: "Nunito-SemiBold";
   color: #85203b;
