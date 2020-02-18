@@ -40,7 +40,15 @@ li:not(.logo) > a.active {
 .signup:hover {
   background-color: #f9e4ad;
 }
+.signup-active {
+  color: #f11213;
+  font-family: "Nunito-Bold";
+}
 a {
+  text-decoration: none;
+  color: #3e3636;
+}
+a:hover {
   text-decoration: none;
   color: #3e3636;
 }

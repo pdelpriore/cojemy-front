@@ -8,6 +8,7 @@ export const strings = Object.freeze({
   navbar: {
     navType: {
       LOGO: "logo",
+      LOGO_GET_STARTED: "logoGetStarted",
       HOME_MENU: "homeMenu",
       GET_STARTED_MENU: "getStartedMenu"
     },

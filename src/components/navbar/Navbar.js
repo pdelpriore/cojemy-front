@@ -11,7 +11,16 @@ const Navbar = ({ path, url, isExact }) => {
     <Row className="navbar">
       <Col xs={7}>
         <Nav fill as="ul">
-          {makeNavMenu(strings.navbar.navType.LOGO)}
+          {path === strings.path.HOME && url === strings.path.HOME && isExact
+            ? makeNavMenu(strings.navbar.navType.LOGO)
+            : (path === strings.path.LOGIN &&
+                url === strings.path.LOGIN &&
+                isExact) ||
+              (path === strings.path.SIGNUP &&
+                url === strings.path.SIGNUP &&
+                isExact)
+            ? makeNavMenu(strings.navbar.navType.LOGO_GET_STARTED)
+            : null}
         </Nav>
       </Col>
       <Col xs={5}>
