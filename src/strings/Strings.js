@@ -6,6 +6,11 @@ export const strings = Object.freeze({
     LINKEDIN: "https://www.linkedin.com/in/paul-del-priore-9b8b1114b/"
   },
   navbar: {
+    navType: {
+      LOGO: "logo",
+      HOME_MENU: "homeMenu",
+      GET_STARTED_MENU: "getStartedMenu"
+    },
     navHomeItems: {
       LOGO: "quoi manger ?",
       ABOUT: "en savoir plus",
