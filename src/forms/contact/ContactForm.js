@@ -54,7 +54,7 @@ const ContactForm = () => {
             <Form.Control
               className="text-family-message"
               as="textarea"
-              rows="5"
+              rows="6"
               onChange={handleInputChange}
               value={inputs.message || ""}
               size="lg"
