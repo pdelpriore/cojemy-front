@@ -70,8 +70,11 @@ const ContactForm = () => {
           <Button
             disabled={
               inputs.subject === undefined ||
+              inputs.subject === "" ||
               inputs.message === undefined ||
-              inputs.email === undefined
+              inputs.message === "" ||
+              inputs.email === undefined ||
+              inputs.email === ""
             }
             type="submit"
             className="button-text"
