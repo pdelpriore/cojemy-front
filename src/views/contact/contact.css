@@ -45,6 +45,11 @@
 }
 .social-icon {
   width: 8vw;
+  transition: 0.2s;
+}
+.social-icon:hover {
+  transform: translateY(1px);
+  cursor: pointer;
 }
 .social-area {
   display: flex;
