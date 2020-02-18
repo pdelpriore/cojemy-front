@@ -13,7 +13,7 @@ export const strings = Object.freeze({
   main: {
     MAIN_TEXT: "recherche une idée de plat ?",
     MAIN_SUB_TEXT: "tu es en bon endroit",
-    BUTTON_TEXT: "commence"
+    BUTTON_TEXT: "commence ici"
   },
   about: {
     FIRST_AREA: "trouve ta recette",
