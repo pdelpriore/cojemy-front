@@ -24,6 +24,9 @@ export const strings = Object.freeze({
   contact: {
     FIRST_SECTION: "une question ?",
     BUTTON_TEXT: "envoyer",
-    FOOTER: "Paul Del Priore"
+    FOOTER: "Paul Del Priore",
+    SUBJECT: "sujet",
+    EMAIL: "ton email",
+    MESSAGE: "message"
   }
 });

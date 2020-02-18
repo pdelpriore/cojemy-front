@@ -12,7 +12,9 @@ const ContactForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicSubject">
-            <Form.Label className="text-family">Sujet</Form.Label>
+            <Form.Label className="text-family">
+              {capitalizeFirst(strings.contact.SUBJECT)}
+            </Form.Label>
             <Form.Control
               className="text-family-message"
               onChange={handleInputChange}
@@ -20,7 +22,25 @@ const ContactForm = () => {
               size="lg"
               name="subject"
               type="text"
-              placeholder="sujet"
+              placeholder={strings.contact.SUBJECT}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label className="text-family">
+              {capitalizeFirst(strings.contact.EMAIL)}
+            </Form.Label>
+            <Form.Control
+              className="text-family-message"
+              onChange={handleInputChange}
+              value={inputs.email || ""}
+              size="lg"
+              name="email"
+              type="email"
+              placeholder={strings.contact.EMAIL}
             />
           </Form.Group>
         </Col>
@@ -28,7 +48,9 @@ const ContactForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicMessage">
-            <Form.Label className="text-family">Message</Form.Label>
+            <Form.Label className="text-family">
+              {capitalizeFirst(strings.contact.MESSAGE)}
+            </Form.Label>
             <Form.Control
               className="text-family-message"
               as="textarea"
@@ -38,7 +60,7 @@ const ContactForm = () => {
               size="lg"
               name="message"
               type="text"
-              placeholder="message"
+              placeholder={strings.contact.MESSAGE}
             />
           </Form.Group>
         </Col>
@@ -47,7 +69,9 @@ const ContactForm = () => {
         <Col xs={12}>
           <Button
             disabled={
-              inputs.subject === undefined || inputs.message === undefined
+              inputs.subject === undefined ||
+              inputs.message === undefined ||
+              inputs.email === undefined
             }
             type="submit"
             className="button-text"
