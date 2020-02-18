@@ -34,11 +34,11 @@ li:not(.logo) > a.active {
   justify-content: center;
   font-family: "Nunito-SemiBold";
   align-items: center;
-  border: 2px #76c63f solid;
+  border: 2px #001f3f solid;
   border-radius: 12% 12% 12% 12% / 14% 19% 18% 20%;
 }
 .signup:hover {
-  background-color: #f9e4ad;
+  background-color: #e0c45c;
 }
 .signup-active {
   color: #f11213;
