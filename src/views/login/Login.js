@@ -6,7 +6,10 @@ const Login = ({ match }) => {
   return (
     <div>
       <Navbar path={path} url={url} isExact={isExact} />
-      Welcome to login
+      Welcome to login Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
+      ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
+      ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
+      ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
     </div>
   );
 };
