@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect, NavLink } from "react-router-dom";
 import { Image, Row, Col, Button } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import { strings } from "../../strings/Strings";
@@ -40,9 +41,11 @@ const Main = () => {
               <h3 className="main-sub-text">
                 {capitalizeFirst(strings.main.MAIN_SUB_TEXT)}
               </h3>
-              <Button className="button" variant="outline-danger">
-                {capitalizeFirst(strings.main.BUTTON_TEXT)}
-              </Button>
+              <NavLink to={strings.path.LOGIN} exact>
+                <Button className="button" variant="outline-danger">
+                  {capitalizeFirst(strings.main.BUTTON_TEXT)}
+                </Button>
+              </NavLink>
             </div>
           </div>
         </Col>

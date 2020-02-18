@@ -1,6 +1,8 @@
 export const strings = Object.freeze({
   path: {
     HOME: "/",
+    LOGIN: "/login",
+    SIGNUP: "/signup",
     LINKEDIN: "https://www.linkedin.com/in/paul-del-priore-9b8b1114b/"
   },
   navbar: {
@@ -8,6 +10,10 @@ export const strings = Object.freeze({
       LOGO: "quoi manger ?",
       ABOUT: "en savoir plus",
       CONTACT: "contact"
+    },
+    navGetStartedItems: {
+      LOGIN: "se connecter",
+      SIGNUP: "s'inscrire"
     }
   },
   main: {

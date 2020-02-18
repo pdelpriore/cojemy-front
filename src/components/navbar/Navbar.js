@@ -12,9 +12,11 @@ const navHomeItems = [
   { name: strings.navbar.navHomeItems.LOGO },
   { name: strings.navbar.navHomeItems.ABOUT },
   { name: strings.navbar.navHomeItems.CONTACT }
-  // options below will be used when user go to get started page
-  //{ name: "se connecter", path: "/login" },
-  //{ name: "s'inscrire", path: "/signup" }
+];
+
+const navGetStartedItems = [
+  { name: strings.navbar.navGetStartedItems.LOGIN, path: strings.path.LOGIN },
+  { name: strings.navbar.navGetStartedItems.SIGNUP, path: strings.path.SIGNUP }
 ];
 
 const Navbar = ({ path, url, isExact }) => {
@@ -35,32 +37,33 @@ const Navbar = ({ path, url, isExact }) => {
         </Nav.Item>
       )
   );
-  const homeMenu = navHomeItems.slice(1).map(item =>
-    item.name === "s'inscrire" ? (
+  const homeMenu = navHomeItems.slice(1).map(item => (
+    <Nav.Item as="li" key={item.name}>
+      <Link
+        activeClass="active"
+        to={item.name}
+        spy={true}
+        smooth={true}
+        offset={0}
+        duration={500}
+      >
+        {capitalize(item.name)}
+      </Link>
+    </Nav.Item>
+  ));
+
+  const getStartedMenu = navGetStartedItems.map(item =>
+    item.name === strings.navbar.navGetStartedItems.SIGNUP ? (
       <Nav.Item as="li" className="signup" key={item.name}>
-        <Link
-          activeClass="active"
-          to={item.name}
-          spy={true}
-          smooth={true}
-          offset={0}
-          duration={500}
-        >
+        <NavLink activeClassName="active" to={item.path} exact>
           {capitalize(item.name)}
-        </Link>
+        </NavLink>
       </Nav.Item>
     ) : (
       <Nav.Item as="li" key={item.name}>
-        <Link
-          activeClass="active"
-          to={item.name}
-          spy={true}
-          smooth={true}
-          offset={0}
-          duration={500}
-        >
+        <NavLink activeClassName="active" to={item.path} exact>
           {capitalize(item.name)}
-        </Link>
+        </NavLink>
       </Nav.Item>
     )
   );
@@ -75,6 +78,13 @@ const Navbar = ({ path, url, isExact }) => {
         <Nav fill as="ul">
           {path === strings.path.HOME && url === strings.path.HOME && isExact
             ? homeMenu
+            : (path === strings.path.LOGIN &&
+                url === strings.path.LOGIN &&
+                isExact) ||
+              (path === strings.path.SIGNUP &&
+                url === strings.path.SIGNUP &&
+                isExact)
+            ? getStartedMenu
             : null}
         </Nav>
       </Col>
