@@ -8,7 +8,10 @@ const useContactForm = () => {
     e.persist();
     setInputs(inputs => ({
       ...inputs,
-      [e.target.name]: capitalizeFirst(e.target.value)
+      [e.target.name]:
+        e.target.name === "email"
+          ? e.target.value
+          : capitalizeFirst(e.target.value)
     }));
     console.log(`${inputs.subject}`);
     console.log(`${inputs.message}`);
