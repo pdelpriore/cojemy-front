@@ -37,6 +37,7 @@ const Login = ({ match }) => {
           <Col xs={3} />
         </Row>
       </div>
+      <div className="login-third-section"></div>
     </animated.div>
   );
 };

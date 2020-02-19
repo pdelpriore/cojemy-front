@@ -11,10 +11,16 @@
   overflow: hidden;
 }
 .login-second-section {
-  height: 60vh;
+  height: 40vh;
   background-color: #e0c45c;
+  border-bottom: 2px #fff98c solid;
   overflow: hidden;
 }
 .login-image {
   width: 20vw;
+}
+.login-third-section {
+  height: 20vh;
+  background-color: #cb3b3b;
+  overflow: hidden;
 }
