@@ -9,10 +9,11 @@
 .signup-first-section {
   height: 100vh;
   width: 40vw;
-  background-color: #21e6c1;
+  background-color: #fffeb8;
+  border-right: 2px #a03232 solid;
 }
 .signup-second-section {
   height: 100vh;
   width: 60vw;
-  background-color: #278ea5;
+  background-color: #e6c073;
 }
