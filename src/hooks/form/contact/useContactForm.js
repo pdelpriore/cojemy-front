@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { capitalizeFirst } from "../../util/Util";
+import { capitalizeFirst } from "../../../util/Util";
 
 const useContactForm = () => {
   const [inputs, setInputs] = useState({});

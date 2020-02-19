@@ -40,5 +40,10 @@ export const strings = Object.freeze({
     SUBJECT: "sujet",
     EMAIL: "ton email",
     MESSAGE: "message"
+  },
+  login: {
+    EMAIL: "email",
+    PASSWORD: "mot de passe",
+    BUTTON_TEXT: "se connecter"
   }
 });

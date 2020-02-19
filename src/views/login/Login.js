@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { Row, Col, Button, Image } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
+import LoginForm from "../../forms/login/LoginForm";
 import "./login.css";
 
 const Login = ({ match }) => {
@@ -26,7 +27,14 @@ const Login = ({ match }) => {
         </Row>
       </div>
       <div className="login-second-section">
-        <h1 className="text-test">Lorem ipsum</h1>
+        <Row className="mb-5" />
+        <Row>
+          <Col xs={6} />
+          <Col xs={3}>
+            <LoginForm />
+          </Col>
+          <Col xs={3} />
+        </Row>
       </div>
     </animated.div>
   );

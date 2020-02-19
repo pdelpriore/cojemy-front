@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
-import useContactForm from "../../hooks/form/useContactForm";
+import useContactForm from "../../hooks/form/contact/useContactForm";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./contactForm.css";

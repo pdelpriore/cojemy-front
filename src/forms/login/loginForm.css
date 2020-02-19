@@ -1,0 +1,12 @@
+.login-text-family {
+  font-family: "OpenSans-SemiBold";
+}
+.login-button {
+  font-family: "OpenSans-Regular";
+}
+.login-placeholder {
+  font-family: "OpenSans-Regular";
+  font-size: 1.3vw;
+  background-color: #fff98c;
+  color: #85203b;
+}

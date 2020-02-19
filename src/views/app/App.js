@@ -22,7 +22,6 @@ const App = () => {
           <Route path={strings.path.LOGIN} exact component={Login} />
           <Route path={strings.path.SIGNUP} exact component={Signup} />
         </Switch>
-        )}
       </Router>
     </>
   );
