@@ -4,8 +4,7 @@ import { Row, Col, Button, Image } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import "./login.css";
 
-const Login = ({ match }) => {
-  let { path, url, isExact } = match;
+const Login = ({ match: { path, url, isExact } }) => {
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 }
