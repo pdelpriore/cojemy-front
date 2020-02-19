@@ -29,21 +29,6 @@ li:not(.logo) > a.active {
 .logo:hover {
   cursor: pointer;
 }
-.signup {
-  display: flex;
-  justify-content: center;
-  font-family: "Nunito-SemiBold";
-  align-items: center;
-  border: 2px #001f3f solid;
-  border-radius: 12% 12% 12% 12% / 14% 19% 18% 20%;
-}
-.signup:hover {
-  background-color: #e0c45c;
-}
-.signup-active {
-  color: #f11213;
-  font-family: "Nunito-Bold";
-}
 a {
   text-decoration: none;
   color: #3e3636;

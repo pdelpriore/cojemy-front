@@ -63,20 +63,12 @@ export const makeNavMenu = type => {
         </Nav.Item>
       ))
     : type === strings.navbar.navType.GET_STARTED_MENU
-    ? navGetStartedItems.map(item =>
-        item.name === strings.navbar.navGetStartedItems.SIGNUP ? (
-          <Nav.Item as="li" className="signup" key={item.name}>
-            <NavLink activeClassName="signup-active" to={item.path} exact>
-              {capitalize(item.name)}
-            </NavLink>
-          </Nav.Item>
-        ) : (
-          <Nav.Item as="li" key={item.name}>
-            <NavLink activeClassName="active" to={item.path} exact>
-              {capitalize(item.name)}
-            </NavLink>
-          </Nav.Item>
-        )
-      )
+    ? navGetStartedItems.map(item => (
+        <Nav.Item as="li" key={item.name}>
+          <NavLink activeClassName="active" to={item.path} exact>
+            {capitalize(item.name)}
+          </NavLink>
+        </Nav.Item>
+      ))
     : null;
 };
