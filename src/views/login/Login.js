@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { Row, Col, Button, Image } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import LoginForm from "../../forms/login/LoginForm";
 import "./login.css";

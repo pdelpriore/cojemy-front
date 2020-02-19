@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button, Nav, Image } from "react-bootstrap";
+import { Row, Col, Nav, Image } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import ContactForm from "../../forms/contact/ContactForm";
