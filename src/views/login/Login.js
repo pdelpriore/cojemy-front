@@ -15,6 +15,7 @@ const Login = ({ match }) => {
     <animated.div style={props} className="login-area">
       <div className="login-first-section">
         <Navbar path={path} url={url} isExact={isExact} />
+        <Row className="mb-5" />
         <Row>
           <Col xs={2} />
           <Col xs={8}>
