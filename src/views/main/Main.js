@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Image, Row, Col, Button } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import { strings } from "../../strings/Strings";
@@ -9,8 +9,7 @@ import "./main.css";
 const Main = () => {
   const props = useSpring({
     opacity: 1,
-    marginRight: 0,
-    from: { opacity: 0, marginRight: 300 }
+    from: { opacity: 0 }
   });
   return (
     <animated.div
