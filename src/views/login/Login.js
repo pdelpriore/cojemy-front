@@ -5,8 +5,7 @@ import { useSpring, animated } from "react-spring";
 import LoginForm from "../../forms/login/LoginForm";
 import "./login.css";
 
-const Login = ({ match }) => {
-  let { path, url, isExact } = match;
+const Login = ({ match: { path, url, isExact } }) => {
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 }
