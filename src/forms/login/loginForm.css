@@ -11,10 +11,12 @@
   color: #85203b;
 }
 .forgot-password {
-  font-family: "OpenSans-Regular";
+  font-family: "OpenSans-SemiBold";
   font-size: 1vw;
   color: #85203b;
+  transition: 0.2s;
 }
 .forgot-password:hover {
   cursor: pointer;
+  transform: translateY(2px);
 }
