@@ -47,19 +47,30 @@ const LoginForm = () => {
       </Row>
       <Row>
         <Col xs={12}>
-          <Button
-            disabled={
-              inputs.email === undefined ||
-              inputs.email === "" ||
-              inputs.password === undefined ||
-              inputs.password === ""
-            }
-            className="login-button"
-            type="submit"
-            variant="outline-dark"
-          >
-            {capitalizeFirst(strings.login.BUTTON_TEXT)}
-          </Button>
+          <div>
+            <Row>
+              <Col xs>
+                <Button
+                  disabled={
+                    inputs.email === undefined ||
+                    inputs.email === "" ||
+                    inputs.password === undefined ||
+                    inputs.password === ""
+                  }
+                  className="login-button"
+                  type="submit"
+                  variant="outline-dark"
+                >
+                  {capitalizeFirst(strings.login.BUTTON_TEXT)}
+                </Button>
+              </Col>
+              <Col xs>
+                <p className="forgot-password">
+                  {strings.login.FORGOT_PASSWORD}
+                </p>
+              </Col>
+            </Row>
+          </div>
         </Col>
       </Row>
     </Form>

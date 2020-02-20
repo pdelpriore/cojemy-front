@@ -44,7 +44,8 @@ export const strings = Object.freeze({
   login: {
     EMAIL: "email",
     PASSWORD: "mot de passe",
-    BUTTON_TEXT: "se connecter"
+    BUTTON_TEXT: "se connecter",
+    FORGOT_PASSWORD: "mot de passe oublié ?"
   },
   signup: {
     USER_NAME: "nom d'utilisateur",
