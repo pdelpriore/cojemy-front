@@ -66,7 +66,7 @@ const LoginForm = () => {
               </Col>
               <Col xs>
                 <p className="forgot-password">
-                  {strings.login.FORGOT_PASSWORD}
+                  {capitalizeFirst(strings.login.FORGOT_PASSWORD)}
                 </p>
               </Col>
             </Row>
