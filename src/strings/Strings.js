@@ -52,6 +52,6 @@ export const strings = Object.freeze({
     EMAIL: "email",
     CONFIRM_EMAIL: "confirme ton email",
     PASSWORD: "mot de passe",
-    BUTTON_TEXT: "enregistrer"
+    BUTTON_TEXT: "enregistre moi !"
   }
 });
