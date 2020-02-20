@@ -45,5 +45,12 @@ export const strings = Object.freeze({
     EMAIL: "email",
     PASSWORD: "mot de passe",
     BUTTON_TEXT: "se connecter"
+  },
+  signup: {
+    USER_NAME: "nom d'utilisateur",
+    EMAIL: "email",
+    CONFIRM_EMAIL: "confirme ton email",
+    PASSWORD: "mot de passe",
+    BUTTON_TEXT: "enregistrer"
   }
 });
