@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { signupUser } from "../../../apollo/queries/signupUser";
 
 const useSignupForm = () => {
   const [inputs, setInputs] = useState({});
+  const [signUp, { data }] = useMutation(signupUser);
 
   const handleInputChange = e => {
     e.persist();
@@ -9,21 +12,22 @@ const useSignupForm = () => {
       ...inputs,
       [e.target.name]: e.target.value
     }));
-    console.log(`${inputs.name}`);
-    console.log(`${inputs.email}`);
-    console.log(`${inputs.confirmEmail}`);
-    console.log(`${inputs.password}`);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("logging");
+    signUp({
+      variables: {
+        name: inputs.name,
+        email: inputs.email,
+        password: inputs.password
+      }
+    });
+    console.log(data);
     setInputs({});
-    console.log(`${inputs.email}`);
-    console.log(`${inputs.password}`);
   };
 
-  return { inputs, handleInputChange, handleSubmit };
+  return { inputs, handleInputChange, handleSubmit, data };
 };
 
 export default useSignupForm;
