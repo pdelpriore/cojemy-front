@@ -5,7 +5,7 @@ import allReducers from "./combineReducers/Index";
 import thunk from "redux-thunk";
 
 const persistConfig = {
-  key: "jE1NjAwMjQ1N",
+  key: "qm",
   storage
 };
 
