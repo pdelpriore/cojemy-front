@@ -2,9 +2,11 @@ import React from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
+import useSignupForm from "../../hooks/form/signup/useSignupForm";
 import "./signupForm.css";
 
-const SignupForm = ({ inputs, handleInputChange, handleSubmit }) => {
+const SignupForm = () => {
+  const { inputs, handleInputChange, handleSubmit } = useSignupForm();
   return (
     <Form onSubmit={handleSubmit}>
       <Row>

@@ -1,54 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import Navbar from "../../components/navbar/Navbar";
 import SignupForm from "../../forms/signup/SignupForm";
-import { useMutation } from "@apollo/react-hooks";
-import { SIGNUP_USER } from "../../apollo/queries/signupUser";
 import "./signup.css";
 
 const Signup = ({ match: { path, url, isExact } }) => {
-  const [inputs, setInputs] = useState({});
-  const [signUp, { data, error, loading }] = useMutation(SIGNUP_USER);
-
-  const handleInputChange = e => {
-    e.persist();
-    setInputs(inputs => ({
-      ...inputs,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    signUp({
-      variables: {
-        name: inputs.name,
-        email: inputs.email,
-        password: inputs.password
-      }
-    });
-    setInputs({});
-  };
-
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 }
   });
-  const signupForm = [
-    <SignupForm
-      inputs={inputs}
-      handleInputChange={handleInputChange}
-      handleSubmit={handleSubmit}
-    />
-  ];
+  const signupForm = [<SignupForm />];
   const transition = useTransition(signupForm, signupForm => signupForm.id, {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
-  console.log("signup page loading: ", loading);
-  console.log("signup page data: ", data);
-  console.log("signup page error: ", error);
 
   return (
     <animated.div style={props} className="signup-area">
