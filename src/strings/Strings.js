@@ -4,7 +4,8 @@ export const strings = Object.freeze({
     GRAPHQL: "http://localhost:4000/graphql",
     LOGIN: "/login",
     SIGNUP: "/signup",
-    LINKEDIN: "https://www.linkedin.com/in/paul-del-priore-9b8b1114b/"
+    LINKEDIN: "https://www.linkedin.com/in/paul-del-priore-9b8b1114b/",
+    SERVER_REQUEST: "http://localhost:4000/graphql"
   },
   navbar: {
     navType: {
