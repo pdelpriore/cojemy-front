@@ -3,6 +3,7 @@ import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import Navbar from "../../components/navbar/Navbar";
 import SignupForm from "../../forms/signup/SignupForm";
+import { useSelector } from "react-redux";
 import "./signup.css";
 
 const Signup = ({ match: { path, url, isExact } }) => {
@@ -15,6 +16,7 @@ const Signup = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
+  const { loading, userSignedup, error } = useSelector(state => state.signup);
   return (
     <animated.div style={props} className="signup-area">
       <Navbar path={path} url={url} isExact={isExact} />
@@ -45,6 +47,7 @@ const Signup = ({ match: { path, url, isExact } }) => {
                 {item}
               </animated.div>
             ))}
+            <div>{error && <p>{error}</p>}</div>
           </Col>
           <Col xs={4} />
         </Row>

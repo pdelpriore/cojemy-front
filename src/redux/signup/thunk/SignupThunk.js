@@ -14,8 +14,16 @@ export const signupUser = (name, email, confirmEmail, password) => {
         },
         body: JSON.stringify(bodyRequest)
       });
-      const data = await response.json();
-      console.log(data);
+      const responseData = await response.json();
+      const { errors, data } = responseData;
+      if (data) {
+        dispatch({
+          type: signupCases.USER_SIGNEDUP,
+          payload: data.signUp.email
+        });
+      } else if (errors) {
+        dispatch({ type: signupCases.ERROR, payload: errors[0].message });
+      }
     } catch (err) {
       if (err) console.log(err);
     }
