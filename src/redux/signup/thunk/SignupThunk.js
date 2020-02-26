@@ -29,3 +29,9 @@ export const signupUser = (name, email, confirmEmail, password) => {
     }
   };
 };
+
+export const clearSignUpErrorState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: signupCases.CLEAR_STATE });
+  };
+};
