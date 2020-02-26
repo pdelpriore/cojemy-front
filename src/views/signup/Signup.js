@@ -4,6 +4,7 @@ import { useSpring, useTransition, animated } from "react-spring";
 import Navbar from "../../components/navbar/Navbar";
 import SignupForm from "../../forms/signup/SignupForm";
 import { useSelector } from "react-redux";
+import Notification from "../../components/notifications/Notification";
 import "./signup.css";
 
 const Signup = ({ match: { path, url, isExact } }) => {
@@ -47,7 +48,7 @@ const Signup = ({ match: { path, url, isExact } }) => {
                 {item}
               </animated.div>
             ))}
-            <div>{error && <p>{error}</p>}</div>
+            <Notification notificationMessage={error} />
           </Col>
           <Col xs={4} />
         </Row>
