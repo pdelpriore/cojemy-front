@@ -96,22 +96,28 @@ const SignupForm = () => {
               inputs.password === undefined ||
               inputs.password === ""
             }
-            className="login-button"
+            className="signup-button"
             type="submit"
             variant="outline-dark"
           >
-            {loading && (
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
-            )}
-            {loading
-              ? capitalizeFirst(strings.signup.BUTTON_TEXT_LOADING)
-              : capitalizeFirst(strings.signup.BUTTON_TEXT)}
+            <div className="signup-spinner">
+              {loading && (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              )}
+              {loading ? (
+                <div className="signup-loading-text">
+                  {capitalizeFirst(strings.signup.BUTTON_TEXT_LOADING)}
+                </div>
+              ) : (
+                <div>{capitalizeFirst(strings.signup.BUTTON_TEXT)}</div>
+              )}
+            </div>
           </Button>
         </Col>
       </Row>

@@ -9,3 +9,11 @@
   font-size: 1.3vw;
   background-color: #fffeb8;
 }
+.signup-spinner {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.signup-loading-text {
+  margin-left: 10px;
+}
