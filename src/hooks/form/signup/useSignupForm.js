@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signupUser } from "../../../redux/signup/thunk/SignupThunk";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const useSignupForm = () => {
   const dispatch = useDispatch();
+  const { userSignedup } = useSelector(state => state.signup);
 
   const [inputs, setInputs] = useState({});
 
@@ -15,7 +16,7 @@ const useSignupForm = () => {
     }));
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(
       signupUser(
@@ -25,8 +26,11 @@ const useSignupForm = () => {
         inputs.password
       )
     );
-    setInputs({});
   };
+
+  useEffect(() => {
+    setInputs({});
+  }, [userSignedup]);
 
   return { inputs, handleInputChange, handleSubmit };
 };
