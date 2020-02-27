@@ -1,0 +1,24 @@
+.notification {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 15%;
+  width: fit-content;
+  height: fit-content;
+  border: 2px red solid;
+  box-shadow: 3px 4px 15px 1px rgba(0, 0, 0, 0.43);
+}
+.notification-icon {
+  color: #dc3545;
+  font-size: 2.5vw;
+  text-align: center;
+  width: 5vw;
+}
+.notification-message {
+  font-family: "OpenSans-Regular";
+  color: #343b45;
+  font-size: 1vw;
+  white-space: pre-wrap;
+  padding: 4px 4px 4px 0;
+}

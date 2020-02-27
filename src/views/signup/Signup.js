@@ -48,6 +48,12 @@ const Signup = ({ match: { path, url, isExact } }) => {
                 {item}
               </animated.div>
             ))}
+          </Col>
+          <Col xs={4} />
+        </Row>
+        <Row>
+          <Col xs={2} />
+          <Col xs={6}>
             <Notification notificationMessage={error} />
           </Col>
           <Col xs={4} />
