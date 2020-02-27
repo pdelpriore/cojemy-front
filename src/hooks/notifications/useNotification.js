@@ -26,7 +26,7 @@ const useNotification = notificationMessage => {
       setShow(false);
       setNotification({});
       clearSignupErrorState();
-    }, 3000);
+    }, 3500);
     return () => clearTimeout(timer);
   }, [notification, clearSignupErrorState]);
 
