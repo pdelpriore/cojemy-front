@@ -49,7 +49,16 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={3} />
         </Row>
       </div>
-      <div className="login-third-section"></div>
+      <div className="login-third-section">
+        <Row className="mb-5" />
+        <Row>
+          <Col xs={1} />
+          <Col xs={3}>
+            <Notification notificationMessage="test" />
+          </Col>
+          <Col xs={8} />
+        </Row>
+      </div>
     </animated.div>
   );
 };
