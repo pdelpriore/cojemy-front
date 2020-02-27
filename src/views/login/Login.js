@@ -1,8 +1,10 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
+import { useSelector } from "react-redux";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import LoginForm from "../../forms/login/LoginForm";
+import Notification from "../../components/notifications/Notification";
 import "./login.css";
 
 const Login = ({ match: { path, url, isExact } }) => {
@@ -15,6 +17,8 @@ const Login = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
+  const { userSignedup } = useSelector(state => state.signup);
+
   return (
     <animated.div style={props} className="login-area">
       <div className="login-first-section">

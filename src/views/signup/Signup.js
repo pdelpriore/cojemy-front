@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import Navbar from "../../components/navbar/Navbar";
 import SignupForm from "../../forms/signup/SignupForm";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Notification from "../../components/notifications/Notification";
 import "./signup.css";
+import { strings } from "../../strings/Strings";
 
 const Signup = ({ match: { path, url, isExact } }) => {
   const { userSignedup, error } = useSelector(state => state.signup);
@@ -18,6 +20,16 @@ const Signup = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
+  const history = useHistory();
+
+  let redirectToLogin = useCallback(() => {
+    return history.push(strings.path.LOGIN);
+  }, [history]);
+
+  useEffect(() => {
+    if (userSignedup !== null) redirectToLogin();
+  }, [userSignedup, redirectToLogin]);
+
   return (
     <animated.div style={props} className="signup-area">
       <Navbar path={path} url={url} isExact={isExact} />
