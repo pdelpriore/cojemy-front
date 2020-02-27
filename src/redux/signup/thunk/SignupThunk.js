@@ -30,7 +30,7 @@ export const signupUser = (name, email, confirmEmail, password) => {
   };
 };
 
-export const clearSignUpErrorState = () => {
+export const clearSignUpState = () => {
   return (dispatch, getState) => {
     dispatch({ type: signupCases.CLEAR_STATE });
   };

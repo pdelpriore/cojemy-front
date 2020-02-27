@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { clearSignUpErrorState } from "../../redux/signup/thunk/SignupThunk";
+import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 
 const useNotification = notificationMessage => {
   const [notifications, setNotification] = useState({});
@@ -16,8 +16,8 @@ const useNotification = notificationMessage => {
   let { notification } = notifications;
   const dispatch = useDispatch();
 
-  let clearSignupErrorState = useCallback(() => {
-    return dispatch(clearSignUpErrorState());
+  let clearSignupState = useCallback(() => {
+    return dispatch(clearSignUpState());
   }, [dispatch]);
 
   useEffect(() => {
@@ -25,10 +25,10 @@ const useNotification = notificationMessage => {
     const timer = setTimeout(() => {
       setShow(false);
       setNotification({});
-      clearSignupErrorState();
+      clearSignupState();
     }, 3500);
     return () => clearTimeout(timer);
-  }, [notification, clearSignupErrorState]);
+  }, [notification, clearSignupState]);
 
   return {
     notification,
