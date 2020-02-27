@@ -8,6 +8,7 @@
   height: fit-content;
   border: 2px red solid;
   box-shadow: 3px 4px 15px 1px rgba(0, 0, 0, 0.43);
+  background-color: beige;
   animation: fadein 500ms;
 }
 .notification-icon {
@@ -18,7 +19,7 @@
 }
 .notification-message {
   font-family: "OpenSans-Regular";
-  color: #343b45;
+  color: #dc3545;
   font-size: 1vw;
   white-space: pre-wrap;
   padding: 4px 4px 4px 0;
