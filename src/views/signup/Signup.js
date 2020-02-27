@@ -8,6 +8,7 @@ import Notification from "../../components/notifications/Notification";
 import "./signup.css";
 
 const Signup = ({ match: { path, url, isExact } }) => {
+  const { userSignedup, error } = useSelector(state => state.signup);
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 }
@@ -17,7 +18,6 @@ const Signup = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
-  const { loading, userSignedup, error } = useSelector(state => state.signup);
   return (
     <animated.div style={props} className="signup-area">
       <Navbar path={path} url={url} isExact={isExact} />

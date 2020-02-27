@@ -1,11 +1,13 @@
 import React from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import useSignupForm from "../../hooks/form/signup/useSignupForm";
 import "./signupForm.css";
 
 const SignupForm = () => {
+  const { loading } = useSelector(state => state.signup);
   const { inputs, handleInputChange, handleSubmit } = useSignupForm();
   return (
     <Form onSubmit={handleSubmit}>
@@ -98,7 +100,18 @@ const SignupForm = () => {
             type="submit"
             variant="outline-dark"
           >
-            {capitalizeFirst(strings.signup.BUTTON_TEXT)}
+            {loading && (
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            )}
+            {loading
+              ? capitalizeFirst(strings.signup.BUTTON_TEXT_LOADING)
+              : capitalizeFirst(strings.signup.BUTTON_TEXT)}
           </Button>
         </Col>
       </Row>
