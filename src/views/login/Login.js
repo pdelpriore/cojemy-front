@@ -5,6 +5,8 @@ import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import LoginForm from "../../forms/login/LoginForm";
 import Notification from "../../components/notifications/Notification";
+import { strings } from "../../strings/Strings";
+import { capitalizeFirst } from "../../util/Util";
 import "./login.css";
 
 const Login = ({ match: { path, url, isExact } }) => {
@@ -54,7 +56,14 @@ const Login = ({ match: { path, url, isExact } }) => {
         <Row>
           <Col xs={1} />
           <Col xs={3}>
-            <Notification notificationMessage="test" />
+            <Notification
+              notificationMessage={
+                userSignedup
+                  ? capitalizeFirst(strings.signup.CHECK_EMAIL)
+                  : null
+                //pozniej zamiast null daj errory z reduxa podczas loginu
+              }
+            />
           </Col>
           <Col xs={8} />
         </Row>

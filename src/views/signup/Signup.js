@@ -64,6 +64,7 @@ const Signup = ({ match: { path, url, isExact } }) => {
           <Col xs={4} />
         </Row>
         <Row className="mb-5" />
+        <Row className="mb-5" />
         <Row>
           <Col xs={2} />
           <Col xs={6}>
