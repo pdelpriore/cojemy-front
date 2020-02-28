@@ -5,9 +5,12 @@ import { capitalizeFirst } from "../../util/Util";
 import ContactForm from "../../forms/contact/ContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import Notification from "../../components/notifications/Notification";
+import { useSelector } from "react-redux";
 import "./contact.css";
 
 const Contact = () => {
+  const { emailSent } = useSelector(state => state.customerContact);
   return (
     <div className="contact-section" id={strings.navbar.navHomeItems.CONTACT}>
       <Row className="mb-5" />
@@ -28,6 +31,13 @@ const Contact = () => {
                   <ContactForm />
                 </div>
               </Col>
+            </Row>
+            <Row>
+              <Col xs={3} />
+              <Col xs={3}>
+                <Notification notificationMessage={emailSent} />
+              </Col>
+              <Col xs={6} />
             </Row>
           </div>
         </Col>

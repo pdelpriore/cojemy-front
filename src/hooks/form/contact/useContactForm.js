@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
+import { customerContact } from "../../../redux/customerContact/thunk/customerContactThunk";
+import { useSelector, useDispatch } from "react-redux";
 
 const useContactForm = () => {
   const [inputs, setInputs] = useState({});
+  const dispatch = useDispatch();
+  const { emailSent } = useSelector(state => state.customerContact);
 
   const handleInputChange = e => {
     e.persist();
@@ -13,17 +17,16 @@ const useContactForm = () => {
           ? e.target.value
           : capitalizeFirst(e.target.value)
     }));
-    console.log(`${inputs.subject}`);
-    console.log(`${inputs.message}`);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submitted");
-    setInputs({});
-    console.log(`${inputs.subject}`);
-    console.log(`${inputs.message}`);
+    dispatch(customerContact(inputs.subject, inputs.email, inputs.message));
   };
+
+  useEffect(() => {
+    setInputs({});
+  }, [emailSent]);
 
   return { inputs, handleInputChange, handleSubmit };
 };

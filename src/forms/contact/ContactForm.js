@@ -1,11 +1,13 @@
 import React from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
 import useContactForm from "../../hooks/form/contact/useContactForm";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
+import { useSelector } from "react-redux";
 import "./contactForm.css";
 
 const ContactForm = () => {
+  const { loading } = useSelector(state => state.customerContact);
   const { inputs, handleInputChange, handleSubmit } = useContactForm();
   return (
     <Form onSubmit={handleSubmit}>
@@ -54,7 +56,7 @@ const ContactForm = () => {
             <Form.Control
               className="text-family-message"
               as="textarea"
-              rows="6"
+              rows="4"
               onChange={handleInputChange}
               value={inputs.message || ""}
               size="lg"
@@ -80,7 +82,22 @@ const ContactForm = () => {
             className="button-text"
             variant="outline-dark"
           >
-            {capitalizeFirst(strings.contact.BUTTON_TEXT)}
+            <div className="contact-spinner">
+              {loading && (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              )}
+            </div>
+            {loading ? (
+              <div>{capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}</div>
+            ) : (
+              <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
+            )}
           </Button>
         </Col>
       </Row>

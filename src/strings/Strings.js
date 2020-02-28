@@ -38,6 +38,7 @@ export const strings = Object.freeze({
   contact: {
     FIRST_SECTION: "une question ?",
     BUTTON_TEXT: "envoyer",
+    BUTTON_TEXT_LOADING: "j'envoie ...",
     FOOTER: "Paul Del Priore",
     SUBJECT: "sujet",
     EMAIL: "ton email",
