@@ -94,7 +94,9 @@ const ContactForm = () => {
               )}
             </div>
             {loading ? (
-              <div>{capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}</div>
+              <div className="contact-button-loading">
+                {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+              </div>
             ) : (
               <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
             )}
