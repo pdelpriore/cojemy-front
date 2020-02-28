@@ -58,9 +58,7 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={3}>
             <Notification
               notificationMessage={
-                userSignedup
-                  ? capitalizeFirst(strings.signup.CHECK_EMAIL)
-                  : null
+                userSignedup ? strings.signup.CHECK_EMAIL : null
                 //pozniej zamiast null daj errory z reduxa podczas loginu
               }
             />

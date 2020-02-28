@@ -10,8 +10,14 @@
   background-color: #fffeb8;
   animation: fadein 500ms;
 }
-.notification-icon {
+.notification-icon-error {
   color: #dc3545;
+  font-size: 2.5vw;
+  text-align: center;
+  width: 4.5vw;
+}
+.notification-icon-success {
+  color: #28a745;
   font-size: 2.5vw;
   text-align: center;
   width: 4.5vw;
