@@ -26,7 +26,11 @@ const Notification = ({ notificationMessage }) => {
             <FontAwesomeIcon icon={faCheckCircle} />
           </div>
         )}
-        <div className="notification-message">{notification}</div>
+        {notification === error ? (
+          <div className="notification-message">{notification}</div>
+        ) : (
+          <div className="notification-message-success">{notification}</div>
+        )}
       </div>
     )
   );

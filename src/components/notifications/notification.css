@@ -29,6 +29,13 @@
   white-space: pre-wrap;
   padding: 10px 10px 10px 0;
 }
+.notification-message-success {
+  font-family: "OpenSans-Regular";
+  color: #071a52;
+  font-size: 1vw;
+  white-space: pre-wrap;
+  padding: 10px 10px 10px 0;
+}
 
 @keyframes fadein {
   from {
