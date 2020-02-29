@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
+import React from "react";
 
-const RemindPassword = () => {
-  const { show } = useRemindPassForm();
-  console.log("show in component: ", show);
-  return show && <div>remindPasswordComponent</div>;
+const RemindPassword = ({ show }) => {
+  return show !== undefined && show && <div>remindPasswordComponent</div>;
 };
 
 export default RemindPassword;

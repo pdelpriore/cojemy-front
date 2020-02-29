@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRemindPassForm = () => {
@@ -8,7 +8,7 @@ const useRemindPassForm = () => {
   const [inputs, setInputs] = useState({});
   const [show, setShow] = useState(false);
 
-  const handleInputChange = e => {
+  const remindPassHandleInputChange = e => {
     e.persist();
     setInputs(inputs => ({
       ...inputs,
@@ -16,7 +16,7 @@ const useRemindPassForm = () => {
     }));
   };
 
-  const handleSubmit = e => {
+  const remindPassHandleSubmit = e => {
     e.preventDefault();
     // dispatch(
     //   signupUser(
@@ -28,23 +28,23 @@ const useRemindPassForm = () => {
     // );
   };
 
-  const showComponent = () => {
-    setShow(true);
-  };
-
-  const hideComponent = () => {
-    setShow(false);
-  };
-
-  console.log("show in hook: ", show);
+  const componentVisible = useCallback(
+    bool => {
+      if (bool) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    },
+    [setShow]
+  );
 
   return {
     inputs,
-    handleInputChange,
-    handleSubmit,
+    remindPassHandleInputChange,
+    remindPassHandleSubmit,
     show,
-    showComponent,
-    hideComponent
+    componentVisible
   };
 };
 
