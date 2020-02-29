@@ -10,3 +10,10 @@ export const customerContactCases = Object.freeze({
   EMAIL_SENT: "customerContactEmailSent",
   CLEAR_STATE: "customerContactClearState"
 });
+
+export const remindPassCases = Object.freeze({
+  LOADING: "remindPassLoading",
+  ERROR: "remindPassError",
+  PASSWORD_SENT: "remindPassSent",
+  CLEAR_STATE: "remindPassClearState"
+});
