@@ -6,7 +6,12 @@ import { strings } from "../../strings/Strings";
 import "./remindPassword.css";
 
 const RemindPasswordForm = () => {
-  const { inputs, handleInputChange, handleSubmit } = useRemindPassForm();
+  const {
+    inputs,
+    handleInputChange,
+    handleSubmit,
+    remindPassVisible
+  } = useRemindPassForm();
   console.log(inputs.email);
   return (
     <Form onSubmit={handleSubmit}>
