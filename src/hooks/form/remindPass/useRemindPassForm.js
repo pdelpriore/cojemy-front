@@ -30,11 +30,7 @@ const useRemindPassForm = () => {
 
   const remindPassVisible = useCallback(
     bool => {
-      if (bool) {
-        setShow(true);
-      } else {
-        setShow(false);
-      }
+      setShow(bool);
     },
     [setShow]
   );
