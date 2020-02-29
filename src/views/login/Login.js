@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import LoginForm from "../../forms/login/LoginForm";
-import RemindPassword from "../../components/remindPassword/RemindPassword";
 import Notification from "../../components/notifications/Notification";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
+import RemindPasswordForm from "../../forms/remindPassword/RemindPasswordForm";
 import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
 import "./login.css";
 
@@ -56,7 +56,7 @@ const Login = ({ match: { path, url, isExact } }) => {
             ) : (
               <div>
                 <Row className="mb-5" />
-                <RemindPassword show={show} />
+                <RemindPasswordForm />
               </div>
             )}
           </Col>
