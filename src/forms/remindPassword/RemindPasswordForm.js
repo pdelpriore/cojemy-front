@@ -2,10 +2,12 @@ import React from "react";
 import { Row, Col, Button, Form, Spinner } from "react-bootstrap";
 import { capitalizeFirst } from "../../util/Util";
 import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
-import "./remindPass.css";
+import { strings } from "../../strings/Strings";
+import "./remindPassword.css";
 
 const RemindPasswordForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useRemindPassForm();
+  console.log(inputs.email);
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -34,7 +36,7 @@ const RemindPasswordForm = () => {
             type="submit"
             variant="outline-dark"
           >
-            <div className="remindPass-spinner">
+            {/* <div className="remindPass-spinner">
               {loading && (
                 <Spinner
                   as="span"
@@ -51,7 +53,8 @@ const RemindPasswordForm = () => {
               ) : (
                 <div>{capitalizeFirst(strings.remindPass.BUTTON_TEXT)}</div>
               )}
-            </div>
+            </div> */}
+            Envoyer
           </Button>
         </Col>
       </Row>

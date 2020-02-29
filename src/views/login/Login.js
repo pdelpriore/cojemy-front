@@ -4,12 +4,15 @@ import { useSelector } from "react-redux";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import LoginForm from "../../forms/login/LoginForm";
+import RemindPassword from "../../components/remindPassword/RemindPassword";
 import Notification from "../../components/notifications/Notification";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
+import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
 import "./login.css";
 
 const Login = ({ match: { path, url, isExact } }) => {
+  const { show, remindPassVisible } = useRemindPassForm();
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 }
@@ -42,11 +45,34 @@ const Login = ({ match: { path, url, isExact } }) => {
         <Row>
           <Col xs={6} />
           <Col xs={3}>
-            {transition.map(({ item, key, props }) => (
-              <animated.div key={key} style={props}>
-                {item}
-              </animated.div>
-            ))}
+            {!show ? (
+              <div>
+                {transition.map(({ item, key, props }) => (
+                  <animated.div key={key} style={props}>
+                    {item}
+                  </animated.div>
+                ))}
+              </div>
+            ) : (
+              <div>
+                <Row className="mb-5" />
+                <RemindPassword show={show} />
+              </div>
+            )}
+          </Col>
+          <Col xs={3} />
+        </Row>
+        <Row>
+          <Col xs={7} />
+          <Col xs={2}>
+            {!show && (
+              <p
+                onClick={() => remindPassVisible(true)}
+                className="forgot-password"
+              >
+                {capitalizeFirst(strings.login.FORGOT_PASSWORD)}
+              </p>
+            )}
           </Col>
           <Col xs={3} />
         </Row>

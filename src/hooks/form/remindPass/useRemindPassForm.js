@@ -8,7 +8,7 @@ const useRemindPassForm = () => {
   const [inputs, setInputs] = useState({});
   const [show, setShow] = useState(false);
 
-  const remindPassHandleInputChange = e => {
+  const handleInputChange = e => {
     e.persist();
     setInputs(inputs => ({
       ...inputs,
@@ -16,7 +16,7 @@ const useRemindPassForm = () => {
     }));
   };
 
-  const remindPassHandleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     // dispatch(
     //   signupUser(
@@ -28,7 +28,7 @@ const useRemindPassForm = () => {
     // );
   };
 
-  const componentVisible = useCallback(
+  const remindPassVisible = useCallback(
     bool => {
       if (bool) {
         setShow(true);
@@ -41,10 +41,10 @@ const useRemindPassForm = () => {
 
   return {
     inputs,
-    remindPassHandleInputChange,
-    remindPassHandleSubmit,
+    handleInputChange,
+    handleSubmit,
     show,
-    componentVisible
+    remindPassVisible
   };
 };
 

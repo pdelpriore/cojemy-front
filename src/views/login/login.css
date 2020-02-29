@@ -24,3 +24,14 @@
   background-color: #cb3b3b;
   overflow: hidden;
 }
+.forgot-password {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1vw;
+  color: #85203b;
+  text-align: right;
+  transition: 0.2s;
+}
+.forgot-password:hover {
+  cursor: pointer;
+  transform: translateY(2px);
+}
