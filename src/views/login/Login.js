@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { showRemindPassThunk } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import LoginForm from "../../forms/login/LoginForm";
@@ -8,11 +9,9 @@ import Notification from "../../components/notifications/Notification";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import RemindPasswordForm from "../../forms/remindPassword/RemindPasswordForm";
-import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
 import "./login.css";
 
 const Login = ({ match: { path, url, isExact } }) => {
-  const { show, remindPassVisible } = useRemindPassForm();
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 }
@@ -23,7 +22,8 @@ const Login = ({ match: { path, url, isExact } }) => {
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
   const { userSignedup } = useSelector(state => state.signup);
-
+  const dispatch = useDispatch();
+  const { show } = useSelector(state => state.showRemindPass);
   return (
     <animated.div style={props} className="login-area">
       <div className="login-first-section">
@@ -67,7 +67,7 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={2}>
             {!show && (
               <p
-                onClick={() => remindPassVisible(true)}
+                onClick={() => dispatch(showRemindPassThunk(true))}
                 className="forgot-password"
               >
                 {capitalizeFirst(strings.login.FORGOT_PASSWORD)}

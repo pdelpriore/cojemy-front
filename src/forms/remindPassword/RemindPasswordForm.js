@@ -2,46 +2,50 @@ import React from "react";
 import { Row, Col, Button, Form, Spinner } from "react-bootstrap";
 import { capitalizeFirst } from "../../util/Util";
 import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
+import { useSpring, animated } from "react-spring";
+import { showRemindPassThunk } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
+import { useDispatch } from "react-redux";
 import { strings } from "../../strings/Strings";
 import "./remindPassword.css";
 
 const RemindPasswordForm = () => {
-  const {
-    inputs,
-    handleInputChange,
-    handleSubmit,
-    remindPassVisible
-  } = useRemindPassForm();
-  console.log(inputs.email);
+  const { inputs, handleInputChange, handleSubmit } = useRemindPassForm();
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0 }
+  });
+  const dispatch = useDispatch();
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col xs={12}>
-          <Form.Group controlId="formBasicRemindPasswordEmail">
-            <Form.Label className="remindPass-text-family">
-              {capitalizeFirst(strings.remindPass.EMAIL)}
-            </Form.Label>
-            <Form.Control
-              onChange={handleInputChange}
-              value={inputs.email || ""}
-              className="remindPass-placeholder"
-              size="lg"
-              name="email"
-              type="email"
-              placeholder={strings.remindPass.EMAIL}
-            ></Form.Control>
-          </Form.Group>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <Button
-            disabled={inputs.email === undefined || inputs.email === ""}
-            className="remindPass-button"
-            type="submit"
-            variant="outline-dark"
-          >
-            {/* <div className="remindPass-spinner">
+    <animated.div style={props}>
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col xs={12}>
+            <Form.Group controlId="formBasicRemindPasswordEmail">
+              <Form.Label className="remindPass-text-family">
+                {capitalizeFirst(strings.remindPass.EMAIL)}
+              </Form.Label>
+              <Form.Control
+                onChange={handleInputChange}
+                value={inputs.email || ""}
+                className="remindPass-placeholder"
+                size="lg"
+                name="email"
+                type="email"
+                placeholder={strings.remindPass.EMAIL}
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={7}>
+            <div className="remindPass-button">
+              <Button
+                className="remindPass-button-send"
+                disabled={inputs.email === undefined || inputs.email === ""}
+                type="submit"
+                variant="outline-dark"
+              >
+                {/* <div className="remindPass-spinner">
               {loading && (
                 <Spinner
                   as="span"
@@ -59,11 +63,23 @@ const RemindPasswordForm = () => {
                 <div>{capitalizeFirst(strings.remindPass.BUTTON_TEXT)}</div>
               )}
             </div> */}
-            Envoyer
-          </Button>
-        </Col>
-      </Row>
-    </Form>
+                Envoyer
+              </Button>
+              <Button
+                onClick={() => {
+                  dispatch(showRemindPassThunk(false));
+                }}
+                className="remindPass-button-cancel"
+                variant="outline-danger"
+              >
+                {capitalizeFirst(strings.remindPass.BUTTON_TEXT_CANCEL)}
+              </Button>
+            </div>
+          </Col>
+          <Col xs={5} />
+        </Row>
+      </Form>
+    </animated.div>
   );
 };
 

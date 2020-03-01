@@ -1,12 +1,11 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRemindPassForm = () => {
   const dispatch = useDispatch();
   //   const { userSignedup } = useSelector(state => state.signup);
-
+  const { show } = useSelector(state => state.showRemindPass);
   const [inputs, setInputs] = useState({});
-  const [show, setShow] = useState(false);
 
   const handleInputChange = e => {
     e.persist();
@@ -28,19 +27,10 @@ const useRemindPassForm = () => {
     // );
   };
 
-  const remindPassVisible = useCallback(
-    bool => {
-      setShow(bool);
-    },
-    [setShow]
-  );
-
   return {
     inputs,
     handleInputChange,
-    handleSubmit,
-    show,
-    remindPassVisible
+    handleSubmit
   };
 };
 

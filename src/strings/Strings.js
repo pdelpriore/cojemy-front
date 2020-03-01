@@ -62,6 +62,7 @@ export const strings = Object.freeze({
   remindPass: {
     EMAIL: "ton email",
     BUTTON_TEXT: "envoyer",
-    BUTTON_TEXT_LOADING: "j'envoie ..."
+    BUTTON_TEXT_LOADING: "j'envoie ...",
+    BUTTON_TEXT_CANCEL: "annuler"
   }
 });
