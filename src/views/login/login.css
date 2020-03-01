@@ -25,6 +25,9 @@
   overflow: hidden;
 }
 .forgot-password {
+  position: relative;
+  bottom: 70%;
+  right: 1%;
   font-family: "OpenSans-SemiBold";
   font-size: 1vw;
   color: #85203b;
