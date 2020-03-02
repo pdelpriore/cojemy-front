@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
 import { clearRemindPasswordState } from "../../redux/remindPassword/thunk/remindPasswordThunk";
-import { showRemindPassComponent } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
 
 const useNotification = notificationMessage => {
   const [notifications, setNotification] = useState({});
@@ -19,8 +18,6 @@ const useNotification = notificationMessage => {
   let { notification } = notifications;
   const dispatch = useDispatch();
 
-  const { passwordSent } = useSelector(state => state.remindPass);
-
   let clearSignupState = useCallback(() => {
     return dispatch(clearSignUpState());
   }, [dispatch]);
@@ -33,10 +30,6 @@ const useNotification = notificationMessage => {
     return dispatch(clearRemindPasswordState());
   }, [dispatch]);
 
-  let hideRemindPassComponent = useCallback(() => {
-    return dispatch(showRemindPassComponent(false));
-  }, [dispatch]);
-
   useEffect(() => {
     setShow(true);
     const timer = setTimeout(() => {
@@ -45,16 +38,13 @@ const useNotification = notificationMessage => {
       clearSignupState();
       clearCustomerState();
       clearRemindPassState();
-      if (passwordSent) hideRemindPassComponent();
     }, 3500);
     return () => clearTimeout(timer);
   }, [
     notification,
     clearSignupState,
     clearCustomerState,
-    clearRemindPassState,
-    passwordSent,
-    hideRemindPassComponent
+    clearRemindPassState
   ]);
 
   return {

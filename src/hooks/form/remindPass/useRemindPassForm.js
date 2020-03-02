@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { remindMePassword } from "../../../redux/remindPassword/thunk/remindPasswordThunk";
+import { showRemindPassComponent } from "../../../redux/showRemindPass/thunk/showRemindPassThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRemindPassForm = () => {
@@ -20,9 +21,14 @@ const useRemindPassForm = () => {
     dispatch(remindMePassword(inputs.email));
   };
 
+  let hideRemindPassComponent = useCallback(() => {
+    return dispatch(showRemindPassComponent(false));
+  }, [dispatch]);
+
   useEffect(() => {
     setInputs({});
-  }, [passwordSent]);
+    if (passwordSent) hideRemindPassComponent();
+  }, [passwordSent, hideRemindPassComponent]);
 
   return {
     inputs,
