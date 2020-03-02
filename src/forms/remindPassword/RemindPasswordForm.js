@@ -38,7 +38,7 @@ const RemindPasswordForm = () => {
           </Col>
         </Row>
         <Row>
-          <Col xs={9}>
+          <Col xs={12}>
             <div className="remindPass-button">
               <Button
                 className="remindPass-button-send"
@@ -76,7 +76,6 @@ const RemindPasswordForm = () => {
               </Button>
             </div>
           </Col>
-          <Col xs={3} />
         </Row>
       </Form>
     </animated.div>
