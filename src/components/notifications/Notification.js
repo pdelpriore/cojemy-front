@@ -6,18 +6,20 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import useNotification from "../../hooks/notifications/useNotification";
 import { useSelector } from "react-redux";
+import { capitalizeFirst } from "../../util/Util";
 import "./notification.css";
 
 const Notification = ({ notificationMessage }) => {
   const { notification, show } = useNotification(notificationMessage);
   const { error } = useSelector(state => state.signup);
+  const { remindPassError } = useSelector(state => state.remindPass);
 
   return (
     show &&
     notification !== null &&
     notification !== undefined && (
       <div className="notification">
-        {notification === error ? (
+        {notification === error || notification === remindPassError ? (
           <div className="notification-icon-error">
             <FontAwesomeIcon icon={faTimesCircle} />
           </div>
@@ -26,10 +28,14 @@ const Notification = ({ notificationMessage }) => {
             <FontAwesomeIcon icon={faCheckCircle} />
           </div>
         )}
-        {notification === error ? (
-          <div className="notification-message">{notification}</div>
+        {notification === error || notification === remindPassError ? (
+          <div className="notification-message">
+            {capitalizeFirst(notification)}
+          </div>
         ) : (
-          <div className="notification-message-success">{notification}</div>
+          <div className="notification-message-success">
+            {capitalizeFirst(notification)}
+          </div>
         )}
       </div>
     )

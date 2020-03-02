@@ -16,14 +16,13 @@ export const remindMePassword = email => {
       });
       const responseData = await response.json();
       const { errors, data } = responseData;
-      if (data) {
-        console.log(data);
-        //   dispatch({
-        //     type: remindPassCases.PASSWORD_SENT,
-        //     payload: data.customerContact
-        //   });
+      if (data.remindPassword !== null) {
+        dispatch({
+          type: remindPassCases.PASSWORD_SENT,
+          payload: data.remindPassword
+        });
       } else if (errors) {
-        console.log(errors);
+        dispatch({ type: remindPassCases.ERROR, payload: errors[0].message });
       }
     } catch (err) {
       if (err) console.log(err);

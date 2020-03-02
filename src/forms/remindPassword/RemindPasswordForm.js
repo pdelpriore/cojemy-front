@@ -4,7 +4,7 @@ import { capitalizeFirst } from "../../util/Util";
 import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
 import { useSpring, animated } from "react-spring";
 import { showRemindPassComponent } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { strings } from "../../strings/Strings";
 import "./remindPassword.css";
 
@@ -14,6 +14,7 @@ const RemindPasswordForm = () => {
     opacity: 1,
     from: { opacity: 0 }
   });
+  const { loading } = useSelector(state => state.remindPass);
   const dispatch = useDispatch();
   return (
     <animated.div style={props}>
@@ -37,7 +38,7 @@ const RemindPasswordForm = () => {
           </Col>
         </Row>
         <Row>
-          <Col xs={7}>
+          <Col xs={9}>
             <div className="remindPass-button">
               <Button
                 className="remindPass-button-send"
@@ -45,25 +46,24 @@ const RemindPasswordForm = () => {
                 type="submit"
                 variant="outline-dark"
               >
-                {/* <div className="remindPass-spinner">
-              {loading && (
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-              )}
-              {loading ? (
-                <div className="remindPass-loading-text">
-                  {capitalizeFirst(strings.remindPass.BUTTON_TEXT_LOADING)}
+                <div className="remindPass-spinner">
+                  {loading && (
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  )}
+                  {loading ? (
+                    <div className="remindPass-loading-text">
+                      {capitalizeFirst(strings.remindPass.BUTTON_TEXT_LOADING)}
+                    </div>
+                  ) : (
+                    <div>{capitalizeFirst(strings.remindPass.BUTTON_TEXT)}</div>
+                  )}
                 </div>
-              ) : (
-                <div>{capitalizeFirst(strings.remindPass.BUTTON_TEXT)}</div>
-              )}
-            </div> */}
-                Envoyer
               </Button>
               <Button
                 onClick={() => {
@@ -76,7 +76,7 @@ const RemindPasswordForm = () => {
               </Button>
             </div>
           </Col>
-          <Col xs={5} />
+          <Col xs={3} />
         </Row>
       </Form>
     </animated.div>

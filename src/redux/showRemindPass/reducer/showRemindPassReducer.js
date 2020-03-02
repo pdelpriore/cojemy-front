@@ -1,4 +1,4 @@
-import { showRemindPass } from "../../config/cases/Cases";
+import { showRemindPassCases } from "../../config/cases/Cases";
 
 const initialState = {
   show: false
@@ -6,13 +6,13 @@ const initialState = {
 
 const showRemindPassReducer = (state = initialState, action) => {
   switch (action.type) {
-    case showRemindPass.SHOWED:
+    case showRemindPassCases.SHOWED:
       return {
         ...state,
         ...initialState,
         show: action.payload
       };
-    case showRemindPass.HIDED:
+    case showRemindPassCases.HIDED:
       return {
         ...state,
         ...initialState,

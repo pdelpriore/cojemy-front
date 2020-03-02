@@ -18,7 +18,7 @@ export const remindPassCases = Object.freeze({
   CLEAR_STATE: "remindPassClearState"
 });
 
-export const showRemindPass = Object.freeze({
+export const showRemindPassCases = Object.freeze({
   SHOWED: "showRemindPassVisible",
   HIDED: "showRemindPassHide"
 });

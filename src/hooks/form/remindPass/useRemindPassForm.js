@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { remindMePassword } from "../../../redux/remindPassword/thunk/remindPasswordThunk";
-import { showRemindPassComponent } from "../../../redux/showRemindPass/thunk/showRemindPassThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRemindPassForm = () => {
   const dispatch = useDispatch();
-  //   const { userSignedup } = useSelector(state => state.signup);
-  const { show } = useSelector(state => state.showRemindPass);
+  const { passwordSent } = useSelector(state => state.remindPass);
   const [inputs, setInputs] = useState({});
 
   const handleInputChange = e => {
@@ -21,6 +19,10 @@ const useRemindPassForm = () => {
     e.preventDefault();
     dispatch(remindMePassword(inputs.email));
   };
+
+  useEffect(() => {
+    setInputs({});
+  }, [passwordSent]);
 
   return {
     inputs,

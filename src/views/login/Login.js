@@ -22,8 +22,11 @@ const Login = ({ match: { path, url, isExact } }) => {
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
   const { userSignedup } = useSelector(state => state.signup);
-  const dispatch = useDispatch();
   const { show } = useSelector(state => state.showRemindPass);
+  const { passwordSent, remindPassError } = useSelector(
+    state => state.remindPass
+  );
+  const dispatch = useDispatch();
   return (
     <animated.div style={props} className="login-area">
       <div className="login-first-section">
@@ -84,7 +87,13 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={3}>
             <Notification
               notificationMessage={
-                userSignedup ? strings.signup.CHECK_EMAIL : null
+                userSignedup
+                  ? strings.signup.CHECK_EMAIL
+                  : remindPassError
+                  ? remindPassError
+                  : passwordSent
+                  ? passwordSent
+                  : null
                 //pozniej zamiast null daj errory z reduxa podczas loginu
               }
             />
