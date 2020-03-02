@@ -3,7 +3,7 @@ import { Row, Col, Button, Form, Spinner } from "react-bootstrap";
 import { capitalizeFirst } from "../../util/Util";
 import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
 import { useSpring, animated } from "react-spring";
-import { showRemindPassThunk } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
+import { showRemindPassComponent } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
 import { useDispatch } from "react-redux";
 import { strings } from "../../strings/Strings";
 import "./remindPassword.css";
@@ -67,7 +67,7 @@ const RemindPasswordForm = () => {
               </Button>
               <Button
                 onClick={() => {
-                  dispatch(showRemindPassThunk(false));
+                  dispatch(showRemindPassComponent(false));
                 }}
                 className="remindPass-button-cancel"
                 variant="outline-danger"

@@ -1,11 +1,11 @@
 import { remindPassCases } from "../../config/cases/Cases";
-import { remindPassQuery } from "../query/remindPasswordQuery";
+import { remindPasswordQuery } from "../query/remindPasswordQuery";
 import { strings } from "../../../strings/Strings";
 
-export const remindPasswordThunk = email => {
+export const remindMePassword = email => {
   return async (dispatch, getState) => {
     dispatch({ type: remindPassCases.LOADING, payload: true });
-    const bodyRequest = remindPassQuery(email);
+    const bodyRequest = remindPasswordQuery(email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",

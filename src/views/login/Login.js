@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
-import { showRemindPassThunk } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
+import { showRemindPassComponent } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import LoginForm from "../../forms/login/LoginForm";
@@ -67,7 +67,7 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={2}>
             {!show && (
               <p
-                onClick={() => dispatch(showRemindPassThunk(true))}
+                onClick={() => dispatch(showRemindPassComponent(true))}
                 className="forgot-password"
               >
                 {capitalizeFirst(strings.login.FORGOT_PASSWORD)}

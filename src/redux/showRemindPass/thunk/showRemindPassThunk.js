@@ -1,6 +1,6 @@
 import { showRemindPass } from "../../config/cases/Cases";
 
-export const showRemindPassThunk = bool => {
+export const showRemindPassComponent = bool => {
   return (dispatch, getState) => {
     if (bool) {
       dispatch({ type: showRemindPass.SHOWED, payload: true });
