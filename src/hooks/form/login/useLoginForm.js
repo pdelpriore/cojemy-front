@@ -9,16 +9,10 @@ const useLoginForm = () => {
       ...inputs,
       [e.target.name]: e.target.value
     }));
-    console.log(`${inputs.email}`);
-    console.log(`${inputs.password}`);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("logging");
-    setInputs({});
-    console.log(`${inputs.email}`);
-    console.log(`${inputs.password}`);
   };
 
   return { inputs, handleInputChange, handleSubmit };
