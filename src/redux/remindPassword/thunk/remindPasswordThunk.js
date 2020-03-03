@@ -22,7 +22,6 @@ export const remindMePassword = email => {
           payload: data.remindPassword
         });
       } else if (errors) {
-        console.log(errors);
         dispatch({
           type: remindPassCases.ERROR,
           payload: errors[0].message
