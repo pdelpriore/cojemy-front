@@ -25,7 +25,7 @@ export const remindMePassword = email => {
         console.log(errors);
         dispatch({
           type: remindPassCases.ERROR,
-          payload: errors[0].message.split(":")[1]
+          payload: errors[0].message
         });
       }
     } catch (err) {
