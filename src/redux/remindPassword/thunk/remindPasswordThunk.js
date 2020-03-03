@@ -22,7 +22,11 @@ export const remindMePassword = email => {
           payload: data.remindPassword
         });
       } else if (errors) {
-        dispatch({ type: remindPassCases.ERROR, payload: errors[0].message });
+        console.log(errors);
+        dispatch({
+          type: remindPassCases.ERROR,
+          payload: errors[0].message.split(":")[1]
+        });
       }
     } catch (err) {
       if (err) console.log(err);
