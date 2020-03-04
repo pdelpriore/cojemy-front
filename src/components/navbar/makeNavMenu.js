@@ -103,15 +103,12 @@ export const makeNavMenu = type => {
         </Nav.Item>
       ))
     : type === strings.navbar.navType.USER_LOGGED_MENU
-    ? navUserLoggedItems.map(
-        item =>
-          item.name !== strings.navbar.navHomeItems.LOGO && (
-            <Nav.Item as="li" key={item.name}>
-              <NavLink activeClassName="active" to={item.path} exact>
-                {capitalize(item.name)}
-              </NavLink>
-            </Nav.Item>
-          )
-      )
+    ? navUserLoggedItems.slice(1).map(item => (
+        <Nav.Item as="li" key={item.name}>
+          <NavLink activeClassName="active" to={item.path} exact>
+            {capitalize(item.name)}
+          </NavLink>
+        </Nav.Item>
+      ))
     : null;
 };
