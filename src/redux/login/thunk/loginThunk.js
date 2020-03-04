@@ -12,6 +12,7 @@ export const loginUser = (email, password) => {
         headers: {
           "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify(bodyRequest)
       });
       const responseData = await response.json();
