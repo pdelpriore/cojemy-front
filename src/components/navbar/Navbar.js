@@ -4,8 +4,6 @@ import { strings } from "../../strings/Strings";
 import MakeNavMenu from "./makeNavMenu";
 import "./navbar.css";
 
-//NavLink will be used for app navigation when user logged (another menu)
-
 const Navbar = ({ path, url, isExact }) => {
   return (
     <Row className="navbar">
