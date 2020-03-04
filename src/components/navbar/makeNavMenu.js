@@ -8,39 +8,41 @@ import { Link } from "react-scroll";
 import { strings } from "../../strings/Strings";
 import "./navbar.css";
 
-const navHomeItems = [
-  { name: strings.navbar.navHomeItems.LOGO, path: strings.path.HOME },
-  { name: strings.navbar.navHomeItems.ABOUT },
-  { name: strings.navbar.navHomeItems.CONTACT }
-];
-
-const navGetStartedItems = [
-  { name: strings.navbar.navGetStartedItems.LOGIN, path: strings.path.LOGIN },
-  { name: strings.navbar.navGetStartedItems.SIGNUP, path: strings.path.SIGNUP }
-];
-
-const navUserLoggedItems = [
-  { name: strings.navbar.navHomeItems.LOGO, path: strings.path.RECIPE_BOOK },
-  {
-    name: strings.navbar.navUserLoggedItems.MY_RECIPES,
-    path: strings.path.MY_RECIPES
-  },
-  { name: strings.navbar.navUserLoggedItems.MAILS, path: strings.path.MAILS },
-  {
-    name: strings.navbar.navUserLoggedItems.MY_EVENTS,
-    path: strings.path.MY_EVENTS
-  },
-  {
-    name: strings.navbar.navUserLoggedItems.MY_PROFILE,
-    path: strings.path.MY_PROFILE
-  },
-  {
-    name: strings.navbar.navUserLoggedItems.SIGNOUT,
-    path: strings.path.SIGNOUT
-  }
-];
-
 const MakeNavMenu = ({ type }) => {
+  const navHomeItems = [
+    { name: strings.navbar.navHomeItems.LOGO, path: strings.path.HOME },
+    { name: strings.navbar.navHomeItems.ABOUT },
+    { name: strings.navbar.navHomeItems.CONTACT }
+  ];
+
+  const navGetStartedItems = [
+    { name: strings.navbar.navGetStartedItems.LOGIN, path: strings.path.LOGIN },
+    {
+      name: strings.navbar.navGetStartedItems.SIGNUP,
+      path: strings.path.SIGNUP
+    }
+  ];
+
+  const navUserLoggedItems = [
+    { name: strings.navbar.navHomeItems.LOGO, path: strings.path.RECIPE_BOOK },
+    {
+      name: strings.navbar.navUserLoggedItems.MY_RECIPES,
+      path: strings.path.MY_RECIPES
+    },
+    { name: strings.navbar.navUserLoggedItems.MAILS, path: strings.path.MAILS },
+    {
+      name: strings.navbar.navUserLoggedItems.MY_EVENTS,
+      path: strings.path.MY_EVENTS
+    },
+    {
+      name: strings.navbar.navUserLoggedItems.MY_PROFILE,
+      path: strings.path.MY_PROFILE
+    },
+    {
+      name: strings.navbar.navUserLoggedItems.SIGNOUT,
+      path: strings.path.SIGNOUT
+    }
+  ];
   const dispatch = useDispatch();
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
