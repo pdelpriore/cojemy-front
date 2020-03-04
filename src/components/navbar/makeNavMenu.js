@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { clearLoginState } from "../../redux/login/thunk/loginThunk";
 import { capitalize } from "../../util/Util";
 import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
@@ -31,14 +33,15 @@ const navUserLoggedItems = [
   {
     name: strings.navbar.navUserLoggedItems.MY_PROFILE,
     path: strings.path.MY_PROFILE
+  },
+  {
+    name: strings.navbar.navUserLoggedItems.SIGNOUT,
+    path: strings.path.SIGNOUT
   }
-  // {
-  //   name: strings.navbar.navUserLoggedItems.SIGNOUT,
-  //   path: strings.path.SIGNOUT
-  // }
 ];
 
-export const makeNavMenu = type => {
+const MakeNavMenu = ({ type }) => {
+  const dispatch = useDispatch();
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
         item =>
@@ -105,10 +108,24 @@ export const makeNavMenu = type => {
     : type === strings.navbar.navType.USER_LOGGED_MENU
     ? navUserLoggedItems.slice(1).map(item => (
         <Nav.Item as="li" key={item.name}>
-          <NavLink activeClassName="active" to={item.path} exact>
+          <NavLink
+            onClick={
+              item.name === strings.navbar.navUserLoggedItems.SIGNOUT
+                ? e => {
+                    e.preventDefault();
+                    dispatch(clearLoginState());
+                  }
+                : null
+            }
+            activeClassName="active"
+            to={item.path}
+            exact
+          >
             {capitalize(item.name)}
           </NavLink>
         </Nav.Item>
       ))
     : null;
 };
+
+export default MakeNavMenu;
