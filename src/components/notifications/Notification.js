@@ -13,13 +13,16 @@ const Notification = ({ notificationMessage }) => {
   const { notification, show } = useNotification(notificationMessage);
   const { error } = useSelector(state => state.signup);
   const { remindPassError } = useSelector(state => state.remindPass);
+  const { loginError } = useSelector(state => state.login);
 
   return (
     show &&
     notification !== null &&
     notification !== undefined && (
       <div className="notification">
-        {notification === error || notification === remindPassError ? (
+        {notification === error ||
+        notification === remindPassError ||
+        notification === loginError ? (
           <div className="notification-icon-error">
             <FontAwesomeIcon icon={faTimesCircle} />
           </div>
@@ -28,7 +31,9 @@ const Notification = ({ notificationMessage }) => {
             <FontAwesomeIcon icon={faCheckCircle} />
           </div>
         )}
-        {notification === error || notification === remindPassError ? (
+        {notification === error ||
+        notification === remindPassError ||
+        notification === loginError ? (
           <div className="notification-message">
             {capitalizeFirst(notification)}
           </div>

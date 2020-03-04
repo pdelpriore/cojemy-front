@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
 import { clearRemindPasswordState } from "../../redux/remindPassword/thunk/remindPasswordThunk";
+import { clearLoginState } from "../../redux/login/thunk/loginThunk";
 
 const useNotification = notificationMessage => {
   const [notifications, setNotification] = useState({});
@@ -30,6 +31,10 @@ const useNotification = notificationMessage => {
     return dispatch(clearRemindPasswordState());
   }, [dispatch]);
 
+  let clearLoginReduxState = useCallback(() => {
+    return dispatch(clearLoginState());
+  }, [dispatch]);
+
   useEffect(() => {
     setShow(true);
     const timer = setTimeout(() => {
@@ -38,13 +43,15 @@ const useNotification = notificationMessage => {
       clearSignupState();
       clearCustomerState();
       clearRemindPassState();
+      clearLoginReduxState();
     }, 3500);
     return () => clearTimeout(timer);
   }, [
     notification,
     clearSignupState,
     clearCustomerState,
-    clearRemindPassState
+    clearRemindPassState,
+    clearLoginReduxState
   ]);
 
   return {

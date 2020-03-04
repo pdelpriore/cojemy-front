@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import useLoginForm from "../../hooks/form/login/useLoginForm";
@@ -7,6 +8,7 @@ import "./loginForm.css";
 
 const LoginForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm();
+  const { loading } = useSelector(state => state.login);
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -47,19 +49,38 @@ const LoginForm = () => {
       </Row>
       <Row>
         <Col xs={5}>
-          <Button
-            disabled={
-              inputs.email === undefined ||
-              inputs.email === "" ||
-              inputs.password === undefined ||
-              inputs.password === ""
-            }
-            className="login-button"
-            type="submit"
-            variant="outline-dark"
-          >
-            {capitalizeFirst(strings.login.BUTTON_TEXT)}
-          </Button>
+          <div className="login-button">
+            <Button
+              className="login-button-send"
+              disabled={
+                inputs.email === undefined ||
+                inputs.email === "" ||
+                inputs.password === undefined ||
+                inputs.password === ""
+              }
+              type="submit"
+              variant="outline-dark"
+            >
+              <div className="login-spinner">
+                {loading && (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                )}
+                {loading ? (
+                  <div className="login-loading-text">
+                    {capitalizeFirst(strings.login.BUTTON_TEXT_LOADING)}
+                  </div>
+                ) : (
+                  <div>{capitalizeFirst(strings.login.BUTTON_TEXT)}</div>
+                )}
+              </div>
+            </Button>
+          </div>
         </Col>
         <Col xs={7} />
       </Row>

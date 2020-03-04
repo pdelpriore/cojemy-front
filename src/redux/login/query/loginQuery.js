@@ -5,6 +5,7 @@ export const loginQuery = (email, password) => {
               login(email: "${email}", password: "${password}") {
                   name
                   email
+                  isGoogleUser
               }
           }
           `

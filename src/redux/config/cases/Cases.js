@@ -22,3 +22,10 @@ export const showRemindPassCases = Object.freeze({
   SHOWED: "showRemindPassVisible",
   HIDED: "showRemindPassHide"
 });
+
+export const loginCases = Object.freeze({
+  LOADING: "loginLoading",
+  USER_DATA: "loginUserData",
+  ERROR: "loginError",
+  CLEAR_STATE: "loginClearState"
+});

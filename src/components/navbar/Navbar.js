@@ -20,6 +20,22 @@ const Navbar = ({ path, url, isExact }) => {
                 url === strings.path.SIGNUP &&
                 isExact)
             ? makeNavMenu(strings.navbar.navType.LOGO_GET_STARTED)
+            : (path === strings.path.RECIPE_BOOK &&
+                url === strings.path.RECIPE_BOOK &&
+                isExact) ||
+              (path === strings.path.MY_RECIPES &&
+                url === strings.path.MY_RECIPES &&
+                isExact) ||
+              (path === strings.path.MAILS &&
+                url === strings.path.MAILS &&
+                isExact) ||
+              (path === strings.path.MY_EVENTS &&
+                url === strings.path.MY_EVENTS &&
+                isExact) ||
+              (path === strings.path.MY_PROFILE &&
+                url === strings.path.MY_PROFILE &&
+                isExact)
+            ? makeNavMenu(strings.navbar.navType.LOGO_USER_LOGGED)
             : null}
         </Nav>
       </Col>
@@ -34,6 +50,22 @@ const Navbar = ({ path, url, isExact }) => {
                 url === strings.path.SIGNUP &&
                 isExact)
             ? makeNavMenu(strings.navbar.navType.GET_STARTED_MENU)
+            : (path === strings.path.RECIPE_BOOK &&
+                url === strings.path.RECIPE_BOOK &&
+                isExact) ||
+              (path === strings.path.MY_RECIPES &&
+                url === strings.path.MY_RECIPES &&
+                isExact) ||
+              (path === strings.path.MAILS &&
+                url === strings.path.MAILS &&
+                isExact) ||
+              (path === strings.path.MY_EVENTS &&
+                url === strings.path.MY_EVENTS &&
+                isExact) ||
+              (path === strings.path.MY_PROFILE &&
+                url === strings.path.MY_PROFILE &&
+                isExact)
+            ? makeNavMenu(strings.navbar.navType.USER_LOGGED_MENU)
             : null}
         </Nav>
       </Col>

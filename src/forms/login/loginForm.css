@@ -2,12 +2,26 @@
   font-family: "OpenSans-SemiBold";
 }
 .login-button {
-  font-family: "OpenSans-Regular";
-  font-size: 1vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .login-placeholder {
   font-family: "OpenSans-Regular";
   font-size: 1.3vw;
   background-color: #fff98c;
   color: #85203b;
+}
+.login-spinner {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.login-loading-text {
+  margin-left: 10px;
+  font-size: 1vw;
+}
+.login-button-send {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
 }

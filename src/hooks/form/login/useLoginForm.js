@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { loginUser } from "../../../redux/login/thunk/loginThunk";
+import { useSelector, useDispatch } from "react-redux";
 
 const useLoginForm = () => {
   const [inputs, setInputs] = useState({});
+  const dispatch = useDispatch();
+  const { userData } = useSelector(state => state.login);
 
   const handleInputChange = e => {
     e.persist();
@@ -13,7 +17,12 @@ const useLoginForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch(loginUser(inputs.email, inputs.password));
   };
+
+  useEffect(() => {
+    setInputs({});
+  }, [userData]);
 
   return { inputs, handleInputChange, handleSubmit };
 };

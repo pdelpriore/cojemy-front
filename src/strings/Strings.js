@@ -4,6 +4,12 @@ export const strings = Object.freeze({
     GRAPHQL: "http://localhost:4000/graphql",
     LOGIN: "/login",
     SIGNUP: "/signup",
+    SIGNOUT: "/signout",
+    RECIPE_BOOK: "/recipebook",
+    MY_RECIPES: "/myrecipes",
+    MAILS: "/mails",
+    MY_EVENTS: "/myevents",
+    MY_PROFILE: "/myprofile",
     LINKEDIN: "https://www.linkedin.com/in/paul-del-priore-9b8b1114b/",
     SERVER_REQUEST: "http://localhost:4000/graphql"
   },
@@ -11,8 +17,10 @@ export const strings = Object.freeze({
     navType: {
       LOGO: "logo",
       LOGO_GET_STARTED: "logoGetStarted",
+      LOGO_USER_LOGGED: "logoUserLogged",
       HOME_MENU: "homeMenu",
-      GET_STARTED_MENU: "getStartedMenu"
+      GET_STARTED_MENU: "getStartedMenu",
+      USER_LOGGED_MENU: "userLoggedMenu"
     },
     navHomeItems: {
       LOGO: "quoi manger ?",
@@ -22,6 +30,13 @@ export const strings = Object.freeze({
     navGetStartedItems: {
       LOGIN: "se connecter",
       SIGNUP: "s'inscrire"
+    },
+    navUserLoggedItems: {
+      MY_RECIPES: "mes recettes",
+      MAILS: "boîte aux messages",
+      MY_EVENTS: "mes événements",
+      MY_PROFILE: "mon profil",
+      SIGNOUT: "déconnexion"
     }
   },
   main: {
@@ -48,6 +63,7 @@ export const strings = Object.freeze({
     EMAIL: "email",
     PASSWORD: "mot de passe",
     BUTTON_TEXT: "connecte moi !",
+    BUTTON_TEXT_LOADING: "je te connecte ...",
     FORGOT_PASSWORD: "mot de passe oublié ?"
   },
   signup: {

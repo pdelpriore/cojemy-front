@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { showRemindPassComponent } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
+import { useHistory } from "react-router-dom";
 import LoginForm from "../../forms/login/LoginForm";
 import Notification from "../../components/notifications/Notification";
 import { strings } from "../../strings/Strings";
@@ -26,7 +27,18 @@ const Login = ({ match: { path, url, isExact } }) => {
   const { passwordSent, remindPassError } = useSelector(
     state => state.remindPass
   );
+  const { userData, loginError } = useSelector(state => state.login);
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  let redirectToRecipeBook = useCallback(() => {
+    return history.push(strings.path.RECIPE_BOOK);
+  }, [history]);
+
+  useEffect(() => {
+    if (userData.email !== undefined) redirectToRecipeBook();
+  }, [userData, redirectToRecipeBook]);
+
   return (
     <animated.div style={props} className="login-area">
       <div className="login-first-section">
@@ -93,6 +105,8 @@ const Login = ({ match: { path, url, isExact } }) => {
                   ? remindPassError
                   : passwordSent
                   ? passwordSent
+                  : loginError
+                  ? loginError
                   : null
                 //pozniej zamiast null daj errory z reduxa podczas loginu
               }
