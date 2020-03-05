@@ -17,3 +17,24 @@
 .signup-loading-text {
   margin-left: 10px;
 }
+.google-signup-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+.google-signup-icon {
+  flex: 1;
+  width: 40px;
+  height: 35px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-image: url("../../assets/icons/googleButton.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.google-signup-text {
+  flex: 3;
+  font-family: "OpenSans-Regular";
+}

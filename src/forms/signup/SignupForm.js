@@ -4,6 +4,8 @@ import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import useSignupForm from "../../hooks/form/signup/useSignupForm";
+import { GoogleLogin } from "react-google-login";
+import { IdClient } from "../../config/Security";
 import "./signupForm.css";
 
 const SignupForm = () => {
@@ -119,6 +121,26 @@ const SignupForm = () => {
               )}
             </div>
           </Button>
+        </Col>
+      </Row>
+      <Row className="mb-3" />
+      <Row>
+        <Col xs={12}>
+          <GoogleLogin
+            render={renderProps => (
+              <Button
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                variant="outline-dark"
+                className="google-signup-button"
+              >
+                <div className="google-signup-icon" />
+                <div className="google-signup-text">
+                  {capitalizeFirst(strings.signupGoogle.BUTTON_TEXT)}
+                </div>
+              </Button>
+            )}
+          />
         </Col>
       </Row>
     </Form>
