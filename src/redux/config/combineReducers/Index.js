@@ -5,6 +5,7 @@ import showRemindPassReducer from "../../showRemindPass/reducer/showRemindPassRe
 import remindPasswordReducer from "../../remindPassword/reducer/remindPasswordReducer";
 import loginReducer from "../../login/reducer/loginReducer";
 import logoutReducer from "../../logout/reducer/logoutReducer";
+import googleSignupReducer from "../../googleSignup/reducer/googleSignupReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -12,7 +13,8 @@ const allReducers = combineReducers({
   showRemindPass: showRemindPassReducer,
   remindPass: remindPasswordReducer,
   login: loginReducer,
-  logout: logoutReducer
+  logout: logoutReducer,
+  signGoogle: googleSignupReducer
 });
 
 export default allReducers;

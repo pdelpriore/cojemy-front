@@ -76,7 +76,8 @@ export const strings = Object.freeze({
     CHECK_EMAIL: "Compte enregistré avec succès. Confirme ton adresse email"
   },
   signupGoogle: {
-    BUTTON_TEXT: "inscris moi !"
+    BUTTON_TEXT: "inscris moi !",
+    GOOGLE_USER_CREATED: "google compte créé."
   },
   remindPass: {
     EMAIL: "ton email",

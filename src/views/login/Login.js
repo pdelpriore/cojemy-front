@@ -23,6 +23,7 @@ const Login = ({ match: { path, url, isExact } }) => {
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
   const { userSignedup } = useSelector(state => state.signup);
+  const { userGoogleSignedup } = useSelector(state => state.signGoogle);
   const { show } = useSelector(state => state.showRemindPass);
   const { passwordSent, remindPassError } = useSelector(
     state => state.remindPass
@@ -99,7 +100,7 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={3}>
             <Notification
               notificationMessage={
-                userSignedup
+                userSignedup !== null
                   ? strings.signup.CHECK_EMAIL
                   : remindPassError
                   ? remindPassError
@@ -107,6 +108,8 @@ const Login = ({ match: { path, url, isExact } }) => {
                   ? passwordSent
                   : loginError
                   ? loginError
+                  : userGoogleSignedup !== null
+                  ? capitalizeFirst(strings.signupGoogle.GOOGLE_USER_CREATED)
                   : null
                 //pozniej zamiast null daj errory z reduxa podczas loginu
               }

@@ -4,6 +4,7 @@ import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
 import { clearRemindPasswordState } from "../../redux/remindPassword/thunk/remindPasswordThunk";
 import { clearLoginState } from "../../redux/login/thunk/loginThunk";
+import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
 
 const useNotification = notificationMessage => {
   const [notifications, setNotification] = useState({});
@@ -35,6 +36,10 @@ const useNotification = notificationMessage => {
     return dispatch(clearLoginState());
   }, [dispatch]);
 
+  let clearGoogleSignReduxState = useCallback(() => {
+    return dispatch(clearSignUpGoogleUserState());
+  }, [dispatch]);
+
   useEffect(() => {
     setShow(true);
     const timer = setTimeout(() => {
@@ -44,6 +49,7 @@ const useNotification = notificationMessage => {
       clearCustomerState();
       clearRemindPassState();
       clearLoginReduxState();
+      clearGoogleSignReduxState();
     }, 3500);
     return () => clearTimeout(timer);
   }, [
@@ -51,7 +57,8 @@ const useNotification = notificationMessage => {
     clearSignupState,
     clearCustomerState,
     clearRemindPassState,
-    clearLoginReduxState
+    clearLoginReduxState,
+    clearGoogleSignReduxState
   ]);
 
   return {

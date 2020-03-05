@@ -11,6 +11,7 @@ import "./signupForm.css";
 
 const SignupForm = () => {
   const { loading } = useSelector(state => state.signup);
+  const { loadingSignGoogle } = useSelector(state => state.signGoogle);
   const { inputs, handleInputChange, handleSubmit } = useSignupForm();
   const {
     handleGoogleSuccessResponse,
@@ -137,12 +138,29 @@ const SignupForm = () => {
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
                 variant="outline-dark"
-                className="google-signup-button"
               >
-                <div className="google-signup-icon" />
-                <div className="google-signup-text">
-                  {capitalizeFirst(strings.signupGoogle.BUTTON_TEXT)}
-                </div>
+                {!loadingSignGoogle ? (
+                  <div className="google-signup-button">
+                    <div className="google-signup-icon" />
+                    <div className="google-signup-text">
+                      {capitalizeFirst(strings.signupGoogle.BUTTON_TEXT)}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="google-signup-button">
+                    <Spinner
+                      className="google-signup-icon"
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />{" "}
+                    <div className="google-signup-text">
+                      {capitalizeFirst(strings.signup.BUTTON_TEXT_LOADING)}
+                    </div>{" "}
+                  </div>
+                )}
               </Button>
             )}
             clientId={IdClient}

@@ -11,6 +11,9 @@ import { strings } from "../../strings/Strings";
 
 const Signup = ({ match: { path, url, isExact } }) => {
   const { userSignedup, error } = useSelector(state => state.signup);
+  const { userGoogleSignedup, errorGoogleSignup } = useSelector(
+    state => state.signGoogle
+  );
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 }
@@ -27,8 +30,8 @@ const Signup = ({ match: { path, url, isExact } }) => {
   }, [history]);
 
   useEffect(() => {
-    if (userSignedup !== null) redirectToLogin();
-  }, [userSignedup, redirectToLogin]);
+    if (userSignedup !== null || userGoogleSignedup !== null) redirectToLogin();
+  }, [userSignedup, userGoogleSignedup, redirectToLogin]);
 
   return (
     <animated.div style={props} className="signup-area">
@@ -68,7 +71,15 @@ const Signup = ({ match: { path, url, isExact } }) => {
         <Row>
           <Col xs={2} />
           <Col xs={6}>
-            <Notification notificationMessage={error} />
+            <Notification
+              notificationMessage={
+                error !== null
+                  ? error
+                  : errorGoogleSignup !== null
+                  ? errorGoogleSignup
+                  : null
+              }
+            />
           </Col>
           <Col xs={4} />
         </Row>
