@@ -1,8 +1,11 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { clearLoginState } from "../../redux/login/thunk/loginThunk";
+import { clearLogoutState } from "../../redux/logout/thunk/logoutThunk";
+import { logoutUser } from "../../redux/logout/thunk/logoutThunk";
 import { capitalize } from "../../util/Util";
-import { Nav } from "react-bootstrap";
+import { capitalizeFirst } from "../../util/Util";
+import { Nav, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
 import { strings } from "../../strings/Strings";
@@ -44,6 +47,22 @@ const MakeNavMenu = ({ type }) => {
     }
   ];
   const dispatch = useDispatch();
+  const { userData } = useSelector(state => state.login);
+  const { loading, userLoggedOut } = useSelector(state => state.logout);
+
+  let clearLoginReduxState = useCallback(() => {
+    dispatch(clearLoginState());
+  }, [dispatch]);
+
+  let clearLogoutReduxState = useCallback(() => {
+    dispatch(clearLogoutState());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (userLoggedOut) clearLoginReduxState();
+    if (userData.email === undefined) clearLogoutReduxState();
+  }, [userData, userLoggedOut, clearLoginReduxState, clearLogoutReduxState]);
+
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
         item =>
@@ -108,25 +127,53 @@ const MakeNavMenu = ({ type }) => {
         </Nav.Item>
       ))
     : type === strings.navbar.navType.USER_LOGGED_MENU
-    ? navUserLoggedItems.slice(1).map(item => (
-        <Nav.Item as="li" key={item.name}>
-          <NavLink
-            onClick={
-              item.name === strings.navbar.navUserLoggedItems.SIGNOUT
-                ? e => {
+    ? navUserLoggedItems.slice(1).map(item =>
+        item.name === strings.navbar.navUserLoggedItems.SIGNOUT ? (
+          !loading ? (
+            <Nav.Item as="li" key={item.name}>
+              <NavLink
+                onClick={e => {
+                  e.preventDefault();
+                  dispatch(logoutUser(userData.email));
+                }}
+                to={item.path}
+                exact
+              >
+                {capitalize(item.name)}
+              </NavLink>
+            </Nav.Item>
+          ) : (
+            <div className="signout-loading" key={item.name}>
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              <Nav.Item as="li">
+                <NavLink
+                  onClick={e => {
                     e.preventDefault();
-                    dispatch(clearLoginState());
-                  }
-                : null
-            }
-            activeClassName="active"
-            to={item.path}
-            exact
-          >
-            {capitalize(item.name)}
-          </NavLink>
-        </Nav.Item>
-      ))
+                    dispatch(logoutUser(userData.email));
+                  }}
+                  className="signout-loading-text"
+                  to={item.path}
+                  exact
+                >
+                  {capitalizeFirst(strings.logout.LOGOUT)}
+                </NavLink>
+              </Nav.Item>
+            </div>
+          )
+        ) : (
+          <Nav.Item as="li" key={item.name}>
+            <NavLink activeClassName="active" to={item.path} exact>
+              {capitalize(item.name)}
+            </NavLink>
+          </Nav.Item>
+        )
+      )
     : null;
 };
 

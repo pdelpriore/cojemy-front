@@ -80,5 +80,8 @@ export const strings = Object.freeze({
     BUTTON_TEXT: "envoyer",
     BUTTON_TEXT_LOADING: "j'envoie ...",
     BUTTON_TEXT_CANCEL: "annuler"
+  },
+  logout: {
+    LOGOUT: "je te déconnecte ..."
   }
 });

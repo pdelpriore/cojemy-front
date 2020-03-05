@@ -29,3 +29,9 @@ export const loginCases = Object.freeze({
   ERROR: "loginError",
   CLEAR_STATE: "loginClearState"
 });
+
+export const logoutCases = Object.freeze({
+  LOADING: "logoutLoading",
+  SIGNOUT: "logoutSignout",
+  CLEAR_STATE: "logoutClearState"
+});

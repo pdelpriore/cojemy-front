@@ -4,13 +4,15 @@ import customerContactReducer from "../../customerContact/reducer/customerContac
 import showRemindPassReducer from "../../showRemindPass/reducer/showRemindPassReducer";
 import remindPasswordReducer from "../../remindPassword/reducer/remindPasswordReducer";
 import loginReducer from "../../login/reducer/loginReducer";
+import logoutReducer from "../../logout/reducer/logoutReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
   customerContact: customerContactReducer,
   showRemindPass: showRemindPassReducer,
   remindPass: remindPasswordReducer,
-  login: loginReducer
+  login: loginReducer,
+  logout: logoutReducer
 });
 
 export default allReducers;

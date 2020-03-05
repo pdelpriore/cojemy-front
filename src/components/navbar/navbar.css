@@ -33,6 +33,14 @@ a {
   text-decoration: none;
   color: #3e3636;
 }
+.signout-loading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.signout-loading-text {
+  margin-left: 3px;
+}
 a:hover {
   text-decoration: none;
   color: #3e3636;
