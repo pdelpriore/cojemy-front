@@ -38,3 +38,7 @@
   flex: 3;
   font-family: "OpenSans-Regular";
 }
+.google-signup-loading {
+  margin-left: 10px;
+  font-family: "OpenSans-Regular";
+}
