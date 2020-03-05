@@ -4,6 +4,7 @@ import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import useSignupForm from "../../hooks/form/signup/useSignupForm";
+import useGoogleSignup from "../../hooks/googleButton/signup/useGoogleSignup";
 import { GoogleLogin } from "react-google-login";
 import { IdClient } from "../../config/Security";
 import "./signupForm.css";
@@ -11,6 +12,10 @@ import "./signupForm.css";
 const SignupForm = () => {
   const { loading } = useSelector(state => state.signup);
   const { inputs, handleInputChange, handleSubmit } = useSignupForm();
+  const {
+    handleGoogleSuccessResponse,
+    handleGoogleFailureResponse
+  } = useGoogleSignup();
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -140,6 +145,10 @@ const SignupForm = () => {
                 </div>
               </Button>
             )}
+            clientId={IdClient}
+            onSuccess={handleGoogleSuccessResponse}
+            onFailure={handleGoogleFailureResponse}
+            cookiePolicy={"single_host_origin"}
           />
         </Col>
       </Row>
