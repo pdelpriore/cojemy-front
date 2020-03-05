@@ -4,6 +4,7 @@ export const googleSignupQuery = (name, email, photo) => {
           mutation {
             signUpGoogleUser(name: "${name}", email: "${email}", googlePhoto: "${photo}") {
                 email
+                isGoogleUser
               }
           }
           `
