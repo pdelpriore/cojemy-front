@@ -48,7 +48,7 @@ const LoginForm = () => {
         </Col>
       </Row>
       <Row>
-        <Col xs={5}>
+        <Col xs={12}>
           <div className="login-button">
             <Button
               className="login-button-send"
@@ -82,7 +82,6 @@ const LoginForm = () => {
             </Button>
           </div>
         </Col>
-        <Col xs={7} />
       </Row>
     </Form>
   );
