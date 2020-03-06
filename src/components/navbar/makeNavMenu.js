@@ -159,7 +159,7 @@ const MakeNavMenu = ({ type }) => {
     : type === strings.navbar.navType.USER_LOGGED_MENU
     ? navUserLoggedItems.slice(1).map(item =>
         item.name === strings.navbar.navUserLoggedItems.SIGNOUT ? (
-          !loading || googleLogoutLoading ? (
+          !loading || !googleLogoutLoading ? (
             <Nav.Item as="li" key={item.name}>
               <NavLink
                 onClick={e => {
@@ -186,15 +186,7 @@ const MakeNavMenu = ({ type }) => {
                 aria-hidden="true"
               />
               <Nav.Item as="li">
-                <NavLink
-                  onClick={e => {
-                    e.preventDefault();
-                    dispatch(logoutUser(userData.email));
-                  }}
-                  className="signout-loading-text"
-                  to={item.path}
-                  exact
-                >
+                <NavLink className="signout-loading-text" to={item.path} exact>
                   {capitalizeFirst(strings.logout.LOGOUT)}
                 </NavLink>
               </Nav.Item>
