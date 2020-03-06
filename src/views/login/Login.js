@@ -79,7 +79,7 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={3} />
         </Row>
         <Row>
-          <Col xs={7} />
+          <Col xs={9} />
           <Col xs={2}>
             {!show && (
               <p
@@ -90,7 +90,7 @@ const Login = ({ match: { path, url, isExact } }) => {
               </p>
             )}
           </Col>
-          <Col xs={3} />
+          <Col xs={1} />
         </Row>
       </div>
       <div className="login-third-section">

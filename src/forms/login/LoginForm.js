@@ -4,11 +4,18 @@ import { useSelector } from "react-redux";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import useLoginForm from "../../hooks/form/login/useLoginForm";
+import useGoogleLogin from "../../hooks/googleButton/login/useGoogleLogin";
+import { GoogleLogin } from "react-google-login";
+import { IdClient } from "../../config/Security";
 import "./loginForm.css";
 
 const LoginForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm();
   const { loading } = useSelector(state => state.login);
+  const {
+    handleGoogleSuccessResponse,
+    handleGoogleFailureResponse
+  } = useGoogleLogin();
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -81,6 +88,46 @@ const LoginForm = () => {
               </div>
             </Button>
           </div>
+        </Col>
+      </Row>
+      <Row className="mb-3" />
+      <Row>
+        <Col xs={12}>
+          <GoogleLogin
+            render={renderProps => (
+              <Button
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                variant="outline-dark"
+                className="google-login-button"
+              >
+                {!false ? (
+                  <div className="google-login-icon" />
+                ) : (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                )}
+                {!false ? (
+                  <div className="google-login-text">
+                    {capitalizeFirst(strings.login.BUTTON_TEXT)}
+                  </div>
+                ) : (
+                  <div className="google-login-loading">
+                    {capitalizeFirst(strings.login.BUTTON_TEXT_LOADING)}
+                  </div>
+                )}
+              </Button>
+            )}
+            clientId={IdClient}
+            onSuccess={handleGoogleSuccessResponse}
+            onFailure={handleGoogleFailureResponse}
+            cookiePolicy={"single_host_origin"}
+          />
         </Col>
       </Row>
     </Form>
