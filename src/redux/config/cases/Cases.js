@@ -42,3 +42,10 @@ export const signupGoogleUserCases = Object.freeze({
   ERROR: "signupGoogleUserError",
   CLEAR_STATE: "signupGoogleUserClearState"
 });
+
+export const loginGoogleUserCases = Object.freeze({
+  LOADING: "loginGoogleUserLoading",
+  GOOGLE_USER_DATA: "loginGoogleUserData",
+  GOOGLE_USER_ERROR: "loginGoogleUserError",
+  CLEAR_STATE: "loginGoogleUserClearState"
+});
