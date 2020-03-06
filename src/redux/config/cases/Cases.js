@@ -36,6 +36,12 @@ export const logoutCases = Object.freeze({
   CLEAR_STATE: "logoutClearState"
 });
 
+export const googleLogoutCases = Object.freeze({
+  LOADING: "googleLogoutLoading",
+  SIGNOUT: "googleLogoutSignout",
+  CLEAR_STATE: "googleLogoutClearState"
+});
+
 export const signupGoogleUserCases = Object.freeze({
   LOADING: "signupGoogleUserLoading",
   USER_GOOGLE_SIGNEDUP: "signupGoogleUserSignedUp",

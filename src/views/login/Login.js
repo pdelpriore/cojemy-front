@@ -29,6 +29,9 @@ const Login = ({ match: { path, url, isExact } }) => {
     state => state.remindPass
   );
   const { userData, loginError } = useSelector(state => state.login);
+  const { googleUserData, googleUserLoginError } = useSelector(
+    state => state.loginGoogle
+  );
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,8 +40,9 @@ const Login = ({ match: { path, url, isExact } }) => {
   }, [history]);
 
   useEffect(() => {
-    if (userData.email !== undefined) redirectToRecipeBook();
-  }, [userData, redirectToRecipeBook]);
+    if (userData.email !== undefined || googleUserData.email !== undefined)
+      redirectToRecipeBook();
+  }, [userData, googleUserData, redirectToRecipeBook]);
 
   return (
     <animated.div style={props} className="login-area">
@@ -108,6 +112,8 @@ const Login = ({ match: { path, url, isExact } }) => {
                   ? passwordSent
                   : loginError
                   ? loginError
+                  : googleUserLoginError
+                  ? googleUserLoginError
                   : userGoogleSignedup !== null
                   ? capitalizeFirst(strings.signupGoogle.GOOGLE_USER_CREATED)
                   : null

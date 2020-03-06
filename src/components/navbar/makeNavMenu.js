@@ -1,8 +1,15 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearLoginState } from "../../redux/login/thunk/loginThunk";
-import { clearLogoutState } from "../../redux/logout/thunk/logoutThunk";
-import { logoutUser } from "../../redux/logout/thunk/logoutThunk";
+import {
+  clearLogoutState,
+  logoutUser
+} from "../../redux/logout/thunk/logoutThunk";
+import { clearGoogleLoginState } from "../../redux/googleLogin/thunk/googleLoginThunk";
+import {
+  clearGoogleLogoutState,
+  logoutGoogleUser
+} from "../../redux/googleLogout/thunk/googleLogoutThunk";
 import { capitalize } from "../../util/Util";
 import { capitalizeFirst } from "../../util/Util";
 import { Nav, Spinner } from "react-bootstrap";
@@ -49,19 +56,42 @@ const MakeNavMenu = ({ type }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector(state => state.login);
   const { loading, userLoggedOut } = useSelector(state => state.logout);
+  const { googleUserData } = useSelector(state => state.loginGoogle);
+  const { googleLogoutLoading, googleUserLoggedOut } = useSelector(
+    state => state.googleLogout
+  );
 
   let clearLoginReduxState = useCallback(() => {
-    dispatch(clearLoginState());
+    return dispatch(clearLoginState());
   }, [dispatch]);
 
   let clearLogoutReduxState = useCallback(() => {
-    dispatch(clearLogoutState());
+    return dispatch(clearLogoutState());
+  }, [dispatch]);
+
+  let clearGoogleLoginReduxState = useCallback(() => {
+    return dispatch(clearGoogleLoginState());
+  }, [dispatch]);
+
+  let clearGoogleLogoutReduxState = useCallback(() => {
+    return dispatch(clearGoogleLogoutState());
   }, [dispatch]);
 
   useEffect(() => {
     if (userLoggedOut) clearLoginReduxState();
     if (userData.email === undefined) clearLogoutReduxState();
-  }, [userData, userLoggedOut, clearLoginReduxState, clearLogoutReduxState]);
+    if (googleUserLoggedOut) clearGoogleLoginReduxState();
+    if (googleUserData.email === undefined) clearGoogleLogoutReduxState();
+  }, [
+    userData,
+    userLoggedOut,
+    clearLoginReduxState,
+    clearLogoutReduxState,
+    googleUserData,
+    googleUserLoggedOut,
+    clearGoogleLoginReduxState,
+    clearGoogleLogoutReduxState
+  ]);
 
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
@@ -129,12 +159,16 @@ const MakeNavMenu = ({ type }) => {
     : type === strings.navbar.navType.USER_LOGGED_MENU
     ? navUserLoggedItems.slice(1).map(item =>
         item.name === strings.navbar.navUserLoggedItems.SIGNOUT ? (
-          !loading ? (
+          !loading || googleLogoutLoading ? (
             <Nav.Item as="li" key={item.name}>
               <NavLink
                 onClick={e => {
                   e.preventDefault();
-                  dispatch(logoutUser(userData.email));
+                  if (userData.email !== undefined) {
+                    dispatch(logoutUser(userData.email));
+                  } else if (googleUserData.email !== undefined) {
+                    dispatch(logoutGoogleUser(googleUserData.email));
+                  }
                 }}
                 to={item.path}
                 exact

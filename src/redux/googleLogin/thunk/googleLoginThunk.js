@@ -19,17 +19,15 @@ export const loginUserGoogle = (email, token) => {
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
-        console.log(data);
-        // dispatch({
-        //   type: loginGoogleUserCases.GOOGLE_USER_DATA,
-        //   payload: data.loginGoogleUser
-        // });
+        dispatch({
+          type: loginGoogleUserCases.GOOGLE_USER_DATA,
+          payload: data.loginGoogleUser
+        });
       } else if (errors) {
-        console.log(errors);
-        // dispatch({
-        //   type: loginGoogleUserCases.GOOGLE_USER_ERROR,
-        //   payload: errors[0].message
-        // });
+        dispatch({
+          type: loginGoogleUserCases.GOOGLE_USER_ERROR,
+          payload: errors[0].message
+        });
       }
     } catch (err) {
       if (err) console.log(err);
@@ -37,7 +35,7 @@ export const loginUserGoogle = (email, token) => {
   };
 };
 
-export const clearLoginState = () => {
+export const clearGoogleLoginState = () => {
   return (dispatch, getState) => {
     dispatch({ type: loginGoogleUserCases.CLEAR_STATE });
   };

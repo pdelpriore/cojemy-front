@@ -12,6 +12,7 @@ import "./loginForm.css";
 const LoginForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm();
   const { loading } = useSelector(state => state.login);
+  const { googleUserLoading } = useSelector(state => state.loginGoogle);
   const {
     handleGoogleSuccessResponse,
     handleGoogleFailureResponse
@@ -101,7 +102,7 @@ const LoginForm = () => {
                 variant="outline-dark"
                 className="google-login-button"
               >
-                {!false ? (
+                {!googleUserLoading ? (
                   <div className="google-login-icon" />
                 ) : (
                   <Spinner
@@ -112,7 +113,7 @@ const LoginForm = () => {
                     aria-hidden="true"
                   />
                 )}
-                {!false ? (
+                {!googleUserLoading ? (
                   <div className="google-login-text">
                     {capitalizeFirst(strings.login.BUTTON_TEXT)}
                   </div>
