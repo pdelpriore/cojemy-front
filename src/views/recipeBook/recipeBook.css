@@ -1,0 +1,22 @@
+.recipebook-area {
+  height: 100vh;
+  background-color: #a7ff83;
+  overflow: hidden;
+}
+.recipebook-list {
+  height: 100vh;
+  width: 50vw;
+  border-radius: 5px;
+  background-color: #086972;
+}
+.recipebook-spoon {
+  position: absolute;
+  top: 45%;
+  left: 70%;
+  width: 33vw;
+}
+.recipebook-center-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
