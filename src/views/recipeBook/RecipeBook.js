@@ -14,8 +14,8 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             <div className="recipebook-center-area">
               <div className="recipebook-list"></div>
               <Image
-                className="recipebook-spoon"
-                src={require("../../assets/imgs/spoonret.jpg")}
+                className="recipebook-soup"
+                src={require("../../assets/imgs/soupret.jpg")}
               />
             </div>
           </Col>
