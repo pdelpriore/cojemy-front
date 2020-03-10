@@ -48,14 +48,13 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-5" />
         <Row>
-          <Col xs={1} />
+          <Col xs={2} />
           <Col xs={10}>
             <Image
               className="recipebook-soup"
               src={require("../../assets/imgs/soupret.jpg")}
             />
           </Col>
-          <Col xs={1} />
         </Row>
       </div>
     </div>
