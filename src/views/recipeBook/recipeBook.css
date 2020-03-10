@@ -33,6 +33,17 @@
 }
 .recipebook-knob-button:hover > .recipe-button-icon {
   transform: rotate(25deg);
+  background-image: url("../../assets/imgs/knobovenretactive.jpg");
+}
+.recipe-button-active > .recipe-button-icon {
+  transform: rotate(25deg);
+  background-image: url("../../assets/imgs/knobovenretactive.jpg");
+}
+.recipe-button-active {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 10vw;
 }
 .recipe-button-icon {
   width: 2vw;
