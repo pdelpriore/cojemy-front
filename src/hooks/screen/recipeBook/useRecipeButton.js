@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useRecipeBook = () => {
+const useRecipeButton = () => {
   const initialState = [false, false];
   const [activesClasses, setActive] = useState(initialState);
 
@@ -10,4 +10,4 @@ const useRecipeBook = () => {
   return { activesClasses, toggleActiveClass };
 };
 
-export default useRecipeBook;
+export default useRecipeButton;

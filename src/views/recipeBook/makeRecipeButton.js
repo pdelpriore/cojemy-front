@@ -1,12 +1,12 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
-import useRecipeBook from "../../hooks/screen/recipeBook/useRecipeBook";
+import useRecipeButton from "../../hooks/screen/recipeBook/useRecipeButton";
 import { capitalizeFirst } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
-  const { activesClasses, toggleActiveClass } = useRecipeBook();
+  const { activesClasses, toggleActiveClass } = useRecipeButton();
   const buttonItems = [
     {
       id: 0,
