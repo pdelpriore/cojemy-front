@@ -87,5 +87,9 @@ export const strings = Object.freeze({
   },
   logout: {
     LOGOUT: "je te déconnecte ..."
+  },
+  recipeBook: {
+    BUTTON_NEW: "nouveautés",
+    BUTTON_FAST_FOOD: "fast food"
   }
 });

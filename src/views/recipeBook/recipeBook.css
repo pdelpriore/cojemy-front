@@ -1,23 +1,53 @@
 .recipebook-area {
-  height: 100vh;
   background-color: #f3cf7a;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
+}
+.recipebook-first-section {
+  height: 100vh;
+  width: 60vw;
+  border-radius: 5px;
+  border: 1px #6e3b3b solid;
 }
 .recipebook-list {
   height: 100vh;
-  width: 50vw;
   border-radius: 5px;
   background-color: #be6a15;
   border: 1px #6e3b3b solid;
 }
+.recipebook-second-section {
+  height: 100vh;
+  width: 40vw;
+}
 .recipebook-soup {
-  position: absolute;
-  top: 40%;
-  left: 71%;
   width: 33vw;
 }
-.recipebook-center-area {
+.recipebook-knob-button {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  min-width: 10vw;
+}
+.recipebook-knob-button:hover > .recipe-button-icon {
+  transform: rotate(25deg);
+}
+.recipe-button-icon {
+  width: 2vw;
+  height: 2vh;
+  padding: 20px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-image: url("../../assets/imgs/knobovenret.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: 0.6s ease;
+}
+.recipe-button-text {
+  font-size: 1vw;
+  font-family: "OpenSans-SemiBold";
+  white-space: nowrap;
 }
