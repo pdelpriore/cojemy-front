@@ -19,7 +19,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
       <div className="recipebook-second-section">
         <Row className="mb-5" />
         <Row className="mb-5" />
-        <Row className="mb-5" />
+        <Row className="mb-2" />
         <MakeRecipeButton />
         <Row className="mb-5" />
         <Row className="mb-5" />
