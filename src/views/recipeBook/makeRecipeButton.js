@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import useRecipeButton from "../../hooks/screen/recipeBook/useRecipeButton";
 import { capitalizeFirst } from "../../util/Util";
@@ -17,6 +17,9 @@ const MakeRecipeButton = () => {
       name: capitalizeFirst(strings.recipeBook.BUTTON_FAST_FOOD)
     }
   ];
+  useEffect(() => {
+    toggleActiveClass(buttonItems[0].id);
+  }, []);
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>
       <Row>
