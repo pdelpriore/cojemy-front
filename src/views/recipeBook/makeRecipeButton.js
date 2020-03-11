@@ -27,7 +27,7 @@ const MakeRecipeButton = () => {
         <Col xs={11}>
           <Button
             onClick={() => toggleActiveClass(buttonItem.id)}
-            variant="outline-dark"
+            variant="dark"
             className={
               activesClasses[buttonItem.id]
                 ? "recipe-button-active"
