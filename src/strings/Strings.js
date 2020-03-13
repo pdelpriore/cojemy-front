@@ -90,6 +90,8 @@ export const strings = Object.freeze({
   },
   recipeBook: {
     BUTTON_NEW: "nouveautés",
-    BUTTON_FAST_FOOD: "fast food"
+    BUTTON_FAST_FOOD: "fast food",
+    CAT_FAST_FOOD: "fast food",
+    CAT_NEWS: "news"
   }
 });

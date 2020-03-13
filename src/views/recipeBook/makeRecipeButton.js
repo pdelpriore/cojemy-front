@@ -10,15 +10,17 @@ const MakeRecipeButton = () => {
   const buttonItems = [
     {
       id: 0,
-      name: capitalizeFirst(strings.recipeBook.BUTTON_NEW)
+      name: capitalizeFirst(strings.recipeBook.BUTTON_NEW),
+      category: strings.recipeBook.CAT_NEWS
     },
     {
       id: 1,
-      name: capitalizeFirst(strings.recipeBook.BUTTON_FAST_FOOD)
+      name: capitalizeFirst(strings.recipeBook.BUTTON_FAST_FOOD),
+      category: strings.recipeBook.CAT_FAST_FOOD
     }
   ];
   useEffect(() => {
-    toggleActiveClass(buttonItems[0].id);
+    toggleActiveClass(buttonItems[0].id, buttonItems[0].category);
   }, []);
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>
@@ -26,7 +28,9 @@ const MakeRecipeButton = () => {
         <Col xs={1} />
         <Col xs={11}>
           <Button
-            onClick={() => toggleActiveClass(buttonItem.id)}
+            onClick={() =>
+              toggleActiveClass(buttonItem.id, buttonItem.category)
+            }
             variant="dark"
             className={
               activesClasses[buttonItem.id]
