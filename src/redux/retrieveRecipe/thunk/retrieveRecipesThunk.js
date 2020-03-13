@@ -3,6 +3,7 @@ import { retrieveRecipeQuery } from "../query/retrieveRecipeQuery";
 import { strings } from "../../../strings/Strings";
 
 export const getRecipe = (category, email, isUserGoogle) => {
+  //test
   return async (dispatch, getState) => {
     dispatch({ type: retrieveRecipesCases.LOADING, payload: true });
     const bodyRequest = retrieveRecipeQuery(category, email, isUserGoogle);
