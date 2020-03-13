@@ -6,7 +6,6 @@ import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
-  const { activesClasses, toggleActiveClass } = useRecipeButton();
   const buttonItems = [
     {
       id: 0,
@@ -19,6 +18,9 @@ const MakeRecipeButton = () => {
       category: strings.recipeBook.CAT_FAST_FOOD
     }
   ];
+  const { activesClasses, toggleActiveClass } = useRecipeButton(
+    buttonItems.length
+  );
   useEffect(() => {
     toggleActiveClass(buttonItems[0].id, buttonItems[0].category);
   }, []);
