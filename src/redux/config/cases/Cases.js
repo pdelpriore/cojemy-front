@@ -55,3 +55,9 @@ export const loginGoogleUserCases = Object.freeze({
   GOOGLE_USER_ERROR: "loginGoogleUserError",
   CLEAR_STATE: "loginGoogleUserClearState"
 });
+
+export const retrieveRecipesCases = Object.freeze({
+  LOADING: "retrieveRecipesLoading",
+  RECIPE_RETRIVED: "retrieveRecipesRecipeRetrieved",
+  ERROR: "retrieveRecipesError"
+});
