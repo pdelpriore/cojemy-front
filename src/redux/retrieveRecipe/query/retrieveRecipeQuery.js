@@ -1,8 +1,8 @@
-export const retrieveRecipeQuery = (category, email, isUserGoogle) => {
+export const retrieveRecipeQuery = (category, email) => {
   return {
     query: `
               query {
-                retrieveRecipes(category: "${category}", email: "${email}", isGoogleUser: ${isUserGoogle}) {
+                retrieveRecipes(category: "${category}", email: "${email}") {
                     title
                     date
                     category

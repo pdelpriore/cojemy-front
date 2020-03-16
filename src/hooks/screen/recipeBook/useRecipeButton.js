@@ -22,11 +22,9 @@ const useRecipeButton = buttonQty => {
       initialState().map((bool, index) => (index === id ? !bool : bool))
     );
     if (userData.email) {
-      dispatch(getRecipe(category, userData.email, userData.isGoogleUser));
+      dispatch(getRecipe(category, userData.email));
     } else if (googleUserData.email) {
-      dispatch(
-        getRecipe(category, googleUserData.email, googleUserData.isGoogleUser)
-      );
+      dispatch(getRecipe(category, googleUserData.email));
     }
   };
   return { activesClasses, toggleActiveClass };

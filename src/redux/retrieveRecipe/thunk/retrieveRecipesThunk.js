@@ -2,10 +2,10 @@ import { retrieveRecipesCases } from "../../config/cases/Cases";
 import { retrieveRecipeQuery } from "../query/retrieveRecipeQuery";
 import { strings } from "../../../strings/Strings";
 
-export const getRecipe = (category, email, isUserGoogle) => {
+export const getRecipe = (category, email) => {
   return async (dispatch, getState) => {
     dispatch({ type: retrieveRecipesCases.LOADING, payload: true });
-    const bodyRequest = retrieveRecipeQuery(category, email, isUserGoogle);
+    const bodyRequest = retrieveRecipeQuery(category, email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
