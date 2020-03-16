@@ -4,6 +4,7 @@ export const retrieveRecipeQuery = (category, email) => {
               query {
                 retrieveRecipes(category: "${category}", email: "${email}") {
                     title
+                    picture
                     date
                     category
                     author {

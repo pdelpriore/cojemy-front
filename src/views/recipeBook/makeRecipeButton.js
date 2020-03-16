@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import useRecipeButton from "../../hooks/screen/recipeBook/useRecipeButton";
-import { capitalizeFirst } from "../../util/Util";
+import { capitalize, capitalizeFirst } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 
@@ -9,12 +9,12 @@ const MakeRecipeButton = () => {
   const buttonItems = [
     {
       id: 0,
-      name: capitalizeFirst(strings.recipeBook.BUTTON_NEW),
+      name: strings.recipeBook.BUTTON_NEW,
       category: strings.recipeBook.CAT_NEWS
     },
     {
       id: 1,
-      name: capitalizeFirst(strings.recipeBook.BUTTON_FAST_FOOD),
+      name: strings.recipeBook.BUTTON_FAST_FOOD,
       category: strings.recipeBook.CAT_FAST_FOOD
     }
   ];
@@ -41,7 +41,9 @@ const MakeRecipeButton = () => {
             }
           >
             <div className="recipe-button-icon" />
-            <div className="recipe-button-text">{buttonItem.name}</div>
+            <div className="recipe-button-text">
+              {capitalize(buttonItem.name)}
+            </div>
           </Button>
         </Col>
       </Row>
