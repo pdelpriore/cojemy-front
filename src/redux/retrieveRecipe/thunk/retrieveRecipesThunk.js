@@ -18,9 +18,15 @@ export const getRecipe = (category, email) => {
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
-        console.log(data);
+        dispatch({
+          type: retrieveRecipesCases.RECIPE_RETRIVED,
+          payload: data.retrieveRecipes
+        });
       } else if (errors) {
-        console.log(errors);
+        dispatch({
+          type: retrieveRecipesCases.ERROR,
+          payload: errors[0].message
+        });
       }
     } catch (err) {
       if (err) console.log(err);

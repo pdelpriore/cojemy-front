@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import useRecipeButton from "../../hooks/screen/recipeBook/useRecipeButton";
-import { capitalize, capitalizeFirst } from "../../util/Util";
+import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 

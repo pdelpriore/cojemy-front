@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { Row, Col, Image } from "react-bootstrap";
 import MakeRecipeButton from "./makeRecipeButton";
+import RecipesList from "./RecipesList";
 import "./recipeBook.css";
 
 const RecipeBook = ({ match: { path, url, isExact } }) => {
@@ -12,7 +13,9 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
         <Row>
           <Col xs={2} />
           <Col xs={10}>
-            <div className="recipebook-list"></div>
+            <div className="recipebook-list">
+              <RecipesList />
+            </div>
           </Col>
         </Row>
       </div>
