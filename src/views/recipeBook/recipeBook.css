@@ -67,10 +67,42 @@
   justify-content: center;
   align-items: center;
   padding: 10% 5% 5% 5%;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
 }
 .recipesList-loading-area {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 70vh;
+}
+.recipesList-item {
+  background-color: #dedfa3;
+  border: 1px #6d3b3a solid;
+  border-radius: 5px;
+  padding: 1%;
+  height: 30vh;
+  width: 45vw;
+  overflow: hidden;
+}
+.recipesList-item-title {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1vw;
+  text-align: left;
+  color: #343a40;
+}
+.recipesList-item-picture {
+  width: 8vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px #be6a15 solid;
+}
+.recipesList-item-author {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+}
+.recipesList-item-time {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
 }
