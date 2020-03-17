@@ -13,7 +13,17 @@ const RecipesList = () => {
       <Spinner animation="border" role="status" />
     </div>
   ) : (
-    <div className="recipesList-main-area">{recipesError}</div>
+    <div className="recipesList-main-area">
+      {recipesError ? (
+        recipesError
+      ) : (
+        <SimpleBar>
+          {recipesRetrieved.map((retrieveRecipe, index) => (
+            <div key={index}>{retrieveRecipe.title}</div>
+          ))}
+        </SimpleBar>
+      )}
+    </div>
   );
 };
 
