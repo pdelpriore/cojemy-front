@@ -2,12 +2,17 @@ import React from "react";
 import SimpleBar from "simplebar-react";
 import { Row, Col, Image, Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { createDate } from "../../util/Util";
+import TimeAgo from "timeago-react";
+import * as timeago from "timeago.js";
+import fr from "timeago.js/lib/lang/fr";
 import "./recipeBook.css";
 
 const RecipesList = () => {
   const { loadingRecipes, recipesRetrieved, recipesError } = useSelector(
     state => state.recipeBook
   );
+  timeago.register("fr", fr);
   return loadingRecipes ? (
     <div className="recipesList-loading-area">
       <Spinner animation="border" role="status" />
@@ -21,6 +26,18 @@ const RecipesList = () => {
           {recipesRetrieved.map((retrieveRecipe, index) => (
             <div className="recipesList-item" key={index}>
               <Row className="mb-3" />
+              <Row>
+                <Col xs={8} />
+                <Col xs={3}>
+                  <div>
+                    <TimeAgo
+                      datetime={createDate(retrieveRecipe.date)}
+                      locale="fr"
+                    />
+                  </div>
+                </Col>
+                <Col xs={1} />
+              </Row>
               <Row>
                 <Col xs={1} />
                 <Col xs={3}>

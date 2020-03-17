@@ -9,3 +9,7 @@ export const capitalize = text => {
 export const capitalizeFirst = text => {
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
+
+export const createDate = date => {
+  return new Date(date).toUTCString();
+};
