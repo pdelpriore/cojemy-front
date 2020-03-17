@@ -48,7 +48,7 @@ const RecipesList = () => {
                         ? retrieveRecipe.picture
                         : require("../../assets/imgs/panret.jpg")
                     }
-                    roundedCircle
+                    thumbnail
                   />
                 </Col>
                 <Col xs={7}>
