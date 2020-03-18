@@ -5,7 +5,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
   return (
     <div>
       <Navbar path={path} url={url} isExact={isExact} />
-      Welcome to My Recipes
+      Welcome
     </div>
   );
 };

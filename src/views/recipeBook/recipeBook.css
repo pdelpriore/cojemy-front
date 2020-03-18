@@ -83,6 +83,7 @@
   border-radius: 10px;
   overflow: hidden;
   transition: 0.5s ease;
+  margin-bottom: 2%;
 }
 .recipesList-item:hover {
   transform: scale(0.985);
@@ -130,4 +131,7 @@
   margin-right: 10px;
   color: #ee6670;
   width: 1vw;
+}
+.recipesList-item-simplebar {
+  height: 99vh !important;
 }

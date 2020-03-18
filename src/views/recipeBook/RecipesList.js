@@ -1,5 +1,4 @@
 import React from "react";
-import SimpleBar from "simplebar-react";
 import { Row, Col, Image, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock } from "@fortawesome/free-regular-svg-icons";
@@ -24,7 +23,7 @@ const RecipesList = () => {
       {recipesError ? (
         <div className="recipesList-item-norecipes">{recipesError}</div>
       ) : (
-        <SimpleBar>
+        <div>
           {recipesRetrieved.map((retrieveRecipe, index) => (
             <div className="recipesList-item" key={index}>
               <Row>
@@ -41,8 +40,8 @@ const RecipesList = () => {
                 </Col>
                 <Col xs={9}>
                   <Row>
-                    <Col xs={8} />
-                    <Col xs={4}>
+                    <Col xs={7} />
+                    <Col xs={5}>
                       <div>
                         <TimeAgo
                           className="recipesList-item-timeago"
@@ -72,7 +71,7 @@ const RecipesList = () => {
               </Row>
             </div>
           ))}
-        </SimpleBar>
+        </div>
       )}
     </div>
   );

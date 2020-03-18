@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { Row, Col, Image } from "react-bootstrap";
+import ScrollArea from "react-scrollbar";
+import { Row, Col, Image, ListGroup } from "react-bootstrap";
 import MakeRecipeButton from "./makeRecipeButton";
 import RecipesList from "./RecipesList";
 import "./recipeBook.css";
@@ -14,7 +15,14 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
           <Col xs={3} />
           <Col xs={9}>
             <div className="recipebook-list">
-              <RecipesList />
+              <ScrollArea
+                className="recipesList-item-simplebar"
+                smoothScrolling={true}
+              >
+                <ListGroup>
+                  <RecipesList />
+                </ListGroup>
+              </ScrollArea>
             </div>
           </Col>
         </Row>
