@@ -7,6 +7,7 @@ export const retrieveRecipeQuery = (category, email) => {
                     picture
                     date
                     category
+                    cookTime
                     author {
                         name
                     }

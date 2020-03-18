@@ -1,6 +1,8 @@
 import React from "react";
 import SimpleBar from "simplebar-react";
 import { Row, Col, Image, Spinner } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faClock } from "@fortawesome/free-regular-svg-icons";
 import { useSelector } from "react-redux";
 import { createDate } from "../../util/Util";
 import TimeAgo from "timeago-react";
@@ -15,7 +17,7 @@ const RecipesList = () => {
   timeago.register("fr", fr);
   return loadingRecipes ? (
     <div className="recipesList-loading-area">
-      <Spinner animation="border" role="status" />
+      <Spinner animation="border" role="status" variant="light" />
     </div>
   ) : (
     <div className="recipesList-main-area">
@@ -25,21 +27,7 @@ const RecipesList = () => {
         <SimpleBar>
           {recipesRetrieved.map((retrieveRecipe, index) => (
             <div className="recipesList-item" key={index}>
-              <Row className="mb-3" />
               <Row>
-                <Col xs={8} />
-                <Col xs={3}>
-                  <div>
-                    <TimeAgo
-                      datetime={createDate(retrieveRecipe.date)}
-                      locale="fr"
-                    />
-                  </div>
-                </Col>
-                <Col xs={1} />
-              </Row>
-              <Row>
-                <Col xs={1} />
                 <Col xs={3}>
                   <Image
                     className="recipesList-item-picture"
@@ -51,29 +39,34 @@ const RecipesList = () => {
                     thumbnail
                   />
                 </Col>
-                <Col xs={7}>
-                  <div style={{ height: 50 }} />
+                <Col xs={9}>
+                  <Row>
+                    <Col xs={8} />
+                    <Col xs={4}>
+                      <div>
+                        <TimeAgo
+                          className="recipesList-item-timeago"
+                          datetime={createDate(retrieveRecipe.date)}
+                          locale="fr"
+                        />
+                      </div>
+                    </Col>
+                  </Row>
                   <div className="recipesList-item-title">
                     {retrieveRecipe.title}
                   </div>
-                </Col>
-                <Col xs={1} />
-              </Row>
-              <Row className="mb-3" />
-              <Row>
-                <Col xs={1} />
-                <Col xs={11}>
+                  <div style={{ height: 10 }} />
                   <div className="recipesList-item-author">
-                    par: typol jakis
+                    <div className="recipesList-item-icon">
+                      <FontAwesomeIcon icon={faUser} />
+                    </div>
+                    <div>{retrieveRecipe.author.name}</div>
                   </div>
-                </Col>
-              </Row>
-              <Row className="mb-3" />
-              <Row>
-                <Col xs={1} />
-                <Col xs={11}>
                   <div className="recipesList-item-time">
-                    temps: iles tam minut
+                    <div className="recipesList-item-icon">
+                      <FontAwesomeIcon icon={faClock} />
+                    </div>
+                    <div>{retrieveRecipe.cookTime} min.</div>
                   </div>
                 </Col>
               </Row>

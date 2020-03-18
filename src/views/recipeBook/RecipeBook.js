@@ -11,8 +11,8 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
       <Navbar path={path} url={url} isExact={isExact} />
       <div className="recipebook-first-section">
         <Row>
-          <Col xs={2} />
-          <Col xs={10}>
+          <Col xs={3} />
+          <Col xs={9}>
             <div className="recipebook-list">
               <RecipesList />
             </div>

@@ -8,19 +8,19 @@
 }
 .recipebook-first-section {
   height: 100vh;
-  width: 60vw;
+  width: 50vw;
   border-radius: 5px;
   border: 1px #6e3b3b solid;
 }
 .recipebook-list {
   height: 100vh;
   border-radius: 5px;
-  background-color: #be6a15;
+  background-color: #2e303f;
   border: 1px #6e3b3b solid;
 }
 .recipebook-second-section {
   height: 100vh;
-  width: 40vw;
+  width: 50vw;
 }
 .recipebook-soup {
   width: 30vw;
@@ -30,6 +30,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 10vw;
+  background-color: #2e303f;
 }
 .recipebook-knob-button:hover > .recipe-button-icon {
   transform: rotate(25deg);
@@ -44,10 +45,11 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 10vw;
+  background-color: #2e303f;
 }
 .recipe-button-icon {
-  width: 2vw;
-  height: 2vh;
+  width: 1.8vw;
+  height: 1.8vh;
   padding: 20px;
   margin-right: 10px;
   border-radius: 50%;
@@ -58,7 +60,7 @@
   transition: 0.6s ease;
 }
 .recipe-button-text {
-  font-size: 1vw;
+  font-size: 0.8vw;
   font-family: "OpenSans-Regular";
   white-space: nowrap;
 }
@@ -77,32 +79,50 @@
   height: 70vh;
 }
 .recipesList-item {
-  background-color: #dedfa3;
-  border: 1px #6d3b3a solid;
-  border-radius: 5px;
-  padding: 1%;
-  height: 35vh;
-  width: 45vw;
+  background-color: #3c4049;
+  border-radius: 10px;
   overflow: hidden;
+  transition: 0.5s ease;
+}
+.recipesList-item:hover {
+  transform: scale(0.985);
+  cursor: pointer;
 }
 .recipesList-item-title {
   font-family: "OpenSans-SemiBold";
-  font-size: 1vw;
+  font-size: 1.2vw;
   text-align: left;
-  color: #343a40;
+  color: #ceced6;
 }
 .recipesList-item-picture {
-  width: 8vw;
+  width: 25vw;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border: 1px #be6a15 solid;
+  border-radius: 10px;
 }
 .recipesList-item-author {
+  display: flex;
+  justify-content: flex-start;
   font-family: "OpenSans-Regular";
   font-size: 1vw;
+  color: #ceced6;
 }
 .recipesList-item-time {
+  display: flex;
+  justify-content: flex-start;
   font-family: "OpenSans-Regular";
   font-size: 1vw;
+  color: #ceced6;
+}
+.recipesList-item-timeago {
+  font-family: "OpenSans-Regular";
+  font-size: 0.9vw;
+  color: #edc23c;
+}
+.recipesList-item-icon {
+  margin-right: 10px;
+  color: #ee6670;
+  width: 1vw;
 }

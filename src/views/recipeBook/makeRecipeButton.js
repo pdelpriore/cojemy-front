@@ -27,8 +27,8 @@ const MakeRecipeButton = () => {
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>
       <Row>
-        <Col xs={1} />
-        <Col xs={11}>
+        <Col xs={2} />
+        <Col xs={10}>
           <Button
             onClick={() =>
               toggleActiveClass(buttonItem.id, buttonItem.category)
