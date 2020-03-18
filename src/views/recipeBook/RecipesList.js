@@ -36,9 +36,7 @@ const RecipesList = () => {
                         ? retrieveRecipe.picture
                         : require("../../assets/imgs/panret.jpg")
                     }
-                    loader={
-                      <Spinner animation="border" size="sm" variant="danger" />
-                    }
+                    loader={<Spinner animation="border" variant="info" />}
                   />
                 </Col>
                 <Col xs={9}>
