@@ -22,7 +22,7 @@ const RecipesList = () => {
   ) : (
     <div className="recipesList-main-area">
       {recipesError ? (
-        recipesError
+        <div className="recipesList-item-norecipes">{recipesError}</div>
       ) : (
         <SimpleBar>
           {recipesRetrieved.map((retrieveRecipe, index) => (

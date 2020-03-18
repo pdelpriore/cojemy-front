@@ -88,6 +88,11 @@
   transform: scale(0.985);
   cursor: pointer;
 }
+.recipesList-item-norecipes {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1.1vw;
+  color: #ceced6;
+}
 .recipesList-item-title {
   font-family: "OpenSans-SemiBold";
   font-size: 1.2vw;
