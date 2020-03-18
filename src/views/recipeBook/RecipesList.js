@@ -69,6 +69,13 @@ const RecipesList = () => {
                   </div>
                 </Col>
               </Row>
+              <div
+                style={{
+                  height: 10,
+                  backgroundColor: "#2E303F",
+                  borderRadius: "10px"
+                }}
+              />
             </div>
           ))}
         </div>
