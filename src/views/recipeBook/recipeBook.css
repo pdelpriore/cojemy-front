@@ -80,6 +80,7 @@
 }
 .recipesList-item {
   background-color: #3c4049;
+  width: 30vw;
   border-radius: 10px;
   overflow: hidden;
   transition: 0.5s ease;
@@ -100,12 +101,15 @@
   color: #ceced6;
 }
 .recipesList-item-picture {
-  width: 25vw;
+  width: 6.6vw;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border: 1px #be6a15 solid;
   border-radius: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 5px;
 }
 .recipesList-item-author {
   display: flex;
@@ -123,6 +127,7 @@
 }
 .recipesList-item-timeago {
   font-family: "OpenSans-Regular";
+  white-space: nowrap;
   font-size: 0.9vw;
   color: #edc23c;
 }

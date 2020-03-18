@@ -1,5 +1,6 @@
 import React from "react";
-import { Row, Col, Image, Spinner } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
+import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock } from "@fortawesome/free-regular-svg-icons";
 import { useSelector } from "react-redux";
@@ -28,14 +29,16 @@ const RecipesList = () => {
             <div className="recipesList-item" key={index}>
               <Row>
                 <Col xs={3}>
-                  <Image
+                  <Img
                     className="recipesList-item-picture"
                     src={
                       retrieveRecipe.picture
                         ? retrieveRecipe.picture
                         : require("../../assets/imgs/panret.jpg")
                     }
-                    thumbnail
+                    loader={
+                      <Spinner animation="border" size="sm" variant="danger" />
+                    }
                   />
                 </Col>
                 <Col xs={9}>
