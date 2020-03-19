@@ -32,7 +32,11 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
       </div>
       <div className="recipebook-second-section">
         {detailsShowed ? (
-          <RecipeDetails />
+          <>
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <RecipeDetails />
+          </>
         ) : (
           <>
             {" "}

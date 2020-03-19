@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { categorySelectedClearState } from "../../redux/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
+import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { useDispatch } from "react-redux";
 import Navbar from "../../components/navbar/Navbar";
 
@@ -8,6 +9,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
 
   useEffect(() => {
     dispatch(categorySelectedClearState());
+    dispatch(recipeDetailsClearState());
   }, [dispatch]);
 
   return (

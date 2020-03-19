@@ -105,8 +105,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: 1px #be6a15 solid;
-  border-radius: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 5px;
@@ -140,6 +138,32 @@
   height: 99vh !important;
 }
 .recipeDetails-main {
-  width: 100vw;
-  height: 99vh;
+  padding: 2%;
+  width: 50vw;
+  height: 89vh;
+}
+.recipeDetails-title {
+  font-family: "Nunito-Bold";
+  font-size: 2.5vw;
+  border-bottom: 2px black solid;
+}
+.recipeDetails-close-icon {
+  font-size: 2vw;
+}
+.recipeDetails-close-icon:hover {
+  color: #ee6670;
+  cursor: pointer;
+}
+.recipeDetails-picture {
+  width: 15vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #572529;
+  border-radius: 20px;
+  padding: 10px;
+}
+.recipeDetails-ingredients-text {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1vw;
 }
