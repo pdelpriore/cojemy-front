@@ -67,3 +67,8 @@ export const showRecipeDetailsCases = Object.freeze({
   DETAILS_RETRIVED: "showRecipeDetailsCasesDetailsRetrieved",
   CLEAR_STATE: "showRecipeDetailsCasesClearState"
 });
+
+export const recipeCategorySelectedCases = Object.freeze({
+  BUTTON_ID_RETRIEVED: "recipeCategorySelectedButtonIdRetrieved",
+  CLEAR_STATE: "recipeCategorySelectedClearState"
+});

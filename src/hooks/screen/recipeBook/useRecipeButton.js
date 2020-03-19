@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRecipe } from "../../../redux/retrieveRecipe/thunk/retrieveRecipesThunk";
+import { categorySelected } from "../../../redux/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
 
 const useRecipeButton = buttonQty => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const useRecipeButton = buttonQty => {
   const { googleUserData } = useSelector(state => state.loginGoogle);
 
   const toggleActiveClass = (id, category) => {
+    dispatch(categorySelected(id));
     setActive(
       initialState().map((bool, index) => (index === id ? !bool : bool))
     );

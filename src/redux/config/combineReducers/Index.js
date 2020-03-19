@@ -10,6 +10,7 @@ import googleLoginReducer from "../../googleLogin/reducer/googleLoginReducer";
 import googleLogoutReducer from "../../googleLogout/reducer/googleLogoutReducer";
 import retrieveRecipesReducer from "../../retrieveRecipe/reducer/retrieveRecipesReducer";
 import showRecipeDetailsReducer from "../../showRecipeDetails/reducer/showRecipeDetailsReducer";
+import recipeCategorySelectedReducer from "../../recipeCategorySelected/reducer/recipeCategorySelectedReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -22,7 +23,8 @@ const allReducers = combineReducers({
   loginGoogle: googleLoginReducer,
   googleLogout: googleLogoutReducer,
   recipeBook: retrieveRecipesReducer,
-  showRecipeDetails: showRecipeDetailsReducer
+  showRecipeDetails: showRecipeDetailsReducer,
+  recipeCategorySelected: recipeCategorySelectedReducer
 });
 
 export default allReducers;

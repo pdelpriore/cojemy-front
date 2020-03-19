@@ -10,9 +10,7 @@ import "./recipeBook.css";
 
 const RecipeBook = ({ match: { path, url, isExact } }) => {
   const { detailsShowed } = useSelector(state => state.showRecipeDetails);
-  return detailsShowed ? (
-    <RecipeDetails />
-  ) : (
+  return (
     <div className="recipebook-area">
       <Navbar path={path} url={url} isExact={isExact} />
       <div className="recipebook-first-section">
@@ -33,21 +31,28 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
         </Row>
       </div>
       <div className="recipebook-second-section">
-        <Row className="mb-5" />
-        <Row className="mb-5" />
-        <Row className="mb-2" />
-        <MakeRecipeButton />
-        <Row className="mb-5" />
-        <Row className="mb-5" />
-        <Row>
-          <Col xs={2} />
-          <Col xs={10}>
-            <Image
-              className="recipebook-soup"
-              src={require("../../assets/imgs/soupret.jpg")}
-            />
-          </Col>
-        </Row>
+        {detailsShowed ? (
+          <RecipeDetails />
+        ) : (
+          <>
+            {" "}
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-2" />
+            <MakeRecipeButton />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row>
+              <Col xs={2} />
+              <Col xs={10}>
+                <Image
+                  className="recipebook-soup"
+                  src={require("../../assets/imgs/soupret.jpg")}
+                />
+              </Col>
+            </Row>{" "}
+          </>
+        )}
       </div>
     </div>
   );

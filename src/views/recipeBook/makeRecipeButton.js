@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import useRecipeButton from "../../hooks/screen/recipeBook/useRecipeButton";
+import { useSelector } from "react-redux";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
+  const { recipeButtonId } = useSelector(state => state.recipeCategorySelected);
   const buttonItems = [
     {
       id: 0,
@@ -21,9 +23,14 @@ const MakeRecipeButton = () => {
   const { activesClasses, toggleActiveClass } = useRecipeButton(
     buttonItems.length
   );
+
   useEffect(() => {
-    toggleActiveClass(buttonItems[0].id, buttonItems[0].category);
+    toggleActiveClass(
+      buttonItems[recipeButtonId].id,
+      buttonItems[recipeButtonId].category
+    );
   }, []);
+
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>
       <Row>

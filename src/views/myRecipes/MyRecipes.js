@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { categorySelectedClearState } from "../../redux/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
+import { useDispatch } from "react-redux";
 import Navbar from "../../components/navbar/Navbar";
 
 const MyRecipes = ({ match: { path, url, isExact } }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categorySelectedClearState());
+  }, [dispatch]);
+
   return (
     <div>
       <Navbar path={path} url={url} isExact={isExact} />
