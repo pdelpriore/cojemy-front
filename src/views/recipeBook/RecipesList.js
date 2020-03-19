@@ -3,14 +3,19 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock } from "@fortawesome/free-regular-svg-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createDate } from "../../util/Util";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
+import {
+  showRecipeDetailsComponent,
+  retrieveRecipeDetails
+} from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import "./recipeBook.css";
 
 const RecipesList = () => {
+  const dispatch = useDispatch();
   const { loadingRecipes, recipesRetrieved, recipesError } = useSelector(
     state => state.recipeBook
   );
@@ -26,7 +31,15 @@ const RecipesList = () => {
       ) : (
         <div>
           {recipesRetrieved.map((retrieveRecipe, index) => (
-            <div className="recipesList-item" key={index}>
+            <div
+              onClick={e => {
+                e.preventDefault();
+                dispatch(showRecipeDetailsComponent(true));
+                dispatch(retrieveRecipeDetails(retrieveRecipe));
+              }}
+              className="recipesList-item"
+              key={index}
+            >
               <Row>
                 <Col xs={3}>
                   <Img

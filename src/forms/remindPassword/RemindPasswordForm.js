@@ -66,7 +66,8 @@ const RemindPasswordForm = () => {
                 </div>
               </Button>
               <Button
-                onClick={() => {
+                onClick={e => {
+                  e.preventDefault();
                   dispatch(showRemindPassComponent(false));
                 }}
                 className="remindPass-button-cancel"

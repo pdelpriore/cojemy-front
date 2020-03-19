@@ -9,6 +9,7 @@ import googleSignupReducer from "../../googleSignup/reducer/googleSignupReducer"
 import googleLoginReducer from "../../googleLogin/reducer/googleLoginReducer";
 import googleLogoutReducer from "../../googleLogout/reducer/googleLogoutReducer";
 import retrieveRecipesReducer from "../../retrieveRecipe/reducer/retrieveRecipesReducer";
+import showRecipeDetailsReducer from "../../showRecipeDetails/reducer/showRecipeDetailsReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -20,7 +21,8 @@ const allReducers = combineReducers({
   signGoogle: googleSignupReducer,
   loginGoogle: googleLoginReducer,
   googleLogout: googleLogoutReducer,
-  recipeBook: retrieveRecipesReducer
+  recipeBook: retrieveRecipesReducer,
+  showRecipeDetails: showRecipeDetailsReducer
 });
 
 export default allReducers;

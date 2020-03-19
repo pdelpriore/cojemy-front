@@ -87,7 +87,10 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={2}>
             {!show && (
               <p
-                onClick={() => dispatch(showRemindPassComponent(true))}
+                onClick={e => {
+                  e.preventDefault();
+                  dispatch(showRemindPassComponent(true));
+                }}
                 className="forgot-password"
               >
                 {capitalizeFirst(strings.login.FORGOT_PASSWORD)}

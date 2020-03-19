@@ -139,3 +139,7 @@
 .recipesList-item-simplebar {
   height: 99vh !important;
 }
+.recipeDetails-main {
+  width: 100vw;
+  height: 99vh;
+}

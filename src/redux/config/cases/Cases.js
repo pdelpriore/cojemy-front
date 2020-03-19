@@ -61,3 +61,9 @@ export const retrieveRecipesCases = Object.freeze({
   RECIPE_RETRIVED: "retrieveRecipesRecipeRetrieved",
   ERROR: "retrieveRecipesError"
 });
+
+export const showRecipeDetailsCases = Object.freeze({
+  SHOWED: "showRecipeDetailsCasesShowed",
+  DETAILS_RETRIVED: "showRecipeDetailsCasesDetailsRetrieved",
+  CLEAR_STATE: "showRecipeDetailsCasesClearState"
+});

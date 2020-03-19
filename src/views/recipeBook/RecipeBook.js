@@ -4,10 +4,15 @@ import ScrollArea from "react-scrollbar";
 import { Row, Col, Image, ListGroup } from "react-bootstrap";
 import MakeRecipeButton from "./makeRecipeButton";
 import RecipesList from "./RecipesList";
+import RecipeDetails from "./RecipeDetails";
+import { useSelector } from "react-redux";
 import "./recipeBook.css";
 
 const RecipeBook = ({ match: { path, url, isExact } }) => {
-  return (
+  const { detailsShowed } = useSelector(state => state.showRecipeDetails);
+  return detailsShowed ? (
+    <RecipeDetails />
+  ) : (
     <div className="recipebook-area">
       <Navbar path={path} url={url} isExact={isExact} />
       <div className="recipebook-first-section">

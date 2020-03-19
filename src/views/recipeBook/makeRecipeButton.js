@@ -30,9 +30,10 @@ const MakeRecipeButton = () => {
         <Col xs={2} />
         <Col xs={10}>
           <Button
-            onClick={() =>
-              toggleActiveClass(buttonItem.id, buttonItem.category)
-            }
+            onClick={e => {
+              e.preventDefault();
+              toggleActiveClass(buttonItem.id, buttonItem.category);
+            }}
             variant="dark"
             className={
               activesClasses[buttonItem.id]
