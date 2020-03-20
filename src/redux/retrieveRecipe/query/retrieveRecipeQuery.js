@@ -8,6 +8,8 @@ export const retrieveRecipeQuery = (category, email) => {
                     date
                     category
                     cookTime
+                    ingredients
+                    description
                     author {
                         name
                     }

@@ -50,11 +50,13 @@ const RecipeDetails = () => {
             />
           </Col>
           <Col xs={5}>
-            <div>
-              <div className="recipeDetails-ingredients-text">
-                Ingredients:{" "}
+            <div className="recipeDetails-ingredients-text">Ingredients:</div>
+            <div style={{ height: 10 }} />
+            {detailsDataRetrieved.ingredients.map((ingredient, index) => (
+              <div className="recipeDetails-ingredients-item" key={index}>
+                - {ingredient}
               </div>
-            </div>
+            ))}
           </Col>
           <Col xs={1} />
         </Row>
@@ -63,6 +65,10 @@ const RecipeDetails = () => {
           <Col xs={1} />
           <Col xs={10}>
             <div className="recipeDetails-ingredients-text">Description: </div>
+            <div style={{ height: 10 }} />
+            <div className="recipeDetails-ingredients-description">
+              {detailsDataRetrieved.description}
+            </div>
           </Col>
           <Col xs={1} />
         </Row>

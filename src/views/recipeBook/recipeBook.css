@@ -165,5 +165,14 @@
 }
 .recipeDetails-ingredients-text {
   font-family: "OpenSans-SemiBold";
+  font-size: 1.1vw;
+}
+.recipeDetails-ingredients-item {
+  font-family: "OpenSans-Regular";
+  font-size: 1.1vw;
+}
+.recipeDetails-ingredients-description {
+  font-family: "OpenSans-Regular";
   font-size: 1vw;
+  text-align: justify;
 }
