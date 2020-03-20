@@ -13,6 +13,14 @@ export const retrieveRecipeQuery = (category, email) => {
                     author {
                         name
                     }
+                    comments {
+                      comment {
+                        content
+                      }
+                      commentator {
+                        name
+                      }
+                    }
                 }
               }
               `

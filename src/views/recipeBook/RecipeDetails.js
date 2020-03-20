@@ -13,6 +13,7 @@ const RecipeDetails = () => {
   const { detailsDataRetrieved } = useSelector(
     state => state.showRecipeDetails
   );
+  console.log(detailsDataRetrieved);
   return (
     <ScrollArea smoothScrolling={true} className="recipeDetails-main">
       <div>
