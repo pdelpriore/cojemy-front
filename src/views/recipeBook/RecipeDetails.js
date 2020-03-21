@@ -51,7 +51,7 @@ const RecipeDetails = () => {
             />
           </Col>
           <Col xs={5}>
-            <div className="recipeDetails-ingredients-text">Ingredients:</div>
+            <div className="recipeDetails-ingredients-text">Ingrédients:</div>
             <div style={{ height: 10 }} />
             {detailsDataRetrieved.ingredients.map((ingredient, index) => (
               <div className="recipeDetails-ingredients-item" key={index}>
