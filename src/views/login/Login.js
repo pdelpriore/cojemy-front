@@ -120,7 +120,6 @@ const Login = ({ match: { path, url, isExact } }) => {
                   : userGoogleSignedup !== null
                   ? capitalizeFirst(strings.signupGoogle.GOOGLE_USER_CREATED)
                   : null
-                //pozniej zamiast null daj errory z reduxa podczas loginu
               }
             />
           </Col>

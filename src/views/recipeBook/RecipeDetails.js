@@ -1,10 +1,15 @@
 import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+import { faTimesCircle, faUser } from "@fortawesome/free-regular-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
+import TimeAgo from "timeago-react";
+import * as timeago from "timeago.js";
+import fr from "timeago.js/lib/lang/fr";
+import { createDate } from "../../util/Util";
 import { useDispatch, useSelector } from "react-redux";
+import Rate from "./Rate";
 import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import "./recipeBook.css";
 
@@ -13,6 +18,7 @@ const RecipeDetails = () => {
   const { detailsDataRetrieved } = useSelector(
     state => state.showRecipeDetails
   );
+  timeago.register("fr", fr);
   console.log(detailsDataRetrieved);
   return (
     <ScrollArea smoothScrolling={true} className="recipeDetails-main">
@@ -70,6 +76,54 @@ const RecipeDetails = () => {
             <div className="recipeDetails-ingredients-description">
               {detailsDataRetrieved.description}
             </div>
+          </Col>
+          <Col xs={1} />
+        </Row>
+        <Row className="mb-5" />
+        <Row>
+          <Col xs={1} />
+          <Col xs={10}>
+            {detailsDataRetrieved.comments.map((item, index) => (
+              <div className="recipeDetails-comments-area" key={index}>
+                {item.commentator.photo || item.commentator.googlePhoto ? (
+                  <Img
+                    className="recipeDetails-comments-photo"
+                    src={
+                      item.commentator.photo
+                        ? item.commentator.photo
+                        : item.commentator.googlePhoto
+                        ? item.commentator.googlePhoto
+                        : null
+                    }
+                    loader={
+                      <Spinner animation="border" size="sm" variant="dark" />
+                    }
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    className="recipeDetails-comments-icon"
+                    icon={faUser}
+                  />
+                )}
+                <div className="recipeDetails-comments-content-area">
+                  <div className="recipeDetails-comments-author">
+                    {item.commentator.name}
+                    <TimeAgo
+                      className="recipeDetails-comments-timeago"
+                      datetime={createDate(item.comment.date)}
+                      locale="fr"
+                    />
+                  </div>
+                  <div className="recipeDetails-comments-rate">
+                    <Rate rate={item.rate.value} />
+                  </div>
+                  <div style={{ height: 5 }} />
+                  <div className="recipeDetails-comments-content">
+                    {item.comment.content}
+                  </div>
+                </div>
+              </div>
+            ))}
           </Col>
           <Col xs={1} />
         </Row>

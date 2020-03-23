@@ -176,3 +176,49 @@
   font-size: 1vw;
   text-align: justify;
 }
+.recipeDetails-comments-area {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.recipeDetails-comments-photo {
+  width: 1.8vw;
+  margin-right: 2%;
+  border-radius: 50%;
+}
+.recipeDetails-comments-icon {
+  font-size: 1.8vw;
+}
+.recipeDetails-comments-content-area {
+  width: 35vw;
+}
+.recipeDetails-comments-author {
+  display: flex;
+  justify-content: space-between;
+  font-family: "OpenSans-SemiBold";
+  font-size: 0.9vw;
+}
+.recipeDetails-comments-content {
+  font-family: "OpenSans-Regular";
+  text-align: justify;
+  font-size: 0.9vw;
+}
+.recipeDetails-comments-timeago {
+  font-family: "OpenSans-SemiBold";
+  font-size: 0.8vw;
+  white-space: nowrap;
+}
+.recipeDetails-comments-rate {
+  display: flex;
+  flex-direction: row;
+  font-family: "OpenSans-SemiBold";
+  font-size: 0.8vw;
+}
+.recipeDetails-comments-stars {
+  font-size: 1vw;
+  color: #3c4049;
+}
+.recipeDetails-comments-stars-active {
+  font-size: 1vw;
+  color: #b75a64;
+}

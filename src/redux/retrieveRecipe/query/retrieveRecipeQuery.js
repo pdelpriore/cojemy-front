@@ -17,9 +17,12 @@ export const retrieveRecipeQuery = (category, email) => {
                       commentator {
                         name
                         email
+                        photo
+                        googlePhoto
                       }
                       comment {
                         content
+                        date
                       }
                       rate {
                         value
