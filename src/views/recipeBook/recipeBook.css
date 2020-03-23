@@ -140,7 +140,7 @@
 .recipeDetails-main {
   padding: 2%;
   width: 50vw;
-  height: 89vh;
+  height: 80vh;
 }
 .recipeDetails-title {
   font-family: "Nunito-Bold";
@@ -180,6 +180,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-bottom: 2%;
 }
 .recipeDetails-comments-photo {
   width: 1.8vw;
