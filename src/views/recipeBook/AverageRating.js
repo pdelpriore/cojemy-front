@@ -13,8 +13,8 @@ const AverageRating = ({ data }) => {
 
   const rates = data.map(item => item.rate.value);
   const average = rates.reduce((a, b) => a + b) / rates.length;
-  const starPercentage = (average / 5) * 100;
-  const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+  const starPercentageRounded = `${Math.round(((average / 5) * 100) / 10) *
+    10}%`;
   console.log(starPercentageRounded);
 
   return stars.map((star, index) => <div key={index}>{star}</div>);
