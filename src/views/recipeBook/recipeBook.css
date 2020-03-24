@@ -219,9 +219,13 @@
   font-size: 1vw;
   color: #2e303f;
 }
+.recipeDetails-comments-stars-detail {
+  font-size: 1vw;
+  color: #3c4049;
+}
 .recipeDetails-comments-stars-active-details {
   font-size: 1vw;
-  color: #bd5366;
+  color: #ee6670;
 }
 .recipeDetails-comments-stars-active-list {
   font-size: 1vw;

@@ -7,7 +7,10 @@ const CommentRate = ({ rate }) => {
   const stars = [];
   for (let i = 0; i < 5; i++)
     stars.push(
-      <FontAwesomeIcon className="recipeDetails-comments-stars" icon={faStar} />
+      <FontAwesomeIcon
+        className="recipeDetails-comments-stars-detail"
+        icon={faStar}
+      />
     );
 
   for (let i = 0; i < rate; i++) {
