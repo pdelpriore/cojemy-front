@@ -9,8 +9,10 @@ import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
 import { createDate } from "../../util/Util";
 import { useDispatch, useSelector } from "react-redux";
-import Rate from "./Rate";
-import AverageRating from "./AverageRating";
+import CommentRate from "./CommentRate";
+import RatingStars from "./RatingStars";
+import RatingActiveStars from "./RatingActiveStars";
+import { getAverageRating } from "./getAverageRating";
 import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import "./recipeBook.css";
 
@@ -28,8 +30,14 @@ const RecipeDetails = () => {
           <h1 className="recipeDetails-title">{detailsDataRetrieved.title}</h1>
         </Col>
         <Col xs={2}>
-          <div className="recipeDetails-comments-rate">
-            <AverageRating data={detailsDataRetrieved.comments} />
+          <div className="recipeDetails-rate-outter">
+            <RatingStars />
+            <div
+              style={{ width: getAverageRating(detailsDataRetrieved.comments) }}
+              className="recipeDetails-rate-inner"
+            >
+              <RatingActiveStars />
+            </div>
           </div>
         </Col>
         <Col xs={1}>
@@ -122,7 +130,7 @@ const RecipeDetails = () => {
                       />
                     </div>
                     <div className="recipeDetails-comments-rate">
-                      <Rate rate={item.rate.value} />
+                      <CommentRate rate={item.rate.value} />
                     </div>
                     <div style={{ height: 5 }} />
                     <div className="recipeDetails-comments-content">
