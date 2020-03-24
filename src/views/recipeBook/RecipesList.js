@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
+import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock } from "@fortawesome/free-regular-svg-icons";
@@ -8,6 +9,9 @@ import { createDate } from "../../util/Util";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
+import RatingStars from "./RatingStars";
+import RatingActiveStars from "./RatingActiveStars";
+import { getAverageRating } from "./getAverageRating";
 import {
   showRecipeDetailsComponent,
   retrieveRecipeDetails
@@ -68,7 +72,18 @@ const RecipesList = () => {
                   <div className="recipesList-item-title">
                     {retrieveRecipe.title}
                   </div>
-                  <div style={{ height: 10 }} />
+                  <div className="recipesList-item-rate-outter">
+                    <RatingStars />
+                    <div
+                      style={{
+                        width: getAverageRating(retrieveRecipe.comments)
+                      }}
+                      className="recipesList-item-rate-inner"
+                    >
+                      <RatingActiveStars place={strings.rating.LIST} />
+                    </div>
+                  </div>
+                  <div style={{ height: 5 }} />
                   <div className="recipesList-item-author">
                     <div className="recipesList-item-icon">
                       <FontAwesomeIcon icon={faUser} />

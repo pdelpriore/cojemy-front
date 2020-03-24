@@ -13,7 +13,7 @@ const CommentRate = ({ rate }) => {
   for (let i = 0; i < rate; i++) {
     stars[i] = (
       <FontAwesomeIcon
-        className="recipeDetails-comments-stars-active"
+        className="recipeDetails-comments-stars-active-details"
         icon={faStar}
       />
     );

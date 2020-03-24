@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
+import { strings } from "../../strings/Strings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faUser } from "@fortawesome/free-regular-svg-icons";
 import ScrollArea from "react-scrollbar";
@@ -36,7 +37,7 @@ const RecipeDetails = () => {
               style={{ width: getAverageRating(detailsDataRetrieved.comments) }}
               className="recipeDetails-rate-inner"
             >
-              <RatingActiveStars />
+              <RatingActiveStars place={strings.rating.DETAILS} />
             </div>
           </div>
         </Col>

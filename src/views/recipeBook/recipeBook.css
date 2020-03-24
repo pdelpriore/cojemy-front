@@ -101,7 +101,7 @@
   color: #ceced6;
 }
 .recipesList-item-picture {
-  width: 6.6vw;
+  width: 7.4vw;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -217,11 +217,15 @@
 }
 .recipeDetails-comments-stars {
   font-size: 1vw;
-  color: #3c4049;
+  color: #2e303f;
 }
-.recipeDetails-comments-stars-active {
+.recipeDetails-comments-stars-active-details {
   font-size: 1vw;
   color: #b75a64;
+}
+.recipeDetails-comments-stars-active-list {
+  font-size: 1vw;
+  color: #baae3e;
 }
 .recipeDetails-rate-outter {
   position: relative;
@@ -230,6 +234,22 @@
   width: 5.6vw;
 }
 .recipeDetails-rate-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+.recipesList-item-rate-outter {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 5.6vw;
+}
+.recipesList-item-rate-inner {
   position: absolute;
   top: 0;
   left: 0;

@@ -93,5 +93,9 @@ export const strings = Object.freeze({
     BUTTON_FAST_FOOD: "fast food",
     CAT_FAST_FOOD: "fast food",
     CAT_NEWS: "news"
+  },
+  rating: {
+    DETAILS: "details",
+    LIST: "list"
   }
 });
