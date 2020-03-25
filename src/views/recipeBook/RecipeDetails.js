@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CommentRate from "./CommentRate";
 import RatingStars from "./RatingStars";
 import RatingActiveStars from "./RatingActiveStars";
+import RateAndComment from "../../forms/RateAndComment/RateAndComment";
 import { getAverageRating } from "./getAverageRating";
 import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import "./recipeBook.css";
@@ -92,6 +93,14 @@ const RecipeDetails = () => {
               <div className="recipeDetails-ingredients-description">
                 {detailsDataRetrieved.description}
               </div>
+            </Col>
+            <Col xs={1} />
+          </Row>
+          <Row className="mb-5" />
+          <Row>
+            <Col xs={1} />
+            <Col xs={10}>
+              <RateAndComment />
             </Col>
             <Col xs={1} />
           </Row>

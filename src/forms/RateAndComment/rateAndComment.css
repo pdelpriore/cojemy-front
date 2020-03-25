@@ -1,0 +1,15 @@
+.rate-comment-stars {
+  font-size: 2vw;
+  color: #3c4049;
+}
+.rate-stars-box {
+  display: flex;
+  flex-direction: row;
+}
+.star:hover {
+  cursor: pointer;
+}
+.rate-comment-stars-active {
+  font-size: 2vw;
+  color: #ee4a70;
+}
