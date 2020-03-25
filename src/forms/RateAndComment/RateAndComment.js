@@ -10,6 +10,7 @@ import "./rateAndComment.css";
 const RateAndComment = () => {
   const {
     rate,
+    rateHover,
     handleMouseEnter,
     handleMouseLeave,
     handleClick,
@@ -21,12 +22,22 @@ const RateAndComment = () => {
       <FontAwesomeIcon className="rate-comment-stars-active" icon={faStar} />
     );
   }
+  for (let i = 0; i < rateHover; i++) {
+    stars[i] = (
+      <FontAwesomeIcon className="rate-comment-stars-active" icon={faStar} />
+    );
+    for (let i = rateHover; i < 5; i++) {
+      stars[i] = (
+        <FontAwesomeIcon className="rate-comment-stars" icon={faStar} />
+      );
+    }
+  }
   let ratingStars = stars.map((ratingStar, index) => (
     <div
       className="star"
+      onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={e => handleClick(e, true)}
       key={index}
       data-value={index + 1}
     >
