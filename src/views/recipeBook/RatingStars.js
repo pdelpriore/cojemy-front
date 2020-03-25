@@ -1,14 +1,10 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { initializeStarRating } from "./initializeStarRating";
+import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 
 const RatingStars = () => {
-  const stars = [];
-  for (let i = 0; i < 5; i++)
-    stars.push(
-      <FontAwesomeIcon className="recipeDetails-comments-stars" icon={faStar} />
-    );
+  const stars = initializeStarRating(strings.rating.RATING_STARS);
 
   return stars.map((star, index) => <div key={index}>{star}</div>);
 };

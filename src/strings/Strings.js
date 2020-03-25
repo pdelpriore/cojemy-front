@@ -96,6 +96,9 @@ export const strings = Object.freeze({
   },
   rating: {
     DETAILS: "details",
-    LIST: "list"
+    LIST: "list",
+    COMMENT_RATE: "commentRate",
+    RATE_AND_COMMENT: "rateAndComment",
+    RATING_STARS: "ratingStars"
   }
 });
