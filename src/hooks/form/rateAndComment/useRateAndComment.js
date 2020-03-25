@@ -1,23 +1,29 @@
 import { useState } from "react";
 
 const useRateAndComment = () => {
-  const [rate, setRate] = useState("");
+  const [rate, setRate] = useState(null);
   const [comment, setComment] = useState({});
 
-  const handleMouseOver = e => {
-    e.persist();
+  const handleMouseEnter = e => {
     setRate(e.currentTarget.dataset.value);
   };
 
-  const handleMouseOut = bool => {
-    if (!bool) {
-      setRate("");
-    }
+  const handleMouseLeave = () => {
+    setRate("");
   };
 
-  const handleClick = (e, bool) => {
+  const removeOnMouseLeave = e => {
+    e.currentTarget.removeEventListener(
+      "onMouseLeave",
+      () => console.log("removed"),
+      true
+    );
+  };
+
+  const handleClick = e => {
+    console.log(e.currentTarget.className);
     e.preventDefault();
-    handleMouseOut(bool);
+    removeOnMouseLeave(e);
     setRate(e.currentTarget.dataset.value);
   };
 
@@ -30,8 +36,8 @@ const useRateAndComment = () => {
   };
   return {
     rate,
-    handleMouseOver,
-    handleMouseOut,
+    handleMouseEnter,
+    handleMouseLeave,
     handleClick,
     handleInputChange
   };

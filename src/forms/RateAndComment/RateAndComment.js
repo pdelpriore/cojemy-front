@@ -10,8 +10,8 @@ import "./rateAndComment.css";
 const RateAndComment = () => {
   const {
     rate,
-    handleMouseOver,
-    handleMouseOut,
+    handleMouseEnter,
+    handleMouseLeave,
     handleClick,
     handleInputChange
   } = useRateAndComment();
@@ -24,8 +24,8 @@ const RateAndComment = () => {
   let ratingStars = stars.map((ratingStar, index) => (
     <div
       className="star"
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={e => handleClick(e, true)}
       key={index}
       data-value={index + 1}

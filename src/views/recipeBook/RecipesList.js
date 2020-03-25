@@ -30,7 +30,7 @@ const RecipesList = () => {
     </div>
   ) : (
     <div className="recipesList-main-area">
-      {recipesError ? (
+      {recipesError || recipesRetrieved === null ? (
         <div className="recipesList-item-norecipes">{recipesError}</div>
       ) : (
         <div>
