@@ -26,7 +26,7 @@ const RateAndComment = () => {
     stars[i] = (
       <FontAwesomeIcon className="rate-comment-stars-active" icon={faStar} />
     );
-    for (let i = rateHover; i < 5; i++) {
+    for (let i = rateHover; i < stars.length; i++) {
       stars[i] = (
         <FontAwesomeIcon className="rate-comment-stars" icon={faStar} />
       );
