@@ -26,11 +26,13 @@ const RecipeDetails = () => {
   );
   const { userData } = useSelector(state => state.login);
   const { googleUserData } = useSelector(state => state.loginGoogle);
-  const isCommented = detailsDataRetrieved.comments.filter(
-    comment =>
-      comment.commentator.email === userData.email ||
-      comment.commentator.email === googleUserData.email
-  )[0].commentator.email;
+  const isCommented =
+    detailsDataRetrieved.comments.length > 0 &&
+    detailsDataRetrieved.comments.filter(
+      comment =>
+        comment.commentator.email === userData.email ||
+        comment.commentator.email === googleUserData.email
+    )[0].commentator.email;
   timeago.register("fr", fr);
   return (
     <>
