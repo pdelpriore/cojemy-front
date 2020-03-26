@@ -62,7 +62,7 @@ const RateAndComment = () => {
         </Col>
         <Col xs={4} />
       </Row>
-      <Row className="mb-3" />
+      <Row className="mb-4" />
       <Row>
         <Col xs={1} />
         <Col xs={10}>
