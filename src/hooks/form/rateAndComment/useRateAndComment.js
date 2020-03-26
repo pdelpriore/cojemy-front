@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { capitalizeFirst } from "../../../util/Util";
+import { addRateAndComment } from "../../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { useDispatch, useSelector } from "react-redux";
 
 const useRateAndComment = () => {
   const [rate, setRate] = useState("");
   const [rateHover, setRateHover] = useState("");
   const [inputs, setInputs] = useState({});
+
+  const dispatch = useDispatch();
+  const { userData } = useSelector(state => state.login);
+  const { googleUserData } = useSelector(state => state.loginGoogle);
 
   const handleMouseEnter = e => {
     setRateHover(e.currentTarget.dataset.value);
@@ -27,9 +33,17 @@ const useRateAndComment = () => {
     }));
   };
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = (e, recipeId) => {
     e.preventDefault();
-    console.log("submitted");
+    if (userData.email) {
+      dispatch(
+        addRateAndComment(recipeId, rate, inputs.comment, userData.email)
+      );
+    } else if (googleUserData.email) {
+      dispatch(
+        addRateAndComment(recipeId, rate, inputs.comment, googleUserData.email)
+      );
+    }
   };
   return {
     rate,

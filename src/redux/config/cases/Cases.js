@@ -63,8 +63,10 @@ export const retrieveRecipesCases = Object.freeze({
 });
 
 export const showRecipeDetailsCases = Object.freeze({
+  LOADING: "showRecipeDetailsCasesLoading",
   SHOWED: "showRecipeDetailsCasesShowed",
   DETAILS_RETRIVED: "showRecipeDetailsCasesDetailsRetrieved",
+  RATE_COMMENT_ADDED: "showRecipeDetailsCasesRateCommentAdded",
   CLEAR_STATE: "showRecipeDetailsCasesClearState"
 });
 

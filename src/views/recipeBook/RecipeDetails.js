@@ -111,7 +111,11 @@ const RecipeDetails = () => {
           <Row className="mb-5" />
           <Row>
             <Col xs={1} />
-            <Col xs={10}>{isCommented && <RateAndComment />}</Col>
+            <Col xs={10}>
+              {isCommented && (
+                <RateAndComment recipeId={detailsDataRetrieved._id} />
+              )}
+            </Col>
             <Col xs={1} />
           </Row>
           <Row className="mb-5" />

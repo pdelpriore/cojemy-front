@@ -3,6 +3,7 @@ export const retrieveRecipeQuery = (category, email) => {
     query: `
               query {
                 retrieveRecipes(category: "${category}", email: "${email}") {
+                    _id
                     title
                     picture
                     date

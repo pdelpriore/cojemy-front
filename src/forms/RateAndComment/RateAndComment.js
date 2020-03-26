@@ -8,7 +8,7 @@ import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./rateAndComment.css";
 
-const RateAndComment = () => {
+const RateAndComment = ({ recipeId }) => {
   const {
     rate,
     rateHover,
@@ -66,7 +66,7 @@ const RateAndComment = () => {
       <Row>
         <Col xs={1} />
         <Col xs={10}>
-          <Form onSubmit={handleOnSubmit}>
+          <Form onSubmit={e => handleOnSubmit(e, recipeId)}>
             <Row>
               <Col xs={12}>
                 <Form.Group controlId="formBasicRateComment">
