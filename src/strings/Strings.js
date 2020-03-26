@@ -94,11 +94,19 @@ export const strings = Object.freeze({
     CAT_FAST_FOOD: "fast food",
     CAT_NEWS: "news"
   },
+  recipeBookDetails: {
+    DESCRIBE: "description:",
+    INGREDIENTS: "ingrédients:"
+  },
   rating: {
     DETAILS: "details",
     LIST: "list",
     COMMENT_RATE: "commentRate",
     RATE_AND_COMMENT: "rateAndComment",
-    RATING_STARS: "ratingStars"
+    RATING_STARS: "ratingStars",
+    COMMENT: "ton commentaire",
+    BUTTON_TEXT: "ajoute",
+    BUTTON_TEXT_LOADING: "j'ajoute ...",
+    NOTE: "note"
   }
 });

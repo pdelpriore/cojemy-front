@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
+import { capitalizeFirst } from "../../util/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faUser } from "@fortawesome/free-regular-svg-icons";
 import ScrollArea from "react-scrollbar";
@@ -23,6 +24,13 @@ const RecipeDetails = () => {
   const { detailsDataRetrieved } = useSelector(
     state => state.showRecipeDetails
   );
+  const { userData } = useSelector(state => state.login);
+  const { googleUserData } = useSelector(state => state.loginGoogle);
+  const isCommented = detailsDataRetrieved.comments.filter(
+    comment =>
+      comment.commentator.email === userData.email ||
+      comment.commentator.email === googleUserData.email
+  )[0].commentator.email;
   timeago.register("fr", fr);
   return (
     <>
@@ -72,7 +80,9 @@ const RecipeDetails = () => {
               />
             </Col>
             <Col xs={5}>
-              <div className="recipeDetails-ingredients-text">Ingrédients:</div>
+              <div className="recipeDetails-ingredients-text">
+                {capitalizeFirst(strings.recipeBookDetails.INGREDIENTS)}
+              </div>
               <div style={{ height: 10 }} />
               {detailsDataRetrieved.ingredients.map((ingredient, index) => (
                 <div className="recipeDetails-ingredients-item" key={index}>
@@ -87,7 +97,7 @@ const RecipeDetails = () => {
             <Col xs={1} />
             <Col xs={10}>
               <div className="recipeDetails-ingredients-text">
-                Description:{" "}
+                {capitalizeFirst(strings.recipeBookDetails.DESCRIBE)}
               </div>
               <div style={{ height: 10 }} />
               <div className="recipeDetails-ingredients-description">
@@ -99,9 +109,7 @@ const RecipeDetails = () => {
           <Row className="mb-5" />
           <Row>
             <Col xs={1} />
-            <Col xs={10}>
-              <RateAndComment />
-            </Col>
+            <Col xs={10}>{isCommented && <RateAndComment />}</Col>
             <Col xs={1} />
           </Row>
           <Row className="mb-5" />

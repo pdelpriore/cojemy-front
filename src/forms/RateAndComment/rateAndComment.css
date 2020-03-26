@@ -13,3 +13,40 @@
   font-size: 2vw;
   color: #ee4a70;
 }
+.rate-text-family {
+  font-size: 1vw;
+  font-family: "OpenSans-SemiBold";
+  color: #3c4049;
+}
+.rate-placeholder {
+  font-family: "OpenSans-Regular";
+  font-size: 1.3vw;
+  background-color: #fff98c;
+  color: #85203b;
+}
+.rate-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rate-button-send {
+  font-family: "OpenSans-Regular";
+}
+.rate-spinner {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.rate-loading-text {
+  margin-left: 10px;
+}
+.rate-note-text {
+  height: 1vh;
+  font-size: 1vw;
+  font-family: "OpenSans-SemiBold";
+  color: #3c4049;
+}
+.rate-note-center {
+  display: flex;
+  align-items: center;
+}

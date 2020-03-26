@@ -1,20 +1,23 @@
 import React from "react";
-import { Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import useRateAndComment from "../../hooks/form/rateAndComment/useRateAndComment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { initializeStarRating } from "../../views/recipeBook/initializeStarRating";
 import { strings } from "../../strings/Strings";
+import { capitalizeFirst } from "../../util/Util";
 import "./rateAndComment.css";
 
 const RateAndComment = () => {
   const {
     rate,
     rateHover,
+    inputs,
     handleMouseEnter,
     handleMouseLeave,
     handleClick,
-    handleInputChange
+    handleInputChange,
+    handleOnSubmit
   } = useRateAndComment();
   const stars = initializeStarRating(strings.rating.RATE_AND_COMMENT);
   for (let i = 0; i < rate; i++) {
@@ -45,13 +48,88 @@ const RateAndComment = () => {
     </div>
   ));
   return (
-    <Row>
-      <Col xs={4} />
-      <Col xs={4}>
-        <div className="rate-stars-box">{ratingStars}</div>
-      </Col>
-      <Col xs={4} />
-    </Row>
+    <>
+      <Row>
+        <Col xs={1} />
+        <Col className="rate-note-center" xs={1}>
+          <div className="rate-note-text">
+            {capitalizeFirst(strings.rating.NOTE)}
+          </div>
+        </Col>
+        <Col xs={2} />
+        <Col xs={4}>
+          <div className="rate-stars-box">{ratingStars}</div>
+        </Col>
+        <Col xs={4} />
+      </Row>
+      <Row className="mb-3" />
+      <Row>
+        <Col xs={1} />
+        <Col xs={10}>
+          <Form onSubmit={handleOnSubmit}>
+            <Row>
+              <Col xs={12}>
+                <Form.Group controlId="formBasicRateComment">
+                  <Form.Label className="rate-text-family">
+                    {capitalizeFirst(strings.rating.COMMENT)}
+                  </Form.Label>
+                  <Form.Control
+                    onChange={handleInputChange}
+                    value={inputs.comment || ""}
+                    className="rate-placeholder"
+                    as="textarea"
+                    rows="4"
+                    size="lg"
+                    name="comment"
+                    type="text"
+                    placeholder={strings.rating.COMMENT}
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="mb-3" />
+            <Row>
+              <Col xs={4} />
+              <Col xs={4}>
+                <div className="rate-button">
+                  <Button
+                    className="rate-button-send"
+                    disabled={
+                      inputs.comment === undefined ||
+                      inputs.comment === "" ||
+                      rate === ""
+                    }
+                    type="submit"
+                    variant="outline-dark"
+                  >
+                    <div className="rate-spinner">
+                      {false && (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      )}
+                      {false ? (
+                        <div className="rate-loading-text">
+                          {capitalizeFirst(strings.rating.BUTTON_TEXT_LOADING)}
+                        </div>
+                      ) : (
+                        <div>{capitalizeFirst(strings.rating.BUTTON_TEXT)}</div>
+                      )}
+                    </div>
+                  </Button>
+                </div>
+              </Col>
+              <Col xs={4} />
+            </Row>
+          </Form>
+        </Col>
+        <Col xs={1} />
+      </Row>
+    </>
   );
 };
 

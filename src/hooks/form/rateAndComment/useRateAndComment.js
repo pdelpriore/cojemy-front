@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { capitalizeFirst } from "../../../util/Util";
 
 const useRateAndComment = () => {
   const [rate, setRate] = useState("");
   const [rateHover, setRateHover] = useState("");
-  const [comment, setComment] = useState({});
+  const [inputs, setInputs] = useState({});
 
   const handleMouseEnter = e => {
     setRateHover(e.currentTarget.dataset.value);
@@ -20,18 +21,25 @@ const useRateAndComment = () => {
 
   const handleInputChange = e => {
     e.persist();
-    setComment(comment => ({
-      ...comment,
-      [e.target.name]: e.target.value
+    setInputs(inputs => ({
+      ...inputs,
+      [e.target.name]: capitalizeFirst(e.target.value)
     }));
+  };
+
+  const handleOnSubmit = e => {
+    e.preventDefault();
+    console.log("submitted");
   };
   return {
     rate,
     rateHover,
+    inputs,
     handleClick,
     handleMouseEnter,
     handleMouseLeave,
-    handleInputChange
+    handleInputChange,
+    handleOnSubmit
   };
 };
 
