@@ -15,7 +15,6 @@ export const retrieveRecipeDetails = data => {
     return a.comment.date > b.comment.date ? -1 : 1;
   });
   let dataWithCommentsSorted = { ...data, comments: commentsSorted };
-  console.log(dataWithCommentsSorted);
   return (dispatch, getState) => {
     dispatch({
       type: showRecipeDetailsCases.DETAILS_RETRIVED,
