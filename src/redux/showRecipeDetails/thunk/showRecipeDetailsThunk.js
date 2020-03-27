@@ -14,11 +14,10 @@ export const retrieveRecipeDetails = data => {
   let commentsSorted = data.comments.sort((a, b) => {
     return a.comment.date > b.comment.date ? -1 : 1;
   });
-  let dataWithCommentsSorted = { ...data, comments: commentsSorted };
   return (dispatch, getState) => {
     dispatch({
       type: showRecipeDetailsCases.DETAILS_RETRIVED,
-      payload: dataWithCommentsSorted
+      payload: { ...data, comments: commentsSorted }
     });
   };
 };
