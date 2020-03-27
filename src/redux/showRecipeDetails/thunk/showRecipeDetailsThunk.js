@@ -11,8 +11,16 @@ export const showRecipeDetailsComponent = bool => {
 };
 
 export const retrieveRecipeDetails = data => {
+  let commentsSorted = data.comments.sort((a, b) => {
+    return a.comment.date > b.comment.date ? -1 : 1;
+  });
+  let dataWithCommentsSorted = { ...data, comments: commentsSorted };
+  console.log(dataWithCommentsSorted);
   return (dispatch, getState) => {
-    dispatch({ type: showRecipeDetailsCases.DETAILS_RETRIVED, payload: data });
+    dispatch({
+      type: showRecipeDetailsCases.DETAILS_RETRIVED,
+      payload: dataWithCommentsSorted
+    });
   };
 };
 
