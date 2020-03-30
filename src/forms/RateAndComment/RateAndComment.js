@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import useRateAndComment from "../../hooks/form/rateAndComment/useRateAndComment";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { initializeStarRating } from "../../views/recipeBook/initializeStarRating";
@@ -19,6 +20,7 @@ const RateAndComment = ({ recipeId }) => {
     handleInputChange,
     handleOnSubmit
   } = useRateAndComment();
+  const { detailsLoading } = useSelector(state => state.showRecipeDetails);
   const stars = initializeStarRating(strings.rating.RATE_AND_COMMENT);
   for (let i = 0; i < rate; i++) {
     stars[i] = (
@@ -66,7 +68,12 @@ const RateAndComment = ({ recipeId }) => {
       <Row>
         <Col xs={1} />
         <Col xs={10}>
-          <Form onSubmit={e => handleOnSubmit(e, recipeId)}>
+          <Form
+            onSubmit={e => {
+              e.preventDefault();
+              handleOnSubmit(recipeId);
+            }}
+          >
             <Row>
               <Col xs={12}>
                 <Form.Group controlId="formBasicRateComment">
@@ -103,7 +110,7 @@ const RateAndComment = ({ recipeId }) => {
                     variant="outline-dark"
                   >
                     <div className="rate-spinner">
-                      {false && (
+                      {detailsLoading && (
                         <Spinner
                           as="span"
                           animation="border"
@@ -112,7 +119,7 @@ const RateAndComment = ({ recipeId }) => {
                           aria-hidden="true"
                         />
                       )}
-                      {false ? (
+                      {detailsLoading ? (
                         <div className="rate-loading-text">
                           {capitalizeFirst(strings.rating.BUTTON_TEXT_LOADING)}
                         </div>

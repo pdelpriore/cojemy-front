@@ -33,16 +33,19 @@ const useRateAndComment = () => {
     }));
   };
 
-  const handleOnSubmit = (e, recipeId) => {
-    e.preventDefault();
+  const handleOnSubmit = recipeId => {
     if (userData.email) {
       dispatch(
         addRateAndComment(recipeId, rate, inputs.comment, userData.email)
       );
+      setInputs({});
+      setRate("");
     } else if (googleUserData.email) {
       dispatch(
         addRateAndComment(recipeId, rate, inputs.comment, googleUserData.email)
       );
+      setInputs({});
+      setRate("");
     }
   };
   return {

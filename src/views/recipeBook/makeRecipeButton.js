@@ -8,6 +8,9 @@ import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
   const { recipeButtonId } = useSelector(state => state.recipeCategorySelected);
+  const { detailsDataRetrieved } = useSelector(
+    state => state.showRecipeDetails
+  );
   const buttonItems = [
     {
       id: 0,

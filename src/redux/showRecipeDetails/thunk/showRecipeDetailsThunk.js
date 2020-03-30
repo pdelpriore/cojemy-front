@@ -1,5 +1,6 @@
 import { showRecipeDetailsCases } from "../../config/cases/Cases";
 import { addRateAndCommentQuery } from "../query/addRateAndCommentQuery";
+import { sortCommentsByDate } from "./sortCommentsByDate";
 import { strings } from "../../../strings/Strings";
 
 export const showRecipeDetailsComponent = bool => {
@@ -11,13 +12,10 @@ export const showRecipeDetailsComponent = bool => {
 };
 
 export const retrieveRecipeDetails = data => {
-  let commentsSorted = data.comments.sort((a, b) => {
-    return a.comment.date > b.comment.date ? -1 : 1;
-  });
   return (dispatch, getState) => {
     dispatch({
       type: showRecipeDetailsCases.DETAILS_RETRIVED,
-      payload: { ...data, comments: commentsSorted }
+      payload: { ...data, comments: sortCommentsByDate(data) }
     });
   };
 };
@@ -42,19 +40,15 @@ export const addRateAndComment = (recipeId, rate, comment, email) => {
         body: JSON.stringify(bodyRequest)
       });
       const responseData = await response.json();
-      const { errors, data } = responseData;
+      const { data } = responseData;
       if (data) {
-        console.log(data);
-        // dispatch({
-        //   type: retrieveRecipesCases.RECIPE_RETRIVED,
-        //   payload: data.retrieveRecipes
-        // });
-      } else if (errors) {
-        console.log(errors);
-        // dispatch({
-        //   type: retrieveRecipesCases.ERROR,
-        //   payload: errors[0].message
-        // });
+        dispatch({
+          type: showRecipeDetailsCases.DETAILS_RETRIVED,
+          payload: {
+            ...data.addRecipeRateComment,
+            comments: sortCommentsByDate(data.addRecipeRateComment)
+          }
+        });
       }
     } catch (err) {
       if (err) console.log(err);
