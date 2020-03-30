@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
@@ -31,39 +31,16 @@ const useNotification = notificationMessage => {
   const { googleUserLoginError } = useSelector(state => state.loginGoogle);
   const dispatch = useDispatch();
 
-  let clearSignupState = useCallback(() => {
-    return dispatch(clearSignUpState());
-  }, [dispatch]);
-
-  let clearCustomerState = useCallback(() => {
-    return dispatch(clearCustomerContactState());
-  }, [dispatch]);
-
-  let clearRemindPassState = useCallback(() => {
-    return dispatch(clearRemindPasswordState());
-  }, [dispatch]);
-
-  let clearLoginReduxState = useCallback(() => {
-    return dispatch(clearLoginState());
-  }, [dispatch]);
-
-  let clearGoogleSignReduxState = useCallback(() => {
-    return dispatch(clearSignUpGoogleUserState());
-  }, [dispatch]);
-
-  let clearGoogleLoginReduxState = useCallback(() => {
-    return dispatch(clearGoogleLoginState());
-  }, [dispatch]);
-
   useEffect(() => {
     setShow(true);
     const timer = setTimeout(() => {
-      if (error || userSignedup) clearSignupState();
-      if (emailSent) clearCustomerState();
-      if (passwordSent || remindPassError) clearRemindPassState();
-      if (loginError) clearLoginReduxState();
-      if (errorGoogleSignup || userGoogleSignedup) clearGoogleSignReduxState();
-      if (googleUserLoginError) clearGoogleLoginReduxState();
+      if (error || userSignedup) dispatch(clearSignUpState());
+      if (emailSent) dispatch(clearCustomerContactState());
+      if (passwordSent || remindPassError) dispatch(clearRemindPasswordState());
+      if (loginError) dispatch(clearLoginState());
+      if (errorGoogleSignup || userGoogleSignedup)
+        dispatch(clearSignUpGoogleUserState());
+      if (googleUserLoginError) dispatch(clearGoogleLoginState());
       setShow(false);
       setNotification({});
     }, 3500);
@@ -79,12 +56,7 @@ const useNotification = notificationMessage => {
     userGoogleSignedup,
     errorGoogleSignup,
     googleUserLoginError,
-    clearGoogleLoginReduxState,
-    clearSignupState,
-    clearCustomerState,
-    clearRemindPassState,
-    clearLoginReduxState,
-    clearGoogleSignReduxState
+    dispatch
   ]);
 
   return {

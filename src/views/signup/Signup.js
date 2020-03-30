@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import Navbar from "../../components/navbar/Navbar";
@@ -25,13 +25,10 @@ const Signup = ({ match: { path, url, isExact } }) => {
   });
   const history = useHistory();
 
-  let redirectToLogin = useCallback(() => {
-    return history.push(strings.path.LOGIN);
-  }, [history]);
-
   useEffect(() => {
-    if (userSignedup !== null || userGoogleSignedup !== null) redirectToLogin();
-  }, [userSignedup, userGoogleSignedup, redirectToLogin]);
+    if (userSignedup !== null || userGoogleSignedup !== null)
+      history.push(strings.path.LOGIN);
+  }, [userSignedup, userGoogleSignedup, history]);
 
   return (
     <animated.div style={props} className="signup-area">

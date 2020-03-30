@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { showRemindPassComponent } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
@@ -35,14 +35,10 @@ const Login = ({ match: { path, url, isExact } }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  let redirectToRecipeBook = useCallback(() => {
-    return history.push(strings.path.RECIPE_BOOK);
-  }, [history]);
-
   useEffect(() => {
     if (userData.email !== undefined || googleUserData.email !== undefined)
-      redirectToRecipeBook();
-  }, [userData, googleUserData, redirectToRecipeBook]);
+      history.push(strings.path.RECIPE_BOOK);
+  }, [userData, googleUserData, history]);
 
   return (
     <animated.div style={props} className="login-area">

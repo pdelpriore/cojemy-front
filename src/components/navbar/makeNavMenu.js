@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearLoginState } from "../../redux/login/thunk/loginThunk";
 import {
@@ -61,37 +61,12 @@ const MakeNavMenu = ({ type }) => {
     state => state.googleLogout
   );
 
-  let clearLoginReduxState = useCallback(() => {
-    return dispatch(clearLoginState());
-  }, [dispatch]);
-
-  let clearLogoutReduxState = useCallback(() => {
-    return dispatch(clearLogoutState());
-  }, [dispatch]);
-
-  let clearGoogleLoginReduxState = useCallback(() => {
-    return dispatch(clearGoogleLoginState());
-  }, [dispatch]);
-
-  let clearGoogleLogoutReduxState = useCallback(() => {
-    return dispatch(clearGoogleLogoutState());
-  }, [dispatch]);
-
   useEffect(() => {
-    if (userLoggedOut) clearLoginReduxState();
-    if (userData.email === undefined) clearLogoutReduxState();
-    if (googleUserLoggedOut) clearGoogleLoginReduxState();
-    if (googleUserData.email === undefined) clearGoogleLogoutReduxState();
-  }, [
-    userData,
-    userLoggedOut,
-    clearLoginReduxState,
-    clearLogoutReduxState,
-    googleUserData,
-    googleUserLoggedOut,
-    clearGoogleLoginReduxState,
-    clearGoogleLogoutReduxState
-  ]);
+    if (userLoggedOut) dispatch(clearLoginState());
+    if (userData.email === undefined) dispatch(clearLogoutState());
+    if (googleUserLoggedOut) dispatch(clearGoogleLoginState());
+    if (googleUserData.email === undefined) dispatch(clearGoogleLogoutState());
+  }, [userData, userLoggedOut, googleUserData, googleUserLoggedOut, dispatch]);
 
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
