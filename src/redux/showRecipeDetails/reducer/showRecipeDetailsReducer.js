@@ -16,7 +16,6 @@ const showRecipeDetailsReducer = (state = initialState, action) => {
       return {
         ...state,
         detailsLoading: false,
-        detailsShowed: true,
         detailsDataRetrieved: action.payload
       };
     case showRecipeDetailsCases.CLEAR_STATE:
