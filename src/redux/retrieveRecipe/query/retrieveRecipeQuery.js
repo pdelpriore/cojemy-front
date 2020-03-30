@@ -22,10 +22,12 @@ export const retrieveRecipeQuery = (category, email) => {
                         googlePhoto
                       }
                       comment {
+                        _id
                         content
                         date
                       }
                       rate {
+                        _id
                         value
                       }
                     }

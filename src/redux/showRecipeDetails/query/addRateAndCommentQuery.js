@@ -27,10 +27,12 @@ export const addRateAndCommentQuery = (
                           googlePhoto
                         }
                         comment {
+                          _id
                           content
                           date
                         }
                         rate {
+                          _id
                           value
                         }
                       }

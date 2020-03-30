@@ -4,6 +4,7 @@ import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faUser } from "@fortawesome/free-regular-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
 import TimeAgo from "timeago-react";
@@ -17,6 +18,7 @@ import RatingActiveStars from "./RatingActiveStars";
 import RateAndComment from "../../forms/RateAndComment/RateAndComment";
 import { getAverageRating } from "./getAverageRating";
 import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails";
 import "./recipeBook.css";
 
 const RecipeDetails = () => {
@@ -33,6 +35,13 @@ const RecipeDetails = () => {
         comment.commentator.email === userData.email ||
         comment.commentator.email === googleUserData.email
     )[0].commentator.email;
+  const {
+    editShow,
+    handleMouseEnter,
+    handleMouseLeave,
+    handleEditClick,
+    handleTrashClick
+  } = useRecipeDetails();
   timeago.register("fr", fr);
   return (
     <>
@@ -112,7 +121,7 @@ const RecipeDetails = () => {
           <Row>
             <Col xs={1} />
             <Col xs={10}>
-              {isCommented && (
+              {!isCommented && (
                 <RateAndComment recipeId={detailsDataRetrieved._id} />
               )}
             </Col>
@@ -144,7 +153,19 @@ const RecipeDetails = () => {
                       icon={faUser}
                     />
                   )}
-                  <div className="recipeDetails-comments-content-area">
+                  <div
+                    onMouseEnter={
+                      (item.commentator.email === userData.email ||
+                        item.commentator.email === googleUserData.email) &&
+                      handleMouseEnter
+                    }
+                    onMouseLeave={
+                      (item.commentator.email === userData.email ||
+                        item.commentator.email === googleUserData.email) &&
+                      handleMouseLeave
+                    }
+                    className="recipeDetails-comments-content-area"
+                  >
                     <div className="recipeDetails-comments-author">
                       {item.commentator.name}
                       <TimeAgo
@@ -161,6 +182,24 @@ const RecipeDetails = () => {
                       {item.comment.content}
                     </div>
                   </div>
+                  {editShow && (
+                    <div
+                      className="recipeDetails-comments-edit-box"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <FontAwesomeIcon
+                        onClick={handleEditClick}
+                        className="recipeDetails-comments-edit-icon"
+                        icon={faEdit}
+                      />
+                      <FontAwesomeIcon
+                        onClick={handleTrashClick}
+                        className="recipeDetails-comments-trash-icon"
+                        icon={faTrash}
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
             </Col>

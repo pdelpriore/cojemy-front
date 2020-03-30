@@ -264,3 +264,21 @@
   overflow: hidden;
   width: 0;
 }
+.recipeDetails-comments-edit-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  font-size: 1.1vw;
+}
+.recipeDetails-comments-edit-icon {
+  margin-right: 15px;
+}
+.recipeDetails-comments-edit-icon:hover {
+  cursor: pointer;
+  color: #be6a15;
+}
+.recipeDetails-comments-trash-icon:hover {
+  cursor: pointer;
+  color: #ac3f21;
+}
