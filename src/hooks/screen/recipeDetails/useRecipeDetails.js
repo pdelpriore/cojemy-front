@@ -6,13 +6,16 @@ const useRecipeDetails = () => {
   const handleMouseEnter = () => {
     setEditShow(true);
   };
+
   const handleMouseLeave = () => {
     setEditShow(false);
   };
+
   const handleEditClick = e => {
     e.preventDefault();
     console.log("edit clicked");
   };
+
   const handleTrashClick = e => {
     e.preventDefault();
     console.log("trash clicked");
