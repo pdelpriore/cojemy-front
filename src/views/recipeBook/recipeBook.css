@@ -282,3 +282,16 @@
   cursor: pointer;
   color: #ac3f21;
 }
+.recipebook-recipes-details {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 1;
+  overflow: hidden;
+}
+.recipebook-recipes-buttons {
+  position: relative;
+  opacity: 0;
+  overflow: hidden;
+}

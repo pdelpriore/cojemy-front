@@ -8,7 +8,9 @@ import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
   const { recipeButtonId } = useSelector(state => state.recipeCategorySelected);
-
+  const { detailsDataRetrieved } = useSelector(
+    state => state.showRecipeDetails
+  );
   const buttonItems = [
     {
       id: 0,
@@ -30,7 +32,7 @@ const MakeRecipeButton = () => {
       buttonItems[recipeButtonId].id,
       buttonItems[recipeButtonId].category
     );
-  }, []);
+  }, [detailsDataRetrieved.comments && detailsDataRetrieved.comments.length]);
 
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>

@@ -31,31 +31,29 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
         </Row>
       </div>
       <div className="recipebook-second-section">
-        {detailsShowed ? (
-          <>
+        <div className={detailsShowed ? "recipebook-recipes-buttons" : ""}>
+          <Row className="mb-5" />
+          <Row className="mb-5" />
+          <Row className="mb-2" />
+          <MakeRecipeButton />
+          <Row className="mb-5" />
+          <Row className="mb-5" />
+          <Row>
+            <Col xs={2} />
+            <Col xs={10}>
+              <Image
+                className="recipebook-soup"
+                src={require("../../assets/imgs/soupret.jpg")}
+              />
+            </Col>
+          </Row>
+        </div>
+        {detailsShowed && (
+          <div className="recipebook-recipes-details">
             <Row className="mb-5" />
             <Row className="mb-5" />
             <RecipeDetails />
-          </>
-        ) : (
-          <>
-            {" "}
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-2" />
-            <MakeRecipeButton />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row>
-              <Col xs={2} />
-              <Col xs={10}>
-                <Image
-                  className="recipebook-soup"
-                  src={require("../../assets/imgs/soupret.jpg")}
-                />
-              </Col>
-            </Row>{" "}
-          </>
+          </div>
         )}
       </div>
     </div>
