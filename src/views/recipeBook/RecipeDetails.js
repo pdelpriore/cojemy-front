@@ -189,12 +189,24 @@ const RecipeDetails = () => {
                       onMouseLeave={handleMouseLeave}
                     >
                       <FontAwesomeIcon
-                        onClick={handleEditClick}
+                        onClick={e => {
+                          e.preventDefault();
+                          handleEditClick(
+                            item.rate.value,
+                            item.comment.content
+                          );
+                        }}
                         className="recipeDetails-comments-edit-icon"
                         icon={faEdit}
                       />
                       <FontAwesomeIcon
-                        onClick={handleTrashClick}
+                        onClick={e => {
+                          e.preventDefault();
+                          handleTrashClick(
+                            item.rate.value,
+                            item.comment.content
+                          );
+                        }}
                         className="recipeDetails-comments-trash-icon"
                         icon={faTrash}
                       />

@@ -11,14 +11,14 @@ const useRecipeDetails = () => {
     setEditShow(false);
   };
 
-  const handleEditClick = e => {
-    e.preventDefault();
-    console.log("edit clicked");
+  const handleEditClick = (editRate, editComment) => {
+    console.log(editRate);
+    console.log(editComment);
   };
 
-  const handleTrashClick = e => {
-    e.preventDefault();
-    console.log("trash clicked");
+  const handleTrashClick = (removeRate, removeComment) => {
+    console.log(removeRate);
+    console.log(removeComment);
   };
   return {
     editShow,
