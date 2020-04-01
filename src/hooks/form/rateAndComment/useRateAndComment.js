@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
-import { addRateAndComment } from "../../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import {
+  addRateAndComment,
+  editRecipeRateAndComment
+} from "../../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { toEditRateCommentClearState } from "../../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRateAndComment = () => {
@@ -37,7 +41,33 @@ const useRateAndComment = () => {
   const handleOnSubmit = recipeId => {
     if (rateAndComment.commentValue) {
       if (userData.email) {
+        dispatch(
+          editRecipeRateAndComment(
+            recipeId,
+            rateAndComment.rateId,
+            rate,
+            rateAndComment.commentId,
+            inputs.comment,
+            userData.email
+          )
+        );
+        setInputs({});
+        setRate("");
+        dispatch(toEditRateCommentClearState());
       } else if (googleUserData.email) {
+        dispatch(
+          editRecipeRateAndComment(
+            recipeId,
+            rateAndComment.rateId,
+            rate,
+            rateAndComment.commentId,
+            inputs.comment,
+            googleUserData.email
+          )
+        );
+        setInputs({});
+        setRate("");
+        dispatch(toEditRateCommentClearState());
       }
     } else {
       if (userData.email) {
