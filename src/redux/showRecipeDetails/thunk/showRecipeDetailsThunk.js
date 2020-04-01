@@ -15,6 +15,10 @@ export const showRecipeDetailsComponent = bool => {
 export const retrieveRecipeDetails = data => {
   return (dispatch, getState) => {
     dispatch({
+      type: showRecipeDetailsCases.RECIPE_LIST_ITEM_CHANGED,
+      payload: 1
+    });
+    dispatch({
       type: showRecipeDetailsCases.DETAILS_RETRIVED,
       payload: { ...data, comments: sortCommentsByDate(data) }
     });
@@ -87,6 +91,10 @@ export const editRecipeRateAndComment = (
       const responseData = await response.json();
       const { data } = responseData;
       if (data) {
+        dispatch({
+          type: showRecipeDetailsCases.RATE_COMMENT_EDITED,
+          payload: 1
+        });
         dispatch({
           type: showRecipeDetailsCases.DETAILS_RETRIVED,
           payload: {

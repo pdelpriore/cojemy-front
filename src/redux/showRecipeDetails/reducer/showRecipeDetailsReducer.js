@@ -3,15 +3,26 @@ import { showRecipeDetailsCases } from "../../config/cases/Cases";
 const initialState = {
   detailsLoading: false,
   detailsShowed: false,
+  rateCommentEdited: 0,
+  recipeListItemChanged: 0,
   detailsDataRetrieved: {}
 };
 
 const showRecipeDetailsReducer = (state = initialState, action) => {
   switch (action.type) {
     case showRecipeDetailsCases.SHOWED:
-      return { ...state, detailsShowed: action.payload };
+      return {
+        ...state,
+        rateCommentEdited: 0,
+        recipeListItemChanged: 0,
+        detailsShowed: action.payload
+      };
     case showRecipeDetailsCases.LOADING:
       return { ...state, detailsLoading: action.payload };
+    case showRecipeDetailsCases.RATE_COMMENT_EDITED:
+      return { ...state, rateCommentEdited: action.payload };
+    case showRecipeDetailsCases.RECIPE_LIST_ITEM_CHANGED:
+      return { ...state, recipeListItemChanged: action.payload };
     case showRecipeDetailsCases.DETAILS_RETRIVED:
       return {
         ...state,

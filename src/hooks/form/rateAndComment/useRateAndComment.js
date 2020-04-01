@@ -16,6 +16,9 @@ const useRateAndComment = () => {
   const { userData } = useSelector(state => state.login);
   const { googleUserData } = useSelector(state => state.loginGoogle);
   const { rateAndComment } = useSelector(state => state.toEditRateComment);
+  const { recipeListItemChanged } = useSelector(
+    state => state.showRecipeDetails
+  );
 
   const handleMouseEnter = e => {
     setRateHover(e.currentTarget.dataset.value);
@@ -91,6 +94,8 @@ const useRateAndComment = () => {
     }
   };
 
+  console.log(recipeListItemChanged);
+
   useEffect(() => {
     if (rateAndComment.rateValue) setRate(rateAndComment.rateValue);
     if (rateAndComment.commentValue)
@@ -98,7 +103,13 @@ const useRateAndComment = () => {
         ...inputs,
         comment: rateAndComment.commentValue
       }));
-  }, [rateAndComment.rateValue, rateAndComment.commentValue]);
+    if (recipeListItemChanged === 0) dispatch(toEditRateCommentClearState());
+  }, [
+    rateAndComment.rateValue,
+    rateAndComment.commentValue,
+    recipeListItemChanged,
+    dispatch
+  ]);
 
   return {
     rate,
