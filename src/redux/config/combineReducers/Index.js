@@ -11,6 +11,7 @@ import googleLogoutReducer from "../../googleLogout/reducer/googleLogoutReducer"
 import retrieveRecipesReducer from "../../retrieveRecipe/reducer/retrieveRecipesReducer";
 import showRecipeDetailsReducer from "../../showRecipeDetails/reducer/showRecipeDetailsReducer";
 import recipeCategorySelectedReducer from "../../recipeCategorySelected/reducer/recipeCategorySelectedReducer";
+import toEditRecipeRateCommentReducer from "../../toEditRecipeRateComment/reducer/toEditRateCommentReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -24,7 +25,8 @@ const allReducers = combineReducers({
   googleLogout: googleLogoutReducer,
   recipeBook: retrieveRecipesReducer,
   showRecipeDetails: showRecipeDetailsReducer,
-  recipeCategorySelected: recipeCategorySelectedReducer
+  recipeCategorySelected: recipeCategorySelectedReducer,
+  toEditRateComment: toEditRecipeRateCommentReducer
 });
 
 export default allReducers;

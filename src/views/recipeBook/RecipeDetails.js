@@ -5,6 +5,7 @@ import { capitalizeFirst } from "../../util/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { toEditRateComment } from "../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
 import TimeAgo from "timeago-react";
@@ -28,6 +29,7 @@ const RecipeDetails = () => {
   );
   const { userData } = useSelector(state => state.login);
   const { googleUserData } = useSelector(state => state.loginGoogle);
+  const { rateAndComment } = useSelector(state => state.toEditRateComment);
   const isCommented =
     detailsDataRetrieved.comments.length > 0 &&
     detailsDataRetrieved.comments.filter(
@@ -121,9 +123,10 @@ const RecipeDetails = () => {
           <Row>
             <Col xs={1} />
             <Col xs={10}>
-              {!isCommented && (
-                <RateAndComment recipeId={detailsDataRetrieved._id} />
-              )}
+              {!isCommented ||
+                (rateAndComment.commentValue && (
+                  <RateAndComment recipeId={detailsDataRetrieved._id} />
+                ))}
             </Col>
             <Col xs={1} />
           </Row>
@@ -191,9 +194,17 @@ const RecipeDetails = () => {
                       <FontAwesomeIcon
                         onClick={e => {
                           e.preventDefault();
-                          handleEditClick(
-                            item.rate.value,
-                            item.comment.content
+                          // handleEditClick(
+                          //   item.rate.value,
+                          //   item.comment.content
+                          // );
+                          dispatch(
+                            toEditRateComment({
+                              rateId: item.rate._id,
+                              rateValue: item.rate.value,
+                              commentId: item.comment._id,
+                              commentValue: item.comment.content
+                            })
                           );
                         }}
                         className="recipeDetails-comments-edit-icon"

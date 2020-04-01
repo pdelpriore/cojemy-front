@@ -1,15 +1,17 @@
 import React from "react";
 import { Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import useRateAndComment from "../../hooks/form/rateAndComment/useRateAndComment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { initializeStarRating } from "../../views/recipeBook/initializeStarRating";
+import { toEditRateCommentClearState } from "../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./rateAndComment.css";
 
 const RateAndComment = ({ recipeId }) => {
+  const dispatch = useDispatch();
   const {
     rate,
     rateHover,
@@ -21,6 +23,7 @@ const RateAndComment = ({ recipeId }) => {
     handleOnSubmit
   } = useRateAndComment();
   const { detailsLoading } = useSelector(state => state.showRecipeDetails);
+  const { rateAndComment } = useSelector(state => state.toEditRateComment);
   const stars = initializeStarRating(strings.rating.RATE_AND_COMMENT);
   for (let i = 0; i < rate; i++) {
     stars[i] = (
@@ -96,41 +99,98 @@ const RateAndComment = ({ recipeId }) => {
             </Row>
             <Row className="mb-3" />
             <Row>
-              <Col xs={4} />
-              <Col xs={4}>
-                <div className="rate-button">
-                  <Button
-                    className="rate-button-send"
-                    disabled={
-                      inputs.comment === undefined ||
-                      inputs.comment === "" ||
-                      rate === ""
-                    }
-                    type="submit"
-                    variant="outline-dark"
-                  >
-                    <div className="rate-spinner">
-                      {detailsLoading && (
-                        <Spinner
-                          as="span"
-                          animation="border"
-                          size="sm"
-                          role="status"
-                          aria-hidden="true"
-                        />
-                      )}
-                      {detailsLoading ? (
-                        <div className="rate-loading-text">
-                          {capitalizeFirst(strings.rating.BUTTON_TEXT_LOADING)}
-                        </div>
-                      ) : (
-                        <div>{capitalizeFirst(strings.rating.BUTTON_TEXT)}</div>
-                      )}
-                    </div>
-                  </Button>
-                </div>
+              <Col xs={1} />
+              <Col xs={10}>
+                {!rateAndComment.commentValue ? (
+                  <div className="rate-button">
+                    <Button
+                      className="rate-button-send"
+                      disabled={
+                        inputs.comment === undefined ||
+                        inputs.comment === "" ||
+                        rate === ""
+                      }
+                      type="submit"
+                      variant="outline-dark"
+                    >
+                      <div className="rate-spinner">
+                        {detailsLoading && (
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                        )}
+                        {detailsLoading ? (
+                          <div className="rate-loading-text">
+                            {capitalizeFirst(
+                              strings.rating.BUTTON_TEXT_LOADING
+                            )}
+                          </div>
+                        ) : (
+                          <div>
+                            {capitalizeFirst(strings.rating.BUTTON_TEXT)}
+                          </div>
+                        )}
+                      </div>
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="rate-button">
+                    <Button
+                      className="rate-button-send"
+                      disabled={
+                        inputs.comment === undefined ||
+                        inputs.comment === "" ||
+                        rate === ""
+                      }
+                      type="submit"
+                      variant="outline-dark"
+                    >
+                      <div className="rate-spinner">
+                        {false && (
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                        )}
+                        {false ? (
+                          <div className="rate-loading-text">
+                            {capitalizeFirst(
+                              strings.rating.BUTTON_EDIT_TEXT_LOADING
+                            )}
+                          </div>
+                        ) : (
+                          <div>
+                            {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
+                          </div>
+                        )}
+                      </div>
+                    </Button>
+                    <Button
+                      onClick={e => {
+                        e.preventDefault();
+                        dispatch(toEditRateCommentClearState());
+                      }}
+                      className="rate-button-send"
+                      disabled={
+                        inputs.comment === undefined ||
+                        inputs.comment === "" ||
+                        rate === ""
+                      }
+                      variant="outline-secondary"
+                    >
+                      {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}
+                    </Button>
+                  </div>
+                )}
               </Col>
-              <Col xs={4} />
+              <Col xs={1} />
             </Row>
           </Form>
         </Col>

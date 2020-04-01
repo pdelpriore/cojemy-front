@@ -27,12 +27,15 @@ const MakeRecipeButton = () => {
     buttonItems.length
   );
 
+  let commentsLength =
+    detailsDataRetrieved.comments && detailsDataRetrieved.comments.length;
+
   useEffect(() => {
     toggleActiveClass(
       buttonItems[recipeButtonId].id,
       buttonItems[recipeButtonId].category
     );
-  }, [detailsDataRetrieved.comments && detailsDataRetrieved.comments.length]);
+  }, [commentsLength]);
 
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>

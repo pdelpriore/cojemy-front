@@ -107,6 +107,9 @@ export const strings = Object.freeze({
     COMMENT: "ton commentaire",
     BUTTON_TEXT: "ajoute",
     BUTTON_TEXT_LOADING: "j'ajoute ...",
-    NOTE: "note"
+    NOTE: "note",
+    BUTTON_EDIT_TEXT: "modifie",
+    BUTTON_EDIT_TEXT_LOADING: "je modifie ...",
+    BUTTON_CANCEL_TEXT: "annule"
   }
 });

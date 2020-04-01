@@ -74,3 +74,8 @@ export const recipeCategorySelectedCases = Object.freeze({
   BUTTON_ID_RETRIEVED: "recipeCategorySelectedButtonIdRetrieved",
   CLEAR_STATE: "recipeCategorySelectedClearState"
 });
+
+export const toEditRecipeRateCommentCases = Object.freeze({
+  RATE_COMMENT_RETRIEVED: "toEditRecipeRateCommentRateCommentRetrieved",
+  CLEAR_STATE: "toEditRecipeRateCommentClearState"
+});

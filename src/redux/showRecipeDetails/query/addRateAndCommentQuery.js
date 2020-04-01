@@ -21,6 +21,7 @@ export const addRateAndCommentQuery = (
                       }
                       comments {
                         commentator {
+                          _id
                           name
                           email
                           photo
