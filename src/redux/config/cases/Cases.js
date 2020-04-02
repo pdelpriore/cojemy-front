@@ -66,9 +66,7 @@ export const showRecipeDetailsCases = Object.freeze({
   LOADING: "showRecipeDetailsCasesLoading",
   SHOWED: "showRecipeDetailsCasesShowed",
   RATE_COMMENT_EDITED: "showRecipeDetailsCasesRateCommentEdited",
-  RECIPE_LIST_ITEM_CHANGED: "showRecipeDetailsCasesRecipeListItemChanged",
   DETAILS_RETRIVED: "showRecipeDetailsCasesDetailsRetrieved",
-  RATE_COMMENT_ADDED: "showRecipeDetailsCasesRateCommentAdded",
   CLEAR_STATE: "showRecipeDetailsCasesClearState"
 });
 
@@ -80,4 +78,8 @@ export const recipeCategorySelectedCases = Object.freeze({
 export const toEditRecipeRateCommentCases = Object.freeze({
   RATE_COMMENT_RETRIEVED: "toEditRecipeRateCommentRateCommentRetrieved",
   CLEAR_STATE: "toEditRecipeRateCommentClearState"
+});
+
+export const hideRateCommentFormCases = Object.freeze({
+  RECIPE_LIST_ITEM_CHANGED: "hideRateCommentFormCasesRecipeListItemChanged"
 });

@@ -12,6 +12,7 @@ import retrieveRecipesReducer from "../../retrieveRecipe/reducer/retrieveRecipes
 import showRecipeDetailsReducer from "../../showRecipeDetails/reducer/showRecipeDetailsReducer";
 import recipeCategorySelectedReducer from "../../recipeCategorySelected/reducer/recipeCategorySelectedReducer";
 import toEditRecipeRateCommentReducer from "../../toEditRecipeRateComment/reducer/toEditRateCommentReducer";
+import hideRateCommentFormReducer from "../../hideRateCommentForm/reducer/hideRateCommentFormReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -26,7 +27,8 @@ const allReducers = combineReducers({
   recipeBook: retrieveRecipesReducer,
   showRecipeDetails: showRecipeDetailsReducer,
   recipeCategorySelected: recipeCategorySelectedReducer,
-  toEditRateComment: toEditRecipeRateCommentReducer
+  toEditRateComment: toEditRecipeRateCommentReducer,
+  hideRateCommentForm: hideRateCommentFormReducer
 });
 
 export default allReducers;

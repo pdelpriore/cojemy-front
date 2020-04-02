@@ -19,6 +19,7 @@ import RatingActiveStars from "./RatingActiveStars";
 import RateAndComment from "../../forms/RateAndComment/RateAndComment";
 import { getAverageRating } from "./getAverageRating";
 import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { hideRateCommentForm } from "../../redux/hideRateCommentForm/thunk/hideRateCommentFormThunk";
 import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails";
 import "./recipeBook.css";
 
@@ -198,6 +199,7 @@ const RecipeDetails = () => {
                           //   item.rate.value,
                           //   item.comment.content
                           // );
+                          dispatch(hideRateCommentForm(0));
                           dispatch(
                             toEditRateComment({
                               rateId: item.rate._id,
