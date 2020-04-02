@@ -5,7 +5,6 @@ import { capitalizeFirst } from "../../util/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { toEditRateComment } from "../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
 import TimeAgo from "timeago-react";
@@ -19,7 +18,6 @@ import RatingActiveStars from "./RatingActiveStars";
 import RateAndComment from "../../forms/RateAndComment/RateAndComment";
 import { getAverageRating } from "./getAverageRating";
 import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
-import { hideRateCommentForm } from "../../redux/hideRateCommentForm/thunk/hideRateCommentFormThunk";
 import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails";
 import "./recipeBook.css";
 
@@ -42,9 +40,11 @@ const RecipeDetails = () => {
     editShow,
     handleMouseEnter,
     handleMouseLeave,
+    handleEditClick,
     handleTrashClick
   } = useRecipeDetails();
   timeago.register("fr", fr);
+
   return (
     <>
       <Row>
@@ -194,15 +194,12 @@ const RecipeDetails = () => {
                       <FontAwesomeIcon
                         onClick={e => {
                           e.preventDefault();
-                          dispatch(hideRateCommentForm(false));
-                          dispatch(
-                            toEditRateComment({
-                              rateId: item.rate._id,
-                              rateValue: item.rate.value,
-                              commentId: item.comment._id,
-                              commentValue: item.comment.content
-                            })
-                          );
+                          handleEditClick({
+                            rateId: item.rate._id,
+                            rateValue: item.rate.value,
+                            commentId: item.comment._id,
+                            commentValue: item.comment.content
+                          });
                         }}
                         className="recipeDetails-comments-edit-icon"
                         icon={faEdit}
@@ -210,10 +207,11 @@ const RecipeDetails = () => {
                       <FontAwesomeIcon
                         onClick={e => {
                           e.preventDefault();
-                          handleTrashClick(
-                            item.rate.value,
-                            item.comment.content
-                          );
+                          //dispatch
+                          // handleTrashClick(
+                          //   item.rate.value,
+                          //   item.comment.content
+                          // );
                         }}
                         className="recipeDetails-comments-trash-icon"
                         icon={faTrash}
