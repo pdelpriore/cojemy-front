@@ -150,7 +150,7 @@ const RateAndComment = ({ recipeId }) => {
                       variant="outline-dark"
                     >
                       <div className="rate-spinner">
-                        {false && (
+                        {detailsLoading && (
                           <Spinner
                             as="span"
                             animation="border"
@@ -159,7 +159,7 @@ const RateAndComment = ({ recipeId }) => {
                             aria-hidden="true"
                           />
                         )}
-                        {false ? (
+                        {detailsLoading ? (
                           <div className="rate-loading-text">
                             {capitalizeFirst(
                               strings.rating.BUTTON_EDIT_TEXT_LOADING
