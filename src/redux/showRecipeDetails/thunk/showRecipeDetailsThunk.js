@@ -88,10 +88,6 @@ export const editRecipeRateAndComment = (
       const { data } = responseData;
       if (data) {
         dispatch({
-          type: showRecipeDetailsCases.RATE_COMMENT_EDITED,
-          payload: 1
-        });
-        dispatch({
           type: showRecipeDetailsCases.DETAILS_RETRIVED,
           payload: {
             ...data.editRecipeRateComment,

@@ -65,7 +65,6 @@ export const retrieveRecipesCases = Object.freeze({
 export const showRecipeDetailsCases = Object.freeze({
   LOADING: "showRecipeDetailsCasesLoading",
   SHOWED: "showRecipeDetailsCasesShowed",
-  RATE_COMMENT_EDITED: "showRecipeDetailsCasesRateCommentEdited",
   DETAILS_RETRIVED: "showRecipeDetailsCasesDetailsRetrieved",
   CLEAR_STATE: "showRecipeDetailsCasesClearState"
 });
