@@ -11,6 +11,7 @@ const MakeRecipeButton = () => {
   const { detailsDataRetrieved, rateCommentEdited } = useSelector(
     state => state.showRecipeDetails
   );
+  const { recipeUpdated } = useSelector(state => state.editRateCommentForm);
   const buttonItems = [
     {
       id: 0,
@@ -35,7 +36,7 @@ const MakeRecipeButton = () => {
       buttonItems[recipeButtonId].id,
       buttonItems[recipeButtonId].category
     );
-  }, [commentsLength, rateCommentEdited]);
+  }, [commentsLength, rateCommentEdited, recipeUpdated]);
 
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>
