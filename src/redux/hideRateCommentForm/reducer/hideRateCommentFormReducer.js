@@ -1,7 +1,7 @@
 import { hideRateCommentFormCases } from "../../config/cases/Cases";
 
 const initialState = {
-  recipeListItemChanged: 0
+  recipeListItemChanged: false
 };
 
 const hideRateCommentFormReducer = (state = initialState, action) => {

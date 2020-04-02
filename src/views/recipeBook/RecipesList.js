@@ -39,7 +39,7 @@ const RecipesList = () => {
             <div
               onClick={e => {
                 e.preventDefault();
-                dispatch(hideRateCommentForm(1));
+                dispatch(hideRateCommentForm(true));
                 dispatch(showRecipeDetailsComponent(true));
                 dispatch(retrieveRecipeDetails(retrieveRecipe));
               }}

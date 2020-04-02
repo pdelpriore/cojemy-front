@@ -199,7 +199,7 @@ const RecipeDetails = () => {
                           //   item.rate.value,
                           //   item.comment.content
                           // );
-                          dispatch(hideRateCommentForm(0));
+                          dispatch(hideRateCommentForm(false));
                           dispatch(
                             toEditRateComment({
                               rateId: item.rate._id,

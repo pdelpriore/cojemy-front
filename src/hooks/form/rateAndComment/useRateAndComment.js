@@ -101,7 +101,7 @@ const useRateAndComment = () => {
         ...inputs,
         comment: rateAndComment.commentValue
       }));
-    if (recipeListItemChanged === 1) dispatch(toEditRateCommentClearState());
+    if (recipeListItemChanged) dispatch(toEditRateCommentClearState());
   }, [
     rateAndComment.rateValue,
     rateAndComment.commentValue,
