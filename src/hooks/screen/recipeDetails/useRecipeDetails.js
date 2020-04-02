@@ -11,11 +11,6 @@ const useRecipeDetails = () => {
     setEditShow(false);
   };
 
-  const handleEditClick = (editRate, editComment) => {
-    console.log(editRate);
-    console.log(editComment);
-  };
-
   const handleTrashClick = (removeRate, removeComment) => {
     console.log(removeRate);
     console.log(removeComment);
@@ -24,7 +19,6 @@ const useRecipeDetails = () => {
     editShow,
     handleMouseEnter,
     handleMouseLeave,
-    handleEditClick,
     handleTrashClick
   };
 };

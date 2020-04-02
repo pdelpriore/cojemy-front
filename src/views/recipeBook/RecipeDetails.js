@@ -42,7 +42,6 @@ const RecipeDetails = () => {
     editShow,
     handleMouseEnter,
     handleMouseLeave,
-    handleEditClick,
     handleTrashClick
   } = useRecipeDetails();
   timeago.register("fr", fr);
@@ -195,10 +194,6 @@ const RecipeDetails = () => {
                       <FontAwesomeIcon
                         onClick={e => {
                           e.preventDefault();
-                          // handleEditClick(
-                          //   item.rate.value,
-                          //   item.comment.content
-                          // );
                           dispatch(hideRateCommentForm(false));
                           dispatch(
                             toEditRateComment({
