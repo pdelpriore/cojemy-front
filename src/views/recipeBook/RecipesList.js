@@ -17,6 +17,7 @@ import {
   retrieveRecipeDetails
 } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { hideRateCommentForm } from "../../redux/hideRateCommentForm/thunk/hideRateCommentFormThunk";
+import { addRateComment } from "../../redux/addRateComment/thunk/addRateCommentThunk";
 import "./recipeBook.css";
 
 const RecipesList = () => {
@@ -41,6 +42,7 @@ const RecipesList = () => {
                 e.preventDefault();
                 dispatch(hideRateCommentForm(true));
                 dispatch(showRecipeDetailsComponent(true));
+                dispatch(addRateComment(false));
                 dispatch(retrieveRecipeDetails(retrieveRecipe));
               }}
               className="recipesList-item"

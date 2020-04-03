@@ -6,6 +6,7 @@ import {
 } from "../../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { toEditRateCommentClearState } from "../../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { rateCommentRecipeUpdated } from "../../../redux/editRateCommentForm/thunk/editRateCommentFormThunk";
+import { addRateComment } from "../../../redux/addRateComment/thunk/addRateCommentThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRateAndComment = () => {
@@ -77,12 +78,14 @@ const useRateAndComment = () => {
       }
     } else {
       if (userData.email) {
+        dispatch(addRateComment(true));
         dispatch(
           addRateAndComment(recipeId, rate, inputs.comment, userData.email)
         );
         setInputs({});
         setRate("");
       } else if (googleUserData.email) {
+        dispatch(addRateComment(true));
         dispatch(
           addRateAndComment(
             recipeId,

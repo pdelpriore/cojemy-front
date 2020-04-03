@@ -11,7 +11,7 @@ import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
 import { createDate } from "../../util/Util";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import CommentRate from "./CommentRate";
 import RatingStars from "./RatingStars";
 import RatingActiveStars from "./RatingActiveStars";
@@ -21,7 +21,6 @@ import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails"
 import "./recipeBook.css";
 
 const RecipeDetails = () => {
-  const dispatch = useDispatch();
   const { detailsDataRetrieved } = useSelector(
     state => state.showRecipeDetails
   );
@@ -123,10 +122,9 @@ const RecipeDetails = () => {
           <Row>
             <Col xs={1} />
             <Col xs={10}>
-              {!isCommented ||
-                (rateAndComment.commentValue && (
-                  <RateAndComment recipeId={detailsDataRetrieved._id} />
-                ))}
+              {(!isCommented || rateAndComment.commentValue) && (
+                <RateAndComment recipeId={detailsDataRetrieved._id} />
+              )}
             </Col>
             <Col xs={1} />
           </Row>

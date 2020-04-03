@@ -8,10 +8,8 @@ import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
   const { recipeButtonId } = useSelector(state => state.recipeCategorySelected);
-  const { detailsDataRetrieved } = useSelector(
-    state => state.showRecipeDetails
-  );
   const { recipeUpdated } = useSelector(state => state.editRateCommentForm);
+  const { rateCommentAdded } = useSelector(state => state.addRateComment);
   const buttonItems = [
     {
       id: 0,
@@ -28,15 +26,19 @@ const MakeRecipeButton = () => {
     buttonItems.length
   );
 
-  let commentsLength =
-    detailsDataRetrieved.comments && detailsDataRetrieved.comments.length;
-
   useEffect(() => {
-    toggleActiveClass(
-      buttonItems[recipeButtonId].id,
-      buttonItems[recipeButtonId].category
-    );
-  }, [commentsLength, recipeUpdated]);
+    if (rateCommentAdded) {
+      toggleActiveClass(
+        buttonItems[recipeButtonId].id,
+        buttonItems[recipeButtonId].category
+      );
+    } else {
+      toggleActiveClass(
+        buttonItems[recipeButtonId].id,
+        buttonItems[recipeButtonId].category
+      );
+    }
+  }, [rateCommentAdded, recipeUpdated]);
 
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>

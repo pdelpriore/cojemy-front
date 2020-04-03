@@ -14,6 +14,7 @@ import recipeCategorySelectedReducer from "../../recipeCategorySelected/reducer/
 import toEditRecipeRateCommentReducer from "../../toEditRecipeRateComment/reducer/toEditRateCommentReducer";
 import hideRateCommentFormReducer from "../../hideRateCommentForm/reducer/hideRateCommentFormReducer";
 import editRateCommentFormReducer from "../../editRateCommentForm/reducer/editRateCommentFormReducer";
+import addRateCommentReducer from "../../addRateComment/reducer/addRateCommentReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -30,7 +31,8 @@ const allReducers = combineReducers({
   recipeCategorySelected: recipeCategorySelectedReducer,
   toEditRateComment: toEditRecipeRateCommentReducer,
   hideRateCommentForm: hideRateCommentFormReducer,
-  editRateCommentForm: editRateCommentFormReducer
+  editRateCommentForm: editRateCommentFormReducer,
+  addRateComment: addRateCommentReducer
 });
 
 export default allReducers;

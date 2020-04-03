@@ -86,3 +86,7 @@ export const hideRateCommentFormCases = Object.freeze({
 export const editRateCommentFormCases = Object.freeze({
   RECIPE_UPDATED: "editRateCommentFormCasesRecipeUpdated"
 });
+
+export const addRateCommentCases = Object.freeze({
+  RATE_COMMENT_ADDED: "addRateCommentCasesRecipeAdded"
+});
