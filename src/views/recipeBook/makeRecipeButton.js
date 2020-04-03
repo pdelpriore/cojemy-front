@@ -11,6 +11,9 @@ const MakeRecipeButton = () => {
   const { recipeUpdated } = useSelector(state => state.editRateCommentForm);
   const { rateCommentAdded } = useSelector(state => state.addRateComment);
   const { rateCommentRemoved } = useSelector(state => state.removeRateComment);
+  const { detailsDataRetrieved } = useSelector(
+    state => state.showRecipeDetails
+  );
   const buttonItems = [
     {
       id: 0,
@@ -26,6 +29,14 @@ const MakeRecipeButton = () => {
   const { activesClasses, toggleActiveClass } = useRecipeButton(
     buttonItems.length
   );
+
+  useEffect(() => {
+    if (!detailsDataRetrieved.title)
+      toggleActiveClass(
+        buttonItems[recipeButtonId].id,
+        buttonItems[recipeButtonId].category
+      );
+  }, [detailsDataRetrieved]);
 
   useEffect(() => {
     toggleActiveClass(
