@@ -20,6 +20,7 @@ export const addRateAndCommentQuery = (
                           name
                       }
                       comments {
+                        _id
                         commentator {
                           _id
                           name

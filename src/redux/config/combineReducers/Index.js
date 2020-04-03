@@ -15,6 +15,7 @@ import toEditRecipeRateCommentReducer from "../../toEditRecipeRateComment/reduce
 import hideRateCommentFormReducer from "../../hideRateCommentForm/reducer/hideRateCommentFormReducer";
 import editRateCommentFormReducer from "../../editRateCommentForm/reducer/editRateCommentFormReducer";
 import addRateCommentReducer from "../../addRateComment/reducer/addRateCommentReducer";
+import removeRateCommentReducer from "../../removeRateComment/reducer/removeRateCommentReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -32,7 +33,8 @@ const allReducers = combineReducers({
   toEditRateComment: toEditRecipeRateCommentReducer,
   hideRateCommentForm: hideRateCommentFormReducer,
   editRateCommentForm: editRateCommentFormReducer,
-  addRateComment: addRateCommentReducer
+  addRateComment: addRateCommentReducer,
+  removeRateComment: removeRateCommentReducer
 });
 
 export default allReducers;

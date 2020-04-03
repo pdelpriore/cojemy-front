@@ -211,11 +211,12 @@ const RecipeDetails = () => {
                       <FontAwesomeIcon
                         onClick={e => {
                           e.preventDefault();
-                          //dispatch
-                          // handleTrashClick(
-                          //   item.rate.value,
-                          //   item.comment.content
-                          // );
+                          handleTrashClick(
+                            item.rate._id,
+                            item.comment._id,
+                            detailsDataRetrieved._id,
+                            item._id
+                          );
                         }}
                         className="recipeDetails-comments-trash-icon"
                         icon={faTrash}

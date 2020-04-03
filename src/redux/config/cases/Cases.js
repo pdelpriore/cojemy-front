@@ -88,5 +88,9 @@ export const editRateCommentFormCases = Object.freeze({
 });
 
 export const addRateCommentCases = Object.freeze({
-  RATE_COMMENT_ADDED: "addRateCommentCasesRecipeAdded"
+  RATE_COMMENT_ADDED: "addRateCommentCasesRateCommentAdded"
+});
+
+export const removeRateCommentCases = Object.freeze({
+  RATE_COMMENT_REMOVED: "removeRateCommentCasesRateCommentRemoved"
 });

@@ -15,6 +15,7 @@ export const retrieveRecipeQuery = (category, email) => {
                         name
                     }
                     comments {
+                      _id
                       commentator {
                         _id
                         name

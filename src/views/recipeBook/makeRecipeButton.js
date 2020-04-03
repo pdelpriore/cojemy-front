@@ -10,6 +10,7 @@ const MakeRecipeButton = () => {
   const { recipeButtonId } = useSelector(state => state.recipeCategorySelected);
   const { recipeUpdated } = useSelector(state => state.editRateCommentForm);
   const { rateCommentAdded } = useSelector(state => state.addRateComment);
+  const { rateCommentRemoved } = useSelector(state => state.removeRateComment);
   const buttonItems = [
     {
       id: 0,
@@ -34,12 +35,12 @@ const MakeRecipeButton = () => {
   }, [recipeUpdated]);
 
   useEffect(() => {
-    if (rateCommentAdded)
+    if (rateCommentAdded || rateCommentRemoved)
       toggleActiveClass(
         buttonItems[recipeButtonId].id,
         buttonItems[recipeButtonId].category
       );
-  }, [rateCommentAdded]);
+  }, [rateCommentAdded, rateCommentRemoved]);
 
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>

@@ -1,6 +1,7 @@
 import { showRecipeDetailsCases } from "../../config/cases/Cases";
 import { addRateAndCommentQuery } from "../query/addRateAndCommentQuery";
 import { editRateAndCommentQuery } from "../query/editRateAndCommentQuery";
+import { removeRateAndCommentQuery } from "../query/removeRateAndCommentQuery";
 import { sortCommentsByDate } from "./sortCommentsByDate";
 import { strings } from "../../../strings/Strings";
 
@@ -92,6 +93,48 @@ export const editRecipeRateAndComment = (
           payload: {
             ...data.editRecipeRateComment,
             comments: sortCommentsByDate(data.editRecipeRateComment)
+          }
+        });
+      }
+    } catch (err) {
+      if (err) console.log(err);
+    }
+  };
+};
+
+export const removeRecipeRateAndComment = (
+  rateId,
+  commentId,
+  recipeId,
+  commentItemId,
+  email
+) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: showRecipeDetailsCases.LOADING, payload: true });
+    const bodyRequest = removeRateAndCommentQuery(
+      rateId,
+      commentId,
+      recipeId,
+      commentItemId,
+      email
+    );
+    try {
+      const response = await fetch(strings.path.SERVER_REQUEST, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify(bodyRequest)
+      });
+      const responseData = await response.json();
+      const { data } = responseData;
+      if (data) {
+        dispatch({
+          type: showRecipeDetailsCases.DETAILS_RETRIVED,
+          payload: {
+            ...data.removeRecipeRateComment,
+            comments: sortCommentsByDate(data.removeRecipeRateComment)
           }
         });
       }

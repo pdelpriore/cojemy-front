@@ -22,6 +22,7 @@ export const editRateAndCommentQuery = (
                             name
                         }
                         comments {
+                          _id
                           commentator {
                             _id
                             name
