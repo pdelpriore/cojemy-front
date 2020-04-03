@@ -27,18 +27,19 @@ const MakeRecipeButton = () => {
   );
 
   useEffect(() => {
-    if (rateCommentAdded) {
+    toggleActiveClass(
+      buttonItems[recipeButtonId].id,
+      buttonItems[recipeButtonId].category
+    );
+  }, [recipeUpdated]);
+
+  useEffect(() => {
+    if (rateCommentAdded)
       toggleActiveClass(
         buttonItems[recipeButtonId].id,
         buttonItems[recipeButtonId].category
       );
-    } else {
-      toggleActiveClass(
-        buttonItems[recipeButtonId].id,
-        buttonItems[recipeButtonId].category
-      );
-    }
-  }, [rateCommentAdded, recipeUpdated]);
+  }, [rateCommentAdded]);
 
   return buttonItems.map(buttonItem => (
     <div key={buttonItem.id}>
