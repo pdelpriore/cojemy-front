@@ -18,9 +18,15 @@ import RatingActiveStars from "./RatingActiveStars";
 import RateAndComment from "../../forms/RateAndComment/RateAndComment";
 import { getAverageRating } from "./getAverageRating";
 import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails";
+import { useSpring, animated } from "react-spring";
 import "./recipeBook.css";
 
 const RecipeDetails = () => {
+  const props = useSpring({
+    opacity: 1,
+    config: { duration: 300 },
+    from: { opacity: 0 }
+  });
   const { detailsDataRetrieved } = useSelector(
     state => state.showRecipeDetails
   );
@@ -45,7 +51,7 @@ const RecipeDetails = () => {
   timeago.register("fr", fr);
 
   return (
-    <>
+    <animated.div style={props}>
       <Row>
         <Col xs={1} />
         <Col xs={7}>
@@ -223,7 +229,7 @@ const RecipeDetails = () => {
           </Row>
         </div>
       </ScrollArea>
-    </>
+    </animated.div>
   );
 };
 

@@ -18,9 +18,15 @@ import {
 } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { hideRateCommentForm } from "../../redux/hideRateCommentForm/thunk/hideRateCommentFormThunk";
 import { addRateComment } from "../../redux/addRateComment/thunk/addRateCommentThunk";
+import { useSpring, animated } from "react-spring";
 import "./recipeBook.css";
 
 const RecipesList = () => {
+  const props = useSpring({
+    opacity: 1,
+    config: { duration: 400 },
+    from: { opacity: 0 }
+  });
   const dispatch = useDispatch();
   const { loadingRecipes, recipesRetrieved, recipesError } = useSelector(
     state => state.recipeBook
@@ -31,7 +37,7 @@ const RecipesList = () => {
       <Spinner animation="border" role="status" variant="light" />
     </div>
   ) : (
-    <div className="recipesList-main-area">
+    <animated.div className="recipesList-main-area" style={props}>
       {recipesError || recipesRetrieved === null ? (
         <div className="recipesList-item-norecipes">{recipesError}</div>
       ) : (
@@ -113,7 +119,7 @@ const RecipesList = () => {
           ))}
         </div>
       )}
-    </div>
+    </animated.div>
   );
 };
 
