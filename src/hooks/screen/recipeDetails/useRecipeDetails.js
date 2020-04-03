@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toEditRateComment } from "../../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { hideRateCommentForm } from "../../../redux/hideRateCommentForm/thunk/hideRateCommentFormThunk";
+import { recipeDetailsClearState } from "../../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 
 const useRecipeDetails = () => {
   const dispatch = useDispatch();
@@ -24,12 +25,17 @@ const useRecipeDetails = () => {
     console.log(removeRate);
     console.log(removeComment);
   };
+
+  const handleClearDetailsState = () => {
+    dispatch(recipeDetailsClearState());
+  };
   return {
     editShow,
     handleMouseEnter,
     handleMouseLeave,
     handleEditClick,
-    handleTrashClick
+    handleTrashClick,
+    handleClearDetailsState
   };
 };
 

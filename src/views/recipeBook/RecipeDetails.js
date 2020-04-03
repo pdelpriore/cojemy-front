@@ -17,7 +17,6 @@ import RatingStars from "./RatingStars";
 import RatingActiveStars from "./RatingActiveStars";
 import RateAndComment from "../../forms/RateAndComment/RateAndComment";
 import { getAverageRating } from "./getAverageRating";
-import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails";
 import "./recipeBook.css";
 
@@ -41,7 +40,8 @@ const RecipeDetails = () => {
     handleMouseEnter,
     handleMouseLeave,
     handleEditClick,
-    handleTrashClick
+    handleTrashClick,
+    handleClearDetailsState
   } = useRecipeDetails();
   timeago.register("fr", fr);
 
@@ -67,7 +67,7 @@ const RecipeDetails = () => {
           <div
             onClick={e => {
               e.preventDefault();
-              dispatch(recipeDetailsClearState());
+              handleClearDetailsState();
             }}
             className="recipeDetails-close-icon"
           >
