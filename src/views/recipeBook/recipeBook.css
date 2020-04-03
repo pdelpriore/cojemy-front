@@ -205,7 +205,8 @@
   font-size: 0.9vw;
 }
 .recipeDetails-comments-timeago {
-  width: 6.5vw;
+  width: 6.7vw;
+  margin-right: 5px;
   font-family: "OpenSans-SemiBold";
   font-size: 0.8vw;
   white-space: nowrap;
