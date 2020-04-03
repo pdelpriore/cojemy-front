@@ -1,10 +1,13 @@
 import { removeRateCommentCases } from "../../config/cases/Cases";
 
-export const removeRateComment = bool => {
+let count = 0;
+
+export const removeRateComment = () => {
   return (dispatch, getState) => {
+    count++;
     dispatch({
       type: removeRateCommentCases.RATE_COMMENT_REMOVED,
-      payload: bool
+      payload: count
     });
   };
 };

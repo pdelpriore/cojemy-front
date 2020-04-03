@@ -1,7 +1,7 @@
 import { removeRateCommentCases } from "../../config/cases/Cases";
 
 const initialState = {
-  rateCommentRemoved: false
+  rateCommentRemoved: 0
 };
 
 const removeRateCommentReducer = (state = initialState, action) => {
