@@ -13,6 +13,7 @@ export const editRateAndCommentQuery = (
                         _id
                         title
                         picture
+                        video
                         date
                         category
                         cookTime
@@ -42,6 +43,6 @@ export const editRateAndCommentQuery = (
                         }
                     }
                   }
-                  `
+                  `,
   };
 };

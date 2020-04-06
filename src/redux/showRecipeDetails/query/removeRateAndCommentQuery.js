@@ -12,6 +12,7 @@ export const removeRateAndCommentQuery = (
                           _id
                           title
                           picture
+                          video
                           date
                           category
                           cookTime
@@ -41,6 +42,6 @@ export const removeRateAndCommentQuery = (
                           }
                       }
                     }
-                    `
+                    `,
   };
 };

@@ -11,6 +11,7 @@ export const addRateAndCommentQuery = (
                       _id
                       title
                       picture
+                      video
                       date
                       category
                       cookTime
@@ -40,6 +41,6 @@ export const addRateAndCommentQuery = (
                       }
                   }
                 }
-                `
+                `,
   };
 };

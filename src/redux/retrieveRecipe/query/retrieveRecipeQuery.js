@@ -6,6 +6,7 @@ export const retrieveRecipeQuery = (category, email) => {
                     _id
                     title
                     picture
+                    video
                     date
                     category
                     cookTime
@@ -35,6 +36,6 @@ export const retrieveRecipeQuery = (category, email) => {
                     }
                 }
               }
-              `
+              `,
   };
 };
