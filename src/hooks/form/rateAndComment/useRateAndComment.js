@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
 import {
   addRateAndComment,
-  editRecipeRateAndComment
+  editRecipeRateAndComment,
 } from "../../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { toEditRateCommentClearState } from "../../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { rateCommentRecipeUpdated } from "../../../redux/editRateCommentForm/thunk/editRateCommentFormThunk";
@@ -15,14 +15,14 @@ const useRateAndComment = () => {
   const [inputs, setInputs] = useState({});
 
   const dispatch = useDispatch();
-  const { userData } = useSelector(state => state.login);
-  const { googleUserData } = useSelector(state => state.loginGoogle);
-  const { rateAndComment } = useSelector(state => state.toEditRateComment);
+  const { userData } = useSelector((state) => state.login);
+  const { googleUserData } = useSelector((state) => state.loginGoogle);
+  const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const { recipeListItemChanged } = useSelector(
-    state => state.hideRateCommentForm
+    (state) => state.hideRateCommentForm
   );
 
-  const handleMouseEnter = e => {
+  const handleMouseEnter = (e) => {
     setRateHover(e.currentTarget.dataset.value);
   };
 
@@ -30,20 +30,20 @@ const useRateAndComment = () => {
     setRateHover("");
   };
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.preventDefault();
     setRate(e.currentTarget.dataset.value);
   };
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     e.persist();
-    setInputs(inputs => ({
+    setInputs((inputs) => ({
       ...inputs,
-      [e.target.name]: capitalizeFirst(e.target.value)
+      [e.target.name]: capitalizeFirst(e.target.value),
     }));
   };
 
-  const handleOnSubmit = recipeId => {
+  const handleOnSubmit = (recipeId) => {
     if (rateAndComment.commentValue) {
       if (userData.email) {
         dispatch(rateCommentRecipeUpdated());
@@ -57,8 +57,8 @@ const useRateAndComment = () => {
             userData.email
           )
         );
-        setInputs({});
         setRate("");
+        setInputs({});
         dispatch(toEditRateCommentClearState());
       } else if (googleUserData.email) {
         dispatch(rateCommentRecipeUpdated());
@@ -72,8 +72,8 @@ const useRateAndComment = () => {
             googleUserData.email
           )
         );
-        setInputs({});
         setRate("");
+        setInputs({});
         dispatch(toEditRateCommentClearState());
       }
     } else {
@@ -82,8 +82,8 @@ const useRateAndComment = () => {
         dispatch(
           addRateAndComment(recipeId, rate, inputs.comment, userData.email)
         );
-        setInputs({});
         setRate("");
+        setInputs({});
       } else if (googleUserData.email) {
         dispatch(addRateComment(true));
         dispatch(
@@ -94,8 +94,8 @@ const useRateAndComment = () => {
             googleUserData.email
           )
         );
-        setInputs({});
         setRate("");
+        setInputs({});
       }
     }
   };
@@ -103,16 +103,20 @@ const useRateAndComment = () => {
   useEffect(() => {
     if (rateAndComment.rateValue) setRate(rateAndComment.rateValue);
     if (rateAndComment.commentValue)
-      setInputs(inputs => ({
+      setInputs((inputs) => ({
         ...inputs,
-        comment: rateAndComment.commentValue
+        comment: rateAndComment.commentValue,
       }));
-    if (recipeListItemChanged) dispatch(toEditRateCommentClearState());
+    if (recipeListItemChanged) {
+      dispatch(toEditRateCommentClearState());
+      setRate("");
+      setInputs({});
+    }
   }, [
     rateAndComment.rateValue,
     rateAndComment.commentValue,
     recipeListItemChanged,
-    dispatch
+    dispatch,
   ]);
 
   return {
@@ -123,7 +127,7 @@ const useRateAndComment = () => {
     handleMouseEnter,
     handleMouseLeave,
     handleInputChange,
-    handleOnSubmit
+    handleOnSubmit,
   };
 };
 
