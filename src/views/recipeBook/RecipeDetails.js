@@ -148,6 +148,7 @@ const RecipeDetails = () => {
                     <ReactPlayer
                       className="recipeDetails-player"
                       url={detailsDataRetrieved.video}
+                      controls={true}
                       width="100%"
                       height="100%"
                     />
