@@ -19,24 +19,25 @@ import RateAndComment from "../../forms/RateAndComment/RateAndComment";
 import { getAverageRating } from "./getAverageRating";
 import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails";
 import { useSpring, animated } from "react-spring";
+import ReactPlayer from "react-player";
 import "./recipeBook.css";
 
 const RecipeDetails = () => {
   const props = useSpring({
     opacity: 1,
     config: { duration: 300 },
-    from: { opacity: 0 }
+    from: { opacity: 0 },
   });
   const { detailsDataRetrieved } = useSelector(
-    state => state.showRecipeDetails
+    (state) => state.showRecipeDetails
   );
-  const { userData } = useSelector(state => state.login);
-  const { googleUserData } = useSelector(state => state.loginGoogle);
-  const { rateAndComment } = useSelector(state => state.toEditRateComment);
+  const { userData } = useSelector((state) => state.login);
+  const { googleUserData } = useSelector((state) => state.loginGoogle);
+  const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const isCommented =
     detailsDataRetrieved.comments.length > 0 &&
     detailsDataRetrieved.comments.filter(
-      comment =>
+      (comment) =>
         comment.commentator.email === userData.email ||
         comment.commentator.email === googleUserData.email
     )[0].commentator.email;
@@ -46,7 +47,7 @@ const RecipeDetails = () => {
     handleMouseLeave,
     handleEditClick,
     handleTrashClick,
-    handleClearDetailsState
+    handleClearDetailsState,
   } = useRecipeDetails();
   timeago.register("fr", fr);
 
@@ -70,7 +71,7 @@ const RecipeDetails = () => {
         </Col>
         <Col xs={1}>
           <div
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               handleClearDetailsState();
             }}
@@ -124,6 +125,25 @@ const RecipeDetails = () => {
             </Col>
             <Col xs={1} />
           </Row>
+          {detailsDataRetrieved.video && (
+            <>
+              <Row className="mb-3" />
+              <Row>
+                <Col xs={1} />
+                <Col xs={10}>
+                  <div className="recipeDetails-player-wrapper">
+                    <ReactPlayer
+                      className="recipeDetails-player"
+                      url={detailsDataRetrieved.video}
+                      width="100%"
+                      height="100%"
+                    />
+                  </div>
+                </Col>
+                <Col xs={1} />
+              </Row>
+            </>
+          )}
           <Row className="mb-5" />
           <Row>
             <Col xs={1} />
@@ -196,20 +216,20 @@ const RecipeDetails = () => {
                       onMouseLeave={handleMouseLeave}
                     >
                       <FontAwesomeIcon
-                        onClick={e => {
+                        onClick={(e) => {
                           e.preventDefault();
                           handleEditClick({
                             rateId: item.rate._id,
                             rateValue: item.rate.value,
                             commentId: item.comment._id,
-                            commentValue: item.comment.content
+                            commentValue: item.comment.content,
                           });
                         }}
                         className="recipeDetails-comments-edit-icon"
                         icon={faEdit}
                       />
                       <FontAwesomeIcon
-                        onClick={e => {
+                        onClick={(e) => {
                           e.preventDefault();
                           handleTrashClick(
                             item.rate._id,
