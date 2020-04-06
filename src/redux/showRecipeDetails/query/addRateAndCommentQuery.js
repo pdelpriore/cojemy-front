@@ -19,6 +19,8 @@ export const addRateAndCommentQuery = (
                       description
                       author {
                           name
+                          photo
+                          googlePhoto
                       }
                       comments {
                         _id

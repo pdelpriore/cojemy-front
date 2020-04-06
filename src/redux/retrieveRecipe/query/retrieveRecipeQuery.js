@@ -14,6 +14,8 @@ export const retrieveRecipeQuery = (category, email) => {
                     description
                     author {
                         name
+                        photo
+                        googlePhoto
                     }
                     comments {
                       _id

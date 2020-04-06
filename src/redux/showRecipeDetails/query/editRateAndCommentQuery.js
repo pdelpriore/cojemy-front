@@ -21,6 +21,8 @@ export const editRateAndCommentQuery = (
                         description
                         author {
                             name
+                            photo
+                            googlePhoto
                         }
                         comments {
                           _id

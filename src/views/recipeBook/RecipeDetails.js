@@ -55,8 +55,21 @@ const RecipeDetails = () => {
     <animated.div style={props}>
       <Row>
         <Col xs={1} />
-        <Col xs={7}>
+        <Col xs={6}>
           <h1 className="recipeDetails-title">{detailsDataRetrieved.title}</h1>
+        </Col>
+        <Col xs={1}>
+          <Img
+            className="recipeDetails-author-photo"
+            src={
+              detailsDataRetrieved.author.photo
+                ? detailsDataRetrieved.author.photo
+                : detailsDataRetrieved.author.googlePhoto
+                ? detailsDataRetrieved.author.googlePhoto
+                : require("../../assets/imgs/cookerret.png")
+            }
+            loader={<Spinner animation="border" variant="dark" />}
+          />
         </Col>
         <Col xs={2}>
           <div className="recipeDetails-rate-outter">

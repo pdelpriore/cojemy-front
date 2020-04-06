@@ -20,6 +20,8 @@ export const removeRateAndCommentQuery = (
                           description
                           author {
                               name
+                              photo
+                              googlePhoto
                           }
                           comments {
                             _id
