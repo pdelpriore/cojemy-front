@@ -4,10 +4,12 @@ export const loginQuery = (email, password) => {
           mutation {
               login(email: "${email}", password: "${password}") {
                   name
+                  photo
+                  googlePhoto
                   email
                   isGoogleUser
               }
           }
-          `
+          `,
   };
 };

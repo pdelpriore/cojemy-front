@@ -15,6 +15,7 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { capitalize } from "../../util/Util";
 import { capitalizeFirst } from "../../util/Util";
 import { Nav, Spinner } from "react-bootstrap";
+import Img from "react-image";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
 import { strings } from "../../strings/Strings";
@@ -178,7 +179,21 @@ const MakeNavMenu = ({ type }) => {
             </div>
           )
         ) : item.name === strings.navbar.navUserLoggedItems.USER_PHOTO ? (
-          <FontAwesomeIcon className="navbar-user-icon" icon={faUserCircle} />
+          userData.photo || googleUserData.googlePhoto ? (
+            <Img
+              className="navbar-user-photo"
+              src={
+                userData.photo
+                  ? userData.photo
+                  : googleUserData.googlePhoto
+                  ? googleUserData.googlePhoto
+                  : null
+              }
+              loader={<Spinner animation="border" size="sm" variant="dark" />}
+            />
+          ) : (
+            <FontAwesomeIcon className="navbar-user-icon" icon={faUserCircle} />
+          )
         ) : (
           <Nav.Item as="li" key={item.name}>
             <NavLink activeClassName="active" to={item.path} exact>
