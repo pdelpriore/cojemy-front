@@ -138,27 +138,24 @@ const RecipeDetails = () => {
             </Col>
             <Col xs={1} />
           </Row>
-          {detailsDataRetrieved.video && (
-            <>
-              <Row className="mb-3" />
-              <Row>
-                <Col xs={1} />
-                <Col xs={10}>
-                  <div className="recipeDetails-player-wrapper">
-                    <ReactPlayer
-                      className="recipeDetails-player"
-                      url={detailsDataRetrieved.video}
-                      controls={true}
-                      width="100%"
-                      height="100%"
-                    />
-                  </div>
-                </Col>
-                <Col xs={1} />
-              </Row>
-            </>
-          )}
-          <Row className="mb-5" />
+          <Row className="mb-4" />
+          <Row>
+            <Col xs={1} />
+            <Col xs={10}>
+              {detailsDataRetrieved.video && (
+                <div className="recipeDetails-player-wrapper">
+                  <ReactPlayer
+                    className="recipeDetails-player"
+                    url={detailsDataRetrieved.video}
+                    controls={true}
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+              )}
+            </Col>
+            <Col xs={1} />
+          </Row>
           <Row>
             <Col xs={1} />
             <Col xs={10}>
@@ -168,7 +165,7 @@ const RecipeDetails = () => {
             </Col>
             <Col xs={1} />
           </Row>
-          <Row className="mb-5" />
+          <Row className="mb-4" />
           <Row>
             <Col xs={1} />
             <Col xs={10}>
