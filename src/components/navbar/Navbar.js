@@ -7,7 +7,7 @@ import "./navbar.css";
 const Navbar = ({ path, url, isExact }) => {
   return (
     <Row className="navbar">
-      <Col xs={7}>
+      <Col xs={6}>
         <Nav fill as="ul">
           {path === strings.path.HOME &&
           url === strings.path.HOME &&
@@ -39,7 +39,7 @@ const Navbar = ({ path, url, isExact }) => {
           ) : null}
         </Nav>
       </Col>
-      <Col xs={5}>
+      <Col xs={6}>
         <Nav fill as="ul">
           {path === strings.path.HOME &&
           url === strings.path.HOME &&

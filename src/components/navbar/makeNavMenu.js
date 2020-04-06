@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearLoginState } from "../../redux/login/thunk/loginThunk";
 import {
   clearLogoutState,
-  logoutUser
+  logoutUser,
 } from "../../redux/logout/thunk/logoutThunk";
 import { clearGoogleLoginState } from "../../redux/googleLogin/thunk/googleLoginThunk";
 import {
   clearGoogleLogoutState,
-  logoutGoogleUser
+  logoutGoogleUser,
 } from "../../redux/googleLogout/thunk/googleLogoutThunk";
 import { capitalize } from "../../util/Util";
 import { capitalizeFirst } from "../../util/Util";
@@ -22,43 +22,47 @@ const MakeNavMenu = ({ type }) => {
   const navHomeItems = [
     { name: strings.navbar.navHomeItems.LOGO, path: strings.path.HOME },
     { name: strings.navbar.navHomeItems.ABOUT },
-    { name: strings.navbar.navHomeItems.CONTACT }
+    { name: strings.navbar.navHomeItems.CONTACT },
   ];
 
   const navGetStartedItems = [
     { name: strings.navbar.navGetStartedItems.LOGIN, path: strings.path.LOGIN },
     {
       name: strings.navbar.navGetStartedItems.SIGNUP,
-      path: strings.path.SIGNUP
-    }
+      path: strings.path.SIGNUP,
+    },
   ];
 
   const navUserLoggedItems = [
     { name: strings.navbar.navHomeItems.LOGO, path: strings.path.RECIPE_BOOK },
     {
+      name: strings.navbar.navUserLoggedItems.RECIPE_BOOK,
+      path: strings.path.RECIPE_BOOK,
+    },
+    {
       name: strings.navbar.navUserLoggedItems.MY_RECIPES,
-      path: strings.path.MY_RECIPES
+      path: strings.path.MY_RECIPES,
     },
     { name: strings.navbar.navUserLoggedItems.MAILS, path: strings.path.MAILS },
     {
       name: strings.navbar.navUserLoggedItems.MY_EVENTS,
-      path: strings.path.MY_EVENTS
+      path: strings.path.MY_EVENTS,
     },
     {
       name: strings.navbar.navUserLoggedItems.MY_PROFILE,
-      path: strings.path.MY_PROFILE
+      path: strings.path.MY_PROFILE,
     },
     {
       name: strings.navbar.navUserLoggedItems.SIGNOUT,
-      path: strings.path.SIGNOUT
-    }
+      path: strings.path.SIGNOUT,
+    },
   ];
   const dispatch = useDispatch();
-  const { userData } = useSelector(state => state.login);
-  const { loading, userLoggedOut } = useSelector(state => state.logout);
-  const { googleUserData } = useSelector(state => state.loginGoogle);
+  const { userData } = useSelector((state) => state.login);
+  const { loading, userLoggedOut } = useSelector((state) => state.logout);
+  const { googleUserData } = useSelector((state) => state.loginGoogle);
   const { googleLogoutLoading, googleUserLoggedOut } = useSelector(
-    state => state.googleLogout
+    (state) => state.googleLogout
   );
 
   useEffect(() => {
@@ -70,7 +74,7 @@ const MakeNavMenu = ({ type }) => {
 
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
-        item =>
+        (item) =>
           item.name === strings.navbar.navHomeItems.LOGO && (
             <Nav.Item as="li" className="logo" key={item.name}>
               <Link
@@ -88,7 +92,7 @@ const MakeNavMenu = ({ type }) => {
       )
     : type === strings.navbar.navType.LOGO_GET_STARTED
     ? navHomeItems.map(
-        item =>
+        (item) =>
           item.name === strings.navbar.navHomeItems.LOGO && (
             <Nav.Item as="li" className="logo" key={item.name}>
               <NavLink activeClassName="active" to={item.path} exact>
@@ -99,7 +103,7 @@ const MakeNavMenu = ({ type }) => {
       )
     : type === strings.navbar.navType.LOGO_USER_LOGGED
     ? navUserLoggedItems.map(
-        item =>
+        (item) =>
           item.name === strings.navbar.navHomeItems.LOGO && (
             <Nav.Item as="li" className="logo" key={item.name}>
               <NavLink activeClassName="active" to={item.path} exact>
@@ -109,7 +113,7 @@ const MakeNavMenu = ({ type }) => {
           )
       )
     : type === strings.navbar.navType.HOME_MENU
-    ? navHomeItems.slice(1).map(item => (
+    ? navHomeItems.slice(1).map((item) => (
         <Nav.Item as="li" key={item.name}>
           <Link
             activeClass="active"
@@ -124,7 +128,7 @@ const MakeNavMenu = ({ type }) => {
         </Nav.Item>
       ))
     : type === strings.navbar.navType.GET_STARTED_MENU
-    ? navGetStartedItems.map(item => (
+    ? navGetStartedItems.map((item) => (
         <Nav.Item as="li" key={item.name}>
           <NavLink activeClassName="active" to={item.path} exact>
             {capitalize(item.name)}
@@ -132,12 +136,12 @@ const MakeNavMenu = ({ type }) => {
         </Nav.Item>
       ))
     : type === strings.navbar.navType.USER_LOGGED_MENU
-    ? navUserLoggedItems.slice(1).map(item =>
+    ? navUserLoggedItems.slice(1).map((item) =>
         item.name === strings.navbar.navUserLoggedItems.SIGNOUT ? (
           !loading || !googleLogoutLoading ? (
             <Nav.Item as="li" key={item.name}>
               <NavLink
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   if (userData.email !== undefined) {
                     dispatch(logoutUser(userData.email));
