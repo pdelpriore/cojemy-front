@@ -12,6 +12,7 @@ export const strings = Object.freeze({
     MY_PROFILE: "/myprofile",
     LINKEDIN: "https://www.linkedin.com/in/paul-del-priore-9b8b1114b/",
     SERVER_REQUEST: "http://localhost:4000/graphql",
+    USER_PHOTO: "#",
   },
   navbar: {
     navType: {
@@ -37,6 +38,7 @@ export const strings = Object.freeze({
       MAILS: "boîte aux messages",
       MY_EVENTS: "mes événements",
       MY_PROFILE: "mon profil",
+      USER_PHOTO: "userPhoto",
       SIGNOUT: "déconnexion",
     },
   },

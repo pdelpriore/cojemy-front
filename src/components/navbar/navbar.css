@@ -45,3 +45,7 @@ a:hover {
   text-decoration: none;
   color: #3e3636;
 }
+.navbar-user-icon {
+  font-size: 1.2vw;
+  color: #212529;
+}

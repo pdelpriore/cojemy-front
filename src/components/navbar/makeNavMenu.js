@@ -10,6 +10,8 @@ import {
   clearGoogleLogoutState,
   logoutGoogleUser,
 } from "../../redux/googleLogout/thunk/googleLogoutThunk";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { capitalize } from "../../util/Util";
 import { capitalizeFirst } from "../../util/Util";
 import { Nav, Spinner } from "react-bootstrap";
@@ -51,6 +53,10 @@ const MakeNavMenu = ({ type }) => {
     {
       name: strings.navbar.navUserLoggedItems.MY_PROFILE,
       path: strings.path.MY_PROFILE,
+    },
+    {
+      name: strings.navbar.navUserLoggedItems.USER_PHOTO,
+      path: strings.path.USER_PHOTO,
     },
     {
       name: strings.navbar.navUserLoggedItems.SIGNOUT,
@@ -171,6 +177,8 @@ const MakeNavMenu = ({ type }) => {
               </Nav.Item>
             </div>
           )
+        ) : item.name === strings.navbar.navUserLoggedItems.USER_PHOTO ? (
+          <FontAwesomeIcon className="navbar-user-icon" icon={faUserCircle} />
         ) : (
           <Nav.Item as="li" key={item.name}>
             <NavLink activeClassName="active" to={item.path} exact>
