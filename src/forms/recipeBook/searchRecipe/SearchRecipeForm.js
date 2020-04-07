@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { strings } from "../../../strings/Strings";
+import useSearchRecipe from "../../../hooks/form/searchRecipe/useSearchRecipe";
 import "./searchRecipe.css";
 
 const SearchRecipeForm = () => {
   const dispatch = useDispatch();
+  const { inputs, handleInputChange } = useSearchRecipe();
   return (
     <div>
       <Form>
@@ -24,8 +26,8 @@ const SearchRecipeForm = () => {
                   </InputGroup.Text>
                 </InputGroup.Prepend>
                 <Form.Control
-                  //onChange={handleInputChange}
-                  //value={inputs.recipe || ""}
+                  onChange={handleInputChange}
+                  value={inputs.recipe || ""}
                   className="searchrecipe-placeholder"
                   size="sm"
                   name="recipe"
