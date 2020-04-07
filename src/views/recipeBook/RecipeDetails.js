@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import CommentRate from "./CommentRate";
 import RatingStars from "./RatingStars";
 import RatingActiveStars from "./RatingActiveStars";
-import RateAndComment from "../../forms/RateAndComment/RateAndComment";
+import RateAndComment from "../../forms/recipeBook/RateAndComment/RateAndComment";
 import { getAverageRating } from "./getAverageRating";
 import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails";
 import { useSpring, animated } from "react-spring";
