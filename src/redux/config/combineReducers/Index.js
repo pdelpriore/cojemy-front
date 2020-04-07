@@ -8,14 +8,14 @@ import logoutReducer from "../../logout/reducer/logoutReducer";
 import googleSignupReducer from "../../googleSignup/reducer/googleSignupReducer";
 import googleLoginReducer from "../../googleLogin/reducer/googleLoginReducer";
 import googleLogoutReducer from "../../googleLogout/reducer/googleLogoutReducer";
-import retrieveRecipesReducer from "../../retrieveRecipe/reducer/retrieveRecipesReducer";
-import showRecipeDetailsReducer from "../../showRecipeDetails/reducer/showRecipeDetailsReducer";
-import recipeCategorySelectedReducer from "../../recipeCategorySelected/reducer/recipeCategorySelectedReducer";
-import toEditRecipeRateCommentReducer from "../../toEditRecipeRateComment/reducer/toEditRateCommentReducer";
-import hideRateCommentFormReducer from "../../hideRateCommentForm/reducer/hideRateCommentFormReducer";
-import editRateCommentFormReducer from "../../editRateCommentForm/reducer/editRateCommentFormReducer";
+import retrieveRecipesReducer from "../../recipeBook/retrieveRecipe/reducer/retrieveRecipesReducer";
+import showRecipeDetailsReducer from "../../recipeBook/showRecipeDetails/reducer/showRecipeDetailsReducer";
+import recipeCategorySelectedReducer from "../../recipeBook/recipeCategorySelected/reducer/recipeCategorySelectedReducer";
+import toEditRecipeRateCommentReducer from "../../recipeBook/toEditRecipeRateComment/reducer/toEditRateCommentReducer";
+import hideRateCommentFormReducer from "../../recipeBook/hideRateCommentForm/reducer/hideRateCommentFormReducer";
+import editRateCommentFormReducer from "../../recipeBook/editRateCommentForm/reducer/editRateCommentFormReducer";
 import addRateCommentReducer from "../../addRateComment/reducer/addRateCommentReducer";
-import removeRateCommentReducer from "../../removeRateComment/reducer/removeRateCommentReducer";
+import removeRateCommentReducer from "../../recipeBook/removeRateComment/reducer/removeRateCommentReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -34,7 +34,7 @@ const allReducers = combineReducers({
   hideRateCommentForm: hideRateCommentFormReducer,
   editRateCommentForm: editRateCommentFormReducer,
   addRateComment: addRateCommentReducer,
-  removeRateComment: removeRateCommentReducer
+  removeRateComment: removeRateCommentReducer,
 });
 
 export default allReducers;

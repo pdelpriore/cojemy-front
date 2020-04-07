@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { categorySelectedClearState } from "../../redux/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
-import { recipeDetailsClearState } from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { categorySelectedClearState } from "../../redux/recipeBook/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
+import { recipeDetailsClearState } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { useDispatch } from "react-redux";
 import Navbar from "../../components/navbar/Navbar";
 

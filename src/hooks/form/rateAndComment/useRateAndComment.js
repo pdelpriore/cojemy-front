@@ -3,9 +3,9 @@ import { capitalizeFirst } from "../../../util/Util";
 import {
   addRateAndComment,
   editRecipeRateAndComment,
-} from "../../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
-import { toEditRateCommentClearState } from "../../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
-import { rateCommentRecipeUpdated } from "../../../redux/editRateCommentForm/thunk/editRateCommentFormThunk";
+} from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { toEditRateCommentClearState } from "../../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
+import { rateCommentRecipeUpdated } from "../../../redux/recipeBook/editRateCommentForm/thunk/editRateCommentFormThunk";
 import { addRateComment } from "../../../redux/addRateComment/thunk/addRateCommentThunk";
 import { useDispatch, useSelector } from "react-redux";
 

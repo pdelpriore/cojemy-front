@@ -14,9 +14,9 @@ import RatingActiveStars from "./RatingActiveStars";
 import { getAverageRating } from "./getAverageRating";
 import {
   showRecipeDetailsComponent,
-  retrieveRecipeDetails
-} from "../../redux/showRecipeDetails/thunk/showRecipeDetailsThunk";
-import { hideRateCommentForm } from "../../redux/hideRateCommentForm/thunk/hideRateCommentFormThunk";
+  retrieveRecipeDetails,
+} from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { hideRateCommentForm } from "../../redux/recipeBook/hideRateCommentForm/thunk/hideRateCommentFormThunk";
 import { useSpring, animated } from "react-spring";
 import "./recipeBook.css";
 
@@ -24,11 +24,11 @@ const RecipesList = () => {
   const props = useSpring({
     opacity: 1,
     config: { duration: 400 },
-    from: { opacity: 0 }
+    from: { opacity: 0 },
   });
   const dispatch = useDispatch();
   const { loadingRecipes, recipesRetrieved, recipesError } = useSelector(
-    state => state.recipeBook
+    (state) => state.recipeBook
   );
   timeago.register("fr", fr);
   return loadingRecipes ? (
@@ -43,7 +43,7 @@ const RecipesList = () => {
         <div>
           {recipesRetrieved.map((retrieveRecipe, index) => (
             <div
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 dispatch(hideRateCommentForm(true));
                 dispatch(showRecipeDetailsComponent(true));
@@ -84,7 +84,7 @@ const RecipesList = () => {
                     <RatingStars />
                     <div
                       style={{
-                        width: getAverageRating(retrieveRecipe.comments)
+                        width: getAverageRating(retrieveRecipe.comments),
                       }}
                       className="recipesList-item-rate-inner"
                     >
@@ -110,7 +110,7 @@ const RecipesList = () => {
                 style={{
                   height: 10,
                   backgroundColor: "#2E303F",
-                  borderRadius: "10px"
+                  borderRadius: "10px",
                 }}
               />
             </div>

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { initializeStarRating } from "../../views/recipeBook/initializeStarRating";
-import { toEditRateCommentClearState } from "../../redux/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
+import { toEditRateCommentClearState } from "../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./rateAndComment.css";
@@ -20,10 +20,10 @@ const RateAndComment = ({ recipeId }) => {
     handleMouseLeave,
     handleClick,
     handleInputChange,
-    handleOnSubmit
+    handleOnSubmit,
   } = useRateAndComment();
-  const { detailsLoading } = useSelector(state => state.showRecipeDetails);
-  const { rateAndComment } = useSelector(state => state.toEditRateComment);
+  const { detailsLoading } = useSelector((state) => state.showRecipeDetails);
+  const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const stars = initializeStarRating(strings.rating.RATE_AND_COMMENT);
   for (let i = 0; i < rate; i++) {
     stars[i] = (
@@ -72,7 +72,7 @@ const RateAndComment = ({ recipeId }) => {
         <Col xs={1} />
         <Col xs={10}>
           <Form
-            onSubmit={e => {
+            onSubmit={(e) => {
               e.preventDefault();
               handleOnSubmit(recipeId);
             }}
@@ -173,7 +173,7 @@ const RateAndComment = ({ recipeId }) => {
                       </div>
                     </Button>
                     <Button
-                      onClick={e => {
+                      onClick={(e) => {
                         e.preventDefault();
                         dispatch(toEditRateCommentClearState());
                       }}
