@@ -81,9 +81,9 @@ const MakeNavMenu = ({ type }) => {
 
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
-        (item) =>
+        (item, index) =>
           item.name === strings.navbar.navHomeItems.LOGO && (
-            <Nav.Item as="li" className="logo" key={item.name}>
+            <Nav.Item as="li" className="logo" key={index}>
               <Link
                 activeClass="active"
                 to={item.name}
@@ -99,9 +99,9 @@ const MakeNavMenu = ({ type }) => {
       )
     : type === strings.navbar.navType.LOGO_GET_STARTED
     ? navHomeItems.map(
-        (item) =>
+        (item, index) =>
           item.name === strings.navbar.navHomeItems.LOGO && (
-            <Nav.Item as="li" className="logo" key={item.name}>
+            <Nav.Item as="li" className="logo" key={index}>
               <NavLink activeClassName="active" to={item.path} exact>
                 {capitalize(item.name)}
               </NavLink>
@@ -110,9 +110,9 @@ const MakeNavMenu = ({ type }) => {
       )
     : type === strings.navbar.navType.LOGO_USER_LOGGED
     ? navUserLoggedItems.map(
-        (item) =>
+        (item, index) =>
           item.name === strings.navbar.navHomeItems.LOGO && (
-            <Nav.Item as="li" className="logo" key={item.name}>
+            <Nav.Item as="li" className="logo" key={index}>
               <NavLink activeClassName="active" to={item.path} exact>
                 {capitalize(item.name)}
               </NavLink>
@@ -120,8 +120,8 @@ const MakeNavMenu = ({ type }) => {
           )
       )
     : type === strings.navbar.navType.HOME_MENU
-    ? navHomeItems.slice(1).map((item) => (
-        <Nav.Item as="li" key={item.name}>
+    ? navHomeItems.slice(1).map((item, index) => (
+        <Nav.Item as="li" key={index}>
           <Link
             activeClass="active"
             to={item.name}
@@ -135,18 +135,18 @@ const MakeNavMenu = ({ type }) => {
         </Nav.Item>
       ))
     : type === strings.navbar.navType.GET_STARTED_MENU
-    ? navGetStartedItems.map((item) => (
-        <Nav.Item as="li" key={item.name}>
+    ? navGetStartedItems.map((item, index) => (
+        <Nav.Item as="li" key={index}>
           <NavLink activeClassName="active" to={item.path} exact>
             {capitalize(item.name)}
           </NavLink>
         </Nav.Item>
       ))
     : type === strings.navbar.navType.USER_LOGGED_MENU
-    ? navUserLoggedItems.slice(1).map((item) =>
+    ? navUserLoggedItems.slice(1).map((item, index) =>
         item.name === strings.navbar.navUserLoggedItems.SIGNOUT ? (
           !loading || !googleLogoutLoading ? (
-            <Nav.Item as="li" key={item.name}>
+            <Nav.Item as="li" key={index}>
               <NavLink
                 onClick={(e) => {
                   e.preventDefault();
@@ -163,7 +163,7 @@ const MakeNavMenu = ({ type }) => {
               </NavLink>
             </Nav.Item>
           ) : (
-            <div className="signout-loading" key={item.name}>
+            <div className="signout-loading" key={index}>
               <Spinner
                 as="span"
                 animation="border"
@@ -181,6 +181,7 @@ const MakeNavMenu = ({ type }) => {
         ) : item.name === strings.navbar.navUserLoggedItems.USER_PHOTO ? (
           userData.photo || googleUserData.googlePhoto ? (
             <Img
+              key={index}
               className="navbar-user-photo"
               src={
                 userData.photo
@@ -192,10 +193,14 @@ const MakeNavMenu = ({ type }) => {
               loader={<Spinner animation="border" size="sm" variant="dark" />}
             />
           ) : (
-            <FontAwesomeIcon className="navbar-user-icon" icon={faUserCircle} />
+            <FontAwesomeIcon
+              key={index}
+              className="navbar-user-icon"
+              icon={faUserCircle}
+            />
           )
         ) : (
-          <Nav.Item as="li" key={item.name}>
+          <Nav.Item as="li" key={index}>
             <NavLink activeClassName="active" to={item.path} exact>
               {capitalize(item.name)}
             </NavLink>
