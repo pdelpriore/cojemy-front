@@ -3,7 +3,7 @@ import { loginCases } from "../../config/cases/Cases";
 const initialState = {
   loading: false,
   userData: {},
-  loginError: null
+  loginError: null,
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -15,14 +15,14 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         loading: false,
-        userData: action.payload
+        userData: action.payload,
       };
     case loginCases.ERROR:
       return {
         ...state,
         ...initialState,
         loading: false,
-        loginError: action.payload
+        loginError: action.payload,
       };
     case loginCases.CLEAR_STATE:
       return (state = initialState);

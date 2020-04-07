@@ -11,11 +11,11 @@ import "./loginForm.css";
 
 const LoginForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm();
-  const { loading } = useSelector(state => state.login);
-  const { googleUserLoading } = useSelector(state => state.loginGoogle);
+  const { loading } = useSelector((state) => state.login);
+  const { googleUserLoading } = useSelector((state) => state.loginGoogle);
   const {
     handleGoogleSuccessResponse,
-    handleGoogleFailureResponse
+    handleGoogleFailureResponse,
   } = useGoogleLogin();
   return (
     <Form onSubmit={handleSubmit}>
@@ -95,7 +95,7 @@ const LoginForm = () => {
       <Row>
         <Col xs={12}>
           <GoogleLogin
-            render={renderProps => (
+            render={(renderProps) => (
               <Button
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}

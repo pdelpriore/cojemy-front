@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import "./contact.css";
 
 const Contact = () => {
-  const { emailSent } = useSelector(state => state.customerContact);
+  const { emailSent } = useSelector((state) => state.customerContact);
   return (
     <div className="contact-section" id={strings.navbar.navHomeItems.CONTACT}>
       <Row className="mb-5" />

@@ -7,7 +7,7 @@ export const addRateComment = () => {
     count++;
     dispatch({
       type: addRateCommentCases.RATE_COMMENT_ADDED,
-      payload: count
+      payload: count,
     });
   };
 };

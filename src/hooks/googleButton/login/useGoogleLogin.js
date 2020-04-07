@@ -4,10 +4,10 @@ import { loginUserGoogle } from "../../../redux/googleLogin/thunk/googleLoginThu
 const useGoogleSignup = () => {
   const dispatch = useDispatch();
 
-  const handleGoogleSuccessResponse = response => {
+  const handleGoogleSuccessResponse = (response) => {
     dispatch(loginUserGoogle(response.profileObj.email, response.tokenId));
   };
-  const handleGoogleFailureResponse = response => {
+  const handleGoogleFailureResponse = (response) => {
     console.log(response);
   };
   return { handleGoogleSuccessResponse, handleGoogleFailureResponse };

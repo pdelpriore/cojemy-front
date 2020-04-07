@@ -3,7 +3,7 @@ import { signupCases } from "../../config/cases/Cases";
 const initialState = {
   loading: false,
   userSignedup: null,
-  error: null
+  error: null,
 };
 
 const signupReducer = (state = initialState, action) => {
@@ -15,14 +15,14 @@ const signupReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         loading: false,
-        userSignedup: action.payload
+        userSignedup: action.payload,
       };
     case signupCases.ERROR:
       return {
         ...state,
         ...initialState,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     case signupCases.CLEAR_STATE:
       return (state = initialState);

@@ -10,16 +10,16 @@ export const customerContact = (subject, email, content) => {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(bodyRequest)
+        body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
       const { data } = responseData;
       if (data) {
         dispatch({
           type: customerContactCases.EMAIL_SENT,
-          payload: data.customerContact
+          payload: data.customerContact,
         });
       }
     } catch (err) {

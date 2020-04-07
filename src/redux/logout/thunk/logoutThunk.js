@@ -2,7 +2,7 @@ import { logoutCases } from "../../config/cases/Cases";
 import { logoutQuery } from "../query/logoutQuery";
 import { strings } from "../../../strings/Strings";
 
-export const logoutUser = email => {
+export const logoutUser = (email) => {
   return async (dispatch, getState) => {
     dispatch({ type: logoutCases.LOADING, payload: true });
     const bodyRequest = logoutQuery(email);
@@ -10,10 +10,10 @@ export const logoutUser = email => {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify(bodyRequest)
+        body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
       const { data } = responseData;

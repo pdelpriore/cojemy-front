@@ -2,7 +2,7 @@ import { googleLogoutCases } from "../../config/cases/Cases";
 
 const initialState = {
   googleLogoutLoading: false,
-  googleUserLoggedOut: false
+  googleUserLoggedOut: false,
 };
 
 const googleLogoutReducer = (state = initialState, action) => {
@@ -14,7 +14,7 @@ const googleLogoutReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         googleLogoutLoading: false,
-        googleUserLoggedOut: action.payload
+        googleUserLoggedOut: action.payload,
       };
     case googleLogoutCases.CLEAR_STATE:
       return (state = initialState);

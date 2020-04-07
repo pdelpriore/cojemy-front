@@ -10,10 +10,10 @@ export const loginUser = (email, password) => {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify(bodyRequest)
+        body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
       const { errors, data } = responseData;

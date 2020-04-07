@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 const useGoogleSignup = () => {
   const dispatch = useDispatch();
 
-  const handleGoogleSuccessResponse = response => {
+  const handleGoogleSuccessResponse = (response) => {
     dispatch(
       signupGoogleUser(
         response.profileObj.name,
@@ -13,7 +13,7 @@ const useGoogleSignup = () => {
       )
     );
   };
-  const handleGoogleFailureResponse = response => {
+  const handleGoogleFailureResponse = (response) => {
     console.log(response);
   };
   return { handleGoogleSuccessResponse, handleGoogleFailureResponse };

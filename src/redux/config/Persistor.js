@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 
 const persistConfig = {
   key: "qm",
-  storage
+  storage,
 };
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

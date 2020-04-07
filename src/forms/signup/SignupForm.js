@@ -10,12 +10,12 @@ import { IdClient } from "../../config/Security";
 import "./signupForm.css";
 
 const SignupForm = () => {
-  const { loading } = useSelector(state => state.signup);
-  const { loadingSignGoogle } = useSelector(state => state.signGoogle);
+  const { loading } = useSelector((state) => state.signup);
+  const { loadingSignGoogle } = useSelector((state) => state.signGoogle);
   const { inputs, handleInputChange, handleSubmit } = useSignupForm();
   const {
     handleGoogleSuccessResponse,
-    handleGoogleFailureResponse
+    handleGoogleFailureResponse,
   } = useGoogleSignup();
   return (
     <Form onSubmit={handleSubmit}>
@@ -133,7 +133,7 @@ const SignupForm = () => {
       <Row>
         <Col xs={12}>
           <GoogleLogin
-            render={renderProps => (
+            render={(renderProps) => (
               <Button
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}

@@ -2,7 +2,7 @@ import { customerContactCases } from "../../config/cases/Cases";
 
 const initialState = {
   loading: false,
-  emailSent: null
+  emailSent: null,
 };
 
 const customerContactReducer = (state = initialState, action) => {
@@ -14,7 +14,7 @@ const customerContactReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         loading: false,
-        emailSent: action.payload
+        emailSent: action.payload,
       };
     case customerContactCases.CLEAR_STATE:
       return (state = initialState);

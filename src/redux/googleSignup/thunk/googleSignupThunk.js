@@ -10,21 +10,21 @@ export const signupGoogleUser = (name, email, photo) => {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(bodyRequest)
+        body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
         dispatch({
           type: signupGoogleUserCases.USER_GOOGLE_SIGNEDUP,
-          payload: data.signUpGoogleUser.email
+          payload: data.signUpGoogleUser.email,
         });
       } else if (errors) {
         dispatch({
           type: signupGoogleUserCases.ERROR,
-          payload: errors[0].message
+          payload: errors[0].message,
         });
       }
     } catch (err) {

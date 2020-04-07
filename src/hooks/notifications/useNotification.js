@@ -7,28 +7,28 @@ import { clearLoginState } from "../../redux/login/thunk/loginThunk";
 import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
 import { clearGoogleLoginState } from "../../redux/googleLogin/thunk/googleLoginThunk";
 
-const useNotification = notificationMessage => {
+const useNotification = (notificationMessage) => {
   const [notifications, setNotification] = useState({});
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    setNotification(notifications => ({
+    setNotification((notifications) => ({
       ...notifications,
-      notification: notificationMessage
+      notification: notificationMessage,
     }));
   }, [notificationMessage]);
 
   let { notification } = notifications;
-  const { userSignedup, error } = useSelector(state => state.signup);
+  const { userSignedup, error } = useSelector((state) => state.signup);
   const { passwordSent, remindPassError } = useSelector(
-    state => state.remindPass
+    (state) => state.remindPass
   );
-  const { loginError } = useSelector(state => state.login);
+  const { loginError } = useSelector((state) => state.login);
   const { userGoogleSignedup, errorGoogleSignup } = useSelector(
-    state => state.signGoogle
+    (state) => state.signGoogle
   );
-  const { emailSent } = useSelector(state => state.customerContact);
-  const { googleUserLoginError } = useSelector(state => state.loginGoogle);
+  const { emailSent } = useSelector((state) => state.customerContact);
+  const { googleUserLoginError } = useSelector((state) => state.loginGoogle);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -56,12 +56,12 @@ const useNotification = notificationMessage => {
     userGoogleSignedup,
     errorGoogleSignup,
     googleUserLoginError,
-    dispatch
+    dispatch,
   ]);
 
   return {
     notification,
-    show
+    show,
   };
 };
 

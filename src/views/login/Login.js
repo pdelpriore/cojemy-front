@@ -15,22 +15,22 @@ import "./login.css";
 const Login = ({ match: { path, url, isExact } }) => {
   const props = useSpring({
     opacity: 1,
-    from: { opacity: 0 }
+    from: { opacity: 0 },
   });
   const loginForm = [<LoginForm />];
-  const transition = useTransition(loginForm, loginForm => loginForm.id, {
+  const transition = useTransition(loginForm, (loginForm) => loginForm.id, {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
-    enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
+    enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
   });
-  const { userSignedup } = useSelector(state => state.signup);
-  const { userGoogleSignedup } = useSelector(state => state.signGoogle);
-  const { show } = useSelector(state => state.showRemindPass);
+  const { userSignedup } = useSelector((state) => state.signup);
+  const { userGoogleSignedup } = useSelector((state) => state.signGoogle);
+  const { show } = useSelector((state) => state.showRemindPass);
   const { passwordSent, remindPassError } = useSelector(
-    state => state.remindPass
+    (state) => state.remindPass
   );
-  const { userData, loginError } = useSelector(state => state.login);
+  const { userData, loginError } = useSelector((state) => state.login);
   const { googleUserData, googleUserLoginError } = useSelector(
-    state => state.loginGoogle
+    (state) => state.loginGoogle
   );
   const dispatch = useDispatch();
   const history = useHistory();
@@ -83,7 +83,7 @@ const Login = ({ match: { path, url, isExact } }) => {
           <Col xs={2}>
             {!show && (
               <p
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   dispatch(showRemindPassComponent(true));
                 }}

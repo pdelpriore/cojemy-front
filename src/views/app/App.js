@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 import { strings } from "../../strings/Strings";
 import Home from "../../components/home/Home";
@@ -18,8 +18,8 @@ import { useSelector } from "react-redux";
 import "./app.css";
 
 const App = () => {
-  let { userData } = useSelector(state => state.login);
-  let { googleUserData } = useSelector(state => state.loginGoogle);
+  let { userData } = useSelector((state) => state.login);
+  let { googleUserData } = useSelector((state) => state.loginGoogle);
   return (
     <>
       <Router>

@@ -3,7 +3,7 @@ import { signupGoogleUserCases } from "../../config/cases/Cases";
 const initialState = {
   loadingSignGoogle: false,
   userGoogleSignedup: null,
-  errorGoogleSignup: null
+  errorGoogleSignup: null,
 };
 
 const googleSignupReducer = (state = initialState, action) => {
@@ -15,14 +15,14 @@ const googleSignupReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         loadingSignGoogle: false,
-        userGoogleSignedup: action.payload
+        userGoogleSignedup: action.payload,
       };
     case signupGoogleUserCases.ERROR:
       return {
         ...state,
         ...initialState,
         loadingSignGoogle: false,
-        errorGoogleSignup: action.payload
+        errorGoogleSignup: action.payload,
       };
     case signupGoogleUserCases.CLEAR_STATE:
       return (state = initialState);

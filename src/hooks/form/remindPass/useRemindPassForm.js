@@ -5,18 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 const useRemindPassForm = () => {
   const dispatch = useDispatch();
-  const { passwordSent } = useSelector(state => state.remindPass);
+  const { passwordSent } = useSelector((state) => state.remindPass);
   const [inputs, setInputs] = useState({});
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     e.persist();
-    setInputs(inputs => ({
+    setInputs((inputs) => ({
       ...inputs,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(remindMePassword(inputs.email));
   };
@@ -29,7 +29,7 @@ const useRemindPassForm = () => {
   return {
     inputs,
     handleInputChange,
-    handleSubmit
+    handleSubmit,
   };
 };
 

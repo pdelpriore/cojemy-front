@@ -3,7 +3,7 @@ import { remindPassCases } from "../../config/cases/Cases";
 const initialState = {
   loading: false,
   passwordSent: null,
-  remindPassError: null
+  remindPassError: null,
 };
 
 const remindPasswordReducer = (state = initialState, action) => {
@@ -15,14 +15,14 @@ const remindPasswordReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         loading: false,
-        passwordSent: action.payload
+        passwordSent: action.payload,
       };
     case remindPassCases.ERROR:
       return {
         ...state,
         ...initialState,
         loading: false,
-        remindPassError: action.payload
+        remindPassError: action.payload,
       };
     case remindPassCases.CLEAR_STATE:
       return (state = initialState);

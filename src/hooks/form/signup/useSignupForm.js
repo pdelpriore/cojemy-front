@@ -4,19 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 const useSignupForm = () => {
   const dispatch = useDispatch();
-  const { userSignedup } = useSelector(state => state.signup);
+  const { userSignedup } = useSelector((state) => state.signup);
 
   const [inputs, setInputs] = useState({});
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     e.persist();
-    setInputs(inputs => ({
+    setInputs((inputs) => ({
       ...inputs,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
       signupUser(

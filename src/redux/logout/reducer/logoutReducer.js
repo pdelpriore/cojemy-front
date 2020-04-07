@@ -2,7 +2,7 @@ import { logoutCases } from "../../config/cases/Cases";
 
 const initialState = {
   loading: false,
-  userLoggedOut: false
+  userLoggedOut: false,
 };
 
 const logoutReducer = (state = initialState, action) => {
@@ -14,7 +14,7 @@ const logoutReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         loading: false,
-        userLoggedOut: action.payload
+        userLoggedOut: action.payload,
       };
     case logoutCases.CLEAR_STATE:
       return (state = initialState);

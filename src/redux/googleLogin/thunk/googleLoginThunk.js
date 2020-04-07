@@ -11,22 +11,22 @@ export const loginUserGoogle = (email, token) => {
         method: "post",
         headers: {
           "x-auth": token,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify(bodyRequest)
+        body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
         dispatch({
           type: loginGoogleUserCases.GOOGLE_USER_DATA,
-          payload: data.loginGoogleUser
+          payload: data.loginGoogleUser,
         });
       } else if (errors) {
         dispatch({
           type: loginGoogleUserCases.GOOGLE_USER_ERROR,
-          payload: errors[0].message
+          payload: errors[0].message,
         });
       }
     } catch (err) {

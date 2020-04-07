@@ -9,7 +9,7 @@ import "./main.css";
 const Main = () => {
   const props = useSpring({
     opacity: 1,
-    from: { opacity: 0 }
+    from: { opacity: 0 },
   });
   return (
     <animated.div

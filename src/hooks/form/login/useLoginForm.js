@@ -5,17 +5,17 @@ import { useSelector, useDispatch } from "react-redux";
 const useLoginForm = () => {
   const [inputs, setInputs] = useState({});
   const dispatch = useDispatch();
-  const { userData } = useSelector(state => state.login);
+  const { userData } = useSelector((state) => state.login);
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     e.persist();
-    setInputs(inputs => ({
+    setInputs((inputs) => ({
       ...inputs,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(inputs.email, inputs.password));
   };

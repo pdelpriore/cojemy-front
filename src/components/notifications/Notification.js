@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimesCircle,
-  faCheckCircle
+  faCheckCircle,
 } from "@fortawesome/free-regular-svg-icons";
 import useNotification from "../../hooks/notifications/useNotification";
 import { useSelector } from "react-redux";
@@ -11,11 +11,11 @@ import "./notification.css";
 
 const Notification = ({ notificationMessage }) => {
   const { notification, show } = useNotification(notificationMessage);
-  const { error } = useSelector(state => state.signup);
-  const { remindPassError } = useSelector(state => state.remindPass);
-  const { loginError } = useSelector(state => state.login);
-  const { errorGoogleSignup } = useSelector(state => state.signGoogle);
-  const { googleUserLoginError } = useSelector(state => state.loginGoogle);
+  const { error } = useSelector((state) => state.signup);
+  const { remindPassError } = useSelector((state) => state.remindPass);
+  const { loginError } = useSelector((state) => state.login);
+  const { errorGoogleSignup } = useSelector((state) => state.signGoogle);
+  const { googleUserLoginError } = useSelector((state) => state.loginGoogle);
 
   return (
     show &&

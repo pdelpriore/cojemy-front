@@ -10,18 +10,18 @@ import "./signup.css";
 import { strings } from "../../strings/Strings";
 
 const Signup = ({ match: { path, url, isExact } }) => {
-  const { userSignedup, error } = useSelector(state => state.signup);
+  const { userSignedup, error } = useSelector((state) => state.signup);
   const { userGoogleSignedup, errorGoogleSignup } = useSelector(
-    state => state.signGoogle
+    (state) => state.signGoogle
   );
   const props = useSpring({
     opacity: 1,
-    from: { opacity: 0 }
+    from: { opacity: 0 },
   });
   const signupForm = [<SignupForm />];
-  const transition = useTransition(signupForm, signupForm => signupForm.id, {
+  const transition = useTransition(signupForm, (signupForm) => signupForm.id, {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
-    enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
+    enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
   });
   const history = useHistory();
 

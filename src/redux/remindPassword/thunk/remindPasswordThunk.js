@@ -2,7 +2,7 @@ import { remindPassCases } from "../../config/cases/Cases";
 import { remindPasswordQuery } from "../query/remindPasswordQuery";
 import { strings } from "../../../strings/Strings";
 
-export const remindMePassword = email => {
+export const remindMePassword = (email) => {
   return async (dispatch, getState) => {
     dispatch({ type: remindPassCases.LOADING, payload: true });
     const bodyRequest = remindPasswordQuery(email);
@@ -10,21 +10,21 @@ export const remindMePassword = email => {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(bodyRequest)
+        body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data.remindPassword !== null) {
         dispatch({
           type: remindPassCases.PASSWORD_SENT,
-          payload: data.remindPassword
+          payload: data.remindPassword,
         });
       } else if (errors) {
         dispatch({
           type: remindPassCases.ERROR,
-          payload: errors[0].message
+          payload: errors[0].message,
         });
       }
     } catch (err) {

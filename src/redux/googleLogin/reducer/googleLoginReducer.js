@@ -3,7 +3,7 @@ import { loginGoogleUserCases } from "../../config/cases/Cases";
 const initialState = {
   googleUserLoading: false,
   googleUserData: {},
-  googleUserLoginError: null
+  googleUserLoginError: null,
 };
 
 const googleLoginReducer = (state = initialState, action) => {
@@ -15,14 +15,14 @@ const googleLoginReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         googleUserLoading: false,
-        googleUserData: action.payload
+        googleUserData: action.payload,
       };
     case loginGoogleUserCases.GOOGLE_USER_ERROR:
       return {
         ...state,
         ...initialState,
         googleUserLoading: false,
-        googleUserLoginError: action.payload
+        googleUserLoginError: action.payload,
       };
     case loginGoogleUserCases.CLEAR_STATE:
       return (state = initialState);

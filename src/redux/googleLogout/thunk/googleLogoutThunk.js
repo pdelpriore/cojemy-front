@@ -2,7 +2,7 @@ import { googleLogoutCases } from "../../config/cases/Cases";
 import { googleLogoutQuery } from "../query/googleLogoutQuery";
 import { strings } from "../../../strings/Strings";
 
-export const logoutGoogleUser = email => {
+export const logoutGoogleUser = (email) => {
   return async (dispatch, getState) => {
     dispatch({ type: googleLogoutCases.LOADING, payload: true });
     const bodyRequest = googleLogoutQuery(email);
@@ -10,17 +10,17 @@ export const logoutGoogleUser = email => {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify(bodyRequest)
+        body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
       const { data } = responseData;
       if (data.logoutGoogleUser) {
         dispatch({
           type: googleLogoutCases.SIGNOUT,
-          payload: data.logoutGoogleUser
+          payload: data.logoutGoogleUser,
         });
       }
     } catch (err) {

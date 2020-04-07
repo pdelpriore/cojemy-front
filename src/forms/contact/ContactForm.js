@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import "./contactForm.css";
 
 const ContactForm = () => {
-  const { loading } = useSelector(state => state.customerContact);
+  const { loading } = useSelector((state) => state.customerContact);
   const { inputs, handleInputChange, handleSubmit } = useContactForm();
   return (
     <Form onSubmit={handleSubmit}>

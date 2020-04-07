@@ -12,9 +12,9 @@ const RemindPasswordForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useRemindPassForm();
   const props = useSpring({
     opacity: 1,
-    from: { opacity: 0 }
+    from: { opacity: 0 },
   });
-  const { loading } = useSelector(state => state.remindPass);
+  const { loading } = useSelector((state) => state.remindPass);
   const dispatch = useDispatch();
   return (
     <animated.div style={props}>
@@ -66,7 +66,7 @@ const RemindPasswordForm = () => {
                 </div>
               </Button>
               <Button
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   dispatch(showRemindPassComponent(false));
                 }}
