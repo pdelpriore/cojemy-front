@@ -89,7 +89,7 @@ export const strings = Object.freeze({
     BUTTON_TEXT_CANCEL: "annuler",
   },
   searchRecipe: {
-    SEARCH: "trouve ta recette",
+    SEARCH: "trouve une recette ...",
   },
   logout: {
     LOGOUT: "je te déconnecte ...",

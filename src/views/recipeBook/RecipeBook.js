@@ -6,6 +6,7 @@ import { useSpring, animated } from "react-spring";
 import MakeRecipeButton from "./makeRecipeButton";
 import RecipesList from "./RecipesList";
 import RecipeDetails from "./RecipeDetails";
+import SearchRecipeForm from "../../forms/recipeBook/searchRecipe/SearchRecipeForm";
 import { useSelector } from "react-redux";
 import "./recipeBook.css";
 
@@ -39,7 +40,14 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
       <div className="recipebook-second-section">
         <div className={detailsShowed ? "recipebook-recipes-buttons" : ""}>
           <Row className="mb-5" />
-          <Row className="mb-5" />
+          <Row className="mb-4" />
+          <Row>
+            <Col xs={7} />
+            <Col xs={4}>
+              <SearchRecipeForm />
+            </Col>
+            <Col xs={1} />
+          </Row>
           <Row className="mb-2" />
           <MakeRecipeButton />
           <Row className="mb-5" />
