@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import ScrollArea from "react-scrollbar";
 import { Row, Col, Image, ListGroup } from "react-bootstrap";
+import { useSpring, animated } from "react-spring";
 import MakeRecipeButton from "./makeRecipeButton";
 import RecipesList from "./RecipesList";
 import RecipeDetails from "./RecipeDetails";
@@ -9,9 +10,14 @@ import { useSelector } from "react-redux";
 import "./recipeBook.css";
 
 const RecipeBook = ({ match: { path, url, isExact } }) => {
-  const { detailsShowed } = useSelector(state => state.showRecipeDetails);
+  const props = useSpring({
+    opacity: 1,
+    config: { duration: 200 },
+    from: { opacity: 0 },
+  });
+  const { detailsShowed } = useSelector((state) => state.showRecipeDetails);
   return (
-    <div className="recipebook-area">
+    <animated.div className="recipebook-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
       <div className="recipebook-first-section">
         <Row>
@@ -56,7 +62,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
           </div>
         )}
       </div>
-    </div>
+    </animated.div>
   );
 };
 

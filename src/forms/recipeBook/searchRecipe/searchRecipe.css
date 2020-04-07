@@ -1,0 +1,30 @@
+.searchRecipe-text-family {
+  font-family: "OpenSans-SemiBold";
+}
+.searchRecipe-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.searchRecipe-placeholder {
+  font-family: "OpenSans-Regular";
+  font-size: 1.3vw;
+  background-color: #fffeb8;
+}
+.searchRecipe-spinner {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.searchRecipe-loading-text {
+  margin-left: 10px;
+  font-size: 1vw;
+}
+.searchRecipe-button-send {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+}
+.searchRecipe-button-cancel {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+}
