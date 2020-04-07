@@ -1,19 +1,14 @@
 import React from "react";
 import { Row, Col, Button, Form, Spinner } from "react-bootstrap";
 import { capitalizeFirst } from "../../util/Util";
-import { useSpring, animated } from "react-spring";
 import { useSelector, useDispatch } from "react-redux";
 import { strings } from "../../strings/Strings";
 import "./searchRecipe.css";
 
 const SearchRecipeForm = () => {
-  const props = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-  });
   const dispatch = useDispatch();
   return (
-    <animated.div style={props}>
+    <div>
       <Form>
         <Row>
           <Col xs={12}>
@@ -34,7 +29,7 @@ const SearchRecipeForm = () => {
           </Col>
         </Row>
       </Form>
-    </animated.div>
+    </div>
   );
 };
 
