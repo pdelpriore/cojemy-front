@@ -19,6 +19,7 @@ const useRecipeButton = (buttonQty) => {
   const { googleUserData } = useSelector((state) => state.loginGoogle);
 
   const toggleActiveClass = (id, category) => {
+    if (id === null && category === null) return;
     dispatch(categorySelected(id));
     setActive(
       initialState().map((bool, index) => (index === id ? !bool : bool))
