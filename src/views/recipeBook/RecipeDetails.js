@@ -156,6 +156,7 @@ const RecipeDetails = () => {
             </Col>
             <Col xs={1} />
           </Row>
+          <Row className="mb-4" />
           <Row>
             <Col xs={1} />
             <Col xs={10}>
