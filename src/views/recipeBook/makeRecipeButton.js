@@ -7,24 +7,31 @@ import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
-  const { recipeButtonId } = useSelector(state => state.recipeCategorySelected);
-  const { recipeUpdated } = useSelector(state => state.editRateCommentForm);
-  const { rateCommentAdded } = useSelector(state => state.addRateComment);
-  const { rateCommentRemoved } = useSelector(state => state.removeRateComment);
+  const { recipeButtonId } = useSelector(
+    (state) => state.recipeCategorySelected
+  );
+  const { recipeUpdated } = useSelector((state) => state.editRateCommentForm);
+  const { rateCommentAdded } = useSelector((state) => state.addRateComment);
+  const { rateCommentRemoved } = useSelector(
+    (state) => state.removeRateComment
+  );
   const { detailsDataRetrieved } = useSelector(
-    state => state.showRecipeDetails
+    (state) => state.showRecipeDetails
+  );
+  const { searchInputFilled } = useSelector(
+    (state) => state.turnOffRecipeButtons
   );
   const buttonItems = [
     {
       id: 0,
       name: strings.recipeBook.BUTTON_NEW,
-      category: strings.recipeBook.CAT_NEWS
+      category: strings.recipeBook.CAT_NEWS,
     },
     {
       id: 1,
       name: strings.recipeBook.BUTTON_FAST_FOOD,
-      category: strings.recipeBook.CAT_FAST_FOOD
-    }
+      category: strings.recipeBook.CAT_FAST_FOOD,
+    },
   ];
   const { activesClasses, toggleActiveClass } = useRecipeButton(
     buttonItems.length
@@ -39,19 +46,23 @@ const MakeRecipeButton = () => {
   }, [detailsDataRetrieved]);
 
   useEffect(() => {
-    toggleActiveClass(
-      buttonItems[recipeButtonId].id,
-      buttonItems[recipeButtonId].category
-    );
-  }, [recipeUpdated, rateCommentAdded, rateCommentRemoved]);
+    if (searchInputFilled) {
+      toggleActiveClass(null, null);
+    } else {
+      toggleActiveClass(
+        buttonItems[recipeButtonId].id,
+        buttonItems[recipeButtonId].category
+      );
+    }
+  }, [searchInputFilled, recipeUpdated, rateCommentAdded, rateCommentRemoved]);
 
-  return buttonItems.map(buttonItem => (
+  return buttonItems.map((buttonItem) => (
     <div key={buttonItem.id}>
       <Row>
         <Col xs={2} />
         <Col xs={10}>
           <Button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               toggleActiveClass(buttonItem.id, buttonItem.category);
             }}
