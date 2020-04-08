@@ -34,6 +34,7 @@ const RecipeDetails = () => {
   const { userData } = useSelector((state) => state.login);
   const { googleUserData } = useSelector((state) => state.loginGoogle);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
+  const { detailsLoading } = useSelector((state) => state.showRecipeDetails);
   const isCommented =
     detailsDataRetrieved.comments.length > 0 &&
     detailsDataRetrieved.comments.filter(
@@ -240,19 +241,23 @@ const RecipeDetails = () => {
                         className="recipeDetails-comments-edit-icon"
                         icon={faEdit}
                       />
-                      <FontAwesomeIcon
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleTrashClick(
-                            item.rate._id,
-                            item.comment._id,
-                            detailsDataRetrieved._id,
-                            item._id
-                          );
-                        }}
-                        className="recipeDetails-comments-trash-icon"
-                        icon={faTrash}
-                      />
+                      {!detailsLoading ? (
+                        <FontAwesomeIcon
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleTrashClick(
+                              item.rate._id,
+                              item.comment._id,
+                              detailsDataRetrieved._id,
+                              item._id
+                            );
+                          }}
+                          className="recipeDetails-comments-trash-icon"
+                          icon={faTrash}
+                        />
+                      ) : (
+                        <Spinner animation="border" size="sm" variant="dark" />
+                      )}
                     </div>
                   )}
                 </div>
