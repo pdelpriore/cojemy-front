@@ -95,6 +95,7 @@ const SignupForm = () => {
         <Col xs={12}>
           <Button
             disabled={
+              loading ||
               inputs.name === undefined ||
               inputs.name === "" ||
               inputs.email === undefined ||
@@ -136,7 +137,7 @@ const SignupForm = () => {
             render={(renderProps) => (
               <Button
                 onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
+                disabled={renderProps.disabled || loadingSignGoogle}
                 variant="outline-dark"
                 className="google-signup-button"
               >

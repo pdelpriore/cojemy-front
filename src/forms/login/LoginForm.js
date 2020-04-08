@@ -61,6 +61,7 @@ const LoginForm = () => {
             <Button
               className="login-button-send"
               disabled={
+                loading ||
                 inputs.email === undefined ||
                 inputs.email === "" ||
                 inputs.password === undefined ||
@@ -98,7 +99,7 @@ const LoginForm = () => {
             render={(renderProps) => (
               <Button
                 onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
+                disabled={renderProps.disabled || googleUserLoading}
                 variant="outline-dark"
                 className="google-login-button"
               >

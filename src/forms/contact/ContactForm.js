@@ -71,6 +71,7 @@ const ContactForm = () => {
         <Col xs={12}>
           <Button
             disabled={
+              loading ||
               inputs.subject === undefined ||
               inputs.subject === "" ||
               inputs.message === undefined ||

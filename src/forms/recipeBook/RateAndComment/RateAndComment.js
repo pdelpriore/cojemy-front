@@ -106,6 +106,7 @@ const RateAndComment = ({ recipeId }) => {
                     <Button
                       className="rate-button-send"
                       disabled={
+                        detailsLoading ||
                         inputs.comment === undefined ||
                         inputs.comment === "" ||
                         rate === ""
@@ -142,6 +143,7 @@ const RateAndComment = ({ recipeId }) => {
                     <Button
                       className="rate-button-send"
                       disabled={
+                        detailsLoading ||
                         inputs.comment === undefined ||
                         inputs.comment === "" ||
                         rate === ""
@@ -178,11 +180,6 @@ const RateAndComment = ({ recipeId }) => {
                         dispatch(toEditRateCommentClearState());
                       }}
                       className="rate-button-send"
-                      disabled={
-                        inputs.comment === undefined ||
-                        inputs.comment === "" ||
-                        rate === ""
-                      }
                       variant="outline-secondary"
                     >
                       {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}

@@ -42,7 +42,9 @@ const RemindPasswordForm = () => {
             <div className="remindPass-button">
               <Button
                 className="remindPass-button-send"
-                disabled={inputs.email === undefined || inputs.email === ""}
+                disabled={
+                  loading || inputs.email === undefined || inputs.email === ""
+                }
                 type="submit"
                 variant="outline-dark"
               >
