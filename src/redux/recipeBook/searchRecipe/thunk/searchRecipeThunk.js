@@ -1,11 +1,11 @@
-import { retrieveRecipesCases } from "../../../config/cases/Cases";
-import { retrieveRecipeQuery } from "../query/retrieveRecipeQuery";
+import { searchRecipeCases } from "../../../config/cases/Cases";
+import { searchRecipeQuery } from "../query/searchRecipeQuery";
 import { strings } from "../../../../strings/Strings";
 
-export const getRecipe = (category, email) => {
+export const searchRecipe = (recipeTitle, email) => {
   return async (dispatch, getState) => {
-    dispatch({ type: retrieveRecipesCases.LOADING, payload: true });
-    const bodyRequest = retrieveRecipeQuery(category, email);
+    dispatch({ type: searchRecipeCases.LOADING, payload: true });
+    const bodyRequest = searchRecipeQuery(recipeTitle, email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
@@ -19,12 +19,12 @@ export const getRecipe = (category, email) => {
       const { errors, data } = responseData;
       if (data) {
         dispatch({
-          type: retrieveRecipesCases.RECIPE_RETRIVED,
-          payload: data.retrieveRecipes,
+          type: searchRecipeCases.RECIPE_FOUND,
+          payload: data.searchRecipe,
         });
       } else if (errors) {
         dispatch({
-          type: retrieveRecipesCases.ERROR,
+          type: searchRecipeCases.ERROR,
           payload: errors[0].message,
         });
       }
@@ -34,8 +34,8 @@ export const getRecipe = (category, email) => {
   };
 };
 
-export const getRecipeClearState = () => {
+export const searchRecipeClearState = () => {
   return (dispatch, getState) => {
-    dispatch({ type: retrieveRecipesCases.CLEAR_STATE });
+    dispatch({ type: searchRecipeCases.CLEAR_STATE });
   };
 };

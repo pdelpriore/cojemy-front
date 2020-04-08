@@ -24,6 +24,8 @@ const retrieveRecipesReducer = (state = initialState, action) => {
         loadingRecipes: false,
         recipesError: action.payload,
       };
+    case retrieveRecipesCases.CLEAR_STATE:
+      return (state = initialState);
     default:
       return state;
   }
