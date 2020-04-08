@@ -38,12 +38,12 @@ const MakeRecipeButton = () => {
   );
 
   useEffect(() => {
-    if (!detailsDataRetrieved.title)
+    if (!detailsDataRetrieved.title && !searchInputFilled)
       toggleActiveClass(
         buttonItems[recipeButtonId].id,
         buttonItems[recipeButtonId].category
       );
-  }, [detailsDataRetrieved]);
+  }, [detailsDataRetrieved, searchInputFilled]);
 
   useEffect(() => {
     if (searchInputFilled) {

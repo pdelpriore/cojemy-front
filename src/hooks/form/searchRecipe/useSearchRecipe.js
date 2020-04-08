@@ -32,8 +32,7 @@ const useSearchRecipe = () => {
         dispatch(searchRecipe(inputs.recipe, googleUserData.email));
       }
     }
-    //wyczysc search inputs kiedy button category wcisniety
-    //if (!searchRecipesFound) setInputs({});
+    //if (!searchRecipesFound && !inputs.recipe) setInputs({});
   }, [
     inputs.recipe,
     userData.email,
