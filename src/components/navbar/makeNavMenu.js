@@ -10,6 +10,9 @@ import {
   clearGoogleLogoutState,
   logoutGoogleUser,
 } from "../../redux/googleLogout/thunk/googleLogoutThunk";
+import { recipeDetailsClearState } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { categorySelectedClearState } from "../../redux/recipeBook/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
+import { hideRateCommentForm } from "../../redux/recipeBook/hideRateCommentForm/thunk/hideRateCommentFormThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { capitalize } from "../../util/Util";
@@ -73,9 +76,19 @@ const MakeNavMenu = ({ type }) => {
   );
 
   useEffect(() => {
-    if (userLoggedOut) dispatch(clearLoginState());
+    if (userLoggedOut) {
+      dispatch(clearLoginState());
+      dispatch(recipeDetailsClearState());
+      dispatch(categorySelectedClearState());
+      dispatch(hideRateCommentForm(true));
+    }
     if (userData.email === undefined) dispatch(clearLogoutState());
-    if (googleUserLoggedOut) dispatch(clearGoogleLoginState());
+    if (googleUserLoggedOut) {
+      dispatch(clearGoogleLoginState());
+      dispatch(recipeDetailsClearState());
+      dispatch(categorySelectedClearState());
+      dispatch(hideRateCommentForm(true));
+    }
     if (googleUserData.email === undefined) dispatch(clearGoogleLogoutState());
   }, [userData, userLoggedOut, googleUserData, googleUserLoggedOut, dispatch]);
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { categorySelectedClearState } from "../../redux/recipeBook/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
 import { recipeDetailsClearState } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { hideRateCommentForm } from "../../redux/recipeBook/hideRateCommentForm/thunk/hideRateCommentFormThunk";
 import { useDispatch } from "react-redux";
 import Navbar from "../../components/navbar/Navbar";
 
@@ -10,6 +11,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
   useEffect(() => {
     dispatch(categorySelectedClearState());
     dispatch(recipeDetailsClearState());
+    dispatch(hideRateCommentForm(true));
   }, [dispatch]);
 
   return (
