@@ -1,4 +1,4 @@
-import { addRateCommentCases } from "../../config/cases/Cases";
+import { addRateCommentCases } from "../../../config/cases/Cases";
 
 let count = 0;
 

@@ -7,7 +7,7 @@ const initialState = {
 const editRateCommentFormReducer = (state = initialState, action) => {
   switch (action.type) {
     case editRateCommentFormCases.RECIPE_UPDATED:
-      return { ...state, recipeUpdated: action.payload };
+      return { ...state, ...initialState, recipeUpdated: action.payload };
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import {
 } from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { toEditRateCommentClearState } from "../../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { rateCommentRecipeUpdated } from "../../../redux/recipeBook/editRateCommentForm/thunk/editRateCommentFormThunk";
-import { addRateComment } from "../../../redux/addRateComment/thunk/addRateCommentThunk";
+import { addRateComment } from "../../../redux/recipeBook/addRateComment/thunk/addRateCommentThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRateAndComment = () => {

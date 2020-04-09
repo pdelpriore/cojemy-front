@@ -14,7 +14,7 @@ import recipeCategorySelectedReducer from "../../recipeBook/recipeCategorySelect
 import toEditRecipeRateCommentReducer from "../../recipeBook/toEditRecipeRateComment/reducer/toEditRateCommentReducer";
 import hideRateCommentFormReducer from "../../recipeBook/hideRateCommentForm/reducer/hideRateCommentFormReducer";
 import editRateCommentFormReducer from "../../recipeBook/editRateCommentForm/reducer/editRateCommentFormReducer";
-import addRateCommentReducer from "../../addRateComment/reducer/addRateCommentReducer";
+import addRateCommentReducer from "../../recipeBook/addRateComment/reducer/addRateCommentReducer";
 import removeRateCommentReducer from "../../recipeBook/removeRateComment/reducer/removeRateCommentReducer";
 import turnOffRecipeButtonsReducer from "../../recipeBook/turnOffRecipeButtons/reducer/turnOffRecipeButtonsReducer";
 import searchRecipeReducer from "../../recipeBook/searchRecipe/reducer/searchRecipeReducer";
