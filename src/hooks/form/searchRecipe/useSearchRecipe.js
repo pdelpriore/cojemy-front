@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { turnOffRecipeButtons } from "../../../redux/recipeBook/turnOffRecipeButtons/thunk/turnOffRecipeButtonsThunk";
 import { searchRecipe } from "../../../redux/recipeBook/searchRecipe/thunk/searchRecipeThunk";
 import { getRecipeClearState } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
+import { rateCommentRecipeUpdated } from "../../../redux/recipeBook/editRateCommentForm/thunk/editRateCommentFormThunk";
+import { addRateComment } from "../../../redux/recipeBook/addRateComment/thunk/addRateCommentThunk";
+import { removeRateComment } from "../../../redux/recipeBook/removeRateComment/thunk/removeRateCommentThunk";
 
 const useSearchRecipe = () => {
   const dispatch = useDispatch();
@@ -57,6 +60,11 @@ const useSearchRecipe = () => {
         dispatch(searchRecipe(inputs.recipe, googleUserData.email));
       }
     }
+    return () => {
+      dispatch(rateCommentRecipeUpdated(false));
+      dispatch(addRateComment(false));
+      dispatch(removeRateComment(false));
+    };
   }, [
     searchInputFilled,
     recipeUpdated,

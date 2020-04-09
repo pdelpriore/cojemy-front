@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import useRecipeButton from "../../hooks/screen/recipeBook/useRecipeButton";
-import { useSelector } from "react-redux";
+import { addRateComment } from "../../redux/recipeBook/addRateComment/thunk/addRateCommentThunk";
+import { rateCommentRecipeUpdated } from "../../redux/recipeBook/editRateCommentForm/thunk/editRateCommentFormThunk";
+import { removeRateComment } from "../../redux/recipeBook/removeRateComment/thunk/removeRateCommentThunk";
+import { useSelector, useDispatch } from "react-redux";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
+  const dispatch = useDispatch();
   const { recipeButtonId } = useSelector(
     (state) => state.recipeCategorySelected
   );
@@ -54,7 +58,18 @@ const MakeRecipeButton = () => {
         buttonItems[recipeButtonId].category
       );
     }
-  }, [searchInputFilled, recipeUpdated, rateCommentAdded, rateCommentRemoved]);
+    return () => {
+      dispatch(rateCommentRecipeUpdated(false));
+      dispatch(addRateComment(false));
+      dispatch(removeRateComment(false));
+    };
+  }, [
+    searchInputFilled,
+    recipeUpdated,
+    rateCommentAdded,
+    rateCommentRemoved,
+    dispatch,
+  ]);
 
   return buttonItems.map((buttonItem) => (
     <div key={buttonItem.id}>

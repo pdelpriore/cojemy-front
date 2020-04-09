@@ -1,7 +1,7 @@
 import { editRateCommentFormCases } from "../../../config/cases/Cases";
 
 const initialState = {
-  recipeUpdated: 0,
+  recipeUpdated: false,
 };
 
 const editRateCommentFormReducer = (state = initialState, action) => {

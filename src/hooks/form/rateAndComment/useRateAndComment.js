@@ -46,7 +46,7 @@ const useRateAndComment = () => {
   const handleOnSubmit = (recipeId) => {
     if (rateAndComment.commentValue) {
       if (userData.email) {
-        dispatch(rateCommentRecipeUpdated());
+        dispatch(rateCommentRecipeUpdated(true));
         dispatch(
           editRecipeRateAndComment(
             recipeId,
@@ -61,7 +61,7 @@ const useRateAndComment = () => {
         setInputs({});
         dispatch(toEditRateCommentClearState());
       } else if (googleUserData.email) {
-        dispatch(rateCommentRecipeUpdated());
+        dispatch(rateCommentRecipeUpdated(true));
         dispatch(
           editRecipeRateAndComment(
             recipeId,
