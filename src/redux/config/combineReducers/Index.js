@@ -18,6 +18,7 @@ import addRateCommentReducer from "../../addRateComment/reducer/addRateCommentRe
 import removeRateCommentReducer from "../../recipeBook/removeRateComment/reducer/removeRateCommentReducer";
 import turnOffRecipeButtonsReducer from "../../recipeBook/turnOffRecipeButtons/reducer/turnOffRecipeButtonsReducer";
 import searchRecipeReducer from "../../recipeBook/searchRecipe/reducer/searchRecipeReducer";
+import recipeButtonTurnedOnReducer from "../../recipeBook/recipeButtonTurnedOn/reducer/recipeButtonTurnedOnReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -39,6 +40,7 @@ const allReducers = combineReducers({
   removeRateComment: removeRateCommentReducer,
   turnOffRecipeButtons: turnOffRecipeButtonsReducer,
   searchRecipe: searchRecipeReducer,
+  recipeButtonTurnedOn: recipeButtonTurnedOnReducer,
 });
 
 export default allReducers;

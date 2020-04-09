@@ -106,3 +106,7 @@ export const searchRecipeCases = Object.freeze({
   ERROR: "searchRecipeCasesError",
   CLEAR_STATE: "searchRecipeCasesClearState",
 });
+
+export const recipeButtonTurnedOnCases = Object.freeze({
+  BUTTON_PRESSES: "recipeButtonTurnedOnCasesButtonPressed",
+});

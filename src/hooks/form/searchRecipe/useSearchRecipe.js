@@ -10,7 +10,9 @@ const useSearchRecipe = () => {
 
   const { userData } = useSelector((state) => state.login);
   const { googleUserData } = useSelector((state) => state.loginGoogle);
-  const { searchRecipesFound } = useSelector((state) => state.searchRecipe);
+  const { recipeButtonPressed } = useSelector(
+    (state) => state.recipeButtonTurnedOn
+  );
 
   const handleInputChange = (e) => {
     e.persist();
@@ -32,14 +34,11 @@ const useSearchRecipe = () => {
         dispatch(searchRecipe(inputs.recipe, googleUserData.email));
       }
     }
-    //if (!searchRecipesFound && !inputs.recipe) setInputs({});
-  }, [
-    inputs.recipe,
-    userData.email,
-    googleUserData.email,
-    //searchRecipesFound,
-    dispatch,
-  ]);
+  }, [inputs.recipe, userData.email, googleUserData.email, dispatch]);
+
+  useEffect(() => {
+    setInputs({});
+  }, [recipeButtonPressed]);
 
   return { inputs, handleInputChange };
 };

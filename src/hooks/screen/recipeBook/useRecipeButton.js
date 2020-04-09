@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
 import { searchRecipeClearState } from "../../../redux/recipeBook/searchRecipe/thunk/searchRecipeThunk";
+import { recipeButtonTurnedOn } from "../../../redux/recipeBook/recipeButtonTurnedOn/thunk/recipeButtonTurnedOnThunk";
 import { categorySelected } from "../../../redux/recipeBook/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
 
 const useRecipeButton = (buttonQty) => {
@@ -25,6 +26,7 @@ const useRecipeButton = (buttonQty) => {
     } else {
       dispatch(categorySelected(id));
       dispatch(searchRecipeClearState());
+      dispatch(recipeButtonTurnedOn());
       setActive(
         initialState().map((bool, index) => (index === id ? !bool : bool))
       );

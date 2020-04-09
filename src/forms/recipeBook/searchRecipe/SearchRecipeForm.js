@@ -2,13 +2,11 @@ import React from "react";
 import { Row, Col, Form, InputGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useSelector, useDispatch } from "react-redux";
 import { strings } from "../../../strings/Strings";
 import useSearchRecipe from "../../../hooks/form/searchRecipe/useSearchRecipe";
 import "./searchRecipe.css";
 
 const SearchRecipeForm = () => {
-  const dispatch = useDispatch();
   const { inputs, handleInputChange } = useSearchRecipe();
   return (
     <div>
