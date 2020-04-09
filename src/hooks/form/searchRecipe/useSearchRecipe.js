@@ -46,7 +46,8 @@ const useSearchRecipe = () => {
 
   useEffect(() => {
     setInputs({});
-  }, [recipeButtonPressed]);
+    return () => dispatch(turnOffRecipeButtons(false));
+  }, [recipeButtonPressed, dispatch]);
 
   useEffect(() => {
     if (searchInputFilled) {
@@ -61,6 +62,9 @@ const useSearchRecipe = () => {
     recipeUpdated,
     rateCommentAdded,
     rateCommentRemoved,
+    userData.email,
+    googleUserData.email,
+    inputs.recipe,
     dispatch,
   ]);
 
