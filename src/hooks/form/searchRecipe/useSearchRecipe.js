@@ -13,6 +13,14 @@ const useSearchRecipe = () => {
   const { recipeButtonPressed } = useSelector(
     (state) => state.recipeButtonTurnedOn
   );
+  const { recipeUpdated } = useSelector((state) => state.editRateCommentForm);
+  const { rateCommentAdded } = useSelector((state) => state.addRateComment);
+  const { rateCommentRemoved } = useSelector(
+    (state) => state.removeRateComment
+  );
+  const { searchInputFilled } = useSelector(
+    (state) => state.turnOffRecipeButtons
+  );
 
   const handleInputChange = (e) => {
     e.persist();
@@ -39,6 +47,22 @@ const useSearchRecipe = () => {
   useEffect(() => {
     setInputs({});
   }, [recipeButtonPressed]);
+
+  useEffect(() => {
+    if (searchInputFilled) {
+      if (userData.email) {
+        dispatch(searchRecipe(inputs.recipe, userData.email));
+      } else if (googleUserData.email) {
+        dispatch(searchRecipe(inputs.recipe, googleUserData.email));
+      }
+    }
+  }, [
+    searchInputFilled,
+    recipeUpdated,
+    rateCommentAdded,
+    rateCommentRemoved,
+    dispatch,
+  ]);
 
   return { inputs, handleInputChange };
 };
