@@ -23,7 +23,7 @@
   width: 50vw;
 }
 .recipebook-soup {
-  width: 30vw;
+  width: 20vw;
 }
 .recipebook-knob-button {
   display: flex;
@@ -60,8 +60,10 @@
   transition: 0.6s ease;
 }
 .recipe-button-text {
-  font-size: 0.8vw;
+  width: 4.5vw;
+  font-size: 0.7vw;
   font-family: "OpenSans-Regular";
+  text-align: left;
   white-space: nowrap;
 }
 .recipesList-main-area {

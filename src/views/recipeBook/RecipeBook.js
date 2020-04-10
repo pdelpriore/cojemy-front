@@ -48,18 +48,27 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             </Col>
             <Col xs={1} />
           </Row>
-          <Row className="mb-2" />
-          <MakeRecipeButton />
-          <Row className="mb-5" />
-          <Row className="mb-5" />
+          <Row className="mb-4" />
           <Row>
-            <Col xs={2} />
-            <Col xs={10}>
-              <Image
-                className="recipebook-soup"
-                src={require("../../assets/imgs/soupret.jpg")}
-              />
+            <Col xs={1} />
+            <Col xs={4}>
+              <MakeRecipeButton />
             </Col>
+            <Col xs={1} />
+            <Col xs={5}>
+              <Row className="mb-5" />
+              <Row className="mb-5" />
+              <Row className="mb-5" />
+              <Row className="mb-5" />
+              <Row className="mb-5" />
+              <Row>
+                <Image
+                  className="recipebook-soup"
+                  src={require("../../assets/imgs/soupret.jpg")}
+                />
+              </Row>
+            </Col>
+            <Col xs={1} />
           </Row>
         </div>
         {detailsShowed && (
