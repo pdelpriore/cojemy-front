@@ -59,8 +59,6 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
               <Row className="mb-5" />
               <Row className="mb-5" />
               <Row className="mb-5" />
-              <Row className="mb-5" />
-              <Row className="mb-5" />
               <Row>
                 <Image
                   className="recipebook-soup"
