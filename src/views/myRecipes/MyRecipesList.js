@@ -4,8 +4,7 @@ import { getMyRecipes } from "../../redux/myRecipes/retrieveMyRecipes/thunk/retr
 import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-regular-svg-icons";
-import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faClock } from "@fortawesome/free-solid-svg-icons";
 import { createDate } from "../../util/Util";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
