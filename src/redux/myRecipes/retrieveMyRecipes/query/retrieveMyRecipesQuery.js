@@ -1,8 +1,8 @@
-export const retrieveMyRecipesQuery = (authorId, email) => {
+export const retrieveMyRecipesQuery = (email) => {
   return {
     query: `
                 query {
-                  retrieveMyRecipes(authorId: "${authorId}", email: "${email}") {
+                  retrieveMyRecipes(email: "${email}") {
                       _id
                       title
                       picture

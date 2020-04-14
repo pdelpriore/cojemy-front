@@ -25,11 +25,11 @@ const MyRecipesList = () => {
 
   useEffect(() => {
     if (userData.email) {
-      dispatch(getMyRecipes(userData._id, userData.email));
+      dispatch(getMyRecipes(userData.email));
     } else if (googleUserData.email) {
-      dispatch(getMyRecipes(googleUserData._id, googleUserData.email));
+      dispatch(getMyRecipes(googleUserData.email));
     }
-  }, [userData, googleUserData, dispatch]);
+  }, [userData.email, googleUserData.email, dispatch]);
   timeago.register("fr", fr);
   return loadingMyRecipes ? (
     <div className="myrecipes-list-loading-area">
