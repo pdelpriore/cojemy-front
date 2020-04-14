@@ -4,7 +4,8 @@ import { getMyRecipes } from "../../redux/myRecipes/retrieveMyRecipes/thunk/retr
 import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faClock } from "@fortawesome/free-regular-svg-icons";
+import { faClock } from "@fortawesome/free-regular-svg-icons";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { createDate } from "../../util/Util";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
@@ -13,6 +14,7 @@ import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
 import { useDispatch, useSelector } from "react-redux";
+import { capitalize } from "../../util/Util";
 
 const MyRecipesList = () => {
   const dispatch = useDispatch();
@@ -89,9 +91,9 @@ const MyRecipesList = () => {
                 <div style={{ height: 5 }} />
                 <div className="myrecipes-list-item-author">
                   <div className="myrecipes-list-item-icon">
-                    <FontAwesomeIcon icon={faUser} />
+                    <FontAwesomeIcon icon={faBook} />
                   </div>
-                  <div>{retrieveRecipe.author.name}</div>
+                  <div>{capitalize(retrieveRecipe.category)}</div>
                 </div>
                 <div className="myrecipes-list-item-time">
                   <div className="myrecipes-list-item-icon">
