@@ -1,0 +1,26 @@
+.myrecipes-area {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.myrecipes-first-section {
+  width: 50vw;
+  height: 100vh;
+  background-color: #e2f3f5;
+}
+.myrecipes-second-section {
+  width: 50vw;
+  height: 100vh;
+  background-color: #e2f3f5;
+}
+.myrecipes-list {
+  height: 100vh;
+  border-radius: 5px;
+  background-color: #2e303f;
+  border: 1px #6e3b3b solid;
+}
+.myrecipes-scroll-area {
+  height: 99vh !important;
+}

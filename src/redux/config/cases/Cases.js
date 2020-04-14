@@ -110,3 +110,9 @@ export const searchRecipeCases = Object.freeze({
 export const recipeButtonTurnedOnCases = Object.freeze({
   BUTTON_PRESSES: "recipeButtonTurnedOnCasesButtonPressed",
 });
+
+export const retrieveMyRecipesCases = Object.freeze({
+  LOADING: "retrieveMyRecipesCasesLoading",
+  MY_RECIPES_RETRIEVED: "retrieveMyRecipesCasesMyRecipesRetrieved",
+  ERROR: "retrieveMyRecipesCasesError",
+});
