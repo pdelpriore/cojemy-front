@@ -1,7 +1,7 @@
 import React from "react";
 import { initializeStarRating } from "./initializeStarRating";
-import { strings } from "../../strings/Strings";
-import "./recipeBook.css";
+import { strings } from "../strings/Strings";
+import "../views/recipeBook/recipeBook.css";
 
 const RatingStars = () => {
   const stars = initializeStarRating(strings.rating.RATING_STARS);

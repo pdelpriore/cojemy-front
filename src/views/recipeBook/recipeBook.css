@@ -68,8 +68,8 @@
 }
 .recipesList-main-area {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 10% 5% 5% 5%;
   font-family: "OpenSans-Regular";
   font-size: 1vw;
@@ -92,6 +92,10 @@
   cursor: pointer;
 }
 .recipesList-item-norecipes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
   font-family: "OpenSans-SemiBold";
   font-size: 1.1vw;
   color: #ceced6;

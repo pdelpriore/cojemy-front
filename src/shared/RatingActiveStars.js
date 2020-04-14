@@ -1,6 +1,6 @@
 import React from "react";
 import { initializeStarRating } from "./initializeStarRating";
-import "./recipeBook.css";
+import "../views/recipeBook/recipeBook.css";
 
 const RatingActiveStars = ({ place }) => {
   const stars = initializeStarRating(place);

@@ -4,7 +4,7 @@ import useRateAndComment from "../../../hooks/form/rateAndComment/useRateAndComm
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { initializeStarRating } from "../../../views/recipeBook/initializeStarRating";
+import { initializeStarRating } from "../../../shared/initializeStarRating";
 import { toEditRateCommentClearState } from "../../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";

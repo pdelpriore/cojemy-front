@@ -8,12 +8,12 @@
 .myrecipes-first-section {
   width: 50vw;
   height: 100vh;
-  background-color: #e2f3f5;
+  background-color: #feb062;
 }
 .myrecipes-second-section {
   width: 50vw;
   height: 100vh;
-  background-color: #e2f3f5;
+  background-color: #feb062;
 }
 .myrecipes-list {
   height: 100vh;
@@ -23,4 +23,94 @@
 }
 .myrecipes-scroll-area {
   height: 99vh !important;
+}
+.myrecipes-list-loading-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+.myrecipes-list-main-area {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10% 5% 5% 5%;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+}
+.myrecipes-list-item-norecipes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  font-family: "OpenSans-SemiBold";
+  font-size: 1.1vw;
+  color: #ceced6;
+}
+.myrecipes-list-item {
+  background-color: #3c4049;
+  width: 30vw;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+.myrecipes-list-item:hover {
+  transform: scale(0.985);
+  cursor: pointer;
+}
+.myrecipes-list-item-picture {
+  width: 7.4vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 5px;
+}
+.myrecipes-list-item-timeago {
+  font-family: "OpenSans-Regular";
+  white-space: nowrap;
+  font-size: 0.9vw;
+  color: #edc23c;
+}
+.myrecipes-list-item-title {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1.2vw;
+  text-align: left;
+  color: #ceced6;
+}
+.myrecipes-list-item-rate-outter {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 5.6vw;
+}
+.myrecipes-list-item-rate-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+.myrecipes-list-item-author {
+  display: flex;
+  justify-content: flex-start;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  color: #ceced6;
+}
+.myrecipes-list-item-icon {
+  margin-right: 10px;
+  color: #ee6670;
+  width: 1vw;
+}
+.myrecipes-list-item-time {
+  display: flex;
+  justify-content: flex-start;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  color: #ceced6;
 }

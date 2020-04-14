@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { initializeStarRating } from "./initializeStarRating";
+import { initializeStarRating } from "../../shared/initializeStarRating";
 import { strings } from "../../strings/Strings";
 import "./recipeBook.css";
 

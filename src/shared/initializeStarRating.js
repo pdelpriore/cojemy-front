@@ -1,9 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { strings } from "../../strings/Strings";
-import "./recipeBook.css";
-import "../../forms/recipeBook/RateAndComment/rateAndComment.css";
+import { strings } from "../strings/Strings";
+import "../views/recipeBook/recipeBook.css";
+import "../forms/recipeBook/RateAndComment/rateAndComment.css";
 
 export const initializeStarRating = (place) => {
   const stars = [];
