@@ -128,4 +128,7 @@ export const strings = Object.freeze({
     BUTTON_EDIT_TEXT_LOADING: "je modifie ...",
     BUTTON_CANCEL_TEXT: "annule",
   },
+  myRecipes: {
+    BUTTON_NEW_RECIPE: "nouvelle recette",
+  },
 });

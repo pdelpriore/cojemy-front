@@ -114,3 +114,23 @@
   font-size: 1vw;
   color: #ceced6;
 }
+.myrecipes-button-text {
+  flex: 1;
+  font-size: 0.9vw;
+  font-family: "OpenSans-Regular";
+  text-align: left;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.myrecipes-button-new-recipe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myrecipes-button-icon {
+  flex: 1;
+  font-size: 1.5vw;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
