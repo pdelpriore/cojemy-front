@@ -7,6 +7,7 @@ import MyRecipesList from "./MyRecipesList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListUl } from "@fortawesome/free-solid-svg-icons";
 import { strings } from "../../strings/Strings";
+import MyRecipesForm from "../../forms/myRecipes/myRecipesForm";
 import { useDispatch, useSelector } from "react-redux";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import { capitalize } from "../../util/Util";
@@ -75,7 +76,14 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
           <div className="myrecipes-form-showed">
             <Row className="mb-5" />
             <Row className="mb-5" />
-            {/* Instancja formularza w tym miejscu */}
+            <Row className="mb-3" />
+            <Row>
+              <Col xs={3} />
+              <Col xs={5}>
+                <MyRecipesForm />
+              </Col>
+              <Col xs={4} />
+            </Row>
           </div>
         )}
       </div>

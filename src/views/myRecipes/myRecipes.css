@@ -141,6 +141,7 @@
 }
 .myrecipes-form-showed {
   position: absolute;
+  width: 50vw;
   top: 0;
   right: 0;
   opacity: 1;
