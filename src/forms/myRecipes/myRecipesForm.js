@@ -132,7 +132,8 @@ const MyRecipesForm = () => {
               value={inputs.cookTime || ""}
               name="cookTime"
               type="number"
-              maxLength="3"
+              min="1"
+              max="180"
               placeholder={strings.myRecipes.COOK_TIME_PLACEHOLDER}
             />
           </Form.Group>
