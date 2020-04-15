@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { turnOffRecipeButtons } from "../../../redux/recipeBook/turnOffRecipeButtons/thunk/turnOffRecipeButtonsThunk";
-import { searchRecipe } from "../../../redux/recipeBook/searchRecipe/thunk/searchRecipeThunk";
-import { getRecipeClearState } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
+import { searchRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
 import { rateCommentRecipeUpdated } from "../../../redux/recipeBook/editRateCommentForm/thunk/editRateCommentFormThunk";
 import { addRateComment } from "../../../redux/recipeBook/addRateComment/thunk/addRateCommentThunk";
 import { removeRateComment } from "../../../redux/recipeBook/removeRateComment/thunk/removeRateCommentThunk";
@@ -38,7 +37,6 @@ const useSearchRecipe = () => {
       dispatch(turnOffRecipeButtons(false));
     } else {
       dispatch(turnOffRecipeButtons(true));
-      dispatch(getRecipeClearState());
       if (userData.email) {
         dispatch(searchRecipe(inputs.recipe, userData.email));
       } else if (googleUserData.email) {

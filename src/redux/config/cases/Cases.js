@@ -60,7 +60,6 @@ export const retrieveRecipesCases = Object.freeze({
   LOADING: "retrieveRecipesLoading",
   RECIPE_RETRIVED: "retrieveRecipesRecipeRetrieved",
   ERROR: "retrieveRecipesError",
-  CLEAR_STATE: "retrieveRecipesClearState",
 });
 
 export const showRecipeDetailsCases = Object.freeze({
@@ -98,13 +97,6 @@ export const removeRateCommentCases = Object.freeze({
 
 export const turnOffRecipeButtonsCases = Object.freeze({
   SEARCH_INPUT_FILLED: "turnOffRecipeButtonsCasesSearchInputFilled",
-});
-
-export const searchRecipeCases = Object.freeze({
-  LOADING: "searchRecipeCasesLoading",
-  RECIPE_FOUND: "searchRecipeCasesRecipeFound",
-  ERROR: "searchRecipeCasesError",
-  CLEAR_STATE: "searchRecipeCasesClearState",
 });
 
 export const recipeButtonTurnedOnCases = Object.freeze({

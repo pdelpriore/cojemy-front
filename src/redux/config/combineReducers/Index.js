@@ -17,7 +17,6 @@ import editRateCommentFormReducer from "../../recipeBook/editRateCommentForm/red
 import addRateCommentReducer from "../../recipeBook/addRateComment/reducer/addRateCommentReducer";
 import removeRateCommentReducer from "../../recipeBook/removeRateComment/reducer/removeRateCommentReducer";
 import turnOffRecipeButtonsReducer from "../../recipeBook/turnOffRecipeButtons/reducer/turnOffRecipeButtonsReducer";
-import searchRecipeReducer from "../../recipeBook/searchRecipe/reducer/searchRecipeReducer";
 import recipeButtonTurnedOnReducer from "../../recipeBook/recipeButtonTurnedOn/reducer/recipeButtonTurnedOnReducer";
 import retrieveMyRecipesReducer from "../../myRecipes/retrieveMyRecipes/reducer/retrieveMyRecipesReducer";
 import showNewRecipeFormReducer from "../../myRecipes/showNewRecipeForm/reducer/showNewRecipeFormReducer";
@@ -41,7 +40,6 @@ const allReducers = combineReducers({
   addRateComment: addRateCommentReducer,
   removeRateComment: removeRateCommentReducer,
   turnOffRecipeButtons: turnOffRecipeButtonsReducer,
-  searchRecipe: searchRecipeReducer,
   recipeButtonTurnedOn: recipeButtonTurnedOnReducer,
   myRecipes: retrieveMyRecipesReducer,
   newRecipeFormShow: showNewRecipeFormReducer,

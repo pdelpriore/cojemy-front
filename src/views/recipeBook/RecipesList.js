@@ -24,26 +24,16 @@ const RecipesList = () => {
   const { loadingRecipes, recipesRetrieved, recipesError } = useSelector(
     (state) => state.recipeBook
   );
-  const {
-    loadingSearchRecipes,
-    searchRecipesFound,
-    searchRecipesError,
-  } = useSelector((state) => state.searchRecipe);
   timeago.register("fr", fr);
-  return loadingRecipes || loadingSearchRecipes ? (
+  return loadingRecipes ? (
     <div className="recipesList-loading-area">
       <Spinner animation="border" role="status" variant="light" />
     </div>
-  ) : recipesError || searchRecipesError ? (
-    <div className="recipesList-item-norecipes">
-      {recipesError || searchRecipesError}
-    </div>
+  ) : recipesError ? (
+    <div className="recipesList-item-norecipes">{recipesError}</div>
   ) : (
     <div className="recipesList-main-area">
-      {(
-        (recipesRetrieved && recipesRetrieved) ||
-        (searchRecipesFound && searchRecipesFound)
-      ).map((retrieveRecipe, index) => (
+      {(recipesRetrieved && recipesRetrieved).map((retrieveRecipe, index) => (
         <div
           onClick={(e) => {
             e.preventDefault();

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { strings } from "../../../strings/Strings";
 import useSearchRecipe from "../../../hooks/form/searchRecipe/useSearchRecipe";
-import "./searchRecipe.css";
+import "./searchRecipeForm.css";
 
 const SearchRecipeForm = () => {
   const { inputs, handleInputChange } = useSearchRecipe();
