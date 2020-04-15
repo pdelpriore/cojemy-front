@@ -116,3 +116,7 @@ export const retrieveMyRecipesCases = Object.freeze({
   MY_RECIPES_RETRIEVED: "retrieveMyRecipesCasesMyRecipesRetrieved",
   ERROR: "retrieveMyRecipesCasesError",
 });
+
+export const showNewRecipeFormCases = Object.freeze({
+  FORM_SHOWED: "showNewRecipeFormCasesFormShowed",
+});

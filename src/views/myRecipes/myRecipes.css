@@ -134,3 +134,15 @@
   border: 1px solid black;
   border-radius: 50%;
 }
+.myrecipes-button-hided {
+  position: relative;
+  opacity: 0;
+  overflow: hidden;
+}
+.myrecipes-form-showed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 1;
+  overflow: hidden;
+}
