@@ -11,3 +11,12 @@
   height: 88vh;
   padding: 20px;
 }
+.myrecipes-form-player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
+.myrecipes-form-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

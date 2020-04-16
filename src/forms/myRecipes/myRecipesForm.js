@@ -4,6 +4,7 @@ import useNewRecipeForm from "../../hooks/screen/myRecipes/useNewRecipeForm";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
+import ReactPlayer from "react-player";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
@@ -96,6 +97,21 @@ const MyRecipesForm = () => {
             </Form.Group>
           </Col>
         </Row>
+        {inputs.video && (
+          <Row>
+            <Col xs={12}>
+              <div className="myrecipes-form-player-wrapper">
+                <ReactPlayer
+                  className="myrecipes-form-player"
+                  url={inputs.video ? inputs.video : null}
+                  controls={true}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicCategory">
