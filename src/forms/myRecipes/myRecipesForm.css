@@ -7,3 +7,7 @@
   color: #071a52;
   font-size: 1vw;
 }
+.myrecipes-form-scroll-area {
+  height: 86vh;
+  padding: 20px;
+}

@@ -76,15 +76,12 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
           <div className="myrecipes-form-showed">
             <Row className="mb-5" />
             <Row className="mb-5" />
-            <Row className="mb-3" />
             <Row>
               <Col xs={2} />
-              <Col xs={5}>
-                <ScrollArea smoothScrolling={true} horizontal={false}>
-                  <MyRecipesForm />
-                </ScrollArea>
+              <Col xs={6}>
+                <MyRecipesForm />
               </Col>
-              <Col xs={5} />
+              <Col xs={4} />
             </Row>
           </div>
         )}
