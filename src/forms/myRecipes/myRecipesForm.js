@@ -5,6 +5,8 @@ import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
 import ReactPlayer from "react-player";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
@@ -16,6 +18,8 @@ const MyRecipesForm = () => {
     inputs,
     handleInputsChange,
     handlePicture,
+    handleRemoveImage,
+    handleRemoveVideo,
     handleSubmit,
   } = useNewRecipeForm();
   return (
@@ -72,12 +76,24 @@ const MyRecipesForm = () => {
         </Row>
         {inputs.recipeImage && (
           <Row>
-            <Col xs={12}>
+            <Col xs={9}>
               <Image
                 src={inputs.recipeImage ? inputs.recipeImage : null}
                 thumbnail
               />
             </Col>
+            <Col xs={1} />
+            <Col xs={1}>
+              <FontAwesomeIcon
+                className="myrecipes-form-trash"
+                icon={faTrash}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleRemoveImage();
+                }}
+              />
+            </Col>
+            <Col xs={1} />
           </Row>
         )}
         <Row>
@@ -100,7 +116,7 @@ const MyRecipesForm = () => {
         {inputs.video &&
           ["http", "www"].some((element) => inputs.video.includes(element)) && (
             <Row>
-              <Col xs={12}>
+              <Col xs={9}>
                 <div className="myrecipes-form-player-wrapper">
                   <ReactPlayer
                     className="myrecipes-form-player"
@@ -111,6 +127,18 @@ const MyRecipesForm = () => {
                   />
                 </div>
               </Col>
+              <Col xs={1} />
+              <Col xs={1}>
+                <FontAwesomeIcon
+                  className="myrecipes-form-trash"
+                  icon={faTrash}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleRemoveVideo();
+                  }}
+                />
+              </Col>
+              <Col xs={1} />
             </Row>
           )}
         <Row>

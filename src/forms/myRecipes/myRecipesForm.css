@@ -20,3 +20,7 @@
   top: 0;
   left: 0;
 }
+.myrecipes-form-trash:hover {
+  color: #ee6670;
+  cursor: pointer;
+}

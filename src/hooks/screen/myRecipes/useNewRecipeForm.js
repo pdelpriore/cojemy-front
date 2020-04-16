@@ -24,6 +24,8 @@ const useNewRecipeForm = () => {
   // dispatchuj ingredients stosujac filtrowanie:
   // splited.filter((item) => item !== "")
 
+  //dispatchuj video testujac czy link zawiera http albo www
+
   const handlePicture = (picture) => {
     if (picture.length > 1) {
       picture = picture.splice(picture.length - 1, 1);
@@ -37,7 +39,22 @@ const useNewRecipeForm = () => {
       }));
     };
   };
-  return { inputs, handleInputsChange, handlePicture };
+
+  const handleRemoveImage = () => {
+    setInputs((inputs) => delete inputs.recipeImage);
+  };
+
+  const handleRemoveVideo = () => {
+    setInputs((inputs) => delete inputs.video);
+  };
+
+  return {
+    inputs,
+    handleInputsChange,
+    handlePicture,
+    handleRemoveImage,
+    handleRemoveVideo,
+  };
 };
 
 export default useNewRecipeForm;
