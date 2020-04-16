@@ -9,6 +9,7 @@ import { createDate } from "../../util/Util";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
 import { getAverageRating } from "../../shared/getAverageRating";
+import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
@@ -29,6 +30,7 @@ const MyRecipesList = () => {
     } else if (googleUserData.email) {
       dispatch(getMyRecipes(googleUserData.email));
     }
+    return () => dispatch(showNewRecipeForm(false));
   }, [userData.email, googleUserData.email, dispatch]);
   timeago.register("fr", fr);
   return loadingMyRecipes ? (
