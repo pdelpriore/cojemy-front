@@ -31,7 +31,7 @@ const MyRecipesForm = () => {
               name="title"
               type="text"
               maxLength="21"
-              placeholder={strings.myRecipes.TITLE}
+              placeholder={strings.myRecipes.TITLE_PLACEHOLDER}
             />
           </Form.Group>
         </Col>
@@ -165,7 +165,7 @@ const MyRecipesForm = () => {
               value={inputs.description || ""}
               name="description"
               type="text"
-              placeholder={strings.myRecipes.DESCRIPTION}
+              placeholder={strings.myRecipes.DESCRIPTION_PLACEHOLDER}
             />
           </Form.Group>
         </Col>

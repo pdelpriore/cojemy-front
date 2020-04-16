@@ -32,7 +32,7 @@ const SignupForm = () => {
               size="lg"
               name="name"
               type="text"
-              placeholder={strings.signup.USER_NAME}
+              placeholder={strings.signup.USER_NAME_PLACEHOLDER}
             ></Form.Control>
           </Form.Group>
         </Col>
@@ -50,7 +50,7 @@ const SignupForm = () => {
               size="lg"
               name="email"
               type="email"
-              placeholder={strings.signup.EMAIL}
+              placeholder={strings.signup.EMAIL_PLACEHOLDER}
             ></Form.Control>
           </Form.Group>
         </Col>
@@ -68,7 +68,7 @@ const SignupForm = () => {
               size="lg"
               name="confirmEmail"
               type="email"
-              placeholder={strings.signup.CONFIRM_EMAIL}
+              placeholder={strings.signup.CONFIRM_EMAIL_PLACEHOLDER}
             ></Form.Control>
           </Form.Group>
         </Col>
@@ -86,7 +86,7 @@ const SignupForm = () => {
               size="lg"
               name="password"
               type="password"
-              placeholder={strings.signup.PASSWORD}
+              placeholder={strings.signup.PASSWORD_PLACEHOLDER}
             ></Form.Control>
           </Form.Group>
         </Col>

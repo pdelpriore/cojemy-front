@@ -18,13 +18,13 @@ const ContactForm = () => {
               {capitalizeFirst(strings.contact.SUBJECT)}
             </Form.Label>
             <Form.Control
-              className="text-family-message"
+              className="text-family-message-contact"
               onChange={handleInputChange}
               value={inputs.subject || ""}
               size="lg"
               name="subject"
               type="text"
-              placeholder={strings.contact.SUBJECT}
+              placeholder={strings.contact.SUBJECT_PLACEHOLDER}
             />
           </Form.Group>
         </Col>
@@ -36,13 +36,13 @@ const ContactForm = () => {
               {capitalizeFirst(strings.contact.EMAIL)}
             </Form.Label>
             <Form.Control
-              className="text-family-message"
+              className="text-family-message-contact"
               onChange={handleInputChange}
               value={inputs.email || ""}
               size="lg"
               name="email"
               type="email"
-              placeholder={strings.contact.EMAIL}
+              placeholder={strings.contact.EMAIL_PLACEHOLDER}
             />
           </Form.Group>
         </Col>
@@ -54,7 +54,7 @@ const ContactForm = () => {
               {capitalizeFirst(strings.contact.MESSAGE)}
             </Form.Label>
             <Form.Control
-              className="text-family-message"
+              className="text-family-message-contact"
               as="textarea"
               rows="4"
               onChange={handleInputChange}
@@ -62,7 +62,7 @@ const ContactForm = () => {
               size="lg"
               name="message"
               type="text"
-              placeholder={strings.contact.MESSAGE}
+              placeholder={strings.contact.MESSAGE_PLACEHOLDER}
             />
           </Form.Group>
         </Col>

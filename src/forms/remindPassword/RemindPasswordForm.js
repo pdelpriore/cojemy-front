@@ -32,7 +32,7 @@ const RemindPasswordForm = () => {
                 size="lg"
                 name="email"
                 type="email"
-                placeholder={strings.remindPass.EMAIL}
+                placeholder={strings.remindPass.EMAIL_PLACEHOLDER}
               ></Form.Control>
             </Form.Group>
           </Col>

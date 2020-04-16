@@ -32,7 +32,7 @@ const LoginForm = () => {
               size="lg"
               name="email"
               type="email"
-              placeholder={strings.login.EMAIL}
+              placeholder={strings.login.EMAIL_PLACEHOLDER}
             ></Form.Control>
           </Form.Group>
         </Col>
@@ -50,7 +50,7 @@ const LoginForm = () => {
               size="lg"
               name="password"
               type="password"
-              placeholder={strings.login.PASSWORD}
+              placeholder={strings.login.PASSWORD_PLACEHOLDER}
             ></Form.Control>
           </Form.Group>
         </Col>
