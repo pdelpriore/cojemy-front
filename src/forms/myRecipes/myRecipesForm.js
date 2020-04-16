@@ -16,8 +16,6 @@ const MyRecipesForm = () => {
     handlePicture,
     handleSubmit,
   } = useNewRecipeForm();
-  let ingr = inputs.ingredients;
-  console.log(ingr && ingr.split(", "));
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -131,9 +129,8 @@ const MyRecipesForm = () => {
               onChange={handleInputsChange}
               value={inputs.cookTime || ""}
               name="cookTime"
-              type="number"
-              min="1"
-              max="180"
+              type="text"
+              maxLength="3"
               placeholder={strings.myRecipes.COOK_TIME_PLACEHOLDER}
             />
           </Form.Group>

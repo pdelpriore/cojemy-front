@@ -78,11 +78,11 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
             <Row className="mb-5" />
             <Row className="mb-3" />
             <Row>
-              <Col xs={3} />
+              <Col xs={2} />
               <Col xs={5}>
                 <MyRecipesForm />
               </Col>
-              <Col xs={4} />
+              <Col xs={5} />
             </Row>
           </div>
         )}
