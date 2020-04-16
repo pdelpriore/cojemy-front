@@ -25,10 +25,17 @@ const useNewRecipeForm = () => {
   // splited.filter((item) => item !== "")
 
   const handlePicture = (picture) => {
-    setInputs((inputs) => ({
-      ...inputs,
-      recipeImage: picture,
-    }));
+    if (picture.length > 1) {
+      picture = picture.splice(picture.length - 1, 1);
+    }
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(picture[0]);
+    fileReader.onloadend = () => {
+      setInputs((inputs) => ({
+        ...inputs,
+        recipeImage: fileReader.result,
+      }));
+    };
   };
   return { inputs, handleInputsChange, handlePicture };
 };

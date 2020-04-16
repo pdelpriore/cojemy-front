@@ -80,7 +80,9 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
             <Row>
               <Col xs={2} />
               <Col xs={5}>
-                <MyRecipesForm />
+                <ScrollArea smoothScrolling={true} horizontal={false}>
+                  <MyRecipesForm />
+                </ScrollArea>
               </Col>
               <Col xs={5} />
             </Row>
