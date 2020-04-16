@@ -16,8 +16,6 @@ const useNewRecipeForm = () => {
     }));
   };
 
-  console.log(inputs.ingredients);
-
   // dispatchuj ingredients stosujac filtrowanie:
   // splited.filter((item) => item !== "")
 
