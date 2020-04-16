@@ -179,6 +179,8 @@ const MyRecipesForm = () => {
                 className="text-family-message"
                 onChange={handleInputsChange}
                 value={inputs.description || ""}
+                as="textarea"
+                rows="4"
                 name="description"
                 type="text"
                 placeholder={strings.myRecipes.DESCRIPTION_PLACEHOLDER}

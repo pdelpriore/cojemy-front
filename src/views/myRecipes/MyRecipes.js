@@ -75,7 +75,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
         {newRecipeFormShowed && (
           <div className="myrecipes-form-showed">
             <Row className="mb-5" />
-            <Row className="mb-5" />
+            <Row className="mb-4" />
             <Row>
               <Col xs={2} />
               <Col xs={6}>
