@@ -67,9 +67,6 @@ const MyRecipesForm = () => {
                 buttonText={capitalizeFirst(strings.myRecipes.CHOOSE_PICTURE)}
                 onChange={(picture) => handlePicture(picture)}
                 imgExtension={[".jpg", "jpeg", ".gif", ".png", ".gif"]}
-                fileSizeError={capitalizeFirst(
-                  strings.myRecipes.PICTURE_SIZE_ERROR
-                )}
               />
             </Form.Group>
           </Col>

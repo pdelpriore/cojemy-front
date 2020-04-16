@@ -153,7 +153,6 @@ export const strings = Object.freeze({
     DESCRIPTION: "description *",
     DESCRIPTION_PLACEHOLDER: "description",
     CHOOSE_PICTURE: "choisis une image",
-    PICTURE_SIZE_ERROR: "image trop grande",
     CHOOSE_CATEGORY: "choisis une catégorie ...",
     MAX_PICTURE_SIZE: "max 100kB accepté",
     category: {
