@@ -163,5 +163,11 @@ export const strings = Object.freeze({
       SALADES: "salades",
       FAST_FOOD: "fast food",
     },
+    inputName: {
+      TITLE: "title",
+      COOK_TIME: "cookTime",
+      INGREDIENTS: "ingredients",
+      DESCRIPTION: "description",
+    },
   },
 });

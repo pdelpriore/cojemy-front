@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { capitalizeFirst } from "../../../util/Util";
+import { strings } from "../../../strings/Strings";
 
 const useNewRecipeForm = () => {
   const [inputs, setInputs] = useState({});
@@ -9,13 +10,13 @@ const useNewRecipeForm = () => {
     setInputs((inputs) => ({
       ...inputs,
       [e.target.name]:
-        e.target.name === "title"
+        e.target.name === strings.myRecipes.inputName.TITLE
           ? capitalizeFirst(e.target.value)
-          : e.target.name === "cookTime"
+          : e.target.name === strings.myRecipes.inputName.COOK_TIME
           ? e.target.value.replace(/[^1-9]+/g, "")
-          : e.target.name === "ingredients"
+          : e.target.name === strings.myRecipes.inputName.INGREDIENTS
           ? e.target.value.replace(/[^a-zA-Z,\d\s]/g, "").split(/\s*,\s*/)
-          : e.target.name === "description"
+          : e.target.name === strings.myRecipes.inputName.DESCRIPTION
           ? capitalizeFirst(e.target.value)
           : e.target.value,
     }));
