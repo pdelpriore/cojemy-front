@@ -97,21 +97,22 @@ const MyRecipesForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {inputs.video && (
-          <Row>
-            <Col xs={12}>
-              <div className="myrecipes-form-player-wrapper">
-                <ReactPlayer
-                  className="myrecipes-form-player"
-                  url={inputs.video ? inputs.video : null}
-                  controls={true}
-                  width="100%"
-                  height="100%"
-                />
-              </div>
-            </Col>
-          </Row>
-        )}
+        {inputs.video &&
+          ["http", "www"].some((element) => inputs.video.includes(element)) && (
+            <Row>
+              <Col xs={12}>
+                <div className="myrecipes-form-player-wrapper">
+                  <ReactPlayer
+                    className="myrecipes-form-player"
+                    url={inputs.video ? inputs.video : null}
+                    controls={true}
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+              </Col>
+            </Row>
+          )}
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicCategory">
