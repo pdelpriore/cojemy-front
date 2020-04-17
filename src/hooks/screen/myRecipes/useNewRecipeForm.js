@@ -42,11 +42,19 @@ const useNewRecipeForm = () => {
   };
 
   const handleRemoveImage = () => {
-    setInputs((inputs) => delete inputs.recipeImage);
+    setInputs((inputs) =>
+      (({ recipeImage, ...others }) => ({
+        ...others,
+      }))(inputs)
+    );
   };
 
   const handleRemoveVideo = () => {
-    setInputs((inputs) => delete inputs.video);
+    setInputs((inputs) =>
+      (({ video, ...others }) => ({
+        ...others,
+      }))(inputs)
+    );
   };
 
   return {
