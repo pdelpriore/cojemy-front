@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
 import { strings } from "../../../strings/Strings";
+import { addMyRecipe } from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
+import { useSelector, useDispatch } from "react-redux";
 
 const useNewRecipeForm = () => {
+  const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState("");
+
+  const { userData } = useSelector((state) => state.login);
+  const { googleUserData } = useSelector((state) => state.loginGoogle);
 
   const handleInputsChange = (e) => {
     e.persist();
@@ -77,6 +83,42 @@ const useNewRecipeForm = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (userData.email) {
+      dispatch(
+        addMyRecipe(
+          inputs.title,
+          inputs.recipeImage,
+          ["http", "www"].some((element) => inputs.video.includes(element)) &&
+            !error &&
+            inputs.video,
+          inputs.category,
+          parseInt(inputs.cookTime),
+          inputs.ingredients.filter((ingredient) => ingredient !== ""),
+          inputs.description,
+          userData.email
+        )
+      );
+    } else if (googleUserData.email) {
+      dispatch(
+        addMyRecipe(
+          inputs.title,
+          inputs.recipeImage,
+          inputs.video &&
+            ["http", "www"].some((element) => inputs.video.includes(element)) &&
+            !error &&
+            inputs.video,
+          inputs.category,
+          parseInt(inputs.cookTime),
+          inputs.ingredients.filter((ingredient) => ingredient !== ""),
+          inputs.description,
+          googleUserData.email
+        )
+      );
+    }
+  };
+
   useEffect(() => {
     if (!inputs.video) setError("");
   }, [inputs.video]);
@@ -90,6 +132,7 @@ const useNewRecipeForm = () => {
     handleRemoveVideo,
     handlePlayerError,
     handlePlayerReady,
+    handleSubmit,
   };
 };
 

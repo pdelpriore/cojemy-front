@@ -247,10 +247,10 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Button
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(showNewRecipeForm(false));
-              }}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   dispatch(showNewRecipeForm(false));
+              // }}
               type="submit"
               className="button-text"
               variant="outline-dark"
