@@ -66,7 +66,6 @@ const useNewRecipeForm = () => {
   };
 
   const handlePlayerError = (e) => {
-    console.log(e);
     if (e.target.error.message.includes("COULD_NOT_OPEN")) {
       setError(capitalizeFirst(strings.myRecipes.error.VIDEO_URL_ERROR));
     }
