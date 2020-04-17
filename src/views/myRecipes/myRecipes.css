@@ -150,3 +150,8 @@
 .myrecipes-image {
   width: 36vw;
 }
+.myrecipes-form-video-error {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1vw;
+  color: red;
+}

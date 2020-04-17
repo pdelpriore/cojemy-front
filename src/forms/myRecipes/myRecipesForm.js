@@ -16,10 +16,13 @@ const MyRecipesForm = () => {
   const dispatch = useDispatch();
   const {
     inputs,
+    error,
     handleInputsChange,
     handlePicture,
     handleRemoveImage,
     handleRemoveVideo,
+    handlePlayerError,
+    handlePlayerReady,
     handleSubmit,
   } = useNewRecipeForm();
   return (
@@ -121,6 +124,8 @@ const MyRecipesForm = () => {
                     controls={true}
                     width="100%"
                     height="100%"
+                    onError={handlePlayerError}
+                    onReady={handlePlayerReady}
                   />
                 </div>
               </Col>
@@ -138,6 +143,15 @@ const MyRecipesForm = () => {
               <Col xs={1} />
             </Row>
           )}
+        {error && (
+          <Row>
+            <Col xs={12}>
+              <div className="myrecipes-form-video-error">
+                {error ? error : null}
+              </div>
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicCategory">

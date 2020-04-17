@@ -169,5 +169,8 @@ export const strings = Object.freeze({
       INGREDIENTS: "ingredients",
       DESCRIPTION: "description",
     },
+    error: {
+      VIDEO_URL_ERROR: "adresse de vidéo incorrecte",
+    },
   },
 });

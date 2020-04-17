@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
 import { strings } from "../../../strings/Strings";
 
 const useNewRecipeForm = () => {
   const [inputs, setInputs] = useState({});
+  const [error, setError] = useState("");
 
   const handleInputsChange = (e) => {
     e.persist();
@@ -30,6 +31,7 @@ const useNewRecipeForm = () => {
   // splited.filter((item) => item !== "")
 
   // dispatchuj video testujac czy link zawiera http albo www
+  // dispatchuj video, jesli nie ma erroru
 
   // przy dispatchowaniu cookTime zrob parseInt poniewaz w bazie danych jest to Int
 
@@ -63,12 +65,32 @@ const useNewRecipeForm = () => {
     );
   };
 
+  const handlePlayerError = (e) => {
+    console.log(e);
+    if (e.target.error.message.includes("COULD_NOT_OPEN")) {
+      setError(capitalizeFirst(strings.myRecipes.error.VIDEO_URL_ERROR));
+    }
+  };
+
+  const handlePlayerReady = (e) => {
+    if (e.player.isReady) {
+      setError("");
+    }
+  };
+
+  useEffect(() => {
+    if (!inputs.video) setError("");
+  }, [inputs.video]);
+
   return {
     inputs,
+    error,
     handleInputsChange,
     handlePicture,
     handleRemoveImage,
     handleRemoveVideo,
+    handlePlayerError,
+    handlePlayerReady,
   };
 };
 
