@@ -29,7 +29,9 @@ const useNewRecipeForm = () => {
   // dispatchuj ingredients stosujac filtrowanie:
   // splited.filter((item) => item !== "")
 
-  //dispatchuj video testujac czy link zawiera http albo www
+  // dispatchuj video testujac czy link zawiera http albo www
+
+  // przy dispatchowaniu cookTime zrob parseInt poniewaz w bazie danych jest to Int
 
   const handlePicture = (picture) => {
     if (picture.length > 1) {

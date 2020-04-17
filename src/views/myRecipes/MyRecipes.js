@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button, ListGroup } from "react-bootstrap";
+import { Row, Col, Button, ListGroup, Image } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import ScrollArea from "react-scrollbar";
 import Navbar from "../../components/navbar/Navbar";
@@ -50,7 +50,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
           <Row className="mb-5" />
           <Row className="mb-5" />
           <Row>
-            <Col xs={5} />
+            <Col xs={4} />
             <Col xs={2}>
               <Button
                 onClick={(e) => {
@@ -68,6 +68,17 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
                   {capitalize(strings.myRecipes.BUTTON_NEW_RECIPE)}
                 </div>
               </Button>
+            </Col>
+            <Col xs={6} />
+          </Row>
+          <Row className="mb-5" />
+          <Row>
+            <Col xs={1} />
+            <Col xs={6}>
+              <Image
+                className="myrecipes-image"
+                src={require("../../assets/imgs/recipebookret.jpg")}
+              />
             </Col>
             <Col xs={5} />
           </Row>
