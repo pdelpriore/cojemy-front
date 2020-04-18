@@ -11,7 +11,7 @@ import "./loginForm.css";
 
 const LoginForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm();
-  const { loading } = useSelector((state) => state.login);
+  const { loading, loadingGoogle } = useSelector((state) => state.login);
   const {
     handleGoogleSuccessResponse,
     handleGoogleFailureResponse,
@@ -98,11 +98,11 @@ const LoginForm = () => {
             render={(renderProps) => (
               <Button
                 onClick={renderProps.onClick}
-                disabled={renderProps.disabled || loading}
+                disabled={renderProps.disabled || loadingGoogle}
                 variant="outline-dark"
                 className="google-login-button"
               >
-                {!loading ? (
+                {!loadingGoogle ? (
                   <div className="google-login-icon" />
                 ) : (
                   <Spinner
@@ -113,7 +113,7 @@ const LoginForm = () => {
                     aria-hidden="true"
                   />
                 )}
-                {!loading ? (
+                {!loadingGoogle ? (
                   <div className="google-login-text">
                     {capitalizeFirst(strings.login.BUTTON_TEXT)}
                   </div>

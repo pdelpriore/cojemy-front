@@ -25,6 +25,7 @@ export const showRemindPassCases = Object.freeze({
 
 export const loginCases = Object.freeze({
   LOADING: "loginLoading",
+  LOADING_GOOGLE: "loadingGoogle",
   USER_DATA: "loginUserData",
   ERROR: "loginError",
   CLEAR_STATE: "loginClearState",
@@ -47,13 +48,6 @@ export const signupGoogleUserCases = Object.freeze({
   USER_GOOGLE_SIGNEDUP: "signupGoogleUserSignedUp",
   ERROR: "signupGoogleUserError",
   CLEAR_STATE: "signupGoogleUserClearState",
-});
-
-export const loginGoogleUserCases = Object.freeze({
-  LOADING: "loginGoogleUserLoading",
-  GOOGLE_USER_DATA: "loginGoogleUserData",
-  GOOGLE_USER_ERROR: "loginGoogleUserError",
-  CLEAR_STATE: "loginGoogleUserClearState",
 });
 
 export const retrieveRecipesCases = Object.freeze({

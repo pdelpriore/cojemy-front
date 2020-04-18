@@ -31,7 +31,7 @@ export const loginUser = (email, password) => {
 
 export const loginUserGoogle = (email, token) => {
   return async (dispatch, getState) => {
-    dispatch({ type: loginCases.LOADING, payload: true });
+    dispatch({ type: loginCases.LOADING_GOOGLE, payload: true });
     const bodyRequest = googleLoginQuery(email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
