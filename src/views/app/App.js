@@ -19,15 +19,13 @@ import "./app.css";
 
 const App = () => {
   let { userData } = useSelector((state) => state.login);
-  let { googleUserData } = useSelector((state) => state.loginGoogle);
   return (
     <>
       <Router>
         <Switch>
-          {userData.email !== undefined ||
-          (googleUserData.email !== undefined && (
+          {userData.email !== undefined && (
             <Route path={strings.path.HOME} exact component={Home} />
-          )) ? (
+          ) ? (
             <Redirect
               from={strings.path.HOME}
               to={strings.path.RECIPE_BOOK}
@@ -36,10 +34,9 @@ const App = () => {
           ) : (
             <Route path={strings.path.HOME} exact component={Home} />
           )}
-          {userData.email !== undefined ||
-          (googleUserData.email !== undefined && (
+          {userData.email !== undefined && (
             <Route path={strings.path.LOGIN} exact component={Login} />
-          )) ? (
+          ) ? (
             <Redirect
               from={strings.path.LOGIN}
               to={strings.path.RECIPE_BOOK}
@@ -48,10 +45,9 @@ const App = () => {
           ) : (
             <Route path={strings.path.LOGIN} exact component={Login} />
           )}
-          {userData.email !== undefined ||
-          (googleUserData.email !== undefined && (
+          {userData.email !== undefined && (
             <Route path={strings.path.SIGNUP} exact component={Signup} />
-          )) ? (
+          ) ? (
             <Redirect
               from={strings.path.SIGNUP}
               to={strings.path.RECIPE_BOOK}
@@ -59,8 +55,7 @@ const App = () => {
           ) : (
             <Route path={strings.path.SIGNUP} exact component={Signup} />
           )}
-          {userData.email !== undefined ||
-          googleUserData.email !== undefined ? (
+          {userData.email !== undefined ? (
             <Route
               path={strings.path.RECIPE_BOOK}
               exact
@@ -69,26 +64,22 @@ const App = () => {
           ) : (
             <Redirect to={strings.path.HOME} exact />
           )}
-          {userData.email !== undefined ||
-          googleUserData.email !== undefined ? (
+          {userData.email !== undefined ? (
             <Route path={strings.path.MY_RECIPES} exact component={MyRecipes} />
           ) : (
             <Redirect to={strings.path.HOME} exact />
           )}
-          {userData.email !== undefined ||
-          googleUserData.email !== undefined ? (
+          {userData.email !== undefined ? (
             <Route path={strings.path.MAILS} exact component={Mails} />
           ) : (
             <Redirect to={strings.path.HOME} exact />
           )}
-          {userData.email !== undefined ||
-          googleUserData.email !== undefined ? (
+          {userData.email !== undefined ? (
             <Route path={strings.path.MY_EVENTS} exact component={MyEvents} />
           ) : (
             <Redirect to={strings.path.HOME} exact />
           )}
-          {userData.email !== undefined ||
-          googleUserData.email !== undefined ? (
+          {userData.email !== undefined ? (
             <Route path={strings.path.MY_PROFILE} exact component={MyProfile} />
           ) : (
             <Redirect to={strings.path.HOME} exact />

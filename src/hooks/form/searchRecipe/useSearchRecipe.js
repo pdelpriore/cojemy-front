@@ -11,7 +11,6 @@ const useSearchRecipe = () => {
   const [inputs, setInputs] = useState({});
 
   const { userData } = useSelector((state) => state.login);
-  const { googleUserData } = useSelector((state) => state.loginGoogle);
   const { recipeButtonPressed } = useSelector(
     (state) => state.recipeButtonTurnedOn
   );
@@ -39,11 +38,9 @@ const useSearchRecipe = () => {
       dispatch(turnOffRecipeButtons(true));
       if (userData.email) {
         dispatch(searchRecipe(inputs.recipe, userData.email));
-      } else if (googleUserData.email) {
-        dispatch(searchRecipe(inputs.recipe, googleUserData.email));
       }
     }
-  }, [inputs.recipe, userData.email, googleUserData.email, dispatch]);
+  }, [inputs.recipe, userData.email, dispatch]);
 
   useEffect(() => {
     setInputs({});
@@ -54,8 +51,6 @@ const useSearchRecipe = () => {
     if (searchInputFilled) {
       if (userData.email) {
         dispatch(searchRecipe(inputs.recipe, userData.email));
-      } else if (googleUserData.email) {
-        dispatch(searchRecipe(inputs.recipe, googleUserData.email));
       }
     }
     return () => {
@@ -69,7 +64,6 @@ const useSearchRecipe = () => {
     rateCommentAdded,
     rateCommentRemoved,
     userData.email,
-    googleUserData.email,
     inputs.recipe,
     dispatch,
   ]);

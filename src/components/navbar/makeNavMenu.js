@@ -5,11 +5,6 @@ import {
   clearLogoutState,
   logoutUser,
 } from "../../redux/logout/thunk/logoutThunk";
-import { clearGoogleLoginState } from "../../redux/googleLogin/thunk/googleLoginThunk";
-import {
-  clearGoogleLogoutState,
-  logoutGoogleUser,
-} from "../../redux/googleLogout/thunk/googleLogoutThunk";
 import { recipeDetailsClearState } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { categorySelectedClearState } from "../../redux/recipeBook/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
 import { hideRateCommentForm } from "../../redux/recipeBook/hideRateCommentForm/thunk/hideRateCommentFormThunk";
@@ -70,10 +65,6 @@ const MakeNavMenu = ({ type }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
   const { loading, userLoggedOut } = useSelector((state) => state.logout);
-  const { googleUserData } = useSelector((state) => state.loginGoogle);
-  const { googleLogoutLoading, googleUserLoggedOut } = useSelector(
-    (state) => state.googleLogout
-  );
 
   useEffect(() => {
     if (userLoggedOut) {
@@ -83,14 +74,7 @@ const MakeNavMenu = ({ type }) => {
       dispatch(hideRateCommentForm(true));
     }
     if (userData.email === undefined) dispatch(clearLogoutState());
-    if (googleUserLoggedOut) {
-      dispatch(clearGoogleLoginState());
-      dispatch(recipeDetailsClearState());
-      dispatch(categorySelectedClearState());
-      dispatch(hideRateCommentForm(true));
-    }
-    if (googleUserData.email === undefined) dispatch(clearGoogleLogoutState());
-  }, [userData, userLoggedOut, googleUserData, googleUserLoggedOut, dispatch]);
+  }, [userData, userLoggedOut, dispatch]);
 
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
@@ -158,15 +142,13 @@ const MakeNavMenu = ({ type }) => {
     : type === strings.navbar.navType.USER_LOGGED_MENU
     ? navUserLoggedItems.slice(1).map((item, index) =>
         item.name === strings.navbar.navUserLoggedItems.SIGNOUT ? (
-          !loading || !googleLogoutLoading ? (
+          !loading ? (
             <Nav.Item as="li" key={index}>
               <NavLink
                 onClick={(e) => {
                   e.preventDefault();
                   if (userData.email !== undefined) {
                     dispatch(logoutUser(userData.email));
-                  } else if (googleUserData.email !== undefined) {
-                    dispatch(logoutGoogleUser(googleUserData.email));
                   }
                 }}
                 to={item.path}
@@ -192,17 +174,11 @@ const MakeNavMenu = ({ type }) => {
             </div>
           )
         ) : item.name === strings.navbar.navUserLoggedItems.USER_PHOTO ? (
-          userData.photo || googleUserData.googlePhoto ? (
+          userData.photo ? (
             <Img
               key={index}
               className="navbar-user-photo"
-              src={
-                userData.photo
-                  ? userData.photo
-                  : googleUserData.googlePhoto
-                  ? googleUserData.googlePhoto
-                  : null
-              }
+              src={userData.photo ? userData.photo : null}
               loader={<Spinner animation="border" size="sm" variant="dark" />}
             />
           ) : (

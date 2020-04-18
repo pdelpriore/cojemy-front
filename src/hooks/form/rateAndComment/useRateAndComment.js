@@ -16,7 +16,6 @@ const useRateAndComment = () => {
 
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
-  const { googleUserData } = useSelector((state) => state.loginGoogle);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const { recipeListItemChanged } = useSelector(
     (state) => state.hideRateCommentForm
@@ -60,39 +59,12 @@ const useRateAndComment = () => {
         setRate("");
         setInputs({});
         dispatch(toEditRateCommentClearState());
-      } else if (googleUserData.email) {
-        dispatch(rateCommentRecipeUpdated(true));
-        dispatch(
-          editRecipeRateAndComment(
-            recipeId,
-            rateAndComment.rateId,
-            rate,
-            rateAndComment.commentId,
-            inputs.comment,
-            googleUserData.email
-          )
-        );
-        setRate("");
-        setInputs({});
-        dispatch(toEditRateCommentClearState());
       }
     } else {
       if (userData.email) {
         dispatch(addRateComment(true));
         dispatch(
           addRateAndComment(recipeId, rate, inputs.comment, userData.email)
-        );
-        setRate("");
-        setInputs({});
-      } else if (googleUserData.email) {
-        dispatch(addRateComment(true));
-        dispatch(
-          addRateAndComment(
-            recipeId,
-            rate,
-            inputs.comment,
-            googleUserData.email
-          )
         );
         setRate("");
         setInputs({});

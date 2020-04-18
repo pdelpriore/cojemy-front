@@ -13,7 +13,6 @@ const useRecipeDetails = () => {
   const [editShow, setEditShow] = useState(false);
 
   const { userData } = useSelector((state) => state.login);
-  const { googleUserData } = useSelector((state) => state.loginGoogle);
 
   const handleMouseEnter = () => {
     setEditShow(true);
@@ -38,17 +37,6 @@ const useRecipeDetails = () => {
           recipeId,
           commentItemId,
           userData.email
-        )
-      );
-    } else if (googleUserData.email) {
-      dispatch(removeRateComment(true));
-      dispatch(
-        removeRecipeRateAndComment(
-          rateId,
-          commentId,
-          recipeId,
-          commentItemId,
-          googleUserData.email
         )
       );
     }

@@ -10,7 +10,6 @@ const useNewRecipeForm = () => {
   const [error, setError] = useState("");
 
   const { userData } = useSelector((state) => state.login);
-  const { googleUserData } = useSelector((state) => state.loginGoogle);
 
   const handleInputsChange = (e) => {
     e.persist();
@@ -98,22 +97,6 @@ const useNewRecipeForm = () => {
           inputs.ingredients.filter((ingredient) => ingredient !== ""),
           inputs.description,
           userData.email
-        )
-      );
-    } else if (googleUserData.email) {
-      dispatch(
-        addMyRecipe(
-          inputs.title,
-          inputs.recipeImage,
-          inputs.video &&
-            ["http", "www"].some((element) => inputs.video.includes(element)) &&
-            !error &&
-            inputs.video,
-          inputs.category,
-          parseInt(inputs.cookTime),
-          inputs.ingredients.filter((ingredient) => ingredient !== ""),
-          inputs.description,
-          googleUserData.email
         )
       );
     }

@@ -5,7 +5,6 @@ import { clearCustomerContactState } from "../../redux/customerContact/thunk/cus
 import { clearRemindPasswordState } from "../../redux/remindPassword/thunk/remindPasswordThunk";
 import { clearLoginState } from "../../redux/login/thunk/loginThunk";
 import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
-import { clearGoogleLoginState } from "../../redux/googleLogin/thunk/googleLoginThunk";
 
 const useNotification = (notificationMessage) => {
   const [notifications, setNotification] = useState({});
@@ -28,7 +27,6 @@ const useNotification = (notificationMessage) => {
     (state) => state.signGoogle
   );
   const { emailSent } = useSelector((state) => state.customerContact);
-  const { googleUserLoginError } = useSelector((state) => state.loginGoogle);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +38,6 @@ const useNotification = (notificationMessage) => {
       if (loginError) dispatch(clearLoginState());
       if (errorGoogleSignup || userGoogleSignedup)
         dispatch(clearSignUpGoogleUserState());
-      if (googleUserLoginError) dispatch(clearGoogleLoginState());
       setShow(false);
       setNotification({});
     }, 3500);
@@ -55,7 +52,6 @@ const useNotification = (notificationMessage) => {
     loginError,
     userGoogleSignedup,
     errorGoogleSignup,
-    googleUserLoginError,
     dispatch,
   ]);
 

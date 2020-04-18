@@ -19,7 +19,6 @@ import { capitalize } from "../../util/Util";
 const MyRecipesList = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
-  const { googleUserData } = useSelector((state) => state.loginGoogle);
   const { loadingMyRecipes, myRecipesRetrieved, myRecipesError } = useSelector(
     (state) => state.myRecipes
   );
@@ -27,11 +26,9 @@ const MyRecipesList = () => {
   useEffect(() => {
     if (userData.email) {
       dispatch(getMyRecipes(userData.email));
-    } else if (googleUserData.email) {
-      dispatch(getMyRecipes(googleUserData.email));
     }
     return () => dispatch(showNewRecipeForm(false));
-  }, [userData.email, googleUserData.email, dispatch]);
+  }, [userData.email, dispatch]);
   timeago.register("fr", fr);
   return loadingMyRecipes ? (
     <div className="myrecipes-list-loading-area">

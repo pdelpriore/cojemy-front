@@ -32,15 +32,12 @@ const RecipeDetails = () => {
     (state) => state.showRecipeDetails
   );
   const { userData } = useSelector((state) => state.login);
-  const { googleUserData } = useSelector((state) => state.loginGoogle);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const { detailsLoading } = useSelector((state) => state.showRecipeDetails);
   const isCommented =
     detailsDataRetrieved.comments.length > 0 &&
     detailsDataRetrieved.comments.filter(
-      (comment) =>
-        comment.commentator.email === userData.email ||
-        comment.commentator.email === googleUserData.email
+      (comment) => comment.commentator.email === userData.email
     )[0].commentator.email;
   const {
     editShow,
@@ -195,13 +192,11 @@ const RecipeDetails = () => {
                   )}
                   <div
                     onMouseEnter={
-                      (item.commentator.email === userData.email ||
-                        item.commentator.email === googleUserData.email) &&
+                      item.commentator.email === userData.email &&
                       handleMouseEnter
                     }
                     onMouseLeave={
-                      (item.commentator.email === userData.email ||
-                        item.commentator.email === googleUserData.email) &&
+                      item.commentator.email === userData.email &&
                       handleMouseLeave
                     }
                     className="recipeDetails-comments-content-area"

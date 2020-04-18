@@ -29,16 +29,13 @@ const Login = ({ match: { path, url, isExact } }) => {
     (state) => state.remindPass
   );
   const { userData, loginError } = useSelector((state) => state.login);
-  const { googleUserData, googleUserLoginError } = useSelector(
-    (state) => state.loginGoogle
-  );
+
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    if (userData.email !== undefined || googleUserData.email !== undefined)
-      history.push(strings.path.RECIPE_BOOK);
-  }, [userData, googleUserData, history]);
+    if (userData.email !== undefined) history.push(strings.path.RECIPE_BOOK);
+  }, [userData, history]);
 
   return (
     <animated.div style={props} className="login-area">
@@ -111,8 +108,6 @@ const Login = ({ match: { path, url, isExact } }) => {
                   ? passwordSent
                   : loginError
                   ? loginError
-                  : googleUserLoginError
-                  ? googleUserLoginError
                   : userGoogleSignedup !== null
                   ? capitalizeFirst(strings.signupGoogle.GOOGLE_USER_CREATED)
                   : null

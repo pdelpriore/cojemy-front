@@ -6,8 +6,6 @@ import remindPasswordReducer from "../../remindPassword/reducer/remindPasswordRe
 import loginReducer from "../../login/reducer/loginReducer";
 import logoutReducer from "../../logout/reducer/logoutReducer";
 import googleSignupReducer from "../../googleSignup/reducer/googleSignupReducer";
-import googleLoginReducer from "../../googleLogin/reducer/googleLoginReducer";
-import googleLogoutReducer from "../../googleLogout/reducer/googleLogoutReducer";
 import retrieveRecipesReducer from "../../recipeBook/retrieveRecipe/reducer/retrieveRecipesReducer";
 import showRecipeDetailsReducer from "../../recipeBook/showRecipeDetails/reducer/showRecipeDetailsReducer";
 import recipeCategorySelectedReducer from "../../recipeBook/recipeCategorySelected/reducer/recipeCategorySelectedReducer";
@@ -29,8 +27,6 @@ const allReducers = combineReducers({
   login: loginReducer,
   logout: logoutReducer,
   signGoogle: googleSignupReducer,
-  loginGoogle: googleLoginReducer,
-  googleLogout: googleLogoutReducer,
   recipeBook: retrieveRecipesReducer,
   showRecipeDetails: showRecipeDetailsReducer,
   recipeCategorySelected: recipeCategorySelectedReducer,

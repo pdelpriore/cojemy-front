@@ -17,7 +17,6 @@ const useRecipeButton = (buttonQty) => {
 
   const [activesClasses, setActive] = useState(initialState());
   const { userData } = useSelector((state) => state.login);
-  const { googleUserData } = useSelector((state) => state.loginGoogle);
 
   const toggleActiveClass = (id, category) => {
     if (id === null && category === null) {
@@ -30,8 +29,6 @@ const useRecipeButton = (buttonQty) => {
       );
       if (userData.email) {
         dispatch(getRecipe(category, userData.email));
-      } else if (googleUserData.email) {
-        dispatch(getRecipe(category, googleUserData.email));
       }
     }
   };
