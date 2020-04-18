@@ -1,8 +1,8 @@
 export const googleLoginQuery = (email) => {
   return {
     query: `
-            mutation {
-                loginGoogleUser(email: "${email}") {
+            mutation($email: String!) {
+                loginGoogleUser(email: $email) {
                     _id
                     name
                     photo
@@ -12,5 +12,6 @@ export const googleLoginQuery = (email) => {
                 }
             }
             `,
+    variables: { email },
   };
 };

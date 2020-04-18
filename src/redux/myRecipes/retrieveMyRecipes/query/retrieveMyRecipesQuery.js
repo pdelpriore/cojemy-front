@@ -1,8 +1,8 @@
 export const retrieveMyRecipesQuery = (email) => {
   return {
     query: `
-                query {
-                  retrieveMyRecipes(email: "${email}") {
+                query($email: String!) {
+                  retrieveMyRecipes(email: $email) {
                       _id
                       title
                       picture
@@ -39,5 +39,6 @@ export const retrieveMyRecipesQuery = (email) => {
                   }
                 }
                 `,
+    variables: { email },
   };
 };

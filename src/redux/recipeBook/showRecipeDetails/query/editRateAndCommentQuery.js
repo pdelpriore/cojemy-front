@@ -8,8 +8,8 @@ export const editRateAndCommentQuery = (
 ) => {
   return {
     query: `
-                  mutation {
-                    editRecipeRateComment(recipeId: "${recipeId}", rateId: "${rateId}", rateValue: ${rateValue}, commentId: "${commentId}", commentContent: "${commentContent}" , email: "${email}") {
+                  mutation($recipeId: ID!, $rateId: ID!, $rateValue: Int!, $commentId: ID!, $commentContent: String!, $email: String!) {
+                    editRecipeRateComment(recipeId: $recipeId, rateId: $rateId, rateValue: $rateValue, commentId: $commentId, commentContent: $commentContent, email: $email) {
                         _id
                         title
                         picture
@@ -46,5 +46,13 @@ export const editRateAndCommentQuery = (
                     }
                   }
                   `,
+    variables: {
+      recipeId,
+      rateId,
+      rateValue,
+      commentId,
+      commentContent,
+      email,
+    },
   };
 };

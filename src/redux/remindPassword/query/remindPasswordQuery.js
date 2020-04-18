@@ -1,9 +1,10 @@
-export const remindPasswordQuery = email => {
+export const remindPasswordQuery = (email) => {
   return {
     query: `
-            mutation {
-                remindPassword(email: "${email}")
+            mutation($email: String!) {
+                remindPassword(email: $email)
             }
-            `
+            `,
+    variables: { email },
   };
 };

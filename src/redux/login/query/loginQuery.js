@@ -1,8 +1,8 @@
 export const loginQuery = (email, password) => {
   return {
     query: `
-          mutation {
-              login(email: "${email}", password: "${password}") {
+          mutation($email: String!, $password: String!) {
+              login(email: $email, password: $password) {
                   _id
                   name
                   photo
@@ -12,5 +12,6 @@ export const loginQuery = (email, password) => {
               }
           }
           `,
+    variables: { email, password },
   };
 };

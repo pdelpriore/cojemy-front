@@ -1,9 +1,10 @@
-export const logoutQuery = email => {
+export const logoutQuery = (email) => {
   return {
     query: `
-            mutation {
-                logout(email: "${email}")
+            mutation($email: String!) {
+                logout(email: $email)
             }
-            `
+            `,
+    variables: { email },
   };
 };
