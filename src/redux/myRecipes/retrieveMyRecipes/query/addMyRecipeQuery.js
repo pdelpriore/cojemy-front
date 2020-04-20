@@ -1,6 +1,6 @@
 export const addMyRecipeQuery = (
   title,
-  image,
+  recipeImage,
   video,
   category,
   cookTime,
@@ -9,8 +9,8 @@ export const addMyRecipeQuery = (
   email
 ) => {
   return {
-    query: `mutation($title: String!, $image: String, $video: String, $category: String!, $cookTime: Int!, $ingredients: [String!]!, $description: String!, $email: String!) {
-    addMyRecipe(title: $title, image: $image, video: $video, category: $category, cookTime: $cookTime, ingredients: $ingredients, description: $description, email: $email) {
+    query: `mutation($title: String!, $recipeImage: RecipeImage, $video: String, $category: String!, $cookTime: Int!, $ingredients: [String!]!, $description: String!, $email: String!) {
+    addMyRecipe(title: $title, recipeImage: $recipeImage, video: $video, category: $category, cookTime: $cookTime, ingredients: $ingredients, description: $description, email: $email) {
         _id
         title
         picture
@@ -48,7 +48,7 @@ export const addMyRecipeQuery = (
   }`,
     variables: {
       title,
-      image,
+      recipeImage,
       video,
       category,
       cookTime,

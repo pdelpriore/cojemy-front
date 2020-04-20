@@ -49,7 +49,10 @@ const useNewRecipeForm = () => {
     fileReader.onloadend = () => {
       setInputs((inputs) => ({
         ...inputs,
-        recipeImage: fileReader.result,
+        recipeImage: {
+          image: fileReader.result,
+          imageName: picture[0].name,
+        },
       }));
     };
   };
@@ -89,9 +92,12 @@ const useNewRecipeForm = () => {
         addMyRecipe(
           inputs.title,
           inputs.recipeImage,
-          ["http", "www"].some((element) => inputs.video.includes(element)) &&
-            !error &&
-            inputs.video,
+          inputs.video,
+          // ["http", "www"].some(
+          //   (element) => inputs.video && inputs.video.includes(element)
+          // ) &&
+          //   !error &&
+          //   inputs.video,
           inputs.category,
           parseInt(inputs.cookTime),
           inputs.ingredients.filter((ingredient) => ingredient !== ""),

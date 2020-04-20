@@ -78,7 +78,7 @@ const MyRecipesForm = () => {
           <Row>
             <Col xs={9}>
               <Image
-                src={inputs.recipeImage ? inputs.recipeImage : null}
+                src={inputs.recipeImage.image ? inputs.recipeImage.image : null}
                 thumbnail
               />
             </Col>
