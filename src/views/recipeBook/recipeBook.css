@@ -168,6 +168,7 @@
 }
 .recipeDetails-picture {
   width: 15vw;
+  height: 30vh;
   object-fit: cover;
   border: 1px solid #572529;
   border-radius: 20px;
