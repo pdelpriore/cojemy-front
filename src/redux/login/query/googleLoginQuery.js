@@ -6,7 +6,6 @@ export const googleLoginQuery = (email) => {
                     _id
                     name
                     photo
-                    googlePhoto
                     email
                     isGoogleUser
                 }

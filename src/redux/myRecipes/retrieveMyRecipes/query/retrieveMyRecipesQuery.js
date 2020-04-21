@@ -15,7 +15,6 @@ export const retrieveMyRecipesQuery = (email) => {
                       author {
                           name
                           photo
-                          googlePhoto
                       }
                       comments {
                         _id
@@ -24,7 +23,6 @@ export const retrieveMyRecipesQuery = (email) => {
                           name
                           email
                           photo
-                          googlePhoto
                         }
                         comment {
                           _id

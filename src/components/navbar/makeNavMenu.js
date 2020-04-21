@@ -174,17 +174,11 @@ const MakeNavMenu = ({ type }) => {
             </div>
           )
         ) : item.name === strings.navbar.navUserLoggedItems.USER_PHOTO ? (
-          userData.photo || userData.googlePhoto ? (
+          userData.photo ? (
             <Img
               key={index}
               className="navbar-user-photo"
-              src={
-                userData.photo
-                  ? userData.photo
-                  : userData.googlePhoto
-                  ? userData.googlePhoto
-                  : null
-              }
+              src={userData.photo ? userData.photo : null}
               loader={<Spinner animation="border" size="sm" variant="dark" />}
             />
           ) : (

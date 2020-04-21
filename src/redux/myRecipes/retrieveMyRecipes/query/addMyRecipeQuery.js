@@ -23,7 +23,6 @@ export const addMyRecipeQuery = (
         author {
             name
             photo
-            googlePhoto
         }
         comments {
           _id
@@ -32,7 +31,6 @@ export const addMyRecipeQuery = (
             name
             email
             photo
-            googlePhoto
           }
           comment {
             _id

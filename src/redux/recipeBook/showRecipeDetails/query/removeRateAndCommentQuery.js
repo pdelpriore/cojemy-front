@@ -21,7 +21,6 @@ export const removeRateAndCommentQuery = (
                           author {
                               name
                               photo
-                              googlePhoto
                           }
                           comments {
                             _id
@@ -30,7 +29,6 @@ export const removeRateAndCommentQuery = (
                               name
                               email
                               photo
-                              googlePhoto
                             }
                             comment {
                               _id

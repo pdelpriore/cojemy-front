@@ -20,7 +20,6 @@ export const addRateAndCommentQuery = (
                       author {
                           name
                           photo
-                          googlePhoto
                       }
                       comments {
                         _id
@@ -29,7 +28,6 @@ export const addRateAndCommentQuery = (
                           name
                           email
                           photo
-                          googlePhoto
                         }
                         comment {
                           _id

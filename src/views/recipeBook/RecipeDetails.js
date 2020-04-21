@@ -62,8 +62,6 @@ const RecipeDetails = () => {
             src={
               detailsDataRetrieved.author.photo
                 ? detailsDataRetrieved.author.photo
-                : detailsDataRetrieved.author.googlePhoto
-                ? detailsDataRetrieved.author.googlePhoto
                 : require("../../assets/imgs/cookerret.png")
             }
             loader={<Spinner animation="border" variant="dark" />}
@@ -170,15 +168,11 @@ const RecipeDetails = () => {
             <Col xs={10}>
               {detailsDataRetrieved.comments.map((item, index) => (
                 <div className="recipeDetails-comments-area" key={index}>
-                  {item.commentator.photo || item.commentator.googlePhoto ? (
+                  {item.commentator.photo ? (
                     <Img
                       className="recipeDetails-comments-photo"
                       src={
-                        item.commentator.photo
-                          ? item.commentator.photo
-                          : item.commentator.googlePhoto
-                          ? item.commentator.googlePhoto
-                          : null
+                        item.commentator.photo ? item.commentator.photo : null
                       }
                       loader={
                         <Spinner animation="border" size="sm" variant="dark" />
