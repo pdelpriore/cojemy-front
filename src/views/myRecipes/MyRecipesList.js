@@ -38,8 +38,8 @@ const MyRecipesList = () => {
     <div className="myrecipes-list-item-norecipes">{myRecipesError}</div>
   ) : (
     <div className="myrecipes-list-main-area">
-      {(myRecipesRetrieved && myRecipesRetrieved).map(
-        (retrieveRecipe, index) => (
+      {myRecipesRetrieved !== null &&
+        myRecipesRetrieved.map((retrieveRecipe, index) => (
           <div
             onClick={(e) => {
               e.preventDefault();
@@ -109,8 +109,7 @@ const MyRecipesList = () => {
               }}
             />
           </div>
-        )
-      )}
+        ))}
     </div>
   );
 };

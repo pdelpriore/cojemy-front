@@ -33,80 +33,81 @@ const RecipesList = () => {
     <div className="recipesList-item-norecipes">{recipesError}</div>
   ) : (
     <div className="recipesList-main-area">
-      {(recipesRetrieved && recipesRetrieved).map((retrieveRecipe, index) => (
-        <div
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch(hideRateCommentForm(true));
-            dispatch(showRecipeDetailsComponent(true));
-            dispatch(retrieveRecipeDetails(retrieveRecipe));
-          }}
-          className="recipesList-item"
-          key={index}
-        >
-          <Row>
-            <Col xs={3}>
-              <Img
-                className="recipesList-item-picture"
-                src={
-                  retrieveRecipe.picture
-                    ? "http://localhost:4000" + retrieveRecipe.picture
-                    : require("../../assets/imgs/panret.jpg")
-                }
-                loader={<Spinner animation="border" variant="info" />}
-              />
-            </Col>
-            <Col xs={9}>
-              <Row>
-                <Col xs={7} />
-                <Col xs={5}>
-                  <div>
-                    <TimeAgo
-                      className="recipesList-item-timeago"
-                      datetime={createDate(retrieveRecipe.date)}
-                      locale="fr"
-                    />
-                  </div>
-                </Col>
-              </Row>
-              <div className="recipesList-item-title">
-                {retrieveRecipe.title}
-              </div>
-              <div className="recipesList-item-rate-outter">
-                <RatingStars />
-                <div
-                  style={{
-                    width: getAverageRating(retrieveRecipe.comments),
-                  }}
-                  className="recipesList-item-rate-inner"
-                >
-                  <RatingActiveStars place={strings.rating.LIST} />
-                </div>
-              </div>
-              <div style={{ height: 5 }} />
-              <div className="recipesList-item-author">
-                <div className="recipesList-item-icon">
-                  <FontAwesomeIcon icon={faUser} />
-                </div>
-                <div>{retrieveRecipe.author.name}</div>
-              </div>
-              <div className="recipesList-item-time">
-                <div className="recipesList-item-icon">
-                  <FontAwesomeIcon icon={faClock} />
-                </div>
-                <div>{retrieveRecipe.cookTime} min.</div>
-              </div>
-            </Col>
-          </Row>
+      {recipesRetrieved !== null &&
+        recipesRetrieved.map((retrieveRecipe, index) => (
           <div
-            style={{
-              height: 10,
-              backgroundColor: "#2E303F",
-              borderRadius: "10px",
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(hideRateCommentForm(true));
+              dispatch(showRecipeDetailsComponent(true));
+              dispatch(retrieveRecipeDetails(retrieveRecipe));
             }}
-          />
-        </div>
-      ))}
+            className="recipesList-item"
+            key={index}
+          >
+            <Row>
+              <Col xs={3}>
+                <Img
+                  className="recipesList-item-picture"
+                  src={
+                    retrieveRecipe.picture
+                      ? "http://localhost:4000" + retrieveRecipe.picture
+                      : require("../../assets/imgs/panret.jpg")
+                  }
+                  loader={<Spinner animation="border" variant="info" />}
+                />
+              </Col>
+              <Col xs={9}>
+                <Row>
+                  <Col xs={7} />
+                  <Col xs={5}>
+                    <div>
+                      <TimeAgo
+                        className="recipesList-item-timeago"
+                        datetime={createDate(retrieveRecipe.date)}
+                        locale="fr"
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                <div className="recipesList-item-title">
+                  {retrieveRecipe.title}
+                </div>
+                <div className="recipesList-item-rate-outter">
+                  <RatingStars />
+                  <div
+                    style={{
+                      width: getAverageRating(retrieveRecipe.comments),
+                    }}
+                    className="recipesList-item-rate-inner"
+                  >
+                    <RatingActiveStars place={strings.rating.LIST} />
+                  </div>
+                </div>
+                <div style={{ height: 5 }} />
+                <div className="recipesList-item-author">
+                  <div className="recipesList-item-icon">
+                    <FontAwesomeIcon icon={faUser} />
+                  </div>
+                  <div>{retrieveRecipe.author.name}</div>
+                </div>
+                <div className="recipesList-item-time">
+                  <div className="recipesList-item-icon">
+                    <FontAwesomeIcon icon={faClock} />
+                  </div>
+                  <div>{retrieveRecipe.cookTime} min.</div>
+                </div>
+              </Col>
+            </Row>
+            <div
+              style={{
+                height: 10,
+                backgroundColor: "#2E303F",
+                borderRadius: "10px",
+              }}
+            />
+          </div>
+        ))}
     </div>
   );
 };

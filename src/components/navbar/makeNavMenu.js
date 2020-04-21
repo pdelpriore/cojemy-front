@@ -73,8 +73,8 @@ const MakeNavMenu = ({ type }) => {
       dispatch(clearLoginState());
       dispatch(recipeDetailsClearState());
       dispatch(categorySelectedClearState());
-      //dispatch(myRecipesClearState());
-      //dispatch(recipeBookClearState());
+      dispatch(myRecipesClearState());
+      dispatch(recipeBookClearState());
       dispatch(hideRateCommentForm(true));
     }
     if (userData.email === undefined) dispatch(clearLogoutState());
