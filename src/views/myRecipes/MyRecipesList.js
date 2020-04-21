@@ -15,6 +15,7 @@ import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
 import { useDispatch, useSelector } from "react-redux";
 import { capitalize } from "../../util/Util";
+import "./myRecipes.css";
 
 const MyRecipesList = () => {
   const dispatch = useDispatch();
