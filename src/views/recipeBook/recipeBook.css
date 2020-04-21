@@ -108,12 +108,12 @@
 }
 .recipesList-item-picture {
   width: 7.4vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: 15.6vh;
+  object-fit: cover;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 5px;
+  object-fit: cover;
 }
 .recipesList-item-author {
   display: flex;
@@ -155,9 +155,7 @@
 }
 .recipeDetails-author-photo {
   width: 2.5vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  object-fit: cover;
   border-radius: 50%;
   border: 1px solid #212529;
 }
@@ -170,9 +168,7 @@
 }
 .recipeDetails-picture {
   width: 15vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  object-fit: cover;
   border: 1px solid #572529;
   border-radius: 20px;
   padding: 10px;

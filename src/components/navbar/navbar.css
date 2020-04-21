@@ -53,8 +53,6 @@ a:hover {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  object-fit: cover;
   border: 1px solid #212541;
 }

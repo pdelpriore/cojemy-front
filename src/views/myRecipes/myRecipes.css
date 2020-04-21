@@ -60,9 +60,8 @@
 }
 .myrecipes-list-item-picture {
   width: 7.4vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: 15.6vh;
+  object-fit: cover;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 5px;
