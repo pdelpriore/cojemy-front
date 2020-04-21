@@ -103,7 +103,7 @@ const RecipeDetails = () => {
                 className="recipeDetails-picture"
                 src={
                   detailsDataRetrieved.picture
-                    ? detailsDataRetrieved.picture
+                    ? "http://localhost:4000" + detailsDataRetrieved.picture
                     : require("../../assets/imgs/panret.jpg")
                 }
                 loader={<Spinner animation="border" variant="dark" />}
