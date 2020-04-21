@@ -66,3 +66,9 @@ export const searchRecipe = (recipeTitle, email) => {
     }
   };
 };
+
+export const recipeBookClearState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: retrieveRecipesCases.CLEAR_STATE });
+  };
+};

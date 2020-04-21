@@ -69,20 +69,24 @@ export const addMyRecipe = (
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
-        console.log(data);
-        // dispatch({
-        //   type: retrieveMyRecipesCases.MY_RECIPES_RETRIEVED,
-        //   payload: data.retrieveMyRecipes,
-        // });
+        dispatch({
+          type: retrieveMyRecipesCases.MY_RECIPES_RETRIEVED,
+          payload: data.addMyRecipe,
+        });
       } else if (errors) {
-        console.log(errors);
-        // dispatch({
-        //   type: retrieveMyRecipesCases.ERROR,
-        //   payload: errors[0].message,
-        // });
+        dispatch({
+          type: retrieveMyRecipesCases.ERROR,
+          payload: errors[0].message,
+        });
       }
     } catch (err) {
       if (err) console.log(err);
     }
+  };
+};
+
+export const myRecipesClearState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: retrieveMyRecipesCases.CLEAR_STATE });
   };
 };

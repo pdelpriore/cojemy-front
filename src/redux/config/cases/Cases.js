@@ -54,6 +54,7 @@ export const retrieveRecipesCases = Object.freeze({
   LOADING: "retrieveRecipesLoading",
   RECIPE_RETRIVED: "retrieveRecipesRecipeRetrieved",
   ERROR: "retrieveRecipesError",
+  CLEAR_STATE: "retrieveRecipesCasesClearState",
 });
 
 export const showRecipeDetailsCases = Object.freeze({
@@ -101,6 +102,7 @@ export const retrieveMyRecipesCases = Object.freeze({
   LOADING: "retrieveMyRecipesCasesLoading",
   MY_RECIPES_RETRIEVED: "retrieveMyRecipesCasesMyRecipesRetrieved",
   ERROR: "retrieveMyRecipesCasesError",
+  CLEAR_STATE: "retrieveMyRecipesCasesClearState",
 });
 
 export const showNewRecipeFormCases = Object.freeze({
