@@ -3,7 +3,8 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle, faUser } from "@fortawesome/free-regular-svg-icons";
+import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
@@ -183,7 +184,7 @@ const RecipeDetails = () => {
                   ) : (
                     <FontAwesomeIcon
                       className="recipeDetails-comments-icon"
-                      icon={faUser}
+                      icon={faUserCircle}
                     />
                   )}
                   <div
