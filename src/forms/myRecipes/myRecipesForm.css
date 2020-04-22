@@ -1,7 +1,7 @@
-.text-family {
+.myrecipes-form-text-family {
   font-family: "OpenSans-SemiBold";
 }
-.text-family-message {
+.myrecipes-form-text-family-message {
   font-family: "OpenSans-Regular";
   background-color: #f3cf7a;
   color: #071a52;
@@ -23,4 +23,15 @@
 .myrecipes-form-trash:hover {
   color: #ee6670;
   cursor: pointer;
+}
+.myrecipes-form-button-loading {
+  margin-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.myrecipes-form-spinner {
+  float: left;
+}
+.myrecipes-form-button-text {
+  font-family: "OpenSans-Regular";
 }

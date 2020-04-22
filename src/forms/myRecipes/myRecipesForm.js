@@ -36,11 +36,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicTitle">
-              <Form.Label className="text-family">
+              <Form.Label className="myrecipes-form-text-family">
                 {capitalizeFirst(strings.myRecipes.TITLE)}
               </Form.Label>
               <Form.Control
-                className="text-family-message"
+                className="myrecipes-form-text-family-message"
                 onChange={handleInputsChange}
                 value={inputs.title || ""}
                 name="title"
@@ -54,7 +54,7 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicPicture">
-              <Form.Label className="text-family">
+              <Form.Label className="myrecipes-form-text-family">
                 {capitalizeFirst(strings.myRecipes.PICTURE)}
               </Form.Label>
               <ImageUploader
@@ -109,11 +109,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicVideo">
-              <Form.Label className="text-family">
+              <Form.Label className="myrecipes-form-text-family">
                 {capitalizeFirst(strings.myRecipes.VIDEO)}
               </Form.Label>
               <Form.Control
-                className="text-family-message"
+                className="myrecipes-form-text-family-message"
                 onChange={handleInputsChange}
                 value={inputs.video || ""}
                 name="video"
@@ -165,11 +165,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicCategory">
-              <Form.Label className="text-family">
+              <Form.Label className="myrecipes-form-text-family">
                 {capitalizeFirst(strings.myRecipes.CATEGORY)}
               </Form.Label>
               <Form.Control
-                className="text-family-message"
+                className="myrecipes-form-text-family-message"
                 as="select"
                 name="category"
                 defaultValue=""
@@ -203,11 +203,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicCookTime">
-              <Form.Label className="text-family">
+              <Form.Label className="myrecipes-form-text-family">
                 {capitalizeFirst(strings.myRecipes.COOK_TIME)}
               </Form.Label>
               <Form.Control
-                className="text-family-message"
+                className="myrecipes-form-text-family-message"
                 onChange={handleInputsChange}
                 value={inputs.cookTime || ""}
                 name="cookTime"
@@ -221,11 +221,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicIngredients">
-              <Form.Label className="text-family">
+              <Form.Label className="myrecipes-form-text-family">
                 {capitalizeFirst(strings.myRecipes.INGREDIENTS)}
               </Form.Label>
               <Form.Control
-                className="text-family-message"
+                className="myrecipes-form-text-family-message"
                 onChange={handleInputsChange}
                 value={inputs.ingredients || ""}
                 name="ingredients"
@@ -238,11 +238,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicDescription">
-              <Form.Label className="text-family">
+              <Form.Label className="myrecipes-form-text-family">
                 {capitalizeFirst(strings.myRecipes.DESCRIPTION)}
               </Form.Label>
               <Form.Control
-                className="text-family-message"
+                className="myrecipes-form-text-family-message"
                 onChange={handleInputsChange}
                 value={inputs.description || ""}
                 as="textarea"
@@ -277,10 +277,10 @@ const MyRecipesForm = () => {
               //   dispatch(showNewRecipeForm(false));
               // }}
               type="submit"
-              className="button-text"
+              className="myrecipes-form-button-text"
               variant="outline-dark"
             >
-              <div className="contact-spinner">
+              <div className="myrecipes-form-spinner">
                 {loadingMyRecipes && (
                   <Spinner
                     as="span"
@@ -292,7 +292,7 @@ const MyRecipesForm = () => {
                 )}
               </div>
               {loadingMyRecipes ? (
-                <div className="contact-button-loading">
+                <div className="myrecipes-form-button-loading">
                   {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                 </div>
               ) : (
