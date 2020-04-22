@@ -15,6 +15,7 @@ export const retrieveMyRecipesQuery = (email) => {
                       author {
                           name
                           photo
+                          email
                       }
                       comments {
                         _id

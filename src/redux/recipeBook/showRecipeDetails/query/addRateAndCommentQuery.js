@@ -6,8 +6,8 @@ export const addRateAndCommentQuery = (
 ) => {
   return {
     query: `
-                mutation($recipeId: ID!, $rateValue: Int!, $commentContent: String!, $email: String!) {
-                  addRecipeRateComment(recipeId: $recipeId, rateValue: $rateValue, commentContent: $commentContent, email: $email) {
+                mutation {
+                  addRecipeRateComment(recipeId: "${recipeId}" rateValue: ${rateValue}, commentContent: "${commentContent}" , email: "${email}") {
                       _id
                       title
                       picture
@@ -20,6 +20,7 @@ export const addRateAndCommentQuery = (
                       author {
                           name
                           photo
+                          email
                       }
                       comments {
                         _id
@@ -42,6 +43,5 @@ export const addRateAndCommentQuery = (
                   }
                 }
                 `,
-    variables: { recipeId, rateValue, commentContent, email },
   };
 };

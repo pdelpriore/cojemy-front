@@ -23,6 +23,7 @@ export const addMyRecipeQuery = (
         author {
             name
             photo
+            email
         }
         comments {
           _id

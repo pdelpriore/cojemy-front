@@ -15,6 +15,7 @@ export const searchRecipeQuery = (recipeTitle, email) => {
                       author {
                           name
                           photo
+                          email
                       }
                       comments {
                         _id

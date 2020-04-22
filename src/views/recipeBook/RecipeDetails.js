@@ -156,7 +156,9 @@ const RecipeDetails = () => {
           <Row>
             <Col xs={1} />
             <Col xs={10}>
-              {(!isCommented || rateAndComment.commentValue) && (
+              {((!isCommented &&
+                detailsDataRetrieved.author.email !== userData.email) ||
+                rateAndComment.commentValue) && (
                 <RateAndComment recipeId={detailsDataRetrieved._id} />
               )}
             </Col>

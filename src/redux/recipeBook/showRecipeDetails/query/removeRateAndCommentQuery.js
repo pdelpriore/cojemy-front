@@ -7,8 +7,8 @@ export const removeRateAndCommentQuery = (
 ) => {
   return {
     query: `
-                    mutation($rateId: ID!, $commentId: ID!, $recipeId: ID!, $commentItemId: ID!, $email: String!) {
-                      removeRecipeRateComment(rateId: $rateId, commentId: $commentId, recipeId: $recipeId, commentItemId: $commentItemId, email: $email) {
+                    mutation {
+                      removeRecipeRateComment(rateId: "${rateId}", commentId: "${commentId}", recipeId: "${recipeId}", commentItemId: "${commentItemId}", email: "${email}") {
                           _id
                           title
                           picture
@@ -21,6 +21,7 @@ export const removeRateAndCommentQuery = (
                           author {
                               name
                               photo
+                              email
                           }
                           comments {
                             _id
@@ -43,6 +44,5 @@ export const removeRateAndCommentQuery = (
                       }
                     }
                     `,
-    variables: { rateId, commentId, recipeId, commentItemId, email },
   };
 };
