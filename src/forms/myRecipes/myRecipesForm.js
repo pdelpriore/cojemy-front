@@ -25,6 +25,7 @@ const MyRecipesForm = () => {
     handlePlayerReady,
     handleSubmit,
   } = useNewRecipeForm();
+  const { loadingMyRecipes } = useSelector((state) => state.myRecipes);
   return (
     <ScrollArea
       className="myrecipes-form-scroll-area"
@@ -74,7 +75,29 @@ const MyRecipesForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {error.imageError ? (
+        {inputs.recipeImage && (
+          <Row>
+            <Col xs={9}>
+              <Image
+                src={inputs.recipeImage.image ? inputs.recipeImage.image : null}
+                thumbnail
+              />
+            </Col>
+            <Col xs={1} />
+            <Col xs={1}>
+              <FontAwesomeIcon
+                className="myrecipes-form-trash"
+                icon={faTrash}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleRemoveImage();
+                }}
+              />
+            </Col>
+            <Col xs={1} />
+          </Row>
+        )}
+        {error.imageError && (
           <Row>
             <Col xs={12}>
               <div className="myrecipes-form-video-error">
@@ -82,31 +105,6 @@ const MyRecipesForm = () => {
               </div>
             </Col>
           </Row>
-        ) : (
-          inputs.recipeImage && (
-            <Row>
-              <Col xs={9}>
-                <Image
-                  src={
-                    inputs.recipeImage.image ? inputs.recipeImage.image : null
-                  }
-                  thumbnail
-                />
-              </Col>
-              <Col xs={1} />
-              <Col xs={1}>
-                <FontAwesomeIcon
-                  className="myrecipes-form-trash"
-                  icon={faTrash}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleRemoveImage();
-                  }}
-                />
-              </Col>
-              <Col xs={1} />
-            </Row>
-          )
         )}
         <Row>
           <Col xs={12}>
@@ -259,6 +257,21 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Button
+              disabled={
+                loadingMyRecipes ||
+                inputs.title === undefined ||
+                inputs.title === "" ||
+                error.imageError ||
+                error.playerError ||
+                inputs.category === undefined ||
+                inputs.category === "" ||
+                inputs.cookTime === undefined ||
+                inputs.cookTime === "" ||
+                inputs.ingredients === undefined ||
+                inputs.ingredients === "" ||
+                inputs.description === undefined ||
+                inputs.description === ""
+              }
               // onClick={(e) => {
               //   e.preventDefault();
               //   dispatch(showNewRecipeForm(false));
@@ -268,7 +281,7 @@ const MyRecipesForm = () => {
               variant="outline-dark"
             >
               <div className="contact-spinner">
-                {false && (
+                {loadingMyRecipes && (
                   <Spinner
                     as="span"
                     animation="border"
@@ -278,7 +291,7 @@ const MyRecipesForm = () => {
                   />
                 )}
               </div>
-              {false ? (
+              {loadingMyRecipes ? (
                 <div className="contact-button-loading">
                   {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                 </div>

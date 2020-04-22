@@ -126,11 +126,6 @@ const useNewRecipeForm = () => {
           inputs.title,
           inputs.recipeImage,
           inputs.video,
-          // ["http", "www"].some(
-          //   (element) => inputs.video && inputs.video.includes(element)
-          // ) &&
-          //   !error &&
-          //   inputs.video,
           inputs.category,
           parseInt(inputs.cookTime),
           inputs.ingredients.filter((ingredient) => ingredient !== ""),
