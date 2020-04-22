@@ -38,7 +38,7 @@ const RecipeDetails = () => {
   const isCommented =
     detailsDataRetrieved.comments.length > 0 &&
     detailsDataRetrieved.comments.filter(
-      (comment) => comment.commentator.email === userData.email
+      (comment) => comment.commentator.email
     )[0].commentator.email;
   const {
     editShow,
@@ -189,12 +189,14 @@ const RecipeDetails = () => {
                   )}
                   <div
                     onMouseEnter={
-                      item.commentator.email === userData.email &&
-                      handleMouseEnter
+                      item.commentator.email === userData.email
+                        ? handleMouseEnter
+                        : null
                     }
                     onMouseLeave={
-                      item.commentator.email === userData.email &&
-                      handleMouseLeave
+                      item.commentator.email === userData.email
+                        ? handleMouseLeave
+                        : null
                     }
                     className="recipeDetails-comments-content-area"
                   >
