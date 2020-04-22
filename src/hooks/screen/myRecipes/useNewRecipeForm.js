@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 const useNewRecipeForm = () => {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
-  const [error, setError] = useState("");
+  const [error, setError] = useState({});
 
   const { userData } = useSelector((state) => state.login);
 
@@ -44,6 +44,18 @@ const useNewRecipeForm = () => {
     if (picture.length > 1) {
       picture = picture.splice(picture.length - 1, 1);
     }
+    if (picture[0].size > 100000) {
+      setError((error) => ({
+        ...error,
+        imageError: capitalizeFirst(strings.myRecipes.error.IMAGE_SIZE_ERROR),
+      }));
+    } else {
+      setError((error) =>
+        (({ imageError, ...others }) => ({
+          ...others,
+        }))(error)
+      );
+    }
     const fileReader = new FileReader();
     fileReader.readAsDataURL(picture[0]);
     fileReader.onloadend = () => {
@@ -63,6 +75,13 @@ const useNewRecipeForm = () => {
         ...others,
       }))(inputs)
     );
+    if (error.imageError) {
+      setError((error) =>
+        (({ imageError, ...others }) => ({
+          ...others,
+        }))(error)
+      );
+    }
   };
 
   const handleRemoveVideo = () => {
@@ -71,17 +90,31 @@ const useNewRecipeForm = () => {
         ...others,
       }))(inputs)
     );
+    if (error.playerError) {
+      setError((error) =>
+        (({ playerError, ...others }) => ({
+          ...others,
+        }))(error)
+      );
+    }
   };
 
   const handlePlayerError = (e) => {
     if (e.target.error.message.includes("COULD_NOT_OPEN")) {
-      setError(capitalizeFirst(strings.myRecipes.error.VIDEO_URL_ERROR));
+      setError((error) => ({
+        ...error,
+        playerError: capitalizeFirst(strings.myRecipes.error.VIDEO_URL_ERROR),
+      }));
     }
   };
 
   const handlePlayerReady = (e) => {
     if (e.player.isReady) {
-      setError("");
+      setError((error) =>
+        (({ playerError, ...others }) => ({
+          ...others,
+        }))(error)
+      );
     }
   };
 
@@ -109,7 +142,12 @@ const useNewRecipeForm = () => {
   };
 
   useEffect(() => {
-    if (!inputs.video) setError("");
+    if (!inputs.video)
+      setError((error) =>
+        (({ playerError, ...others }) => ({
+          ...others,
+        }))(error)
+      );
   }, [inputs.video]);
 
   return {

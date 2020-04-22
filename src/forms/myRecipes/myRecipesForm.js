@@ -74,27 +74,39 @@ const MyRecipesForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {inputs.recipeImage && (
+        {error.imageError ? (
           <Row>
-            <Col xs={9}>
-              <Image
-                src={inputs.recipeImage.image ? inputs.recipeImage.image : null}
-                thumbnail
-              />
+            <Col xs={12}>
+              <div className="myrecipes-form-video-error">
+                {error.imageError ? error.imageError : null}
+              </div>
             </Col>
-            <Col xs={1} />
-            <Col xs={1}>
-              <FontAwesomeIcon
-                className="myrecipes-form-trash"
-                icon={faTrash}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleRemoveImage();
-                }}
-              />
-            </Col>
-            <Col xs={1} />
           </Row>
+        ) : (
+          inputs.recipeImage && (
+            <Row>
+              <Col xs={9}>
+                <Image
+                  src={
+                    inputs.recipeImage.image ? inputs.recipeImage.image : null
+                  }
+                  thumbnail
+                />
+              </Col>
+              <Col xs={1} />
+              <Col xs={1}>
+                <FontAwesomeIcon
+                  className="myrecipes-form-trash"
+                  icon={faTrash}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleRemoveImage();
+                  }}
+                />
+              </Col>
+              <Col xs={1} />
+            </Row>
+          )
         )}
         <Row>
           <Col xs={12}>
@@ -113,8 +125,16 @@ const MyRecipesForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {inputs.video &&
-          ["http", "www"].some((element) => inputs.video.includes(element)) && (
+        {error.playerError ? (
+          <Row>
+            <Col xs={12}>
+              <div className="myrecipes-form-video-error">
+                {error.playerError ? error.playerError : null}
+              </div>
+            </Col>
+          </Row>
+        ) : (
+          inputs.video && (
             <Row>
               <Col xs={9}>
                 <div className="myrecipes-form-player-wrapper">
@@ -142,15 +162,7 @@ const MyRecipesForm = () => {
               </Col>
               <Col xs={1} />
             </Row>
-          )}
-        {error && (
-          <Row>
-            <Col xs={12}>
-              <div className="myrecipes-form-video-error">
-                {error ? error : null}
-              </div>
-            </Col>
-          </Row>
+          )
         )}
         <Row>
           <Col xs={12}>

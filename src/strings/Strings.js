@@ -171,6 +171,7 @@ export const strings = Object.freeze({
     },
     error: {
       VIDEO_URL_ERROR: "adresse de vidéo incorrecte",
+      IMAGE_SIZE_ERROR: "taille d'image dépasse 100 kB",
     },
   },
 });
