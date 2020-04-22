@@ -129,13 +129,21 @@ const useNewRecipeForm = () => {
   };
 
   useEffect(() => {
-    if (!inputs.video)
+    if (!inputs.video) {
+      setInputs((inputs) =>
+        (({ video, ...others }) => ({
+          ...others,
+        }))(inputs)
+      );
       setError((error) =>
         (({ playerError, ...others }) => ({
           ...others,
         }))(error)
       );
+    }
   }, [inputs.video]);
+
+  console.log(inputs);
 
   return {
     inputs,
