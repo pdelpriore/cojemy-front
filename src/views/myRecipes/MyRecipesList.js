@@ -31,6 +31,7 @@ const MyRecipesList = () => {
     return () => dispatch(showNewRecipeForm(false));
   }, [userData.email, dispatch]);
   timeago.register("fr", fr);
+
   return loadingMyRecipes ? (
     <div className="myrecipes-list-loading-area">
       <Spinner animation="border" role="status" variant="light" />

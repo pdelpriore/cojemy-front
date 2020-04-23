@@ -108,7 +108,3 @@ export const retrieveMyRecipesCases = Object.freeze({
 export const showNewRecipeFormCases = Object.freeze({
   FORM_SHOWED: "showNewRecipeFormCasesFormShowed",
 });
-
-export const addNewRecipeCases = Object.freeze({
-  RECIPE_ADDED: "addNewRecipeCasesRecipeAdded",
-});
