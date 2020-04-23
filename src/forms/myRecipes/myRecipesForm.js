@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Row, Col, Button, Image, Spinner } from "react-bootstrap";
-import useNewRecipeForm from "../../hooks/screen/myRecipes/useNewRecipeForm";
+import useNewRecipeForm from "../../hooks/form/myRecipes/useNewRecipeForm";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
