@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
 import { strings } from "../../../strings/Strings";
+import { addNewRecipe } from "../../../redux/myRecipes/addNewRecipe/thunk/addNewRecipeThunk";
 import { addMyRecipe } from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -10,6 +11,7 @@ const useNewRecipeForm = () => {
   const [error, setError] = useState({});
 
   const { userData } = useSelector((state) => state.login);
+  const { newRecipeAdded } = useSelector((state) => state.addNewRecipe);
 
   const handleInputsChange = (e) => {
     e.persist();
@@ -127,6 +129,11 @@ const useNewRecipeForm = () => {
       );
     }
   };
+
+  useEffect(() => {
+    setInputs({});
+    dispatch(addNewRecipe(false));
+  }, [newRecipeAdded, dispatch]);
 
   useEffect(() => {
     if (!inputs.video) {

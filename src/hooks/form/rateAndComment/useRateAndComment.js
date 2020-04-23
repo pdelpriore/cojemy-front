@@ -5,8 +5,6 @@ import {
   editRecipeRateAndComment,
 } from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { toEditRateCommentClearState } from "../../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
-import { rateCommentRecipeUpdated } from "../../../redux/recipeBook/editRateCommentForm/thunk/editRateCommentFormThunk";
-import { addRateComment } from "../../../redux/recipeBook/addRateComment/thunk/addRateCommentThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRateAndComment = () => {
@@ -45,7 +43,6 @@ const useRateAndComment = () => {
   const handleOnSubmit = (recipeId) => {
     if (rateAndComment.commentValue) {
       if (userData.email) {
-        dispatch(rateCommentRecipeUpdated(true));
         dispatch(
           editRecipeRateAndComment(
             recipeId,
@@ -62,7 +59,6 @@ const useRateAndComment = () => {
       }
     } else {
       if (userData.email) {
-        dispatch(addRateComment(true));
         dispatch(
           addRateAndComment(recipeId, rate, inputs.comment, userData.email)
         );

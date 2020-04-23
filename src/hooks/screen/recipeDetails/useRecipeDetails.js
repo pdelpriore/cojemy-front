@@ -6,7 +6,6 @@ import {
   recipeDetailsClearState,
   removeRecipeRateAndComment,
 } from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
-import { removeRateComment } from "../../../redux/recipeBook/removeRateComment/thunk/removeRateCommentThunk";
 
 const useRecipeDetails = () => {
   const dispatch = useDispatch();
@@ -29,7 +28,6 @@ const useRecipeDetails = () => {
 
   const handleTrashClick = (rateId, commentId, recipeId, commentItemId) => {
     if (userData.email) {
-      dispatch(removeRateComment(true));
       dispatch(
         removeRecipeRateAndComment(
           rateId,

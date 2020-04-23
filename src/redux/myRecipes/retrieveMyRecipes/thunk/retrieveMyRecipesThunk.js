@@ -1,4 +1,8 @@
-import { retrieveMyRecipesCases } from "../../../config/cases/Cases";
+import {
+  retrieveMyRecipesCases,
+  addNewRecipeCases,
+  showNewRecipeFormCases,
+} from "../../../config/cases/Cases";
 import { retrieveMyRecipesQuery } from "../query/retrieveMyRecipesQuery";
 import { addMyRecipeQuery } from "../query/addMyRecipeQuery";
 import { strings } from "../../../../strings/Strings";
@@ -73,6 +77,8 @@ export const addMyRecipe = (
           type: retrieveMyRecipesCases.MY_RECIPES_RETRIEVED,
           payload: data.addMyRecipe,
         });
+        dispatch({ type: addNewRecipeCases.RECIPE_ADDED, payload: true });
+        dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
       } else if (errors) {
         dispatch({
           type: retrieveMyRecipesCases.ERROR,

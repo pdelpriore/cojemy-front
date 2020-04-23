@@ -1,4 +1,9 @@
-import { showRecipeDetailsCases } from "../../../config/cases/Cases";
+import {
+  showRecipeDetailsCases,
+  addRateCommentCases,
+  editRateCommentFormCases,
+  removeRateCommentCases,
+} from "../../../config/cases/Cases";
 import { addRateAndCommentQuery } from "../query/addRateAndCommentQuery";
 import { editRateAndCommentQuery } from "../query/editRateAndCommentQuery";
 import { removeRateAndCommentQuery } from "../query/removeRateAndCommentQuery";
@@ -51,6 +56,10 @@ export const addRateAndComment = (recipeId, rate, comment, email) => {
             comments: sortCommentsByDate(data.addRecipeRateComment),
           },
         });
+        dispatch({
+          type: addRateCommentCases.RATE_COMMENT_ADDED,
+          payload: true,
+        });
       }
     } catch (err) {
       if (err) console.log(err);
@@ -95,6 +104,10 @@ export const editRecipeRateAndComment = (
             comments: sortCommentsByDate(data.editRecipeRateComment),
           },
         });
+        dispatch({
+          type: editRateCommentFormCases.RECIPE_UPDATED,
+          payload: true,
+        });
       }
     } catch (err) {
       if (err) console.log(err);
@@ -136,6 +149,10 @@ export const removeRecipeRateAndComment = (
             ...data.removeRecipeRateComment,
             comments: sortCommentsByDate(data.removeRecipeRateComment),
           },
+        });
+        dispatch({
+          type: removeRateCommentCases.RATE_COMMENT_REMOVED,
+          payload: true,
         });
       }
     } catch (err) {
