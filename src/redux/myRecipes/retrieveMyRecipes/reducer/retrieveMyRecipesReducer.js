@@ -9,7 +9,7 @@ const initialState = {
 const retrieveMyRecipesReducer = (state = initialState, action) => {
   switch (action.type) {
     case retrieveMyRecipesCases.LOADING:
-      return { ...state, ...initialState, loadingMyRecipes: action.payload };
+      return { ...state, loadingMyRecipes: action.payload };
     case retrieveMyRecipesCases.MY_RECIPES_RETRIEVED:
       return {
         ...state,
@@ -20,10 +20,11 @@ const retrieveMyRecipesReducer = (state = initialState, action) => {
     case retrieveMyRecipesCases.ERROR:
       return {
         ...state,
-        ...initialState,
         loadingMyRecipes: false,
         myRecipesError: action.payload,
       };
+    case retrieveMyRecipesCases.CLEAR_ERROR_STATE:
+      return { ...state, myRecipesError: null };
     case retrieveMyRecipesCases.CLEAR_STATE:
       return (state = initialState);
     default:

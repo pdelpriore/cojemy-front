@@ -4,6 +4,7 @@ import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
 import { clearRemindPasswordState } from "../../redux/remindPassword/thunk/remindPasswordThunk";
 import { clearLoginState } from "../../redux/login/thunk/loginThunk";
+import { myRecipesClearErrorState } from "../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
 import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
 
 const useNotification = (notificationMessage) => {
@@ -27,6 +28,8 @@ const useNotification = (notificationMessage) => {
     (state) => state.signGoogle
   );
   const { emailSent } = useSelector((state) => state.customerContact);
+  const { myRecipesError } = useSelector((state) => state.myRecipes);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,6 +41,7 @@ const useNotification = (notificationMessage) => {
       if (loginError) dispatch(clearLoginState());
       if (errorGoogleSignup || userGoogleSignedup)
         dispatch(clearSignUpGoogleUserState());
+      if (myRecipesError) dispatch(myRecipesClearErrorState());
       setShow(false);
       setNotification({});
     }, 3500);
@@ -52,6 +56,7 @@ const useNotification = (notificationMessage) => {
     loginError,
     userGoogleSignedup,
     errorGoogleSignup,
+    myRecipesError,
     dispatch,
   ]);
 

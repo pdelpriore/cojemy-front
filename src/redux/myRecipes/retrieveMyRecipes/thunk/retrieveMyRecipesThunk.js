@@ -94,3 +94,9 @@ export const myRecipesClearState = () => {
     dispatch({ type: retrieveMyRecipesCases.CLEAR_STATE });
   };
 };
+
+export const myRecipesClearErrorState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: retrieveMyRecipesCases.CLEAR_ERROR_STATE });
+  };
+};

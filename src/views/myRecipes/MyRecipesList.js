@@ -5,7 +5,7 @@ import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock } from "@fortawesome/free-solid-svg-icons";
-import { createDate } from "../../util/Util";
+import { createDate, capitalizeFirst } from "../../util/Util";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
 import { getAverageRating } from "../../shared/getAverageRating";
@@ -36,7 +36,9 @@ const MyRecipesList = () => {
     <div className="myrecipes-list-loading-area">
       <Spinner animation="border" role="status" variant="light" />
     </div>
-  ) : myRecipesError ? (
+  ) : myRecipesError &&
+    myRecipesError !==
+      capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS) ? (
     <div className="myrecipes-list-item-norecipes">{myRecipesError}</div>
   ) : (
     <div className="myrecipes-list-main-area">

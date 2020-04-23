@@ -8,9 +8,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListUl } from "@fortawesome/free-solid-svg-icons";
 import { strings } from "../../strings/Strings";
 import MyRecipesForm from "../../forms/myRecipes/myRecipesForm";
+import Notification from "../../components/notifications/Notification";
 import { useDispatch, useSelector } from "react-redux";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
-import { capitalize } from "../../util/Util";
+import { capitalize, capitalizeFirst } from "../../util/Util";
 import "./myRecipes.css";
 
 const MyRecipes = ({ match: { path, url, isExact } }) => {
@@ -18,6 +19,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
   const { newRecipeFormShowed } = useSelector(
     (state) => state.newRecipeFormShow
   );
+  const { myRecipesError } = useSelector((state) => state.myRecipes);
   const props = useSpring({
     opacity: 1,
     config: { duration: 200 },
@@ -92,7 +94,32 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
               <Col xs={6}>
                 <MyRecipesForm />
               </Col>
-              <Col xs={4} />
+              <Col xs={3}>
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-5" />
+                <Row className="mb-4" />
+                <Notification
+                  notificationMessage={
+                    myRecipesError &&
+                    myRecipesError ===
+                      capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS)
+                      ? myRecipesError
+                      : null
+                  }
+                />
+              </Col>
+              <Col xs={1} />
             </Row>
           </div>
         )}
