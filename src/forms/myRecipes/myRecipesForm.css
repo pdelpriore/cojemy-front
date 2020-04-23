@@ -35,3 +35,11 @@
 .myrecipes-form-button-text {
   font-family: "OpenSans-Regular";
 }
+.myrecipes-form-buttons-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myrecipes-form-button-cancel {
+  font-family: "OpenSans-Regular";
+}

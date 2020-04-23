@@ -7,11 +7,13 @@ import ImageUploader from "react-images-upload";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
+import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import "./myRecipesForm.css";
 
 const MyRecipesForm = () => {
+  const dispatch = useDispatch();
   const {
     inputs,
     error,
@@ -254,49 +256,61 @@ const MyRecipesForm = () => {
         </Row>
         <Row>
           <Col xs={12}>
-            <Button
-              disabled={
-                loadingMyRecipes ||
-                inputs.title === undefined ||
-                inputs.title === "" ||
-                error.imageError ||
-                error.playerError ||
-                inputs.category === undefined ||
-                inputs.category === "" ||
-                inputs.cookTime === undefined ||
-                inputs.cookTime === "" ||
-                inputs.ingredients === undefined ||
-                inputs.ingredients === "" ||
-                inputs.description === undefined ||
-                inputs.description === ""
-              }
-              // onClick={(e) => {
-              //   e.preventDefault();
-              //   dispatch(showNewRecipeForm(false));
-              // }}
-              type="submit"
-              className="myrecipes-form-button-text"
-              variant="outline-dark"
-            >
-              <div className="myrecipes-form-spinner">
-                {loadingMyRecipes && (
-                  <Spinner
-                    as="span"
-                    animation="border"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-              {loadingMyRecipes ? (
-                <div className="myrecipes-form-button-loading">
-                  {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+            <div className="myrecipes-form-buttons-box">
+              <Button
+                disabled={
+                  loadingMyRecipes ||
+                  inputs.title === undefined ||
+                  inputs.title === "" ||
+                  error.imageError ||
+                  error.playerError ||
+                  inputs.category === undefined ||
+                  inputs.category === "" ||
+                  inputs.cookTime === undefined ||
+                  inputs.cookTime === "" ||
+                  inputs.ingredients === undefined ||
+                  inputs.ingredients === "" ||
+                  inputs.description === undefined ||
+                  inputs.description === ""
+                }
+                // onClick={(e) => {
+                //   e.preventDefault();
+                //   dispatch(showNewRecipeForm(false));
+                // }}
+                type="submit"
+                className="myrecipes-form-button-text"
+                variant="outline-dark"
+              >
+                <div className="myrecipes-form-spinner">
+                  {loadingMyRecipes && (
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  )}
                 </div>
-              ) : (
-                <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
-              )}
-            </Button>
+                {loadingMyRecipes ? (
+                  <div className="myrecipes-form-button-loading">
+                    {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                  </div>
+                ) : (
+                  <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
+                )}
+              </Button>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(showNewRecipeForm(false));
+                }}
+                className="myrecipes-form-button-cancel"
+                variant="outline-secondary"
+              >
+                {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}
+              </Button>
+            </div>
           </Col>
         </Row>
       </Form>
