@@ -2,10 +2,12 @@ import {
   retrieveMyRecipesCases,
   addNewRecipeCases,
   showNewRecipeFormCases,
+  newRecipeErrorCases,
 } from "../../../config/cases/Cases";
 import { retrieveMyRecipesQuery } from "../query/retrieveMyRecipesQuery";
 import { addMyRecipeQuery } from "../query/addMyRecipeQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const getMyRecipes = (email) => {
   return async (dispatch, getState) => {
@@ -80,10 +82,21 @@ export const addMyRecipe = (
         dispatch({ type: addNewRecipeCases.RECIPE_ADDED, payload: true });
         dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
       } else if (errors) {
-        dispatch({
-          type: retrieveMyRecipesCases.ERROR,
-          payload: errors[0].message,
-        });
+        if (
+          errors[0].message ===
+          capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS)
+        ) {
+          dispatch({ type: retrieveMyRecipesCases.LOADING, payload: false });
+          dispatch({
+            type: newRecipeErrorCases.ERROR_RECEIVED,
+            payload: errors[0].message,
+          });
+        } else {
+          dispatch({
+            type: retrieveMyRecipesCases.ERROR,
+            payload: errors[0].message,
+          });
+        }
       }
     } catch (err) {
       if (err) console.log(err);
@@ -94,11 +107,5 @@ export const addMyRecipe = (
 export const myRecipesClearState = () => {
   return (dispatch, getState) => {
     dispatch({ type: retrieveMyRecipesCases.CLEAR_STATE });
-  };
-};
-
-export const myRecipesClearErrorState = () => {
-  return (dispatch, getState) => {
-    dispatch({ type: retrieveMyRecipesCases.CLEAR_ERROR_STATE });
   };
 };

@@ -103,7 +103,6 @@ export const retrieveMyRecipesCases = Object.freeze({
   MY_RECIPES_RETRIEVED: "retrieveMyRecipesCasesMyRecipesRetrieved",
   ERROR: "retrieveMyRecipesCasesError",
   CLEAR_STATE: "retrieveMyRecipesCasesClearState",
-  CLEAR_ERROR_STATE: "retrieveMyRecipesCasesClearErrorState",
 });
 
 export const showNewRecipeFormCases = Object.freeze({
@@ -112,4 +111,9 @@ export const showNewRecipeFormCases = Object.freeze({
 
 export const addNewRecipeCases = Object.freeze({
   RECIPE_ADDED: "addNewRecipeCasesRecipeAdded",
+});
+
+export const newRecipeErrorCases = Object.freeze({
+  ERROR_RECEIVED: "newRecipeErrorCasesErrorReceived",
+  CLEAR_STATE: "newRecipeErrorCasesClearState",
 });

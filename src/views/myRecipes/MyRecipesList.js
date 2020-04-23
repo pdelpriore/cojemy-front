@@ -5,7 +5,7 @@ import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock } from "@fortawesome/free-solid-svg-icons";
-import { createDate, capitalizeFirst } from "../../util/Util";
+import { createDate, capitalize } from "../../util/Util";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
 import { getAverageRating } from "../../shared/getAverageRating";
@@ -14,7 +14,6 @@ import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
 import { useDispatch, useSelector } from "react-redux";
-import { capitalize } from "../../util/Util";
 import "./myRecipes.css";
 
 const MyRecipesList = () => {
@@ -36,9 +35,7 @@ const MyRecipesList = () => {
     <div className="myrecipes-list-loading-area">
       <Spinner animation="border" role="status" variant="light" />
     </div>
-  ) : myRecipesError &&
-    myRecipesError !==
-      capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS) ? (
+  ) : myRecipesError ? (
     <div className="myrecipes-list-item-norecipes">{myRecipesError}</div>
   ) : (
     <div className="myrecipes-list-main-area">

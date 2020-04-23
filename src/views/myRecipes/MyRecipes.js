@@ -19,7 +19,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
   const { newRecipeFormShowed } = useSelector(
     (state) => state.newRecipeFormShow
   );
-  const { myRecipesError } = useSelector((state) => state.myRecipes);
+  const { myRecipeErrorReceived } = useSelector((state) => state.myRecipeError);
   const props = useSpring({
     opacity: 1,
     config: { duration: 200 },
@@ -111,10 +111,10 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
                 <Row className="mb-4" />
                 <Notification
                   notificationMessage={
-                    myRecipesError &&
-                    myRecipesError ===
+                    myRecipeErrorReceived &&
+                    myRecipeErrorReceived ===
                       capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS)
-                      ? myRecipesError
+                      ? myRecipeErrorReceived
                       : null
                   }
                 />
