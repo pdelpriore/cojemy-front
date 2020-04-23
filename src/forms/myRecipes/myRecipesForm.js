@@ -7,13 +7,11 @@ import ImageUploader from "react-images-upload";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import "./myRecipesForm.css";
 
 const MyRecipesForm = () => {
-  const dispatch = useDispatch();
   const {
     inputs,
     error,
