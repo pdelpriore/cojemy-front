@@ -132,7 +132,7 @@ const useNewRecipeForm = () => {
 
   useEffect(() => {
     setInputs({});
-    dispatch(addNewRecipe(false));
+    return () => dispatch(addNewRecipe(false));
   }, [newRecipeAdded, dispatch]);
 
   useEffect(() => {
