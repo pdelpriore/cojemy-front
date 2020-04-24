@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { turnOffRecipeButtons } from "../../../redux/recipeBook/turnOffRecipeButtons/thunk/turnOffRecipeButtonsThunk";
 import { searchRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
-import { rateCommentRecipeUpdated } from "../../../redux/recipeBook/editRateCommentForm/thunk/editRateCommentFormThunk";
 import { addRateComment } from "../../../redux/recipeBook/addRateComment/thunk/addRateCommentThunk";
-import { removeRateComment } from "../../../redux/recipeBook/removeRateComment/thunk/removeRateCommentThunk";
 
 const useSearchRecipe = () => {
   const dispatch = useDispatch();
@@ -14,11 +12,7 @@ const useSearchRecipe = () => {
   const { recipeButtonPressed } = useSelector(
     (state) => state.recipeButtonTurnedOn
   );
-  const { recipeUpdated } = useSelector((state) => state.editRateCommentForm);
   const { rateCommentAdded } = useSelector((state) => state.addRateComment);
-  const { rateCommentRemoved } = useSelector(
-    (state) => state.removeRateComment
-  );
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons
   );
@@ -54,15 +48,11 @@ const useSearchRecipe = () => {
       }
     }
     return () => {
-      dispatch(rateCommentRecipeUpdated(false));
       dispatch(addRateComment(false));
-      dispatch(removeRateComment(false));
     };
   }, [
     searchInputFilled,
-    recipeUpdated,
     rateCommentAdded,
-    rateCommentRemoved,
     userData.email,
     inputs.recipe,
     dispatch,

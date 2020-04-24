@@ -1,8 +1,6 @@
 import {
   showRecipeDetailsCases,
   addRateCommentCases,
-  editRateCommentFormCases,
-  removeRateCommentCases,
 } from "../../../config/cases/Cases";
 import { addRateAndCommentQuery } from "../query/addRateAndCommentQuery";
 import { editRateAndCommentQuery } from "../query/editRateAndCommentQuery";
@@ -105,7 +103,7 @@ export const editRecipeRateAndComment = (
           },
         });
         dispatch({
-          type: editRateCommentFormCases.RECIPE_UPDATED,
+          type: addRateCommentCases.RATE_COMMENT_ADDED,
           payload: true,
         });
       }
@@ -151,7 +149,7 @@ export const removeRecipeRateAndComment = (
           },
         });
         dispatch({
-          type: removeRateCommentCases.RATE_COMMENT_REMOVED,
+          type: addRateCommentCases.RATE_COMMENT_ADDED,
           payload: true,
         });
       }

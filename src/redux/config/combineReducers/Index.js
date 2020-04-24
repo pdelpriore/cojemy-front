@@ -11,9 +11,7 @@ import showRecipeDetailsReducer from "../../recipeBook/showRecipeDetails/reducer
 import recipeCategorySelectedReducer from "../../recipeBook/recipeCategorySelected/reducer/recipeCategorySelectedReducer";
 import toEditRecipeRateCommentReducer from "../../recipeBook/toEditRecipeRateComment/reducer/toEditRateCommentReducer";
 import hideRateCommentFormReducer from "../../recipeBook/hideRateCommentForm/reducer/hideRateCommentFormReducer";
-import editRateCommentFormReducer from "../../recipeBook/editRateCommentForm/reducer/editRateCommentFormReducer";
 import addRateCommentReducer from "../../recipeBook/addRateComment/reducer/addRateCommentReducer";
-import removeRateCommentReducer from "../../recipeBook/removeRateComment/reducer/removeRateCommentReducer";
 import turnOffRecipeButtonsReducer from "../../recipeBook/turnOffRecipeButtons/reducer/turnOffRecipeButtonsReducer";
 import recipeButtonTurnedOnReducer from "../../recipeBook/recipeButtonTurnedOn/reducer/recipeButtonTurnedOnReducer";
 import retrieveMyRecipesReducer from "../../myRecipes/retrieveMyRecipes/reducer/retrieveMyRecipesReducer";
@@ -35,9 +33,7 @@ const allReducers = combineReducers({
   recipeCategorySelected: recipeCategorySelectedReducer,
   toEditRateComment: toEditRecipeRateCommentReducer,
   hideRateCommentForm: hideRateCommentFormReducer,
-  editRateCommentForm: editRateCommentFormReducer,
   addRateComment: addRateCommentReducer,
-  removeRateComment: removeRateCommentReducer,
   turnOffRecipeButtons: turnOffRecipeButtonsReducer,
   recipeButtonTurnedOn: recipeButtonTurnedOnReducer,
   myRecipes: retrieveMyRecipesReducer,
