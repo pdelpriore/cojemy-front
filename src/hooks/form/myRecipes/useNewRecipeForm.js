@@ -12,6 +12,7 @@ const useNewRecipeForm = () => {
 
   const { userData } = useSelector((state) => state.login);
   const { newRecipeAdded } = useSelector((state) => state.addNewRecipe);
+  const { myRecipeToEdit } = useSelector((state) => state.toEditMyRecipe);
 
   const handleInputsChange = (e) => {
     e.persist();
@@ -131,6 +132,36 @@ const useNewRecipeForm = () => {
   };
 
   useEffect(() => {
+    if (myRecipeToEdit.recipeTitle) {
+      (async () => {
+        const pictureName = myRecipeToEdit.recipeImage.split("-").slice(1);
+        const pictureType = pictureName.toString().split(".").slice(1);
+
+        const response = await fetch(
+          "http://localhost:4000" + myRecipeToEdit.recipeImage
+        );
+        const data = await response.blob();
+        const metadata = {
+          type: `image/${pictureType.toString()}`,
+        };
+
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(new File([data], pictureName, metadata));
+        fileReader.onloadend = () => {
+          setInputs((inputs) => ({
+            ...inputs,
+            title: myRecipeToEdit.recipeTitle,
+            recipeImage: {
+              image: fileReader.result,
+              imageName: pictureName.toString(),
+            },
+          }));
+        };
+      })();
+    }
+  }, [myRecipeToEdit]);
+
+  useEffect(() => {
     setInputs({});
     return () => dispatch(addNewRecipe(false));
   }, [newRecipeAdded, dispatch]);
@@ -149,6 +180,8 @@ const useNewRecipeForm = () => {
       );
     }
   }, [inputs.video]);
+
+  console.log(inputs);
 
   return {
     inputs,

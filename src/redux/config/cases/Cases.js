@@ -117,3 +117,8 @@ export const newRecipeErrorCases = Object.freeze({
   ERROR_RECEIVED: "newRecipeErrorCasesErrorReceived",
   CLEAR_STATE: "newRecipeErrorCasesClearState",
 });
+
+export const toEditMyRecipeCases = Object.freeze({
+  MY_RECIPE_TO_EDIT: "toEditMyRecipeCasesMyRecipeToEdit",
+  CLEAR_STATE: "toEditMyRecipeCasesClearState",
+});

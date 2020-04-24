@@ -20,6 +20,7 @@ import retrieveMyRecipesReducer from "../../myRecipes/retrieveMyRecipes/reducer/
 import showNewRecipeFormReducer from "../../myRecipes/showNewRecipeForm/reducer/showNewRecipeFormReducer";
 import addNewRecipeReducer from "../../myRecipes/addMyRecipe/reducer/addNewRecipeReducer";
 import myRecipeErrorReducer from "../../myRecipes/myRecipeError/reducer/myRecipeErrorReducer";
+import toEditMyRecipeReducer from "../../myRecipes/toEditMyRecipe/reducer/toEditMyRecipeReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -43,6 +44,7 @@ const allReducers = combineReducers({
   newRecipeFormShow: showNewRecipeFormReducer,
   addNewRecipe: addNewRecipeReducer,
   myRecipeError: myRecipeErrorReducer,
+  toEditMyRecipe: toEditMyRecipeReducer,
 });
 
 export default allReducers;
