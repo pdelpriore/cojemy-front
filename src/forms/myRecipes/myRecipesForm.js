@@ -27,6 +27,7 @@ const MyRecipesForm = () => {
     handleSubmit,
   } = useNewRecipeForm();
   const { loadingMyRecipes } = useSelector((state) => state.myRecipes);
+  const { myRecipeToEdit } = useSelector((state) => state.toEditMyRecipe);
   return (
     <ScrollArea
       className="myrecipes-form-scroll-area"
@@ -258,49 +259,89 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <div className="myrecipes-form-buttons-box">
-              <Button
-                disabled={
-                  loadingMyRecipes ||
-                  inputs.title === undefined ||
-                  inputs.title === "" ||
-                  error.imageError ||
-                  error.playerError ||
-                  inputs.category === undefined ||
-                  inputs.category === "" ||
-                  inputs.cookTime === undefined ||
-                  inputs.cookTime === "" ||
-                  inputs.ingredients === undefined ||
-                  inputs.ingredients === "" ||
-                  inputs.description === undefined ||
-                  inputs.description === ""
-                }
-                // onClick={(e) => {
-                //   e.preventDefault();
-                //   dispatch(showNewRecipeForm(false));
-                // }}
-                type="submit"
-                className="myrecipes-form-button-text"
-                variant="outline-dark"
-              >
-                <div className="myrecipes-form-spinner">
-                  {loadingMyRecipes && (
-                    <Spinner
-                      as="span"
-                      animation="border"
-                      size="sm"
-                      role="status"
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
-                {loadingMyRecipes ? (
-                  <div className="myrecipes-form-button-loading">
-                    {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+              {!myRecipeToEdit.recipeTitle ? (
+                <Button
+                  disabled={
+                    loadingMyRecipes ||
+                    inputs.title === undefined ||
+                    inputs.title === "" ||
+                    error.imageError ||
+                    error.playerError ||
+                    inputs.category === undefined ||
+                    inputs.category === "" ||
+                    inputs.cookTime === undefined ||
+                    inputs.cookTime === "" ||
+                    inputs.ingredients === undefined ||
+                    inputs.ingredients === "" ||
+                    inputs.description === undefined ||
+                    inputs.description === ""
+                  }
+                  type="submit"
+                  className="myrecipes-form-button-text"
+                  variant="outline-dark"
+                >
+                  <div className="myrecipes-form-spinner">
+                    {loadingMyRecipes && (
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    )}
                   </div>
-                ) : (
-                  <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
-                )}
-              </Button>
+                  {loadingMyRecipes ? (
+                    <div className="myrecipes-form-button-loading">
+                      {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                    </div>
+                  ) : (
+                    <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
+                  )}
+                </Button>
+              ) : (
+                <Button
+                  disabled={
+                    loadingMyRecipes ||
+                    inputs.title === undefined ||
+                    inputs.title === "" ||
+                    error.imageError ||
+                    error.playerError ||
+                    inputs.category === undefined ||
+                    inputs.category === "" ||
+                    inputs.cookTime === undefined ||
+                    inputs.cookTime === "" ||
+                    inputs.ingredients === undefined ||
+                    inputs.ingredients === "" ||
+                    inputs.description === undefined ||
+                    inputs.description === ""
+                  }
+                  type="submit"
+                  className="myrecipes-form-button-text"
+                  variant="outline-dark"
+                >
+                  <div className="myrecipes-form-spinner">
+                    {loadingMyRecipes && (
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </div>
+                  {loadingMyRecipes ? (
+                    <div className="myrecipes-form-button-loading">
+                      {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                    </div>
+                  ) : (
+                    <div>
+                      {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
+                    </div>
+                  )}
+                </Button>
+              )}
               <Button
                 onClick={(e) => {
                   e.preventDefault();

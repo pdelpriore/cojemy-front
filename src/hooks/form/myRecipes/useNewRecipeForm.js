@@ -141,7 +141,7 @@ const useNewRecipeForm = () => {
         setInputs((inputs) => ({
           ...inputs,
           title: myRecipeToEdit.recipeTitle,
-          recipeImage: {
+          recipeImage: result && {
             image: result.imageBinary,
             imageName: result.pictureName.toString(),
           },
@@ -151,6 +151,12 @@ const useNewRecipeForm = () => {
           ingredients: myRecipeToEdit.recipeIngredients.toString(),
           description: myRecipeToEdit.recipeDescription,
         }));
+        if (result === null)
+          setInputs((inputs) =>
+            (({ recipeImage, ...others }) => ({
+              ...others,
+            }))(inputs)
+          );
       })();
     }
   }, [myRecipeToEdit]);
