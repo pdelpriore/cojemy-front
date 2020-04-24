@@ -56,7 +56,6 @@
 }
 .myrecipes-list-item:hover {
   transform: scale(0.985);
-  cursor: pointer;
 }
 .myrecipes-list-item-picture {
   width: 7.4vw;
@@ -105,6 +104,17 @@
   margin-right: 10px;
   color: #ee6670;
   width: 1vw;
+}
+.myrecipes-list-item-edittrash-icon {
+  width: 1vw;
+  color: #feb062;
+}
+.myrecipes-list-item-edittrash-icon:hover {
+  color: #ee6670;
+  cursor: pointer;
+}
+.myrecipes-list-item-icon-box {
+  margin-left: 15%;
 }
 .myrecipes-list-item-time {
   display: flex;

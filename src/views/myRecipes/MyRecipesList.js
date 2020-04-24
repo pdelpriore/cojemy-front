@@ -4,7 +4,12 @@ import { getMyRecipes } from "../../redux/myRecipes/retrieveMyRecipes/thunk/retr
 import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faClock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBook,
+  faClock,
+  faEdit,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { createDate, capitalize } from "../../util/Util";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
@@ -14,6 +19,7 @@ import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
 import { useDispatch, useSelector } from "react-redux";
+import useMyRecipes from "../../hooks/screen/myRecipes/useMyRecipes";
 import "./myRecipes.css";
 
 const MyRecipesList = () => {
@@ -22,6 +28,11 @@ const MyRecipesList = () => {
   const { loadingMyRecipes, myRecipesRetrieved, myRecipesError } = useSelector(
     (state) => state.myRecipes
   );
+  const {
+    showIcon,
+    handleListItemMouseEnter,
+    handleListItemMouseLeave,
+  } = useMyRecipes();
 
   useEffect(() => {
     if (userData.email) {
@@ -42,9 +53,8 @@ const MyRecipesList = () => {
       {myRecipesRetrieved !== null &&
         myRecipesRetrieved.map((retrieveRecipe, index) => (
           <div
-            onClick={(e) => {
-              e.preventDefault();
-            }}
+            onMouseEnter={handleListItemMouseEnter}
+            onMouseLeave={handleListItemMouseLeave}
             className="myrecipes-list-item"
             key={index}
           >
@@ -86,6 +96,22 @@ const MyRecipesList = () => {
                   >
                     <RatingActiveStars place={strings.rating.LIST} />
                   </div>
+                  {showIcon && (
+                    <div className="myrecipes-list-item-icon-box">
+                      <FontAwesomeIcon
+                        className="myrecipes-list-item-edittrash-icon"
+                        icon={faEdit}
+                      />
+                    </div>
+                  )}
+                  {showIcon && (
+                    <div className="myrecipes-list-item-icon-box">
+                      <FontAwesomeIcon
+                        className="myrecipes-list-item-edittrash-icon"
+                        icon={faTrash}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div style={{ height: 5 }} />
                 <div className="myrecipes-list-item-author">
