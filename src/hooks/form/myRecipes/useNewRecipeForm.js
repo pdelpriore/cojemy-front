@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
 import { strings } from "../../../strings/Strings";
+import { getImage } from "./getImage";
 import { addNewRecipe } from "../../../redux/myRecipes/addMyRecipe/thunk/addNewRecipeThunk";
 import { addMyRecipe } from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
 import { useSelector, useDispatch } from "react-redux";
@@ -134,29 +135,22 @@ const useNewRecipeForm = () => {
   useEffect(() => {
     if (myRecipeToEdit.recipeTitle) {
       (async () => {
-        const pictureName = myRecipeToEdit.recipeImage.split("-").slice(1);
-        const pictureType = pictureName.toString().split(".").slice(1);
-
-        const response = await fetch(
-          "http://localhost:4000" + myRecipeToEdit.recipeImage
-        );
-        const data = await response.blob();
-        const metadata = {
-          type: `image/${pictureType.toString()}`,
-        };
-
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(new File([data], pictureName, metadata));
-        fileReader.onloadend = () => {
-          setInputs((inputs) => ({
-            ...inputs,
-            title: myRecipeToEdit.recipeTitle,
-            recipeImage: {
-              image: fileReader.result,
-              imageName: pictureName.toString(),
-            },
-          }));
-        };
+        const result =
+          myRecipeToEdit.recipeImage &&
+          (await getImage(myRecipeToEdit.recipeImage));
+        setInputs((inputs) => ({
+          ...inputs,
+          title: myRecipeToEdit.recipeTitle,
+          recipeImage: {
+            image: result.imageBinary,
+            imageName: result.pictureName.toString(),
+          },
+          video: myRecipeToEdit.recipeVideo,
+          category: myRecipeToEdit.recipeCategory,
+          cookTime: myRecipeToEdit.recipeCookTime,
+          ingredients: myRecipeToEdit.recipeIngredients.toString(),
+          description: myRecipeToEdit.recipeDescription,
+        }));
       })();
     }
   }, [myRecipeToEdit]);

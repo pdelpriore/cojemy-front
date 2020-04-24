@@ -7,6 +7,7 @@ import ImageUploader from "react-images-upload";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
@@ -172,7 +173,7 @@ const MyRecipesForm = () => {
                 className="myrecipes-form-text-family-message"
                 as="select"
                 name="category"
-                defaultValue=""
+                value={inputs.category || ""}
                 onChange={handleInputsChange}
               >
                 <option disabled={true} value="">
@@ -304,6 +305,7 @@ const MyRecipesForm = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(showNewRecipeForm(false));
+                  dispatch(toEditMyRecipeClearState());
                 }}
                 className="myrecipes-form-button-cancel"
                 variant="outline-secondary"
