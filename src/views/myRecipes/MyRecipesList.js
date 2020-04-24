@@ -32,6 +32,8 @@ const MyRecipesList = () => {
     showIcon,
     handleListItemMouseEnter,
     handleListItemMouseLeave,
+    handleEditClick,
+    handleTrashClick,
   } = useMyRecipes();
 
   useEffect(() => {
@@ -99,6 +101,19 @@ const MyRecipesList = () => {
                   {showIcon && (
                     <div className="myrecipes-list-item-icon-box">
                       <FontAwesomeIcon
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleEditClick({
+                            recipeId: retrieveRecipe._id,
+                            recipeTitle: retrieveRecipe.title,
+                            recipeImage: retrieveRecipe.picture,
+                            recipeVideo: retrieveRecipe.video,
+                            recipeCategory: retrieveRecipe.category,
+                            recipeCookTime: retrieveRecipe.cookTime,
+                            recipeIngredients: retrieveRecipe.ingredients,
+                            recipeDescription: retrieveRecipe.description,
+                          });
+                        }}
                         className="myrecipes-list-item-edittrash-icon"
                         icon={faEdit}
                       />

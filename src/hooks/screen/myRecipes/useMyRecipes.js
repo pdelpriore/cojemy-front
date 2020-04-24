@@ -11,7 +11,21 @@ const useMyRecipes = () => {
     setShowIcon(false);
   };
 
-  return { showIcon, handleListItemMouseEnter, handleListItemMouseLeave };
+  const handleEditClick = (data) => {
+    console.log(data);
+  };
+
+  const handleTrashClick = (data) => {
+    console.log(data);
+  };
+
+  return {
+    showIcon,
+    handleListItemMouseEnter,
+    handleListItemMouseLeave,
+    handleEditClick,
+    handleTrashClick,
+  };
 };
 
 export default useMyRecipes;
