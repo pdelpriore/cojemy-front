@@ -3,7 +3,10 @@ import { capitalizeFirst } from "../../../util/Util";
 import { strings } from "../../../strings/Strings";
 import { getImage } from "./getImage";
 import { addNewRecipe } from "../../../redux/myRecipes/addMyRecipe/thunk/addNewRecipeThunk";
-import { addMyRecipe } from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
+import {
+  addMyRecipe,
+  editMyRecipe,
+} from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
 import { useSelector, useDispatch } from "react-redux";
 
 const useNewRecipeForm = () => {
@@ -117,7 +120,22 @@ const useNewRecipeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userData.email) {
+    if (myRecipeToEdit.recipeTitle) {
+      dispatch(
+        editMyRecipe(
+          myRecipeToEdit.recipeId,
+          inputs.title,
+          inputs.recipeImage.image,
+          inputs.recipeImage.imageName,
+          inputs.video,
+          inputs.category,
+          parseInt(inputs.cookTime),
+          inputs.ingredients.filter((ingredient) => ingredient !== ""),
+          inputs.description,
+          userData.email
+        )
+      );
+    } else {
       dispatch(
         addMyRecipe(
           inputs.title,
@@ -144,12 +162,12 @@ const useNewRecipeForm = () => {
           title: myRecipeToEdit.recipeTitle,
           recipeImage: result && {
             image: result.imageBinary,
-            imageName: result.pictureName.toString(),
+            imageName: result.pictureName,
           },
           video: myRecipeToEdit.recipeVideo,
           category: myRecipeToEdit.recipeCategory,
           cookTime: myRecipeToEdit.recipeCookTime,
-          ingredients: myRecipeToEdit.recipeIngredients.toString(),
+          ingredients: myRecipeToEdit.recipeIngredients,
           description: myRecipeToEdit.recipeDescription,
         }));
         if (result === null)

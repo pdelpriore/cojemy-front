@@ -1,4 +1,4 @@
-export const addMyRecipeQuery = (
+export const editMyRecipeQuery = (
   recipeId,
   title,
   image,
@@ -12,7 +12,7 @@ export const addMyRecipeQuery = (
 ) => {
   return {
     query: `mutation {
-      addMyRecipe(recipeId: "${recipeId}" title: "${title}", recipeImage: {image: "${image}", imageName: "${imageName}"}, video: "${video}", category: "${category}", cookTime: ${cookTime}, ingredients: "${ingredients}", description: "${description}", email: "${email}") {
+      editMyRecipe(recipeId: "${recipeId}" title: "${title}", recipeImage: {image: "${image}", imageName: "${imageName}"}, video: "${video}", category: "${category}", cookTime: ${cookTime}, ingredients: "${ingredients}", description: "${description}", email: "${email}") {
           _id
           title
           picture
