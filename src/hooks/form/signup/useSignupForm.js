@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { signupUser } from "../../../redux/signup/thunk/SignupThunk";
 import { useDispatch, useSelector } from "react-redux";
+import { strings } from "../../../strings/Strings";
 
 const useSignupForm = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,10 @@ const useSignupForm = () => {
     e.persist();
     setInputs((inputs) => ({
       ...inputs,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.name === strings.signup.inputName.NAME
+          ? e.target.value.replace(/\s/g, "")
+          : e.target.value,
     }));
   };
 
