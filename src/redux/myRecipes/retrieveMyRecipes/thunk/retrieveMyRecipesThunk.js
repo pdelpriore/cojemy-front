@@ -143,19 +143,17 @@ export const editMyRecipe = (
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
-        console.log(data);
-        // dispatch({
-        //   type: retrieveMyRecipesCases.MY_RECIPES_RETRIEVED,
-        //   payload: data.editMyRecipe,
-        // });
-        // dispatch({ type: addNewRecipeCases.RECIPE_ADDED, payload: true });
-        // dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
+        dispatch({
+          type: retrieveMyRecipesCases.MY_RECIPES_RETRIEVED,
+          payload: data.editMyRecipe,
+        });
+        dispatch({ type: addNewRecipeCases.RECIPE_ADDED, payload: true });
+        dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
       } else if (errors) {
-        console.log(errors);
-        // dispatch({
-        //   type: retrieveMyRecipesCases.ERROR,
-        //   payload: errors[0].message,
-        // });
+        dispatch({
+          type: retrieveMyRecipesCases.ERROR,
+          payload: errors[0].message,
+        });
       }
     } catch (err) {
       if (err) console.log(err);
