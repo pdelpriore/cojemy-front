@@ -18,6 +18,7 @@ const useRateAndComment = () => {
   const { recipeListItemChanged } = useSelector(
     (state) => state.hideRateCommentForm
   );
+  const { rateCommentAdded } = useSelector((state) => state.addRateComment);
 
   const handleMouseEnter = (e) => {
     setRateHover(e.currentTarget.dataset.value);
@@ -42,31 +43,30 @@ const useRateAndComment = () => {
 
   const handleOnSubmit = (recipeId) => {
     if (rateAndComment.commentValue) {
-      if (userData.email) {
-        dispatch(
-          editRecipeRateAndComment(
-            recipeId,
-            rateAndComment.rateId,
-            rate,
-            rateAndComment.commentId,
-            inputs.comment,
-            userData.email
-          )
-        );
-        setRate("");
-        setInputs({});
-        dispatch(toEditRateCommentClearState());
-      }
+      dispatch(
+        editRecipeRateAndComment(
+          recipeId,
+          rateAndComment.rateId,
+          rate,
+          rateAndComment.commentId,
+          inputs.comment,
+          userData.email
+        )
+      );
     } else {
-      if (userData.email) {
-        dispatch(
-          addRateAndComment(recipeId, rate, inputs.comment, userData.email)
-        );
-        setRate("");
-        setInputs({});
-      }
+      dispatch(
+        addRateAndComment(recipeId, rate, inputs.comment, userData.email)
+      );
     }
   };
+
+  useEffect(() => {
+    if (rateCommentAdded) {
+      setRate("");
+      setInputs({});
+      dispatch(toEditRateCommentClearState());
+    }
+  }, [rateCommentAdded, dispatch]);
 
   useEffect(() => {
     if (rateAndComment.rateValue) setRate(rateAndComment.rateValue);
