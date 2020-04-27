@@ -128,7 +128,7 @@ const useNewRecipeForm = () => {
           inputs.title,
           inputs.recipeImage.image,
           inputs.recipeImage.imageName,
-          inputs.video === undefined ? "" : inputs.video,
+          inputs.video,
           inputs.category,
           parseInt(inputs.cookTime),
           inputs.ingredients.filter((ingredient) => ingredient !== ""),
