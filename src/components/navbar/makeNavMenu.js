@@ -10,6 +10,8 @@ import { recipeDetailsClearState } from "../../redux/recipeBook/showRecipeDetail
 import { categorySelectedClearState } from "../../redux/recipeBook/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
 import { recipeBookClearState } from "../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
 import { hideRateCommentForm } from "../../redux/recipeBook/hideRateCommentForm/thunk/hideRateCommentFormThunk";
+import { toEditRateCommentClearState } from "../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
+import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { capitalize } from "../../util/Util";
@@ -76,6 +78,8 @@ const MakeNavMenu = ({ type }) => {
       dispatch(categorySelectedClearState());
       dispatch(myRecipesClearState());
       dispatch(recipeBookClearState());
+      dispatch(toEditRateCommentClearState());
+      dispatch(toEditMyRecipeClearState());
       dispatch(hideRateCommentForm(true));
     }
     if (userData.email === undefined) dispatch(clearLogoutState());
