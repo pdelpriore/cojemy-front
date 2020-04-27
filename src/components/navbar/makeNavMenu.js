@@ -24,6 +24,7 @@ import "./navbar.css";
 const MakeNavMenu = ({ type }) => {
   const navHomeItems = [
     { name: strings.navbar.navHomeItems.LOGO, path: strings.path.HOME },
+    { name: strings.navbar.navHomeItems.MAIN },
     { name: strings.navbar.navHomeItems.ABOUT },
     { name: strings.navbar.navHomeItems.CONTACT },
   ];

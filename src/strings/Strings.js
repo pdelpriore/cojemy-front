@@ -25,6 +25,7 @@ export const strings = Object.freeze({
     },
     navHomeItems: {
       LOGO: "quoi manger ?",
+      MAIN: "main",
       ABOUT: "en savoir plus",
       CONTACT: "contact",
     },

@@ -52,6 +52,7 @@ const useNewRecipeForm = () => {
         }))(error)
       );
     }
+
     const fileReader = new FileReader();
     fileReader.readAsDataURL(picture[0]);
     fileReader.onloadend = () => {

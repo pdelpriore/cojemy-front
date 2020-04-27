@@ -15,7 +15,7 @@ const Main = () => {
     <animated.div
       style={props}
       className="main-section"
-      id={strings.navbar.navHomeItems.LOGO}
+      id={strings.navbar.navHomeItems.MAIN}
     >
       <Row>
         <Col xs={2}>
