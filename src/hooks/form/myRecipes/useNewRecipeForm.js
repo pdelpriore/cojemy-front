@@ -189,7 +189,7 @@ const useNewRecipeForm = () => {
   }, [newRecipeAdded, dispatch]);
 
   useEffect(() => {
-    if (!inputs.video) {
+    if (!inputs.video && !myRecipeToEdit.recipeVideo) {
       setInputs((inputs) =>
         (({ video, ...others }) => ({
           ...others,
@@ -201,7 +201,7 @@ const useNewRecipeForm = () => {
         }))(error)
       );
     }
-  }, [inputs.video]);
+  }, [inputs.video, myRecipeToEdit.recipeVideo]);
 
   console.log(inputs);
 
