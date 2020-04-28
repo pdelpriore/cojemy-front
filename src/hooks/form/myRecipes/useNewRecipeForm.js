@@ -203,8 +203,6 @@ const useNewRecipeForm = () => {
     }
   }, [inputs.video, myRecipeToEdit.recipeVideo]);
 
-  console.log(inputs);
-
   return {
     inputs,
     error,
