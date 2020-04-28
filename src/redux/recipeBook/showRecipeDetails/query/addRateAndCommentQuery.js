@@ -7,7 +7,7 @@ export const addRateAndCommentQuery = (
   return {
     query: `
                 mutation {
-                  addRecipeRateComment(recipeId: "${recipeId}" rateValue: ${rateValue}, commentContent: "${commentContent}" , email: "${email}") {
+                  addRecipeRateComment(recipeId: "${recipeId}", rateValue: ${rateValue}, commentContent: "${commentContent}" , email: "${email}") {
                       _id
                       title
                       picture
