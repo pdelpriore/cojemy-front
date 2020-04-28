@@ -108,8 +108,7 @@ export const addMyRecipe = (
 export const editMyRecipe = (
   recipeId,
   title,
-  image,
-  imageName,
+  recipeImage,
   video,
   category,
   cookTime,
@@ -122,12 +121,11 @@ export const editMyRecipe = (
     const bodyRequest = editMyRecipeQuery(
       recipeId,
       title,
-      image,
-      imageName,
+      recipeImage,
       video,
       category,
       cookTime,
-      ingredients.toString(),
+      ingredients,
       description,
       email
     );

@@ -126,8 +126,7 @@ const useNewRecipeForm = () => {
         editMyRecipe(
           myRecipeToEdit.recipeId,
           inputs.title,
-          inputs.recipeImage.image,
-          inputs.recipeImage.imageName,
+          inputs.recipeImage,
           inputs.video,
           inputs.category,
           parseInt(inputs.cookTime),
