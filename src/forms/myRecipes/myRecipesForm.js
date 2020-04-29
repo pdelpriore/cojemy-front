@@ -73,6 +73,7 @@ const MyRecipesForm = () => {
                 buttonText={capitalizeFirst(strings.myRecipes.CHOOSE_PICTURE)}
                 onChange={(picture) => handlePicture(picture)}
                 imgExtension={[".jpg", "jpeg", ".gif", ".png", ".gif"]}
+                fileTypeError={strings.myRecipes.error.IMAGE_FORMAT}
               />
             </Form.Group>
           </Col>

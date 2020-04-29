@@ -44,7 +44,32 @@ const useNewRecipeForm = () => {
     if (picture.length > 1) {
       picture = picture.splice(picture.length - 1, 1);
     }
-    if (picture[0].size > 100000) {
+    if (
+      [
+        "xxx",
+        "porn",
+        "teen",
+        "milf",
+        "tits",
+        "pussy",
+        "cock",
+        "sex",
+        "penis",
+        "cum",
+        "sperme",
+        "baise",
+        "enculé",
+        "deepthroat",
+        "anal",
+        "sodomie",
+        "bite",
+      ].some((element) => picture[0].name.includes(element))
+    ) {
+      setError((error) => ({
+        ...error,
+        imageError: capitalizeFirst(strings.myRecipes.error.IMAGE_UNACCEPTABLE),
+      }));
+    } else if (picture[0].size > 100000) {
       setError((error) => ({
         ...error,
         imageError: capitalizeFirst(strings.myRecipes.error.IMAGE_SIZE_ERROR),
@@ -200,6 +225,35 @@ const useNewRecipeForm = () => {
           ...others,
         }))(error)
       );
+    }
+    if (
+      [
+        "xxx",
+        "porn",
+        "teen",
+        "milf",
+        "tits",
+        "pussy",
+        "cock",
+        "sex",
+        "penis",
+        "cum",
+        "sperme",
+        "redtube",
+        "baise",
+        "enculé",
+        "deepthroat",
+        "anal",
+        "sodomie",
+        "bite",
+      ].some((element) => inputs.video && inputs.video.includes(element))
+    ) {
+      setError((error) => ({
+        ...error,
+        playerError: capitalizeFirst(
+          strings.myRecipes.error.VIDEO_UNACCEPTABLE
+        ),
+      }));
     }
   }, [inputs.video, myRecipeToEdit.recipeVideo]);
 
