@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { toEditMyRecipe } from "../../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
-import { useDispatch } from "react-redux";
+import { removeMyRecipe } from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
+import { useDispatch, useSelector } from "react-redux";
 
 const useMyRecipes = () => {
   const dispatch = useDispatch();
   const [showIcon, setShowIcon] = useState(false);
+
+  const { userData } = useSelector((state) => state.login);
 
   const handleListItemMouseEnter = () => {
     setShowIcon(true);
@@ -18,8 +21,8 @@ const useMyRecipes = () => {
     dispatch(toEditMyRecipe(data));
   };
 
-  const handleTrashClick = (data) => {
-    console.log(data);
+  const handleTrashClick = (recipeId) => {
+    dispatch(removeMyRecipe(recipeId, userData.email));
   };
 
   return {

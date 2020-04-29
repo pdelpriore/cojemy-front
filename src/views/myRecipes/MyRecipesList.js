@@ -122,6 +122,10 @@ const MyRecipesList = () => {
                   {showIcon && (
                     <div className="myrecipes-list-item-icon-box">
                       <FontAwesomeIcon
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTrashClick(retrieveRecipe._id);
+                        }}
                         className="myrecipes-list-item-edittrash-icon"
                         icon={faTrash}
                       />
