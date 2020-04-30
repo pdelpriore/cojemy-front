@@ -7,6 +7,7 @@ import {
   addMyRecipe,
   editMyRecipe,
 } from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
+import { myRecipePreviewClearState } from "../../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import { toEditMyRecipeClearState } from "../../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -211,6 +212,7 @@ const useNewRecipeForm = () => {
     if (newRecipeAdded) {
       setInputs({});
       dispatch(toEditMyRecipeClearState());
+      dispatch(myRecipePreviewClearState());
     }
     return () => {
       dispatch(addNewRecipe(false));
