@@ -5,14 +5,12 @@ import {
 import { addRateAndCommentQuery } from "../query/addRateAndCommentQuery";
 import { editRateAndCommentQuery } from "../query/editRateAndCommentQuery";
 import { removeRateAndCommentQuery } from "../query/removeRateAndCommentQuery";
-import { sortCommentsByDate } from "./sortCommentsByDate";
+import { sortCommentsByDate } from "../../../../shared/sortCommentsByDate";
 import { strings } from "../../../../strings/Strings";
 
 export const showRecipeDetailsComponent = (bool) => {
   return (dispatch, getState) => {
-    if (bool) {
-      dispatch({ type: showRecipeDetailsCases.SHOWED, payload: bool });
-    }
+    dispatch({ type: showRecipeDetailsCases.SHOWED, payload: bool });
   };
 };
 

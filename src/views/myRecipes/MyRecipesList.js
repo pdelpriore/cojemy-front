@@ -15,6 +15,7 @@ import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
 import { getAverageRating } from "../../shared/getAverageRating";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
+import { myRecipeData } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
@@ -55,6 +56,10 @@ const MyRecipesList = () => {
       {myRecipesRetrieved !== null &&
         myRecipesRetrieved.map((retrieveRecipe, index) => (
           <div
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(myRecipeData(retrieveRecipe));
+            }}
             onMouseEnter={handleListItemMouseEnter}
             onMouseLeave={handleListItemMouseLeave}
             className="myrecipes-list-item"

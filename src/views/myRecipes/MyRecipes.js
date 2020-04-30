@@ -4,6 +4,7 @@ import { useSpring, animated } from "react-spring";
 import ScrollArea from "react-scrollbar";
 import Navbar from "../../components/navbar/Navbar";
 import MyRecipesList from "./MyRecipesList";
+import MyRecipePreview from "./MyRecipePreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListUl } from "@fortawesome/free-solid-svg-icons";
 import { strings } from "../../strings/Strings";
@@ -18,6 +19,9 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
   const dispatch = useDispatch();
   const { newRecipeFormShowed } = useSelector(
     (state) => state.newRecipeFormShow
+  );
+  const { myRecipePreviewShowed } = useSelector(
+    (state) => state.myRecipePreview
   );
   const { myRecipeErrorReceived } = useSelector((state) => state.myRecipeError);
   const props = useSpring({
@@ -46,7 +50,13 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
         </Row>
       </div>
       <div className="myrecipes-second-section">
-        <div className={newRecipeFormShowed ? "myrecipes-button-hided" : ""}>
+        <div
+          className={
+            newRecipeFormShowed || myRecipePreviewShowed
+              ? "myrecipes-button-hided"
+              : ""
+          }
+        >
           <Row className="mb-5" />
           <Row className="mb-5" />
           <Row className="mb-5" />
@@ -133,6 +143,13 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
               </Col>
               <Col xs={1} />
             </Row>
+          </div>
+        )}
+        {myRecipePreviewShowed && (
+          <div className="myrecipes-recipe-preview">
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <MyRecipePreview />
           </div>
         )}
       </div>

@@ -114,3 +114,9 @@ export const toEditMyRecipeCases = Object.freeze({
   MY_RECIPE_TO_EDIT: "toEditMyRecipeCasesMyRecipeToEdit",
   CLEAR_STATE: "toEditMyRecipeCasesClearState",
 });
+
+export const myRecipePreviewCases = Object.freeze({
+  PREVIEW_SHOWED: "myRecipePreviewCasesPreviewShowed",
+  PREVIEW_DATA_RECEIVED: "myRecipePreviewCasesPreviewDataReceived",
+  CLEAR_STATE: "myRecipePreviewCasesClearState",
+});

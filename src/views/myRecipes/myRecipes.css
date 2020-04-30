@@ -56,6 +56,7 @@
 }
 .myrecipes-list-item:hover {
   transform: scale(0.985);
+  cursor: pointer;
 }
 .myrecipes-list-item-picture {
   width: 7.4vw;
@@ -163,4 +164,64 @@
   font-family: "OpenSans-SemiBold";
   font-size: 1vw;
   color: red;
+}
+.recipeDetails-main {
+  padding: 2%;
+  width: 50vw;
+  height: 80vh;
+}
+.recipeDetails-title {
+  font-family: "Nunito-Bold";
+  font-size: 2.1vw;
+  border-bottom: 2px black solid;
+}
+.recipeDetails-author-photo {
+  width: 2.5vw;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #212529;
+}
+.recipeDetails-close-icon {
+  font-size: 2vw;
+}
+.recipeDetails-close-icon:hover {
+  color: #ee6670;
+  cursor: pointer;
+}
+.recipeDetails-picture {
+  width: 15vw;
+  height: 30vh;
+  object-fit: cover;
+  border: 1px solid #572529;
+  border-radius: 20px;
+  padding: 10px;
+}
+.recipeDetails-ingredients-text {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1.1vw;
+}
+.recipeDetails-ingredients-item {
+  font-family: "OpenSans-Regular";
+  font-size: 1.1vw;
+}
+.recipeDetails-ingredients-description {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  text-align: justify;
+}
+.recipeDetails-player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
+.recipeDetails-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.myrecipes-recipe-preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 1;
+  overflow: hidden;
 }
