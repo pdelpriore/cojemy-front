@@ -41,8 +41,8 @@ const useNewRecipeForm = () => {
   };
 
   const handlePicture = (picture) => {
-    if (picture.length > 0 && picture.length > 1) {
-      picture = picture.length > 0 && picture.splice(picture.length - 1, 1);
+    if (picture.length > 1) {
+      picture = picture.splice(picture.length - 1, 1);
     }
     if (
       [
