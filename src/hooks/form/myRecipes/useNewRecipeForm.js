@@ -212,7 +212,10 @@ const useNewRecipeForm = () => {
       setInputs({});
       dispatch(toEditMyRecipeClearState());
     }
-    return () => dispatch(addNewRecipe(false));
+    return () => {
+      dispatch(addNewRecipe(false));
+      dispatch(toEditMyRecipeClearState());
+    };
   }, [newRecipeAdded, dispatch]);
 
   useEffect(() => {

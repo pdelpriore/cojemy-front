@@ -15,8 +15,8 @@ export const myRecipeData = (data) => {
       type: myRecipePreviewCases.PREVIEW_DATA_RECEIVED,
       payload: data,
     });
-    dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWED, payload: true });
     dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
+    dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWED, payload: true });
   };
 };
 

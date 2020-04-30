@@ -14,13 +14,13 @@ import { createDate, capitalize } from "../../util/Util";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
 import { getAverageRating } from "../../shared/getAverageRating";
+import { myRecipePreviewClearState } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import { myRecipeData } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
 import { useDispatch, useSelector } from "react-redux";
-import useMyRecipes from "../../hooks/screen/myRecipes/useMyRecipes";
 import "./myRecipes.css";
 
 const MyRecipesList = () => {
@@ -29,19 +29,15 @@ const MyRecipesList = () => {
   const { loadingMyRecipes, myRecipesRetrieved, myRecipesError } = useSelector(
     (state) => state.myRecipes
   );
-  const {
-    showIcon,
-    handleListItemMouseEnter,
-    handleListItemMouseLeave,
-    handleEditClick,
-    handleTrashClick,
-  } = useMyRecipes();
 
   useEffect(() => {
     if (userData.email) {
       dispatch(getMyRecipes(userData.email));
     }
-    return () => dispatch(showNewRecipeForm(false));
+    return () => {
+      dispatch(showNewRecipeForm(false));
+      dispatch(myRecipePreviewClearState());
+    };
   }, [userData.email, dispatch]);
   timeago.register("fr", fr);
 
@@ -60,8 +56,6 @@ const MyRecipesList = () => {
               e.preventDefault();
               dispatch(myRecipeData(retrieveRecipe));
             }}
-            onMouseEnter={handleListItemMouseEnter}
-            onMouseLeave={handleListItemMouseLeave}
             className="myrecipes-list-item"
             key={index}
           >
@@ -103,39 +97,6 @@ const MyRecipesList = () => {
                   >
                     <RatingActiveStars place={strings.rating.LIST} />
                   </div>
-                  {showIcon && (
-                    <div className="myrecipes-list-item-icon-box">
-                      <FontAwesomeIcon
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleEditClick({
-                            recipeId: retrieveRecipe._id,
-                            recipeTitle: retrieveRecipe.title,
-                            recipeImage: retrieveRecipe.picture,
-                            recipeVideo: retrieveRecipe.video,
-                            recipeCategory: retrieveRecipe.category,
-                            recipeCookTime: retrieveRecipe.cookTime,
-                            recipeIngredients: retrieveRecipe.ingredients,
-                            recipeDescription: retrieveRecipe.description,
-                          });
-                        }}
-                        className="myrecipes-list-item-edittrash-icon"
-                        icon={faEdit}
-                      />
-                    </div>
-                  )}
-                  {showIcon && (
-                    <div className="myrecipes-list-item-icon-box">
-                      <FontAwesomeIcon
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleTrashClick(retrieveRecipe._id);
-                        }}
-                        className="myrecipes-list-item-edittrash-icon"
-                        icon={faTrash}
-                      />
-                    </div>
-                  )}
                 </div>
                 <div style={{ height: 5 }} />
                 <div className="myrecipes-list-item-author">

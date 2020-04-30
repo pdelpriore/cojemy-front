@@ -225,3 +225,27 @@
   opacity: 1;
   overflow: hidden;
 }
+.myrecipes-button-preview-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.myrecipes-preview-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myrecipes-preview-button:hover {
+  background-color: #6c757d;
+}
+.myrecipes-preview-button-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myrecipes-preview-button-delete:hover {
+  background-color: #dc3545;
+}
+.myrecipes-preview-button-icon {
+  width: 1vw;
+}

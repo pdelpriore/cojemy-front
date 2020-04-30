@@ -3,6 +3,7 @@ import {
   addNewRecipeCases,
   showNewRecipeFormCases,
   newRecipeErrorCases,
+  myRecipePreviewCases,
 } from "../../../config/cases/Cases";
 import { retrieveMyRecipesQuery } from "../query/retrieveMyRecipesQuery";
 import { addMyRecipeQuery } from "../query/addMyRecipeQuery";
@@ -193,6 +194,7 @@ export const removeMyRecipe = (recipeId, email) => {
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
+        dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWED, payload: false });
         dispatch({
           type: retrieveMyRecipesCases.MY_RECIPES_RETRIEVED,
           payload: data.removeMyRecipe,
