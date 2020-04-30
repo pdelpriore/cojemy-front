@@ -180,6 +180,8 @@ export const strings = Object.freeze({
       IMAGE_UNACCEPTABLE: "image inappropriée",
       IMAGE_FORMAT: "format inaccepté",
       VIDEO_UNACCEPTABLE: "vidéo inappropriée",
+      TITLE_UNACCEPTABLE: "titre inapproprié",
+      DESCRIPTION_UNACCEPTABLE: "description inappropriée",
     },
   },
 });

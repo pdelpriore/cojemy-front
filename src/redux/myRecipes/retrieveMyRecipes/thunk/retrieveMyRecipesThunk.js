@@ -86,7 +86,11 @@ export const addMyRecipe = (
       } else if (errors) {
         if (
           errors[0].message ===
-          capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS)
+            capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS) ||
+          errors[0].message ===
+            capitalizeFirst(strings.myRecipes.error.TITLE_UNACCEPTABLE) ||
+          errors[0].message ===
+            capitalizeFirst(strings.myRecipes.error.DESCRIPTION_UNACCEPTABLE)
         ) {
           dispatch({ type: retrieveMyRecipesCases.LOADING, payload: false });
           dispatch({
@@ -149,10 +153,23 @@ export const editMyRecipe = (
         dispatch({ type: addNewRecipeCases.RECIPE_ADDED, payload: true });
         dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
       } else if (errors) {
-        dispatch({
-          type: retrieveMyRecipesCases.ERROR,
-          payload: errors[0].message,
-        });
+        if (
+          errors[0].message ===
+            capitalizeFirst(strings.myRecipes.error.TITLE_UNACCEPTABLE) ||
+          errors[0].message ===
+            capitalizeFirst(strings.myRecipes.error.DESCRIPTION_UNACCEPTABLE)
+        ) {
+          dispatch({ type: retrieveMyRecipesCases.LOADING, payload: false });
+          dispatch({
+            type: newRecipeErrorCases.ERROR_RECEIVED,
+            payload: errors[0].message,
+          });
+        } else {
+          dispatch({
+            type: retrieveMyRecipesCases.ERROR,
+            payload: errors[0].message,
+          });
+        }
       }
     } catch (err) {
       if (err) console.log(err);

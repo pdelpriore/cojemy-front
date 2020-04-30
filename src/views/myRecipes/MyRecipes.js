@@ -115,6 +115,18 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
                     myRecipeErrorReceived ===
                       capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS)
                       ? myRecipeErrorReceived
+                      : myRecipeErrorReceived &&
+                        myRecipeErrorReceived ===
+                          capitalizeFirst(
+                            strings.myRecipes.error.TITLE_UNACCEPTABLE
+                          )
+                      ? myRecipeErrorReceived
+                      : myRecipeErrorReceived &&
+                        myRecipeErrorReceived ===
+                          capitalizeFirst(
+                            strings.myRecipes.error.DESCRIPTION_UNACCEPTABLE
+                          )
+                      ? myRecipeErrorReceived
                       : null
                   }
                 />
