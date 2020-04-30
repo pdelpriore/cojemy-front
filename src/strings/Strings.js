@@ -144,7 +144,7 @@ export const strings = Object.freeze({
   },
   myRecipes: {
     BUTTON_NEW_RECIPE: "nouvelle recette",
-    TITLE: "titre *",
+    TITLE: "titre (max 21 caractères) *",
     TITLE_PLACEHOLDER: "titre",
     PICTURE: "image",
     VIDEO: "vidéo",

@@ -41,8 +41,8 @@ const useNewRecipeForm = () => {
   };
 
   const handlePicture = (picture) => {
-    if (picture.length > 1) {
-      picture = picture.splice(picture.length - 1, 1);
+    if (picture.length > 0 && picture.length > 1) {
+      picture = picture.length > 0 && picture.splice(picture.length - 1, 1);
     }
     if (
       [
@@ -63,13 +63,15 @@ const useNewRecipeForm = () => {
         "anal",
         "sodomie",
         "bite",
-      ].some((element) => picture[0].name.includes(element))
+      ].some(
+        (element) => picture.length > 0 && picture[0].name.includes(element)
+      )
     ) {
       setError((error) => ({
         ...error,
         imageError: capitalizeFirst(strings.myRecipes.error.IMAGE_UNACCEPTABLE),
       }));
-    } else if (picture[0].size > 100000) {
+    } else if (picture.length > 0 && picture[0].size > 100000) {
       setError((error) => ({
         ...error,
         imageError: capitalizeFirst(strings.myRecipes.error.IMAGE_SIZE_ERROR),
@@ -83,13 +85,13 @@ const useNewRecipeForm = () => {
     }
 
     const fileReader = new FileReader();
-    fileReader.readAsDataURL(picture[0]);
+    picture.length > 0 && fileReader.readAsDataURL(picture[0]);
     fileReader.onloadend = () => {
       setInputs((inputs) => ({
         ...inputs,
         recipeImage: {
           image: fileReader.result,
-          imageName: picture[0].name,
+          imageName: picture.length > 0 && picture[0].name,
         },
       }));
     };
