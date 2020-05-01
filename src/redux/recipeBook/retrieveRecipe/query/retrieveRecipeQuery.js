@@ -1,8 +1,8 @@
-export const retrieveRecipeQuery = (category, email) => {
+export const retrieveRecipeQuery = (category, email, skip, limit) => {
   return {
     query: `
-              query($category: String!, $email: String!) {
-                retrieveRecipes(category: $category, email: $email) {
+              query($category: String!, $email: String!, $skip: Int!, $limit: Int!) {
+                retrieveRecipes(category: $category, email: $email, skip: $skip, limit: $limit) {
                     _id
                     title
                     picture
@@ -38,6 +38,6 @@ export const retrieveRecipeQuery = (category, email) => {
                 }
               }
               `,
-    variables: { category, email },
+    variables: { category, email, skip, limit },
   };
 };

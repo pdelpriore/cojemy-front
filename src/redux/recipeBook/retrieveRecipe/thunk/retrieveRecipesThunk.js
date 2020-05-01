@@ -3,10 +3,10 @@ import { retrieveRecipeQuery } from "../query/retrieveRecipeQuery";
 import { searchRecipeQuery } from "../query/searchRecipeQuery";
 import { strings } from "../../../../strings/Strings";
 
-export const getRecipe = (category, email) => {
+export const getRecipe = (category, email, skip, limit) => {
   return async (dispatch, getState) => {
     dispatch({ type: retrieveRecipesCases.LOADING, payload: true });
-    const bodyRequest = retrieveRecipeQuery(category, email);
+    const bodyRequest = retrieveRecipeQuery(category, email, skip, limit);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
@@ -18,6 +18,7 @@ export const getRecipe = (category, email) => {
       });
       const responseData = await response.json();
       const { errors, data } = responseData;
+
       if (data) {
         dispatch({
           type: retrieveRecipesCases.RECIPE_RETRIVED,

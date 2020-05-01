@@ -7,6 +7,7 @@ import MakeRecipeButton from "./makeRecipeButton";
 import RecipesList from "./RecipesList";
 import RecipeDetails from "./RecipeDetails";
 import SearchRecipeForm from "../../forms/recipeBook/searchRecipe/SearchRecipeForm";
+import useRecipeBook from "../../hooks/screen/recipeBook/useRecipeBook";
 import { useSelector } from "react-redux";
 import "./recipeBook.css";
 
@@ -17,6 +18,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0 },
   });
   const { detailsShowed } = useSelector((state) => state.showRecipeDetails);
+  const { handleOnScroll } = useRecipeBook();
   return (
     <animated.div className="recipebook-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
@@ -26,6 +28,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
           <Col xs={9}>
             <div className="recipebook-list">
               <ScrollArea
+                onScroll={handleOnScroll}
                 className="recipesList-item-simplebar"
                 smoothScrolling={true}
               >
