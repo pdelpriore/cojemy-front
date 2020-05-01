@@ -18,7 +18,6 @@ export const getRecipe = (category, email, skip, limit) => {
       });
       const responseData = await response.json();
       const { errors, data } = responseData;
-
       if (data) {
         dispatch({
           type: retrieveRecipesCases.RECIPE_RETRIVED,

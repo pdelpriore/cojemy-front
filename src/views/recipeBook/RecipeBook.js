@@ -18,7 +18,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0 },
   });
   const { detailsShowed } = useSelector((state) => state.showRecipeDetails);
-  const { handleOnScroll } = useRecipeBook();
+  const { handlePrev, handleNext } = useRecipeBook();
   return (
     <animated.div className="recipebook-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
@@ -28,7 +28,6 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
           <Col xs={9}>
             <div className="recipebook-list">
               <ScrollArea
-                onScroll={handleOnScroll}
                 className="recipesList-item-simplebar"
                 smoothScrolling={true}
               >
@@ -57,6 +56,8 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             <Col xs={1} />
             <Col xs={4}>
               <MakeRecipeButton />
+              <div onClick={handlePrev}>prev</div>
+              <div onClick={handleNext}>next</div>
             </Col>
             <Col xs={1} />
             <Col xs={5}>

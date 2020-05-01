@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { buttonItemsArray } from "../../../shared/buttonItemsArray";
 import { getRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
+
+let skip = 1;
 
 const useRecipeBook = () => {
   const dispatch = useDispatch();
@@ -8,15 +11,29 @@ const useRecipeBook = () => {
   const { recipeButtonId } = useSelector(
     (state) => state.recipeCategorySelected
   );
+  const { recipesError } = useSelector((state) => state.recipeBook);
   const { userData } = useSelector((state) => state.login);
-  const handleOnScroll = (e) => {
-    if (e.topPosition === e.realHeight - e.containerHeight) {
-      dispatch(
-        getRecipe(buttonItems[recipeButtonId].category, userData.email, 8, 8)
-      );
-    }
+
+  const handlePrev = (e) => {
+    e.preventDefault();
+    skip > 1 && skip--;
+    dispatch(
+      getRecipe(buttonItems[recipeButtonId].category, userData.email, skip, 8)
+    );
   };
-  return { handleOnScroll };
+  const handleNext = (e) => {
+    e.preventDefault();
+    !recipesError && skip++;
+    dispatch(
+      getRecipe(buttonItems[recipeButtonId].category, userData.email, skip, 8)
+    );
+  };
+
+  useEffect(() => {
+    skip = 1;
+  }, []);
+
+  return { handlePrev, handleNext };
 };
 
 export default useRecipeBook;
