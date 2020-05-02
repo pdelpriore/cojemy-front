@@ -31,34 +31,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
       <Navbar path={path} url={url} isExact={isExact} />
       <div className="recipebook-first-section">
         <Row>
-          <Col xs={2} />
-          <Col xs={1}>
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <FontAwesomeIcon
-              className={
-                skip === 1
-                  ? "recipebook-arrows-inactive"
-                  : "recipebook-left-arrow"
-              }
-              onClick={skip === 1 ? null : handlePrev}
-              icon={faChevronCircleLeft}
-            />
-          </Col>
+          <Col xs={3} />
           <Col xs={9}>
             <div className="recipebook-list">
               <ScrollArea
@@ -104,11 +77,22 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             </Col>
             <Col xs={1} />
           </Row>
+          <Row className="mb-4" />
           <Row>
             <Col xs={1} />
             <Col xs={1}>
-              <Row className="mb-5" />
-              <Row className="mb-2" />
+              <FontAwesomeIcon
+                className={
+                  skip === 1
+                    ? "recipebook-arrows-inactive"
+                    : "recipebook-left-arrow"
+                }
+                onClick={skip === 1 ? null : handlePrev}
+                icon={faChevronCircleLeft}
+              />
+            </Col>
+            <Col xs={2} />
+            <Col xs={1}>
               <FontAwesomeIcon
                 className={
                   recipesError
@@ -119,7 +103,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
                 icon={faChevronCircleRight}
               />
             </Col>
-            <Col xs={10} />
+            <Col xs={7} />
           </Row>
         </div>
         {detailsShowed && (
