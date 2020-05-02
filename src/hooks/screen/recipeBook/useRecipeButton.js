@@ -19,6 +19,8 @@ const useRecipeButton = (buttonQty) => {
   const { userData } = useSelector((state) => state.login);
 
   const toggleActiveClass = (id, category) => {
+    const skip = 1;
+    const limit = 30;
     if (id === null && category === null) {
       setActive(initialState());
     } else {
@@ -28,7 +30,7 @@ const useRecipeButton = (buttonQty) => {
         initialState().map((bool, index) => (index === id ? !bool : bool))
       );
       if (userData.email) {
-        dispatch(getRecipe(category, userData.email, 1, 8));
+        dispatch(getRecipe(category, userData.email, skip, limit));
       }
     }
   };

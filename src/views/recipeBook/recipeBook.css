@@ -317,3 +317,26 @@
   top: 0;
   left: 0;
 }
+.recipebook-left-arrow {
+  font-size: 2vw;
+  color: #3c4049;
+}
+.recipebook-left-arrow:hover {
+  font-size: 2vw;
+  color: #2e303f;
+  cursor: pointer;
+}
+.recipebook-right-arrow {
+  font-size: 2vw;
+  color: #3c4049;
+}
+.recipebook-right-arrow:hover {
+  font-size: 2vw;
+  color: #2e303f;
+  cursor: pointer;
+}
+.recipebook-arrows-inactive {
+  font-size: 2vw;
+  color: #3c4049;
+  opacity: 0.7;
+}

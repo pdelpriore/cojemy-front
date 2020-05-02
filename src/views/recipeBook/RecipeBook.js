@@ -2,6 +2,11 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import ScrollArea from "react-scrollbar";
 import { Row, Col, Image, ListGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronCircleRight,
+  faChevronCircleLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import { useSpring, animated } from "react-spring";
 import MakeRecipeButton from "./makeRecipeButton";
 import RecipesList from "./RecipesList";
@@ -18,13 +23,42 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0 },
   });
   const { detailsShowed } = useSelector((state) => state.showRecipeDetails);
-  const { handlePrev, handleNext } = useRecipeBook();
+  const { recipesError } = useSelector((state) => state.recipeBook);
+
+  const { skip, handlePrev, handleNext } = useRecipeBook();
   return (
     <animated.div className="recipebook-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
       <div className="recipebook-first-section">
         <Row>
-          <Col xs={3} />
+          <Col xs={2} />
+          <Col xs={1}>
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <FontAwesomeIcon
+              className={
+                skip === 1
+                  ? "recipebook-arrows-inactive"
+                  : "recipebook-left-arrow"
+              }
+              onClick={skip === 1 ? null : handlePrev}
+              icon={faChevronCircleLeft}
+            />
+          </Col>
           <Col xs={9}>
             <div className="recipebook-list">
               <ScrollArea
@@ -56,8 +90,6 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             <Col xs={1} />
             <Col xs={4}>
               <MakeRecipeButton />
-              <div onClick={handlePrev}>prev</div>
-              <div onClick={handleNext}>next</div>
             </Col>
             <Col xs={1} />
             <Col xs={5}>
@@ -71,6 +103,23 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
               </Row>
             </Col>
             <Col xs={1} />
+          </Row>
+          <Row>
+            <Col xs={1} />
+            <Col xs={1}>
+              <Row className="mb-5" />
+              <Row className="mb-2" />
+              <FontAwesomeIcon
+                className={
+                  recipesError
+                    ? "recipebook-arrows-inactive"
+                    : "recipebook-right-arrow"
+                }
+                onClick={recipesError ? null : handleNext}
+                icon={faChevronCircleRight}
+              />
+            </Col>
+            <Col xs={10} />
           </Row>
         </div>
         {detailsShowed && (
