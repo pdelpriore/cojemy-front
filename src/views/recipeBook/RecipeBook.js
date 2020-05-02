@@ -24,6 +24,9 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
   });
   const { detailsShowed } = useSelector((state) => state.showRecipeDetails);
   const { recipesError } = useSelector((state) => state.recipeBook);
+  const { searchInputFilled } = useSelector(
+    (state) => state.turnOffRecipeButtons
+  );
 
   const { skip, handlePrev, handleNext } = useRecipeBook();
   return (
@@ -78,33 +81,35 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             <Col xs={1} />
           </Row>
           <Row className="mb-4" />
-          <Row>
-            <Col xs={1} />
-            <Col xs={1}>
-              <FontAwesomeIcon
-                className={
-                  skip === 1
-                    ? "recipebook-arrows-inactive"
-                    : "recipebook-left-arrow"
-                }
-                onClick={skip === 1 ? null : handlePrev}
-                icon={faChevronCircleLeft}
-              />
-            </Col>
-            <Col xs={2} />
-            <Col xs={1}>
-              <FontAwesomeIcon
-                className={
-                  recipesError
-                    ? "recipebook-arrows-inactive"
-                    : "recipebook-right-arrow"
-                }
-                onClick={recipesError ? null : handleNext}
-                icon={faChevronCircleRight}
-              />
-            </Col>
-            <Col xs={7} />
-          </Row>
+          {!searchInputFilled && (
+            <Row>
+              <Col xs={1} />
+              <Col xs={1}>
+                <FontAwesomeIcon
+                  className={
+                    skip === 1
+                      ? "recipebook-arrows-inactive"
+                      : "recipebook-left-arrow"
+                  }
+                  onClick={skip === 1 ? null : handlePrev}
+                  icon={faChevronCircleLeft}
+                />
+              </Col>
+              <Col xs={2} />
+              <Col xs={1}>
+                <FontAwesomeIcon
+                  className={
+                    recipesError
+                      ? "recipebook-arrows-inactive"
+                      : "recipebook-right-arrow"
+                  }
+                  onClick={recipesError ? null : handleNext}
+                  icon={faChevronCircleRight}
+                />
+              </Col>
+              <Col xs={7} />
+            </Row>
+          )}
         </div>
         {detailsShowed && (
           <div className="recipebook-recipes-details">
