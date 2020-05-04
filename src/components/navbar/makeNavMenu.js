@@ -12,6 +12,7 @@ import { recipeBookClearState } from "../../redux/recipeBook/retrieveRecipe/thun
 import { hideRateCommentForm } from "../../redux/recipeBook/hideRateCommentForm/thunk/hideRateCommentFormThunk";
 import { toEditRateCommentClearState } from "../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
+import { myRecipePreviewClearState } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { capitalize } from "../../util/Util";
@@ -75,6 +76,7 @@ const MakeNavMenu = ({ type }) => {
     if (userLoggedOut) {
       dispatch(clearLoginState());
       dispatch(recipeDetailsClearState());
+      dispatch(myRecipePreviewClearState());
       dispatch(categorySelectedClearState());
       dispatch(myRecipesClearState());
       dispatch(recipeBookClearState());
