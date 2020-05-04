@@ -1,11 +1,13 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
+import "./myProfile.css";
 
 const MyProfile = ({ match: { path, url, isExact } }) => {
   return (
-    <div>
+    <div className="myprofile-main-area">
       <Navbar path={path} url={url} isExact={isExact} />
-      Welcome to My Profile
+      <div className="myprofile-first-section"></div>
+      <div className="myprofile-second-section"></div>
     </div>
   );
 };

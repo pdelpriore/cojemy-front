@@ -1,0 +1,18 @@
+.myprofile-main-area {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.myprofile-first-section {
+  width: 50vw;
+  height: 100vh;
+  background-color: #f4fa9c;
+  border-right: 1px solid #3e3636;
+}
+.myprofile-second-section {
+  width: 50vw;
+  height: 100vh;
+  background-color: #f4fa9c;
+}
