@@ -153,7 +153,7 @@ export const strings = Object.freeze({
     VIDEO: "vidéo",
     VIDEO_PLACEHOLDER: "https://www.youtube.com/watch?v=xd",
     CATEGORY: "catégorie *",
-    COOK_TIME: "temps de cuisson *",
+    COOK_TIME: "temps de cuisson / préparation *",
     COOK_TIME_PLACEHOLDER: "en minutes",
     INGREDIENTS: "ingrédients *",
     INGREDIENTS_EX: "50ml huile,sel,poivre, ...",
