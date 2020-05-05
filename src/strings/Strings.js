@@ -187,4 +187,8 @@ export const strings = Object.freeze({
       DESCRIPTION_UNACCEPTABLE: "description inappropriée",
     },
   },
+  myProfile: {
+    USER_NAME: "nom d'utilisateur (min. 5 caractères) *",
+    USER_NAME_PLACEHOLDER: "nom d'utilisateur",
+  },
 });
