@@ -35,13 +35,19 @@ const useNotification = (notificationMessage) => {
   useEffect(() => {
     setShow(true);
     const timer = setTimeout(() => {
-      if (error || userSignedup) dispatch(clearSignUpState());
-      if (emailSent) dispatch(clearCustomerContactState());
-      if (passwordSent || remindPassError) dispatch(clearRemindPasswordState());
-      if (loginError) dispatch(clearLoginState());
-      if (errorGoogleSignup || userGoogleSignedup)
+      if (error || userSignedup) {
+        dispatch(clearSignUpState());
+      } else if (emailSent) {
+        dispatch(clearCustomerContactState());
+      } else if (passwordSent || remindPassError) {
+        dispatch(clearRemindPasswordState());
+      } else if (loginError) {
+        dispatch(clearLoginState());
+      } else if (errorGoogleSignup || userGoogleSignedup) {
         dispatch(clearSignUpGoogleUserState());
-      if (myRecipeErrorReceived) dispatch(myRecipeErrorClearState());
+      } else if (myRecipeErrorReceived) {
+        dispatch(myRecipeErrorClearState());
+      }
       setShow(false);
       setNotification({});
     }, 3500);
