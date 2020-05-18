@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
 import MyProfileForm from "../../forms/myProfile/MyProfileForm";
+import MyProfilePreview from "./MyProfilePreview";
 import Navbar from "../../components/navbar/Navbar";
 import "./myProfile.css";
 
@@ -12,14 +13,11 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-5" />
         <Row className="mb-5" />
+        <Row className="mb-5" />
         <Row>
           <Col xs={4} />
           <Col xs={4}>
-            <Image
-              className="myprofile-user-image"
-              src={require("../../assets/imgs/cookerret.png")}
-              roundedCircle
-            />
+            <MyProfilePreview />
           </Col>
           <Col xs={4} />
         </Row>

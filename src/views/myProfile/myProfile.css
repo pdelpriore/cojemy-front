@@ -21,3 +21,9 @@
   object-fit: cover;
   border: 1px solid #f6e3c3;
 }
+.myprofile-user-name {
+  font-size: 2vw;
+  font-family: "Nunito-SemiBold";
+  color: #212530;
+  white-space: nowrap;
+}
