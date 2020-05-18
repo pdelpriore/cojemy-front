@@ -87,9 +87,6 @@ export const strings = Object.freeze({
     BUTTON_TEXT: "inscris moi !",
     BUTTON_TEXT_LOADING: "je t'inscris ...",
     CHECK_EMAIL: "Compte enregistré avec succès. Confirme ton adresse email",
-    inputName: {
-      NAME: "name",
-    },
   },
   signupGoogle: {
     BUTTON_TEXT: "inscris moi !",
