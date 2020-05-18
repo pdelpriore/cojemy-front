@@ -50,7 +50,7 @@ const useNewRecipeForm = () => {
           ...inputs,
           recipeImage: result,
         }));
-        if (error) {
+        if (error.imageError) {
           setError((error) =>
             (({ imageError, ...others }) => ({
               ...others,
