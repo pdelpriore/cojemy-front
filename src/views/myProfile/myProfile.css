@@ -27,3 +27,10 @@
   color: #212530;
   white-space: nowrap;
 }
+.myprofile-preview-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

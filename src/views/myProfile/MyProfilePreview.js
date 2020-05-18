@@ -28,7 +28,7 @@ const MyProfilePreview = () => {
   }, [photo]);
 
   return (
-    <>
+    <div className="myprofile-preview-area">
       <Row>
         <Col xs={12}>
           <Image
@@ -50,7 +50,7 @@ const MyProfilePreview = () => {
       <Col xs={12}>
         <p className="myprofile-user-name">{name}</p>
       </Col>
-    </>
+    </div>
   );
 };
 
