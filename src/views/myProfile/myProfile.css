@@ -16,3 +16,8 @@
   height: 100vh;
   background-color: #f4fa9c;
 }
+.myprofile-user-image {
+  width: 12vw;
+  object-fit: cover;
+  border: 1px solid #f6e3c3;
+}

@@ -3,10 +3,12 @@ import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import ImageUploader from "react-images-upload";
+import useMyProfileForm from "../../hooks/form/myProfile/useMyProfileForm";
 import { useSelector } from "react-redux";
 import "./myProfileForm.css";
 
 const MyProfileForm = () => {
+  const { handlePicture } = useMyProfileForm();
   return (
     <Form onSubmit={null}>
       <Row>
@@ -45,7 +47,7 @@ const MyProfileForm = () => {
               withLabel={true}
               label={capitalizeFirst(strings.myRecipes.MAX_PICTURE_SIZE)}
               buttonText={capitalizeFirst(strings.myRecipes.CHOOSE_PICTURE)}
-              onChange={null}
+              onChange={(picture) => handlePicture(picture)}
               imgExtension={[".jpg", "jpeg", ".gif", ".png", ".gif"]}
               fileTypeError={capitalizeFirst(
                 strings.myRecipes.error.IMAGE_FORMAT
