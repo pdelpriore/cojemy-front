@@ -6,18 +6,16 @@ import "./myProfile.css";
 
 const MyProfilePreview = () => {
   const [inputUserPhoto, setInputUserPhoto] = useState({});
-  const {
-    userData: { photo, name },
-  } = useSelector((state) => state.login);
+  const { userData } = useSelector((state) => state.login);
 
   useEffect(() => {
     if (
       !["googleusercontent.com"].some(
-        (element) => photo && photo.includes(element)
+        (element) => userData.photo && userData.photo.includes(element)
       )
     )
       (async () => {
-        const result = await getImage(photo);
+        const result = await getImage(userData.photo);
         if (result) {
           setInputUserPhoto((inputUserPhoto) => ({
             ...inputUserPhoto,
@@ -25,7 +23,7 @@ const MyProfilePreview = () => {
           }));
         }
       })();
-  }, [photo]);
+  }, [userData.photo]);
 
   return (
     <div className="myprofile-preview-area">
@@ -34,10 +32,10 @@ const MyProfilePreview = () => {
           <Image
             className="myprofile-user-image"
             src={
-              ["googleusercontent.com"].some((element) =>
-                photo.includes(element)
+              ["googleusercontent.com"].some(
+                (element) => userData.photo && userData.photo.includes(element)
               )
-                ? photo
+                ? userData.photo
                 : inputUserPhoto.userPhoto
                 ? inputUserPhoto.userPhoto
                 : require("../../assets/imgs/cookerret.png")
@@ -48,7 +46,7 @@ const MyProfilePreview = () => {
       </Row>
       <Row className="mb-3" />
       <Col xs={12}>
-        <p className="myprofile-user-name">{name}</p>
+        <p className="myprofile-user-name">{userData.name}</p>
       </Col>
     </div>
   );
