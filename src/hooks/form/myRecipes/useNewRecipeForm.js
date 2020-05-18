@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
 import { strings } from "../../../strings/Strings";
-import { getImage } from "./getImage";
+import { getImage } from "../../../shared/getImage";
+import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { addNewRecipe } from "../../../redux/myRecipes/addMyRecipe/thunk/addNewRecipeThunk";
 import {
   addMyRecipe,
@@ -41,61 +42,30 @@ const useNewRecipeForm = () => {
     }));
   };
 
-  const handlePicture = (picture) => {
-    if (picture.length > 1) {
-      picture = picture.splice(picture.length - 1, 1);
+  const handlePicture = async (picture) => {
+    try {
+      const result = await makeImageBinary(picture);
+      if (result) {
+        setInputs((inputs) => ({
+          ...inputs,
+          recipeImage: result,
+        }));
+        if (error) {
+          setError((error) =>
+            (({ imageError, ...others }) => ({
+              ...others,
+            }))(error)
+          );
+        }
+      }
+    } catch (err) {
+      if (err) {
+        setError((error) => ({
+          ...error,
+          imageError: err,
+        }));
+      }
     }
-    if (
-      [
-        "xxx",
-        "porn",
-        "teen",
-        "milf",
-        "tits",
-        "pussy",
-        "cock",
-        "sex",
-        "penis",
-        "cum",
-        "sperme",
-        "baise",
-        "enculé",
-        "deepthroat",
-        "anal",
-        "sodomie",
-        "bite",
-      ].some(
-        (element) => picture.length > 0 && picture[0].name.includes(element)
-      )
-    ) {
-      setError((error) => ({
-        ...error,
-        imageError: capitalizeFirst(strings.myRecipes.error.IMAGE_UNACCEPTABLE),
-      }));
-    } else if (picture.length > 0 && picture[0].size > 100000) {
-      setError((error) => ({
-        ...error,
-        imageError: capitalizeFirst(strings.myRecipes.error.IMAGE_SIZE_ERROR),
-      }));
-    } else {
-      setError((error) =>
-        (({ imageError, ...others }) => ({
-          ...others,
-        }))(error)
-      );
-    }
-
-    const fileReader = new FileReader();
-    picture.length > 0 && fileReader.readAsDataURL(picture[0]);
-    fileReader.onloadend = () => {
-      setInputs((inputs) => ({
-        ...inputs,
-        recipeImage: {
-          image: fileReader.result,
-          imageName: picture.length > 0 && picture[0].name,
-        },
-      }));
-    };
   };
 
   const handleRemoveImage = () => {
