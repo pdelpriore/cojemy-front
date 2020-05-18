@@ -17,9 +17,10 @@
   background-color: #f4fa9c;
 }
 .myprofile-user-image {
-  width: 12vw;
+  width: 10vw;
   object-fit: cover;
-  border: 1px solid #f6e3c3;
+  border-radius: 50%;
+  border: 1px solid #212530;
 }
 .myprofile-user-name {
   font-size: 2vw;

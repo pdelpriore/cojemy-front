@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
+import Img from "react-image";
 import { getImage } from "../../shared/getImage";
 import { useSelector } from "react-redux";
 import "./myProfile.css";
@@ -29,7 +30,7 @@ const MyProfilePreview = () => {
     <div className="myprofile-preview-area">
       <Row>
         <Col xs={12}>
-          <Image
+          <Img
             className="myprofile-user-image"
             src={
               ["googleusercontent.com"].some(
@@ -40,7 +41,7 @@ const MyProfilePreview = () => {
                 ? inputUserPhoto.userPhoto
                 : require("../../assets/imgs/cookerret.png")
             }
-            roundedCircle
+            loader={<Spinner animation="border" variant="dark" />}
           />
         </Col>
       </Row>
