@@ -13,7 +13,6 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-5" />
         <Row className="mb-5" />
-        <Row className="mb-5" />
         <Row>
           <Col xs={4} />
           <Col xs={4}>
