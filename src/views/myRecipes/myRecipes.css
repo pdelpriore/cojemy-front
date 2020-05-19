@@ -160,11 +160,6 @@
 .myrecipes-image {
   width: 36vw;
 }
-.myrecipes-form-video-error {
-  font-family: "OpenSans-SemiBold";
-  font-size: 1vw;
-  color: red;
-}
 .recipeDetails-main {
   padding: 2%;
   width: 50vw;

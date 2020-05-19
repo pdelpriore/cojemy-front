@@ -29,6 +29,11 @@
   white-space: nowrap;
   overflow: hidden;
 }
+.myrecipes-form-video-error {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1vw;
+  color: red;
+}
 .myrecipes-form-spinner {
   float: left;
 }

@@ -1,5 +1,7 @@
 import React from "react";
-import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
+import { Form, Row, Col, Button, Spinner, Image } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import ImageUploader from "react-images-upload";
@@ -8,7 +10,12 @@ import { useSelector } from "react-redux";
 import "./myProfileForm.css";
 
 const MyProfileForm = () => {
-  const { handlePicture } = useMyProfileForm();
+  const {
+    inputs,
+    error,
+    handlePicture,
+    handleRemoveImage,
+  } = useMyProfileForm();
   return (
     <Form onSubmit={null}>
       <Row>
@@ -56,12 +63,44 @@ const MyProfileForm = () => {
           </Form.Group>
         </Col>
       </Row>
+      {inputs.profileImage && (
+        <Row>
+          <Col xs={9}>
+            <Image
+              src={inputs.profileImage.image ? inputs.profileImage.image : null}
+              thumbnail
+            />
+          </Col>
+          <Col xs={1} />
+          <Col xs={1}>
+            <FontAwesomeIcon
+              className="myprofile-form-trash"
+              icon={faTrash}
+              onClick={(e) => {
+                e.preventDefault();
+                handleRemoveImage();
+              }}
+            />
+          </Col>
+          <Col xs={1} />
+        </Row>
+      )}
+      {error.imageError && (
+        <Row>
+          <Col xs={12}>
+            <div className="myprofile-form-image-error">
+              {error.imageError ? error.imageError : null}
+            </div>
+          </Col>
+        </Row>
+      )}
+      <Row className="mb-3" />
       <Row>
         <Col xs={12}>
           <Button
             type="submit"
             className="myprofile-button-text"
-            variant="outline-dark"
+            variant="dark"
           >
             <div className="myprofile-spinner">
               {false && (
@@ -79,7 +118,7 @@ const MyProfileForm = () => {
                 {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
               </div>
             ) : (
-              <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
+              <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT_EDIT)}</div>
             )}
           </Button>
         </Col>

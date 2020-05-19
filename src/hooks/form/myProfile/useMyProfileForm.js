@@ -45,7 +45,7 @@ const useMyProfileForm = () => {
     }
   };
 
-  return { inputs, handlePicture, handleRemoveImage };
+  return { inputs, error, handlePicture, handleRemoveImage };
 };
 
 export default useMyProfileForm;

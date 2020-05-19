@@ -18,3 +18,12 @@
   white-space: nowrap;
   overflow: hidden;
 }
+.myprofile-form-trash:hover {
+  color: #ee6670;
+  cursor: pointer;
+}
+.myprofile-form-image-error {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1vw;
+  color: red;
+}
