@@ -113,6 +113,11 @@ const MyProfileForm = () => {
               variant="dark"
               onClick={handleEdit}
             >
+              <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT_EDIT)}</div>
+            </Button>
+          )}
+          {!showEdit && (
+            <Button type="submit" variant="outline-dark">
               <div className="myprofile-spinner">
                 {false && (
                   <Spinner
@@ -129,7 +134,7 @@ const MyProfileForm = () => {
                   {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                 </div>
               ) : (
-                <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT_EDIT)}</div>
+                <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT)}</div>
               )}
             </Button>
           )}
