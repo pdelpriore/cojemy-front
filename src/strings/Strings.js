@@ -189,5 +189,6 @@ export const strings = Object.freeze({
     USER_NAME_PLACEHOLDER: "nom d'utilisateur",
     BUTTON_TEXT_EDIT: "modifier ?",
     BUTTON_TEXT: "modifie",
+    BUTTON_TEXT_LOADING: "je modifie ...",
   },
 });
