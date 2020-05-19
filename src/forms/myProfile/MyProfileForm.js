@@ -14,6 +14,7 @@ const MyProfileForm = () => {
     inputs,
     error,
     showOverlay,
+    showEdit,
     handlePicture,
     handleRemoveImage,
     handleEdit,
@@ -106,30 +107,32 @@ const MyProfileForm = () => {
       <Row className="mb-3" />
       <Row>
         <Col xs={12}>
-          <Button
-            className="myprofile-button-text"
-            variant="dark"
-            onClick={handleEdit}
-          >
-            <div className="myprofile-spinner">
-              {false && (
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-              )}
-            </div>
-            {false ? (
-              <div className="myprofile-button-loading">
-                {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+          {showEdit && (
+            <Button
+              className="myprofile-button-text"
+              variant="dark"
+              onClick={handleEdit}
+            >
+              <div className="myprofile-spinner">
+                {false && (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                )}
               </div>
-            ) : (
-              <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT_EDIT)}</div>
-            )}
-          </Button>
+              {false ? (
+                <div className="myprofile-button-loading">
+                  {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                </div>
+              ) : (
+                <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT_EDIT)}</div>
+              )}
+            </Button>
+          )}
         </Col>
       </Row>
     </Form>

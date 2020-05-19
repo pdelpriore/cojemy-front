@@ -5,6 +5,7 @@ const useMyProfileForm = () => {
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState({});
   const [showOverlay, setShowOverlay] = useState(true);
+  const [showEdit, setShowEdit] = useState(true);
 
   const handlePicture = async (picture) => {
     try {
@@ -48,12 +49,14 @@ const useMyProfileForm = () => {
 
   const handleEdit = () => {
     setShowOverlay(false);
+    setShowEdit(false);
   };
 
   return {
     inputs,
     error,
     showOverlay,
+    showEdit,
     handlePicture,
     handleRemoveImage,
     handleEdit,
