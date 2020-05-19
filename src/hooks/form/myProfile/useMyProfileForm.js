@@ -4,6 +4,7 @@ import { makeImageBinary } from "../../../shared/makeImageBinary";
 const useMyProfileForm = () => {
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState({});
+  const [showOverlay, setShowOverlay] = useState(true);
 
   const handlePicture = async (picture) => {
     try {
@@ -45,7 +46,18 @@ const useMyProfileForm = () => {
     }
   };
 
-  return { inputs, error, handlePicture, handleRemoveImage };
+  const handleEdit = () => {
+    setShowOverlay(false);
+  };
+
+  return {
+    inputs,
+    error,
+    showOverlay,
+    handlePicture,
+    handleRemoveImage,
+    handleEdit,
+  };
 };
 
 export default useMyProfileForm;

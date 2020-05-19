@@ -13,8 +13,10 @@ const MyProfileForm = () => {
   const {
     inputs,
     error,
+    showOverlay,
     handlePicture,
     handleRemoveImage,
+    handleEdit,
   } = useMyProfileForm();
   return (
     <Form onSubmit={null}>
@@ -25,7 +27,7 @@ const MyProfileForm = () => {
               {capitalizeFirst(strings.myProfile.USER_NAME)}
             </Form.Label>
             <Form.Control
-              className="text-family-username"
+              className="myprofile-text-family-username"
               onChange={null}
               value={null}
               size="lg"
@@ -33,6 +35,9 @@ const MyProfileForm = () => {
               type="text"
               placeholder={strings.myProfile.USER_NAME_PLACEHOLDER}
             />
+            {showOverlay && (
+              <div className="myprofile-form-iuploader-overlay" />
+            )}
           </Form.Group>
         </Col>
       </Row>
@@ -48,6 +53,7 @@ const MyProfileForm = () => {
                 fontFamily: "OpenSans-Regular",
                 backgroundColor: "#f3cf7a",
                 border: "1px solid #CED4DA",
+                position: "relative",
               }}
               withIcon={false}
               singleImage={true}
@@ -60,6 +66,9 @@ const MyProfileForm = () => {
                 strings.myRecipes.error.IMAGE_FORMAT
               )}
             />
+            {showOverlay && (
+              <div className="myprofile-form-iuploader-overlay" />
+            )}
           </Form.Group>
         </Col>
       </Row>
@@ -98,9 +107,9 @@ const MyProfileForm = () => {
       <Row>
         <Col xs={12}>
           <Button
-            type="submit"
             className="myprofile-button-text"
             variant="dark"
+            onClick={handleEdit}
           >
             <div className="myprofile-spinner">
               {false && (
