@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Spinner, Image } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
 import Img from "react-image";
 import { getImage } from "../../shared/getImage";
 import { useSelector } from "react-redux";
@@ -49,14 +49,6 @@ const MyProfilePreview = () => {
       <Row>
         <Col xs={12}>
           <p className="myprofile-user-name">{userData.name}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <Image
-            className="myprofile-background-image"
-            src={require("../../assets/imgs/panret2.jpg")}
-          />
         </Col>
       </Row>
     </div>

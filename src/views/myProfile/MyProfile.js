@@ -20,6 +20,14 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
           </Col>
           <Col xs={4} />
         </Row>
+        <Row>
+          <Col xs={12}>
+            <Image
+              className="myprofile-background-image"
+              src={require("../../assets/imgs/panret2.jpg")}
+            />
+          </Col>
+        </Row>
       </div>
       <div className="myprofile-second-section">
         <Row className="mb-5" />
