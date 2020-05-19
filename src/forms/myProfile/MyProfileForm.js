@@ -15,6 +15,7 @@ const MyProfileForm = () => {
     error,
     showOverlay,
     showEdit,
+    handleInputChange,
     handlePicture,
     handleRemoveImage,
     handleEdit,
@@ -29,7 +30,7 @@ const MyProfileForm = () => {
             </Form.Label>
             <Form.Control
               className="myprofile-text-family-username"
-              onChange={null}
+              onChange={handleInputChange}
               value={inputs.name || ""}
               size="lg"
               name="name"

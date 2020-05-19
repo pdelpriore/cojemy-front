@@ -12,6 +12,14 @@ const useMyProfileForm = () => {
 
   const { userData } = useSelector((state) => state.login);
 
+  const handleInputChange = (e) => {
+    e.persist();
+    setInputs((inputs) => ({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   const handlePicture = async (picture) => {
     try {
       const result = await makeImageBinary(picture);
@@ -93,6 +101,7 @@ const useMyProfileForm = () => {
     error,
     showOverlay,
     showEdit,
+    handleInputChange,
     handlePicture,
     handleRemoveImage,
     handleEdit,
