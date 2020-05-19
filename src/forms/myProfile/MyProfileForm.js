@@ -30,7 +30,7 @@ const MyProfileForm = () => {
             <Form.Control
               className="myprofile-text-family-username"
               onChange={null}
-              value={null}
+              value={inputs.name || ""}
               size="lg"
               name="name"
               type="text"
