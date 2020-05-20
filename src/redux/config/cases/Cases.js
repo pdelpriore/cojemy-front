@@ -120,3 +120,7 @@ export const myRecipePreviewCases = Object.freeze({
   PREVIEW_DATA_RECEIVED: "myRecipePreviewCasesPreviewDataReceived",
   CLEAR_STATE: "myRecipePreviewCasesClearState",
 });
+
+export const updateMyProfileCases = Object.freeze({
+  PROFILE_UPDATED: "updateMyProfileCasesProfileUpdated",
+});

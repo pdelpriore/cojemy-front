@@ -19,6 +19,8 @@ import "./app.css";
 
 const App = () => {
   let { userData } = useSelector((state) => state.login);
+  let { profileUpdated } = useSelector((state) => state.updateMyProfile);
+
   return (
     <>
       <Router>

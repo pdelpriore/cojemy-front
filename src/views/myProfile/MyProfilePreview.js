@@ -16,7 +16,7 @@ const MyProfilePreview = () => {
       )
     )
       (async () => {
-        const result = await getImage(userData.photo);
+        const result = userData.photo && (await getImage(userData.photo));
         if (result) {
           setInputUserPhoto((inputUserPhoto) => ({
             ...inputUserPhoto,

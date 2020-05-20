@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { loginUserGoogle } from "../../../redux/login/thunk/loginThunk";
 
-const useGoogleSignup = () => {
+const useGoogleLogin = () => {
   const dispatch = useDispatch();
 
   const handleGoogleSuccessResponse = (response) => {
@@ -13,4 +13,4 @@ const useGoogleSignup = () => {
   return { handleGoogleSuccessResponse, handleGoogleFailureResponse };
 };
 
-export default useGoogleSignup;
+export default useGoogleLogin;

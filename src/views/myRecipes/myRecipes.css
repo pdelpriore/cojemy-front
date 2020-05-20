@@ -171,7 +171,8 @@
   border-bottom: 2px black solid;
 }
 .recipeDetails-author-photo {
-  width: 2.5vw;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid #212529;

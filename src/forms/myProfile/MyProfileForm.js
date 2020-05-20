@@ -19,9 +19,10 @@ const MyProfileForm = () => {
     handlePicture,
     handleRemoveImage,
     handleEdit,
+    handleSubmit,
   } = useMyProfileForm();
   return (
-    <Form onSubmit={null}>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicUserName">

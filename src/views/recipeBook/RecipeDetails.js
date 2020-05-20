@@ -61,8 +61,18 @@ const RecipeDetails = () => {
           <Img
             className="recipeDetails-author-photo"
             src={
-              detailsDataRetrieved.author.photo
+              ["googleusercontent.com"].some(
+                (element) =>
+                  detailsDataRetrieved.author.photo &&
+                  detailsDataRetrieved.author.photo.includes(element)
+              )
                 ? detailsDataRetrieved.author.photo
+                : !["googleusercontent.com"].some(
+                    (element) =>
+                      detailsDataRetrieved.author.photo &&
+                      detailsDataRetrieved.author.photo.includes(element)
+                  )
+                ? "http://localhost:4000" + detailsDataRetrieved.author.photo
                 : require("../../assets/imgs/cookerret.png")
             }
             loader={<Spinner animation="border" variant="dark" />}

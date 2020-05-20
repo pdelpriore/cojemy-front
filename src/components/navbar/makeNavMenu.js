@@ -189,7 +189,14 @@ const MakeNavMenu = ({ type }) => {
             <Img
               key={index}
               className="navbar-user-photo"
-              src={userData.photo ? userData.photo : null}
+              src={
+                ["googleusercontent.com"].some(
+                  (element) =>
+                    userData.photo && userData.photo.includes(element)
+                )
+                  ? userData.photo
+                  : "http://localhost:4000" + userData.photo
+              }
               loader={<Spinner animation="border" size="sm" variant="dark" />}
             />
           ) : (

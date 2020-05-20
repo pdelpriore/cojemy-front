@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { getImage } from "../../../shared/getImage";
+import { updateUserProfile } from "../../../redux/login/thunk/loginThunk";
 import { useSelector, useDispatch } from "react-redux";
 
 const useMyProfileForm = () => {
@@ -83,7 +84,7 @@ const useMyProfileForm = () => {
         (element) => userData.photo && userData.photo.includes(element)
       )
     ) {
-      const result = await getImage(userData.photo);
+      const result = userData.photo && (await getImage(userData.photo));
       if (result) {
         setInputs((inputs) => ({
           ...inputs,
@@ -96,6 +97,13 @@ const useMyProfileForm = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateUserProfile(inputs.name, inputs.profileImage, userData.email)
+    );
+  };
+
   return {
     inputs,
     error,
@@ -105,6 +113,7 @@ const useMyProfileForm = () => {
     handlePicture,
     handleRemoveImage,
     handleEdit,
+    handleSubmit,
   };
 };
 
