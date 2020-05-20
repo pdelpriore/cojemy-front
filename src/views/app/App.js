@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -18,14 +18,16 @@ import { useSelector } from "react-redux";
 import "./app.css";
 
 const App = () => {
-  let { userData } = useSelector((state) => state.login);
-  let { profileUpdated } = useSelector((state) => state.updateMyProfile);
+  const { userData } = useSelector((state) => state.login);
+  const userDataMemoized = useMemo(() => {
+    return { ...userData };
+  }, []);
 
   return (
     <>
       <Router>
         <Switch>
-          {userData.email !== undefined && (
+          {userDataMemoized.email !== undefined && (
             <Route path={strings.path.HOME} exact component={Home} />
           ) ? (
             <Redirect
@@ -36,7 +38,7 @@ const App = () => {
           ) : (
             <Route path={strings.path.HOME} exact component={Home} />
           )}
-          {userData.email !== undefined && (
+          {userDataMemoized.email !== undefined && (
             <Route path={strings.path.LOGIN} exact component={Login} />
           ) ? (
             <Redirect
@@ -47,7 +49,7 @@ const App = () => {
           ) : (
             <Route path={strings.path.LOGIN} exact component={Login} />
           )}
-          {userData.email !== undefined && (
+          {userDataMemoized.email !== undefined && (
             <Route path={strings.path.SIGNUP} exact component={Signup} />
           ) ? (
             <Redirect
@@ -57,7 +59,7 @@ const App = () => {
           ) : (
             <Route path={strings.path.SIGNUP} exact component={Signup} />
           )}
-          {userData.email !== undefined ? (
+          {userDataMemoized.email !== undefined ? (
             <Route
               path={strings.path.RECIPE_BOOK}
               exact
@@ -66,22 +68,22 @@ const App = () => {
           ) : (
             <Redirect to={strings.path.HOME} exact />
           )}
-          {userData.email !== undefined ? (
+          {userDataMemoized.email !== undefined ? (
             <Route path={strings.path.MY_RECIPES} exact component={MyRecipes} />
           ) : (
             <Redirect to={strings.path.HOME} exact />
           )}
-          {userData.email !== undefined ? (
+          {userDataMemoized.email !== undefined ? (
             <Route path={strings.path.MAILS} exact component={Mails} />
           ) : (
             <Redirect to={strings.path.HOME} exact />
           )}
-          {userData.email !== undefined ? (
+          {userDataMemoized.email !== undefined ? (
             <Route path={strings.path.MY_EVENTS} exact component={MyEvents} />
           ) : (
             <Redirect to={strings.path.HOME} exact />
           )}
-          {userData.email !== undefined ? (
+          {userDataMemoized.email !== undefined ? (
             <Route path={strings.path.MY_PROFILE} exact component={MyProfile} />
           ) : (
             <Redirect to={strings.path.HOME} exact />
