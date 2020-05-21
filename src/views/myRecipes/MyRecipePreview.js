@@ -47,7 +47,7 @@ const MyRecipePreview = () => {
                     (element) =>
                       myRecipePreviewData.author.photo &&
                       myRecipePreviewData.author.photo.includes(element)
-                  )
+                  ) && myRecipePreviewData.author.photo
                 ? "http://localhost:4000" + myRecipePreviewData.author.photo
                 : require("../../assets/imgs/cookerret.png")
             }

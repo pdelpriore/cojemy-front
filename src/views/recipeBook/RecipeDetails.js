@@ -71,7 +71,7 @@ const RecipeDetails = () => {
                     (element) =>
                       detailsDataRetrieved.author.photo &&
                       detailsDataRetrieved.author.photo.includes(element)
-                  )
+                  ) && detailsDataRetrieved.author.photo
                 ? "http://localhost:4000" + detailsDataRetrieved.author.photo
                 : require("../../assets/imgs/cookerret.png")
             }
@@ -185,7 +185,19 @@ const RecipeDetails = () => {
                     <Img
                       className="recipeDetails-comments-photo"
                       src={
-                        item.commentator.photo ? item.commentator.photo : null
+                        ["googleusercontent.com"].some(
+                          (element) =>
+                            item.commentator.photo &&
+                            item.commentator.photo.includes(element)
+                        )
+                          ? item.commentator.photo
+                          : !["googleusercontent.com"].some(
+                              (element) =>
+                                item.commentator.photo &&
+                                item.commentator.photo.includes(element)
+                            ) && item.commentator.photo
+                          ? "http://localhost:4000" + item.commentator.photo
+                          : null
                       }
                       loader={
                         <Spinner animation="border" size="sm" variant="dark" />
