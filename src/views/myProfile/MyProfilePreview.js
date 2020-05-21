@@ -1,28 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import Img from "react-image";
-import { useSelector } from "react-redux";
+import useMyProfilePreview from "../../hooks/screen/myProfile/useMyProfilePreview";
 import { userGooglePhoto } from "../../shared/testWordsArray";
-import { strings } from "../../strings/Strings";
 import "./myProfile.css";
 
 const MyProfilePreview = () => {
-  const [inputUserPhoto, setInputUserPhoto] = useState({});
-  const { userData } = useSelector((state) => state.login);
-
-  useEffect(() => {
-    if (
-      !userGooglePhoto.some(
-        (element) => userData.photo && userData.photo.includes(element)
-      )
-    )
-      setInputUserPhoto((inputUserPhoto) => ({
-        ...inputUserPhoto,
-        userPhoto: strings.path.IMAGE_REQUEST + userData.photo,
-      }));
-    if (userData.photo === null && inputUserPhoto && inputUserPhoto.userPhoto)
-      setInputUserPhoto({});
-  }, [userData.photo]);
+  const { inputUserPhoto, userData } = useMyProfilePreview();
 
   return (
     <div className="myprofile-preview-area">
