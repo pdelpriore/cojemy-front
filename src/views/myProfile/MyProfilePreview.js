@@ -24,6 +24,8 @@ const MyProfilePreview = () => {
           }));
         }
       })();
+    if (userData.photo === null && inputUserPhoto && inputUserPhoto.userPhoto)
+      setInputUserPhoto({});
   }, [userData.photo]);
 
   return (
