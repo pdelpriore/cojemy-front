@@ -124,3 +124,7 @@ export const myRecipePreviewCases = Object.freeze({
 export const updateMyProfileCases = Object.freeze({
   PROFILE_UPDATED: "updateMyProfileCasesProfileUpdated",
 });
+
+export const userLoggedCases = Object.freeze({
+  USER_LOGGED: "userLoggedCasesUserLogged",
+});

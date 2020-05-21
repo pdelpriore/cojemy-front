@@ -19,9 +19,11 @@ import "./app.css";
 
 const App = () => {
   const { userData } = useSelector((state) => state.login);
+  const { userLogged } = useSelector((state) => state.isUserLogged);
+
   const userDataMemoized = useMemo(() => {
     return { ...userData };
-  }, []);
+  }, [userLogged]);
 
   return (
     <>

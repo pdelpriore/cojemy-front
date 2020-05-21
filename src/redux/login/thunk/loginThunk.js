@@ -1,4 +1,8 @@
-import { loginCases, updateMyProfileCases } from "../../config/cases/Cases";
+import {
+  loginCases,
+  updateMyProfileCases,
+  userLoggedCases,
+} from "../../config/cases/Cases";
 import { loginQuery } from "../query/loginQuery";
 import { googleLoginQuery } from "../query/googleLoginQuery";
 import { updateUserProfileQuery } from "../query/updateUserProfileQuery";
@@ -21,6 +25,7 @@ export const loginUser = (email, password) => {
       const { errors, data } = responseData;
       if (data) {
         dispatch({ type: loginCases.USER_DATA, payload: data.login });
+        dispatch({ type: userLoggedCases.USER_LOGGED, payload: true });
       } else if (errors) {
         dispatch({ type: loginCases.ERROR, payload: errors[0].message });
       }
@@ -51,6 +56,7 @@ export const loginUserGoogle = (email, token) => {
           type: loginCases.USER_DATA,
           payload: data.loginGoogleUser,
         });
+        dispatch({ type: userLoggedCases.USER_LOGGED, payload: true });
       } else if (errors) {
         dispatch({
           type: loginCases.ERROR,
