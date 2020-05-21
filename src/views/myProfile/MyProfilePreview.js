@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import Img from "react-image";
-import { getImage } from "../../shared/getImage";
 import { useSelector } from "react-redux";
 import { userGooglePhoto } from "../../shared/testWordsArray";
+import { strings } from "../../strings/Strings";
 import "./myProfile.css";
 
 const MyProfilePreview = () => {
@@ -16,15 +16,10 @@ const MyProfilePreview = () => {
         (element) => userData.photo && userData.photo.includes(element)
       )
     )
-      (async () => {
-        const result = userData.photo && (await getImage(userData.photo));
-        if (result) {
-          setInputUserPhoto((inputUserPhoto) => ({
-            ...inputUserPhoto,
-            userPhoto: result.imageBinary,
-          }));
-        }
-      })();
+      setInputUserPhoto((inputUserPhoto) => ({
+        ...inputUserPhoto,
+        userPhoto: strings.path.IMAGE_REQUEST + userData.photo,
+      }));
     if (userData.photo === null && inputUserPhoto && inputUserPhoto.userPhoto)
       setInputUserPhoto({});
   }, [userData.photo]);
