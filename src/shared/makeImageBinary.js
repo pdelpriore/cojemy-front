@@ -1,4 +1,5 @@
 import { strings } from "../strings/Strings";
+import { unacceptableWordsArray } from "../shared/testWordsArray";
 import { capitalizeFirst } from "../util/Util";
 
 export const makeImageBinary = async (picture) => {
@@ -7,25 +8,7 @@ export const makeImageBinary = async (picture) => {
       picture = picture.splice(picture.length - 1, 1);
     }
     if (
-      [
-        "xxx",
-        "porn",
-        "teen",
-        "milf",
-        "tits",
-        "pussy",
-        "cock",
-        "sex",
-        "penis",
-        "cum",
-        "sperme",
-        "baise",
-        "enculé",
-        "deepthroat",
-        "anal",
-        "sodomie",
-        "bite",
-      ].some(
+      unacceptableWordsArray.some(
         (element) => picture.length > 0 && picture[0].name.includes(element)
       )
     ) {

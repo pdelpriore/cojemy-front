@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { capitalizeFirst } from "../../../util/Util";
 import { strings } from "../../../strings/Strings";
+import { unacceptableWordsArray } from "../../../shared/testWordsArray";
 import { getImage } from "../../../shared/getImage";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { addNewRecipe } from "../../../redux/myRecipes/addMyRecipe/thunk/addNewRecipeThunk";
@@ -204,26 +205,9 @@ const useNewRecipeForm = () => {
       );
     }
     if (
-      [
-        "xxx",
-        "porn",
-        "teen",
-        "milf",
-        "tits",
-        "pussy",
-        "cock",
-        "sex",
-        "penis",
-        "cum",
-        "sperme",
-        "redtube",
-        "baise",
-        "enculé",
-        "deepthroat",
-        "anal",
-        "sodomie",
-        "bite",
-      ].some((element) => inputs.video && inputs.video.includes(element))
+      unacceptableWordsArray.some(
+        (element) => inputs.video && inputs.video.includes(element)
+      )
     ) {
       setError((error) => ({
         ...error,
