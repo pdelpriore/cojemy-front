@@ -48,7 +48,7 @@ const MyRecipePreview = () => {
                       myRecipePreviewData.author.photo &&
                       myRecipePreviewData.author.photo.includes(element)
                   ) && myRecipePreviewData.author.photo
-                ? "http://localhost:4000" + myRecipePreviewData.author.photo
+                ? strings.path.IMAGE_REQUEST + myRecipePreviewData.author.photo
                 : require("../../assets/imgs/cookerret.png")
             }
             loader={<Spinner animation="border" variant="dark" />}
@@ -78,7 +78,7 @@ const MyRecipePreview = () => {
                 className="recipeDetails-picture"
                 src={
                   myRecipePreviewData.picture
-                    ? "http://localhost:4000" + myRecipePreviewData.picture
+                    ? strings.path.IMAGE_REQUEST + myRecipePreviewData.picture
                     : require("../../assets/imgs/panret.jpg")
                 }
                 loader={<Spinner animation="border" variant="dark" />}

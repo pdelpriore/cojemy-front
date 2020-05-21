@@ -72,7 +72,7 @@ const RecipeDetails = () => {
                       detailsDataRetrieved.author.photo &&
                       detailsDataRetrieved.author.photo.includes(element)
                   ) && detailsDataRetrieved.author.photo
-                ? "http://localhost:4000" + detailsDataRetrieved.author.photo
+                ? strings.path.IMAGE_REQUEST + detailsDataRetrieved.author.photo
                 : require("../../assets/imgs/cookerret.png")
             }
             loader={<Spinner animation="border" variant="dark" />}
@@ -112,7 +112,7 @@ const RecipeDetails = () => {
                 className="recipeDetails-picture"
                 src={
                   detailsDataRetrieved.picture
-                    ? "http://localhost:4000" + detailsDataRetrieved.picture
+                    ? strings.path.IMAGE_REQUEST + detailsDataRetrieved.picture
                     : require("../../assets/imgs/panret.jpg")
                 }
                 loader={<Spinner animation="border" variant="dark" />}
@@ -196,7 +196,7 @@ const RecipeDetails = () => {
                                 item.commentator.photo &&
                                 item.commentator.photo.includes(element)
                             ) && item.commentator.photo
-                          ? "http://localhost:4000" + item.commentator.photo
+                          ? strings.path.IMAGE_REQUEST + item.commentator.photo
                           : null
                       }
                       loader={

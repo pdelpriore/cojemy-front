@@ -197,7 +197,7 @@ const MakeNavMenu = ({ type }) => {
                     userData.photo && userData.photo.includes(element)
                 )
                   ? userData.photo
-                  : "http://localhost:4000" + userData.photo
+                  : strings.path.IMAGE_REQUEST + userData.photo
               }
               loader={<Spinner animation="border" size="sm" variant="dark" />}
             />

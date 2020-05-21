@@ -1,9 +1,11 @@
+import { strings } from "../strings/Strings";
+
 export const getImage = async (image) => {
   const result = await new Promise(async (resolve, reject) => {
     const pictureName = image.split("/").slice(3).toString();
     const pictureType = pictureName.split(".").slice(1).toString();
 
-    const response = await fetch("http://localhost:4000" + image);
+    const response = await fetch(strings.path.IMAGE_REQUEST + image);
     const data = await response.blob();
     const metadata = {
       type: `image/${pictureType}`,

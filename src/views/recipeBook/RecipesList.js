@@ -51,7 +51,7 @@ const RecipesList = () => {
                   className="recipesList-item-picture"
                   src={
                     retrieveRecipe.picture
-                      ? "http://localhost:4000" + retrieveRecipe.picture
+                      ? strings.path.IMAGE_REQUEST + retrieveRecipe.picture
                       : require("../../assets/imgs/panret.jpg")
                   }
                   loader={<Spinner animation="border" variant="info" />}
