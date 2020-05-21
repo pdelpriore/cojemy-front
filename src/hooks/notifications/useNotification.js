@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
 import { clearRemindPasswordState } from "../../redux/remindPassword/thunk/remindPasswordThunk";
-import { clearLoginState } from "../../redux/login/thunk/loginThunk";
+import { clearLoginErrorState } from "../../redux/login/thunk/loginThunk";
 import { myRecipeErrorClearState } from "../../redux/myRecipes/myRecipeError/thunk/myRecipeErrorThunk";
 import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
 
@@ -42,7 +42,7 @@ const useNotification = (notificationMessage) => {
       } else if (passwordSent || remindPassError) {
         dispatch(clearRemindPasswordState());
       } else if (loginError) {
-        dispatch(clearLoginState());
+        dispatch(clearLoginErrorState());
       } else if (errorGoogleSignup || userGoogleSignedup) {
         dispatch(clearSignUpGoogleUserState());
       } else if (myRecipeErrorReceived) {

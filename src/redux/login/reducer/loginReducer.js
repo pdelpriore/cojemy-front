@@ -29,6 +29,8 @@ const loginReducer = (state = initialState, action) => {
         loadingGoogle: false,
         loginError: action.payload,
       };
+    case loginCases.CLEAR_ERROR_STATE:
+      return { ...state, loginError: null };
     case loginCases.CLEAR_STATE:
       return (state = initialState);
     default:

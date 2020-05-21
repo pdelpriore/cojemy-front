@@ -3,9 +3,12 @@ import { Row, Col, Image } from "react-bootstrap";
 import MyProfileForm from "../../forms/myProfile/MyProfileForm";
 import MyProfilePreview from "./MyProfilePreview";
 import Navbar from "../../components/navbar/Navbar";
+import { useSelector } from "react-redux";
+import Notification from "../../components/notifications/Notification";
 import "./myProfile.css";
 
 const MyProfile = ({ match: { path, url, isExact } }) => {
+  const { loginError } = useSelector((state) => state.login);
   return (
     <div className="myprofile-main-area">
       <Navbar path={path} url={url} isExact={isExact} />
@@ -27,6 +30,15 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
               src={require("../../assets/imgs/panret2.jpg")}
             />
           </Col>
+        </Row>
+        <Row>
+          <Col xs={5} />
+          <Col xs={6}>
+            <Notification
+              notificationMessage={loginError ? loginError : null}
+            />
+          </Col>
+          <Col xs={1} />
         </Row>
       </div>
       <div className="myprofile-second-section">

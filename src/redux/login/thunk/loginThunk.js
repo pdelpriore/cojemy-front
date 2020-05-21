@@ -99,6 +99,12 @@ export const updateUserProfile = (name, profileImage, email) => {
   };
 };
 
+export const clearLoginErrorState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: loginCases.CLEAR_ERROR_STATE });
+  };
+};
+
 export const clearLoginState = () => {
   return (dispatch, getState) => {
     dispatch({ type: loginCases.CLEAR_STATE });

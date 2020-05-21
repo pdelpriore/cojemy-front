@@ -29,6 +29,7 @@ export const loginCases = Object.freeze({
   USER_DATA: "loginUserData",
   ERROR: "loginError",
   CLEAR_STATE: "loginClearState",
+  CLEAR_ERROR_STATE: "loginCasesClearErrorState",
 });
 
 export const logoutCases = Object.freeze({
