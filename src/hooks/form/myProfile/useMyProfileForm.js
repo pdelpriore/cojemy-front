@@ -3,6 +3,7 @@ import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { getImage } from "../../../shared/getImage";
 import { updateUserProfile } from "../../../redux/login/thunk/loginThunk";
 import { useSelector, useDispatch } from "react-redux";
+import { userGooglePhoto } from "../../../shared/testWordsArray";
 
 const useMyProfileForm = () => {
   const dispatch = useDispatch();
@@ -69,7 +70,7 @@ const useMyProfileForm = () => {
       name: userData.name,
     }));
     if (
-      ["googleusercontent.com"].some(
+      userGooglePhoto.some(
         (element) => userData.photo && userData.photo.includes(element)
       )
     ) {
@@ -80,7 +81,7 @@ const useMyProfileForm = () => {
         },
       }));
     } else if (
-      !["googleusercontent.com"].some(
+      !userGooglePhoto.some(
         (element) => userData.photo && userData.photo.includes(element)
       )
     ) {

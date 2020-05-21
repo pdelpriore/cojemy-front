@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useSpring, animated } from "react-spring";
 import ReactPlayer from "react-player";
 import { capitalize } from "../../util/Util";
+import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./myRecipes.css";
 
 const MyRecipePreview = () => {
@@ -37,13 +38,13 @@ const MyRecipePreview = () => {
           <Img
             className="recipeDetails-author-photo"
             src={
-              ["googleusercontent.com"].some(
+              userGooglePhoto.some(
                 (element) =>
                   myRecipePreviewData.author.photo &&
                   myRecipePreviewData.author.photo.includes(element)
               )
                 ? myRecipePreviewData.author.photo
-                : !["googleusercontent.com"].some(
+                : !userGooglePhoto.some(
                     (element) =>
                       myRecipePreviewData.author.photo &&
                       myRecipePreviewData.author.photo.includes(element)

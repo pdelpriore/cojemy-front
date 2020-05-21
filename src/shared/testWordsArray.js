@@ -21,3 +21,5 @@ export const unacceptableWordsArray = [
   "sodomie",
   "bite",
 ];
+
+export const userGooglePhoto = ["googleusercontent.com"];

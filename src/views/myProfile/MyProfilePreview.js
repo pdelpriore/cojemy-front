@@ -3,6 +3,7 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import Img from "react-image";
 import { getImage } from "../../shared/getImage";
 import { useSelector } from "react-redux";
+import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./myProfile.css";
 
 const MyProfilePreview = () => {
@@ -11,7 +12,7 @@ const MyProfilePreview = () => {
 
   useEffect(() => {
     if (
-      !["googleusercontent.com"].some(
+      !userGooglePhoto.some(
         (element) => userData.photo && userData.photo.includes(element)
       )
     )
@@ -35,7 +36,7 @@ const MyProfilePreview = () => {
           <Img
             className="myprofile-user-image"
             src={
-              ["googleusercontent.com"].some(
+              userGooglePhoto.some(
                 (element) => userData.photo && userData.photo.includes(element)
               )
                 ? userData.photo

@@ -23,6 +23,7 @@ import Img from "react-image";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
 import { strings } from "../../strings/Strings";
+import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./navbar.css";
 
 const MakeNavMenu = ({ type }) => {
@@ -192,7 +193,7 @@ const MakeNavMenu = ({ type }) => {
               key={index}
               className="navbar-user-photo"
               src={
-                ["googleusercontent.com"].some(
+                userGooglePhoto.some(
                   (element) =>
                     userData.photo && userData.photo.includes(element)
                 )

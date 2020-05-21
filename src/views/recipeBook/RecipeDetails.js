@@ -21,6 +21,7 @@ import { getAverageRating } from "../../shared/getAverageRating";
 import useRecipeDetails from "../../hooks/screen/recipeDetails/useRecipeDetails";
 import { useSpring, animated } from "react-spring";
 import ReactPlayer from "react-player";
+import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./recipeBook.css";
 
 const RecipeDetails = () => {
@@ -61,13 +62,13 @@ const RecipeDetails = () => {
           <Img
             className="recipeDetails-author-photo"
             src={
-              ["googleusercontent.com"].some(
+              userGooglePhoto.some(
                 (element) =>
                   detailsDataRetrieved.author.photo &&
                   detailsDataRetrieved.author.photo.includes(element)
               )
                 ? detailsDataRetrieved.author.photo
-                : !["googleusercontent.com"].some(
+                : !userGooglePhoto.some(
                     (element) =>
                       detailsDataRetrieved.author.photo &&
                       detailsDataRetrieved.author.photo.includes(element)
@@ -185,13 +186,13 @@ const RecipeDetails = () => {
                     <Img
                       className="recipeDetails-comments-photo"
                       src={
-                        ["googleusercontent.com"].some(
+                        userGooglePhoto.some(
                           (element) =>
                             item.commentator.photo &&
                             item.commentator.photo.includes(element)
                         )
                           ? item.commentator.photo
-                          : !["googleusercontent.com"].some(
+                          : !userGooglePhoto.some(
                               (element) =>
                                 item.commentator.photo &&
                                 item.commentator.photo.includes(element)
