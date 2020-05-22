@@ -7,7 +7,7 @@ const initialState = {
 const recipeButtonTurnedOnReducer = (state = initialState, action) => {
   switch (action.type) {
     case recipeButtonTurnedOnCases.BUTTON_PRESSES:
-      return { ...state, ...initialState, recipeButtonPressed: action.payload };
+      return { ...state, recipeButtonPressed: action.payload };
     default:
       return state;
   }

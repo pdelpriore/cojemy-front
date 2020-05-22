@@ -14,14 +14,12 @@ const remindPasswordReducer = (state = initialState, action) => {
       return {
         ...state,
         ...initialState,
-        loading: false,
         passwordSent: action.payload,
       };
     case remindPassCases.ERROR:
       return {
         ...state,
         ...initialState,
-        loading: false,
         remindPassError: action.payload,
       };
     case remindPassCases.CLEAR_STATE:

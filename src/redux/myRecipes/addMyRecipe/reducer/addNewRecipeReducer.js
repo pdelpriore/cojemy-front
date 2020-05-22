@@ -7,7 +7,7 @@ const initialState = {
 const addNewRecipeReducer = (state = initialState, action) => {
   switch (action.type) {
     case addNewRecipeCases.RECIPE_ADDED:
-      return { ...state, ...initialState, newRecipeAdded: action.payload };
+      return { ...state, newRecipeAdded: action.payload };
     default:
       return state;
   }

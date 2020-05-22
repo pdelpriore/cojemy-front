@@ -7,7 +7,7 @@ const initialState = {
 const addRateCommentReducer = (state = initialState, action) => {
   switch (action.type) {
     case addRateCommentCases.RATE_COMMENT_ADDED:
-      return { ...state, ...initialState, rateCommentAdded: action.payload };
+      return { ...state, rateCommentAdded: action.payload };
     default:
       return state;
   }

@@ -13,7 +13,6 @@ const logoutReducer = (state = initialState, action) => {
       return {
         ...state,
         ...initialState,
-        loading: false,
         userLoggedOut: action.payload,
       };
     case logoutCases.CLEAR_STATE:

@@ -14,14 +14,12 @@ const signupReducer = (state = initialState, action) => {
       return {
         ...state,
         ...initialState,
-        loading: false,
         userSignedup: action.payload,
       };
     case signupCases.ERROR:
       return {
         ...state,
         ...initialState,
-        loading: false,
         error: action.payload,
       };
     case signupCases.CLEAR_STATE:

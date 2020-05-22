@@ -14,14 +14,12 @@ const googleSignupReducer = (state = initialState, action) => {
       return {
         ...state,
         ...initialState,
-        loadingSignGoogle: false,
         userGoogleSignedup: action.payload,
       };
     case signupGoogleUserCases.ERROR:
       return {
         ...state,
         ...initialState,
-        loadingSignGoogle: false,
         errorGoogleSignup: action.payload,
       };
     case signupGoogleUserCases.CLEAR_STATE:

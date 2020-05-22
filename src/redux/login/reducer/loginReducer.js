@@ -17,8 +17,6 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         ...initialState,
-        loading: false,
-        loadingGoogle: false,
         userData: action.payload,
       };
     case loginCases.ERROR:

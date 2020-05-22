@@ -7,7 +7,7 @@ const initialState = {
 const recipeCategorySelectedReducer = (state = initialState, action) => {
   switch (action.type) {
     case recipeCategorySelectedCases.BUTTON_ID_RETRIEVED:
-      return { ...state, ...initialState, recipeButtonId: action.payload };
+      return { ...state, recipeButtonId: action.payload };
     case recipeCategorySelectedCases.CLEAR_STATE:
       return (state = initialState);
     default:

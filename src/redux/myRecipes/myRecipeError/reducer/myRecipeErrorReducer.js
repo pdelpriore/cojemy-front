@@ -9,7 +9,6 @@ const myRecipeErrorReducer = (state = initialState, action) => {
     case newRecipeErrorCases.ERROR_RECEIVED:
       return {
         ...state,
-        ...initialState,
         myRecipeErrorReceived: action.payload,
       };
     case newRecipeErrorCases.CLEAR_STATE:

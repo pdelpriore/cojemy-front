@@ -14,14 +14,12 @@ const retrieveRecipesReducer = (state = initialState, action) => {
       return {
         ...state,
         ...initialState,
-        loadingRecipes: false,
         recipesRetrieved: action.payload,
       };
     case retrieveRecipesCases.ERROR:
       return {
         ...state,
         ...initialState,
-        loadingRecipes: false,
         recipesError: action.payload,
       };
     case retrieveRecipesCases.CLEAR_STATE:

@@ -7,7 +7,7 @@ const initialState = {
 const userLoggedReducer = (state = initialState, action) => {
   switch (action.type) {
     case userLoggedCases.USER_LOGGED:
-      return { ...state, ...initialState, userLogged: action.payload };
+      return { ...state, userLogged: action.payload };
     default:
       return state;
   }

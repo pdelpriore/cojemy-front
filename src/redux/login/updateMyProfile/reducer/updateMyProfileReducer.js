@@ -7,7 +7,7 @@ const initialState = {
 const updateMyProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case updateMyProfileCases.PROFILE_UPDATED:
-      return { ...state, ...initialState, profileUpdated: action.payload };
+      return { ...state, profileUpdated: action.payload };
     default:
       return state;
   }

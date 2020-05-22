@@ -13,7 +13,6 @@ const customerContactReducer = (state = initialState, action) => {
       return {
         ...state,
         ...initialState,
-        loading: false,
         emailSent: action.payload,
       };
     case customerContactCases.CLEAR_STATE:
