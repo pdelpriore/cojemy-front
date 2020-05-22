@@ -120,7 +120,7 @@ const useMyProfileForm = () => {
     setShowOverlay(true);
     setShowEdit(true);
     if (inputs.name === undefined) dispatch(updateMyProfile(false));
-  }, [profileUpdated]);
+  }, [profileUpdated, dispatch]);
 
   return {
     inputs,
