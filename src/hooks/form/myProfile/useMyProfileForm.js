@@ -117,7 +117,6 @@ const useMyProfileForm = () => {
 
   useEffect(() => {
     setInputs({});
-    if (error.imageError) setError({});
     setShowOverlay(true);
     setShowEdit(true);
     if (inputs.name === undefined) dispatch(updateMyProfile(false));
