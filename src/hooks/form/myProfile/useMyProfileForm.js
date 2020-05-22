@@ -105,6 +105,14 @@ const useMyProfileForm = () => {
     );
   };
 
+  const handleCancel = (e) => {
+    e.preventDefault();
+    setInputs({});
+    if (error.imageError) setError({});
+    setShowOverlay(true);
+    setShowEdit(true);
+  };
+
   return {
     inputs,
     error,
@@ -115,6 +123,7 @@ const useMyProfileForm = () => {
     handleRemoveImage,
     handleEdit,
     handleSubmit,
+    handleCancel,
   };
 };
 

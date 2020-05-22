@@ -20,7 +20,11 @@ const MyProfileForm = () => {
     handleRemoveImage,
     handleEdit,
     handleSubmit,
+    handleCancel,
   } = useMyProfileForm();
+
+  const { loading } = useSelector((state) => state.login);
+
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -119,30 +123,45 @@ const MyProfileForm = () => {
             </Button>
           )}
           {!showEdit && (
-            <Button
-              className="myprofile-button-text"
-              type="submit"
-              variant="outline-dark"
-            >
-              <div className="myprofile-spinner">
-                {false && (
-                  <Spinner
-                    as="span"
-                    animation="border"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-              {false ? (
-                <div className="myprofile-button-loading">
-                  {capitalizeFirst(strings.myProfile.BUTTON_TEXT_LOADING)}
+            <div className="myprofile-form-buttons-box">
+              <Button
+                className="myprofile-button-text"
+                type="submit"
+                variant="outline-dark"
+                disabled={
+                  loading ||
+                  inputs.name === undefined ||
+                  inputs.name === "" ||
+                  error.imageError
+                }
+              >
+                <div className="myprofile-spinner">
+                  {loading && (
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  )}
                 </div>
-              ) : (
-                <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT)}</div>
-              )}
-            </Button>
+                {loading ? (
+                  <div className="myprofile-button-loading">
+                    {capitalizeFirst(strings.myProfile.BUTTON_TEXT_LOADING)}
+                  </div>
+                ) : (
+                  <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT)}</div>
+                )}
+              </Button>
+              <Button
+                onClick={handleCancel}
+                className="myprofile-form-button-cancel"
+                variant="outline-secondary"
+              >
+                {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}
+              </Button>
+            </div>
           )}
         </Col>
       </Row>

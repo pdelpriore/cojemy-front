@@ -38,3 +38,11 @@
   border-radius: 5px;
   opacity: 0.1;
 }
+.myprofile-form-button-cancel {
+  font-family: "OpenSans-Regular";
+}
+.myprofile-form-buttons-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
