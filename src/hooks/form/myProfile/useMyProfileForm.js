@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { getImage } from "../../../shared/getImage";
 import { updateUserProfile } from "../../../redux/login/thunk/loginThunk";
+import { updateMyProfile } from "../../../redux/login/updateMyProfile/thunk/updateMyProfileThunk";
 import { useSelector, useDispatch } from "react-redux";
 import { userGooglePhoto } from "../../../shared/testWordsArray";
 
@@ -13,6 +14,7 @@ const useMyProfileForm = () => {
   const [showEdit, setShowEdit] = useState(true);
 
   const { userData } = useSelector((state) => state.login);
+  const { profileUpdated } = useSelector((state) => state.updateMyProfile);
 
   const handleInputChange = (e) => {
     e.persist();
@@ -112,6 +114,14 @@ const useMyProfileForm = () => {
     setShowOverlay(true);
     setShowEdit(true);
   };
+
+  useEffect(() => {
+    setInputs({});
+    if (error.imageError) setError({});
+    setShowOverlay(true);
+    setShowEdit(true);
+    if (inputs.name === undefined) dispatch(updateMyProfile(false));
+  }, [profileUpdated]);
 
   return {
     inputs,
