@@ -24,16 +24,20 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
           <Col xs={4} />
         </Row>
         <Row>
-          <Col xs={12}>
+          <Col xs={5}>
             <Image
               className="myprofile-background-image"
               src={require("../../assets/imgs/panret2.jpg")}
             />
           </Col>
-        </Row>
-        <Row>
-          <Col xs={5} />
-          <Col xs={6}>
+          <Col xs={1} />
+          <Col xs={5}>
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
             <Notification
               notificationMessage={loginError ? loginError : null}
             />
