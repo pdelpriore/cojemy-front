@@ -10,9 +10,9 @@ const initialState = {
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case loginCases.LOADING:
-      return { ...state, ...initialState, loading: action.payload };
+      return { ...state, loading: action.payload };
     case loginCases.LOADING_GOOGLE:
-      return { ...state, ...initialState, loadingGoogle: action.payload };
+      return { ...state, loadingGoogle: action.payload };
     case loginCases.USER_DATA:
       return {
         ...state,
@@ -24,7 +24,6 @@ const loginReducer = (state = initialState, action) => {
     case loginCases.ERROR:
       return {
         ...state,
-        ...initialState,
         loading: false,
         loadingGoogle: false,
         loginError: action.payload,
