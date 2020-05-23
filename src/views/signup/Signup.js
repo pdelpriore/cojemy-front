@@ -68,15 +68,7 @@ const Signup = ({ match: { path, url, isExact } }) => {
         <Row>
           <Col xs={2} />
           <Col xs={6}>
-            <Notification
-              notificationMessage={
-                error !== null
-                  ? error
-                  : errorGoogleSignup !== null
-                  ? errorGoogleSignup
-                  : null
-              }
-            />
+            <Notification notificationMessage={error || errorGoogleSignup} />
           </Col>
           <Col xs={4} />
         </Row>

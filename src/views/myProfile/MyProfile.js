@@ -38,9 +38,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
-            <Notification
-              notificationMessage={loginError ? loginError : null}
-            />
+            <Notification notificationMessage={loginError} />
           </Col>
           <Col xs={1} />
         </Row>
