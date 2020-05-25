@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
 import signupReducer from "../../signup/reducer/SignupReducer";
 import customerContactReducer from "../../customerContact/reducer/customerContactReducer";
-import showRemindPassReducer from "../../showRemindPass/reducer/showRemindPassReducer";
 import remindPasswordReducer from "../../remindPassword/reducer/remindPasswordReducer";
 import loginReducer from "../../login/reducer/loginReducer";
 import logoutReducer from "../../logout/reducer/logoutReducer";
@@ -22,11 +21,11 @@ import toEditMyRecipeReducer from "../../myRecipes/toEditMyRecipe/reducer/toEdit
 import myRecipePreviewReducer from "../../myRecipes/myRecipePreview/reducer/myRecipePreviewReducer";
 import updateMyProfileReducer from "../../login/updateMyProfile/reducer/updateMyProfileReducer";
 import userLoggedReducer from "../../login/userLogged/reducer/userLoggedReducer";
+import flagsReducer from "../../flags/reducer/flagsReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
   customerContact: customerContactReducer,
-  showRemindPass: showRemindPassReducer,
   remindPass: remindPasswordReducer,
   login: loginReducer,
   logout: logoutReducer,
@@ -47,6 +46,7 @@ const allReducers = combineReducers({
   myRecipePreview: myRecipePreviewReducer,
   updateMyProfile: updateMyProfileReducer,
   isUserLogged: userLoggedReducer,
+  flags: flagsReducer,
 });
 
 export default allReducers;

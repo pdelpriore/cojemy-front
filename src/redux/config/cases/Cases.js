@@ -18,11 +18,6 @@ export const remindPassCases = Object.freeze({
   CLEAR_STATE: "remindPassClearState",
 });
 
-export const showRemindPassCases = Object.freeze({
-  SHOWED: "showRemindPassVisible",
-  HIDED: "showRemindPassHide",
-});
-
 export const loginCases = Object.freeze({
   LOADING: "loginLoading",
   LOADING_GOOGLE: "loadingGoogle",
@@ -128,4 +123,11 @@ export const updateMyProfileCases = Object.freeze({
 
 export const userLoggedCases = Object.freeze({
   USER_LOGGED: "userLoggedCasesUserLogged",
+});
+
+export const flagCases = Object.freeze({
+  showRemindPassCases: Object.freeze({
+    SHOWED: "showRemindPassVisible",
+    HIDED: "showRemindPassHide",
+  }),
 });

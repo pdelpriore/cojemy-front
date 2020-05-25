@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
-import { showRemindPassComponent } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
+import { showRemindPassComponent } from "../../redux/flags/thunk/flagsThunk";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
 import { useHistory } from "react-router-dom";
@@ -24,7 +24,7 @@ const Login = ({ match: { path, url, isExact } }) => {
   });
   const { userSignedup } = useSelector((state) => state.signup);
   const { userGoogleSignedup } = useSelector((state) => state.signGoogle);
-  const { show } = useSelector((state) => state.showRemindPass);
+  const { remindPassFormShowed } = useSelector((state) => state.flags);
   const { passwordSent, remindPassError } = useSelector(
     (state) => state.remindPass
   );
@@ -58,7 +58,7 @@ const Login = ({ match: { path, url, isExact } }) => {
         <Row>
           <Col xs={6} />
           <Col xs={3}>
-            {!show ? (
+            {!remindPassFormShowed ? (
               <div>
                 {transition.map(({ item, key, props }) => (
                   <animated.div key={key} style={props}>
@@ -78,7 +78,7 @@ const Login = ({ match: { path, url, isExact } }) => {
         <Row>
           <Col xs={9} />
           <Col xs={2}>
-            {!show && (
+            {!remindPassFormShowed && (
               <p
                 onClick={(e) => {
                   e.preventDefault();
