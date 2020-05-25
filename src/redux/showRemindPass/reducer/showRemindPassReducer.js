@@ -6,16 +6,9 @@ const initialState = {
 
 const showRemindPassReducer = (state = initialState, action) => {
   switch (action.type) {
-    case showRemindPassCases.SHOWED:
+    case showRemindPassCases.FORM_SHOWED:
       return {
         ...state,
-        ...initialState,
-        show: action.payload,
-      };
-    case showRemindPassCases.HIDED:
-      return {
-        ...state,
-        ...initialState,
         show: action.payload,
       };
     default:

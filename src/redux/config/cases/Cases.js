@@ -19,8 +19,7 @@ export const remindPassCases = Object.freeze({
 });
 
 export const showRemindPassCases = Object.freeze({
-  SHOWED: "showRemindPassVisible",
-  HIDED: "showRemindPassHide",
+  FORM_SHOWED: "showRemindPassVisible",
 });
 
 export const loginCases = Object.freeze({
