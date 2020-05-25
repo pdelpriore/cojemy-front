@@ -33,6 +33,12 @@ export const remindMePassword = (email) => {
   };
 };
 
+export const showRemindPassComponent = (bool) => {
+  return (dispatch, getState) => {
+    dispatch({ type: remindPassCases.FORM_SHOWED, payload: bool });
+  };
+};
+
 export const clearRemindPasswordState = () => {
   return (dispatch, getState) => {
     dispatch({ type: remindPassCases.CLEAR_STATE });

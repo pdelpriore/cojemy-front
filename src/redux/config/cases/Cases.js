@@ -13,6 +13,7 @@ export const customerContactCases = Object.freeze({
 
 export const remindPassCases = Object.freeze({
   LOADING: "remindPassLoading",
+  FORM_SHOWED: "remindPassCasesFormShowed",
   ERROR: "remindPassError",
   PASSWORD_SENT: "remindPassSent",
   CLEAR_STATE: "remindPassClearState",
