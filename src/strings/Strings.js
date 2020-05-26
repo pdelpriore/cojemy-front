@@ -191,6 +191,7 @@ export const strings = Object.freeze({
     BUTTON_TEXT_EDIT: "modifier ?",
     BUTTON_TEXT: "modifie",
     BUTTON_TEXT_LOADING: "je modifie ...",
+    BUTTON_EDIT_PASS: "mot de passe à changer ?",
     CURRENT_PASS: "mot de passe actuel *",
     CURRENT_PASS_PLACEHOLDER: "mot de passe actuel",
     NEW_PASS: "nouveau mot de passe *",

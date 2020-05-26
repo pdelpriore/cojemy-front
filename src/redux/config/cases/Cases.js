@@ -128,3 +128,7 @@ export const updateMyProfileCases = Object.freeze({
 export const userLoggedCases = Object.freeze({
   USER_LOGGED: "userLoggedCasesUserLogged",
 });
+
+export const showMyPasswordFormCases = Object.freeze({
+  FORM_SHOWED: "showMyPasswordFormCasesFormShowed",
+});

@@ -3,13 +3,20 @@ import { Row, Col, Image, Button } from "react-bootstrap";
 import MyProfileForm from "../../forms/myProfile/MyProfileForm";
 import MyProfilePreview from "./MyProfilePreview";
 import Navbar from "../../components/navbar/Navbar";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Notification from "../../components/notifications/Notification";
 import MyPasswordForm from "../../forms/myProfile/MyPasswordForm";
+import { showMyPasswordForm } from "../../redux/login/updateMyProfile/showMyPassword/thunk/showMyPasswordThunk";
+import { capitalizeFirst } from "../../util/Util";
 import "./myProfile.css";
+import { strings } from "../../strings/Strings";
 
 const MyProfile = ({ match: { path, url, isExact } }) => {
+  const dispatch = useDispatch();
   const { loginError } = useSelector((state) => state.login);
+  const { myPasswordFormShowed } = useSelector(
+    (state) => state.isMyPasswordFormShowed
+  );
   return (
     <div className="myprofile-main-area">
       <Navbar path={path} url={url} isExact={isExact} />
@@ -47,22 +54,42 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
       <div className="myprofile-second-section">
         <Row className="mb-4" />
         <Row className="mb-5" />
-        <Row>
-          <Col xs={8} />
-          <Col xs={3}>
-            <Button className="myprofile-button-text" variant="dark" size="sm">
-              Mot de passe à changer ?
-            </Button>
-          </Col>
-          <Col xs={1} />
-        </Row>
-        <Row>
-          <Col xs={6} />
-          <Col xs={5}>
-            <MyPasswordForm />
-          </Col>
-          <Col xs={1} />
-        </Row>
+        {!myPasswordFormShowed && (
+          <Row>
+            <Col xs={8} />
+            <Col xs={3}>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(showMyPasswordForm(true));
+                }}
+                className="myprofile-button-text"
+                variant="dark"
+                size="sm"
+              >
+                {capitalizeFirst(strings.myProfile.BUTTON_EDIT_PASS)}
+              </Button>
+            </Col>
+            <Col xs={1} />
+          </Row>
+        )}
+        {myPasswordFormShowed ? (
+          <Row>
+            <Col xs={6} />
+            <Col xs={5}>
+              <MyPasswordForm />
+            </Col>
+            <Col xs={1} />
+          </Row>
+        ) : (
+          <>
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+          </>
+        )}
         <Row className="mb-3" />
         <Row>
           <Col xs={1} />

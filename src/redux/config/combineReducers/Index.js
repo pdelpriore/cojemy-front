@@ -22,6 +22,7 @@ import toEditMyRecipeReducer from "../../myRecipes/toEditMyRecipe/reducer/toEdit
 import myRecipePreviewReducer from "../../myRecipes/myRecipePreview/reducer/myRecipePreviewReducer";
 import updateMyProfileReducer from "../../login/updateMyProfile/reducer/updateMyProfileReducer";
 import userLoggedReducer from "../../login/userLogged/reducer/userLoggedReducer";
+import showMyPasswordReducer from "../../login/updateMyProfile/showMyPassword/reducer/showMyPasswordReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -47,6 +48,7 @@ const allReducers = combineReducers({
   myRecipePreview: myRecipePreviewReducer,
   updateMyProfile: updateMyProfileReducer,
   isUserLogged: userLoggedReducer,
+  isMyPasswordFormShowed: showMyPasswordReducer,
 });
 
 export default allReducers;
