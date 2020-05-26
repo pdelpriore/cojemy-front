@@ -2,10 +2,12 @@ import React from "react";
 import { Form, Row, Col, Button, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
+import useMyPasswordForm from "../../hooks/form/myProfile/useMyPasswordForm";
 import { useSelector } from "react-redux";
 import "./myProfileForm.css";
 
 const MyPasswordForm = () => {
+  const { inputs } = useMyPasswordForm();
   return (
     <Form onSubmit={null}>
       <Row>
@@ -17,7 +19,7 @@ const MyPasswordForm = () => {
             <Form.Control
               className="myprofile-text-family-username"
               onChange={null}
-              value={null}
+              value={inputs.currentPass || ""}
               size="sm"
               name="currentPass"
               type="password"
@@ -35,7 +37,7 @@ const MyPasswordForm = () => {
             <Form.Control
               className="myprofile-text-family-username"
               onChange={null}
-              value={null}
+              value={inputs.newPass || ""}
               size="sm"
               name="newPass"
               type="password"
@@ -53,7 +55,7 @@ const MyPasswordForm = () => {
             <Form.Control
               className="myprofile-text-family-username"
               onChange={null}
-              value={null}
+              value={inputs.confirmPass || ""}
               size="sm"
               name="confirmPass"
               type="password"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image, Button } from "react-bootstrap";
 import MyProfileForm from "../../forms/myProfile/MyProfileForm";
 import MyProfilePreview from "./MyProfilePreview";
 import Navbar from "../../components/navbar/Navbar";
@@ -47,6 +47,15 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
       <div className="myprofile-second-section">
         <Row className="mb-4" />
         <Row className="mb-5" />
+        <Row>
+          <Col xs={8} />
+          <Col xs={3}>
+            <Button className="myprofile-button-text" variant="dark" size="sm">
+              Mot de passe à changer ?
+            </Button>
+          </Col>
+          <Col xs={1} />
+        </Row>
         <Row>
           <Col xs={6} />
           <Col xs={5}>
