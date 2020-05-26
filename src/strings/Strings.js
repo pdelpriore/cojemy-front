@@ -191,5 +191,11 @@ export const strings = Object.freeze({
     BUTTON_TEXT_EDIT: "modifier ?",
     BUTTON_TEXT: "modifie",
     BUTTON_TEXT_LOADING: "je modifie ...",
+    CURRENT_PASS: "mot de passe actuel *",
+    CURRENT_PASS_PLACEHOLDER: "mot de passe actuel",
+    NEW_PASS: "nouveau mot de passe *",
+    NEW_PASS_PLACEHOLDER: "nouveau mot de passe",
+    CONFIRM_PASS: "confirme ton nouveau mot de passe *",
+    CONFIRME_PASS_PLACEHOLDER: "confirme ton nouveau mot de passe",
   },
 });

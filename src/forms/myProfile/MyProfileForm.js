@@ -37,7 +37,7 @@ const MyProfileForm = () => {
               className="myprofile-text-family-username"
               onChange={handleInputChange}
               value={inputs.name || ""}
-              size="lg"
+              size="sm"
               name="name"
               type="text"
               placeholder={strings.myProfile.USER_NAME_PLACEHOLDER}
@@ -56,12 +56,13 @@ const MyProfileForm = () => {
             </Form.Label>
             <ImageUploader
               fileContainerStyle={{
-                height: 75,
+                height: 70,
                 fontFamily: "OpenSans-Regular",
                 backgroundColor: "#f3cf7a",
                 border: "1px solid #CED4DA",
                 position: "relative",
               }}
+              buttonStyles={{ height: 30 }}
               withIcon={false}
               singleImage={true}
               withLabel={true}
