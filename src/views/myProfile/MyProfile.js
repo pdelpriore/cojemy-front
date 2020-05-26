@@ -52,7 +52,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
         </Row>
       </div>
       <div className="myprofile-second-section">
-        <Row className="mb-4" />
+        <Row className="mb-5" />
         <Row className="mb-5" />
         {!myPasswordFormShowed && (
           <Row>
@@ -73,31 +73,40 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
             <Col xs={1} />
           </Row>
         )}
-        {myPasswordFormShowed ? (
-          <Row>
-            <Col xs={6} />
-            <Col xs={5}>
-              <MyPasswordForm />
-            </Col>
-            <Col xs={1} />
-          </Row>
-        ) : (
+        {myPasswordFormShowed && (
           <>
+            <Row className="mb-3" />
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
+            <Row>
+              <Col xs={1} />
+              <Col xs={5}>
+                <MyPasswordForm />
+              </Col>
+              <Col xs={6} />
+            </Row>
           </>
         )}
-        <Row className="mb-3" />
-        <Row>
-          <Col xs={1} />
-          <Col xs={6}>
-            <MyProfileForm />
-          </Col>
-          <Col xs={5} />
-        </Row>
+        {!myPasswordFormShowed && (
+          <>
+            <Row className="mb-3" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row>
+              <Col xs={1} />
+              <Col xs={6}>
+                <MyProfileForm />
+              </Col>
+              <Col xs={5} />
+            </Row>
+          </>
+        )}
       </div>
     </div>
   );

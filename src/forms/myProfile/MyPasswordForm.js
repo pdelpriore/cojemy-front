@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import "./myProfileForm.css";
 
 const MyPasswordForm = () => {
-  const { inputs } = useMyPasswordForm();
+  const { inputs, handleCancel, handleOnChange } = useMyPasswordForm();
   return (
     <Form onSubmit={null}>
       <Row>
@@ -18,9 +18,9 @@ const MyPasswordForm = () => {
             </Form.Label>
             <Form.Control
               className="myprofile-text-family-username"
-              onChange={null}
+              onChange={handleOnChange}
               value={inputs.currentPass || ""}
-              size="sm"
+              size="lg"
               name="currentPass"
               type="password"
               placeholder={strings.myProfile.CURRENT_PASS_PLACEHOLDER}
@@ -36,9 +36,9 @@ const MyPasswordForm = () => {
             </Form.Label>
             <Form.Control
               className="myprofile-text-family-username"
-              onChange={null}
+              onChange={handleOnChange}
               value={inputs.newPass || ""}
-              size="sm"
+              size="lg"
               name="newPass"
               type="password"
               placeholder={strings.myProfile.NEW_PASS_PLACEHOLDER}
@@ -54,9 +54,9 @@ const MyPasswordForm = () => {
             </Form.Label>
             <Form.Control
               className="myprofile-text-family-username"
-              onChange={null}
+              onChange={handleOnChange}
               value={inputs.confirmPass || ""}
-              size="sm"
+              size="lg"
               name="confirmPass"
               type="password"
               placeholder={strings.myProfile.CONFIRME_PASS_PLACEHOLDER}
@@ -71,7 +71,6 @@ const MyPasswordForm = () => {
               className="myprofile-button-text"
               type="submit"
               variant="outline-dark"
-              size="sm"
             >
               <div className="myprofile-spinner">
                 {false && (
@@ -93,10 +92,9 @@ const MyPasswordForm = () => {
               )}
             </Button>
             <Button
-              onClick={null}
+              onClick={handleCancel}
               className="myprofile-form-button-cancel"
               variant="outline-secondary"
-              size="sm"
             >
               {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}
             </Button>
