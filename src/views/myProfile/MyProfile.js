@@ -23,6 +23,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
   const { myPasswordFormShowed } = useSelector(
     (state) => state.isMyPasswordFormShowed
   );
+  const { userData } = useSelector((state) => state.login);
   return (
     <animated.div className="myprofile-main-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
@@ -62,21 +63,22 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         {!myPasswordFormShowed && (
           <Row>
-            <Col xs={8} />
+            <Col xs={7} />
             <Col xs={3}>
               <Button
+                disabled={userData.isGoogleUser}
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(showMyPasswordForm(true));
                 }}
-                className="myprofile-button-text"
+                className="myprofile-button-show-pass-form"
                 variant="dark"
                 size="sm"
               >
                 {capitalizeFirst(strings.myProfile.BUTTON_EDIT_PASS)}
               </Button>
             </Col>
-            <Col xs={1} />
+            <Col xs={2} />
           </Row>
         )}
         {myPasswordFormShowed && (

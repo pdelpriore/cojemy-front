@@ -39,3 +39,7 @@
 .myprofile-background-image {
   width: 25vw;
 }
+.myprofile-button-show-pass-form {
+  font-family: "OpenSans-Regular";
+  white-space: nowrap;
+}
