@@ -132,3 +132,10 @@ export const userLoggedCases = Object.freeze({
 export const showMyPasswordFormCases = Object.freeze({
   FORM_SHOWED: "showMyPasswordFormCasesFormShowed",
 });
+
+export const changePasswordCases = Object.freeze({
+  LOADING: "changePasswordCasesLoading",
+  PASSWORD_CHANGED: "changePasswordCasesLoading",
+  ERROR: "changePasswordCasesError",
+  CLEAR_STATE: "changePasswordCasesClearState",
+});
