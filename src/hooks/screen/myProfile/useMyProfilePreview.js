@@ -11,7 +11,8 @@ const useMyProfilePreview = () => {
     if (
       !userGooglePhoto.some(
         (element) => userData.photo && userData.photo.includes(element)
-      )
+      ) &&
+      userData.photo
     )
       setInputUserPhoto((inputUserPhoto) => ({
         ...inputUserPhoto,
