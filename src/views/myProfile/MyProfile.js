@@ -8,17 +8,23 @@ import Notification from "../../components/notifications/Notification";
 import MyPasswordForm from "../../forms/myProfile/MyPasswordForm";
 import { showMyPasswordForm } from "../../redux/login/updateMyProfile/showMyPassword/thunk/showMyPasswordThunk";
 import { capitalizeFirst } from "../../util/Util";
-import "./myProfile.css";
+import { useSpring, animated } from "react-spring";
 import { strings } from "../../strings/Strings";
+import "./myProfile.css";
 
 const MyProfile = ({ match: { path, url, isExact } }) => {
   const dispatch = useDispatch();
+  const props = useSpring({
+    opacity: 1,
+    config: { duration: 300 },
+    from: { opacity: 0 },
+  });
   const { loginError } = useSelector((state) => state.login);
   const { myPasswordFormShowed } = useSelector(
     (state) => state.isMyPasswordFormShowed
   );
   return (
-    <div className="myprofile-main-area">
+    <animated.div className="myprofile-main-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
       <div className="myprofile-first-section">
         <Row className="mb-5" />
@@ -108,7 +114,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
           </>
         )}
       </div>
-    </div>
+    </animated.div>
   );
 };
 
