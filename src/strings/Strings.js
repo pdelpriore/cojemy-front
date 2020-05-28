@@ -200,7 +200,4 @@ export const strings = Object.freeze({
     CONFIRME_PASS_PLACEHOLDER: "confirme ton nouveau mot de passe",
     PASSWORD_CHANGED: "ton mot de passe a été changé.",
   },
-  errors: {
-    UNEXPECTED_ERROR: "Unexpected error value: ",
-  },
 });
