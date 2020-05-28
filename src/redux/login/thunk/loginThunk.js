@@ -27,7 +27,17 @@ export const loginUser = (email, password) => {
         dispatch({ type: loginCases.USER_DATA, payload: data.login });
         dispatch({ type: userLoggedCases.USER_LOGGED, payload: true });
       } else if (errors) {
-        dispatch({ type: loginCases.ERROR, payload: errors[0].message });
+        if (errors[0].message.includes(strings.errors.UNEXPECTED_ERROR)) {
+          dispatch({
+            type: loginCases.ERROR,
+            payload: errors[0].message.substring(25, 48),
+          });
+        } else {
+          dispatch({
+            type: loginCases.ERROR,
+            payload: errors[0].message,
+          });
+        }
       }
     } catch (err) {
       if (err) console.log(err);
