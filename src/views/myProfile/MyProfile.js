@@ -20,6 +20,9 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0 },
   });
   const { loginError } = useSelector((state) => state.login);
+  const { userPasswordChanged, changeUserPasswordError } = useSelector(
+    (state) => state.isUserPasswordChanged
+  );
   const { myPasswordFormShowed } = useSelector(
     (state) => state.isMyPasswordFormShowed
   );
@@ -53,7 +56,17 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
-            <Notification notificationMessage={loginError} />
+            <Notification
+              notificationMessage={
+                loginError
+                  ? loginError
+                  : changeUserPasswordError
+                  ? changeUserPasswordError
+                  : userPasswordChanged
+                  ? capitalizeFirst(strings.myProfile.PASSWORD_CHANGED)
+                  : null
+              }
+            />
           </Col>
           <Col xs={1} />
         </Row>

@@ -27,7 +27,7 @@ export const changeUserPassword = (
       });
       const responseData = await response.json();
       const { errors, data } = responseData;
-      if (data) {
+      if (data.changeUserPassword !== null) {
         dispatch({
           type: changePasswordCases.PASSWORD_CHANGED,
           payload: data.changeUserPassword,

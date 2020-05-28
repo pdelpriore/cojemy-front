@@ -7,9 +7,15 @@ import { useSelector } from "react-redux";
 import "./myProfileForm.css";
 
 const MyPasswordForm = () => {
-  const { inputs, handleCancel, handleOnChange } = useMyPasswordForm();
+  const {
+    inputs,
+    handleCancel,
+    handleOnChange,
+    handleSubmit,
+  } = useMyPasswordForm();
+  const { loading } = useSelector((state) => state.isUserPasswordChanged);
   return (
-    <Form onSubmit={null}>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicCurrentPassword">
@@ -68,12 +74,21 @@ const MyPasswordForm = () => {
         <Col xs={12}>
           <div className="myprofile-form-buttons-box">
             <Button
+              disabled={
+                loading ||
+                inputs.currentPass === undefined ||
+                inputs.currentPass === "" ||
+                inputs.newPass === undefined ||
+                inputs.newPass === "" ||
+                inputs.confirmPass === undefined ||
+                inputs.confirmPass === ""
+              }
               className="myprofile-button-text"
               type="submit"
               variant="outline-dark"
             >
               <div className="myprofile-spinner">
-                {false && (
+                {loading && (
                   <Spinner
                     as="span"
                     animation="border"
@@ -83,7 +98,7 @@ const MyPasswordForm = () => {
                   />
                 )}
               </div>
-              {false ? (
+              {loading ? (
                 <div className="myprofile-button-loading">
                   {capitalizeFirst(strings.myProfile.BUTTON_TEXT_LOADING)}
                 </div>

@@ -198,5 +198,6 @@ export const strings = Object.freeze({
     NEW_PASS_PLACEHOLDER: "nouveau mot de passe",
     CONFIRM_PASS: "confirme ton nouveau mot de passe *",
     CONFIRME_PASS_PLACEHOLDER: "confirme ton nouveau mot de passe",
+    PASSWORD_CHANGED: "ton mot de passe a été changé.",
   },
 });
