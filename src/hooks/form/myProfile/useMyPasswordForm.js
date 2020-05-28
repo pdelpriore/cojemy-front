@@ -42,6 +42,7 @@ const useMyPasswordForm = () => {
       setInputs({});
       dispatch(showMyPasswordForm(false));
     }
+    return () => dispatch(showMyPasswordForm(false));
   }, [userPasswordChanged, dispatch]);
 
   return { inputs, handleCancel, handleOnChange, handleSubmit };
