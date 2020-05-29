@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { strings } from "../../../strings/Strings";
 
 const useMyProfile = () => {
   const [showRemoveAccount, setShowRemoveAccount] = useState(true);
@@ -16,7 +15,11 @@ const useMyProfile = () => {
     setShowRemoveAccount(true);
   };
 
-  return { showRemoveAccount, handleTrash, handleCancel };
+  const handleDeleteAccount = (e) => {
+    e.preventDefault();
+  };
+
+  return { showRemoveAccount, handleTrash, handleCancel, handleDeleteAccount };
 };
 
 export default useMyProfile;

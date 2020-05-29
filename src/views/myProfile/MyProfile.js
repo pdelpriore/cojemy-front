@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Image, Button } from "react-bootstrap";
+import { Row, Col, Image, Button, Spinner } from "react-bootstrap";
 import MyProfileForm from "../../forms/myProfile/MyProfileForm";
 import MyProfilePreview from "./MyProfilePreview";
 import Navbar from "../../components/navbar/Navbar";
@@ -34,7 +34,12 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
     (state) => state.isMyPasswordFormShowed
   );
   const { userData } = useSelector((state) => state.login);
-  const { showRemoveAccount, handleTrash, handleCancel } = useMyProfile();
+  const {
+    showRemoveAccount,
+    handleTrash,
+    handleCancel,
+    handleDeleteAccount,
+  } = useMyProfile();
   return (
     <animated.div className="myprofile-main-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
@@ -103,17 +108,25 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
                 <p className="myprofile-remove-account-text">
                   {capitalizeFirst(strings.myProfile.REMOVE_ACCOUNT)}
                 </p>
-                <div>
-                  <FontAwesomeIcon
-                    className="myprofile-remove-account-icon yes"
-                    icon={faCheckCircle}
-                  />
-                  <FontAwesomeIcon
-                    onClick={handleCancel}
-                    className="myprofile-remove-account-icon no"
-                    icon={faTimesCircle}
-                  />
-                </div>
+                {true && (
+                  <div>
+                    <FontAwesomeIcon
+                      className="myprofile-remove-account-icon yes"
+                      icon={faCheckCircle}
+                    />
+                    <FontAwesomeIcon
+                      onClick={handleCancel}
+                      className="myprofile-remove-account-icon no"
+                      icon={faTimesCircle}
+                    />
+                  </div>
+                )}
+                {false && (
+                  <>
+                    <Spinner animation="border" variant="dark" />
+                    <p className="myprofile-points">...</p>
+                  </>
+                )}
               </div>
             </Col>
             <Col xs={2} />
