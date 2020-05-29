@@ -23,6 +23,7 @@ import userLoggedReducer from "../../login/userLogged/reducer/userLoggedReducer"
 import showMyPasswordReducer from "../../login/updateMyProfile/showMyPassword/reducer/showMyPasswordReducer";
 import changePasswordReducer from "../../login/updateMyProfile/changePassword/reducer/changePasswordReducer";
 import changeMyRecipesReducer from "../../myRecipes/changeMyRecipes/reducer/changeMyRecipesReducer";
+import removeAccountReducer from "../../login/updateMyProfile/removeAccount/reducer/removeAccountReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -49,6 +50,7 @@ const allReducers = combineReducers({
   isMyPasswordFormShowed: showMyPasswordReducer,
   isUserPasswordChanged: changePasswordReducer,
   isMyRecipeChanged: changeMyRecipesReducer,
+  isAccountRemoved: removeAccountReducer,
 });
 
 export default allReducers;

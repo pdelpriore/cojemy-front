@@ -137,3 +137,9 @@ export const changeMyRecipesCases = Object.freeze({
   ERROR: "changeMyRecipesCasesError",
   CLEAR_STATE: "changeMyRecipesCasesClearState",
 });
+
+export const removeAccountCases = Object.freeze({
+  LOADING: "removeAccountCasesLoading",
+  ACCOUNT_REMOVED: "removeAccountCasesAccountRemoved",
+  CLEAR_STATE: "removeAccountCasesClearState",
+});
