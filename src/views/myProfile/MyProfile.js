@@ -6,6 +6,13 @@ import Navbar from "../../components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import Notification from "../../components/notifications/Notification";
 import MyPasswordForm from "../../forms/myProfile/MyPasswordForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckCircle,
+  faTimesCircle,
+} from "@fortawesome/free-regular-svg-icons";
+import useMyProfile from "../../hooks/screen/myProfile/useMyProfile";
 import { showMyPasswordForm } from "../../redux/login/updateMyProfile/showMyPassword/thunk/showMyPasswordThunk";
 import { capitalizeFirst } from "../../util/Util";
 import { useSpring, animated } from "react-spring";
@@ -27,6 +34,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
     (state) => state.isMyPasswordFormShowed
   );
   const { userData } = useSelector((state) => state.login);
+  const { showRemoveAccount, handleTrash, handleCancel } = useMyProfile();
   return (
     <animated.div className="myprofile-main-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
@@ -73,7 +81,45 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
       </div>
       <div className="myprofile-second-section">
         <Row className="mb-5" />
-        <Row className="mb-5" />
+        <Row className="mb-4" />
+        {showRemoveAccount && (
+          <Row>
+            <Col xs={9} />
+            <Col xs={1}>
+              <FontAwesomeIcon
+                onClick={handleTrash}
+                className="myprofile-trash-icon"
+                icon={faTrash}
+              />
+            </Col>
+            <Col xs={2} />
+          </Row>
+        )}
+        {!showRemoveAccount && (
+          <Row>
+            <Col xs={4} />
+            <Col xs={6}>
+              <div className="myprofile-remove-account-area">
+                <p className="myprofile-remove-account-text">
+                  {capitalizeFirst(strings.myProfile.REMOVE_ACCOUNT)}
+                </p>
+                <div>
+                  <FontAwesomeIcon
+                    className="myprofile-remove-account-icon yes"
+                    icon={faCheckCircle}
+                  />
+                  <FontAwesomeIcon
+                    onClick={handleCancel}
+                    className="myprofile-remove-account-icon no"
+                    icon={faTimesCircle}
+                  />
+                </div>
+              </div>
+            </Col>
+            <Col xs={2} />
+          </Row>
+        )}
+        <Row className="mb-3" />
         {!myPasswordFormShowed && (
           <Row>
             <Col xs={7} />

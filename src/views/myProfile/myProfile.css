@@ -43,3 +43,34 @@
   font-family: "OpenSans-Regular";
   white-space: nowrap;
 }
+.myprofile-trash-icon {
+  font-size: 1.1vw;
+}
+.myprofile-trash-icon:hover {
+  cursor: pointer;
+  color: red;
+}
+.myprofile-remove-account-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.myprofile-remove-account-text {
+  font-family: "Nunito-Bold";
+  color: #3e3636;
+  font-size: 1.1vw;
+}
+.myprofile-remove-account-icon {
+  font-size: 1.6vw;
+}
+.yes:hover {
+  cursor: pointer;
+  color: red;
+}
+.no {
+  margin-left: 10px;
+}
+.no:hover {
+  cursor: pointer;
+  color: green;
+}
