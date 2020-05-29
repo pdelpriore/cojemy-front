@@ -177,12 +177,9 @@ export const strings = Object.freeze({
     error: {
       VIDEO_URL_ERROR: "adresse de vidéo incorrecte",
       IMAGE_SIZE_ERROR: "taille d'image dépasse 100 kB",
-      RECIPE_EXISTS: "recette déjà existe.",
       IMAGE_UNACCEPTABLE: "image inappropriée",
       IMAGE_FORMAT: "format inaccepté",
       VIDEO_UNACCEPTABLE: "vidéo inappropriée",
-      TITLE_UNACCEPTABLE: "titre inapproprié",
-      DESCRIPTION_UNACCEPTABLE: "description inappropriée",
     },
   },
   myProfile: {
