@@ -18,7 +18,9 @@ const Notification = ({ notificationMessage }) => {
     (state) => state.isUserPasswordChanged
   );
   const { errorGoogleSignup } = useSelector((state) => state.signGoogle);
-  const { myRecipeErrorReceived } = useSelector((state) => state.myRecipeError);
+  const { myRecipeChangeError } = useSelector(
+    (state) => state.isMyRecipeChanged
+  );
 
   return (
     show &&
@@ -29,7 +31,7 @@ const Notification = ({ notificationMessage }) => {
         notification === remindPassError ||
         notification === loginError ||
         notification === errorGoogleSignup ||
-        notification === myRecipeErrorReceived ||
+        notification === myRecipeChangeError ||
         notification === changeUserPasswordError ? (
           <div className="notification-icon-error">
             <FontAwesomeIcon icon={faTimesCircle} />
@@ -43,7 +45,7 @@ const Notification = ({ notificationMessage }) => {
         notification === remindPassError ||
         notification === loginError ||
         notification === errorGoogleSignup ||
-        notification === myRecipeErrorReceived ||
+        notification === myRecipeChangeError ||
         notification === changeUserPasswordError ? (
           <div className="notification-message">
             {capitalizeFirst(notification)}

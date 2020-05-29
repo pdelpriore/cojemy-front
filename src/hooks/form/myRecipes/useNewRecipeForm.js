@@ -4,11 +4,11 @@ import { strings } from "../../../strings/Strings";
 import { unacceptableWordsArray } from "../../../shared/testWordsArray";
 import { getImage } from "../../../shared/getImage";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
-import { addNewRecipe } from "../../../redux/myRecipes/addMyRecipe/thunk/addNewRecipeThunk";
 import {
   addMyRecipe,
   editMyRecipe,
-} from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
+  changeMyRecipesClearState,
+} from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { myRecipePreviewClearState } from "../../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import { toEditMyRecipeClearState } from "../../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,7 +19,7 @@ const useNewRecipeForm = () => {
   const [error, setError] = useState({});
 
   const { userData } = useSelector((state) => state.login);
-  const { newRecipeAdded } = useSelector((state) => state.addNewRecipe);
+  const { recipeUpdated } = useSelector((state) => state.isMyRecipeChanged);
   const { myRecipeToEdit } = useSelector((state) => state.toEditMyRecipe);
 
   const handleInputsChange = (e) => {
@@ -180,16 +180,16 @@ const useNewRecipeForm = () => {
   }, [myRecipeToEdit]);
 
   useEffect(() => {
-    if (newRecipeAdded) {
+    if (recipeUpdated) {
       setInputs({});
       dispatch(toEditMyRecipeClearState());
+      dispatch(changeMyRecipesClearState());
       dispatch(myRecipePreviewClearState());
     }
     return () => {
-      dispatch(addNewRecipe(false));
       dispatch(toEditMyRecipeClearState());
     };
-  }, [newRecipeAdded, dispatch]);
+  }, [recipeUpdated, dispatch]);
 
   useEffect(() => {
     if (!inputs.video && !myRecipeToEdit.recipeVideo) {

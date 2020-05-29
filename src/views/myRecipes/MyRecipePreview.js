@@ -25,7 +25,7 @@ const MyRecipePreview = () => {
   });
   const { handleEditClick, handleTrashClick } = useMyRecipePreview();
   const { myRecipePreviewData } = useSelector((state) => state.myRecipePreview);
-  const { loadingMyRecipes } = useSelector((state) => state.myRecipes);
+  const { loading } = useSelector((state) => state.isMyRecipeChanged);
 
   return (
     <animated.div style={props}>
@@ -169,7 +169,7 @@ const MyRecipePreview = () => {
                   variant="dark"
                 >
                   <div className="myrecipes-form-spinner">
-                    {loadingMyRecipes && (
+                    {loading && (
                       <Spinner
                         as="span"
                         animation="border"
@@ -179,7 +179,7 @@ const MyRecipePreview = () => {
                       />
                     )}
                   </div>
-                  {loadingMyRecipes ? (
+                  {loading ? (
                     <div className="myrecipes-form-button-loading">
                       {capitalizeFirst(strings.myRecipes.BUTTON_REMOVE_LOADING)}
                     </div>

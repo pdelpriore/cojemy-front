@@ -26,7 +26,7 @@ const MyRecipesForm = () => {
     handlePlayerReady,
     handleSubmit,
   } = useNewRecipeForm();
-  const { loadingMyRecipes } = useSelector((state) => state.myRecipes);
+  const { loading } = useSelector((state) => state.isMyRecipeChanged);
   const { myRecipeToEdit } = useSelector((state) => state.toEditMyRecipe);
   return (
     <ScrollArea
@@ -265,7 +265,7 @@ const MyRecipesForm = () => {
               {!myRecipeToEdit.recipeTitle ? (
                 <Button
                   disabled={
-                    loadingMyRecipes ||
+                    loading ||
                     inputs.title === undefined ||
                     inputs.title === "" ||
                     error.imageError ||
@@ -284,7 +284,7 @@ const MyRecipesForm = () => {
                   variant="outline-dark"
                 >
                   <div className="myrecipes-form-spinner">
-                    {loadingMyRecipes && (
+                    {loading && (
                       <Spinner
                         as="span"
                         animation="border"
@@ -294,7 +294,7 @@ const MyRecipesForm = () => {
                       />
                     )}
                   </div>
-                  {loadingMyRecipes ? (
+                  {loading ? (
                     <div className="myrecipes-form-button-loading">
                       {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                     </div>
@@ -305,7 +305,7 @@ const MyRecipesForm = () => {
               ) : (
                 <Button
                   disabled={
-                    loadingMyRecipes ||
+                    loading ||
                     inputs.title === undefined ||
                     inputs.title === "" ||
                     error.imageError ||
@@ -324,7 +324,7 @@ const MyRecipesForm = () => {
                   variant="outline-dark"
                 >
                   <div className="myrecipes-form-spinner">
-                    {loadingMyRecipes && (
+                    {loading && (
                       <Spinner
                         as="span"
                         animation="border"
@@ -334,7 +334,7 @@ const MyRecipesForm = () => {
                       />
                     )}
                   </div>
-                  {loadingMyRecipes ? (
+                  {loading ? (
                     <div className="myrecipes-form-button-loading">
                       {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                     </div>

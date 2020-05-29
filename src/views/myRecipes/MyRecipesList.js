@@ -24,6 +24,7 @@ const MyRecipesList = () => {
   const { loadingMyRecipes, myRecipesRetrieved, myRecipesError } = useSelector(
     (state) => state.myRecipes
   );
+  const { recipeUpdated } = useSelector((state) => state.isMyRecipeChanged);
 
   useEffect(() => {
     if (userData.email) {
@@ -33,7 +34,7 @@ const MyRecipesList = () => {
       dispatch(showNewRecipeForm(false));
       dispatch(myRecipePreviewClearState());
     };
-  }, [userData.email, dispatch]);
+  }, [userData.email, recipeUpdated, dispatch]);
   timeago.register("fr", fr);
 
   return loadingMyRecipes ? (

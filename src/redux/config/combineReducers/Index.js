@@ -16,14 +16,13 @@ import turnOffRecipeButtonsReducer from "../../recipeBook/turnOffRecipeButtons/r
 import recipeButtonTurnedOnReducer from "../../recipeBook/recipeButtonTurnedOn/reducer/recipeButtonTurnedOnReducer";
 import retrieveMyRecipesReducer from "../../myRecipes/retrieveMyRecipes/reducer/retrieveMyRecipesReducer";
 import showNewRecipeFormReducer from "../../myRecipes/showNewRecipeForm/reducer/showNewRecipeFormReducer";
-import addNewRecipeReducer from "../../myRecipes/addMyRecipe/reducer/addNewRecipeReducer";
-import myRecipeErrorReducer from "../../myRecipes/myRecipeError/reducer/myRecipeErrorReducer";
 import toEditMyRecipeReducer from "../../myRecipes/toEditMyRecipe/reducer/toEditMyRecipeReducer";
 import myRecipePreviewReducer from "../../myRecipes/myRecipePreview/reducer/myRecipePreviewReducer";
 import updateMyProfileReducer from "../../login/updateMyProfile/reducer/updateMyProfileReducer";
 import userLoggedReducer from "../../login/userLogged/reducer/userLoggedReducer";
 import showMyPasswordReducer from "../../login/updateMyProfile/showMyPassword/reducer/showMyPasswordReducer";
 import changePasswordReducer from "../../login/updateMyProfile/changePassword/reducer/changePasswordReducer";
+import changeMyRecipesReducer from "../../myRecipes/changeMyRecipes/reducer/changeMyRecipesReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -43,14 +42,13 @@ const allReducers = combineReducers({
   recipeButtonTurnedOn: recipeButtonTurnedOnReducer,
   myRecipes: retrieveMyRecipesReducer,
   newRecipeFormShow: showNewRecipeFormReducer,
-  addNewRecipe: addNewRecipeReducer,
-  myRecipeError: myRecipeErrorReducer,
   toEditMyRecipe: toEditMyRecipeReducer,
   myRecipePreview: myRecipePreviewReducer,
   updateMyProfile: updateMyProfileReducer,
   isUserLogged: userLoggedReducer,
   isMyPasswordFormShowed: showMyPasswordReducer,
   isUserPasswordChanged: changePasswordReducer,
+  isMyRecipeChanged: changeMyRecipesReducer,
 });
 
 export default allReducers;

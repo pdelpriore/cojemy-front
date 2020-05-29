@@ -101,15 +101,6 @@ export const showNewRecipeFormCases = Object.freeze({
   FORM_SHOWED: "showNewRecipeFormCasesFormShowed",
 });
 
-export const addNewRecipeCases = Object.freeze({
-  RECIPE_ADDED: "addNewRecipeCasesRecipeAdded",
-});
-
-export const newRecipeErrorCases = Object.freeze({
-  ERROR_RECEIVED: "newRecipeErrorCasesErrorReceived",
-  CLEAR_STATE: "newRecipeErrorCasesClearState",
-});
-
 export const toEditMyRecipeCases = Object.freeze({
   MY_RECIPE_TO_EDIT: "toEditMyRecipeCasesMyRecipeToEdit",
   CLEAR_STATE: "toEditMyRecipeCasesClearState",
@@ -138,4 +129,11 @@ export const changePasswordCases = Object.freeze({
   PASSWORD_CHANGED: "changePasswordCasesPasswordChanged",
   ERROR: "changePasswordCasesError",
   CLEAR_STATE: "changePasswordCasesClearState",
+});
+
+export const changeMyRecipesCases = Object.freeze({
+  LOADING: "changeMyRecipesCasesLoading",
+  RECIPE_UPDATED: "changeMyRecipesCasesRecipeUpdated",
+  ERROR: "changeMyRecipesCasesError",
+  CLEAR_STATE: "changeMyRecipesCasesClearState",
 });

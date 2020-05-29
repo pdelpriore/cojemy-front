@@ -12,7 +12,7 @@ import MyRecipesForm from "../../forms/myRecipes/myRecipesForm";
 import Notification from "../../components/notifications/Notification";
 import { useDispatch, useSelector } from "react-redux";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
-import { capitalize, capitalizeFirst } from "../../util/Util";
+import { capitalize } from "../../util/Util";
 import "./myRecipes.css";
 
 const MyRecipes = ({ match: { path, url, isExact } }) => {
@@ -23,7 +23,9 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
   const { myRecipePreviewShowed } = useSelector(
     (state) => state.myRecipePreview
   );
-  const { myRecipeErrorReceived } = useSelector((state) => state.myRecipeError);
+  const { myRecipeChangeError } = useSelector(
+    (state) => state.isMyRecipeChanged
+  );
   const props = useSpring({
     opacity: 1,
     config: { duration: 200 },
@@ -119,27 +121,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
                 <Row className="mb-5" />
                 <Row className="mb-5" />
                 <Row className="mb-4" />
-                <Notification
-                  notificationMessage={
-                    myRecipeErrorReceived &&
-                    myRecipeErrorReceived ===
-                      capitalizeFirst(strings.myRecipes.error.RECIPE_EXISTS)
-                      ? myRecipeErrorReceived
-                      : myRecipeErrorReceived &&
-                        myRecipeErrorReceived ===
-                          capitalizeFirst(
-                            strings.myRecipes.error.TITLE_UNACCEPTABLE
-                          )
-                      ? myRecipeErrorReceived
-                      : myRecipeErrorReceived &&
-                        myRecipeErrorReceived ===
-                          capitalizeFirst(
-                            strings.myRecipes.error.DESCRIPTION_UNACCEPTABLE
-                          )
-                      ? myRecipeErrorReceived
-                      : null
-                  }
-                />
+                <Notification notificationMessage={myRecipeChangeError} />
               </Col>
               <Col xs={1} />
             </Row>

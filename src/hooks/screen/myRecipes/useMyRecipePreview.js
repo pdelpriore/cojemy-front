@@ -1,5 +1,5 @@
 import { toEditMyRecipe } from "../../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
-import { removeMyRecipe } from "../../../redux/myRecipes/retrieveMyRecipes/thunk/retrieveMyRecipesThunk";
+import { removeMyRecipe } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useMyRecipePreview = () => {
