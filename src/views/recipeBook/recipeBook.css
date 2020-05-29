@@ -195,7 +195,8 @@
   margin-bottom: 2%;
 }
 .recipeDetails-comments-photo {
-  width: 1.8vw;
+  width: 30px;
+  height: 30px;
   margin-right: 2%;
   border-radius: 50%;
 }
