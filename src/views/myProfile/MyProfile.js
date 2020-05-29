@@ -33,6 +33,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
   const { myPasswordFormShowed } = useSelector(
     (state) => state.isMyPasswordFormShowed
   );
+  const { loading } = useSelector((state) => state.isAccountRemoved);
   const { userData } = useSelector((state) => state.login);
   const {
     showRemoveAccount,
@@ -108,9 +109,10 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
                 <p className="myprofile-remove-account-text">
                   {capitalizeFirst(strings.myProfile.REMOVE_ACCOUNT)}
                 </p>
-                {true && (
+                {!loading && (
                   <div>
                     <FontAwesomeIcon
+                      onClick={handleDeleteAccount}
                       className="myprofile-remove-account-icon yes"
                       icon={faCheckCircle}
                     />
@@ -121,7 +123,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
                     />
                   </div>
                 )}
-                {false && (
+                {loading && (
                   <>
                     <Spinner animation="border" variant="dark" />
                     <p className="myprofile-points">...</p>
