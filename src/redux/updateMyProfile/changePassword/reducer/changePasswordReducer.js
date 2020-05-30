@@ -1,4 +1,4 @@
-import { changePasswordCases } from "../../../../config/cases/Cases";
+import { changePasswordCases } from "../../../config/cases/Cases";
 
 const initialState = {
   loading: false,

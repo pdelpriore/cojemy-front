@@ -1,4 +1,4 @@
-import { loginCases } from "../../config/cases/Cases";
+import { loginCases } from "../../../config/cases/Cases";
 
 const initialState = {
   loading: false,

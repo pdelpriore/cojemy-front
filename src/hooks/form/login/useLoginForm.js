@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { loginUser } from "../../../redux/login/thunk/loginThunk";
+import { loginUser } from "../../../redux/login/loginUser/thunk/loginThunk";
 import { useSelector, useDispatch } from "react-redux";
 
 const useLoginForm = () => {

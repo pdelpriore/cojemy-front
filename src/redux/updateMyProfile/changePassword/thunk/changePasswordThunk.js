@@ -1,6 +1,6 @@
-import { changePasswordCases } from "../../../../config/cases/Cases";
+import { changePasswordCases } from "../../../config/cases/Cases";
 import { changePasswordQuery } from "../query/changePasswordQuery";
-import { strings } from "../../../../../strings/Strings";
+import { strings } from "../../../../strings/Strings";
 
 export const changeUserPassword = (
   currentPass,

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { loginUserGoogle } from "../../../redux/login/thunk/loginThunk";
+import { loginUserGoogle } from "../../../redux/login/loginUser/thunk/loginThunk";
 
 const useGoogleLogin = () => {
   const dispatch = useDispatch();

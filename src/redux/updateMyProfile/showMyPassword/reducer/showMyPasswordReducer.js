@@ -1,4 +1,4 @@
-import { showMyPasswordFormCases } from "../../../../config/cases/Cases";
+import { showMyPasswordFormCases } from "../../../config/cases/Cases";
 
 const initialState = {
   myPasswordFormShowed: false,

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { clearLoginState } from "../../redux/login/thunk/loginThunk";
+import { clearLoginState } from "../../redux/login/loginUser/thunk/loginThunk";
 import {
   clearLogoutState,
   logoutUser,

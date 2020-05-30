@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { removeAccount } from "../../../redux/login/updateMyProfile/removeAccount/thunk/removeAccountThunk";
+import { removeAccount } from "../../../redux/updateMyProfile/removeAccount/thunk/removeAccountThunk";
 import { logoutUser } from "../../../redux/logout/thunk/logoutThunk";
-import { removeAccountClearState } from "../../../redux/login/updateMyProfile/removeAccount/thunk/removeAccountThunk";
+import { removeAccountClearState } from "../../../redux/updateMyProfile/removeAccount/thunk/removeAccountThunk";
 import { useSelector, useDispatch } from "react-redux";
 
 const useMyProfile = () => {

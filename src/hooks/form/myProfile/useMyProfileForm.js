@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { getImage } from "../../../shared/getImage";
-import { updateUserProfile } from "../../../redux/login/thunk/loginThunk";
-import { updateMyProfile } from "../../../redux/login/updateMyProfile/thunk/updateMyProfileThunk";
+import { updateUserProfile } from "../../../redux/login/loginUser/thunk/loginThunk";
+import { updateMyProfile } from "../../../redux/updateMyProfile/updateProfile/thunk/updateMyProfileThunk";
 import { useSelector, useDispatch } from "react-redux";
 import { userGooglePhoto } from "../../../shared/testWordsArray";
 

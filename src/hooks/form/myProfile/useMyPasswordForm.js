@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changeUserPassword } from "../../../redux/login/updateMyProfile/changePassword/thunk/changePasswordThunk";
-import { showMyPasswordForm } from "../../../redux/login/updateMyProfile/showMyPassword/thunk/showMyPasswordThunk";
+import { changeUserPassword } from "../../../redux/updateMyProfile/changePassword/thunk/changePasswordThunk";
+import { showMyPasswordForm } from "../../../redux/updateMyProfile/showMyPassword/thunk/showMyPasswordThunk";
 
 const useMyPasswordForm = () => {
   const dispatch = useDispatch();

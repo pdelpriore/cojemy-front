@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
 import { clearRemindPasswordState } from "../../redux/remindPassword/thunk/remindPasswordThunk";
-import { clearLoginErrorState } from "../../redux/login/thunk/loginThunk";
+import { clearLoginErrorState } from "../../redux/login/loginUser/thunk/loginThunk";
 import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
-import { changeUserPasswordClearState } from "../../redux/login/updateMyProfile/changePassword/thunk/changePasswordThunk";
+import { changeUserPasswordClearState } from "../../redux/updateMyProfile/changePassword/thunk/changePasswordThunk";
 import { changeMyRecipesClearState } from "../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 
 const useNotification = (notificationMessage) => {

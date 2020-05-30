@@ -1,6 +1,6 @@
-import { removeAccountCases } from "../../../../config/cases/Cases";
+import { removeAccountCases } from "../../../config/cases/Cases";
 import { removeAccountQuery } from "../query/removeAccountQuery";
-import { strings } from "../../../../../strings/Strings";
+import { strings } from "../../../../strings/Strings";
 
 export const removeAccount = (email) => {
   return async (dispatch, getState) => {

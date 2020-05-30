@@ -2,11 +2,11 @@ import {
   loginCases,
   updateMyProfileCases,
   userLoggedCases,
-} from "../../config/cases/Cases";
+} from "../../../config/cases/Cases";
 import { loginQuery } from "../query/loginQuery";
 import { googleLoginQuery } from "../query/googleLoginQuery";
 import { updateUserProfileQuery } from "../query/updateUserProfileQuery";
-import { strings } from "../../../strings/Strings";
+import { strings } from "../../../../strings/Strings";
 
 export const loginUser = (email, password) => {
   return async (dispatch, getState) => {

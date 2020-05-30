@@ -1,4 +1,4 @@
-import { removeAccountCases } from "../../../../config/cases/Cases";
+import { removeAccountCases } from "../../../config/cases/Cases";
 
 const initialState = {
   loading: false,

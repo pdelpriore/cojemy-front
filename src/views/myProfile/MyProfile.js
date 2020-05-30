@@ -13,7 +13,7 @@ import {
   faTimesCircle,
 } from "@fortawesome/free-regular-svg-icons";
 import useMyProfile from "../../hooks/screen/myProfile/useMyProfile";
-import { showMyPasswordForm } from "../../redux/login/updateMyProfile/showMyPassword/thunk/showMyPasswordThunk";
+import { showMyPasswordForm } from "../../redux/updateMyProfile/showMyPassword/thunk/showMyPasswordThunk";
 import { capitalizeFirst } from "../../util/Util";
 import { useSpring, animated } from "react-spring";
 import { strings } from "../../strings/Strings";

@@ -3,7 +3,7 @@ import signupReducer from "../../signup/reducer/SignupReducer";
 import customerContactReducer from "../../customerContact/reducer/customerContactReducer";
 import showRemindPassReducer from "../../showRemindPass/reducer/showRemindPassReducer";
 import remindPasswordReducer from "../../remindPassword/reducer/remindPasswordReducer";
-import loginReducer from "../../login/reducer/loginReducer";
+import loginReducer from "../../login/loginUser/reducer/loginReducer";
 import logoutReducer from "../../logout/reducer/logoutReducer";
 import googleSignupReducer from "../../googleSignup/reducer/googleSignupReducer";
 import retrieveRecipesReducer from "../../recipeBook/retrieveRecipe/reducer/retrieveRecipesReducer";
@@ -18,12 +18,12 @@ import retrieveMyRecipesReducer from "../../myRecipes/retrieveMyRecipes/reducer/
 import showNewRecipeFormReducer from "../../myRecipes/showNewRecipeForm/reducer/showNewRecipeFormReducer";
 import toEditMyRecipeReducer from "../../myRecipes/toEditMyRecipe/reducer/toEditMyRecipeReducer";
 import myRecipePreviewReducer from "../../myRecipes/myRecipePreview/reducer/myRecipePreviewReducer";
-import updateMyProfileReducer from "../../login/updateMyProfile/reducer/updateMyProfileReducer";
+import updateMyProfileReducer from "../../updateMyProfile/updateProfile/reducer/updateMyProfileReducer";
 import userLoggedReducer from "../../login/userLogged/reducer/userLoggedReducer";
-import showMyPasswordReducer from "../../login/updateMyProfile/showMyPassword/reducer/showMyPasswordReducer";
-import changePasswordReducer from "../../login/updateMyProfile/changePassword/reducer/changePasswordReducer";
+import showMyPasswordReducer from "../../updateMyProfile/showMyPassword/reducer/showMyPasswordReducer";
+import changePasswordReducer from "../../updateMyProfile/changePassword/reducer/changePasswordReducer";
 import changeMyRecipesReducer from "../../myRecipes/changeMyRecipes/reducer/changeMyRecipesReducer";
-import removeAccountReducer from "../../login/updateMyProfile/removeAccount/reducer/removeAccountReducer";
+import removeAccountReducer from "../../updateMyProfile/removeAccount/reducer/removeAccountReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
