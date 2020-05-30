@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { removeAccount } from "../../../redux/login/updateMyProfile/removeAccount/thunk/removeAccountThunk";
 import { logoutUser } from "../../../redux/logout/thunk/logoutThunk";
+import { removeAccountClearState } from "../../../redux/login/updateMyProfile/removeAccount/thunk/removeAccountThunk";
 import { useSelector, useDispatch } from "react-redux";
 
 const useMyProfile = () => {
@@ -26,7 +27,10 @@ const useMyProfile = () => {
   };
 
   useEffect(() => {
-    if (accountRemoved) dispatch(logoutUser(userData.email));
+    if (accountRemoved) {
+      dispatch(removeAccountClearState());
+      dispatch(logoutUser(userData.email));
+    }
   }, [accountRemoved, dispatch]);
 
   return { showRemoveAccount, handleTrash, handleCancel, handleDeleteAccount };
