@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
-import { clearRemindPasswordState } from "../../redux/remindPassword/thunk/remindPasswordThunk";
+import { clearRemindPasswordState } from "../../redux/remindPassword/remindUserPassword/thunk/remindPasswordThunk";
 import { clearLoginErrorState } from "../../redux/login/loginUser/thunk/loginThunk";
 import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
 import { changeUserPasswordClearState } from "../../redux/updateMyProfile/changePassword/thunk/changePasswordThunk";

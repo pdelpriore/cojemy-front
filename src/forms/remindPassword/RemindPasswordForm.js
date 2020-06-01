@@ -3,7 +3,7 @@ import { Row, Col, Button, Form, Spinner } from "react-bootstrap";
 import { capitalizeFirst } from "../../util/Util";
 import useRemindPassForm from "../../hooks/form/remindPass/useRemindPassForm";
 import { useSpring, animated } from "react-spring";
-import { showRemindPassComponent } from "../../redux/showRemindPass/thunk/showRemindPassThunk";
+import { showRemindPassComponent } from "../../redux/remindPassword/showRemindPass/thunk/showRemindPassThunk";
 import { useSelector, useDispatch } from "react-redux";
 import { strings } from "../../strings/Strings";
 import "./remindPassword.css";

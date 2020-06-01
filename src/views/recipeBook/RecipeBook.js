@@ -22,7 +22,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
     config: { duration: 200 },
     from: { opacity: 0 },
   });
-  const { detailsShowed } = useSelector((state) => state.showRecipeDetails);
+  const { detailsShowed } = useSelector((state) => state.isRecipeDetailsShowed);
   const { recipesError } = useSelector((state) => state.recipeBook);
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toEditRateComment } from "../../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
-import { hideRateCommentForm } from "../../../redux/recipeBook/hideRateCommentForm/thunk/hideRateCommentFormThunk";
+import { changeRecipeListItem } from "../../../redux/recipeBook/changeRecipeListItem/thunk/changeRecipeListItemThunk";
 import {
   recipeDetailsClearState,
   removeRecipeRateAndComment,
@@ -22,7 +22,7 @@ const useRecipeDetails = () => {
   };
 
   const handleEditClick = (data) => {
-    dispatch(hideRateCommentForm(false));
+    dispatch(changeRecipeListItem(false));
     dispatch(toEditRateComment(data));
   };
 

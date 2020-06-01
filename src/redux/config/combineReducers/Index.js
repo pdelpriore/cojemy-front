@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import signupReducer from "../../signup/reducer/SignupReducer";
 import customerContactReducer from "../../customerContact/reducer/customerContactReducer";
-import showRemindPassReducer from "../../showRemindPass/reducer/showRemindPassReducer";
-import remindPasswordReducer from "../../remindPassword/reducer/remindPasswordReducer";
+import showRemindPassReducer from "../../remindPassword/showRemindPass/reducer/showRemindPassReducer";
+import remindPasswordReducer from "../../remindPassword/remindUserPassword/reducer/remindPasswordReducer";
 import loginReducer from "../../login/loginUser/reducer/loginReducer";
 import logoutReducer from "../../logout/reducer/logoutReducer";
 import googleSignupReducer from "../../googleSignup/reducer/googleSignupReducer";
@@ -10,8 +10,8 @@ import retrieveRecipesReducer from "../../recipeBook/retrieveRecipe/reducer/retr
 import showRecipeDetailsReducer from "../../recipeBook/showRecipeDetails/reducer/showRecipeDetailsReducer";
 import recipeCategorySelectedReducer from "../../recipeBook/recipeCategorySelected/reducer/recipeCategorySelectedReducer";
 import toEditRecipeRateCommentReducer from "../../recipeBook/toEditRecipeRateComment/reducer/toEditRateCommentReducer";
-import hideRateCommentFormReducer from "../../recipeBook/hideRateCommentForm/reducer/hideRateCommentFormReducer";
-import addRateCommentReducer from "../../recipeBook/addRateComment/reducer/addRateCommentReducer";
+import changeRecipeListItemReducer from "../../recipeBook/changeRecipeListItem/reducer/changeRecipeListItemReducer";
+import changeRateCommentReducer from "../../recipeBook/changeRateComment/reducer/changeRateCommentReducer";
 import turnOffRecipeButtonsReducer from "../../recipeBook/turnOffRecipeButtons/reducer/turnOffRecipeButtonsReducer";
 import recipeButtonTurnedOnReducer from "../../recipeBook/recipeButtonTurnedOn/reducer/recipeButtonTurnedOnReducer";
 import retrieveMyRecipesReducer from "../../myRecipes/retrieveMyRecipes/reducer/retrieveMyRecipesReducer";
@@ -28,21 +28,21 @@ import removeAccountReducer from "../../updateMyProfile/removeAccount/reducer/re
 const allReducers = combineReducers({
   signup: signupReducer,
   customerContact: customerContactReducer,
-  showRemindPass: showRemindPassReducer,
+  isRemindPassFormShowed: showRemindPassReducer,
   remindPass: remindPasswordReducer,
   login: loginReducer,
   logout: logoutReducer,
   signGoogle: googleSignupReducer,
   recipeBook: retrieveRecipesReducer,
-  showRecipeDetails: showRecipeDetailsReducer,
+  isRecipeDetailsShowed: showRecipeDetailsReducer,
   recipeCategorySelected: recipeCategorySelectedReducer,
   toEditRateComment: toEditRecipeRateCommentReducer,
-  hideRateCommentForm: hideRateCommentFormReducer,
-  addRateComment: addRateCommentReducer,
+  isRecipeListItemChanged: changeRecipeListItemReducer,
+  isRateCommentChanged: changeRateCommentReducer,
   turnOffRecipeButtons: turnOffRecipeButtonsReducer,
   recipeButtonTurnedOn: recipeButtonTurnedOnReducer,
   myRecipes: retrieveMyRecipesReducer,
-  newRecipeFormShow: showNewRecipeFormReducer,
+  isNewRecipeFormShowed: showNewRecipeFormReducer,
   toEditMyRecipe: toEditMyRecipeReducer,
   myRecipePreview: myRecipePreviewReducer,
   updateMyProfile: updateMyProfileReducer,

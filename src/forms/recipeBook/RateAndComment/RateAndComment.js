@@ -22,7 +22,9 @@ const RateAndComment = ({ recipeId }) => {
     handleInputChange,
     handleOnSubmit,
   } = useRateAndComment();
-  const { detailsLoading } = useSelector((state) => state.showRecipeDetails);
+  const { detailsLoading } = useSelector(
+    (state) => state.isRecipeDetailsShowed
+  );
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const stars = initializeStarRating(strings.rating.RATE_AND_COMMENT);
   for (let i = 0; i < rate; i++) {

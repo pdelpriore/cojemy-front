@@ -1,6 +1,6 @@
-import { remindPassCases } from "../../config/cases/Cases";
+import { remindPassCases } from "../../../config/cases/Cases";
 import { remindPasswordQuery } from "../query/remindPasswordQuery";
-import { strings } from "../../../strings/Strings";
+import { strings } from "../../../../strings/Strings";
 
 export const remindMePassword = (email) => {
   return async (dispatch, getState) => {

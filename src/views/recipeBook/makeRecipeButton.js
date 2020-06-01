@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import useRecipeButton from "../../hooks/screen/recipeBook/useRecipeButton";
-import { addRateComment } from "../../redux/recipeBook/addRateComment/thunk/addRateCommentThunk";
+import { changeRateComment } from "../../redux/recipeBook/changeRateComment/thunk/changeRateCommentThunk";
 import { useSelector, useDispatch } from "react-redux";
 import { capitalize } from "../../util/Util";
 import { buttonItemsArray } from "../../shared/buttonItemsArray";
@@ -12,9 +12,11 @@ const MakeRecipeButton = () => {
   const { recipeButtonId } = useSelector(
     (state) => state.recipeCategorySelected
   );
-  const { rateCommentAdded } = useSelector((state) => state.addRateComment);
+  const { rateCommentAdded } = useSelector(
+    (state) => state.isRateCommentChanged
+  );
   const { detailsDataRetrieved } = useSelector(
-    (state) => state.showRecipeDetails
+    (state) => state.isRecipeDetailsShowed
   );
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons
@@ -42,7 +44,7 @@ const MakeRecipeButton = () => {
       );
     }
     return () => {
-      dispatch(addRateComment(false));
+      dispatch(changeRateComment(false));
     };
   }, [searchInputFilled, rateCommentAdded, dispatch]);
 

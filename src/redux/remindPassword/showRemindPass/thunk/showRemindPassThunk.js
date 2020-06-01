@@ -1,4 +1,4 @@
-import { showRemindPassCases } from "../../config/cases/Cases";
+import { showRemindPassCases } from "../../../config/cases/Cases";
 
 export const showRemindPassComponent = (bool) => {
   return (dispatch, getState) => {

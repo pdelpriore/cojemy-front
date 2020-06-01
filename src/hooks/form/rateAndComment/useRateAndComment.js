@@ -16,9 +16,11 @@ const useRateAndComment = () => {
   const { userData } = useSelector((state) => state.login);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const { recipeListItemChanged } = useSelector(
-    (state) => state.hideRateCommentForm
+    (state) => state.isRecipeListItemChanged
   );
-  const { rateCommentAdded } = useSelector((state) => state.addRateComment);
+  const { rateCommentAdded } = useSelector(
+    (state) => state.isRateCommentChanged
+  );
 
   const handleMouseEnter = (e) => {
     setRateHover(e.currentTarget.dataset.value);

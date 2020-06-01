@@ -30,12 +30,11 @@ const RecipeDetails = () => {
     config: { duration: 300 },
     from: { opacity: 0 },
   });
-  const { detailsDataRetrieved } = useSelector(
-    (state) => state.showRecipeDetails
-  );
   const { userData } = useSelector((state) => state.login);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
-  const { detailsLoading } = useSelector((state) => state.showRecipeDetails);
+  const { detailsLoading, detailsDataRetrieved } = useSelector(
+    (state) => state.isRecipeDetailsShowed
+  );
   const isCommented =
     detailsDataRetrieved.comments.length > 0 &&
     detailsDataRetrieved.comments.filter(

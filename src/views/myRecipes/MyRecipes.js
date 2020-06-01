@@ -18,7 +18,7 @@ import "./myRecipes.css";
 const MyRecipes = ({ match: { path, url, isExact } }) => {
   const dispatch = useDispatch();
   const { newRecipeFormShowed } = useSelector(
-    (state) => state.newRecipeFormShow
+    (state) => state.isNewRecipeFormShowed
   );
   const { myRecipePreviewShowed } = useSelector(
     (state) => state.myRecipePreview

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { turnOffRecipeButtons } from "../../../redux/recipeBook/turnOffRecipeButtons/thunk/turnOffRecipeButtonsThunk";
 import { searchRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
-import { addRateComment } from "../../../redux/recipeBook/addRateComment/thunk/addRateCommentThunk";
+import { changeRateComment } from "../../../redux/recipeBook/changeRateComment/thunk/changeRateCommentThunk";
 
 const useSearchRecipe = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,9 @@ const useSearchRecipe = () => {
   const { recipeButtonPressed } = useSelector(
     (state) => state.recipeButtonTurnedOn
   );
-  const { rateCommentAdded } = useSelector((state) => state.addRateComment);
+  const { rateCommentAdded } = useSelector(
+    (state) => state.isRateCommentChanged
+  );
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons
   );
@@ -48,7 +50,7 @@ const useSearchRecipe = () => {
       }
     }
     return () => {
-      dispatch(addRateComment(false));
+      dispatch(changeRateComment(false));
     };
   }, [
     searchInputFilled,

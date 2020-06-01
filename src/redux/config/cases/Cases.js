@@ -74,12 +74,12 @@ export const toEditRecipeRateCommentCases = Object.freeze({
   CLEAR_STATE: "toEditRecipeRateCommentClearState",
 });
 
-export const hideRateCommentFormCases = Object.freeze({
-  RECIPE_LIST_ITEM_CHANGED: "hideRateCommentFormCasesRecipeListItemChanged",
+export const changeRecipeListItemCases = Object.freeze({
+  RECIPE_LIST_ITEM_CHANGED: "changeRecipeListItemCasesRecipeListItemChanged",
 });
 
-export const addRateCommentCases = Object.freeze({
-  RATE_COMMENT_ADDED: "addRateCommentCasesRateCommentAdded",
+export const changeRateCommentCases = Object.freeze({
+  RATE_COMMENT_CHANGED: "changeRateCommentCasesRateCommentChanged",
 });
 
 export const turnOffRecipeButtonsCases = Object.freeze({

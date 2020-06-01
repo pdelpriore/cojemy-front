@@ -9,7 +9,7 @@ import { myRecipesClearState } from "../../redux/myRecipes/retrieveMyRecipes/thu
 import { recipeDetailsClearState } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { categorySelectedClearState } from "../../redux/recipeBook/recipeCategorySelected/thunk/recipeCategorySelectedThunk";
 import { recipeBookClearState } from "../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
-import { hideRateCommentForm } from "../../redux/recipeBook/hideRateCommentForm/thunk/hideRateCommentFormThunk";
+import { changeRecipeListItem } from "../../redux/recipeBook/changeRecipeListItem/thunk/changeRecipeListItemThunk";
 import { toEditRateCommentClearState } from "../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { myRecipePreviewClearState } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
@@ -85,7 +85,7 @@ const MakeNavMenu = ({ type }) => {
       dispatch(recipeBookClearState());
       dispatch(toEditRateCommentClearState());
       dispatch(toEditMyRecipeClearState());
-      dispatch(hideRateCommentForm(true));
+      dispatch(changeRecipeListItem(true));
     }
     if (userData.email === undefined) dispatch(clearLogoutState());
   }, [userData, userLoggedOut, dispatch]);

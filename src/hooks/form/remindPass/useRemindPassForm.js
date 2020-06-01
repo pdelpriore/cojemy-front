@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { remindMePassword } from "../../../redux/remindPassword/thunk/remindPasswordThunk";
-import { showRemindPassComponent } from "../../../redux/showRemindPass/thunk/showRemindPassThunk";
+import { remindMePassword } from "../../../redux/remindPassword/remindUserPassword/thunk/remindPasswordThunk";
+import { showRemindPassComponent } from "../../../redux/remindPassword/showRemindPass/thunk/showRemindPassThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRemindPassForm = () => {

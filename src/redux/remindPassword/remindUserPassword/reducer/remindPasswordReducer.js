@@ -1,4 +1,4 @@
-import { remindPassCases } from "../../config/cases/Cases";
+import { remindPassCases } from "../../../config/cases/Cases";
 
 const initialState = {
   loading: false,
