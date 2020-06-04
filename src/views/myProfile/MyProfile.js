@@ -123,12 +123,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
                     />
                   </div>
                 )}
-                {loading && (
-                  <>
-                    <Spinner animation="border" variant="dark" />
-                    <p className="myprofile-points">...</p>
-                  </>
-                )}
+                {loading && <Spinner animation="border" variant="dark" />}
               </div>
             </Col>
             <Col xs={2} />
