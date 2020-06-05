@@ -38,7 +38,7 @@ export const loginUser = (email, password) => {
   };
 };
 
-export const loginUserGoogle = (email, token) => {
+export const loginUserGoogle = (email, tokenId) => {
   return async (dispatch, getState) => {
     dispatch({ type: loginCases.LOADING_GOOGLE, payload: true });
     const bodyRequest = googleLoginQuery(email);
@@ -46,7 +46,7 @@ export const loginUserGoogle = (email, token) => {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
         headers: {
-          "x-auth": token,
+          "x-auth": tokenId,
           "Content-Type": "application/json",
         },
         credentials: "include",

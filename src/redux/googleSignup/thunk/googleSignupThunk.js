@@ -2,7 +2,7 @@ import { signupGoogleUserCases } from "../../config/cases/Cases";
 import { googleSignupQuery } from "../query/googleSignupQuery";
 import { strings } from "../../../strings/Strings";
 
-export const signupGoogleUser = (name, email, photo) => {
+export const signupGoogleUser = (name, email, photo, tokenId) => {
   return async (dispatch, getState) => {
     dispatch({ type: signupGoogleUserCases.LOADING, payload: true });
     const bodyRequest = googleSignupQuery(name, email, photo);
@@ -10,6 +10,7 @@ export const signupGoogleUser = (name, email, photo) => {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
         headers: {
+          "x-auth": tokenId,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(bodyRequest),

@@ -9,7 +9,8 @@ const useGoogleSignup = () => {
       signupGoogleUser(
         response.profileObj.name,
         response.profileObj.email,
-        response.profileObj.imageUrl
+        response.profileObj.imageUrl,
+        response.tokenId
       )
     );
   };
