@@ -28,7 +28,7 @@ const useNewRecipeForm = () => {
       ...inputs,
       [e.target.name]:
         e.target.name === strings.myRecipes.inputName.TITLE
-          ? capitalizeFirst(e.target.value.replace(/[^0-9a-zA-Z-_.:,!]+/g, ""))
+          ? capitalizeFirst(e.target.value.replace(/[^0-9a-zA-Z-_.:,! ]+/g, ""))
           : e.target.name === strings.myRecipes.inputName.COOK_TIME
           ? parseInt(e.target.value) > 300
             ? (e.target.value = "300")
