@@ -162,7 +162,7 @@ const MakeNavMenu = ({ type }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   if (userData.email !== undefined) {
-                    dispatch(logoutUser(userData.email));
+                    dispatch(logoutUser(userData._id, userData.email));
                   }
                 }}
                 to={item.path}

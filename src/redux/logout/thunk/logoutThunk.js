@@ -2,10 +2,10 @@ import { logoutCases } from "../../config/cases/Cases";
 import { logoutQuery } from "../query/logoutQuery";
 import { strings } from "../../../strings/Strings";
 
-export const logoutUser = (email) => {
+export const logoutUser = (userId, email) => {
   return async (dispatch, getState) => {
     dispatch({ type: logoutCases.LOADING, payload: true });
-    const bodyRequest = logoutQuery(email);
+    const bodyRequest = logoutQuery(userId, email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",

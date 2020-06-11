@@ -29,7 +29,7 @@ const useMyProfile = () => {
   useEffect(() => {
     if (accountRemoved) {
       dispatch(removeAccountClearState());
-      dispatch(logoutUser(userData.email));
+      dispatch(logoutUser(userData._id, userData.email));
     }
   }, [accountRemoved, dispatch]);
 
