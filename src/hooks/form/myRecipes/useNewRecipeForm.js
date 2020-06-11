@@ -144,6 +144,7 @@ const useNewRecipeForm = () => {
           parseInt(inputs.cookTime),
           inputs.ingredients.filter((ingredient) => ingredient !== ""),
           inputs.description,
+          userData._id,
           userData.email
         )
       );
