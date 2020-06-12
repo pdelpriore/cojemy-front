@@ -36,7 +36,7 @@ const useSearchRecipe = () => {
         dispatch(searchRecipe(inputs.recipe, userData._id, userData.email));
       }
     }
-  }, [inputs.recipe, userData.email, dispatch]);
+  }, [inputs.recipe, userData._id, userData.email, dispatch]);
 
   useEffect(() => {
     setInputs({});

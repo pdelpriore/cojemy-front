@@ -31,7 +31,7 @@ const useMyProfile = () => {
       dispatch(removeAccountClearState());
       dispatch(logoutUser(userData._id, userData.email));
     }
-  }, [accountRemoved, dispatch]);
+  }, [accountRemoved, userData._id, userData.email, dispatch]);
 
   return { showRemoveAccount, handleTrash, handleCancel, handleDeleteAccount };
 };

@@ -34,7 +34,7 @@ const MyRecipesList = () => {
       dispatch(showNewRecipeForm(false));
       dispatch(myRecipePreviewClearState());
     };
-  }, [userData.email, recipeUpdated, dispatch]);
+  }, [userData._id, userData.email, recipeUpdated, dispatch]);
   timeago.register("fr", fr);
 
   return loadingMyRecipes ? (
