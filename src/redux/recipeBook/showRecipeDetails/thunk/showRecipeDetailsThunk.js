@@ -29,10 +29,16 @@ export const recipeDetailsClearState = () => {
   };
 };
 
-export const addRateAndComment = (recipeId, rate, comment, email) => {
+export const addRateAndComment = (recipeId, rate, comment, userId, email) => {
   return async (dispatch, getState) => {
     dispatch({ type: showRecipeDetailsCases.LOADING, payload: true });
-    const bodyRequest = addRateAndCommentQuery(recipeId, rate, comment, email);
+    const bodyRequest = addRateAndCommentQuery(
+      recipeId,
+      rate,
+      comment,
+      userId,
+      email
+    );
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",

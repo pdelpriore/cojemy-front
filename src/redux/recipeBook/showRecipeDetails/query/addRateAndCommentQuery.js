@@ -2,12 +2,13 @@ export const addRateAndCommentQuery = (
   recipeId,
   rateValue,
   commentContent,
+  userId,
   email
 ) => {
   return {
     query: `
                 mutation {
-                  addRecipeRateComment(recipeId: "${recipeId}", rateValue: ${rateValue}, commentContent: "${commentContent}" , email: "${email}") {
+                  addRecipeRateComment(recipeId: "${recipeId}", rateValue: ${rateValue}, commentContent: "${commentContent}", userId: "${userId}", email: "${email}") {
                       _id
                       title
                       picture

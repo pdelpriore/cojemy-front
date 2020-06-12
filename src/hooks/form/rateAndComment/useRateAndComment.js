@@ -57,7 +57,13 @@ const useRateAndComment = () => {
       );
     } else {
       dispatch(
-        addRateAndComment(recipeId, rate, inputs.comment, userData.email)
+        addRateAndComment(
+          recipeId,
+          rate,
+          inputs.comment,
+          userData._id,
+          userData.email
+        )
       );
     }
   };
