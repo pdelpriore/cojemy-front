@@ -28,7 +28,7 @@ const MyRecipesList = () => {
 
   useEffect(() => {
     if (userData.email) {
-      dispatch(getMyRecipes(userData.email));
+      dispatch(getMyRecipes(userData._id, userData.email));
     }
     return () => {
       dispatch(showNewRecipeForm(false));

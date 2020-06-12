@@ -2,10 +2,10 @@ import { retrieveMyRecipesCases } from "../../../config/cases/Cases";
 import { retrieveMyRecipesQuery } from "../query/retrieveMyRecipesQuery";
 import { strings } from "../../../../strings/Strings";
 
-export const getMyRecipes = (email) => {
+export const getMyRecipes = (userId, email) => {
   return async (dispatch, getState) => {
     dispatch({ type: retrieveMyRecipesCases.LOADING, payload: true });
-    const bodyRequest = retrieveMyRecipesQuery(email);
+    const bodyRequest = retrieveMyRecipesQuery(userId, email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
