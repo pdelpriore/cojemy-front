@@ -103,7 +103,12 @@ const useMyProfileForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      updateUserProfile(inputs.name, inputs.profileImage, userData.email)
+      updateUserProfile(
+        inputs.name,
+        inputs.profileImage,
+        userData._id,
+        userData.email
+      )
     );
   };
 

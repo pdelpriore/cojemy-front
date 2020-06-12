@@ -1,8 +1,8 @@
-export const updateUserProfileQuery = (name, profileImage, email) => {
+export const updateUserProfileQuery = (name, profileImage, userId, email) => {
   return {
     query: `
-            mutation($name: String!, $profileImage: ProfileImage, $email: String!) {
-                updateUserProfile(name: $name, profileImage: $profileImage, email: $email) {
+            mutation($name: String!, $profileImage: ProfileImage, $userId: ID!, $email: String!) {
+                updateUserProfile(name: $name, profileImage: $profileImage, userId: $userId, email: $email) {
                     _id
                     name
                     photo
@@ -11,6 +11,6 @@ export const updateUserProfileQuery = (name, profileImage, email) => {
                 }
             }
             `,
-    variables: { name, profileImage, email },
+    variables: { name, profileImage, userId, email },
   };
 };

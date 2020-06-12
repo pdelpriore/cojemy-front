@@ -72,10 +72,15 @@ export const loginUserGoogle = (email, tokenId) => {
   };
 };
 
-export const updateUserProfile = (name, profileImage, email) => {
+export const updateUserProfile = (name, profileImage, userId, email) => {
   return async (dispatch, getState) => {
     dispatch({ type: loginCases.LOADING, payload: true });
-    const bodyRequest = updateUserProfileQuery(name, profileImage, email);
+    const bodyRequest = updateUserProfileQuery(
+      name,
+      profileImage,
+      userId,
+      email
+    );
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
