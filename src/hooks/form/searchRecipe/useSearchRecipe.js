@@ -33,7 +33,7 @@ const useSearchRecipe = () => {
     } else {
       dispatch(turnOffRecipeButtons(true));
       if (userData.email) {
-        dispatch(searchRecipe(inputs.recipe, userData.email));
+        dispatch(searchRecipe(inputs.recipe, userData._id, userData.email));
       }
     }
   }, [inputs.recipe, userData.email, dispatch]);
@@ -46,7 +46,7 @@ const useSearchRecipe = () => {
   useEffect(() => {
     if (searchInputFilled) {
       if (userData.email) {
-        dispatch(searchRecipe(inputs.recipe, userData.email));
+        dispatch(searchRecipe(inputs.recipe, userData._id, userData.email));
       }
     }
     return () => {

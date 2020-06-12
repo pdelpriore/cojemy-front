@@ -41,10 +41,10 @@ export const getRecipe = (category, userId, email, skip, limit) => {
   };
 };
 
-export const searchRecipe = (recipeTitle, email) => {
+export const searchRecipe = (recipeTitle, userId, email) => {
   return async (dispatch, getState) => {
     dispatch({ type: retrieveRecipesCases.LOADING, payload: true });
-    const bodyRequest = searchRecipeQuery(recipeTitle, email);
+    const bodyRequest = searchRecipeQuery(recipeTitle, userId, email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",

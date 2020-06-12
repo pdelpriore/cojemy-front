@@ -1,8 +1,8 @@
-export const searchRecipeQuery = (recipeTitle, email) => {
+export const searchRecipeQuery = (recipeTitle, userId, email) => {
   return {
     query: `
-                query($recipeTitle: String!, $email: String!) {
-                  searchRecipe(recipeTitle: $recipeTitle, email: $email) {
+                query($recipeTitle: String!, $userId: ID!, $email: String!) {
+                  searchRecipe(recipeTitle: $recipeTitle, userId: $userId, email: $email) {
                       _id
                       title
                       picture
@@ -38,6 +38,6 @@ export const searchRecipeQuery = (recipeTitle, email) => {
                   }
                 }
                 `,
-    variables: { recipeTitle, email },
+    variables: { recipeTitle, userId, email },
   };
 };
