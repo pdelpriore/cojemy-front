@@ -2,10 +2,10 @@ import { removeAccountCases } from "../../../config/cases/Cases";
 import { removeAccountQuery } from "../query/removeAccountQuery";
 import { strings } from "../../../../strings/Strings";
 
-export const removeAccount = (email) => {
+export const removeAccount = (userId, email) => {
   return async (dispatch, getState) => {
     dispatch({ type: removeAccountCases.LOADING, payload: true });
-    const bodyRequest = removeAccountQuery(email);
+    const bodyRequest = removeAccountQuery(userId, email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",

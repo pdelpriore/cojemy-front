@@ -1,10 +1,10 @@
-export const removeAccountQuery = (email) => {
+export const removeAccountQuery = (userId, email) => {
   return {
     query: `
-                mutation($email: String!) {
-                    removeAccount(email: $email)
+                mutation($userId: ID!, $email: String!) {
+                    removeAccount(userId: $userId, email: $email)
                 }
                 `,
-    variables: { email },
+    variables: { userId, email },
   };
 };

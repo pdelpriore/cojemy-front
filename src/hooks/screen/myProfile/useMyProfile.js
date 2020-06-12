@@ -23,7 +23,7 @@ const useMyProfile = () => {
 
   const handleDeleteAccount = (e) => {
     e.preventDefault();
-    dispatch(removeAccount(userData.email));
+    dispatch(removeAccount(userData._id, userData.email));
   };
 
   useEffect(() => {
