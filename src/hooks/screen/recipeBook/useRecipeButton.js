@@ -30,7 +30,9 @@ const useRecipeButton = (buttonQty) => {
         initialState().map((bool, index) => (index === id ? !bool : bool))
       );
       if (userData.email) {
-        dispatch(getRecipe(category, userData.email, skip, limit));
+        dispatch(
+          getRecipe(category, userData._id, userData.email, skip, limit)
+        );
       }
     }
   };
