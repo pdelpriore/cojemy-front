@@ -11,7 +11,7 @@ const useMyRecipePreview = () => {
   };
 
   const handleTrashClick = (recipeId) => {
-    dispatch(removeMyRecipe(recipeId, userData.email));
+    dispatch(removeMyRecipe(recipeId, userData._id, userData.email));
   };
 
   return {

@@ -117,10 +117,10 @@ export const editMyRecipe = (
   };
 };
 
-export const removeMyRecipe = (recipeId, email) => {
+export const removeMyRecipe = (recipeId, userId, email) => {
   return async (dispatch, getState) => {
     dispatch({ type: changeMyRecipesCases.LOADING, payload: true });
-    const bodyRequest = removeMyRecipeQuery(recipeId, email);
+    const bodyRequest = removeMyRecipeQuery(recipeId, userId, email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",
