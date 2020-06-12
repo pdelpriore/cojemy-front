@@ -2,8 +2,8 @@ import { strings } from "../strings/Strings";
 import { unacceptableWordsArray } from "../shared/testWordsArray";
 import { capitalizeFirst } from "../util/Util";
 
-export const makeImageBinary = async (picture) => {
-  const result = await new Promise((resolve, reject) => {
+export const makeImageBinary = (picture) => {
+  return new Promise((resolve, reject) => {
     if (picture.length > 1) {
       picture = picture.splice(picture.length - 1, 1);
     }
@@ -26,5 +26,4 @@ export const makeImageBinary = async (picture) => {
       });
     };
   });
-  return result;
 };
