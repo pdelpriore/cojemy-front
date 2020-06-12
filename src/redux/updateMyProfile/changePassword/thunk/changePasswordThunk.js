@@ -6,6 +6,7 @@ export const changeUserPassword = (
   currentPass,
   newPass,
   confirmPass,
+  userId,
   email
 ) => {
   return async (dispatch, getState) => {
@@ -14,6 +15,7 @@ export const changeUserPassword = (
       currentPass,
       newPass,
       confirmPass,
+      userId,
       email
     );
     try {
