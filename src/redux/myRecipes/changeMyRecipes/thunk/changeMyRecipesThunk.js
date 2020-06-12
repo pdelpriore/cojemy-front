@@ -71,6 +71,7 @@ export const editMyRecipe = (
   cookTime,
   ingredients,
   description,
+  userId,
   email
 ) => {
   return async (dispatch, getState) => {
@@ -84,6 +85,7 @@ export const editMyRecipe = (
       cookTime,
       ingredients,
       description,
+      userId,
       email
     );
     try {
