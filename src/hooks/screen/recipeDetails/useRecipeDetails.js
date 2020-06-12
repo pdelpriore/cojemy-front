@@ -34,6 +34,7 @@ const useRecipeDetails = () => {
           commentId,
           recipeId,
           commentItemId,
+          userData._id,
           userData.email
         )
       );

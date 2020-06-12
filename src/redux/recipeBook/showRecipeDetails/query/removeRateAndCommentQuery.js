@@ -3,12 +3,13 @@ export const removeRateAndCommentQuery = (
   commentId,
   recipeId,
   commentItemId,
+  userId,
   email
 ) => {
   return {
     query: `
                     mutation {
-                      removeRecipeRateComment(rateId: "${rateId}", commentId: "${commentId}", recipeId: "${recipeId}", commentItemId: "${commentItemId}", email: "${email}") {
+                      removeRecipeRateComment(rateId: "${rateId}", commentId: "${commentId}", recipeId: "${recipeId}", commentItemId: "${commentItemId}", userId: "${userId}", email: "${email}") {
                           _id
                           title
                           picture

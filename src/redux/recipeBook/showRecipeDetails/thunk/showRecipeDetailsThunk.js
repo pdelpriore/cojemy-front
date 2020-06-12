@@ -124,6 +124,7 @@ export const removeRecipeRateAndComment = (
   commentId,
   recipeId,
   commentItemId,
+  userId,
   email
 ) => {
   return async (dispatch, getState) => {
@@ -133,6 +134,7 @@ export const removeRecipeRateAndComment = (
       commentId,
       recipeId,
       commentItemId,
+      userId,
       email
     );
     try {
