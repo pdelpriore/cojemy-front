@@ -75,6 +75,7 @@ export const editRecipeRateAndComment = (
   rateValue,
   commentId,
   commentContent,
+  userId,
   email
 ) => {
   return async (dispatch, getState) => {
@@ -85,6 +86,7 @@ export const editRecipeRateAndComment = (
       rateValue,
       commentId,
       commentContent,
+      userId,
       email
     );
     try {

@@ -4,12 +4,13 @@ export const editRateAndCommentQuery = (
   rateValue,
   commentId,
   commentContent,
+  userId,
   email
 ) => {
   return {
     query: `
                   mutation {
-                    editRecipeRateComment(recipeId: "${recipeId}", rateId: "${rateId}", rateValue: ${rateValue}, commentId: "${commentId}", commentContent: "${commentContent}" , email: "${email}") {
+                    editRecipeRateComment(recipeId: "${recipeId}", rateId: "${rateId}", rateValue: ${rateValue}, commentId: "${commentId}", commentContent: "${commentContent}", userId: "${userId}", email: "${email}") {
                         _id
                         title
                         picture

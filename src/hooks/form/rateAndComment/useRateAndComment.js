@@ -52,6 +52,7 @@ const useRateAndComment = () => {
           rate,
           rateAndComment.commentId,
           inputs.comment,
+          userData._id,
           userData.email
         )
       );
