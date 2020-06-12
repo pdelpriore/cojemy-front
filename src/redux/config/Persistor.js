@@ -1,6 +1,6 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
-import { encryptor } from "./Encryptor";
+import encryptor from "./Encryptor";
 import storage from "redux-persist/lib/storage";
 import allReducers from "./combineReducers/Index";
 import thunk from "redux-thunk";
