@@ -1,0 +1,40 @@
+.login-area {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff98c;
+  overflow: hidden;
+}
+.login-first-section {
+  height: 40vh;
+  background-color: #fff98c;
+  border-bottom: 2px #cb3b3b solid;
+  overflow: hidden;
+}
+.login-second-section {
+  height: 45vh;
+  background-color: #e0c45c;
+  border-bottom: 2px #333333 solid;
+  overflow: hidden;
+}
+.login-image {
+  width: 20vw;
+}
+.login-third-section {
+  height: 20vh;
+  background-color: #cb3b3b;
+  overflow: hidden;
+}
+.forgot-password {
+  position: relative;
+  top: 10%;
+  right: 1%;
+  font-family: "OpenSans-SemiBold";
+  font-size: 1vw;
+  color: #85203b;
+  text-align: right;
+  transition: 0.2s;
+}
+.forgot-password:hover {
+  cursor: pointer;
+  transform: translateY(2px);
+}

@@ -1,0 +1,49 @@
+.notification {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  width: fit-content;
+  height: fit-content;
+  border: 1px red solid;
+  box-shadow: 3px 4px 15px 1px rgba(0, 0, 0, 0.43);
+  background-color: #fffeb8;
+  animation: fadein 500ms;
+}
+.notification-icon-error {
+  color: #dc3545;
+  font-size: 2.5vw;
+  text-align: center;
+  width: 4.5vw;
+}
+.notification-icon-success {
+  color: #28a745;
+  font-size: 2.5vw;
+  text-align: center;
+  width: 4.5vw;
+}
+.notification-message {
+  font-family: "OpenSans-Regular";
+  color: #dc3545;
+  font-size: 1vw;
+  white-space: pre-wrap;
+  padding: 10px 10px 10px 0;
+}
+.notification-message-success {
+  font-family: "OpenSans-Regular";
+  color: #071a52;
+  font-size: 1vw;
+  white-space: pre-wrap;
+  padding: 10px 10px 10px 0;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    margin-top: 50px;
+  }
+  to {
+    opacity: 1;
+    margin-bottom: -50px;
+  }
+}
