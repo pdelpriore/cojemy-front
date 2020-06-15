@@ -1,13 +1,17 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { Row, Col, ListGroup, Image } from "react-bootstrap";
+import { Row, Col, ListGroup, Image, Button } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
+import { useSelector } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import MyEventsList from "./MyEventsList";
 import MakeEventButtons from "./makeEventButtons";
+import { capitalize } from "../../util/Util";
+import { strings } from "../../strings/Strings";
 import "./myEvents.css";
 
 const MyEvents = ({ match: { path, url, isExact } }) => {
+  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   const props = useSpring({
     opacity: 1,
     config: { duration: 200 },
@@ -39,7 +43,21 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-5" />
         <Row>
-          <Col xs={7} />
+          {eventButtonId === 1 ? (
+            <>
+              <Col xs={3} />
+              <Col xs={3}>
+                <Button variant="outline-dark">
+                  <div className="myevents-button-new-event">
+                    {capitalize(strings.myEvents.BUTTON_NEW_EVENT)}
+                  </div>
+                </Button>
+              </Col>
+              <Col xs={1} />
+            </>
+          ) : (
+            <Col xs={7} />
+          )}
           <Col xs={4}>
             <MakeEventButtons />
           </Col>

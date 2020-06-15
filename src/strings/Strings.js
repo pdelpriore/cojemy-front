@@ -208,5 +208,6 @@ export const strings = Object.freeze({
     CAT_MY_EVENTS: "myEvents",
     BUTTON_EVENTS_JOINED: "je participe à",
     CAT_EVENTS_JOINED: "eventsJoined",
+    BUTTON_NEW_EVENT: "nouvel événement",
   },
 });

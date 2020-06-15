@@ -59,3 +59,9 @@
   flex-direction: row;
   justify-content: space-evenly;
 }
+.myevents-button-new-event {
+  width: 7vw;
+  font-size: 0.8vw;
+  font-family: "OpenSans-Regular";
+  white-space: nowrap;
+}
