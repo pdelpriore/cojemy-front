@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
+import useEventButtons from "../../hooks/screen/myEvents/useEventButtons";
 import "./myEvents.css";
 
 const MakeEventButtons = () => {
@@ -22,28 +23,35 @@ const MakeEventButtons = () => {
       category: strings.myEvents.CAT_EVENTS_JOINED,
     },
   ];
+  const { activesClasses, toggleActiveClass } = useEventButtons(
+    eventButtonItems.length
+  );
 
   return eventButtonItems.map((buttonItem) => (
     <div key={buttonItem.id}>
       <Row>
         <Col xs={2} />
         <Col xs={10}>
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              //toggleActiveClass(buttonItem.id, buttonItem.category);
-            }}
-            variant="dark"
-            // className={
-            //   activesClasses[buttonItem.id]
-            //     ? "recipe-button-active"
-            //     : "recipebook-knob-button"
-            // }
-          >
-            <div className="myevents-button-text">
-              {capitalize(buttonItem.name)}
-            </div>
-          </Button>
+          <div className="myevents-button-box">
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                toggleActiveClass(buttonItem.id, buttonItem.category);
+              }}
+              variant="dark"
+            >
+              <div className="myevents-button-text">
+                {capitalize(buttonItem.name)}
+              </div>
+            </Button>
+            <div
+              className={
+                activesClasses[buttonItem.id]
+                  ? "myevents-button-border-active"
+                  : "myevents-button-border-nonactive"
+              }
+            ></div>
+          </div>
         </Col>
       </Row>
       <Row className="mb-4" />

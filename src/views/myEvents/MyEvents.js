@@ -39,8 +39,8 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-5" />
         <Row>
-          <Col xs={7} />
-          <Col xs={3}>
+          <Col xs={6} />
+          <Col xs={4}>
             <MakeEventButtons />
           </Col>
           <Col xs={2} />

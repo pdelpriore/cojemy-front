@@ -41,3 +41,21 @@
 .myevents-main-image {
   width: 23vw;
 }
+.myevents-button-active {
+  border-right: 2px red solid;
+}
+.myevents-button-border-active {
+  width: 0.5vw;
+  background-color: #d8553c;
+  border-radius: 3px;
+  opacity: 1;
+}
+.myevents-button-border-nonactive {
+  width: 0.5vw;
+  opacity: 0;
+}
+.myevents-button-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
