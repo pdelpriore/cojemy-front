@@ -32,9 +32,12 @@
   height: 99vh !important;
 }
 .myevents-button-text {
-  width: 7vw;
-  font-size: 0.7vw;
+  width: 6.5vw;
+  font-size: 0.8vw;
   font-family: "OpenSans-Regular";
   text-align: left;
   white-space: nowrap;
+}
+.myevents-main-image {
+  width: 23vw;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { Row, Col, ListGroup } from "react-bootstrap";
+import { Row, Col, ListGroup, Image } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import ScrollArea from "react-scrollbar";
 import MyEventsList from "./MyEventsList";
@@ -44,6 +44,19 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
             <MakeEventButtons />
           </Col>
           <Col xs={2} />
+        </Row>
+        <Row className="mb-5" />
+        <Row className="mb-5" />
+        <Row className="mb-3" />
+        <Row>
+          <Col xs={3} />
+          <Col xs={4}>
+            <Image
+              className="myevents-main-image"
+              src={require("../../assets/imgs/spoonret.jpg")}
+            />
+          </Col>
+          <Col xs={5} />
         </Row>
       </div>
     </animated.div>

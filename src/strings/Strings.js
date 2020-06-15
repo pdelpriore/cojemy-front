@@ -202,7 +202,7 @@ export const strings = Object.freeze({
     REMOVE_ACCOUNT: "tu veux bien supprimer ton compte ?",
   },
   myEvents: {
-    BUTTON_ALL: "tous les événements",
+    BUTTON_ALL: "événements",
     CAT_ALL: "all",
     BUTTON_MY_EVENTS: "mes événements",
     CAT_MY_EVENTS: "myEvents",
