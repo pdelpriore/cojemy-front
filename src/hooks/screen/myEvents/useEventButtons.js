@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { eventCategorySelected } from "../../../redux/myEvents/eventCategorySelected/thunk/eventCategorySelectedThunk";
 
 const useEventButtons = (buttonQty) => {
+  const dispatch = useDispatch();
   const initialState = () => {
     let buttonInitialStates = [];
     for (let i = 0; i < buttonQty; i++) {
@@ -12,8 +15,7 @@ const useEventButtons = (buttonQty) => {
   const [activesClasses, setActive] = useState(initialState());
 
   const toggleActiveClass = (id, category) => {
-    //dispatch(categorySelected(id));
-    //dispatch(recipeButtonTurnedOn());
+    dispatch(eventCategorySelected(id));
     setActive(
       initialState().map((bool, index) => (index === id ? !bool : bool))
     );

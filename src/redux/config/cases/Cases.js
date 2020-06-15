@@ -143,3 +143,7 @@ export const removeAccountCases = Object.freeze({
   ACCOUNT_REMOVED: "removeAccountCasesAccountRemoved",
   CLEAR_STATE: "removeAccountCasesClearState",
 });
+
+export const eventCategorySelectedCases = Object.freeze({
+  BUTTON_ID_RETRIEVED: "eventCategorySelectedCasesButtonIdRetrieved",
+});

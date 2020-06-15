@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Row, Col, Button } from "react-bootstrap";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
@@ -6,6 +7,7 @@ import useEventButtons from "../../hooks/screen/myEvents/useEventButtons";
 import "./myEvents.css";
 
 const MakeEventButtons = () => {
+  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   const eventButtonItems = [
     {
       id: 0,
@@ -26,6 +28,13 @@ const MakeEventButtons = () => {
   const { activesClasses, toggleActiveClass } = useEventButtons(
     eventButtonItems.length
   );
+
+  useEffect(() => {
+    toggleActiveClass(
+      eventButtonItems[eventButtonId].id,
+      eventButtonItems[eventButtonId].category
+    );
+  }, []);
 
   return eventButtonItems.map((buttonItem) => (
     <div key={buttonItem.id}>
