@@ -45,13 +45,13 @@
   border-right: 2px red solid;
 }
 .myevents-button-border-active {
-  width: 0.5vw;
+  width: 0.4vw;
   background-color: #d8553c;
   border-radius: 3px;
   opacity: 1;
 }
 .myevents-button-border-nonactive {
-  width: 0.5vw;
+  width: 0.4vw;
   opacity: 0;
 }
 .myevents-button-box {
