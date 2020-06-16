@@ -147,3 +147,7 @@ export const removeAccountCases = Object.freeze({
 export const eventCategorySelectedCases = Object.freeze({
   BUTTON_ID_RETRIEVED: "eventCategorySelectedCasesButtonIdRetrieved",
 });
+
+export const showNewEventFormCases = Object.freeze({
+  FORM_SHOWN: "showNewEventFormCasesFormShown",
+});

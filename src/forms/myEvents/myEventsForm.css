@@ -1,0 +1,16 @@
+.myevents-form-scroll-area {
+  height: 90vh;
+  padding: 20px;
+}
+.myevents-form-text-family {
+  font-family: "OpenSans-SemiBold";
+}
+.myevents-form-text-family-message {
+  font-family: "OpenSans-Regular";
+  background-color: #22d1ee;
+  color: #0e153a;
+  font-size: 1vw;
+}
+.myevents-form-button-cancel {
+  font-family: "OpenSans-Regular";
+}

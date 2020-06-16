@@ -55,7 +55,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
         <div
           className={
             newRecipeFormShowed || myRecipePreviewShowed
-              ? "myrecipes-button-hided"
+              ? "myrecipes-button-hidden"
               : ""
           }
         >

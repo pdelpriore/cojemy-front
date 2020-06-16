@@ -65,3 +65,16 @@
   font-family: "OpenSans-Regular";
   white-space: nowrap;
 }
+.myevents-buttons-hidden {
+  position: relative;
+  opacity: 0;
+  overflow: hidden;
+}
+.myevents-form-shown {
+  position: absolute;
+  width: 50vw;
+  top: 0;
+  right: 0;
+  opacity: 1;
+  overflow: hidden;
+}
