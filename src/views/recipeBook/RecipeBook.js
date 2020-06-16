@@ -22,7 +22,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
     config: { duration: 200 },
     from: { opacity: 0 },
   });
-  const { detailsShowed } = useSelector((state) => state.isRecipeDetailsShowed);
+  const { detailsShown } = useSelector((state) => state.isRecipeDetailsShown);
   const { recipesError } = useSelector((state) => state.recipeBook);
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons
@@ -50,7 +50,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
         </Row>
       </div>
       <div className="recipebook-second-section">
-        <div className={detailsShowed ? "recipebook-recipes-buttons" : ""}>
+        <div className={detailsShown ? "recipebook-recipes-buttons" : ""}>
           <Row className="mb-5" />
           <Row className="mb-4" />
           <Row>
@@ -111,7 +111,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             </Row>
           )}
         </div>
-        {detailsShowed && (
+        {detailsShown && (
           <div className="recipebook-recipes-details">
             <Row className="mb-5" />
             <Row className="mb-5" />

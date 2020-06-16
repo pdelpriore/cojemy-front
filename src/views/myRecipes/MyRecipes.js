@@ -17,10 +17,10 @@ import "./myRecipes.css";
 
 const MyRecipes = ({ match: { path, url, isExact } }) => {
   const dispatch = useDispatch();
-  const { newRecipeFormShowed } = useSelector(
-    (state) => state.isNewRecipeFormShowed
+  const { newRecipeFormShown } = useSelector(
+    (state) => state.isNewRecipeFormShown
   );
-  const { myRecipePreviewShowed } = useSelector(
+  const { myRecipePreviewShown } = useSelector(
     (state) => state.myRecipePreview
   );
   const { myRecipeChangeError } = useSelector(
@@ -54,7 +54,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
       <div className="myrecipes-second-section">
         <div
           className={
-            newRecipeFormShowed || myRecipePreviewShowed
+            newRecipeFormShown || myRecipePreviewShown
               ? "myrecipes-button-hidden"
               : ""
           }
@@ -97,8 +97,8 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
             <Col xs={5} />
           </Row>
         </div>
-        {newRecipeFormShowed && (
-          <div className="myrecipes-form-showed">
+        {newRecipeFormShown && (
+          <div className="myrecipes-form-shown">
             <Row className="mb-5" />
             <Row className="mb-4" />
             <Row>
@@ -127,7 +127,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
             </Row>
           </div>
         )}
-        {myRecipePreviewShowed && (
+        {myRecipePreviewShown && (
           <div className="myrecipes-recipe-preview">
             <Row className="mb-5" />
             <Row className="mb-5" />

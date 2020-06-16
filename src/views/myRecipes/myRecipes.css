@@ -149,7 +149,7 @@
   opacity: 0;
   overflow: hidden;
 }
-.myrecipes-form-showed {
+.myrecipes-form-shown {
   position: absolute;
   width: 50vw;
   top: 0;

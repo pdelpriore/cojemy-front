@@ -10,7 +10,7 @@ import { strings } from "../../../../strings/Strings";
 
 export const showRecipeDetailsComponent = (bool) => {
   return (dispatch, getState) => {
-    dispatch({ type: showRecipeDetailsCases.SHOWED, payload: bool });
+    dispatch({ type: showRecipeDetailsCases.SHOWN, payload: bool });
   };
 };
 

@@ -1,15 +1,15 @@
 import { showMyPasswordFormCases } from "../../../config/cases/Cases";
 
 const initialState = {
-  myPasswordFormShowed: false,
+  myPasswordFormShown: false,
 };
 
 const showMyPasswordReducer = (state = initialState, action) => {
   switch (action.type) {
-    case showMyPasswordFormCases.FORM_SHOWED:
+    case showMyPasswordFormCases.FORM_SHOWN:
       return {
         ...state,
-        myPasswordFormShowed: action.payload,
+        myPasswordFormShown: action.payload,
       };
     default:
       return state;

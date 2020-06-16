@@ -49,7 +49,7 @@ export const addMyRecipe = (
           type: changeMyRecipesCases.RECIPE_UPDATED,
           payload: data.addMyRecipe,
         });
-        dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
+        dispatch({ type: showNewRecipeFormCases.FORM_SHOWN, payload: false });
       } else if (errors) {
         dispatch({
           type: changeMyRecipesCases.ERROR,
@@ -104,7 +104,7 @@ export const editMyRecipe = (
           type: changeMyRecipesCases.RECIPE_UPDATED,
           payload: data.editMyRecipe,
         });
-        dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
+        dispatch({ type: showNewRecipeFormCases.FORM_SHOWN, payload: false });
       } else if (errors) {
         dispatch({
           type: changeMyRecipesCases.ERROR,
@@ -133,7 +133,7 @@ export const removeMyRecipe = (recipeId, userId, email) => {
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
-        dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWED, payload: false });
+        dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWN, payload: false });
         dispatch({
           type: changeMyRecipesCases.RECIPE_UPDATED,
           payload: data.removeMyRecipe,

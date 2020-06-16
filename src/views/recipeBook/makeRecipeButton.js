@@ -16,7 +16,7 @@ const MakeRecipeButton = () => {
     (state) => state.isRateCommentChanged
   );
   const { detailsDataRetrieved } = useSelector(
-    (state) => state.isRecipeDetailsShowed
+    (state) => state.isRecipeDetailsShown
   );
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons

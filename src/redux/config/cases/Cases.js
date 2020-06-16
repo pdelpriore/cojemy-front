@@ -19,7 +19,7 @@ export const remindPassCases = Object.freeze({
 });
 
 export const showRemindPassCases = Object.freeze({
-  FORM_SHOWED: "showRemindPassVisible",
+  FORM_SHOWN: "showRemindPassVisible",
 });
 
 export const loginCases = Object.freeze({
@@ -59,7 +59,7 @@ export const retrieveRecipesCases = Object.freeze({
 
 export const showRecipeDetailsCases = Object.freeze({
   LOADING: "showRecipeDetailsCasesLoading",
-  SHOWED: "showRecipeDetailsCasesShowed",
+  SHOWN: "showRecipeDetailsCasesShown",
   DETAILS_RETRIVED: "showRecipeDetailsCasesDetailsRetrieved",
   CLEAR_STATE: "showRecipeDetailsCasesClearState",
 });
@@ -98,7 +98,7 @@ export const retrieveMyRecipesCases = Object.freeze({
 });
 
 export const showNewRecipeFormCases = Object.freeze({
-  FORM_SHOWED: "showNewRecipeFormCasesFormShowed",
+  FORM_SHOWN: "showNewRecipeFormCasesFormShown",
 });
 
 export const toEditMyRecipeCases = Object.freeze({
@@ -107,7 +107,7 @@ export const toEditMyRecipeCases = Object.freeze({
 });
 
 export const myRecipePreviewCases = Object.freeze({
-  PREVIEW_SHOWED: "myRecipePreviewCasesPreviewShowed",
+  PREVIEW_SHOWN: "myRecipePreviewCasesPreviewShown",
   PREVIEW_DATA_RECEIVED: "myRecipePreviewCasesPreviewDataReceived",
   CLEAR_STATE: "myRecipePreviewCasesClearState",
 });
@@ -121,7 +121,7 @@ export const userLoggedCases = Object.freeze({
 });
 
 export const showMyPasswordFormCases = Object.freeze({
-  FORM_SHOWED: "showMyPasswordFormCasesFormShowed",
+  FORM_SHOWN: "showMyPasswordFormCasesFormShown",
 });
 
 export const changePasswordCases = Object.freeze({

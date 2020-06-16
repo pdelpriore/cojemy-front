@@ -5,7 +5,7 @@ import {
 
 export const showMyRecipePreview = (bool) => {
   return (dispatch, getState) => {
-    dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWED, payload: bool });
+    dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWN, payload: bool });
   };
 };
 
@@ -15,8 +15,8 @@ export const myRecipeData = (data) => {
       type: myRecipePreviewCases.PREVIEW_DATA_RECEIVED,
       payload: data,
     });
-    dispatch({ type: showNewRecipeFormCases.FORM_SHOWED, payload: false });
-    dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWED, payload: true });
+    dispatch({ type: showNewRecipeFormCases.FORM_SHOWN, payload: false });
+    dispatch({ type: myRecipePreviewCases.PREVIEW_SHOWN, payload: true });
   };
 };
 

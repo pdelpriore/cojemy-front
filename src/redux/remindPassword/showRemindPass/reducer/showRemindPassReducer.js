@@ -6,7 +6,7 @@ const initialState = {
 
 const showRemindPassReducer = (state = initialState, action) => {
   switch (action.type) {
-    case showRemindPassCases.FORM_SHOWED:
+    case showRemindPassCases.FORM_SHOWN:
       return {
         ...state,
         show: action.payload,

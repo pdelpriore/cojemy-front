@@ -33,7 +33,7 @@ const RecipeDetails = () => {
   const { userData } = useSelector((state) => state.login);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const { detailsLoading, detailsDataRetrieved } = useSelector(
-    (state) => state.isRecipeDetailsShowed
+    (state) => state.isRecipeDetailsShown
   );
   const isCommented =
     detailsDataRetrieved.comments.length > 0 &&

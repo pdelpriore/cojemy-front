@@ -24,7 +24,7 @@ const Login = ({ match: { path, url, isExact } }) => {
   });
   const { userSignedup } = useSelector((state) => state.signup);
   const { userGoogleSignedup } = useSelector((state) => state.signGoogle);
-  const { show } = useSelector((state) => state.isRemindPassFormShowed);
+  const { show } = useSelector((state) => state.isRemindPassFormShown);
   const { passwordSent, remindPassError } = useSelector(
     (state) => state.remindPass
   );

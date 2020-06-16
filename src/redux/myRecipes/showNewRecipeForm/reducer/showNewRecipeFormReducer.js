@@ -1,15 +1,15 @@
 import { showNewRecipeFormCases } from "../../../config/cases/Cases";
 
 const initialState = {
-  newRecipeFormShowed: false,
+  newRecipeFormShown: false,
 };
 
 const showNewRecipeFormReducer = (state = initialState, action) => {
   switch (action.type) {
-    case showNewRecipeFormCases.FORM_SHOWED:
+    case showNewRecipeFormCases.FORM_SHOWN:
       return {
         ...state,
-        newRecipeFormShowed: action.payload,
+        newRecipeFormShown: action.payload,
       };
     default:
       return state;

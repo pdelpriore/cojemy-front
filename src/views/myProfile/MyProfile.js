@@ -30,8 +30,8 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
   const { userPasswordChanged, changeUserPasswordError } = useSelector(
     (state) => state.isUserPasswordChanged
   );
-  const { myPasswordFormShowed } = useSelector(
-    (state) => state.isMyPasswordFormShowed
+  const { myPasswordFormShown } = useSelector(
+    (state) => state.isMyPasswordFormShown
   );
   const { loading } = useSelector((state) => state.isAccountRemoved);
   const { userData } = useSelector((state) => state.login);
@@ -130,7 +130,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
           </Row>
         )}
         <Row className="mb-3" />
-        {!myPasswordFormShowed && (
+        {!myPasswordFormShown && (
           <Row>
             <Col xs={7} />
             <Col xs={3}>
@@ -150,7 +150,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
             <Col xs={2} />
           </Row>
         )}
-        {myPasswordFormShowed && (
+        {myPasswordFormShown && (
           <>
             <Row className="mb-3" />
             <Row className="mb-5" />
@@ -167,7 +167,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
             </Row>
           </>
         )}
-        {!myPasswordFormShowed && (
+        {!myPasswordFormShown && (
           <>
             <Row className="mb-3" />
             <Row className="mb-5" />

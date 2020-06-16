@@ -2,16 +2,16 @@ import { showRecipeDetailsCases } from "../../../config/cases/Cases";
 
 const initialState = {
   detailsLoading: false,
-  detailsShowed: false,
+  detailsShown: false,
   detailsDataRetrieved: {},
 };
 
 const showRecipeDetailsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case showRecipeDetailsCases.SHOWED:
+    case showRecipeDetailsCases.SHOWN:
       return {
         ...state,
-        detailsShowed: action.payload,
+        detailsShown: action.payload,
       };
     case showRecipeDetailsCases.LOADING:
       return { ...state, detailsLoading: action.payload };
