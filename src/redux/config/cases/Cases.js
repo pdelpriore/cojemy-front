@@ -151,3 +151,10 @@ export const eventCategorySelectedCases = Object.freeze({
 export const showNewEventFormCases = Object.freeze({
   FORM_SHOWN: "showNewEventFormCasesFormShown",
 });
+
+export const getAddressCases = Object.freeze({
+  LOADING: "getAddressCasesLoading",
+  ADDRESSES_RETRIEVED: "getAddressCasesAddressesRetrieved",
+  ERROR: "getAddressCasesError",
+  CLEAR_STATE: "getAddressCasesClearState",
+});
