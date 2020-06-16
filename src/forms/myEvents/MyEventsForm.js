@@ -1,14 +1,11 @@
 import React from "react";
 import { Form, Row, Col, Button, Image, Spinner } from "react-bootstrap";
-import useNewRecipeForm from "../../hooks/form/myRecipes/useNewRecipeForm";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
-import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
-import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
@@ -106,14 +103,14 @@ const MyEventsForm = () => {
               <Form.Label className="myevents-form-text-family">
                 {capitalizeFirst(strings.myEvents.ADDRESS)}
               </Form.Label>
-              <Form.Control
+              {/* <Form.Control
                 className="myevents-form-text-family-message"
                 onChange={null}
                 value={null}
                 name="address"
                 type="text"
                 placeholder={strings.myEvents.ADDRESS_PLACEHOLDER}
-              />
+              /> */}
             </Form.Group>
           </Col>
         </Row>
