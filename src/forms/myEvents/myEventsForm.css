@@ -20,4 +20,6 @@
   align-items: center;
   width: 2vw;
   background-color: #22d1ee;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
