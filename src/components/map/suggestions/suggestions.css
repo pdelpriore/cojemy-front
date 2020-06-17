@@ -7,11 +7,15 @@
   margin: 5px;
 }
 .suggestion-item {
-  font-family: "OpenSans-Regular";
+  font-family: "OpenSans-SemiBold";
   color: #212529;
   font-size: 0.9vw;
 }
 .suggestion-item:hover {
   cursor: pointer;
   background-color: #ededed;
+}
+.no-result {
+  font-family: "OpenSans-SemiBold";
+  color: #ff0013;
 }

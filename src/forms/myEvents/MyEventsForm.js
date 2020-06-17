@@ -1,5 +1,13 @@
 import React from "react";
-import { Form, Row, Col, Button, Image, Spinner } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  Button,
+  Image,
+  Spinner,
+  InputGroup,
+} from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
@@ -16,6 +24,7 @@ import "./myEventsForm.css";
 const MyEventsForm = () => {
   const dispatch = useDispatch();
   const { inputs, showSuggestions, handleOnChange } = useMyEventsForm();
+  const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
 
   return (
     <ScrollArea
@@ -106,14 +115,20 @@ const MyEventsForm = () => {
               <Form.Label className="myevents-form-text-family">
                 {capitalizeFirst(strings.myEvents.ADDRESS)}
               </Form.Label>
-              <Form.Control
-                className="myevents-form-text-family-message"
-                onChange={handleOnChange}
-                value={inputs.address || ""}
-                name="address"
-                type="text"
-                placeholder={strings.myEvents.ADDRESS_PLACEHOLDER}
-              />
+              <InputGroup>
+                <Form.Control
+                  className="myevents-form-text-family-message"
+                  onChange={handleOnChange}
+                  value={inputs.address || ""}
+                  name="address"
+                  type="text"
+                  autoComplete="off"
+                  placeholder={strings.myEvents.ADDRESS_PLACEHOLDER}
+                />
+                <div className="myevents-input-spinner">
+                  {loadingAddresses && <Spinner animation="border" size="sm" />}
+                </div>
+              </InputGroup>
               {showSuggestions && <Suggestions />}
             </Form.Group>
           </Col>

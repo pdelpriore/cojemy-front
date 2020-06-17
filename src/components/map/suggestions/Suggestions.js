@@ -4,17 +4,13 @@ import { ListGroup, Spinner } from "react-bootstrap";
 import "./suggestions.css";
 
 const Suggestions = () => {
-  const { loadingAddresses, addressesRetrieved } = useSelector(
+  const { addressesRetrieved } = useSelector(
     (state) => state.addressSuggestions
   );
 
-  return loadingAddresses ? (
-    <div className="suggestions-box">
-      <Spinner animation="border" size="sm" />
-    </div>
-  ) : addressesRetrieved.length > 0 ? (
-    addressesRetrieved.map((suggestion) => (
-      <div className="suggestions-box">
+  return addressesRetrieved.length > 0 ? (
+    addressesRetrieved.map((suggestion, index) => (
+      <div key={index} className="suggestions-box">
         <ListGroup variant="flush">
           <ListGroup.Item className="suggestion-item">
             {suggestion.label}
@@ -24,7 +20,7 @@ const Suggestions = () => {
     ))
   ) : (
     <div className="suggestions-box">
-      <p>no results</p>
+      <p className="suggestion-item no-result">no results</p>
     </div>
   );
 };
