@@ -14,7 +14,7 @@ const useMyEventsForm = () => {
     }));
   };
   useEffect(() => {
-    dispatch(getAddress(inputs.address));
+    if (inputs.address) dispatch(getAddress(inputs.address));
   }, [inputs.address]);
   return { inputs, handleOnChange };
 };
