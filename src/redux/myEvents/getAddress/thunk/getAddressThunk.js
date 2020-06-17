@@ -25,3 +25,9 @@ export const getAddress = (addressValue) => {
     }
   };
 };
+
+export const getAddressClearState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: getAddressCases.CLEAR_STATE });
+  };
+};

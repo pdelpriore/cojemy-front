@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAddress } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
+import {
+  getAddress,
+  getAddressClearState,
+} from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
 
 const useMyEventsForm = () => {
   const dispatch = useDispatch();
@@ -19,6 +22,7 @@ const useMyEventsForm = () => {
       dispatch(getAddress(inputs.address));
       setShowSuggestions(true);
     } else {
+      dispatch(getAddressClearState());
       setShowSuggestions(false);
     }
   }, [inputs.address, dispatch]);
