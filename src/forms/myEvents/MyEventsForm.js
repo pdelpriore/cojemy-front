@@ -4,6 +4,7 @@ import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
 import useMyEventsForm from "../../hooks/form/myEvents/useMyEventsForm";
+import Suggestions from "../../components/map/suggestions/Suggestions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
@@ -14,7 +15,7 @@ import "./myEventsForm.css";
 
 const MyEventsForm = () => {
   const dispatch = useDispatch();
-  const { inputs, handleOnChange } = useMyEventsForm();
+  const { inputs, showSuggestions, handleOnChange } = useMyEventsForm();
 
   return (
     <ScrollArea
@@ -113,6 +114,7 @@ const MyEventsForm = () => {
                 type="text"
                 placeholder={strings.myEvents.ADDRESS_PLACEHOLDER}
               />
+              {showSuggestions && <Suggestions />}
             </Form.Group>
           </Col>
         </Row>

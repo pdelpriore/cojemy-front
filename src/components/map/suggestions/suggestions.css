@@ -1,0 +1,17 @@
+.suggestions-box {
+  position: relative;
+  left: 0;
+  max-height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 5px;
+}
+.suggestion-item {
+  font-family: "OpenSans-Regular";
+  color: #212529;
+  font-size: 0.9vw;
+}
+.suggestion-item:hover {
+  cursor: pointer;
+  background-color: #ededed;
+}

@@ -5,6 +5,7 @@ import { getAddress } from "../../../redux/myEvents/getAddress/thunk/getAddressT
 const useMyEventsForm = () => {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleOnChange = (e) => {
     e.persist();
@@ -14,9 +15,14 @@ const useMyEventsForm = () => {
     }));
   };
   useEffect(() => {
-    if (inputs.address) dispatch(getAddress(inputs.address));
+    if (inputs.address) {
+      dispatch(getAddress(inputs.address));
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
   }, [inputs.address, dispatch]);
-  return { inputs, handleOnChange };
+  return { inputs, showSuggestions, handleOnChange };
 };
 
 export default useMyEventsForm;

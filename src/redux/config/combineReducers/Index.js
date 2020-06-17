@@ -26,6 +26,7 @@ import changeMyRecipesReducer from "../../myRecipes/changeMyRecipes/reducer/chan
 import removeAccountReducer from "../../updateMyProfile/removeAccount/reducer/removeAccountReducer";
 import eventCategorySelectedReducer from "../../myEvents/eventCategorySelected/reducer/eventCategorySelectedReducer";
 import showNewEventFormReducer from "../../myEvents/showNewEventForm/reducer/showNewEventFormReducer";
+import getAddressReducer from "../../myEvents/getAddress/reducer/getAddressReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -55,6 +56,7 @@ const allReducers = combineReducers({
   isAccountRemoved: removeAccountReducer,
   eventCategorySelected: eventCategorySelectedReducer,
   isNewEventFormShown: showNewEventFormReducer,
+  addressSuggestions: getAddressReducer,
 });
 
 export default allReducers;

@@ -14,7 +14,12 @@ export const getAddress = (addressValue) => {
         }),
       });
       const responseData = await response.json();
-      console.log(responseData);
+      if (responseData) {
+        dispatch({
+          type: getAddressCases.ADDRESSES_RETRIEVED,
+          payload: responseData.suggestions,
+        });
+      }
     } catch (err) {
       if (err) console.log(err);
     }
