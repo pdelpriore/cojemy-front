@@ -24,7 +24,7 @@ const Suggestions = () => {
           <ListGroup.Item
             onClick={(e) => {
               e.preventDefault();
-              dispatch(selectEventAddress(suggestion.address));
+              dispatch(selectEventAddress(suggestion));
             }}
             className="suggestion-item"
           >

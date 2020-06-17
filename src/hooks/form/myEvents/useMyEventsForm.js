@@ -38,6 +38,14 @@ const useMyEventsForm = () => {
     if (addressChosen && inputs.address) setShowSuggestions(false);
   }, [addressChosen, inputs.address]);
 
+  useEffect(() => {
+    if (selectedAddress.label)
+      setInputs((inputs) => ({
+        ...inputs,
+        address: selectedAddress.label,
+      }));
+  }, [selectedAddress.label]);
+
   return { inputs, showSuggestions, handleOnChange };
 };
 
