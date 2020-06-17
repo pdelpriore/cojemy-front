@@ -12,7 +12,7 @@ const useSearchRecipe = () => {
   const { recipeButtonPressed } = useSelector(
     (state) => state.recipeButtonTurnedOn
   );
-  const { rateCommentAdded } = useSelector(
+  const { rateCommentChanged } = useSelector(
     (state) => state.isRateCommentChanged
   );
   const { searchInputFilled } = useSelector(
@@ -54,7 +54,7 @@ const useSearchRecipe = () => {
     };
   }, [
     searchInputFilled,
-    rateCommentAdded,
+    rateCommentChanged,
     userData.email,
     inputs.recipe,
     dispatch,

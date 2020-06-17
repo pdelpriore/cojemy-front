@@ -12,7 +12,7 @@ const MakeRecipeButton = () => {
   const { recipeButtonId } = useSelector(
     (state) => state.recipeCategorySelected
   );
-  const { rateCommentAdded } = useSelector(
+  const { rateCommentChanged } = useSelector(
     (state) => state.isRateCommentChanged
   );
   const { detailsDataRetrieved } = useSelector(
@@ -46,7 +46,7 @@ const MakeRecipeButton = () => {
     return () => {
       dispatch(changeRateComment(false));
     };
-  }, [searchInputFilled, rateCommentAdded, dispatch]);
+  }, [searchInputFilled, rateCommentChanged, dispatch]);
 
   return buttonItems.map((buttonItem) => (
     <div key={buttonItem.id}>

@@ -157,3 +157,12 @@ export const getAddressCases = Object.freeze({
   ADDRESSES_RETRIEVED: "getAddressCasesAddressesRetrieved",
   CLEAR_STATE: "getAddressCasesClearState",
 });
+
+export const selectEventAddressCases = Object.freeze({
+  ADDRESS_SELECTED: "selectEventAddressCasesAddressSelected",
+  CLEAR_STATE: "selectEventAddressCasesClearState",
+});
+
+export const chooseEventAddressCases = Object.freeze({
+  ADDRESS_CHOSEN: "chooseEventAddressCasesAddressChosen",
+});

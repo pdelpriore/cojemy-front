@@ -27,6 +27,8 @@ import removeAccountReducer from "../../updateMyProfile/removeAccount/reducer/re
 import eventCategorySelectedReducer from "../../myEvents/eventCategorySelected/reducer/eventCategorySelectedReducer";
 import showNewEventFormReducer from "../../myEvents/showNewEventForm/reducer/showNewEventFormReducer";
 import getAddressReducer from "../../myEvents/getAddress/reducer/getAddressReducer";
+import selectEventAddressReducer from "../../myEvents/selectEventAddress/reducer/selectEventAddressReducer";
+import chooseEventAddressReducer from "../../myEvents/chooseEventAddress/reducer/chooseEventAddressReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -57,6 +59,8 @@ const allReducers = combineReducers({
   eventCategorySelected: eventCategorySelectedReducer,
   isNewEventFormShown: showNewEventFormReducer,
   addressSuggestions: getAddressReducer,
+  selectedEventAddress: selectEventAddressReducer,
+  isEventAddressChosen: chooseEventAddressReducer,
 });
 
 export default allReducers;

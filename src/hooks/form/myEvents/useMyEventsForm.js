@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getAddress,
   getAddressClearState,
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
+import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 
 const useMyEventsForm = () => {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
   const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const { selectedAddress } = useSelector(
+    (state) => state.selectedEventAddress
+  );
+  const { addressChosen } = useSelector((state) => state.isEventAddressChosen);
 
   const handleOnChange = (e) => {
     e.persist();
@@ -23,9 +29,15 @@ const useMyEventsForm = () => {
       setShowSuggestions(true);
     } else {
       dispatch(getAddressClearState());
+      dispatch(selectEventAddressClearState());
       setShowSuggestions(false);
     }
   }, [inputs.address, dispatch]);
+
+  useEffect(() => {
+    if (addressChosen && inputs.address) setShowSuggestions(false);
+  }, [addressChosen, inputs.address]);
+
   return { inputs, showSuggestions, handleOnChange };
 };
 

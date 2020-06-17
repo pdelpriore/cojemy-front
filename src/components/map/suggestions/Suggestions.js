@@ -1,20 +1,33 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectEventAddress } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
+import { chooseEventAddress } from "../../../redux/myEvents/chooseEventAddress/thunk/chooseEventAddressThunk";
 import { ListGroup } from "react-bootstrap";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
 import "./suggestions.css";
 
 const Suggestions = () => {
+  const dispatch = useDispatch();
   const { addressesRetrieved } = useSelector(
     (state) => state.addressSuggestions
   );
+
+  useEffect(() => {
+    return () => dispatch(chooseEventAddress(false));
+  }, [dispatch]);
 
   return addressesRetrieved.length > 0 ? (
     addressesRetrieved.map((suggestion, index) => (
       <div key={index} className="suggestions-box">
         <ListGroup variant="flush">
-          <ListGroup.Item className="suggestion-item">
+          <ListGroup.Item
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(selectEventAddress(suggestion.address));
+            }}
+            className="suggestion-item"
+          >
             {suggestion.label}
           </ListGroup.Item>
         </ListGroup>

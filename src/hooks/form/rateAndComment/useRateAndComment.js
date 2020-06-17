@@ -18,7 +18,7 @@ const useRateAndComment = () => {
   const { recipeListItemChanged } = useSelector(
     (state) => state.isRecipeListItemChanged
   );
-  const { rateCommentAdded } = useSelector(
+  const { rateCommentChanged } = useSelector(
     (state) => state.isRateCommentChanged
   );
 
@@ -70,12 +70,12 @@ const useRateAndComment = () => {
   };
 
   useEffect(() => {
-    if (rateCommentAdded) {
+    if (rateCommentChanged) {
       setRate("");
       setInputs({});
       dispatch(toEditRateCommentClearState());
     }
-  }, [rateCommentAdded, dispatch]);
+  }, [rateCommentChanged, dispatch]);
 
   useEffect(() => {
     if (rateAndComment.rateValue) setRate(rateAndComment.rateValue);
