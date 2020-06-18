@@ -136,10 +136,9 @@ const MyEventsForm = () => {
                   placeholder={strings.myEvents.ADDRESS_PLACEHOLDER}
                 />
                 <div className="myevents-input-spinner">
-                  {loadingAddresses ||
-                    (loadingLocationDetails && (
-                      <Spinner animation="border" size="sm" />
-                    ))}
+                  {(loadingAddresses || loadingLocationDetails) && (
+                    <Spinner animation="border" size="sm" />
+                  )}
                 </div>
               </InputGroup>
               {showSuggestions && <Suggestions />}

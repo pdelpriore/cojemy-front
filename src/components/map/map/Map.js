@@ -8,6 +8,9 @@ const Map = () => {
   const { locationDetailsRetrieved } = useSelector(
     (state) => state.locationDetails
   );
+  const { selectedAddress } = useSelector(
+    (state) => state.selectedEventAddress
+  );
 
   React.useLayoutEffect(() => {
     if (!mapRef.current) return;
@@ -22,7 +25,28 @@ const Map = () => {
         lat: locationDetailsRetrieved.displayPosition.latitude,
         lng: locationDetailsRetrieved.displayPosition.longitude,
       },
-      zoom: 17,
+      zoom:
+        selectedAddress.address.houseNumber &&
+        selectedAddress.address.street &&
+        selectedAddress.address.city &&
+        selectedAddress.address.country
+          ? 17
+          : !selectedAddress.address.houseNumber &&
+            selectedAddress.address.street &&
+            selectedAddress.address.city &&
+            selectedAddress.address.country
+          ? 15
+          : !selectedAddress.address.houseNumber &&
+            !selectedAddress.address.street &&
+            selectedAddress.address.city &&
+            selectedAddress.address.country
+          ? 10
+          : !selectedAddress.address.houseNumber &&
+            !selectedAddress.address.street &&
+            !selectedAddress.address.city &&
+            selectedAddress.address.country
+          ? 4
+          : 4,
       pixelRatio: window.devicePixelRatio || 1,
     });
     hMap.addObject(

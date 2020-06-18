@@ -15,7 +15,6 @@ export const getLocationDetails = (locationId) => {
       });
       const responseData = await response.json();
       if (responseData) {
-        console.log(responseData.response);
         dispatch({
           type: getLocationDetailsCases.LOCATION_DETAILS_RETRIEVED,
           payload: {
