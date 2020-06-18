@@ -13,6 +13,7 @@ import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
 import useMyEventsForm from "../../hooks/form/myEvents/useMyEventsForm";
 import Suggestions from "../../components/map/suggestions/Suggestions";
+import { selectEventAddressClearState } from "../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
@@ -275,6 +276,7 @@ const MyEventsForm = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(showNewEventForm(false));
+                  dispatch(selectEventAddressClearState());
                   //dispatch(toEditMyRecipeClearState());
                 }}
                 className="myevents-form-button-cancel"

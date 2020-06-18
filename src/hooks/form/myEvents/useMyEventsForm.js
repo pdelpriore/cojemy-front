@@ -46,6 +46,10 @@ const useMyEventsForm = () => {
       }));
   }, [selectedAddress.label]);
 
+  // kiedy formularz bedzie juz gotowy do wyslania
+  // stworz obiekt address z danymi z selectedAddress.address i dispatchuj do DB
+  // input.address jest tylko do podgladu dla uzytkownika (nie wysylaj go !)
+
   return { inputs, showSuggestions, handleOnChange };
 };
 
