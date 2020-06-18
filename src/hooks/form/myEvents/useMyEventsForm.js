@@ -62,6 +62,28 @@ const useMyEventsForm = () => {
           city: selectedAddress.address.city,
           latitude: locationDetailsRetrieved.displayPosition.latitude,
           longitude: locationDetailsRetrieved.displayPosition.longitude,
+          zoom:
+            selectedAddress.address.houseNumber &&
+            selectedAddress.address.street &&
+            selectedAddress.address.city &&
+            selectedAddress.address.country
+              ? 17
+              : !selectedAddress.address.houseNumber &&
+                selectedAddress.address.street &&
+                selectedAddress.address.city &&
+                selectedAddress.address.country
+              ? 15
+              : !selectedAddress.address.houseNumber &&
+                !selectedAddress.address.street &&
+                selectedAddress.address.city &&
+                selectedAddress.address.country
+              ? 10
+              : !selectedAddress.address.houseNumber &&
+                !selectedAddress.address.street &&
+                !selectedAddress.address.city &&
+                selectedAddress.address.country
+              ? 4
+              : 10,
         }));
       if (addressObj.streetNumber === undefined)
         setAddressObj((addressObj) =>
