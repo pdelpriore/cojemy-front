@@ -47,7 +47,7 @@ const Map = ({ latitude, longitude }) => {
             !selectedAddress.address.city &&
             selectedAddress.address.country
           ? 4
-          : 4,
+          : 10,
       pixelRatio: window.devicePixelRatio || 1,
     });
     hMap.addObject(
