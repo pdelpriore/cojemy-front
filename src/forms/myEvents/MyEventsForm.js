@@ -27,7 +27,12 @@ import "./myEventsForm.css";
 
 const MyEventsForm = () => {
   const dispatch = useDispatch();
-  const { inputs, showSuggestions, handleOnChange } = useMyEventsForm();
+  const {
+    inputs,
+    showMap,
+    showSuggestions,
+    handleOnChange,
+  } = useMyEventsForm();
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
   const { loadingLocationDetails } = useSelector(
     (state) => state.locationDetails
@@ -145,7 +150,7 @@ const MyEventsForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {selectedAddress.label && (
+        {showMap && (
           <Row>
             <Col xs={12}>
               <Map />

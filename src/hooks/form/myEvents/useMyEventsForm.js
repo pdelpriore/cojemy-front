@@ -13,6 +13,7 @@ const useMyEventsForm = () => {
   const [inputs, setInputs] = useState({});
   const [addressObj, setAddressObj] = useState({});
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   const { selectedAddress } = useSelector(
     (state) => state.selectedEventAddress
@@ -79,7 +80,19 @@ const useMyEventsForm = () => {
     };
   }, [dispatch]);
 
-  return { inputs, showSuggestions, handleOnChange };
+  useEffect(() => {
+    if (
+      selectedAddress.label &&
+      selectedAddress.label === inputs.address &&
+      inputs.address
+    ) {
+      setShowMap(true);
+    } else {
+      setShowMap(false);
+    }
+  }, [selectedAddress.label, inputs.address]);
+
+  return { inputs, showMap, showSuggestions, handleOnChange };
 };
 
 export default useMyEventsForm;

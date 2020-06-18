@@ -22,26 +22,38 @@ const Map = () => {
     const defaultLayers = platform.createDefaultLayers();
     const hMap = new H.Map(mapRef.current, defaultLayers.vector.normal.map, {
       center: {
-        lat: locationDetailsRetrieved.displayPosition.latitude,
-        lng: locationDetailsRetrieved.displayPosition.longitude,
+        lat:
+          locationDetailsRetrieved.displayPosition &&
+          locationDetailsRetrieved.displayPosition.latitude
+            ? locationDetailsRetrieved.displayPosition.latitude
+            : 52.229676,
+        lng:
+          locationDetailsRetrieved.displayPosition &&
+          locationDetailsRetrieved.displayPosition.longitude
+            ? locationDetailsRetrieved.displayPosition.longitude
+            : 21.012229,
       },
       zoom:
+        selectedAddress.address &&
         selectedAddress.address.houseNumber &&
         selectedAddress.address.street &&
         selectedAddress.address.city &&
         selectedAddress.address.country
           ? 17
-          : !selectedAddress.address.houseNumber &&
+          : selectedAddress.address &&
+            !selectedAddress.address.houseNumber &&
             selectedAddress.address.street &&
             selectedAddress.address.city &&
             selectedAddress.address.country
           ? 15
-          : !selectedAddress.address.houseNumber &&
+          : selectedAddress.address &&
+            !selectedAddress.address.houseNumber &&
             !selectedAddress.address.street &&
             selectedAddress.address.city &&
             selectedAddress.address.country
           ? 10
-          : !selectedAddress.address.houseNumber &&
+          : selectedAddress.address &&
+            !selectedAddress.address.houseNumber &&
             !selectedAddress.address.street &&
             !selectedAddress.address.city &&
             selectedAddress.address.country
@@ -51,8 +63,16 @@ const Map = () => {
     });
     hMap.addObject(
       new H.map.Marker({
-        lat: locationDetailsRetrieved.displayPosition.latitude,
-        lng: locationDetailsRetrieved.displayPosition.longitude,
+        lat:
+          locationDetailsRetrieved.displayPosition &&
+          locationDetailsRetrieved.displayPosition.latitude
+            ? locationDetailsRetrieved.displayPosition.latitude
+            : 52.229676,
+        lng:
+          locationDetailsRetrieved.displayPosition &&
+          locationDetailsRetrieved.displayPosition.longitude
+            ? locationDetailsRetrieved.displayPosition.longitude
+            : 21.012229,
       })
     );
 
