@@ -35,6 +35,7 @@ const useMyEventsForm = () => {
       dispatch(getAddressClearState());
       dispatch(selectEventAddressClearState());
       setShowSuggestions(false);
+      setAddressObj({});
     }
   }, [inputs.address, dispatch]);
 
