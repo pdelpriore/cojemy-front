@@ -15,6 +15,7 @@ import useMyEventsForm from "../../hooks/form/myEvents/useMyEventsForm";
 import Suggestions from "../../components/map/suggestions/Suggestions";
 import Map from "../../components/map/map/Map";
 import { selectEventAddressClearState } from "../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
+import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
 import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -294,6 +295,7 @@ const MyEventsForm = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(showNewEventForm(false));
+                  dispatch(getAddressClearState());
                   dispatch(selectEventAddressClearState());
                   dispatch(getLocationDetailsClearState());
                   //dispatch(toEditMyRecipeClearState());

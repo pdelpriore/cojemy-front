@@ -6,6 +6,7 @@ import {
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
 import { getLocationDetails } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
+import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 
 const useMyEventsForm = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,11 @@ const useMyEventsForm = () => {
       dispatch(selectEventAddressClearState());
       setShowSuggestions(false);
     }
+    return () => {
+      dispatch(getAddressClearState());
+      dispatch(selectEventAddressClearState());
+      dispatch(getLocationDetailsClearState());
+    };
   }, [inputs.address, dispatch]);
 
   useEffect(() => {
