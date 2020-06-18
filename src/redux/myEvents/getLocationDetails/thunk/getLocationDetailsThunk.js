@@ -27,24 +27,6 @@ export const getLocationDetails = (locationId) => {
                 responseData.response.view[0].result[0].location.displayPosition
                   .longitude,
             },
-            mapView: {
-              bottomRight: {
-                latitude:
-                  responseData.response.view[0].result[0].location.mapView
-                    .bottomRight.latitude,
-                longitude:
-                  responseData.response.view[0].result[0].location.mapView
-                    .bottomRight.longitude,
-              },
-              topLeft: {
-                latitude:
-                  responseData.response.view[0].result[0].location.mapView
-                    .topLeft.latitude,
-                longitude:
-                  responseData.response.view[0].result[0].location.mapView
-                    .topLeft.longitude,
-              },
-            },
           },
         });
       }
