@@ -1,13 +1,8 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
 import { hereAPIKey } from "../../../config/Security";
 
-const Map = ({ latitude, longitude }) => {
+const Map = ({ latitude, longitude, zoom }) => {
   const mapRef = React.useRef(null);
-
-  const { selectedAddress } = useSelector(
-    (state) => state.selectedEventAddress
-  );
 
   React.useLayoutEffect(() => {
     if (!mapRef.current) return;
@@ -22,46 +17,13 @@ const Map = ({ latitude, longitude }) => {
         lat: latitude,
         lng: longitude,
       },
-      zoom:
-        selectedAddress.address &&
-        selectedAddress.address.houseNumber &&
-        selectedAddress.address.street &&
-        selectedAddress.address.city &&
-        selectedAddress.address.country
-          ? 17
-          : selectedAddress.address &&
-            !selectedAddress.address.houseNumber &&
-            selectedAddress.address.street &&
-            selectedAddress.address.city &&
-            selectedAddress.address.country
-          ? 15
-          : selectedAddress.address &&
-            !selectedAddress.address.houseNumber &&
-            !selectedAddress.address.street &&
-            selectedAddress.address.city &&
-            selectedAddress.address.country
-          ? 10
-          : selectedAddress.address &&
-            !selectedAddress.address.houseNumber &&
-            !selectedAddress.address.street &&
-            !selectedAddress.address.city &&
-            selectedAddress.address.country
-          ? 4
-          : 10,
+      zoom: zoom,
       pixelRatio: window.devicePixelRatio || 1,
     });
     hMap.addObject(
       new H.map.Marker({
-        lat:
-          locationDetailsRetrieved.displayPosition &&
-          locationDetailsRetrieved.displayPosition.latitude
-            ? locationDetailsRetrieved.displayPosition.latitude
-            : 52.229676,
-        lng:
-          locationDetailsRetrieved.displayPosition &&
-          locationDetailsRetrieved.displayPosition.longitude
-            ? locationDetailsRetrieved.displayPosition.longitude
-            : 21.012229,
+        lat: latitude,
+        lng: longitude,
       })
     );
 

@@ -169,6 +169,33 @@ const MyEventsForm = () => {
                     ? locationDetailsRetrieved.displayPosition.longitude
                     : 21.012229
                 }
+                zoom={
+                  selectedAddress.address &&
+                  selectedAddress.address.houseNumber &&
+                  selectedAddress.address.street &&
+                  selectedAddress.address.city &&
+                  selectedAddress.address.country
+                    ? 17
+                    : selectedAddress.address &&
+                      !selectedAddress.address.houseNumber &&
+                      selectedAddress.address.street &&
+                      selectedAddress.address.city &&
+                      selectedAddress.address.country
+                    ? 15
+                    : selectedAddress.address &&
+                      !selectedAddress.address.houseNumber &&
+                      !selectedAddress.address.street &&
+                      selectedAddress.address.city &&
+                      selectedAddress.address.country
+                    ? 10
+                    : selectedAddress.address &&
+                      !selectedAddress.address.houseNumber &&
+                      !selectedAddress.address.street &&
+                      !selectedAddress.address.city &&
+                      selectedAddress.address.country
+                    ? 4
+                    : 10
+                }
               />
             </Col>
           </Row>
