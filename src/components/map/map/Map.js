@@ -2,12 +2,9 @@ import * as React from "react";
 import { useSelector } from "react-redux";
 import { hereAPIKey } from "../../../config/Security";
 
-const Map = () => {
+const Map = ({ latitude, longitude }) => {
   const mapRef = React.useRef(null);
 
-  const { locationDetailsRetrieved } = useSelector(
-    (state) => state.locationDetails
-  );
   const { selectedAddress } = useSelector(
     (state) => state.selectedEventAddress
   );
@@ -22,16 +19,8 @@ const Map = () => {
     const defaultLayers = platform.createDefaultLayers();
     const hMap = new H.Map(mapRef.current, defaultLayers.vector.normal.map, {
       center: {
-        lat:
-          locationDetailsRetrieved.displayPosition &&
-          locationDetailsRetrieved.displayPosition.latitude
-            ? locationDetailsRetrieved.displayPosition.latitude
-            : 52.229676,
-        lng:
-          locationDetailsRetrieved.displayPosition &&
-          locationDetailsRetrieved.displayPosition.longitude
-            ? locationDetailsRetrieved.displayPosition.longitude
-            : 21.012229,
+        lat: latitude,
+        lng: longitude,
       },
       zoom:
         selectedAddress.address &&

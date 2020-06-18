@@ -19,6 +19,9 @@ const useMyEventsForm = () => {
     (state) => state.selectedEventAddress
   );
   const { addressChosen } = useSelector((state) => state.isEventAddressChosen);
+  const { locationDetailsRetrieved } = useSelector(
+    (state) => state.locationDetails
+  );
 
   const handleOnChange = (e) => {
     e.persist();
@@ -49,20 +52,23 @@ const useMyEventsForm = () => {
         ...inputs,
         address: selectedAddress.label,
       }));
-      setAddressObj((addressObj) => ({
-        ...addressObj,
-        streetNumber: selectedAddress.address.houseNumber,
-        streetName: selectedAddress.address.street,
-        postCode: selectedAddress.address.postalCode,
-        city: selectedAddress.address.city,
-      }));
+      dispatch(getLocationDetails(selectedAddress.locationId));
+      if (selectedAddress.label && locationDetailsRetrieved.displayPosition)
+        setAddressObj((addressObj) => ({
+          ...addressObj,
+          streetNumber: selectedAddress.address.houseNumber,
+          streetName: selectedAddress.address.street,
+          postCode: selectedAddress.address.postalCode,
+          city: selectedAddress.address.city,
+          latitude: locationDetailsRetrieved.displayPosition.latitude,
+          longitude: locationDetailsRetrieved.displayPosition.longitude,
+        }));
       if (addressObj.streetNumber === undefined)
         setAddressObj((addressObj) =>
           (({ streetNumber, ...others }) => ({
             ...others,
           }))(addressObj)
         );
-      dispatch(getLocationDetails(selectedAddress.locationId));
     } else {
       setInputs((inputs) =>
         (({ address, ...others }) => ({
@@ -71,7 +77,7 @@ const useMyEventsForm = () => {
       );
       setAddressObj({});
     }
-  }, [selectedAddress, dispatch]);
+  }, [selectedAddress, locationDetailsRetrieved.displayPosition, dispatch]);
 
   useEffect(() => {
     if (

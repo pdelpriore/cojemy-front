@@ -40,6 +40,9 @@ const MyEventsForm = () => {
   const { selectedAddress } = useSelector(
     (state) => state.selectedEventAddress
   );
+  const { locationDetailsRetrieved } = useSelector(
+    (state) => state.locationDetails
+  );
 
   return (
     <ScrollArea
@@ -153,7 +156,20 @@ const MyEventsForm = () => {
         {showMap && (
           <Row>
             <Col xs={12}>
-              <Map />
+              <Map
+                latitude={
+                  locationDetailsRetrieved.displayPosition &&
+                  locationDetailsRetrieved.displayPosition.latitude
+                    ? locationDetailsRetrieved.displayPosition.latitude
+                    : 52.229676
+                }
+                longitude={
+                  locationDetailsRetrieved.displayPosition &&
+                  locationDetailsRetrieved.displayPosition.longitude
+                    ? locationDetailsRetrieved.displayPosition.longitude
+                    : 21.012229
+                }
+              />
             </Col>
           </Row>
         )}
