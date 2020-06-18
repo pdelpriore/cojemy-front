@@ -9,6 +9,7 @@ import { selectEventAddressClearState } from "../../../redux/myEvents/selectEven
 const useMyEventsForm = () => {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
+  const [addressObj, setAddressObj] = useState({});
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const { selectedAddress } = useSelector(
@@ -39,11 +40,38 @@ const useMyEventsForm = () => {
   }, [addressChosen, inputs.address]);
 
   useEffect(() => {
-    if (selectedAddress.label)
+    if (selectedAddress.label) {
       setInputs((inputs) => ({
         ...inputs,
         address: selectedAddress.label,
       }));
+      setAddressObj((addressObj) => ({
+        ...addressObj,
+        streetNumber: selectedAddress.address.houseNumber,
+        streetName: selectedAddress.address.street,
+        postCode: selectedAddress.address.postalCode,
+        city: selectedAddress.address.city,
+      }));
+      if (addressObj.streetNumber === undefined)
+        setAddressObj((addressObj) =>
+          (({ streetNumber, ...others }) => ({
+            ...others,
+          }))(addressObj)
+        );
+      if (addressObj.streetName === undefined)
+        setAddressObj((addressObj) =>
+          (({ streetName, ...others }) => ({
+            ...others,
+          }))(addressObj)
+        );
+    } else {
+      setInputs((inputs) =>
+        (({ address, ...others }) => ({
+          ...others,
+        }))(inputs)
+      );
+      setAddressObj({});
+    }
   }, [selectedAddress.label]);
 
   // kiedy formularz bedzie juz gotowy do wyslania
