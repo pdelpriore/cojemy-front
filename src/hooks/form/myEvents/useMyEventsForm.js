@@ -35,11 +35,6 @@ const useMyEventsForm = () => {
       dispatch(selectEventAddressClearState());
       setShowSuggestions(false);
     }
-    return () => {
-      dispatch(getAddressClearState());
-      dispatch(selectEventAddressClearState());
-      dispatch(getLocationDetailsClearState());
-    };
   }, [inputs.address, dispatch]);
 
   useEffect(() => {
@@ -74,7 +69,15 @@ const useMyEventsForm = () => {
       );
       setAddressObj({});
     }
-  }, [selectedAddress.label]);
+  }, [selectedAddress, dispatch]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(getAddressClearState());
+      dispatch(selectEventAddressClearState());
+      dispatch(getLocationDetailsClearState());
+    };
+  }, [dispatch]);
 
   return { inputs, showSuggestions, handleOnChange };
 };
