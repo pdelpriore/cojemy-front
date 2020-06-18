@@ -4,6 +4,7 @@ import {
   getAddress,
   getAddressClearState,
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
+import { getLocationDetails } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 
 const useMyEventsForm = () => {
@@ -64,6 +65,7 @@ const useMyEventsForm = () => {
             ...others,
           }))(addressObj)
         );
+      dispatch(getLocationDetails(selectedAddress.locationId));
     } else {
       setInputs((inputs) =>
         (({ address, ...others }) => ({
@@ -73,10 +75,6 @@ const useMyEventsForm = () => {
       setAddressObj({});
     }
   }, [selectedAddress.label]);
-
-  // kiedy formularz bedzie juz gotowy do wyslania
-  // stworz obiekt address z danymi z selectedAddress.address i dispatchuj do DB
-  // input.address jest tylko do podgladu dla uzytkownika (nie wysylaj go !)
 
   return { inputs, showSuggestions, handleOnChange };
 };

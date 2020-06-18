@@ -166,3 +166,9 @@ export const selectEventAddressCases = Object.freeze({
 export const chooseEventAddressCases = Object.freeze({
   ADDRESS_CHOSEN: "chooseEventAddressCasesAddressChosen",
 });
+
+export const getLocationDetailsCases = Object.freeze({
+  LOADING: "getLocationDetailsCasesLoading",
+  LOCATION_DETAILS_RETRIEVED: "getLocationDetailsCasesLoactionDetalsRetrieved",
+  CLEAR_STATE: "getLocationDetailsCasesClearState",
+});
