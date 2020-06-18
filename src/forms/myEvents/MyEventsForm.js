@@ -13,7 +13,9 @@ import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
 import useMyEventsForm from "../../hooks/form/myEvents/useMyEventsForm";
 import Suggestions from "../../components/map/suggestions/Suggestions";
+import Map from "../../components/map/map/Map";
 import { selectEventAddressClearState } from "../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
+import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
@@ -26,6 +28,12 @@ const MyEventsForm = () => {
   const dispatch = useDispatch();
   const { inputs, showSuggestions, handleOnChange } = useMyEventsForm();
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
+  const { loadingLocationDetails } = useSelector(
+    (state) => state.locationDetails
+  );
+  const { selectedAddress } = useSelector(
+    (state) => state.selectedEventAddress
+  );
 
   return (
     <ScrollArea
@@ -127,13 +135,23 @@ const MyEventsForm = () => {
                   placeholder={strings.myEvents.ADDRESS_PLACEHOLDER}
                 />
                 <div className="myevents-input-spinner">
-                  {loadingAddresses && <Spinner animation="border" size="sm" />}
+                  {loadingAddresses ||
+                    (loadingLocationDetails && (
+                      <Spinner animation="border" size="sm" />
+                    ))}
                 </div>
               </InputGroup>
               {showSuggestions && <Suggestions />}
             </Form.Group>
           </Col>
         </Row>
+        {selectedAddress.label && (
+          <Row>
+            <Col xs={12}>
+              <Map />
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicDescription">
@@ -277,6 +295,7 @@ const MyEventsForm = () => {
                   e.preventDefault();
                   dispatch(showNewEventForm(false));
                   dispatch(selectEventAddressClearState());
+                  dispatch(getLocationDetailsClearState());
                   //dispatch(toEditMyRecipeClearState());
                 }}
                 className="myevents-form-button-cancel"
