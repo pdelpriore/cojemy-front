@@ -74,14 +74,6 @@ const useMyEventsForm = () => {
   }, [selectedAddress, dispatch]);
 
   useEffect(() => {
-    return () => {
-      dispatch(getAddressClearState());
-      dispatch(selectEventAddressClearState());
-      dispatch(getLocationDetailsClearState());
-    };
-  }, [dispatch]);
-
-  useEffect(() => {
     if (
       selectedAddress.label &&
       selectedAddress.label === inputs.address &&
@@ -92,6 +84,14 @@ const useMyEventsForm = () => {
       setShowMap(false);
     }
   }, [selectedAddress.label, inputs.address]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(getAddressClearState());
+      dispatch(selectEventAddressClearState());
+      dispatch(getLocationDetailsClearState());
+    };
+  }, [dispatch]);
 
   return { inputs, showMap, showSuggestions, handleOnChange };
 };
