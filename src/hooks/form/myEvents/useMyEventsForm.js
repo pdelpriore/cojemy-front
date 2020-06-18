@@ -59,12 +59,6 @@ const useMyEventsForm = () => {
             ...others,
           }))(addressObj)
         );
-      if (addressObj.streetName === undefined)
-        setAddressObj((addressObj) =>
-          (({ streetName, ...others }) => ({
-            ...others,
-          }))(addressObj)
-        );
       dispatch(getLocationDetails(selectedAddress.locationId));
     } else {
       setInputs((inputs) =>

@@ -213,7 +213,7 @@ export const strings = Object.freeze({
     TITLE_PLACEHOLDER: "titre",
     PHOTO: "photo",
     ADDRESS: "lieu *",
-    ADDRESS_PLACEHOLDER: "46 rue de rivoli, etc.",
+    ADDRESS_PLACEHOLDER: "46 rue de rivoli, Paris, etc.",
     DESCRIPTION: "description *",
     DESCRIPTION_PLACEHOLDER: "description",
     AVAILABLE_PLACES: "places disponibles *",
