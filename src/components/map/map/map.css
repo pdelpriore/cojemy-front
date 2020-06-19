@@ -1,0 +1,12 @@
+.map-iframe-box {
+  position: relative;
+  left: 0;
+  height: 450px;
+}
+.map-iframe-hidden {
+  opacity: 0;
+}
+.map-iframe-spinner-box {
+  height: 450px;
+  line-height: 150px;
+}
