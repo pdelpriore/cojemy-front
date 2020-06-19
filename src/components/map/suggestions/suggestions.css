@@ -5,6 +5,7 @@
   border-radius: 5px;
   overflow: hidden;
   margin: 5px;
+  animation: fadein 500ms;
 }
 .suggestion-item {
   font-family: "OpenSans-SemiBold";
@@ -18,4 +19,15 @@
 .no-result {
   font-family: "OpenSans-SemiBold";
   color: #ff0013;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-bottom: 0px;
+  }
 }
