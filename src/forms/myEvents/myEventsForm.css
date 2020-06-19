@@ -11,6 +11,9 @@
   color: #0e153a;
   font-size: 1vw;
 }
+.address {
+  font-size: 0.7vw;
+}
 .myevents-form-button-cancel {
   font-family: "OpenSans-Regular";
 }

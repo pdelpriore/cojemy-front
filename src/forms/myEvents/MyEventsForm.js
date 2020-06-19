@@ -135,7 +135,7 @@ const MyEventsForm = () => {
               </Form.Label>
               <InputGroup>
                 <Form.Control
-                  className="myevents-form-text-family-message"
+                  className="myevents-form-text-family-message address"
                   onChange={handleOnChange}
                   value={inputs.address || ""}
                   name="address"
