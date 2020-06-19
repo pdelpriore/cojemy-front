@@ -91,7 +91,11 @@ const useMyEventsForm = () => {
     } else {
       setShowMap(false);
     }
-  }, [selectedAddress.label, inputs.address]);
+  }, [
+    selectedAddress.label,
+    locationDetailsRetrieved.displayPosition,
+    inputs.address,
+  ]);
 
   useEffect(() => {
     return () => {
