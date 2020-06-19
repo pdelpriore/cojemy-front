@@ -84,7 +84,8 @@ const useMyEventsForm = () => {
     if (
       selectedAddress.label &&
       selectedAddress.label === inputs.address &&
-      inputs.address
+      inputs.address &&
+      locationDetailsRetrieved.displayPosition
     ) {
       setShowMap(true);
     } else {
