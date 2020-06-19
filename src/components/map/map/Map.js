@@ -22,6 +22,7 @@ const Map = ({ latitude, longitude, zoom }) => {
             </div>
           )}
           <iframe
+            title="map"
             className={showLoading ? "map-iframe-hidden" : ""}
             style={{ height: "450px" }}
             src={
