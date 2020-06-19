@@ -4,7 +4,6 @@ import {
   getAddress,
   getAddressClearState,
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
-import { getLocationDetails } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { generateZoom } from "../../../shared/generateZoom";
@@ -49,21 +48,21 @@ const useMyEventsForm = () => {
 
   useEffect(() => {
     if (selectedAddress.label) {
-      dispatch(getLocationDetails(selectedAddress.locationId));
       setInputs((inputs) => ({
         ...inputs,
         address: selectedAddress.label,
       }));
-      setAddressObj((addressObj) => ({
-        ...addressObj,
-        streetNumber: selectedAddress.address.houseNumber,
-        streetName: selectedAddress.address.street,
-        postCode: selectedAddress.address.postalCode,
-        city: selectedAddress.address.city,
-        latitude: locationDetailsRetrieved.displayPosition.latitude,
-        longitude: locationDetailsRetrieved.displayPosition.longitude,
-        zoom: generateZoom(selectedAddress),
-      }));
+      if (locationDetailsRetrieved.displayPosition)
+        setAddressObj((addressObj) => ({
+          ...addressObj,
+          streetNumber: selectedAddress.address.houseNumber,
+          streetName: selectedAddress.address.street,
+          postCode: selectedAddress.address.postalCode,
+          city: selectedAddress.address.city,
+          latitude: locationDetailsRetrieved.displayPosition.latitude,
+          longitude: locationDetailsRetrieved.displayPosition.longitude,
+          zoom: generateZoom(selectedAddress),
+        }));
       if (addressObj.streetNumber === undefined)
         setAddressObj((addressObj) =>
           (({ streetNumber, ...others }) => ({

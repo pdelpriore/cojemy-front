@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectEventAddress } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { chooseEventAddress } from "../../../redux/myEvents/chooseEventAddress/thunk/chooseEventAddressThunk";
+import { getLocationDetails } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { ListGroup } from "react-bootstrap";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
@@ -24,6 +25,7 @@ const Suggestions = () => {
           <ListGroup.Item
             onClick={(e) => {
               e.preventDefault();
+              dispatch(getLocationDetails(suggestion.locationId));
               dispatch(selectEventAddress(suggestion));
             }}
             className="suggestion-item"
