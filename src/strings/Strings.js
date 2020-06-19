@@ -14,6 +14,7 @@ export const strings = Object.freeze({
     SERVER_REQUEST: "http://localhost:4000/graphql",
     USER_PHOTO: "#",
     IMAGE_REQUEST: "http://localhost:4000",
+    MAP_REQUEST: "http://localhost:4000/heremaprender",
   },
   navbar: {
     navType: {

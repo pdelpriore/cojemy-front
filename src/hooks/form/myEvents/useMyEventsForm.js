@@ -48,43 +48,42 @@ const useMyEventsForm = () => {
 
   useEffect(() => {
     if (selectedAddress.label) {
+      dispatch(getLocationDetails(selectedAddress.locationId));
       setInputs((inputs) => ({
         ...inputs,
         address: selectedAddress.label,
       }));
-      dispatch(getLocationDetails(selectedAddress.locationId));
-      if (selectedAddress.label && locationDetailsRetrieved.displayPosition)
-        setAddressObj((addressObj) => ({
-          ...addressObj,
-          streetNumber: selectedAddress.address.houseNumber,
-          streetName: selectedAddress.address.street,
-          postCode: selectedAddress.address.postalCode,
-          city: selectedAddress.address.city,
-          latitude: locationDetailsRetrieved.displayPosition.latitude,
-          longitude: locationDetailsRetrieved.displayPosition.longitude,
-          zoom:
-            selectedAddress.address.houseNumber &&
-            selectedAddress.address.street &&
-            selectedAddress.address.city &&
-            selectedAddress.address.country
-              ? 17
-              : !selectedAddress.address.houseNumber &&
-                selectedAddress.address.street &&
-                selectedAddress.address.city &&
-                selectedAddress.address.country
-              ? 15
-              : !selectedAddress.address.houseNumber &&
-                !selectedAddress.address.street &&
-                selectedAddress.address.city &&
-                selectedAddress.address.country
-              ? 10
-              : !selectedAddress.address.houseNumber &&
-                !selectedAddress.address.street &&
-                !selectedAddress.address.city &&
-                selectedAddress.address.country
-              ? 4
-              : 10,
-        }));
+      setAddressObj((addressObj) => ({
+        ...addressObj,
+        streetNumber: selectedAddress.address.houseNumber,
+        streetName: selectedAddress.address.street,
+        postCode: selectedAddress.address.postalCode,
+        city: selectedAddress.address.city,
+        latitude: locationDetailsRetrieved.displayPosition.latitude,
+        longitude: locationDetailsRetrieved.displayPosition.longitude,
+        zoom:
+          selectedAddress.address.houseNumber &&
+          selectedAddress.address.street &&
+          selectedAddress.address.city &&
+          selectedAddress.address.country
+            ? 17
+            : !selectedAddress.address.houseNumber &&
+              selectedAddress.address.street &&
+              selectedAddress.address.city &&
+              selectedAddress.address.country
+            ? 15
+            : !selectedAddress.address.houseNumber &&
+              !selectedAddress.address.street &&
+              selectedAddress.address.city &&
+              selectedAddress.address.country
+            ? 10
+            : !selectedAddress.address.houseNumber &&
+              !selectedAddress.address.street &&
+              !selectedAddress.address.city &&
+              selectedAddress.address.country
+            ? 4
+            : 10,
+      }));
       if (addressObj.streetNumber === undefined)
         setAddressObj((addressObj) =>
           (({ streetNumber, ...others }) => ({
@@ -99,7 +98,7 @@ const useMyEventsForm = () => {
       );
       setAddressObj({});
     }
-  }, [selectedAddress, locationDetailsRetrieved.displayPosition, dispatch]);
+  }, [selectedAddress, dispatch]);
 
   useEffect(() => {
     if (
