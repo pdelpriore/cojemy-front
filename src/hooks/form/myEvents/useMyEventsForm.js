@@ -77,7 +77,12 @@ const useMyEventsForm = () => {
       );
       setAddressObj({});
     }
-  }, [selectedAddress, dispatch]);
+  }, [
+    selectedAddress,
+    locationDetailsRetrieved.displayPosition,
+    addressObj.streetNumber,
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (
