@@ -13,6 +13,9 @@ import { changeRecipeListItem } from "../../redux/recipeBook/changeRecipeListIte
 import { toEditRateCommentClearState } from "../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { myRecipePreviewClearState } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
+import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
+import { selectEventAddressClearState } from "../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
+import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { loginUser } from "../../redux/login/userLogged/thunk/userLoggedThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
@@ -86,6 +89,9 @@ const MakeNavMenu = ({ type }) => {
       dispatch(toEditRateCommentClearState());
       dispatch(toEditMyRecipeClearState());
       dispatch(changeRecipeListItem(true));
+      dispatch(getAddressClearState());
+      dispatch(selectEventAddressClearState());
+      dispatch(getLocationDetailsClearState());
     }
     if (userData.email === undefined) dispatch(clearLogoutState());
   }, [userData, userLoggedOut, dispatch]);
