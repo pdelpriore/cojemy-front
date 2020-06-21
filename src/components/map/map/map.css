@@ -10,3 +10,8 @@
   height: 450px;
   line-height: 150px;
 }
+.map-iframe-main-area {
+  padding: 2px;
+  background-color: #ededed;
+  border-radius: 5px;
+}
