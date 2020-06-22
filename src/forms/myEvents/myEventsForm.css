@@ -33,3 +33,9 @@
 .clock-opened {
   height: 220px;
 }
+.my-events-datetime {
+  height: 35px;
+  border-radius: 5px;
+  background-color: #22d1ee;
+  border: 1px solid #22d1ee;
+}
