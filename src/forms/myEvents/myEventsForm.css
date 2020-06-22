@@ -26,3 +26,28 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.myevents-datepicker-box {
+  display: flex;
+  flex-direction: column;
+}
+.myevents-datepicker {
+  width: 10.5vw;
+  background-color: #22d1ee;
+  border: 1px solid #22d1ee;
+  height: 35px;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+}
+.myevents-datepicker-icon-box {
+  display: flex;
+  width: 12.5vw;
+  flex-direction: row;
+  align-items: center;
+  background-color: #22d1ee;
+  border: 1px solid #22d1ee;
+  border-radius: 5px;
+}
+.myevents-datepicker-icon {
+  font-size: 1.2vw;
+  margin-left: 1.5px;
+}
