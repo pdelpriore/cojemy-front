@@ -235,6 +235,7 @@ const MyEventsForm = () => {
                     onChange={(dateTime) => handleDateTime(dateTime)}
                     selected={inputs.eventDate}
                     dateFormat="d MMMM yyyy, HH:mm"
+                    onChangeRaw={(e) => e.preventDefault()}
                   />
                   <FontAwesomeIcon
                     className="myevents-datepicker-icon"
