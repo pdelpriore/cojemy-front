@@ -231,12 +231,12 @@ const MyEventsForm = () => {
                     timeIntervals={5}
                     className="myevents-datepicker"
                     locale="fr"
-                    showTimeSelect
+                    showTimeSelect={true}
                     onChange={(dateTime) => handleDateTime(dateTime)}
                     selected={inputs.eventDate}
                     dateFormat="d MMMM yyyy, HH:mm"
                     onChangeRaw={(e) => e.preventDefault()}
-                    withPortal
+                    withPortal={true}
                   />
                   <FontAwesomeIcon
                     className="myevents-datepicker-icon"
