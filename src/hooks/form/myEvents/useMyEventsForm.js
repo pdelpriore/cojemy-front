@@ -14,6 +14,7 @@ const useMyEventsForm = () => {
   const [addressObj, setAddressObj] = useState({});
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showMap, setShowMap] = useState(false);
+  const [isClockOpened, setClockOpened] = useState(false);
 
   const { selectedAddress } = useSelector(
     (state) => state.selectedEventAddress
@@ -30,6 +31,16 @@ const useMyEventsForm = () => {
       [e.target.name]: e.target.value,
     }));
   };
+  const handleDateTime = (dateTime) => {
+    setInputs((inputs) => ({
+      ...inputs,
+      eventDate: dateTime,
+    }));
+  };
+  const handleClockOpened = (bool) => {
+    setClockOpened(bool);
+  };
+
   useEffect(() => {
     if (inputs.address) {
       dispatch(getAddress(inputs.address));
@@ -109,7 +120,17 @@ const useMyEventsForm = () => {
     };
   }, [dispatch]);
 
-  return { inputs, showMap, showSuggestions, handleOnChange };
+  console.log(inputs);
+
+  return {
+    inputs,
+    showMap,
+    showSuggestions,
+    isClockOpened,
+    handleOnChange,
+    handleDateTime,
+    handleClockOpened,
+  };
 };
 
 export default useMyEventsForm;

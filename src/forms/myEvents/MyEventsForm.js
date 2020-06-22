@@ -14,6 +14,7 @@ import ImageUploader from "react-images-upload";
 import useMyEventsForm from "../../hooks/form/myEvents/useMyEventsForm";
 import Suggestions from "../../components/map/suggestions/Suggestions";
 import Map from "../../components/map/map/Map";
+import DateTimePicker from "react-datetime-picker";
 import { generateZoom } from "../../shared/generateZoom";
 import { selectEventAddressClearState } from "../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
@@ -32,7 +33,10 @@ const MyEventsForm = () => {
     inputs,
     showMap,
     showSuggestions,
+    isClockOpened,
     handleOnChange,
+    handleDateTime,
+    handleClockOpened,
   } = useMyEventsForm();
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
   const { loadingLocationDetails } = useSelector(
@@ -60,8 +64,8 @@ const MyEventsForm = () => {
               </Form.Label>
               <Form.Control
                 className="myevents-form-text-family-message"
-                onChange={null}
-                value={null}
+                onChange={handleOnChange}
+                value={inputs.title || ""}
                 name="title"
                 type="text"
                 maxLength="21"
@@ -183,8 +187,8 @@ const MyEventsForm = () => {
               </Form.Label>
               <Form.Control
                 className="myevents-form-text-family-message"
-                onChange={null}
-                value={null}
+                onChange={handleOnChange}
+                value={inputs.description || ""}
                 name="description"
                 type="text"
                 placeholder={strings.myEvents.DESCRIPTION_PLACEHOLDER}
@@ -200,8 +204,8 @@ const MyEventsForm = () => {
               </Form.Label>
               <Form.Control
                 className="myevents-form-text-family-message"
-                onChange={null}
-                value={null}
+                onChange={handleOnChange}
+                value={inputs.availablePlaces || ""}
                 name="availablePlaces"
                 type="text"
                 maxLength="3"
@@ -212,21 +216,29 @@ const MyEventsForm = () => {
         </Row>
         <Row>
           <Col xs={12}>
-            <Form.Group controlId="formBasicEventDate">
+            <Form.Group
+              className={
+                isClockOpened
+                  ? "myevents-date-box clock-opened"
+                  : "myevents-date-box"
+              }
+              controlId="formBasicEventDate"
+            >
               <Form.Label className="myevents-form-text-family">
                 {capitalizeFirst(strings.myEvents.EVENT_DATE)}
               </Form.Label>
-              <Form.Control
-                className="myevents-form-text-family-message"
-                onChange={null}
-                value={null}
-                name="ingredients"
-                type="text"
-                placeholder={strings.myEvents.EVENT_DATE_PLACEHOLDER}
+              <DateTimePicker
+                className="my-events-datetime"
+                onChange={(dateTime) => handleDateTime(dateTime)}
+                value={inputs.eventDate || ""}
+                minDate={new Date()}
+                onClockOpen={() => handleClockOpened(true)}
+                onClockClose={() => handleClockOpened(false)}
               />
             </Form.Group>
           </Col>
         </Row>
+        {isClockOpened && <Row className="mb-5" />}
         <Row>
           <Col xs={12}>
             <div className="myrecipes-form-buttons-box">
