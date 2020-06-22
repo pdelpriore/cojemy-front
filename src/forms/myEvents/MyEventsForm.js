@@ -33,10 +33,7 @@ const MyEventsForm = () => {
     inputs,
     showMap,
     showSuggestions,
-    isClockOpened,
     handleOnChange,
-    handleDateTime,
-    handleClockOpened,
   } = useMyEventsForm();
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
   const { loadingLocationDetails } = useSelector(
@@ -216,29 +213,14 @@ const MyEventsForm = () => {
         </Row>
         <Row>
           <Col xs={12}>
-            <Form.Group
-              className={
-                isClockOpened
-                  ? "myevents-date-box clock-opened"
-                  : "myevents-date-box"
-              }
-              controlId="formBasicEventDate"
-            >
+            <Form.Group controlId="formBasicEventDate">
               <Form.Label className="myevents-form-text-family">
                 {capitalizeFirst(strings.myEvents.EVENT_DATE)}
               </Form.Label>
-              <DateTimePicker
-                className="my-events-datetime"
-                onChange={(dateTime) => handleDateTime(dateTime)}
-                value={inputs.eventDate || ""}
-                minDate={new Date()}
-                onClockOpen={() => handleClockOpened(true)}
-                onClockClose={() => handleClockOpened(false)}
-              />
+              <div>calendar</div>
             </Form.Group>
           </Col>
         </Row>
-        {isClockOpened && <Row className="mb-5" />}
         <Row>
           <Col xs={12}>
             <div className="myrecipes-form-buttons-box">
