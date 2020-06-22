@@ -36,6 +36,12 @@ const useMyEventsForm = () => {
       eventDate: dateTime,
     }));
   };
+  const handleInitializeDate = () => {
+    setInputs((inputs) => ({
+      ...inputs,
+      eventDate: new Date(),
+    }));
+  };
 
   useEffect(() => {
     if (inputs.address) {
@@ -116,14 +122,13 @@ const useMyEventsForm = () => {
     };
   }, [dispatch]);
 
-  console.log(inputs);
-
   return {
     inputs,
     showMap,
     showSuggestions,
     handleOnChange,
     handleDateTime,
+    handleInitializeDate,
   };
 };
 

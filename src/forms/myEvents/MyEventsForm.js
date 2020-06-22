@@ -15,6 +15,7 @@ import useMyEventsForm from "../../hooks/form/myEvents/useMyEventsForm";
 import Suggestions from "../../components/map/suggestions/Suggestions";
 import Map from "../../components/map/map/Map";
 import DatePicker from "react-datepicker";
+import moment from "moment";
 import { registerLocale } from "react-datepicker";
 import fr from "date-fns/locale/fr";
 import { generateZoom } from "../../shared/generateZoom";
@@ -39,6 +40,7 @@ const MyEventsForm = () => {
     showSuggestions,
     handleOnChange,
     handleDateTime,
+    handleInitializeDate,
   } = useMyEventsForm();
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
   const { loadingLocationDetails } = useSelector(
@@ -225,8 +227,16 @@ const MyEventsForm = () => {
                 </Form.Label>
                 <div className="myevents-datepicker-icon-box">
                   <DatePicker
+                    onFocus={handleInitializeDate}
                     minDate={new Date()}
-                    minTime={new Date().getTime()}
+                    minTime={
+                      inputs.eventDate &&
+                      moment(
+                        new Date(inputs.eventDate).setHours(0, 0, 0, 0)
+                      ).isSame(new Date().setHours(0, 0, 0, 0))
+                        ? new Date().getTime()
+                        : new Date().setHours(0, 0, 0, 1)
+                    }
                     maxTime={new Date().setHours(23, 59, 59, 999)}
                     timeIntervals={5}
                     className="myevents-datepicker"
