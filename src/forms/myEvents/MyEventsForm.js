@@ -226,12 +226,15 @@ const MyEventsForm = () => {
                 <div className="myevents-datepicker-icon-box">
                   <DatePicker
                     minDate={new Date()}
+                    minTime={new Date().getTime()}
+                    maxTime={new Date().setHours(23, 59, 59, 999)}
+                    timeIntervals={5}
                     className="myevents-datepicker"
                     locale="fr"
                     showTimeSelect
                     onChange={(dateTime) => handleDateTime(dateTime)}
                     selected={inputs.eventDate}
-                    dateFormat="MMMM d, yyyy H:MM"
+                    dateFormat="d MMMM yyyy, HH:mm"
                   />
                   <FontAwesomeIcon
                     className="myevents-datepicker-icon"
