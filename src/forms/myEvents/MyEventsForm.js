@@ -120,7 +120,7 @@ const MyEventsForm = () => {
             <Col xs={1} />
             <Col xs={1}>
               <FontAwesomeIcon
-                className="myrecipes-form-trash"
+                className="myevents-form-trash"
                 icon={faTrash}
                 onClick={(e) => {
                   e.preventDefault();
@@ -134,7 +134,7 @@ const MyEventsForm = () => {
         {error.imageError && (
           <Row>
             <Col xs={12}>
-              <div className="myrecipes-form-video-error">
+              <div className="myevents-form-image-error">
                 {error.imageError ? error.imageError : null}
               </div>
             </Col>

@@ -51,3 +51,12 @@
   font-size: 1.2vw;
   margin-left: 1.5px;
 }
+.myevents-form-trash:hover {
+  color: #ee6670;
+  cursor: pointer;
+}
+.myevents-form-image-error {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1vw;
+  color: red;
+}
