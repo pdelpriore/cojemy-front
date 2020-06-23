@@ -14,8 +14,7 @@
 .address {
   font-size: 0.6vw;
   border: 1px solid #22d1ee;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
+  height: 35px;
 }
 .myevents-form-button-cancel {
   font-family: "OpenSans-Regular";
@@ -67,4 +66,7 @@
 .myevents-icon-address-box {
   display: flex;
   flex-direction: row;
+  background-color: #22d1ee;
+  border: 1px solid #22d1ee;
+  border-radius: 5px;
 }
