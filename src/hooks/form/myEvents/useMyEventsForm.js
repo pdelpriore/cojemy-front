@@ -8,6 +8,8 @@ import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { generateZoom } from "../../../shared/generateZoom";
+import { strings } from "../../../strings/Strings";
+import { capitalizeFirst } from "../../../util/Util";
 
 const useMyEventsForm = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,18 @@ const useMyEventsForm = () => {
     e.persist();
     setInputs((inputs) => ({
       ...inputs,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.name === strings.myEvents.inputName.TITLE
+          ? capitalizeFirst(e.target.value.replace(/[^0-9a-zA-Z-_.:,! ]+/g, ""))
+          : e.target.name === strings.myEvents.inputName.DESCRIPTION
+          ? capitalizeFirst(e.target.value)
+          : e.target.name === strings.myEvents.inputName.AVAILABLE_PLACES
+          ? parseInt(e.target.value) > 500
+            ? (e.target.value = "500")
+            : e.target.value[0] === "0"
+            ? (e.target.value = "1")
+            : e.target.value.replace(/[^0-9]+/g, "")
+          : e.target.value,
     }));
   };
   const handleDateTime = (dateTime) => {

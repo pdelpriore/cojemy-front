@@ -212,7 +212,7 @@ export const strings = Object.freeze({
     BUTTON_NEW_EVENT: "nouvel événement",
     TITLE: "titre (max 21 caractères) *",
     TITLE_PLACEHOLDER: "titre",
-    PHOTO: "photo *",
+    PHOTO: "photo d'événement *",
     ADDRESS: "lieu *",
     ADDRESS_PLACEHOLDER: "46 rue de rivoli, Paris, etc.",
     DESCRIPTION: "description *",
@@ -223,6 +223,11 @@ export const strings = Object.freeze({
     EVENT_DATE_PLACEHOLDER: "date d'événement",
     error: {
       NO_SUGGESTIONS: "pas de résultat",
+    },
+    inputName: {
+      TITLE: "title",
+      DESCRIPTION: "description",
+      AVAILABLE_PLACES: "availablePlaces",
     },
   },
 });
