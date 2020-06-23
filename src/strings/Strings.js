@@ -212,7 +212,7 @@ export const strings = Object.freeze({
     BUTTON_NEW_EVENT: "nouvel événement",
     TITLE: "titre (max 21 caractères) *",
     TITLE_PLACEHOLDER: "titre",
-    PHOTO: "photo",
+    PHOTO: "photo *",
     ADDRESS: "lieu *",
     ADDRESS_PLACEHOLDER: "46 rue de rivoli, Paris, etc.",
     DESCRIPTION: "description *",

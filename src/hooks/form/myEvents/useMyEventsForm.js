@@ -4,6 +4,7 @@ import {
   getAddress,
   getAddressClearState,
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
+import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { generateZoom } from "../../../shared/generateZoom";
@@ -11,6 +12,7 @@ import { generateZoom } from "../../../shared/generateZoom";
 const useMyEventsForm = () => {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
+  const [error, setError] = useState({});
   const [addressObj, setAddressObj] = useState({});
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showMap, setShowMap] = useState(false);
@@ -41,6 +43,45 @@ const useMyEventsForm = () => {
       ...inputs,
       eventDate: new Date(),
     }));
+  };
+  const handlePicture = async (picture) => {
+    try {
+      const result = await makeImageBinary(picture);
+      if (result) {
+        setInputs((inputs) => ({
+          ...inputs,
+          recipeImage: result,
+        }));
+        if (error.imageError) {
+          setError((error) =>
+            (({ imageError, ...others }) => ({
+              ...others,
+            }))(error)
+          );
+        }
+      }
+    } catch (err) {
+      if (err) {
+        setError((error) => ({
+          ...error,
+          imageError: err,
+        }));
+      }
+    }
+  };
+  const handleRemoveImage = () => {
+    setInputs((inputs) =>
+      (({ recipeImage, ...others }) => ({
+        ...others,
+      }))(inputs)
+    );
+    if (error.imageError) {
+      setError((error) =>
+        (({ imageError, ...others }) => ({
+          ...others,
+        }))(error)
+      );
+    }
   };
 
   useEffect(() => {
@@ -126,9 +167,12 @@ const useMyEventsForm = () => {
     inputs,
     showMap,
     showSuggestions,
+    error,
     handleOnChange,
     handleDateTime,
     handleInitializeDate,
+    handlePicture,
+    handleRemoveImage,
   };
 };
 

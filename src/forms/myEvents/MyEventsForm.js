@@ -24,6 +24,7 @@ import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getA
 import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { useSelector, useDispatch } from "react-redux";
@@ -38,9 +39,12 @@ const MyEventsForm = () => {
     inputs,
     showMap,
     showSuggestions,
+    error,
     handleOnChange,
     handleDateTime,
     handleInitializeDate,
+    handlePicture,
+    handleRemoveImage,
   } = useMyEventsForm();
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
   const { loadingLocationDetails } = useSelector(
@@ -96,7 +100,7 @@ const MyEventsForm = () => {
                 withLabel={true}
                 label={capitalizeFirst(strings.myRecipes.MAX_PICTURE_SIZE)}
                 buttonText={capitalizeFirst(strings.myRecipes.CHOOSE_PICTURE)}
-                onChange={null}
+                onChange={(picture) => handlePicture(picture)}
                 imgExtension={[".jpg", "jpeg", ".gif", ".png", ".gif"]}
                 fileTypeError={capitalizeFirst(
                   strings.myRecipes.error.IMAGE_FORMAT
@@ -105,7 +109,7 @@ const MyEventsForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {/* {inputs.recipeImage && (
+        {inputs.recipeImage && (
           <Row>
             <Col xs={9}>
               <Image
@@ -135,7 +139,7 @@ const MyEventsForm = () => {
               </div>
             </Col>
           </Row>
-        )} */}
+        )}
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicAddress">
