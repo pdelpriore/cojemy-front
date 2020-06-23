@@ -13,6 +13,9 @@
 }
 .address {
   font-size: 0.6vw;
+  border: 1px solid #22d1ee;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 .myevents-form-button-cancel {
   font-family: "OpenSans-Regular";
@@ -23,6 +26,7 @@
   align-items: center;
   width: 2vw;
   background-color: #22d1ee;
+  border: 1px solid #22d1ee;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -59,4 +63,8 @@
   font-family: "OpenSans-SemiBold";
   font-size: 1vw;
   color: red;
+}
+.myevents-icon-address-box {
+  display: flex;
+  flex-direction: row;
 }

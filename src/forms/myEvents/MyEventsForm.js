@@ -146,7 +146,7 @@ const MyEventsForm = () => {
               <Form.Label className="myevents-form-text-family">
                 {capitalizeFirst(strings.myEvents.ADDRESS)}
               </Form.Label>
-              <InputGroup>
+              <div className="myevents-icon-address-box">
                 <Form.Control
                   className="myevents-form-text-family-message address"
                   onChange={handleOnChange}
@@ -161,7 +161,7 @@ const MyEventsForm = () => {
                     <Spinner animation="border" size="sm" />
                   )}
                 </div>
-              </InputGroup>
+              </div>
               {showSuggestions && <Suggestions />}
             </Form.Group>
           </Col>
