@@ -197,6 +197,8 @@ const MyEventsForm = () => {
                 className="myevents-form-text-family-message"
                 onChange={handleOnChange}
                 value={inputs.description || ""}
+                as="textarea"
+                rows="4"
                 name="description"
                 type="text"
                 placeholder={strings.myEvents.DESCRIPTION_PLACEHOLDER}
