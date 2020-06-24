@@ -45,6 +45,7 @@ const MyEventsForm = () => {
     handleInitializeDate,
     handlePicture,
     handleRemoveImage,
+    handleSubmit,
   } = useMyEventsForm();
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
   const { loadingLocationDetails } = useSelector(
@@ -63,7 +64,7 @@ const MyEventsForm = () => {
       smoothScrolling={true}
       horizontal={false}
     >
-      <Form onSubmit={null}>
+      <Form onSubmit={handleSubmit}>
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicTitle">
@@ -109,11 +110,11 @@ const MyEventsForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {inputs.recipeImage && (
+        {inputs.eventImage && (
           <Row>
             <Col xs={9}>
               <Image
-                src={inputs.recipeImage.image ? inputs.recipeImage.image : null}
+                src={inputs.eventImage.image ? inputs.eventImage.image : null}
                 thumbnail
               />
             </Col>

@@ -172,3 +172,10 @@ export const getLocationDetailsCases = Object.freeze({
   LOCATION_DETAILS_RETRIEVED: "getLocationDetailsCasesLoactionDetalsRetrieved",
   CLEAR_STATE: "getLocationDetailsCasesClearState",
 });
+
+export const addNewEventCases = Object.freeze({
+  LOADING: "addNewEventCasesLoading",
+  EVENT_ADDED: "addNewEventCasesEventAdded",
+  ERROR: "addNewEventCasesError",
+  CLEAR_STATE: "addNewEventCasesClearState",
+});

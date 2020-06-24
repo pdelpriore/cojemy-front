@@ -4,6 +4,7 @@ import {
   getAddress,
   getAddressClearState,
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
+import { addNewEvent } from "../../../redux/myEvents/addNewEvent/thunk/addNewEventThunk";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
@@ -26,6 +27,7 @@ const useMyEventsForm = () => {
   const { locationDetailsRetrieved } = useSelector(
     (state) => state.locationDetails
   );
+  const { userData } = useSelector((state) => state.login);
 
   const handleOnChange = (e) => {
     e.persist();
@@ -95,6 +97,21 @@ const useMyEventsForm = () => {
         }))(error)
       );
     }
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      addNewEvent(
+        inputs.title,
+        inputs.eventImage,
+        addressObj,
+        inputs.description,
+        parseInt(inputs.availablePlaces),
+        inputs.eventDate,
+        userData._id,
+        userData.email
+      )
+    );
   };
 
   useEffect(() => {
@@ -175,7 +192,7 @@ const useMyEventsForm = () => {
       dispatch(getLocationDetailsClearState());
     };
   }, [dispatch]);
-  console.log(addressObj);
+
   return {
     inputs,
     showMap,
@@ -186,6 +203,7 @@ const useMyEventsForm = () => {
     handleInitializeDate,
     handlePicture,
     handleRemoveImage,
+    handleSubmit,
   };
 };
 
