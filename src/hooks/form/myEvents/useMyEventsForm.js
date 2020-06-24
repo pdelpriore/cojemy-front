@@ -63,7 +63,7 @@ const useMyEventsForm = () => {
       if (result) {
         setInputs((inputs) => ({
           ...inputs,
-          recipeImage: result,
+          eventImage: result,
         }));
         if (error.imageError) {
           setError((error) =>
@@ -84,7 +84,7 @@ const useMyEventsForm = () => {
   };
   const handleRemoveImage = () => {
     setInputs((inputs) =>
-      (({ recipeImage, ...others }) => ({
+      (({ eventImage, ...others }) => ({
         ...others,
       }))(inputs)
     );
@@ -130,7 +130,7 @@ const useMyEventsForm = () => {
           longitude: locationDetailsRetrieved.displayPosition.longitude,
           zoom: generateZoom(selectedAddress),
         }));
-      if (addressObj.streetNumber === undefined)
+      if (addressObj.streetName && !addressObj.streetNumber)
         setAddressObj((addressObj) =>
           (({ streetNumber, ...others }) => ({
             ...others,
@@ -175,7 +175,7 @@ const useMyEventsForm = () => {
       dispatch(getLocationDetailsClearState());
     };
   }, [dispatch]);
-
+  console.log(addressObj);
   return {
     inputs,
     showMap,

@@ -266,48 +266,48 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <div className="myrecipes-form-buttons-box">
-              {/* {!myRecipeToEdit.recipeTitle ? (
-                <Button
-                  disabled={
-                    loading ||
-                    inputs.title === undefined ||
-                    inputs.title === "" ||
-                    error.imageError ||
-                    error.playerError ||
-                    inputs.category === undefined ||
-                    inputs.category === "" ||
-                    inputs.cookTime === undefined ||
-                    inputs.cookTime === "" ||
-                    inputs.ingredients === undefined ||
-                    inputs.ingredients === "" ||
-                    inputs.description === undefined ||
-                    inputs.description === ""
-                  }
-                  type="submit"
-                  className="myrecipes-form-button-text"
-                  variant="outline-dark"
-                >
-                  <div className="myrecipes-form-spinner">
-                    {loading && (
-                      <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
-                    )}
-                  </div>
-                  {loading ? (
-                    <div className="myrecipes-form-button-loading">
-                      {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
-                    </div>
-                  ) : (
-                    <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
+              {/* {!myRecipeToEdit.recipeTitle ? ( */}
+              <Button
+                // disabled={
+                //   loading ||
+                //   inputs.title === undefined ||
+                //   inputs.title === "" ||
+                //   error.imageError ||
+                //   error.playerError ||
+                //   inputs.category === undefined ||
+                //   inputs.category === "" ||
+                //   inputs.cookTime === undefined ||
+                //   inputs.cookTime === "" ||
+                //   inputs.ingredients === undefined ||
+                //   inputs.ingredients === "" ||
+                //   inputs.description === undefined ||
+                //   inputs.description === ""
+                // }
+                type="submit"
+                className="myrecipes-form-button-text"
+                variant="outline-dark"
+              >
+                <div className="myrecipes-form-spinner">
+                  {false && (
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
                   )}
-                </Button>
-              ) : (
-                <Button
+                </div>
+                {false ? (
+                  <div className="myrecipes-form-button-loading">
+                    {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                  </div>
+                ) : (
+                  <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
+                )}
+              </Button>
+              {/* ) : ( */}
+              {/* <Button
                   disabled={
                     loading ||
                     inputs.title === undefined ||
