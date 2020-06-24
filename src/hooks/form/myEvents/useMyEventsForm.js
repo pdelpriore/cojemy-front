@@ -4,7 +4,7 @@ import {
   getAddress,
   getAddressClearState,
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
-import { addNewEvent } from "../../../redux/myEvents/addNewEvent/thunk/addNewEventThunk";
+import { addNewEvent } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";

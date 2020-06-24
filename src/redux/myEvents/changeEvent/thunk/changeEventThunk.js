@@ -1,4 +1,4 @@
-import { addNewEventCases } from "../../../config/cases/Cases";
+import { changeEventCases } from "../../../config/cases/Cases";
 import { addNewEventQuery } from "../query/addNewEventQuery";
 import { strings } from "../../../../strings/Strings";
 

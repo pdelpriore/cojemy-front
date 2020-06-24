@@ -173,9 +173,9 @@ export const getLocationDetailsCases = Object.freeze({
   CLEAR_STATE: "getLocationDetailsCasesClearState",
 });
 
-export const addNewEventCases = Object.freeze({
-  LOADING: "addNewEventCasesLoading",
-  EVENT_ADDED: "addNewEventCasesEventAdded",
-  ERROR: "addNewEventCasesError",
-  CLEAR_STATE: "addNewEventCasesClearState",
+export const changeEventCases = Object.freeze({
+  LOADING: "changeEventCasesLoading",
+  EVENT_CHANGED: "changeEventCasesEventChanged",
+  ERROR: "changeEventCasesError",
+  CLEAR_STATE: "changeEventCasesClearState",
 });
