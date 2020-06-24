@@ -122,7 +122,7 @@ const useMyEventsForm = () => {
       if (locationDetailsRetrieved.displayPosition)
         setAddressObj((addressObj) => ({
           ...addressObj,
-          streetNumber: selectedAddress.address.houseNumber,
+          streetNumber: parseInt(selectedAddress.address.houseNumber),
           streetName: selectedAddress.address.street,
           postCode: selectedAddress.address.postalCode,
           city: selectedAddress.address.city,
