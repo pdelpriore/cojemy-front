@@ -179,3 +179,10 @@ export const changeEventCases = Object.freeze({
   ERROR: "changeEventCasesError",
   CLEAR_STATE: "changeEventCasesClearState",
 });
+
+export const retrieveEventsCases = Object.freeze({
+  LOADING: "retrieveEventsCasesLoading",
+  EVENTS_RETRIEVED: "retrieveEventsCasesEventsRetrieved",
+  ERROR: "retrieveEventsCasesError",
+  CLEAR_STATE: "retrieveEventsCasesClearState",
+});
