@@ -4,7 +4,7 @@ import { strings } from "../../../../strings/Strings";
 
 export const getEvents = (category, userId, email) => {
   return async (dispatch, getState) => {
-    //dispatch({ type: retrieveEventsCases.LOADING, payload: true });
+    dispatch({ type: retrieveEventsCases.LOADING, payload: true });
     const bodyRequest = retrieveEventsQuery(category, userId, email);
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
@@ -18,17 +18,15 @@ export const getEvents = (category, userId, email) => {
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data) {
-        console.log(data);
-        //   dispatch({
-        //     type: retrieveEventsCases.EVENTS_RETRIEVED,
-        //     payload: data.retrieveMyRecipes,
-        //   });
+        dispatch({
+          type: retrieveEventsCases.EVENTS_RETRIEVED,
+          payload: data.retrieveEvents,
+        });
       } else if (errors) {
-        console.log(errors);
-        //   dispatch({
-        //     type: retrieveEventsCases.ERROR,
-        //     payload: errors[0].message,
-        //   });
+        dispatch({
+          type: retrieveEventsCases.ERROR,
+          payload: errors[0].message,
+        });
       }
     } catch (err) {
       if (err) console.log(err);

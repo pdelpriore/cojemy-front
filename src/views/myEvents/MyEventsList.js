@@ -5,33 +5,43 @@ import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock } from "@fortawesome/free-regular-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
+import TimeAgo from "timeago-react";
+import * as timeago from "timeago.js";
+import fr from "timeago.js/lib/lang/fr";
 import { createDate } from "../../util/Util";
 import "./myEvents.css";
 
 const MyEventsList = () => {
-  const dispatch = useDispatch();
+  timeago.register("fr", fr);
 
-  return (
+  const dispatch = useDispatch();
+  const { loadingEvents, eventsRetrieved, eventsError } = useSelector(
+    (state) => state.events
+  );
+  return loadingEvents ? (
+    <div className="myevents-loading-area">
+      <Spinner animation="border" role="status" variant="light" />
+    </div>
+  ) : eventsError ? (
+    <div className="myevents-item-noevents">{eventsError}</div>
+  ) : (
     <div className="myevents-list-main-area">
-      {/* {recipesRetrieved !== null &&
-        recipesRetrieved.map((retrieveRecipe, index) => (
+      {eventsRetrieved !== null &&
+        eventsRetrieved.map((eventRetrieved, index) => (
           <div
             onClick={(e) => {
               e.preventDefault();
-              dispatch(changeRecipeListItem(true));
-              dispatch(showRecipeDetailsComponent(true));
-              dispatch(retrieveRecipeDetails(retrieveRecipe));
             }}
-            className="recipesList-item"
+            className="myevents-item"
             key={index}
           >
             <Row>
               <Col xs={3}>
                 <Img
-                  className="recipesList-item-picture"
+                  className="myevents-item-picture"
                   src={
-                    retrieveRecipe.picture
-                      ? strings.path.IMAGE_REQUEST + retrieveRecipe.picture
+                    eventRetrieved.eventImage
+                      ? strings.path.IMAGE_REQUEST + eventRetrieved.eventImage
                       : require("../../assets/imgs/panret.jpg")
                   }
                   loader={<Spinner animation="border" variant="info" />}
@@ -43,51 +53,33 @@ const MyEventsList = () => {
                   <Col xs={5}>
                     <div>
                       <TimeAgo
-                        className="recipesList-item-timeago"
-                        datetime={createDate(retrieveRecipe.date)}
+                        className="myevents-item-timeago"
+                        datetime={createDate(eventRetrieved.creationDate)}
                         locale="fr"
                       />
                     </div>
                   </Col>
                 </Row>
-                <div className="recipesList-item-title">
-                  {retrieveRecipe.title}
-                </div>
-                <div className="recipesList-item-rate-outter">
-                  <RatingStars />
-                  <div
-                    style={{
-                      width: getAverageRating(retrieveRecipe.comments),
-                    }}
-                    className="recipesList-item-rate-inner"
-                  >
-                    <RatingActiveStars place={strings.rating.LIST} />
-                  </div>
+                <div className="myevents-item-title">
+                  {eventRetrieved.title}
                 </div>
                 <div style={{ height: 5 }} />
-                <div className="recipesList-item-author">
-                  <div className="recipesList-item-icon">
+                <div className="myevents-item-author">
+                  <div className="myevents-item-icon">
                     <FontAwesomeIcon icon={faUser} />
                   </div>
-                  <div>{retrieveRecipe.author.name}</div>
+                  <div>{eventRetrieved.author.name}</div>
                 </div>
-                <div className="recipesList-item-time">
-                  <div className="recipesList-item-icon">
+                <div className="myevents-item-available-places">
+                  <div className="myevents-item-icon">
                     <FontAwesomeIcon icon={faClock} />
                   </div>
-                  <div>{retrieveRecipe.cookTime} min.</div>
+                  <div>{eventRetrieved.availablePlaces}</div>
                 </div>
               </Col>
             </Row>
-            <div
-              style={{
-                height: 10,
-                backgroundColor: "#2E303F",
-                borderRadius: "10px",
-              }}
-            />
           </div>
-        ))} */}
+        ))}
     </div>
   );
 };

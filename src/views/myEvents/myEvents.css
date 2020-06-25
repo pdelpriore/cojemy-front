@@ -78,3 +78,66 @@
   opacity: 1;
   overflow: hidden;
 }
+.myevents-loading-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+.myevents-item-noevents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  font-family: "OpenSans-SemiBold";
+  font-size: 1.1vw;
+  color: #ceced6;
+}
+.myevents-item {
+  background-color: #3c4049;
+  width: 30vw;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s ease;
+  margin: 5px;
+}
+.myevents-item-picture {
+  width: 7.4vw;
+  height: 15.6vh;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 5px;
+  object-fit: cover;
+}
+.myevents-item-timeago {
+  font-family: "OpenSans-Regular";
+  white-space: nowrap;
+  font-size: 0.9vw;
+  color: #edc23c;
+}
+.myevents-item-title {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1.2vw;
+  text-align: left;
+  color: #ceced6;
+}
+.myevents-item-author {
+  display: flex;
+  justify-content: flex-start;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  color: #ceced6;
+}
+.myevents-item-icon {
+  margin-right: 10px;
+  color: #ee6670;
+  width: 1vw;
+}
+.myevents-item-available-places {
+  display: flex;
+  justify-content: flex-start;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  color: #ceced6;
+}
