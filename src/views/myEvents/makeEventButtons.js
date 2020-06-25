@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Row, Col, Button } from "react-bootstrap";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
+import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import useEventButtons from "../../hooks/screen/myEvents/useEventButtons";
 import "./myEvents.css";
 
 const MakeEventButtons = () => {
+  const dispatch = useDispatch();
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   const eventButtonItems = [
     {
@@ -34,6 +36,7 @@ const MakeEventButtons = () => {
       eventButtonItems[eventButtonId].id,
       eventButtonItems[eventButtonId].category
     );
+    return () => dispatch(showNewEventForm(false));
   }, []);
 
   return eventButtonItems.map((buttonItem) => (
