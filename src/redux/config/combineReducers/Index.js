@@ -31,6 +31,7 @@ import selectEventAddressReducer from "../../myEvents/selectEventAddress/reducer
 import chooseEventAddressReducer from "../../myEvents/chooseEventAddress/reducer/chooseEventAddressReducer";
 import getLocationDetailsReducer from "../../myEvents/getLocationDetails/reducer/getLocationDetailsReducer";
 import retrieveEventsReducer from "../../myEvents/retrieveEvents/reducer/retrieveEventsReducer";
+import changeEventReducer from "../../myEvents/changeEvent/reducer/changeEventReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -65,6 +66,7 @@ const allReducers = combineReducers({
   isEventAddressChosen: chooseEventAddressReducer,
   locationDetails: getLocationDetailsReducer,
   events: retrieveEventsReducer,
+  isEventChanged: changeEventReducer,
 });
 
 export default allReducers;

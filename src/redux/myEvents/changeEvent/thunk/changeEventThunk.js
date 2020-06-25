@@ -1,4 +1,7 @@
-import { changeEventCases } from "../../../config/cases/Cases";
+import {
+  changeEventCases,
+  showNewEventFormCases,
+} from "../../../config/cases/Cases";
 import { addNewEventQuery } from "../query/addNewEventQuery";
 import { strings } from "../../../../strings/Strings";
 
@@ -13,7 +16,7 @@ export const addNewEvent = (
   email
 ) => {
   return async (dispatch, getState) => {
-    //dispatch({ type: addNewEventCases.LOADING, payload: true });
+    dispatch({ type: changeEventCases.LOADING, payload: true });
     const bodyRequest = addNewEventQuery(
       title,
       eventImage,
@@ -36,20 +39,25 @@ export const addNewEvent = (
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data.addMyEvent !== null) {
-        console.log(data);
-        // dispatch({
-        //   type: retrieveMyRecipesCases.MY_RECIPES_RETRIEVED,
-        //   payload: data.retrieveMyRecipes,
-        // });
+        dispatch({ type: showNewEventFormCases.FORM_SHOWN, payload: false });
+        dispatch({
+          type: changeEventCases.EVENT_CHANGED,
+          payload: data.addMyEvent,
+        });
       } else if (errors) {
-        console.log(errors);
-        // dispatch({
-        //   type: retrieveMyRecipesCases.ERROR,
-        //   payload: errors[0].message,
-        // });
+        dispatch({
+          type: changeEventCases.ERROR,
+          payload: errors[0].message,
+        });
       }
     } catch (err) {
       if (err) console.log(err);
     }
+  };
+};
+
+export const changeEventClearState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: changeEventCases.CLEAR_STATE });
   };
 };
