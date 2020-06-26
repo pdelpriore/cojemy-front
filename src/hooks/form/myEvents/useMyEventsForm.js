@@ -9,6 +9,7 @@ import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { changeEventClearState } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
+import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { generateZoom } from "../../../shared/generateZoom";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
@@ -149,12 +150,23 @@ const useMyEventsForm = () => {
           longitude: locationDetailsRetrieved.displayPosition.longitude,
           zoom: generateZoom(selectedAddress),
         }));
-      if (addressObj.streetName && !addressObj.streetNumber)
+      if (addressObj.streetName && !addressObj.streetNumber) {
         setAddressObj((addressObj) =>
           (({ streetNumber, ...others }) => ({
             ...others,
           }))(addressObj)
         );
+      } else if (
+        addressObj.city &&
+        !addressObj.streetName &&
+        !addressObj.streetNumber
+      ) {
+        setAddressObj((addressObj) =>
+          (({ streetName, streetNumber, ...others }) => ({
+            ...others,
+          }))(addressObj)
+        );
+      }
     } else {
       setInputs((inputs) =>
         (({ address, ...others }) => ({
@@ -166,6 +178,8 @@ const useMyEventsForm = () => {
   }, [
     selectedAddress,
     locationDetailsRetrieved.displayPosition,
+    addressObj.city,
+    addressObj.streetName,
     addressObj.streetNumber,
     dispatch,
   ]);
@@ -192,6 +206,7 @@ const useMyEventsForm = () => {
       setInputs({});
       setAddressObj({});
       dispatch(changeEventClearState());
+      dispatch(showNewEventForm(false));
     }
     return () => {
       dispatch(getAddressClearState());

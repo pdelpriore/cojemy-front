@@ -1,7 +1,4 @@
-import {
-  changeEventCases,
-  showNewEventFormCases,
-} from "../../../config/cases/Cases";
+import { changeEventCases } from "../../../config/cases/Cases";
 import { addNewEventQuery } from "../query/addNewEventQuery";
 import { strings } from "../../../../strings/Strings";
 
@@ -39,7 +36,6 @@ export const addNewEvent = (
       const responseData = await response.json();
       const { errors, data } = responseData;
       if (data.addMyEvent !== null) {
-        dispatch({ type: showNewEventFormCases.FORM_SHOWN, payload: false });
         dispatch({
           type: changeEventCases.EVENT_CHANGED,
           payload: data.addMyEvent,
