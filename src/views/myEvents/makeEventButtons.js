@@ -10,6 +10,7 @@ import "./myEvents.css";
 const MakeEventButtons = () => {
   const dispatch = useDispatch();
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
+  const { eventUpdated } = useSelector((state) => state.isEventChanged);
   const eventButtonItems = [
     {
       id: 0,
@@ -37,7 +38,7 @@ const MakeEventButtons = () => {
       eventButtonItems[eventButtonId].category
     );
     return () => dispatch(showNewEventForm(false));
-  }, []);
+  }, [eventUpdated]);
 
   return eventButtonItems.map((buttonItem) => (
     <div key={buttonItem.id}>

@@ -57,6 +57,7 @@ const MyEventsForm = () => {
   const { locationDetailsRetrieved } = useSelector(
     (state) => state.locationDetails
   );
+  const { loading } = useSelector((state) => state.isEventChanged);
 
   return (
     <ScrollArea
@@ -289,7 +290,7 @@ const MyEventsForm = () => {
                 variant="outline-dark"
               >
                 <div className="myrecipes-form-spinner">
-                  {false && (
+                  {loading && (
                     <Spinner
                       as="span"
                       animation="border"
@@ -299,7 +300,7 @@ const MyEventsForm = () => {
                     />
                   )}
                 </div>
-                {false ? (
+                {loading ? (
                   <div className="myrecipes-form-button-loading">
                     {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                   </div>

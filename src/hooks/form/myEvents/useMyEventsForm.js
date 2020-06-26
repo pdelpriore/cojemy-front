@@ -8,6 +8,7 @@ import { addNewEvent } from "../../../redux/myEvents/changeEvent/thunk/changeEve
 import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
+import { changeEventClearState } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { generateZoom } from "../../../shared/generateZoom";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
@@ -27,6 +28,7 @@ const useMyEventsForm = () => {
   const { locationDetailsRetrieved } = useSelector(
     (state) => state.locationDetails
   );
+  const { eventUpdated } = useSelector((state) => state.isEventChanged);
   const { userData } = useSelector((state) => state.login);
 
   const handleOnChange = (e) => {
@@ -186,12 +188,17 @@ const useMyEventsForm = () => {
   ]);
 
   useEffect(() => {
+    if (eventUpdated) {
+      setInputs({});
+      setAddressObj({});
+      dispatch(changeEventClearState());
+    }
     return () => {
       dispatch(getAddressClearState());
       dispatch(selectEventAddressClearState());
       dispatch(getLocationDetailsClearState());
     };
-  }, [dispatch]);
+  }, [eventUpdated, dispatch]);
 
   return {
     inputs,
