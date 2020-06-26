@@ -8,6 +8,7 @@ import MyEventsList from "./MyEventsList";
 import MyEventsForm from "../../forms/myEvents/MyEventsForm";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import MakeEventButtons from "./makeEventButtons";
+import Notification from "../../components/notifications/Notification";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./myEvents.css";
@@ -18,6 +19,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
   const { newEventFormShown } = useSelector(
     (state) => state.isNewEventFormShown
   );
+  const { eventChangeError } = useSelector((state) => state.isEventChanged);
   const props = useSpring({
     opacity: 1,
     config: { duration: 200 },
@@ -116,7 +118,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
                 <Row className="mb-5" />
                 <Row className="mb-5" />
                 <Row className="mb-4" />
-                {/* <Notification notificationMessage={null} /> */}
+                <Notification notificationMessage={eventChangeError} />
               </Col>
               <Col xs={1} />
             </Row>

@@ -101,6 +101,10 @@
   transition: 0.5s ease;
   margin: 5px;
 }
+.myevents-item:hover {
+  transform: scale(0.985);
+  cursor: pointer;
+}
 .myevents-item-picture {
   width: 7.4vw;
   height: 15.6vh;

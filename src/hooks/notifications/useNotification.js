@@ -7,6 +7,7 @@ import { clearLoginErrorState } from "../../redux/login/loginUser/thunk/loginThu
 import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
 import { changeUserPasswordClearState } from "../../redux/updateMyProfile/changePassword/thunk/changePasswordThunk";
 import { changeMyRecipesClearState } from "../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
+import { changeEventClearState } from "../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 
 const useNotification = (notificationMessage) => {
   const [notifications, setNotification] = useState({});
@@ -35,6 +36,7 @@ const useNotification = (notificationMessage) => {
   const { myRecipeChangeError } = useSelector(
     (state) => state.isMyRecipeChanged
   );
+  const { eventChangeError } = useSelector((state) => state.isEventChanged);
 
   const dispatch = useDispatch();
 
@@ -55,6 +57,8 @@ const useNotification = (notificationMessage) => {
         dispatch(changeMyRecipesClearState());
       } else if (userPasswordChanged || changeUserPasswordError) {
         dispatch(changeUserPasswordClearState());
+      } else if (eventChangeError) {
+        dispatch(changeEventClearState());
       }
       setShow(false);
       setNotification({});
@@ -73,6 +77,7 @@ const useNotification = (notificationMessage) => {
     myRecipeChangeError,
     userPasswordChanged,
     changeUserPasswordError,
+    eventChangeError,
     dispatch,
   ]);
 
