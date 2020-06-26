@@ -146,6 +146,7 @@ const useMyEventsForm = () => {
           streetName: selectedAddress.address.street,
           postCode: selectedAddress.address.postalCode,
           city: selectedAddress.address.city,
+          country: selectedAddress.address.country,
           latitude: locationDetailsRetrieved.displayPosition.latitude,
           longitude: locationDetailsRetrieved.displayPosition.longitude,
           zoom: generateZoom(selectedAddress),
@@ -166,6 +167,17 @@ const useMyEventsForm = () => {
             ...others,
           }))(addressObj)
         );
+      } else if (
+        addressObj.country &&
+        !addressObj.city &&
+        !addressObj.streetName &&
+        !addressObj.streetNumber
+      ) {
+        setAddressObj((addressObj) =>
+          (({ streetName, streetNumber, city, ...others }) => ({
+            ...others,
+          }))(addressObj)
+        );
       }
     } else {
       setInputs((inputs) =>
@@ -181,6 +193,7 @@ const useMyEventsForm = () => {
     addressObj.city,
     addressObj.streetName,
     addressObj.streetNumber,
+    addressObj.country,
     dispatch,
   ]);
 
