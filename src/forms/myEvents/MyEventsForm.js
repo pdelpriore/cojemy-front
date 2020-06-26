@@ -37,6 +37,7 @@ const MyEventsForm = () => {
   const dispatch = useDispatch();
   const {
     inputs,
+    addressObj,
     showMap,
     showSuggestions,
     error,
@@ -270,21 +271,19 @@ const MyEventsForm = () => {
             <div className="myrecipes-form-buttons-box">
               {/* {!myRecipeToEdit.recipeTitle ? ( */}
               <Button
-                // disabled={
-                //   loading ||
-                //   inputs.title === undefined ||
-                //   inputs.title === "" ||
-                //   error.imageError ||
-                //   error.playerError ||
-                //   inputs.category === undefined ||
-                //   inputs.category === "" ||
-                //   inputs.cookTime === undefined ||
-                //   inputs.cookTime === "" ||
-                //   inputs.ingredients === undefined ||
-                //   inputs.ingredients === "" ||
-                //   inputs.description === undefined ||
-                //   inputs.description === ""
-                // }
+                disabled={
+                  loading ||
+                  inputs.title === undefined ||
+                  inputs.title === "" ||
+                  error.imageError ||
+                  !addressObj.country ||
+                  inputs.description === undefined ||
+                  inputs.description === "" ||
+                  inputs.availablePlaces === undefined ||
+                  inputs.availablePlaces === "" ||
+                  inputs.eventDate === undefined ||
+                  inputs.eventDate === ""
+                }
                 type="submit"
                 className="myrecipes-form-button-text"
                 variant="outline-dark"

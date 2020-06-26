@@ -3,7 +3,8 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faClock } from "@fortawesome/free-regular-svg-icons";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
@@ -42,7 +43,7 @@ const MyEventsList = () => {
                   src={
                     eventRetrieved.eventImage
                       ? strings.path.IMAGE_REQUEST + eventRetrieved.eventImage
-                      : require("../../assets/imgs/panret.jpg")
+                      : require("../../assets/imgs/eventret.jpg")
                   }
                   loader={<Spinner animation="border" variant="info" />}
                 />
@@ -72,7 +73,7 @@ const MyEventsList = () => {
                 </div>
                 <div className="myevents-item-available-places">
                   <div className="myevents-item-icon">
-                    <FontAwesomeIcon icon={faClock} />
+                    <FontAwesomeIcon icon={faUsers} />
                   </div>
                   <div>{eventRetrieved.availablePlaces}</div>
                 </div>

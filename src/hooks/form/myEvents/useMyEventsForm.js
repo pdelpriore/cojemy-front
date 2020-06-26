@@ -230,6 +230,7 @@ const useMyEventsForm = () => {
 
   return {
     inputs,
+    addressObj,
     showMap,
     showSuggestions,
     error,
