@@ -4,7 +4,7 @@ import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faUsers, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
@@ -76,6 +76,12 @@ const MyEventsList = () => {
                     <FontAwesomeIcon icon={faUsers} />
                   </div>
                   <div>{eventRetrieved.availablePlaces}</div>
+                </div>
+                <div className="myevents-item-location">
+                  <div className="myevents-item-icon">
+                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  </div>
+                  <div>{eventRetrieved.eventAddress.city}</div>
                 </div>
               </Col>
             </Row>

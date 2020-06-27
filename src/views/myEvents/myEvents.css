@@ -145,3 +145,10 @@
   font-size: 1vw;
   color: #ceced6;
 }
+.myevents-item-location {
+  display: flex;
+  justify-content: flex-start;
+  font-family: "OpenSans-Regular";
+  font-size: 0.9vw;
+  color: #ceced6;
+}
