@@ -75,7 +75,11 @@ const MyEventsList = () => {
                   <div className="myevents-item-icon">
                     <FontAwesomeIcon icon={faUsers} />
                   </div>
-                  <div>{eventRetrieved.availablePlaces}</div>
+                  <div>
+                    {eventRetrieved.participants
+                      ? eventRetrieved.participants.length
+                      : 0}
+                  </div>
                 </div>
                 <div className="myevents-item-location">
                   <div className="myevents-item-icon">
