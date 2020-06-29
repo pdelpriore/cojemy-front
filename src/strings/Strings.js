@@ -163,7 +163,7 @@ export const strings = Object.freeze({
     DESCRIPTION_PLACEHOLDER: "description",
     CHOOSE_PICTURE: "choisis une image",
     CHOOSE_CATEGORY: "choisis une catégorie ...",
-    MAX_PICTURE_SIZE: "max 100kB accepté",
+    MAX_PICTURE_SIZE: "max 1 MB accepté",
     category: {
       LUNCH: "lunch",
       DESSERTS: "desserts",
@@ -180,7 +180,7 @@ export const strings = Object.freeze({
     },
     error: {
       VIDEO_URL_ERROR: "adresse de vidéo incorrecte",
-      IMAGE_SIZE_ERROR: "taille d'image dépasse 100 kB",
+      IMAGE_SIZE_ERROR: "taille d'image dépasse 1 MB",
       IMAGE_UNACCEPTABLE: "image inappropriée",
       IMAGE_FORMAT: "format inaccepté",
       VIDEO_UNACCEPTABLE: "vidéo inappropriée",
