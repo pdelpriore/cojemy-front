@@ -12,7 +12,7 @@ export const resizePictureFile = (
       imageToResize,
       (chosenHeight * imageRealWidth) / imageRealHeight,
       (chosenWidth * imageRealHeight) / imageRealWidth,
-      "jpeg",
+      imageToResize.type.split("/").slice(1).toString(),
       100,
       0,
       (uri) => {
