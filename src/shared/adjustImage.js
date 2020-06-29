@@ -1,6 +1,6 @@
 import { resizePictureFile } from "./resizePictureFile";
 
-export const resizeImage = (picture) => {
+export const adjustImage = (picture) => {
   return new Promise((resolve) => {
     try {
       const reader = new FileReader();
@@ -23,21 +23,9 @@ export const resizeImage = (picture) => {
             imageBinary: "",
           };
 
-          const response = await fetch(reader.result);
-          const data = await response.blob();
-          //wydobyc file name i rozszerzenie pliku
-          console.log(picture[0]);
-          const metadata = {
-            type: `image/jpeg`,
-          };
-
-          const imageToResize = new File([data], "test", metadata);
-
-          let count = 0;
-
           while (dataImage.imageSize >= 100000) {
             let { imageSize, imageBinary } = await resizePictureFile(
-              imageToResize,
+              picture[0],
               imageRealWidth,
               imageRealHeight,
               chosenHeight,
@@ -50,18 +38,8 @@ export const resizeImage = (picture) => {
             };
             chosenWidth -= 40;
             chosenHeight -= 40;
-            count++;
           }
-          if (dataImage.imageSize <= 100000) {
-            console.log("done !");
-            console.log(
-              new Buffer.from(
-                dataImage.imageBinary.replace(/^data:image\/\w+;base64,/, ""),
-                "base64"
-              ).byteLength
-            );
-            console.log(count);
-          }
+          if (dataImage.imageSize <= 100000) resolve(dataImage.imageBinary);
         };
       };
     } catch (err) {
