@@ -1,8 +1,10 @@
 import { strings } from "../strings/Strings";
 import { unacceptableWordsArray } from "../shared/testWordsArray";
 import { capitalizeFirst } from "../util/Util";
+import { resizeImage } from "./resizeImage";
 
-export const makeImageBinary = (picture) => {
+export const makeImageBinary = async (picture) => {
+  await resizeImage(picture);
   return new Promise((resolve, reject) => {
     if (picture.length > 1) {
       picture = picture.splice(picture.length - 1, 1);
