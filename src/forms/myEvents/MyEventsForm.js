@@ -268,6 +268,24 @@ const MyEventsForm = () => {
         </Row>
         <Row>
           <Col xs={12}>
+            <Form.Group controlId="formBasicContactTel">
+              <Form.Label className="myevents-form-text-family">
+                {capitalizeFirst(strings.myEvents.TEL)}
+              </Form.Label>
+              <Form.Control
+                className="myevents-form-text-family-message"
+                onChange={handleOnChange}
+                value={inputs.tel || ""}
+                name="tel"
+                type="text"
+                maxLength="9"
+                placeholder={strings.myEvents.TEL_PLACEHOLDER}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
             <div className="myrecipes-form-buttons-box">
               {/* {!myRecipeToEdit.recipeTitle ? ( */}
               <Button
@@ -282,7 +300,9 @@ const MyEventsForm = () => {
                   inputs.availablePlaces === undefined ||
                   inputs.availablePlaces === "" ||
                   inputs.eventDate === undefined ||
-                  inputs.eventDate === ""
+                  inputs.eventDate === "" ||
+                  inputs.tel === "" ||
+                  inputs.tel === undefined
                 }
                 type="submit"
                 className="myrecipes-form-button-text"

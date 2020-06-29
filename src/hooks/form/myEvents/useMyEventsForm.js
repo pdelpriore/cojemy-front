@@ -47,6 +47,8 @@ const useMyEventsForm = () => {
             : e.target.value[0] === "0"
             ? (e.target.value = "1")
             : e.target.value.replace(/[^0-9]+/g, "")
+          : e.target.name === strings.myEvents.TEL
+          ? e.target.value.replace(/[^0-9]+/g, "")
           : e.target.value,
     }));
   };
@@ -111,6 +113,7 @@ const useMyEventsForm = () => {
         inputs.description,
         parseInt(inputs.availablePlaces),
         inputs.eventDate,
+        parseInt(inputs.tel),
         userData._id,
         userData.email
       )

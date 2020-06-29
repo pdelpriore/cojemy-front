@@ -221,6 +221,8 @@ export const strings = Object.freeze({
     AVAILABLE_PLACES_PLACEHOLDER: "places disponibles",
     EVENT_DATE: "date d'événement *",
     EVENT_DATE_PLACEHOLDER: "date d'événement",
+    TEL: "contact tel *",
+    TEL_PLACEHOLDER: "718523694",
     error: {
       NO_SUGGESTIONS: "pas de résultat",
     },

@@ -9,6 +9,7 @@ export const addNewEvent = (
   description,
   availablePlaces,
   eventDate,
+  tel,
   userId,
   email
 ) => {
@@ -21,6 +22,7 @@ export const addNewEvent = (
       description,
       availablePlaces,
       eventDate,
+      tel,
       userId,
       email
     );

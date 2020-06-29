@@ -97,7 +97,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
         {newEventFormShown && (
           <div className="myevents-form-shown">
             <Row className="mb-5" />
-            <Row className="mb-5" />
+            <Row className="mb-4" />
             <Row>
               <Col xs={2} />
               <Col xs={6}>
