@@ -46,3 +46,13 @@
   justify-content: space-between;
   align-items: center;
 }
+.myprofile-form-loading-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.myprofile-form-loadingimage-text {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  margin-left: 5px;
+}

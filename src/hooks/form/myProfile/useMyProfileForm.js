@@ -12,6 +12,7 @@ const useMyProfileForm = () => {
   const [error, setError] = useState({});
   const [showOverlay, setShowOverlay] = useState(true);
   const [showEdit, setShowEdit] = useState(true);
+  const [loadingImage, setLoadingImage] = useState(false);
 
   const { userData } = useSelector((state) => state.login);
   const { profileUpdated } = useSelector((state) => state.updateMyProfile);
@@ -26,8 +27,10 @@ const useMyProfileForm = () => {
 
   const handlePicture = async (picture) => {
     try {
+      setLoadingImage(true);
       const result = await makeImageBinary(picture);
       if (result) {
+        setLoadingImage(false);
         setInputs((inputs) => ({
           ...inputs,
           profileImage: result,
@@ -42,6 +45,7 @@ const useMyProfileForm = () => {
       }
     } catch (err) {
       if (err) {
+        setLoadingImage(false);
         setError((error) => ({
           ...error,
           imageError: err,
@@ -132,6 +136,7 @@ const useMyProfileForm = () => {
     error,
     showOverlay,
     showEdit,
+    loadingImage,
     handleInputChange,
     handlePicture,
     handleRemoveImage,

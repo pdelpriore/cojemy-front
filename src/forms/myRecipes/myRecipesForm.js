@@ -18,6 +18,7 @@ const MyRecipesForm = () => {
   const {
     inputs,
     error,
+    loadingImage,
     handleInputsChange,
     handlePicture,
     handleRemoveImage,
@@ -80,27 +81,42 @@ const MyRecipesForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {inputs.recipeImage && (
+        {loadingImage ? (
           <Row>
-            <Col xs={9}>
-              <Image
-                src={inputs.recipeImage.image ? inputs.recipeImage.image : null}
-                thumbnail
-              />
+            <Col xs={12}>
+              <div className="myrecipes-form-loading-items">
+                <Spinner animation="border" size="sm" />
+                <div className="myrecipes-form-loadingimage-text">
+                  {strings.myRecipes.LOADING_IMAGE}
+                </div>
+              </div>
             </Col>
-            <Col xs={1} />
-            <Col xs={1}>
-              <FontAwesomeIcon
-                className="myrecipes-form-trash"
-                icon={faTrash}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleRemoveImage();
-                }}
-              />
-            </Col>
-            <Col xs={1} />
           </Row>
+        ) : (
+          inputs.recipeImage && (
+            <Row>
+              <Col xs={9}>
+                <Image
+                  src={
+                    inputs.recipeImage.image ? inputs.recipeImage.image : null
+                  }
+                  thumbnail
+                />
+              </Col>
+              <Col xs={1} />
+              <Col xs={1}>
+                <FontAwesomeIcon
+                  className="myrecipes-form-trash"
+                  icon={faTrash}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleRemoveImage();
+                  }}
+                />
+              </Col>
+              <Col xs={1} />
+            </Row>
+          )
         )}
         {error.imageError && (
           <Row>

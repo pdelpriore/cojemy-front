@@ -157,6 +157,7 @@ export const strings = Object.freeze({
     CATEGORY: "catégorie *",
     COOK_TIME: "temps de cuisson / préparation *",
     COOK_TIME_PLACEHOLDER: "en minutes",
+    LOADING_IMAGE: "je change la taille d'image ...",
     INGREDIENTS: "ingrédients *",
     INGREDIENTS_EX: "50ml huile,sel,poivre, ...",
     DESCRIPTION: "description *",

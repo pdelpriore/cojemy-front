@@ -21,6 +21,7 @@ const useMyEventsForm = () => {
   const [addressObj, setAddressObj] = useState({});
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showMap, setShowMap] = useState(false);
+  const [loadingImage, setLoadingImage] = useState(false);
 
   const { selectedAddress } = useSelector(
     (state) => state.selectedEventAddress
@@ -66,8 +67,10 @@ const useMyEventsForm = () => {
   };
   const handlePicture = async (picture) => {
     try {
+      setLoadingImage(true);
       const result = await makeImageBinary(picture);
       if (result) {
+        setLoadingImage(false);
         setInputs((inputs) => ({
           ...inputs,
           eventImage: result,
@@ -82,6 +85,7 @@ const useMyEventsForm = () => {
       }
     } catch (err) {
       if (err) {
+        setLoadingImage(false);
         setError((error) => ({
           ...error,
           imageError: err,
@@ -237,6 +241,7 @@ const useMyEventsForm = () => {
     showMap,
     showSuggestions,
     error,
+    loadingImage,
     handleOnChange,
     handleDateTime,
     handleInitializeDate,

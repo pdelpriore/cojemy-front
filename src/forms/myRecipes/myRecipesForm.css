@@ -48,3 +48,13 @@
 .myrecipes-form-button-cancel {
   font-family: "OpenSans-Regular";
 }
+.myrecipes-form-loading-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.myrecipes-form-loadingimage-text {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  margin-left: 5px;
+}

@@ -71,3 +71,13 @@
   border: 1px solid #22d1ee;
   border-radius: 5px;
 }
+.myevents-form-loading-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.myevents-form-loadingimage-text {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  margin-left: 5px;
+}

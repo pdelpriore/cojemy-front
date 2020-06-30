@@ -41,6 +41,7 @@ const MyEventsForm = () => {
     showMap,
     showSuggestions,
     error,
+    loadingImage,
     handleOnChange,
     handleDateTime,
     handleInitializeDate,
@@ -112,27 +113,40 @@ const MyEventsForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        {inputs.eventImage && (
+        {loadingImage ? (
           <Row>
-            <Col xs={9}>
-              <Image
-                src={inputs.eventImage.image ? inputs.eventImage.image : null}
-                thumbnail
-              />
+            <Col xs={12}>
+              <div className="myevents-form-loading-items">
+                <Spinner animation="border" size="sm" />
+                <div className="myevents-form-loadingimage-text">
+                  {strings.myRecipes.LOADING_IMAGE}
+                </div>
+              </div>
             </Col>
-            <Col xs={1} />
-            <Col xs={1}>
-              <FontAwesomeIcon
-                className="myevents-form-trash"
-                icon={faTrash}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleRemoveImage();
-                }}
-              />
-            </Col>
-            <Col xs={1} />
           </Row>
+        ) : (
+          inputs.eventImage && (
+            <Row>
+              <Col xs={9}>
+                <Image
+                  src={inputs.eventImage.image ? inputs.eventImage.image : null}
+                  thumbnail
+                />
+              </Col>
+              <Col xs={1} />
+              <Col xs={1}>
+                <FontAwesomeIcon
+                  className="myevents-form-trash"
+                  icon={faTrash}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleRemoveImage();
+                  }}
+                />
+              </Col>
+              <Col xs={1} />
+            </Row>
+          )
         )}
         {error.imageError && (
           <Row>

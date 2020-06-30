@@ -15,6 +15,7 @@ const MyProfileForm = () => {
     error,
     showOverlay,
     showEdit,
+    loadingImage,
     handleInputChange,
     handlePicture,
     handleRemoveImage,
@@ -80,27 +81,42 @@ const MyProfileForm = () => {
           </Form.Group>
         </Col>
       </Row>
-      {inputs.profileImage && (
+      {loadingImage ? (
         <Row>
-          <Col xs={9}>
-            <Image
-              src={inputs.profileImage.image ? inputs.profileImage.image : null}
-              thumbnail
-            />
+          <Col xs={12}>
+            <div className="myprofile-form-loading-items">
+              <Spinner animation="border" size="sm" />
+              <div className="myprofile-form-loadingimage-text">
+                {strings.myRecipes.LOADING_IMAGE}
+              </div>
+            </div>
           </Col>
-          <Col xs={1} />
-          <Col xs={1}>
-            <FontAwesomeIcon
-              className="myprofile-form-trash"
-              icon={faTrash}
-              onClick={(e) => {
-                e.preventDefault();
-                handleRemoveImage();
-              }}
-            />
-          </Col>
-          <Col xs={1} />
         </Row>
+      ) : (
+        inputs.profileImage && (
+          <Row>
+            <Col xs={9}>
+              <Image
+                src={
+                  inputs.profileImage.image ? inputs.profileImage.image : null
+                }
+                thumbnail
+              />
+            </Col>
+            <Col xs={1} />
+            <Col xs={1}>
+              <FontAwesomeIcon
+                className="myprofile-form-trash"
+                icon={faTrash}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleRemoveImage();
+                }}
+              />
+            </Col>
+            <Col xs={1} />
+          </Row>
+        )
       )}
       {error.imageError && (
         <Row>

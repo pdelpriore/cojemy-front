@@ -17,6 +17,7 @@ const useNewRecipeForm = () => {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState({});
+  const [loadingImage, setLoadingImage] = useState(false);
 
   const { userData } = useSelector((state) => state.login);
   const { recipeUpdated } = useSelector((state) => state.isMyRecipeChanged);
@@ -45,8 +46,10 @@ const useNewRecipeForm = () => {
 
   const handlePicture = async (picture) => {
     try {
+      setLoadingImage(true);
       const result = await makeImageBinary(picture);
       if (result) {
+        setLoadingImage(false);
         setInputs((inputs) => ({
           ...inputs,
           recipeImage: result,
@@ -61,6 +64,7 @@ const useNewRecipeForm = () => {
       }
     } catch (err) {
       if (err) {
+        setLoadingImage(false);
         setError((error) => ({
           ...error,
           imageError: err,
@@ -223,6 +227,7 @@ const useNewRecipeForm = () => {
   return {
     inputs,
     error,
+    loadingImage,
     handleInputsChange,
     handlePicture,
     handleRemoveImage,
