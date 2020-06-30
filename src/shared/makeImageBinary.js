@@ -14,14 +14,14 @@ export const makeImageBinary = (picture) => {
       )
     ) {
       reject(capitalizeFirst(strings.myRecipes.error.IMAGE_UNACCEPTABLE));
-    } else if (picture.length > 0 && picture[0].size > 1000000) {
+    } else if (picture.length > 0 && picture[0].size > 4000000) {
       reject(capitalizeFirst(strings.myRecipes.error.IMAGE_SIZE_ERROR));
     }
 
     if (
       picture.length > 0 &&
       picture[0].size > 100000 &&
-      picture[0].size <= 1000000
+      picture[0].size <= 4000000
     ) {
       resolve({
         image: await adjustImage(picture),

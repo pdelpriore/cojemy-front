@@ -23,6 +23,9 @@ export const adjustImage = (picture) => {
             imageBinary: "",
           };
 
+          console.log(imageRealWidth);
+          console.log(imageRealHeight);
+
           while (dataImage.imageSize >= 100000) {
             let { imageSize, imageBinary } = await resizePictureFile(
               picture[0],
@@ -36,10 +39,27 @@ export const adjustImage = (picture) => {
               imageSize: imageSize,
               imageBinary: imageBinary,
             };
-            chosenWidth -= 40;
-            chosenHeight -= 40;
+            if (imageRealWidth > 0 && imageRealWidth <= 1200) {
+              chosenWidth -= 40;
+              chosenHeight -= 40;
+            } else if (imageRealWidth > 1200 && imageRealWidth <= 2000) {
+              chosenWidth -= 80;
+              chosenHeight -= 80;
+            } else if (imageRealWidth > 2000 && imageRealWidth <= 2600) {
+              chosenWidth -= 120;
+              chosenHeight -= 120;
+            } else if (imageRealWidth > 2600 && imageRealWidth <= 3200) {
+              chosenWidth -= 150;
+              chosenHeight -= 150;
+            } else {
+              chosenWidth -= 350;
+              chosenHeight -= 350;
+            }
           }
-          if (dataImage.imageSize <= 100000) resolve(dataImage.imageBinary);
+          if (dataImage.imageSize <= 100000) {
+            console.log(dataImage.imageSize);
+            resolve(dataImage.imageBinary);
+          }
         };
       };
     } catch (err) {
