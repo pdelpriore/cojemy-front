@@ -87,7 +87,7 @@ const MyRecipesForm = () => {
               <div className="myrecipes-form-loading-items">
                 <Spinner animation="border" size="sm" />
                 <div className="myrecipes-form-loadingimage-text">
-                  {strings.myRecipes.LOADING_IMAGE}
+                  {capitalizeFirst(strings.myRecipes.LOADING_IMAGE)}
                 </div>
               </div>
             </Col>

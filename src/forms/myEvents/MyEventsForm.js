@@ -119,7 +119,7 @@ const MyEventsForm = () => {
               <div className="myevents-form-loading-items">
                 <Spinner animation="border" size="sm" />
                 <div className="myevents-form-loadingimage-text">
-                  {strings.myRecipes.LOADING_IMAGE}
+                  {capitalizeFirst(strings.myRecipes.LOADING_IMAGE)}
                 </div>
               </div>
             </Col>
