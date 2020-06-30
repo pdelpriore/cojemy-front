@@ -188,8 +188,8 @@ const useNewRecipeForm = () => {
   useEffect(() => {
     if (recipeUpdated) {
       setInputs({});
-      dispatch(toEditMyRecipeClearState());
       dispatch(changeMyRecipesClearState());
+      dispatch(toEditMyRecipeClearState());
       dispatch(myRecipePreviewClearState());
     }
     return () => {
