@@ -38,7 +38,6 @@ export const addMyRecipe = (
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
-      console.log(responseData);
       const { errors, data } = responseData;
       if (data.addMyRecipe !== null) {
         dispatch({
