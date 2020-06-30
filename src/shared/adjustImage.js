@@ -6,7 +6,7 @@ export const adjustImage = (picture) => {
       const reader = new FileReader();
       reader.readAsDataURL(picture[0]);
 
-      reader.onload = () => {
+      reader.onloadend = () => {
         const image = new Image();
         image.src = reader.result;
         image.onload = async () => {
