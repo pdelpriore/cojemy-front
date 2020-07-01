@@ -40,7 +40,7 @@ const RateAndComment = ({ recipeId }) => {
       );
     }
   }
-  let ratingStars = stars.map((ratingStar, index) => (
+  const ratingStars = stars.map((ratingStar, index) => (
     <div
       className="star"
       onClick={handleClick}
