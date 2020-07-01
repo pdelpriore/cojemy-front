@@ -21,6 +21,19 @@ export const makeImageBinary = (picture) => {
 
       if (
         picture.length > 0 &&
+        picture[0].size > 0 &&
+        picture[0].size <= 100000
+      ) {
+        const fileReader = new FileReader();
+        picture.length > 0 && fileReader.readAsDataURL(picture[0]);
+        fileReader.onloadend = () => {
+          resolve({
+            image: fileReader.result,
+            imageName: picture.length > 0 && picture[0].name,
+          });
+        };
+      } else if (
+        picture.length > 0 &&
         picture[0].size > 100000 &&
         picture[0].size <= 9000000
       ) {
@@ -34,15 +47,6 @@ export const makeImageBinary = (picture) => {
           image: result[0].prefix + result[0].data,
           imageName: picture.length > 0 && picture[0].name,
         });
-      } else {
-        const fileReader = new FileReader();
-        picture.length > 0 && fileReader.readAsDataURL(picture[0]);
-        fileReader.onloadend = () => {
-          resolve({
-            image: fileReader.result,
-            imageName: picture.length > 0 && picture[0].name,
-          });
-        };
       }
     } catch (err) {
       if (err) throw new Error(err);
