@@ -58,10 +58,10 @@ export const retrieveRecipesCases = Object.freeze({
 });
 
 export const showRecipeDetailsCases = Object.freeze({
-  LOADING: "showRecipeDetailsCasesLoading",
-  SHOWN: "showRecipeDetailsCasesShown",
-  DETAILS_RETRIVED: "showRecipeDetailsCasesDetailsRetrieved",
-  CLEAR_STATE: "showRecipeDetailsCasesClearState",
+  LOADING: "showRecipeDetailsLoading",
+  SHOWN: "showRecipeDetailsShown",
+  DETAILS_RETRIVED: "showRecipeDetailsDetailsRetrieved",
+  CLEAR_STATE: "showRecipeDetailsClearState",
 });
 
 export const recipeCategorySelectedCases = Object.freeze({
@@ -75,114 +75,120 @@ export const toEditRecipeRateCommentCases = Object.freeze({
 });
 
 export const changeRecipeListItemCases = Object.freeze({
-  RECIPE_LIST_ITEM_CHANGED: "changeRecipeListItemCasesRecipeListItemChanged",
+  RECIPE_LIST_ITEM_CHANGED: "changeRecipeListItemRecipeListItemChanged",
 });
 
 export const changeRateCommentCases = Object.freeze({
-  RATE_COMMENT_CHANGED: "changeRateCommentCasesRateCommentChanged",
+  RATE_COMMENT_CHANGED: "changeRateCommentRateCommentChanged",
 });
 
 export const turnOffRecipeButtonsCases = Object.freeze({
-  SEARCH_INPUT_FILLED: "turnOffRecipeButtonsCasesSearchInputFilled",
+  SEARCH_INPUT_FILLED: "turnOffRecipeButtonsSearchInputFilled",
 });
 
 export const recipeButtonTurnedOnCases = Object.freeze({
-  BUTTON_PRESSES: "recipeButtonTurnedOnCasesButtonPressed",
+  BUTTON_PRESSES: "recipeButtonTurnedOnButtonPressed",
 });
 
 export const retrieveMyRecipesCases = Object.freeze({
-  LOADING: "retrieveMyRecipesCasesLoading",
-  MY_RECIPES_RETRIEVED: "retrieveMyRecipesCasesMyRecipesRetrieved",
-  ERROR: "retrieveMyRecipesCasesError",
-  CLEAR_STATE: "retrieveMyRecipesCasesClearState",
+  LOADING: "retrieveMyRecipesLoading",
+  MY_RECIPES_RETRIEVED: "retrieveMyRecipesMyRecipesRetrieved",
+  ERROR: "retrieveMyRecipesError",
+  CLEAR_STATE: "retrieveMyRecipesClearState",
 });
 
 export const showNewRecipeFormCases = Object.freeze({
-  FORM_SHOWN: "showNewRecipeFormCasesFormShown",
+  FORM_SHOWN: "showNewRecipeFormFormShown",
 });
 
 export const toEditMyRecipeCases = Object.freeze({
-  MY_RECIPE_TO_EDIT: "toEditMyRecipeCasesMyRecipeToEdit",
-  CLEAR_STATE: "toEditMyRecipeCasesClearState",
+  MY_RECIPE_TO_EDIT: "toEditMyRecipeMyRecipeToEdit",
+  CLEAR_STATE: "toEditMyRecipeClearState",
 });
 
 export const myRecipePreviewCases = Object.freeze({
-  PREVIEW_SHOWN: "myRecipePreviewCasesPreviewShown",
-  PREVIEW_DATA_RECEIVED: "myRecipePreviewCasesPreviewDataReceived",
-  CLEAR_STATE: "myRecipePreviewCasesClearState",
+  PREVIEW_SHOWN: "myRecipePreviewPreviewShown",
+  PREVIEW_DATA_RECEIVED: "myRecipePreviewPreviewDataReceived",
+  CLEAR_STATE: "myRecipePreviewClearState",
 });
 
 export const updateMyProfileCases = Object.freeze({
-  PROFILE_UPDATED: "updateMyProfileCasesProfileUpdated",
+  PROFILE_UPDATED: "updateMyProfileProfileUpdated",
 });
 
 export const userLoggedCases = Object.freeze({
-  USER_LOGGED: "userLoggedCasesUserLogged",
+  USER_LOGGED: "userLoggedUserLogged",
 });
 
 export const showMyPasswordFormCases = Object.freeze({
-  FORM_SHOWN: "showMyPasswordFormCasesFormShown",
+  FORM_SHOWN: "showMyPasswordFormFormShown",
 });
 
 export const changePasswordCases = Object.freeze({
-  LOADING: "changePasswordCasesLoading",
-  PASSWORD_CHANGED: "changePasswordCasesPasswordChanged",
-  ERROR: "changePasswordCasesError",
-  CLEAR_STATE: "changePasswordCasesClearState",
+  LOADING: "changePasswordLoading",
+  PASSWORD_CHANGED: "changePasswordPasswordChanged",
+  ERROR: "changePasswordError",
+  CLEAR_STATE: "changePasswordClearState",
 });
 
 export const changeMyRecipesCases = Object.freeze({
-  LOADING: "changeMyRecipesCasesLoading",
-  RECIPE_UPDATED: "changeMyRecipesCasesRecipeUpdated",
-  ERROR: "changeMyRecipesCasesError",
-  CLEAR_STATE: "changeMyRecipesCasesClearState",
+  LOADING: "changeMyRecipesLoading",
+  RECIPE_UPDATED: "changeMyRecipesRecipeUpdated",
+  ERROR: "changeMyRecipesError",
+  CLEAR_STATE: "changeMyRecipesClearState",
 });
 
 export const removeAccountCases = Object.freeze({
-  LOADING: "removeAccountCasesLoading",
-  ACCOUNT_REMOVED: "removeAccountCasesAccountRemoved",
-  CLEAR_STATE: "removeAccountCasesClearState",
+  LOADING: "removeAccountLoading",
+  ACCOUNT_REMOVED: "removeAccountAccountRemoved",
+  CLEAR_STATE: "removeAccountClearState",
 });
 
 export const eventCategorySelectedCases = Object.freeze({
-  BUTTON_ID_RETRIEVED: "eventCategorySelectedCasesButtonIdRetrieved",
+  BUTTON_ID_RETRIEVED: "eventCategorySelectedButtonIdRetrieved",
 });
 
 export const showNewEventFormCases = Object.freeze({
-  FORM_SHOWN: "showNewEventFormCasesFormShown",
+  FORM_SHOWN: "showNewEventFormFormShown",
 });
 
 export const getAddressCases = Object.freeze({
-  LOADING: "getAddressCasesLoading",
-  ADDRESSES_RETRIEVED: "getAddressCasesAddressesRetrieved",
-  CLEAR_STATE: "getAddressCasesClearState",
+  LOADING: "getAddressLoading",
+  ADDRESSES_RETRIEVED: "getAddressAddressesRetrieved",
+  CLEAR_STATE: "getAddressClearState",
 });
 
 export const selectEventAddressCases = Object.freeze({
-  ADDRESS_SELECTED: "selectEventAddressCasesAddressSelected",
-  CLEAR_STATE: "selectEventAddressCasesClearState",
+  ADDRESS_SELECTED: "selectEventAddressAddressSelected",
+  CLEAR_STATE: "selectEventAddressClearState",
 });
 
 export const chooseEventAddressCases = Object.freeze({
-  ADDRESS_CHOSEN: "chooseEventAddressCasesAddressChosen",
+  ADDRESS_CHOSEN: "chooseEventAddressAddressChosen",
 });
 
 export const getLocationDetailsCases = Object.freeze({
-  LOADING: "getLocationDetailsCasesLoading",
-  LOCATION_DETAILS_RETRIEVED: "getLocationDetailsCasesLoactionDetalsRetrieved",
-  CLEAR_STATE: "getLocationDetailsCasesClearState",
+  LOADING: "getLocationDetailsLoading",
+  LOCATION_DETAILS_RETRIEVED: "getLocationDetailsLoactionDetalsRetrieved",
+  CLEAR_STATE: "getLocationDetailsClearState",
 });
 
 export const changeEventCases = Object.freeze({
-  LOADING: "changeEventCasesLoading",
-  EVENT_CHANGED: "changeEventCasesEventChanged",
-  ERROR: "changeEventCasesError",
-  CLEAR_STATE: "changeEventCasesClearState",
+  LOADING: "changeEventLoading",
+  EVENT_CHANGED: "changeEventEventChanged",
+  ERROR: "changeEventError",
+  CLEAR_STATE: "changeEventClearState",
 });
 
 export const retrieveEventsCases = Object.freeze({
-  LOADING: "retrieveEventsCasesLoading",
-  EVENTS_RETRIEVED: "retrieveEventsCasesEventsRetrieved",
-  ERROR: "retrieveEventsCasesError",
-  CLEAR_STATE: "retrieveEventsCasesClearState",
+  LOADING: "retrieveEventsLoading",
+  EVENTS_RETRIEVED: "retrieveEventsEventsRetrieved",
+  ERROR: "retrieveEventsError",
+  CLEAR_STATE: "retrieveEventsClearState",
+});
+
+export const myEventPreviewCases = Object.freeze({
+  PREVIEW_SHOWN: "myEventPreviewPreviewShown",
+  PREVIEW_DATA_RECEIVED: "myEventPreviewPreviewDataReceived",
+  CLEAR_STATE: "myEventPreviewClearState",
 });
