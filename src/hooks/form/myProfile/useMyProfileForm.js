@@ -53,7 +53,8 @@ const useMyProfileForm = () => {
       }
     }
   };
-  const handleRemoveImage = () => {
+  const handleRemoveImage = (e) => {
+    e.preventDefault();
     setInputs((inputs) =>
       (({ profileImage, ...others }) => ({
         ...others,

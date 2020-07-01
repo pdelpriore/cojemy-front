@@ -104,7 +104,7 @@ const MyEventsForm = () => {
                 withLabel={true}
                 label={capitalizeFirst(strings.myRecipes.MAX_PICTURE_SIZE)}
                 buttonText={capitalizeFirst(strings.myRecipes.CHOOSE_PICTURE)}
-                onChange={(picture) => handlePicture(picture)}
+                onChange={handlePicture}
                 imgExtension={[".jpg", "jpeg", ".gif", ".png", ".gif"]}
                 fileTypeError={capitalizeFirst(
                   strings.myRecipes.error.IMAGE_FORMAT
@@ -138,10 +138,7 @@ const MyEventsForm = () => {
                 <FontAwesomeIcon
                   className="myevents-form-trash"
                   icon={faTrash}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleRemoveImage();
-                  }}
+                  onClick={handleRemoveImage}
                 />
               </Col>
               <Col xs={1} />
@@ -265,7 +262,7 @@ const MyEventsForm = () => {
                     className="myevents-datepicker"
                     locale="fr"
                     showTimeSelect={true}
-                    onChange={(dateTime) => handleDateTime(dateTime)}
+                    onChange={handleDateTime}
                     selected={inputs.eventDate}
                     dateFormat="d MMMM yyyy, HH:mm"
                     onChangeRaw={(e) => e.preventDefault()}

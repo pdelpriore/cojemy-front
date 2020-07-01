@@ -73,7 +73,8 @@ const useNewRecipeForm = () => {
     }
   };
 
-  const handleRemoveImage = () => {
+  const handleRemoveImage = (e) => {
+    e.preventDefault();
     setInputs((inputs) =>
       (({ recipeImage, ...others }) => ({
         ...others,
@@ -88,7 +89,8 @@ const useNewRecipeForm = () => {
     }
   };
 
-  const handleRemoveVideo = () => {
+  const handleRemoveVideo = (e) => {
+    e.preventDefault();
     setInputs((inputs) =>
       (({ video, ...others }) => ({
         ...others,

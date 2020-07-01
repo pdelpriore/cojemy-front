@@ -93,7 +93,8 @@ const useMyEventsForm = () => {
       }
     }
   };
-  const handleRemoveImage = () => {
+  const handleRemoveImage = (e) => {
+    e.preventDefault();
     setInputs((inputs) =>
       (({ eventImage, ...others }) => ({
         ...others,

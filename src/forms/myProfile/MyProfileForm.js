@@ -69,7 +69,7 @@ const MyProfileForm = () => {
               withLabel={true}
               label={capitalizeFirst(strings.myRecipes.MAX_PICTURE_SIZE)}
               buttonText={capitalizeFirst(strings.myRecipes.CHOOSE_PICTURE)}
-              onChange={(picture) => handlePicture(picture)}
+              onChange={handlePicture}
               imgExtension={[".jpg", "jpeg", ".gif", ".png", ".gif"]}
               fileTypeError={capitalizeFirst(
                 strings.myRecipes.error.IMAGE_FORMAT
@@ -108,10 +108,7 @@ const MyProfileForm = () => {
               <FontAwesomeIcon
                 className="myprofile-form-trash"
                 icon={faTrash}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleRemoveImage();
-                }}
+                onClick={handleRemoveImage}
               />
             </Col>
             <Col xs={1} />
