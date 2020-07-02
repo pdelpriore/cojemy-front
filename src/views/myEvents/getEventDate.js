@@ -1,6 +1,6 @@
 import React from "react";
 
-export const createEventDate = (eventDate) => {
+export const getEventDate = (eventDate) => {
   return (
     <>
       {eventDate.getDate() < 10
