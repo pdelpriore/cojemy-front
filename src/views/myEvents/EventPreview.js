@@ -134,7 +134,7 @@ const EventPreview = () => {
                     <div className="eventpreview-address-text">
                       {eventPreviewData.eventAddress.postCode}
                     </div>
-                    <div className="eventpreview-address-text">
+                    <div className="eventpreview-address-text city">
                       {eventPreviewData.eventAddress.city}
                     </div>
                   </div>
