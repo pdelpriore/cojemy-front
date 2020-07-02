@@ -177,8 +177,8 @@
   height: 80vh;
 }
 .eventpreview-picture {
-  width: 25vw;
-  height: 30vh;
+  width: 30vw;
+  height: 35vh;
   object-fit: cover;
   border: 1px solid #572529;
   border-radius: 20px;
