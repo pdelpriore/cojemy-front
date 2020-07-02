@@ -115,7 +115,7 @@ const EventPreview = () => {
             <Col xs={1} />
             <Col xs={10}>
               <div className="eventpreview-address-box">
-                <Col xs={5}>
+                <Col xs={6}>
                   <div className="eventpreview-description-text">
                     {capitalizeFirst(strings.myEvents.ADDRESS_PREVIEW)}
                   </div>
@@ -152,7 +152,6 @@ const EventPreview = () => {
                   />
                   <Row className="mb-5" />
                 </Col>
-                <Col xs={1} />
               </div>
             </Col>
             <Col xs={1} />
