@@ -152,3 +152,83 @@
   font-size: 0.9vw;
   color: #ceced6;
 }
+.eventpreview-title {
+  font-family: "Nunito-Bold";
+  font-size: 2.1vw;
+  border-bottom: 2px black solid;
+}
+.eventpreview-author-photo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #212529;
+}
+.eventpreview-close-icon {
+  font-size: 2vw;
+}
+.eventpreview-close-icon:hover {
+  color: #ee6670;
+  cursor: pointer;
+}
+.eventpreview-main {
+  padding: 2%;
+  width: 50vw;
+  height: 80vh;
+}
+.eventpreview-picture {
+  width: 25vw;
+  height: 30vh;
+  object-fit: cover;
+  border: 1px solid #572529;
+  border-radius: 20px;
+  padding: 10px;
+}
+.eventpreview-description-text {
+  font-family: "OpenSans-SemiBold";
+  font-size: 1.1vw;
+}
+.eventpreview-description {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  text-align: justify;
+}
+.eventpreview-button-preview-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.eventpreview-preview-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.eventpreview-preview-button:hover {
+  background-color: #6c757d;
+}
+.eventpreview-preview-button-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.eventpreview-preview-button-delete:hover {
+  background-color: #dc3545;
+}
+.eventpreview-preview-button-icon {
+  width: 1vw;
+}
+.eventpreview-recipe-preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 1;
+  overflow: hidden;
+}
+.myevents-button-preview-action {
+  flex: 1;
+  font-size: 0.9vw;
+  font-family: "OpenSans-Regular";
+  text-align: left;
+  margin-left: 10px;
+  white-space: nowrap;
+}

@@ -9,6 +9,7 @@ import MyEventsForm from "../../forms/myEvents/MyEventsForm";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import MakeEventButtons from "./makeEventButtons";
 import Notification from "../../components/notifications/Notification";
+import EventPreview from "./EventPreview";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./myEvents.css";
@@ -19,6 +20,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
   const { newEventFormShown } = useSelector(
     (state) => state.isNewEventFormShown
   );
+  const { eventPreviewShown } = useSelector((state) => state.eventPreview);
   const { eventChangeError } = useSelector((state) => state.isEventChanged);
   const props = useSpring({
     opacity: 1,
@@ -47,7 +49,13 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
       </div>
       <div className="myevents-second-section">
         {
-          <div className={newEventFormShown ? "myevents-buttons-hidden" : ""}>
+          <div
+            className={
+              newEventFormShown || eventPreviewShown
+                ? "myevents-buttons-hidden"
+                : ""
+            }
+          >
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
@@ -122,6 +130,13 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
               </Col>
               <Col xs={1} />
             </Row>
+          </div>
+        )}
+        {eventPreviewShown && (
+          <div className="eventpreview-recipe-preview">
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <EventPreview />
           </div>
         )}
       </div>
