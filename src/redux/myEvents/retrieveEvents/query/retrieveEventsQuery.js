@@ -31,6 +31,7 @@ export const retrieveEventsQuery = (category, userId, email) => {
                             email
                         }
                         eventDate
+                        tel
                         creationDate
                     }
                   }

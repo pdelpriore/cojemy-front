@@ -134,8 +134,12 @@ const EventPreview = () => {
                     <div className="eventpreview-address-text">
                       {eventPreviewData.eventAddress.postCode}
                     </div>
-                    <div className="eventpreview-address-text city">
+                    <div className="eventpreview-address-text">
                       {eventPreviewData.eventAddress.city}
+                    </div>
+                    <div style={{ height: 25 }} />
+                    <div className="eventpreview-address-text tel">
+                      tel. {eventPreviewData.tel}
                     </div>
                   </div>
                 </Col>
