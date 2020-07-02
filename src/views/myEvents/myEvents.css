@@ -287,9 +287,14 @@
   height: 60px;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  margin: 15px;
 }
 .eventpreview-participant-name {
   font-size: 1vw;
   font-family: "OpenSans-Regular";
+}
+.eventpreview-participant-main-area {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
