@@ -220,6 +220,7 @@ export const strings = Object.freeze({
     DESCRIPTION_PLACEHOLDER: "description",
     AVAILABLE_PLACES: "places disponibles *",
     AVAILABLE_PLACES_PLACEHOLDER: "places disponibles",
+    AVAILABLE_PLACES_PREVIEW: "places dispos:",
     EVENT_DATE: "date d'événement *",
     EVENT_DATE_PLACEHOLDER: "date d'événement",
     TEL: "contact tel *",

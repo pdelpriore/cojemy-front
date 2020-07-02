@@ -232,3 +232,19 @@
   margin-left: 10px;
   white-space: nowrap;
 }
+.eventpreview-available-places {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.eventpreview-available-places-text {
+  font-size: 0.9vw;
+  font-family: "Nunito-SemiBold";
+  color: #2e303f;
+}
+.number {
+  font-size: 1vw;
+  font-family: "Nunito-Bold";
+  color: #0e153a;
+}

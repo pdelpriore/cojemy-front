@@ -53,7 +53,17 @@ const EventPreview = () => {
             loader={<Spinner animation="border" variant="dark" />}
           />
         </Col>
-        <Col xs={2} />
+        <Col xs={2}>
+          <div className="eventpreview-available-places">
+            <div className="eventpreview-available-places-text">
+              {strings.myEvents.AVAILABLE_PLACES_PREVIEW}
+            </div>
+            <div className="eventpreview-available-places-text number">
+              {eventPreviewData.availablePlaces -
+                eventPreviewData.participants.length}
+            </div>
+          </div>
+        </Col>
         <Col xs={1}>
           <div
             onClick={(e) => {
