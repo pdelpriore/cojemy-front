@@ -215,6 +215,7 @@ export const strings = Object.freeze({
     TITLE_PLACEHOLDER: "titre",
     PHOTO: "photo d'événement",
     ADDRESS: "lieu *",
+    ADDRESS_PREVIEW: "lieu:",
     ADDRESS_PLACEHOLDER: "46 rue de rivoli, Paris, etc.",
     DESCRIPTION: "description *",
     DESCRIPTION_PLACEHOLDER: "description",

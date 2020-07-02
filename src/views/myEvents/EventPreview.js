@@ -7,6 +7,7 @@ import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
+import Map from "../../components/map/map/Map";
 import { eventPreviewClearState } from "../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { useSelector, useDispatch } from "react-redux";
 import { useSpring, animated } from "react-spring";
@@ -105,6 +106,49 @@ const EventPreview = () => {
               <div style={{ height: 10 }} />
               <div className="eventpreview-description">
                 {eventPreviewData.description}
+              </div>
+            </Col>
+            <Col xs={1} />
+          </Row>
+          <Row className="mb-4" />
+          <Row>
+            <Col xs={1} />
+            <Col xs={10}>
+              <div className="eventpreview-address-box">
+                <Col xs={5}>
+                  <div className="eventpreview-description-text">
+                    {capitalizeFirst(strings.myEvents.ADDRESS_PREVIEW)}
+                  </div>
+                  <Row className="mb-5" />
+                  <Row className="mb-5" />
+                  <Row className="mb-5" />
+                  <Row className="mb-5" />
+                  <Row className="mb-4" />
+                  <div className="eventpreview-address">
+                    <div className="eventpreview-address-text">
+                      {eventPreviewData.eventAddress.streetNumber}
+                    </div>
+                    <div className="eventpreview-address-text">
+                      {eventPreviewData.eventAddress.streetName}
+                    </div>
+                    <div className="eventpreview-address-text">
+                      {eventPreviewData.eventAddress.postCode}
+                    </div>
+                    <div className="eventpreview-address-text">
+                      {eventPreviewData.eventAddress.city}
+                    </div>
+                  </div>
+                </Col>
+                <Col xs={6}>
+                  <Row className="mb-5" />
+                  <Map
+                    latitude={eventPreviewData.eventAddress.latitude}
+                    longitude={eventPreviewData.eventAddress.longitude}
+                    zoom={eventPreviewData.eventAddress.zoom}
+                  />
+                  <Row className="mb-5" />
+                </Col>
+                <Col xs={1} />
               </div>
             </Col>
             <Col xs={1} />

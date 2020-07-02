@@ -248,3 +248,21 @@
   font-family: "Nunito-Bold";
   color: #0e153a;
 }
+.eventpreview-address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.eventpreview-address-text {
+  font-size: 1.5vw;
+  font-family: "Nunito-Regular";
+  color: #2e303f;
+}
+.eventpreview-address-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #ededed;
+  border-radius: 5px;
+}
