@@ -1,7 +1,8 @@
 import React from "react";
 import { Row, Col, Spinner, Button } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
-import { capitalizeFirst } from "../../util/Util";
+import { capitalizeFirst, capitalize } from "../../util/Util";
+import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +12,6 @@ import Map from "../../components/map/map/Map";
 import { eventPreviewClearState } from "../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { useSelector, useDispatch } from "react-redux";
 import { useSpring, animated } from "react-spring";
-import { capitalize } from "../../util/Util";
 import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./myEvents.css";
 
@@ -24,6 +24,7 @@ const EventPreview = () => {
   });
   //const { handleEditClick, handleTrashClick } = useMyRecipePreview();
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
+  const eventDate = new Date(eventPreviewData.eventDate);
   //const { loading } = useSelector((state) => state.isMyRecipeChanged);
 
   return (
@@ -136,6 +137,24 @@ const EventPreview = () => {
                     </div>
                     <div className="eventpreview-address-text">
                       {eventPreviewData.eventAddress.city}
+                    </div>
+                    <div style={{ height: 10 }} />
+                    <div className="eventpreview-address-text data">
+                      {eventDate.getDate() < 10
+                        ? `0${eventDate.getDate()}`
+                        : eventDate.getDate()}
+                      /
+                      {eventDate.getMonth() < 10
+                        ? `0${eventDate.getMonth()}`
+                        : eventDate.getMonth()}
+                      /{eventDate.getFullYear()}, godz.{" "}
+                      {eventDate.getHours() < 10
+                        ? `0${eventDate.getHours()}`
+                        : eventDate.getHours()}
+                      :
+                      {eventDate.getMinutes() < 10
+                        ? `0${eventDate.getMinutes()}`
+                        : eventDate.getMinutes()}
                     </div>
                     <div style={{ height: 25 }} />
                     <div className="eventpreview-address-text tel">
