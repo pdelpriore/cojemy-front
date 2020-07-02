@@ -24,7 +24,6 @@ const EventPreview = () => {
   });
   //const { handleEditClick, handleTrashClick } = useMyRecipePreview();
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
-  const eventDate = new Date(eventPreviewData.eventDate);
   //const { loading } = useSelector((state) => state.isMyRecipeChanged);
 
   return (
@@ -137,7 +136,7 @@ const EventPreview = () => {
                     </div>
                     <div style={{ height: 10 }} />
                     <div className="eventpreview-address-text data">
-                      {createEventDate(eventDate)}
+                      {createEventDate(new Date(eventPreviewData.eventDate))}
                     </div>
                     <div style={{ height: 25 }} />
                     <div className="eventpreview-address-text tel">
