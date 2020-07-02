@@ -124,13 +124,10 @@ const EventPreview = () => {
                   <Row className="mb-5" />
                   <Row className="mb-5" />
                   <Row className="mb-5" />
-                  <Row className="mb-4" />
                   <div className="eventpreview-address">
                     <div className="eventpreview-address-text">
+                      {eventPreviewData.eventAddress.streetName}{" "}
                       {eventPreviewData.eventAddress.streetNumber}
-                    </div>
-                    <div className="eventpreview-address-text">
-                      {eventPreviewData.eventAddress.streetName}
                     </div>
                     <div className="eventpreview-address-text">
                       {eventPreviewData.eventAddress.postCode}
