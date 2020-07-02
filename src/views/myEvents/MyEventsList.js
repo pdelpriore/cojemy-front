@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import Img from "react-image";
+import { eventData } from "../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faUsers, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
@@ -32,6 +33,7 @@ const MyEventsList = () => {
           <div
             onClick={(e) => {
               e.preventDefault();
+              dispatch(eventData(eventRetrieved));
             }}
             className="myevents-item"
             key={index}

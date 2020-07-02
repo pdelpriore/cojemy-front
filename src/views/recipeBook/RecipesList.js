@@ -12,10 +12,7 @@ import fr from "timeago.js/lib/lang/fr";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
 import { getAverageRating } from "../../shared/getAverageRating";
-import {
-  showRecipeDetailsComponent,
-  retrieveRecipeDetails,
-} from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { retrieveRecipeDetails } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { changeRecipeListItem } from "../../redux/recipeBook/changeRecipeListItem/thunk/changeRecipeListItemThunk";
 import "./recipeBook.css";
 
@@ -39,7 +36,6 @@ const RecipesList = () => {
             onClick={(e) => {
               e.preventDefault();
               dispatch(changeRecipeListItem(true));
-              dispatch(showRecipeDetailsComponent(true));
               dispatch(retrieveRecipeDetails(retrieveRecipe));
             }}
             className="recipesList-item"

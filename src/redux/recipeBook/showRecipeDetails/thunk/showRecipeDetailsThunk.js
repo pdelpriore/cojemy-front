@@ -20,6 +20,7 @@ export const retrieveRecipeDetails = (data) => {
       type: showRecipeDetailsCases.DETAILS_RETRIVED,
       payload: { ...data, comments: sortCommentsByDate(data) },
     });
+    dispatch({ type: showRecipeDetailsCases.SHOWN, payload: true });
   };
 };
 
