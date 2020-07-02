@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Spinner, Button } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
-import moment from "moment";
+import { createEventDate } from "./createEventDate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -137,21 +137,7 @@ const EventPreview = () => {
                     </div>
                     <div style={{ height: 10 }} />
                     <div className="eventpreview-address-text data">
-                      {eventDate.getDate() < 10
-                        ? `0${eventDate.getDate()}`
-                        : eventDate.getDate()}
-                      /
-                      {eventDate.getMonth() < 10
-                        ? `0${eventDate.getMonth()}`
-                        : eventDate.getMonth()}
-                      /{eventDate.getFullYear()}, godz.{" "}
-                      {eventDate.getHours() < 10
-                        ? `0${eventDate.getHours()}`
-                        : eventDate.getHours()}
-                      :
-                      {eventDate.getMinutes() < 10
-                        ? `0${eventDate.getMinutes()}`
-                        : eventDate.getMinutes()}
+                      {createEventDate(eventDate)}
                     </div>
                     <div style={{ height: 25 }} />
                     <div className="eventpreview-address-text tel">
