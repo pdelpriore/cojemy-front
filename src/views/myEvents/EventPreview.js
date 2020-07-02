@@ -175,6 +175,51 @@ const EventPreview = () => {
           <Row className="mb-4" />
           <Row>
             <Col xs={1} />
+            <Col xs={10}>
+              <div className="eventpreview-description-text">
+                {capitalizeFirst(strings.myEvents.PARTICIPANTS_PREVIEW)}
+              </div>
+              <div style={{ height: 10 }} />
+              {eventPreviewData.participants.length > 0 ? (
+                eventPreviewData.participants.map((participant, index) => (
+                  <div
+                    key={index}
+                    className="eventpreview-participant-photo-box"
+                  >
+                    <Img
+                      className="eventpreview-participant-photo"
+                      src={
+                        userGooglePhoto.some(
+                          (element) =>
+                            participant.photo && participant.includes(element)
+                        )
+                          ? participant.photo
+                          : !userGooglePhoto.some(
+                              (element) =>
+                                participant.photo &&
+                                participant.photo.includes(element)
+                            ) && participant.photo
+                          ? strings.path.IMAGE_REQUEST + participant.photo
+                          : require("../../assets/imgs/cookerret.png")
+                      }
+                      loader={<Spinner animation="border" variant="dark" />}
+                    />
+                    <div className="eventpreview-participant-name">
+                      {participant.name}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="eventpreview-description">
+                  {strings.myEvents.error.NO_PARTICIPANTS}
+                </div>
+              )}
+            </Col>
+            <Col xs={1} />
+          </Row>
+          <Row className="mb-4" />
+          <Row>
+            <Col xs={1} />
             <Col xs={6}>
               <div className="eventpreview-button-preview-box">
                 <Button
