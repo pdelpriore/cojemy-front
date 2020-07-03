@@ -145,7 +145,8 @@
   height: 99vh !important;
 }
 .recipeDetails-main {
-  padding: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
   width: 50vw;
   height: 80vh;
 }
