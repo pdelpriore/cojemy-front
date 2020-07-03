@@ -16,6 +16,9 @@ import { myRecipePreviewClearState } from "../../redux/myRecipes/myRecipePreview
 import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
 import { selectEventAddressClearState } from "../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
+import { getEventsClearState } from "../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
+import { eventPreviewClearState } from "../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
+import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { loginUser } from "../../redux/login/userLogged/thunk/userLoggedThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
@@ -92,6 +95,9 @@ const MakeNavMenu = ({ type }) => {
       dispatch(getAddressClearState());
       dispatch(selectEventAddressClearState());
       dispatch(getLocationDetailsClearState());
+      dispatch(getEventsClearState());
+      dispatch(eventPreviewClearState());
+      dispatch(toEditEventClearState());
     }
     if (userData.email === undefined) dispatch(clearLogoutState());
   }, [userData, userLoggedOut, dispatch]);

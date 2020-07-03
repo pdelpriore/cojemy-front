@@ -25,7 +25,7 @@ import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDe
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
+import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
@@ -60,6 +60,7 @@ const MyEventsForm = () => {
     (state) => state.locationDetails
   );
   const { loading } = useSelector((state) => state.isEventChanged);
+  const { eventToEdit } = useSelector((state) => state.toEditEvent);
 
   return (
     <ScrollArea
@@ -306,62 +307,22 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <div className="myrecipes-form-buttons-box">
-              {/* {!myRecipeToEdit.recipeTitle ? ( */}
-              <Button
-                disabled={
-                  loading ||
-                  inputs.title === undefined ||
-                  inputs.title === "" ||
-                  error.imageError ||
-                  !addressObj.country ||
-                  inputs.description === undefined ||
-                  inputs.description === "" ||
-                  inputs.availablePlaces === undefined ||
-                  inputs.availablePlaces === "" ||
-                  inputs.eventDate === undefined ||
-                  inputs.eventDate === "" ||
-                  inputs.tel === "" ||
-                  inputs.tel === undefined
-                }
-                type="submit"
-                className="myrecipes-form-button-text"
-                variant="outline-dark"
-              >
-                <div className="myrecipes-form-spinner">
-                  {loading && (
-                    <Spinner
-                      as="span"
-                      animation="border"
-                      size="sm"
-                      role="status"
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
-                {loading ? (
-                  <div className="myrecipes-form-button-loading">
-                    {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
-                  </div>
-                ) : (
-                  <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
-                )}
-              </Button>
-              {/* ) : ( */}
-              {/* <Button
+              {!eventToEdit.eventData ? (
+                <Button
                   disabled={
                     loading ||
                     inputs.title === undefined ||
                     inputs.title === "" ||
                     error.imageError ||
-                    error.playerError ||
-                    inputs.category === undefined ||
-                    inputs.category === "" ||
-                    inputs.cookTime === undefined ||
-                    inputs.cookTime === "" ||
-                    inputs.ingredients === undefined ||
-                    inputs.ingredients === "" ||
+                    !addressObj.country ||
                     inputs.description === undefined ||
-                    inputs.description === ""
+                    inputs.description === "" ||
+                    inputs.availablePlaces === undefined ||
+                    inputs.availablePlaces === "" ||
+                    inputs.eventDate === undefined ||
+                    inputs.eventDate === "" ||
+                    inputs.tel === "" ||
+                    inputs.tel === undefined
                   }
                   type="submit"
                   className="myrecipes-form-button-text"
@@ -383,12 +344,52 @@ const MyEventsForm = () => {
                       {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                     </div>
                   ) : (
+                    <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
+                  )}
+                </Button>
+              ) : (
+                <Button
+                  disabled={
+                    loading ||
+                    inputs.title === undefined ||
+                    inputs.title === "" ||
+                    error.imageError ||
+                    !addressObj.country ||
+                    inputs.description === undefined ||
+                    inputs.description === "" ||
+                    inputs.availablePlaces === undefined ||
+                    inputs.availablePlaces === "" ||
+                    inputs.eventDate === undefined ||
+                    inputs.eventDate === "" ||
+                    inputs.tel === "" ||
+                    inputs.tel === undefined
+                  }
+                  type="submit"
+                  className="myrecipes-form-button-text"
+                  variant="outline-dark"
+                >
+                  <div className="myrecipes-form-spinner">
+                    {false && (
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </div>
+                  {false ? (
+                    <div className="myrecipes-form-button-loading">
+                      {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                    </div>
+                  ) : (
                     <div>
                       {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
                     </div>
                   )}
                 </Button>
-              )} */}
+              )}
               <Button
                 onClick={(e) => {
                   e.preventDefault();
@@ -396,7 +397,7 @@ const MyEventsForm = () => {
                   dispatch(getAddressClearState());
                   dispatch(selectEventAddressClearState());
                   dispatch(getLocationDetailsClearState());
-                  //dispatch(toEditMyRecipeClearState());
+                  dispatch(toEditEventClearState());
                 }}
                 className="myevents-form-button-cancel"
                 variant="outline-secondary"

@@ -10,6 +10,7 @@ import { getImage } from "../../../shared/getImage";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { changeEventClearState } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
+import { toEditEventClearState } from "../../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { generateZoom } from "../../../shared/generateZoom";
 import { strings } from "../../../strings/Strings";
@@ -198,7 +199,7 @@ const useMyEventsForm = () => {
           }))(addressObj)
         );
       }
-    } else if (!selectedAddress.label && !eventToEdit.eventData.title) {
+    } else if (!selectedAddress.label && !eventToEdit.eventData) {
       setInputs((inputs) =>
         (({ address, ...others }) => ({
           ...others,
@@ -235,7 +236,7 @@ const useMyEventsForm = () => {
   ]);
 
   useEffect(() => {
-    if (eventToEdit.eventData.title) {
+    if (eventToEdit.eventData) {
       (async () => {
         const result =
           eventToEdit.eventData.eventImage &&
@@ -287,6 +288,7 @@ const useMyEventsForm = () => {
       dispatch(getAddressClearState());
       dispatch(selectEventAddressClearState());
       dispatch(getLocationDetailsClearState());
+      dispatch(toEditEventClearState());
     };
   }, [eventUpdated, dispatch]);
 
