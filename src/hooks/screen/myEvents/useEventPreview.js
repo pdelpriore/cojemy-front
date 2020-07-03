@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { toEditMyRecipe } from "../../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
+import { toEditEvent } from "../../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { removeMyRecipe } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { changeMyRecipesClearState } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +10,7 @@ const useEventPreview = () => {
   const { recipeUpdated } = useSelector((state) => state.isMyRecipeChanged);
 
   const handleEditClick = (data) => {
-    console.log("edit clicked !");
-    //dispatch(toEditMyRecipe(data));
+    dispatch(toEditEvent(data));
   };
 
   const handleTrashClick = (recipeId) => {

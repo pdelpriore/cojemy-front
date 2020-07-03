@@ -12,6 +12,7 @@ export const retrieveEventsQuery = (category, userId, email) => {
                             streetName
                             postCode
                             city
+                            country
                             latitude
                             longitude
                             zoom

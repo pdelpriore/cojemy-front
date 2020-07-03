@@ -188,15 +188,23 @@ const MyEventsForm = () => {
                   locationDetailsRetrieved.displayPosition &&
                   locationDetailsRetrieved.displayPosition.latitude
                     ? locationDetailsRetrieved.displayPosition.latitude
+                    : addressObj.latitude
+                    ? addressObj.latitude
                     : 52.229676
                 }
                 longitude={
                   locationDetailsRetrieved.displayPosition &&
                   locationDetailsRetrieved.displayPosition.longitude
                     ? locationDetailsRetrieved.displayPosition.longitude
+                    : addressObj.longitude
+                    ? addressObj.longitude
                     : 21.012229
                 }
-                zoom={generateZoom(selectedAddress)}
+                zoom={
+                  addressObj.zoom
+                    ? addressObj.zoom
+                    : generateZoom(selectedAddress)
+                }
               />
             </Col>
           </Row>

@@ -213,17 +213,29 @@ const EventPreview = () => {
                 <Button
                   onClick={(e) => {
                     e.preventDefault();
-                    //  handleEditClick({
-                    //    recipeId: myRecipePreviewData._id,
-                    //    recipeTitle: myRecipePreviewData.title,
-                    //    recipeImage: myRecipePreviewData.picture,
-                    //    recipeVideo: myRecipePreviewData.video,
-                    //    recipeCategory: myRecipePreviewData.category,
-                    //    recipeCookTime: myRecipePreviewData.cookTime,
-                    //    recipeIngredients: myRecipePreviewData.ingredients,
-                    //    recipeDescription: myRecipePreviewData.description,
-                    //  });
-                    handleEditClick();
+                    handleEditClick({
+                      eventData: {
+                        id: eventPreviewData._id,
+                        title: eventPreviewData.title,
+                        eventImage: eventPreviewData.eventImage,
+                        description: eventPreviewData.description,
+                        availablePlaces: eventPreviewData.availablePlaces,
+                        eventDate: eventPreviewData.eventDate,
+                        tel: eventPreviewData.tel,
+                      },
+                      addressData: {
+                        id: eventPreviewData.eventAddress._id,
+                        streetNumber:
+                          eventPreviewData.eventAddress.streetNumber,
+                        streetName: eventPreviewData.eventAddress.streetName,
+                        postCode: eventPreviewData.eventAddress.postCode,
+                        city: eventPreviewData.eventAddress.city,
+                        country: eventPreviewData.eventAddress.country,
+                        latitude: eventPreviewData.eventAddress.latitude,
+                        longitude: eventPreviewData.eventAddress.longitude,
+                        zoom: eventPreviewData.eventAddress.zoom,
+                      },
+                    });
                   }}
                   className="eventpreview-preview-button"
                   variant="dark"

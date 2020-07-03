@@ -6,6 +6,7 @@ import {
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
 import { addNewEvent } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
+import { getImage } from "../../../shared/getImage";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { changeEventClearState } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
@@ -32,6 +33,7 @@ const useMyEventsForm = () => {
   );
   const { eventUpdated } = useSelector((state) => state.isEventChanged);
   const { userData } = useSelector((state) => state.login);
+  const { eventToEdit } = useSelector((state) => state.toEditEvent);
 
   const handleOnChange = (e) => {
     e.persist();
@@ -147,7 +149,10 @@ const useMyEventsForm = () => {
         ...inputs,
         address: selectedAddress.label,
       }));
-      if (locationDetailsRetrieved.displayPosition)
+      if (
+        locationDetailsRetrieved.displayPosition &&
+        !eventToEdit.eventData.title
+      )
         setAddressObj((addressObj) => ({
           ...addressObj,
           streetNumber: parseInt(selectedAddress.address.houseNumber),
@@ -159,7 +164,11 @@ const useMyEventsForm = () => {
           longitude: locationDetailsRetrieved.displayPosition.longitude,
           zoom: generateZoom(selectedAddress),
         }));
-      if (addressObj.streetName && !addressObj.streetNumber) {
+      if (
+        addressObj.streetName &&
+        !addressObj.streetNumber &&
+        !eventToEdit.eventData.title
+      ) {
         setAddressObj((addressObj) =>
           (({ streetNumber, ...others }) => ({
             ...others,
@@ -168,7 +177,8 @@ const useMyEventsForm = () => {
       } else if (
         addressObj.city &&
         !addressObj.streetName &&
-        !addressObj.streetNumber
+        !addressObj.streetNumber &&
+        !eventToEdit.eventData.title
       ) {
         setAddressObj((addressObj) =>
           (({ streetName, streetNumber, ...others }) => ({
@@ -179,7 +189,8 @@ const useMyEventsForm = () => {
         addressObj.country &&
         !addressObj.city &&
         !addressObj.streetName &&
-        !addressObj.streetNumber
+        !addressObj.streetNumber &&
+        !eventToEdit.eventData.title
       ) {
         setAddressObj((addressObj) =>
           (({ streetName, streetNumber, city, ...others }) => ({
@@ -187,7 +198,7 @@ const useMyEventsForm = () => {
           }))(addressObj)
         );
       }
-    } else {
+    } else if (!selectedAddress.label && !eventToEdit.eventData.title) {
       setInputs((inputs) =>
         (({ address, ...others }) => ({
           ...others,
@@ -202,6 +213,7 @@ const useMyEventsForm = () => {
     addressObj.streetName,
     addressObj.streetNumber,
     addressObj.country,
+    eventToEdit,
     dispatch,
   ]);
 
@@ -221,6 +233,48 @@ const useMyEventsForm = () => {
     locationDetailsRetrieved.displayPosition,
     inputs.address,
   ]);
+
+  useEffect(() => {
+    if (eventToEdit.eventData.title) {
+      (async () => {
+        const result =
+          eventToEdit.eventData.eventImage &&
+          (await getImage(eventToEdit.eventData.eventImage));
+        setInputs((inputs) => ({
+          ...inputs,
+          title: eventToEdit.eventData.title,
+          eventImage: result && {
+            image: result.imageBinary,
+            imageName: result.pictureName,
+          },
+          address: `${eventToEdit.addressData.streetName} ${eventToEdit.addressData.streetNumber}, ${eventToEdit.addressData.city}`,
+          description: eventToEdit.eventData.description,
+          availablePlaces: eventToEdit.eventData.availablePlaces.toString(),
+          eventDate: new Date(eventToEdit.eventData.eventDate),
+          tel: eventToEdit.eventData.tel,
+        }));
+        if (result === null)
+          setInputs((inputs) =>
+            (({ eventImage, ...others }) => ({
+              ...others,
+            }))(inputs)
+          );
+        setAddressObj((addressObj) => ({
+          ...addressObj,
+          streetNumber: eventToEdit.addressData.streetNumber,
+          streetName: eventToEdit.addressData.streetName,
+          postCode: eventToEdit.addressData.postCode,
+          city: eventToEdit.addressData.city,
+          country: eventToEdit.addressData.country,
+          latitude: eventToEdit.addressData.latitude,
+          longitude: eventToEdit.addressData.longitude,
+          zoom: eventToEdit.addressData.zoom,
+        }));
+        setShowSuggestions(false);
+        setShowMap(true);
+      })();
+    }
+  }, [eventToEdit]);
 
   useEffect(() => {
     if (eventUpdated) {

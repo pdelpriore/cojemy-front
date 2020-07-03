@@ -192,3 +192,8 @@ export const myEventPreviewCases = Object.freeze({
   PREVIEW_DATA_RECEIVED: "myEventPreviewPreviewDataReceived",
   CLEAR_STATE: "myEventPreviewClearState",
 });
+
+export const toEditEventCases = Object.freeze({
+  EVENT_TO_EDIT: "toEditEventEventToEdit",
+  CLEAR_STATE: "toEditEventClearState",
+});
