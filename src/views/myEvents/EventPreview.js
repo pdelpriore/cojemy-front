@@ -25,6 +25,7 @@ const EventPreview = () => {
   });
   const { handleEditClick, handleTrashClick } = useEventPreview();
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
+  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   //const { loading } = useSelector((state) => state.isMyRecipeChanged);
 
   return (
@@ -209,82 +210,86 @@ const EventPreview = () => {
           <Row>
             <Col xs={1} />
             <Col xs={6}>
-              <div className="eventpreview-button-preview-box">
-                <Button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleEditClick({
-                      eventData: {
-                        id: eventPreviewData._id,
-                        title: eventPreviewData.title,
-                        eventImage: eventPreviewData.eventImage,
-                        description: eventPreviewData.description,
-                        availablePlaces: eventPreviewData.availablePlaces,
-                        eventDate: eventPreviewData.eventDate,
-                        tel: eventPreviewData.tel,
-                      },
-                      addressData: {
-                        id: eventPreviewData.eventAddress._id,
-                        streetNumber:
-                          eventPreviewData.eventAddress.streetNumber,
-                        streetName: eventPreviewData.eventAddress.streetName,
-                        postCode: eventPreviewData.eventAddress.postCode,
-                        city: eventPreviewData.eventAddress.city,
-                        country: eventPreviewData.eventAddress.country,
-                        latitude: eventPreviewData.eventAddress.latitude,
-                        longitude: eventPreviewData.eventAddress.longitude,
-                        zoom: eventPreviewData.eventAddress.zoom,
-                      },
-                    });
-                  }}
-                  className="eventpreview-preview-button"
-                  variant="dark"
-                >
-                  <FontAwesomeIcon
-                    className="eventpreview-preview-button-icon"
-                    icon={faEdit}
-                  />
-                  <div className="myevents-button-preview-action">
-                    {capitalize(strings.myRecipes.BUTTON_CORRECTION)}
-                  </div>
-                </Button>
-                <Button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    //handleTrashClick(myRecipePreviewData._id);
-                    handleTrashClick();
-                  }}
-                  className="eventpreview-preview-button-delete"
-                  variant="dark"
-                >
-                  <div className="myrecipes-form-spinner">
-                    {false && (
-                      <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
-                    )}
-                  </div>
-                  {false ? (
-                    <div className="myrecipes-form-button-loading">
-                      {capitalizeFirst(strings.myRecipes.BUTTON_REMOVE_LOADING)}
+              {eventButtonId === 1 && (
+                <div className="eventpreview-button-preview-box">
+                  <Button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleEditClick({
+                        eventData: {
+                          id: eventPreviewData._id,
+                          title: eventPreviewData.title,
+                          eventImage: eventPreviewData.eventImage,
+                          description: eventPreviewData.description,
+                          availablePlaces: eventPreviewData.availablePlaces,
+                          eventDate: eventPreviewData.eventDate,
+                          tel: eventPreviewData.tel,
+                        },
+                        addressData: {
+                          id: eventPreviewData.eventAddress._id,
+                          streetNumber:
+                            eventPreviewData.eventAddress.streetNumber,
+                          streetName: eventPreviewData.eventAddress.streetName,
+                          postCode: eventPreviewData.eventAddress.postCode,
+                          city: eventPreviewData.eventAddress.city,
+                          country: eventPreviewData.eventAddress.country,
+                          latitude: eventPreviewData.eventAddress.latitude,
+                          longitude: eventPreviewData.eventAddress.longitude,
+                          zoom: eventPreviewData.eventAddress.zoom,
+                        },
+                      });
+                    }}
+                    className="eventpreview-preview-button"
+                    variant="dark"
+                  >
+                    <FontAwesomeIcon
+                      className="eventpreview-preview-button-icon"
+                      icon={faEdit}
+                    />
+                    <div className="myevents-button-preview-action">
+                      {capitalize(strings.myRecipes.BUTTON_CORRECTION)}
                     </div>
-                  ) : (
-                    <>
-                      <FontAwesomeIcon
-                        className="myrecipes-preview-button-icon"
-                        icon={faTrash}
-                      />
-                      <div className="myevents-button-preview-action">
-                        {capitalize(strings.myRecipes.BUTTON_REMOVE)}
+                  </Button>
+                  <Button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      //handleTrashClick(myRecipePreviewData._id);
+                      handleTrashClick();
+                    }}
+                    className="eventpreview-preview-button-delete"
+                    variant="dark"
+                  >
+                    <div className="myrecipes-form-spinner">
+                      {false && (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
+                    {false ? (
+                      <div className="myrecipes-form-button-loading">
+                        {capitalizeFirst(
+                          strings.myRecipes.BUTTON_REMOVE_LOADING
+                        )}
                       </div>
-                    </>
-                  )}
-                </Button>
-              </div>
+                    ) : (
+                      <>
+                        <FontAwesomeIcon
+                          className="myrecipes-preview-button-icon"
+                          icon={faTrash}
+                        />
+                        <div className="myevents-button-preview-action">
+                          {capitalize(strings.myRecipes.BUTTON_REMOVE)}
+                        </div>
+                      </>
+                    )}
+                  </Button>
+                </div>
+              )}
             </Col>
             <Col xs={5} />
           </Row>
