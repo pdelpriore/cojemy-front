@@ -199,7 +199,7 @@ const EventPreview = () => {
                   ))
                 ) : (
                   <div className="eventpreview-description">
-                    {strings.myEvents.error.NO_PARTICIPANTS}
+                    {capitalizeFirst(strings.myEvents.error.NO_PARTICIPANTS)}
                   </div>
                 )}
               </div>
