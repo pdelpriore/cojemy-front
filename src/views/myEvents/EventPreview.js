@@ -9,6 +9,7 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
 import Map from "../../components/map/map/Map";
+import useEventPreview from "../../hooks/screen/myEvents/useEventPreview";
 import { eventPreviewClearState } from "../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { useSelector, useDispatch } from "react-redux";
 import { useSpring, animated } from "react-spring";
@@ -22,7 +23,7 @@ const EventPreview = () => {
     config: { duration: 300 },
     from: { opacity: 0 },
   });
-  //const { handleEditClick, handleTrashClick } = useMyRecipePreview();
+  const { handleEditClick, handleTrashClick } = useEventPreview();
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
   //const { loading } = useSelector((state) => state.isMyRecipeChanged);
 
@@ -212,16 +213,17 @@ const EventPreview = () => {
                 <Button
                   onClick={(e) => {
                     e.preventDefault();
-                    // handleEditClick({
-                    //   recipeId: myRecipePreviewData._id,
-                    //   recipeTitle: myRecipePreviewData.title,
-                    //   recipeImage: myRecipePreviewData.picture,
-                    //   recipeVideo: myRecipePreviewData.video,
-                    //   recipeCategory: myRecipePreviewData.category,
-                    //   recipeCookTime: myRecipePreviewData.cookTime,
-                    //   recipeIngredients: myRecipePreviewData.ingredients,
-                    //   recipeDescription: myRecipePreviewData.description,
-                    // });
+                    //  handleEditClick({
+                    //    recipeId: myRecipePreviewData._id,
+                    //    recipeTitle: myRecipePreviewData.title,
+                    //    recipeImage: myRecipePreviewData.picture,
+                    //    recipeVideo: myRecipePreviewData.video,
+                    //    recipeCategory: myRecipePreviewData.category,
+                    //    recipeCookTime: myRecipePreviewData.cookTime,
+                    //    recipeIngredients: myRecipePreviewData.ingredients,
+                    //    recipeDescription: myRecipePreviewData.description,
+                    //  });
+                    handleEditClick();
                   }}
                   className="eventpreview-preview-button"
                   variant="dark"
@@ -238,6 +240,7 @@ const EventPreview = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     //handleTrashClick(myRecipePreviewData._id);
+                    handleTrashClick();
                   }}
                   className="eventpreview-preview-button-delete"
                   variant="dark"

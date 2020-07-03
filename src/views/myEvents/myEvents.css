@@ -275,8 +275,8 @@
   font-family: "Nunito-SemiBold";
 }
 .eventpreview-participant-photo {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid #212529;
@@ -290,8 +290,9 @@
   margin: 15px;
 }
 .eventpreview-participant-name {
-  font-size: 1vw;
+  font-size: 0.8vw;
   font-family: "OpenSans-Regular";
+  word-wrap: break-word;
 }
 .eventpreview-participant-main-area {
   display: flex;
