@@ -237,4 +237,7 @@ export const strings = Object.freeze({
       AVAILABLE_PLACES: "availablePlaces",
     },
   },
+  error: {
+    FETCH_ERROR: "problème de réseau",
+  },
 });

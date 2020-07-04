@@ -3,6 +3,7 @@ import { addMyRecipeQuery } from "../query/addMyRecipeQuery";
 import { editMyRecipeQuery } from "../query/editMyRecipeQuery";
 import { removeMyRecipeQuery } from "../query/removeMyRecipeQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const addMyRecipe = (
   title,
@@ -51,7 +52,11 @@ export const addMyRecipe = (
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: changeMyRecipesCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
