@@ -161,9 +161,11 @@ const useNewRecipeForm = () => {
   useEffect(() => {
     if (myRecipeToEdit.recipeTitle) {
       (async () => {
+        setLoadingImage(true);
         const result =
           myRecipeToEdit.recipeImage &&
           (await getImage(myRecipeToEdit.recipeImage));
+        if (result || result === null) setLoadingImage(false);
         setInputs((inputs) => ({
           ...inputs,
           title: myRecipeToEdit.recipeTitle,

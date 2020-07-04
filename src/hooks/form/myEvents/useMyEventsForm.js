@@ -238,9 +238,11 @@ const useMyEventsForm = () => {
   useEffect(() => {
     if (eventToEdit.eventData) {
       (async () => {
+        setLoadingImage(true);
         const result =
           eventToEdit.eventData.eventImage &&
           (await getImage(eventToEdit.eventData.eventImage));
+        if (result || result === null) setLoadingImage(false);
         setInputs((inputs) => ({
           ...inputs,
           title: eventToEdit.eventData.title,

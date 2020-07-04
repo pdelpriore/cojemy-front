@@ -92,7 +92,9 @@ const useMyProfileForm = () => {
         (element) => userData.photo && userData.photo.includes(element)
       )
     ) {
+      setLoadingImage(true);
       const result = userData.photo && (await getImage(userData.photo));
+      if (result || result === null) setLoadingImage(false);
       if (result) {
         setInputs((inputs) => ({
           ...inputs,
