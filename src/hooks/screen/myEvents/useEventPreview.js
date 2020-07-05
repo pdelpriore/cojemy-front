@@ -3,7 +3,7 @@ import { toEditEvent } from "../../../redux/myEvents/toEditEvent/thunk/toEditEve
 import { removeMyRecipe } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { changeMyRecipesClearState } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { useDispatch, useSelector } from "react-redux";
-import { timer } from "./timer";
+import { delayAvailablePlacesCounter } from "./delayAvailablePlacesCounter";
 
 const useEventPreview = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const useEventPreview = () => {
         i++
       ) {
         setCountAvailablePlaces(i);
-        await timer(50);
+        await delayAvailablePlacesCounter(50);
       }
     })();
   }, [eventPreviewData.title]);

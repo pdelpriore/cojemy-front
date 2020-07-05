@@ -1,3 +1,3 @@
-export const timer = (time) => {
+export const delayAvailablePlacesCounter = (time) => {
   return new Promise((resolve) => setTimeout(resolve, time));
 };
