@@ -65,7 +65,15 @@ const EventPreview = () => {
             <div className="eventpreview-available-places-text">
               {strings.myEvents.AVAILABLE_PLACES_PREVIEW}
             </div>
-            <div className="eventpreview-available-places-text number">
+            <div
+              className={
+                countAvailablePlaces ===
+                eventPreviewData.availablePlaces -
+                  eventPreviewData.participants.length
+                  ? "eventpreview-available-places-text number animate"
+                  : "eventpreview-available-places-text number"
+              }
+            >
               {countAvailablePlaces}
             </div>
           </div>
