@@ -23,7 +23,11 @@ const EventPreview = () => {
     config: { duration: 300 },
     from: { opacity: 0 },
   });
-  const { handleEditClick, handleTrashClick } = useEventPreview();
+  const {
+    handleEditClick,
+    handleTrashClick,
+    countAvailablePlaces,
+  } = useEventPreview();
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   //const { loading } = useSelector((state) => state.isMyRecipeChanged);
@@ -62,8 +66,7 @@ const EventPreview = () => {
               {strings.myEvents.AVAILABLE_PLACES_PREVIEW}
             </div>
             <div className="eventpreview-available-places-text number">
-              {eventPreviewData.availablePlaces -
-                eventPreviewData.participants.length}
+              {countAvailablePlaces}
             </div>
           </div>
         </Col>
