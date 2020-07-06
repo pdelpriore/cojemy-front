@@ -35,7 +35,7 @@ const useEventPreview = () => {
         await delayAvailablePlacesCounter(50);
       }
     })();
-  }, [eventPreviewData.title]);
+  }, [eventPreviewData._id]);
 
   //   useEffect(() => {
   //     if (recipeUpdated) dispatch(changeMyRecipesClearState());
