@@ -7,6 +7,7 @@ import { loginQuery } from "../query/loginQuery";
 import { googleLoginQuery } from "../query/googleLoginQuery";
 import { updateUserProfileQuery } from "../query/updateUserProfileQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const loginUser = (email, password) => {
   return async (dispatch, getState) => {
@@ -33,7 +34,11 @@ export const loginUser = (email, password) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: loginCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
@@ -67,7 +72,11 @@ export const loginUserGoogle = (email, tokenId) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: loginCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
@@ -102,7 +111,11 @@ export const updateUserProfile = (name, profileImage, userId, email) => {
         dispatch({ type: loginCases.ERROR, payload: errors[0].message });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: loginCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
