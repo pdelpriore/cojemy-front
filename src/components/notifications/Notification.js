@@ -12,6 +12,7 @@ import "./notification.css";
 const Notification = ({ notificationMessage }) => {
   const { notification, show } = useNotification(notificationMessage);
   const { error } = useSelector((state) => state.signup);
+  const { emailSentError } = useSelector((state) => state.customerContact);
   const { remindPassError } = useSelector((state) => state.remindPass);
   const { loginError } = useSelector((state) => state.login);
   const { changeUserPasswordError } = useSelector(
@@ -29,6 +30,7 @@ const Notification = ({ notificationMessage }) => {
     notification !== undefined && (
       <div className="notification">
         {notification === error ||
+        notification === emailSentError ||
         notification === remindPassError ||
         notification === loginError ||
         notification === errorGoogleSignup ||
@@ -44,6 +46,7 @@ const Notification = ({ notificationMessage }) => {
           </div>
         )}
         {notification === error ||
+        notification === emailSentError ||
         notification === remindPassError ||
         notification === loginError ||
         notification === errorGoogleSignup ||

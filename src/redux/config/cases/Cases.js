@@ -8,6 +8,7 @@ export const signupCases = Object.freeze({
 export const customerContactCases = Object.freeze({
   LOADING: "customerContactLoading",
   EMAIL_SENT: "customerContactEmailSent",
+  ERROR: "customerContactError",
   CLEAR_STATE: "customerContactClearState",
 });
 

@@ -1,6 +1,7 @@
 import { customerContactCases } from "../../config/cases/Cases";
 import { customerContactQuery } from "../query/customerContactQuery";
 import { strings } from "../../../strings/Strings";
+import { capitalizeFirst } from "../../../util/Util";
 
 export const customerContact = (subject, email, content) => {
   return async (dispatch, getState) => {
@@ -23,7 +24,11 @@ export const customerContact = (subject, email, content) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: customerContactCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

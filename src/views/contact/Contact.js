@@ -10,7 +10,9 @@ import { useSelector } from "react-redux";
 import "./contact.css";
 
 const Contact = () => {
-  const { emailSent } = useSelector((state) => state.customerContact);
+  const { emailSent, emailSentError } = useSelector(
+    (state) => state.customerContact
+  );
   return (
     <div className="contact-section" id={strings.navbar.navHomeItems.CONTACT}>
       <Row className="mb-5" />
@@ -35,7 +37,9 @@ const Contact = () => {
             <Row>
               <Col xs={3} />
               <Col xs={3}>
-                <Notification notificationMessage={emailSent} />
+                <Notification
+                  notificationMessage={emailSent || emailSentError}
+                />
               </Col>
               <Col xs={6} />
             </Row>

@@ -32,7 +32,9 @@ const useNotification = (notificationMessage) => {
   const { userGoogleSignedup, errorGoogleSignup } = useSelector(
     (state) => state.signGoogle
   );
-  const { emailSent } = useSelector((state) => state.customerContact);
+  const { emailSent, emailSentError } = useSelector(
+    (state) => state.customerContact
+  );
   const { myRecipeChangeError } = useSelector(
     (state) => state.isMyRecipeChanged
   );
@@ -45,7 +47,7 @@ const useNotification = (notificationMessage) => {
     const timer = setTimeout(() => {
       if (error || userSignedup) {
         dispatch(clearSignUpState());
-      } else if (emailSent) {
+      } else if (emailSent || emailSentError) {
         dispatch(clearCustomerContactState());
       } else if (passwordSent || remindPassError) {
         dispatch(clearRemindPasswordState());
