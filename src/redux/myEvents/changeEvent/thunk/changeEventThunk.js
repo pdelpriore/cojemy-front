@@ -1,6 +1,7 @@
 import { changeEventCases } from "../../../config/cases/Cases";
 import { addNewEventQuery } from "../query/addNewEventQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const addNewEvent = (
   title,
@@ -49,7 +50,11 @@ export const addNewEvent = (
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: changeEventCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

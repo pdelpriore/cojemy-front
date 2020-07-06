@@ -157,6 +157,7 @@ export const showNewEventFormCases = Object.freeze({
 export const getAddressCases = Object.freeze({
   LOADING: "getAddressLoading",
   ADDRESSES_RETRIEVED: "getAddressAddressesRetrieved",
+  ERROR: "getAddressError",
   CLEAR_STATE: "getAddressClearState",
 });
 

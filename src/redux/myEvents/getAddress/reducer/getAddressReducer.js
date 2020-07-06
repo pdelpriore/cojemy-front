@@ -3,6 +3,7 @@ import { getAddressCases } from "../../../config/cases/Cases";
 const initialState = {
   loadingAddresses: false,
   addressesRetrieved: [],
+  addressesRetrievedError: null,
 };
 
 const getAddressReducer = (state = initialState, action) => {
@@ -14,6 +15,12 @@ const getAddressReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         addressesRetrieved: action.payload,
+      };
+    case getAddressCases.ERROR:
+      return {
+        ...state,
+        ...initialState,
+        addressesRetrievedError: action.payload,
       };
     case getAddressCases.CLEAR_STATE:
       return (state = initialState);

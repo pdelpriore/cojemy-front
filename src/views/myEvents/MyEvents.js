@@ -23,6 +23,9 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
   const { eventPreviewShown } = useSelector((state) => state.eventPreview);
   const { eventChangeError } = useSelector((state) => state.isEventChanged);
   const { logoutError } = useSelector((state) => state.logout);
+  const { addressesRetrievedError } = useSelector(
+    (state) => state.addressSuggestions
+  );
 
   const props = useSpring({
     opacity: 1,
@@ -129,7 +132,9 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
                 <Row className="mb-5" />
                 <Row className="mb-4" />
                 <Notification
-                  notificationMessage={eventChangeError || logoutError}
+                  notificationMessage={
+                    eventChangeError || logoutError || addressesRetrievedError
+                  }
                 />
               </Col>
               <Col xs={1} />

@@ -9,6 +9,7 @@ import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googl
 import { changeUserPasswordClearState } from "../../redux/updateMyProfile/changePassword/thunk/changePasswordThunk";
 import { changeMyRecipesClearState } from "../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { changeEventClearState } from "../../redux/myEvents/changeEvent/thunk/changeEventThunk";
+import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
 
 const useNotification = (notificationMessage) => {
   const [notifications, setNotification] = useState({});
@@ -41,6 +42,9 @@ const useNotification = (notificationMessage) => {
     (state) => state.isMyRecipeChanged
   );
   const { eventChangeError } = useSelector((state) => state.isEventChanged);
+  const { addressesRetrievedError } = useSelector(
+    (state) => state.addressSuggestions
+  );
 
   const dispatch = useDispatch();
 
@@ -65,6 +69,8 @@ const useNotification = (notificationMessage) => {
         dispatch(changeUserPasswordClearState());
       } else if (eventChangeError) {
         dispatch(changeEventClearState());
+      } else if (addressesRetrievedError) {
+        dispatch(getAddressClearState());
       }
       setShow(false);
       setNotification({});
@@ -86,6 +92,7 @@ const useNotification = (notificationMessage) => {
     userPasswordChanged,
     changeUserPasswordError,
     eventChangeError,
+    addressesRetrievedError,
     dispatch,
   ]);
 

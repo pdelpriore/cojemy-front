@@ -1,4 +1,6 @@
 import { getAddressCases } from "../../../config/cases/Cases";
+import { capitalizeFirst } from "../../../../util/Util";
+import { strings } from "../../../../strings/Strings";
 
 export const getAddress = (addressValue) => {
   return async (dispatch, getState) => {
@@ -21,7 +23,11 @@ export const getAddress = (addressValue) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: getAddressCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
