@@ -10,6 +10,7 @@ import { changeUserPasswordClearState } from "../../redux/updateMyProfile/change
 import { changeMyRecipesClearState } from "../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { changeEventClearState } from "../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
+import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 
 const useNotification = (notificationMessage) => {
   const [notifications, setNotification] = useState({});
@@ -45,6 +46,9 @@ const useNotification = (notificationMessage) => {
   const { addressesRetrievedError } = useSelector(
     (state) => state.addressSuggestions
   );
+  const { locationDetailsError } = useSelector(
+    (state) => state.locationDetails
+  );
 
   const dispatch = useDispatch();
 
@@ -71,6 +75,8 @@ const useNotification = (notificationMessage) => {
         dispatch(changeEventClearState());
       } else if (addressesRetrievedError) {
         dispatch(getAddressClearState());
+      } else if (locationDetailsError) {
+        dispatch(getLocationDetailsClearState());
       }
       setShow(false);
       setNotification({});
@@ -93,6 +99,7 @@ const useNotification = (notificationMessage) => {
     changeUserPasswordError,
     eventChangeError,
     addressesRetrievedError,
+    locationDetailsError,
     dispatch,
   ]);
 

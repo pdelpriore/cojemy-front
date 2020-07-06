@@ -1,4 +1,6 @@
 import { getLocationDetailsCases } from "../../../config/cases/Cases";
+import { capitalizeFirst } from "../../../../util/Util";
+import { strings } from "../../../../strings/Strings";
 
 export const getLocationDetails = (locationId) => {
   return async (dispatch, getState) => {
@@ -30,7 +32,11 @@ export const getLocationDetails = (locationId) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: getLocationDetailsCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

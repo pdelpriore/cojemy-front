@@ -173,6 +173,7 @@ export const chooseEventAddressCases = Object.freeze({
 export const getLocationDetailsCases = Object.freeze({
   LOADING: "getLocationDetailsLoading",
   LOCATION_DETAILS_RETRIEVED: "getLocationDetailsLoactionDetalsRetrieved",
+  ERROR: "getLocationDetailsError",
   CLEAR_STATE: "getLocationDetailsClearState",
 });
 

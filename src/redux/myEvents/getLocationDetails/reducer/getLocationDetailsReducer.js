@@ -3,6 +3,7 @@ import { getLocationDetailsCases } from "../../../config/cases/Cases";
 const initialState = {
   loadingLocationDetails: false,
   locationDetailsRetrieved: {},
+  locationDetailsError: null,
 };
 
 const getLocationDetailsReducer = (state = initialState, action) => {
@@ -14,6 +15,12 @@ const getLocationDetailsReducer = (state = initialState, action) => {
         ...state,
         ...initialState,
         locationDetailsRetrieved: action.payload,
+      };
+    case getLocationDetailsCases.ERROR:
+      return {
+        ...state,
+        ...initialState,
+        locationDetailsError: action.payload,
       };
     case getLocationDetailsCases.CLEAR_STATE:
       return (state = initialState);

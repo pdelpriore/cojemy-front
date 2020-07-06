@@ -27,6 +27,9 @@ const Notification = ({ notificationMessage }) => {
   const { addressesRetrievedError } = useSelector(
     (state) => state.addressSuggestions
   );
+  const { locationDetailsError } = useSelector(
+    (state) => state.locationDetails
+  );
 
   return (
     show &&
@@ -42,7 +45,8 @@ const Notification = ({ notificationMessage }) => {
         notification === myRecipeChangeError ||
         notification === changeUserPasswordError ||
         notification === eventChangeError ||
-        notification === addressesRetrievedError ? (
+        notification === addressesRetrievedError ||
+        notification === locationDetailsError ? (
           <div className="notification-icon-error">
             <FontAwesomeIcon icon={faTimesCircle} />
           </div>
@@ -60,7 +64,8 @@ const Notification = ({ notificationMessage }) => {
         notification === myRecipeChangeError ||
         notification === changeUserPasswordError ||
         notification === eventChangeError ||
-        notification === addressesRetrievedError ? (
+        notification === addressesRetrievedError ||
+        notification === locationDetailsError ? (
           <div className="notification-message">
             {capitalizeFirst(notification)}
           </div>
