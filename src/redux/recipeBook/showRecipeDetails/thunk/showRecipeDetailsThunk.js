@@ -66,11 +66,13 @@ export const addRateAndComment = (recipeId, rate, comment, userId, email) => {
         });
       }
     } catch (err) {
-      if (err)
+      if (err) {
+        dispatch({ type: showRecipeDetailsCases.SHOWN, payload: false });
         dispatch({
           type: showRecipeDetailsCases.ERROR,
           payload: capitalizeFirst(strings.error.FETCH_ERROR),
         });
+      }
     }
   };
 };
@@ -120,11 +122,13 @@ export const editRecipeRateAndComment = (
         });
       }
     } catch (err) {
-      if (err)
+      if (err) {
+        dispatch({ type: showRecipeDetailsCases.SHOWN, payload: false });
         dispatch({
           type: showRecipeDetailsCases.ERROR,
           payload: capitalizeFirst(strings.error.FETCH_ERROR),
         });
+      }
     }
   };
 };
@@ -172,11 +176,13 @@ export const removeRecipeRateAndComment = (
         });
       }
     } catch (err) {
-      if (err)
+      if (err) {
+        dispatch({ type: showRecipeDetailsCases.SHOWN, payload: false });
         dispatch({
           type: showRecipeDetailsCases.ERROR,
           payload: capitalizeFirst(strings.error.FETCH_ERROR),
         });
+      }
     }
   };
 };
