@@ -1,6 +1,7 @@
 import { signupGoogleUserCases } from "../../config/cases/Cases";
 import { googleSignupQuery } from "../query/googleSignupQuery";
 import { strings } from "../../../strings/Strings";
+import { capitalizeFirst } from "../../../util/Util";
 
 export const signupGoogleUser = (name, email, photo, tokenId) => {
   return async (dispatch, getState) => {
@@ -29,7 +30,11 @@ export const signupGoogleUser = (name, email, photo, tokenId) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: signupGoogleUserCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
