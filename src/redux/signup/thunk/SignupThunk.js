@@ -1,6 +1,7 @@
 import { strings } from "../../../strings/Strings";
 import { signupCases } from "../../config/cases/Cases";
 import { signupQuery } from "../query/signupQuery";
+import { capitalizeFirst } from "../../../util/Util";
 
 export const signupUser = (name, email, confirmEmail, password) => {
   return async (dispatch, getState) => {
@@ -25,7 +26,11 @@ export const signupUser = (name, email, confirmEmail, password) => {
         dispatch({ type: signupCases.ERROR, payload: errors[0].message });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: signupCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

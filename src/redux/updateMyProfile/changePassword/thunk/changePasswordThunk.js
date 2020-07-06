@@ -1,6 +1,7 @@
 import { changePasswordCases } from "../../../config/cases/Cases";
 import { changePasswordQuery } from "../query/changePasswordQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const changeUserPassword = (
   currentPass,
@@ -41,7 +42,11 @@ export const changeUserPassword = (
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: changePasswordCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

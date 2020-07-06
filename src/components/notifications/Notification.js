@@ -30,6 +30,12 @@ const Notification = ({ notificationMessage }) => {
   const { locationDetailsError } = useSelector(
     (state) => state.locationDetails
   );
+  const { detailsDataError } = useSelector(
+    (state) => state.isRecipeDetailsShown
+  );
+  const { removingAccountError } = useSelector(
+    (state) => state.isAccountRemoved
+  );
 
   return (
     show &&
@@ -46,7 +52,9 @@ const Notification = ({ notificationMessage }) => {
         notification === changeUserPasswordError ||
         notification === eventChangeError ||
         notification === addressesRetrievedError ||
-        notification === locationDetailsError ? (
+        notification === locationDetailsError ||
+        notification === detailsDataError ||
+        notification === removingAccountError ? (
           <div className="notification-icon-error">
             <FontAwesomeIcon icon={faTimesCircle} />
           </div>
@@ -65,7 +73,9 @@ const Notification = ({ notificationMessage }) => {
         notification === changeUserPasswordError ||
         notification === eventChangeError ||
         notification === addressesRetrievedError ||
-        notification === locationDetailsError ? (
+        notification === locationDetailsError ||
+        notification === detailsDataError ||
+        notification === removingAccountError ? (
           <div className="notification-message">
             {capitalizeFirst(notification)}
           </div>

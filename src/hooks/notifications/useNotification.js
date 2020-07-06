@@ -11,6 +11,8 @@ import { changeMyRecipesClearState } from "../../redux/myRecipes/changeMyRecipes
 import { changeEventClearState } from "../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
 import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
+import { recipeDetailsClearErrorState } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { removeAccountClearState } from "../../redux/updateMyProfile/removeAccount/thunk/removeAccountThunk";
 
 const useNotification = (notificationMessage) => {
   const [notifications, setNotification] = useState({});
@@ -49,6 +51,12 @@ const useNotification = (notificationMessage) => {
   const { locationDetailsError } = useSelector(
     (state) => state.locationDetails
   );
+  const { detailsDataError } = useSelector(
+    (state) => state.isRecipeDetailsShown
+  );
+  const { removingAccountError } = useSelector(
+    (state) => state.isAccountRemoved
+  );
 
   const dispatch = useDispatch();
 
@@ -77,6 +85,10 @@ const useNotification = (notificationMessage) => {
         dispatch(getAddressClearState());
       } else if (locationDetailsError) {
         dispatch(getLocationDetailsClearState());
+      } else if (detailsDataError) {
+        dispatch(recipeDetailsClearErrorState());
+      } else if (removingAccountError) {
+        dispatch(removeAccountClearState());
       }
       setShow(false);
       setNotification({});
@@ -100,6 +112,8 @@ const useNotification = (notificationMessage) => {
     eventChangeError,
     addressesRetrievedError,
     locationDetailsError,
+    detailsDataError,
+    removingAccountError,
     dispatch,
   ]);
 

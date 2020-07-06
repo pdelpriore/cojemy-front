@@ -1,6 +1,7 @@
 import { removeAccountCases } from "../../../config/cases/Cases";
 import { removeAccountQuery } from "../query/removeAccountQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const removeAccount = (userId, email) => {
   return async (dispatch, getState) => {
@@ -24,7 +25,11 @@ export const removeAccount = (userId, email) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: removeAccountCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

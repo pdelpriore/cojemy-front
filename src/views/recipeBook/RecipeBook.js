@@ -23,7 +23,9 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
     config: { duration: 200 },
     from: { opacity: 0 },
   });
-  const { detailsShown } = useSelector((state) => state.isRecipeDetailsShown);
+  const { detailsShown, detailsDataError } = useSelector(
+    (state) => state.isRecipeDetailsShown
+  );
   const { recipesError } = useSelector((state) => state.recipeBook);
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons
@@ -116,7 +118,9 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
           <Row>
             <Col xs={5} />
             <Col xs={6}>
-              <Notification notificationMessage={logoutError} />
+              <Notification
+                notificationMessage={logoutError || detailsDataError}
+              />
             </Col>
             <Col xs={1} />
           </Row>

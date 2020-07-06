@@ -1,6 +1,7 @@
 import { retrieveMyRecipesCases } from "../../../config/cases/Cases";
 import { retrieveMyRecipesQuery } from "../query/retrieveMyRecipesQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const getMyRecipes = (userId, email) => {
   return async (dispatch, getState) => {
@@ -29,7 +30,11 @@ export const getMyRecipes = (userId, email) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: retrieveMyRecipesCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

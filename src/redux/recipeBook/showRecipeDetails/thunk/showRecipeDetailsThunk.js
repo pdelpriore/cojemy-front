@@ -7,6 +7,7 @@ import { editRateAndCommentQuery } from "../query/editRateAndCommentQuery";
 import { removeRateAndCommentQuery } from "../query/removeRateAndCommentQuery";
 import { sortCommentsByDate } from "../../../../shared/sortCommentsByDate";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const showRecipeDetailsComponent = (bool) => {
   return (dispatch, getState) => {
@@ -65,7 +66,11 @@ export const addRateAndComment = (recipeId, rate, comment, userId, email) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: showRecipeDetailsCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
@@ -115,7 +120,11 @@ export const editRecipeRateAndComment = (
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: showRecipeDetailsCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
@@ -163,7 +172,17 @@ export const removeRecipeRateAndComment = (
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: showRecipeDetailsCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
+  };
+};
+
+export const recipeDetailsClearErrorState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: showRecipeDetailsCases.CLEAR_ERROR_STATE });
   };
 };

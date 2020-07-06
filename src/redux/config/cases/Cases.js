@@ -63,7 +63,9 @@ export const showRecipeDetailsCases = Object.freeze({
   LOADING: "showRecipeDetailsLoading",
   SHOWN: "showRecipeDetailsShown",
   DETAILS_RETRIVED: "showRecipeDetailsDetailsRetrieved",
+  ERROR: "showRecipeDetailsError",
   CLEAR_STATE: "showRecipeDetailsClearState",
+  CLEAR_ERROR_STATE: "showRecipeDetailsClearErrorState",
 });
 
 export const recipeCategorySelectedCases = Object.freeze({
@@ -143,6 +145,7 @@ export const changeMyRecipesCases = Object.freeze({
 export const removeAccountCases = Object.freeze({
   LOADING: "removeAccountLoading",
   ACCOUNT_REMOVED: "removeAccountAccountRemoved",
+  ERROR: "removeAccountError",
   CLEAR_STATE: "removeAccountClearState",
 });
 

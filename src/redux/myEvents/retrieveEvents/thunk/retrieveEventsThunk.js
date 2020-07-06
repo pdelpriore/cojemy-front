@@ -1,6 +1,7 @@
 import { retrieveEventsCases } from "../../../config/cases/Cases";
 import { retrieveEventsQuery } from "../query/retrieveEventsQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const getEvents = (category, userId, email) => {
   return async (dispatch, getState) => {
@@ -29,7 +30,11 @@ export const getEvents = (category, userId, email) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: retrieveEventsCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

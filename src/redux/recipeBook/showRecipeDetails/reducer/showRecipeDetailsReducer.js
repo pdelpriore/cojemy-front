@@ -4,6 +4,7 @@ const initialState = {
   detailsLoading: false,
   detailsShown: false,
   detailsDataRetrieved: {},
+  detailsDataError: null,
 };
 
 const showRecipeDetailsReducer = (state = initialState, action) => {
@@ -21,6 +22,14 @@ const showRecipeDetailsReducer = (state = initialState, action) => {
         detailsLoading: false,
         detailsDataRetrieved: action.payload,
       };
+    case showRecipeDetailsCases.ERROR:
+      return {
+        ...state,
+        detailsLoading: false,
+        detailsDataError: action.payload,
+      };
+    case showRecipeDetailsCases.CLEAR_ERROR_STATE:
+      return { ...state, detailsDataError: null };
     case showRecipeDetailsCases.CLEAR_STATE:
       return (state = initialState);
     default:

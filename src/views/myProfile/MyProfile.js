@@ -34,7 +34,9 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
   const { myPasswordFormShown } = useSelector(
     (state) => state.isMyPasswordFormShown
   );
-  const { loading } = useSelector((state) => state.isAccountRemoved);
+  const { loading, removingAccountError } = useSelector(
+    (state) => state.isAccountRemoved
+  );
   const { userData } = useSelector((state) => state.login);
   const {
     showRemoveAccount,
@@ -77,6 +79,8 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
                   ? loginError
                   : logoutError
                   ? logoutError
+                  : removingAccountError
+                  ? removingAccountError
                   : changeUserPasswordError
                   ? changeUserPasswordError
                   : userPasswordChanged

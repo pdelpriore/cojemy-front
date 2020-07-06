@@ -2,6 +2,7 @@ import { retrieveRecipesCases } from "../../../config/cases/Cases";
 import { retrieveRecipeQuery } from "../query/retrieveRecipeQuery";
 import { searchRecipeQuery } from "../query/searchRecipeQuery";
 import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const getRecipe = (category, userId, email, skip, limit) => {
   return async (dispatch, getState) => {
@@ -36,7 +37,11 @@ export const getRecipe = (category, userId, email, skip, limit) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: retrieveRecipesCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
@@ -68,7 +73,11 @@ export const searchRecipe = (recipeTitle, userId, email) => {
         });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: retrieveRecipesCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };
