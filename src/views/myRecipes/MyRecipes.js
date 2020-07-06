@@ -26,6 +26,8 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
   const { myRecipeChangeError } = useSelector(
     (state) => state.isMyRecipeChanged
   );
+  const { logoutError } = useSelector((state) => state.logout);
+
   const props = useSpring({
     opacity: 1,
     config: { duration: 200 },
@@ -121,7 +123,9 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
                 <Row className="mb-5" />
                 <Row className="mb-5" />
                 <Row className="mb-4" />
-                <Notification notificationMessage={myRecipeChangeError} />
+                <Notification
+                  notificationMessage={myRecipeChangeError || logoutError}
+                />
               </Col>
               <Col xs={1} />
             </Row>

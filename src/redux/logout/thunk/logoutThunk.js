@@ -1,6 +1,7 @@
 import { logoutCases } from "../../config/cases/Cases";
 import { logoutQuery } from "../query/logoutQuery";
 import { strings } from "../../../strings/Strings";
+import { capitalizeFirst } from "../../../util/Util";
 
 export const logoutUser = (userId, email) => {
   return async (dispatch, getState) => {
@@ -21,7 +22,11 @@ export const logoutUser = (userId, email) => {
         dispatch({ type: logoutCases.SIGNOUT, payload: data.logout });
       }
     } catch (err) {
-      if (err) console.log(err);
+      if (err)
+        dispatch({
+          type: logoutCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
     }
   };
 };

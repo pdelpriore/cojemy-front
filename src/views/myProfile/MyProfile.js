@@ -27,6 +27,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0 },
   });
   const { loginError } = useSelector((state) => state.login);
+  const { logoutError } = useSelector((state) => state.logout);
   const { userPasswordChanged, changeUserPasswordError } = useSelector(
     (state) => state.isUserPasswordChanged
   );
@@ -74,6 +75,8 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
               notificationMessage={
                 loginError
                   ? loginError
+                  : logoutError
+                  ? logoutError
                   : changeUserPasswordError
                   ? changeUserPasswordError
                   : userPasswordChanged

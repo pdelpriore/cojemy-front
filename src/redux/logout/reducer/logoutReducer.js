@@ -3,6 +3,7 @@ import { logoutCases } from "../../config/cases/Cases";
 const initialState = {
   loading: false,
   userLoggedOut: false,
+  logoutError: null,
 };
 
 const logoutReducer = (state = initialState, action) => {
@@ -15,6 +16,8 @@ const logoutReducer = (state = initialState, action) => {
         ...initialState,
         userLoggedOut: action.payload,
       };
+    case logoutCases.ERROR:
+      return { ...state, ...initialState, logoutError: action.payload };
     case logoutCases.CLEAR_STATE:
       return (state = initialState);
     default:

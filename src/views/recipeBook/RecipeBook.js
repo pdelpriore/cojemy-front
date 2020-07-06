@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import ScrollArea from "react-scrollbar";
 import { Row, Col, Image, ListGroup } from "react-bootstrap";
@@ -13,6 +13,7 @@ import RecipesList from "./RecipesList";
 import RecipeDetails from "./RecipeDetails";
 import SearchRecipeForm from "../../forms/recipeBook/searchRecipe/SearchRecipeForm";
 import useRecipeBook from "../../hooks/screen/recipeBook/useRecipeBook";
+import Notification from "../../components/notifications/Notification";
 import { useSelector } from "react-redux";
 import "./recipeBook.css";
 
@@ -27,6 +28,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons
   );
+  const { logoutError } = useSelector((state) => state.logout);
 
   const { skip, handlePrev, handleNext } = useRecipeBook();
   return (
@@ -110,6 +112,14 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
               <Col xs={7} />
             </Row>
           )}
+          <Row className="mb-1" />
+          <Row>
+            <Col xs={5} />
+            <Col xs={6}>
+              <Notification notificationMessage={logoutError} />
+            </Col>
+            <Col xs={1} />
+          </Row>
         </div>
         {detailsShown && (
           <div className="recipebook-recipes-details">

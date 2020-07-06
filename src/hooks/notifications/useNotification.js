@@ -4,6 +4,7 @@ import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
 import { clearRemindPasswordState } from "../../redux/remindPassword/remindUserPassword/thunk/remindPasswordThunk";
 import { clearLoginErrorState } from "../../redux/login/loginUser/thunk/loginThunk";
+import { clearLogoutState } from "../../redux/logout/thunk/logoutThunk";
 import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googleSignupThunk";
 import { changeUserPasswordClearState } from "../../redux/updateMyProfile/changePassword/thunk/changePasswordThunk";
 import { changeMyRecipesClearState } from "../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
@@ -26,6 +27,7 @@ const useNotification = (notificationMessage) => {
     (state) => state.remindPass
   );
   const { loginError } = useSelector((state) => state.login);
+  const { logoutError } = useSelector((state) => state.logout);
   const { userPasswordChanged, changeUserPasswordError } = useSelector(
     (state) => state.isUserPasswordChanged
   );
@@ -53,6 +55,8 @@ const useNotification = (notificationMessage) => {
         dispatch(clearRemindPasswordState());
       } else if (loginError) {
         dispatch(clearLoginErrorState());
+      } else if (logoutError) {
+        dispatch(clearLogoutState());
       } else if (errorGoogleSignup || userGoogleSignedup) {
         dispatch(clearSignUpGoogleUserState());
       } else if (myRecipeChangeError) {
@@ -71,9 +75,11 @@ const useNotification = (notificationMessage) => {
     error,
     userSignedup,
     emailSent,
+    emailSentError,
     passwordSent,
     remindPassError,
     loginError,
+    logoutError,
     userGoogleSignedup,
     errorGoogleSignup,
     myRecipeChangeError,
