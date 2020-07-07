@@ -233,7 +233,6 @@ const useMyEventsForm = () => {
   }, [
     selectedAddress.label,
     locationDetailsRetrieved.displayPosition,
-    inputs.address,
     eventToEdit.eventData,
   ]);
 
