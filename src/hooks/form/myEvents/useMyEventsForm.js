@@ -134,6 +134,7 @@ const useMyEventsForm = () => {
       setShowSuggestions(true);
     } else {
       dispatch(getAddressClearState());
+      dispatch(getLocationDetailsClearState());
       dispatch(selectEventAddressClearState());
       setShowSuggestions(false);
       setAddressObj({});
@@ -223,17 +224,27 @@ const useMyEventsForm = () => {
 
   useEffect(() => {
     if (
-      (selectedAddress.label && locationDetailsRetrieved.displayPosition) ||
-      eventToEdit.eventData
+      (inputs.address &&
+        selectedAddress.label &&
+        selectedAddress.label === inputs.address &&
+        locationDetailsRetrieved.displayPosition) ||
+      (inputs.address &&
+        eventToEdit.addressData &&
+        inputs.address === eventToEdit.addressData.label)
     ) {
       setShowMap(true);
-    } else {
+    } else if (
+      !inputs.address &&
+      !selectedAddress.label &&
+      !locationDetailsRetrieved.displayPosition
+    ) {
       setShowMap(false);
     }
   }, [
     selectedAddress.label,
     locationDetailsRetrieved.displayPosition,
-    eventToEdit.eventData,
+    eventToEdit.addressData,
+    inputs.address,
   ]);
 
   useEffect(() => {
