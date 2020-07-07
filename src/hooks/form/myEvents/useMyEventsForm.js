@@ -223,10 +223,7 @@ const useMyEventsForm = () => {
 
   useEffect(() => {
     if (
-      (selectedAddress.label &&
-        selectedAddress.label === inputs.address &&
-        inputs.address &&
-        locationDetailsRetrieved.displayPosition) ||
+      (selectedAddress.label && locationDetailsRetrieved.displayPosition) ||
       eventToEdit.eventData
     ) {
       setShowMap(true);
