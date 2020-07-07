@@ -279,8 +279,6 @@ const useMyEventsForm = () => {
           longitude: eventToEdit.addressData.longitude,
           zoom: eventToEdit.addressData.zoom,
         }));
-        setShowSuggestions(false);
-        setShowMap(true);
       })();
     }
   }, [eventToEdit]);
