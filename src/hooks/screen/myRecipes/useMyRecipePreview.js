@@ -19,7 +19,7 @@ const useMyRecipePreview = () => {
 
   useEffect(() => {
     if (recipeUpdated) dispatch(changeMyRecipesClearState());
-  }, [recipeUpdated]);
+  }, [recipeUpdated, dispatch]);
 
   return {
     handleEditClick,

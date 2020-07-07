@@ -141,8 +141,13 @@ const useMyEventsForm = () => {
   }, [inputs.address, dispatch]);
 
   useEffect(() => {
-    if (addressChosen && inputs.address) setShowSuggestions(false);
-  }, [addressChosen, inputs.address]);
+    if (
+      (addressChosen && inputs.address) ||
+      (eventToEdit.addressData &&
+        eventToEdit.addressData.label === inputs.address)
+    )
+      setShowSuggestions(false);
+  }, [addressChosen, inputs.address, eventToEdit.addressData]);
 
   useEffect(() => {
     if (selectedAddress.label) {
@@ -150,12 +155,10 @@ const useMyEventsForm = () => {
         ...inputs,
         address: selectedAddress.label,
       }));
-      if (
-        locationDetailsRetrieved.displayPosition &&
-        !eventToEdit.eventData.title
-      )
+      if (locationDetailsRetrieved.displayPosition && !eventToEdit.eventData)
         setAddressObj((addressObj) => ({
           ...addressObj,
+          label: selectedAddress.label,
           streetNumber: parseInt(selectedAddress.address.houseNumber),
           streetName: selectedAddress.address.street,
           postCode: selectedAddress.address.postalCode,
@@ -168,7 +171,7 @@ const useMyEventsForm = () => {
       if (
         addressObj.streetName &&
         !addressObj.streetNumber &&
-        !eventToEdit.eventData.title
+        !eventToEdit.eventData
       ) {
         setAddressObj((addressObj) =>
           (({ streetNumber, ...others }) => ({
@@ -179,7 +182,7 @@ const useMyEventsForm = () => {
         addressObj.city &&
         !addressObj.streetName &&
         !addressObj.streetNumber &&
-        !eventToEdit.eventData.title
+        !eventToEdit.eventData
       ) {
         setAddressObj((addressObj) =>
           (({ streetName, streetNumber, ...others }) => ({
@@ -191,7 +194,7 @@ const useMyEventsForm = () => {
         !addressObj.city &&
         !addressObj.streetName &&
         !addressObj.streetNumber &&
-        !eventToEdit.eventData.title
+        !eventToEdit.eventData
       ) {
         setAddressObj((addressObj) =>
           (({ streetName, streetNumber, city, ...others }) => ({
@@ -220,10 +223,11 @@ const useMyEventsForm = () => {
 
   useEffect(() => {
     if (
-      selectedAddress.label &&
-      selectedAddress.label === inputs.address &&
-      inputs.address &&
-      locationDetailsRetrieved.displayPosition
+      (selectedAddress.label &&
+        selectedAddress.label === inputs.address &&
+        inputs.address &&
+        locationDetailsRetrieved.displayPosition) ||
+      eventToEdit.eventData
     ) {
       setShowMap(true);
     } else {
@@ -233,6 +237,7 @@ const useMyEventsForm = () => {
     selectedAddress.label,
     locationDetailsRetrieved.displayPosition,
     inputs.address,
+    eventToEdit.eventData,
   ]);
 
   useEffect(() => {
@@ -250,7 +255,7 @@ const useMyEventsForm = () => {
             image: result.imageBinary,
             imageName: result.pictureName,
           },
-          address: `${eventToEdit.addressData.streetName} ${eventToEdit.addressData.streetNumber}, ${eventToEdit.addressData.city}`,
+          address: eventToEdit.addressData.label,
           description: eventToEdit.eventData.description,
           availablePlaces: eventToEdit.eventData.availablePlaces.toString(),
           eventDate: new Date(eventToEdit.eventData.eventDate),
@@ -264,6 +269,7 @@ const useMyEventsForm = () => {
           );
         setAddressObj((addressObj) => ({
           ...addressObj,
+          label: eventToEdit.addressData.label,
           streetNumber: eventToEdit.addressData.streetNumber,
           streetName: eventToEdit.addressData.streetName,
           postCode: eventToEdit.addressData.postCode,

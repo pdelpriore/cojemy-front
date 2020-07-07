@@ -238,6 +238,7 @@ const EventPreview = () => {
                         },
                         addressData: {
                           id: eventPreviewData.eventAddress._id,
+                          label: eventPreviewData.eventAddress.label,
                           streetNumber:
                             eventPreviewData.eventAddress.streetNumber,
                           streetName: eventPreviewData.eventAddress.streetName,

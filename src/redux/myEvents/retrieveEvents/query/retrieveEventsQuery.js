@@ -8,6 +8,7 @@ export const retrieveEventsQuery = (category, userId, email) => {
                         eventImage
                         eventAddress {
                             _id
+                            label
                             streetNumber
                             streetName
                             postCode
