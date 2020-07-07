@@ -79,9 +79,6 @@ const MakeNavMenu = ({ type }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
   const { loading, userLoggedOut } = useSelector((state) => state.logout);
-  const { loadingClearOldEvents } = useSelector(
-    (state) => state.isOldEventCleared
-  );
 
   useEffect(() => {
     if (userLoggedOut) {
@@ -170,30 +167,7 @@ const MakeNavMenu = ({ type }) => {
       ))
     : type === strings.navbar.navType.USER_LOGGED_MENU
     ? navUserLoggedItems.slice(1).map((item, index) =>
-        item.name === strings.navbar.navUserLoggedItems.MY_EVENTS ? (
-          loadingClearOldEvents ? (
-            <div className="signout-loading" key={index}>
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
-              <Nav.Item as="li">
-                <NavLink className="signout-loading-text" to={item.path} exact>
-                  {capitalizeFirst(strings.navbar.navUserLoggedItems.MY_EVENTS)}
-                </NavLink>
-              </Nav.Item>
-            </div>
-          ) : (
-            <Nav.Item as="li" key={index}>
-              <NavLink activeClassName="active" to={item.path} exact>
-                {capitalize(item.name)}
-              </NavLink>
-            </Nav.Item>
-          )
-        ) : item.name === strings.navbar.navUserLoggedItems.SIGNOUT ? (
+        item.name === strings.navbar.navUserLoggedItems.SIGNOUT ? (
           !loading ? (
             <Nav.Item as="li" key={index}>
               <NavLink
