@@ -4,13 +4,19 @@ import { Row, Col, Button } from "react-bootstrap";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
+import {
+  clearOldEvents,
+  clearOldEventsClearState,
+} from "../../redux/myEvents/clearOldEvents/thunk/clearOldEventsThunk";
 import useEventButtons from "../../hooks/screen/myEvents/useEventButtons";
 import "./myEvents.css";
 
 const MakeEventButtons = () => {
   const dispatch = useDispatch();
+  const { userData } = useSelector((state) => state.login);
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   const { eventUpdated } = useSelector((state) => state.isEventChanged);
+  const { oldEventsCleared } = useSelector((state) => state.isOldEventCleared);
   const eventButtonItems = [
     {
       id: 0,
@@ -33,12 +39,17 @@ const MakeEventButtons = () => {
   );
 
   useEffect(() => {
+    dispatch(clearOldEvents(userData._id, userData.email));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (oldEventsCleared) dispatch(clearOldEventsClearState());
     toggleActiveClass(
       eventButtonItems[eventButtonId].id,
       eventButtonItems[eventButtonId].category
     );
     return () => dispatch(showNewEventForm(false));
-  }, [eventUpdated]);
+  }, [eventUpdated, oldEventsCleared, dispatch]);
 
   return eventButtonItems.map((buttonItem) => (
     <div key={buttonItem.id}>

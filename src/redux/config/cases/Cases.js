@@ -204,3 +204,10 @@ export const toEditEventCases = Object.freeze({
   EVENT_TO_EDIT: "toEditEventEventToEdit",
   CLEAR_STATE: "toEditEventClearState",
 });
+
+export const clearOldEventsCases = Object.freeze({
+  LOADING: "clearOldEventsLoading",
+  OLD_EVENTS_CLEARED: "clearOldEventsOldEventsCleared",
+  ERROR: "clearOldEventsError",
+  CLEAR_STATE: "clearOldEventsClearState",
+});

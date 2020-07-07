@@ -59,7 +59,7 @@ const MyEventsForm = () => {
   const { locationDetailsRetrieved } = useSelector(
     (state) => state.locationDetails
   );
-  const { loading } = useSelector((state) => state.isEventChanged);
+  const { loadingEventUpdating } = useSelector((state) => state.isEventChanged);
   const { eventToEdit } = useSelector((state) => state.toEditEvent);
 
   return (
@@ -310,7 +310,7 @@ const MyEventsForm = () => {
               {!eventToEdit.eventData ? (
                 <Button
                   disabled={
-                    loading ||
+                    loadingEventUpdating ||
                     inputs.title === undefined ||
                     inputs.title === "" ||
                     error.imageError ||
@@ -329,7 +329,7 @@ const MyEventsForm = () => {
                   variant="outline-dark"
                 >
                   <div className="myrecipes-form-spinner">
-                    {loading && (
+                    {loadingEventUpdating && (
                       <Spinner
                         as="span"
                         animation="border"
@@ -339,7 +339,7 @@ const MyEventsForm = () => {
                       />
                     )}
                   </div>
-                  {loading ? (
+                  {loadingEventUpdating ? (
                     <div className="myrecipes-form-button-loading">
                       {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                     </div>
@@ -350,7 +350,7 @@ const MyEventsForm = () => {
               ) : (
                 <Button
                   disabled={
-                    loading ||
+                    loadingEventUpdating ||
                     inputs.title === undefined ||
                     inputs.title === "" ||
                     error.imageError ||

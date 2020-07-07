@@ -34,6 +34,7 @@ import retrieveEventsReducer from "../../myEvents/retrieveEvents/reducer/retriev
 import changeEventReducer from "../../myEvents/changeEvent/reducer/changeEventReducer";
 import eventPreviewReducer from "../../myEvents/eventPreview/reducer/eventPreviewReducer";
 import toEditEventReducer from "../../myEvents/toEditEvent/reducer/toEditEventReducer";
+import clearOldEventsReducer from "../../myEvents/clearOldEvents/reducer/clearOldEventsReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -71,6 +72,7 @@ const allReducers = combineReducers({
   isEventChanged: changeEventReducer,
   eventPreview: eventPreviewReducer,
   toEditEvent: toEditEventReducer,
+  isOldEventCleared: clearOldEventsReducer,
 });
 
 export default allReducers;

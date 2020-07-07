@@ -1,7 +1,7 @@
 import { changeEventCases } from "../../../config/cases/Cases";
 
 const initialState = {
-  loading: false,
+  loadingEventUpdating: false,
   eventUpdated: false,
   eventChangeError: null,
 };
@@ -9,7 +9,11 @@ const initialState = {
 const changeEventReducer = (state = initialState, action) => {
   switch (action.type) {
     case changeEventCases.LOADING:
-      return { ...state, ...initialState, loading: action.payload };
+      return {
+        ...state,
+        ...initialState,
+        loadingEventUpdating: action.payload,
+      };
     case changeEventCases.EVENT_CHANGED:
       return { ...state, ...initialState, eventUpdated: action.payload };
     case changeEventCases.ERROR:
