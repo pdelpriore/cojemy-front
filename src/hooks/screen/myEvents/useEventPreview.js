@@ -25,14 +25,26 @@ const useEventPreview = () => {
 
   useEffect(() => {
     (async () => {
-      for (
-        let i = 0;
-        i <=
-        eventPreviewData.availablePlaces - eventPreviewData.participants.length;
-        i++
+      if (
+        eventPreviewData.availablePlaces -
+          eventPreviewData.participants.length <
+        50
       ) {
-        setCountAvailablePlaces(i);
-        await delayAvailablePlacesCounter(50);
+        for (
+          let i = 0;
+          i <=
+          eventPreviewData.availablePlaces -
+            eventPreviewData.participants.length;
+          i++
+        ) {
+          setCountAvailablePlaces(i);
+          await delayAvailablePlacesCounter(30);
+        }
+      } else {
+        setCountAvailablePlaces(
+          eventPreviewData.availablePlaces -
+            eventPreviewData.participants.length
+        );
       }
     })();
   }, [eventPreviewData._id]);
