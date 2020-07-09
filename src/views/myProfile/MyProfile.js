@@ -96,45 +96,49 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-4" />
         {showRemoveAccount && (
-          <Row>
-            <Col xs={10} />
-            <Col xs={1}>
-              <FontAwesomeIcon
-                onClick={handleTrash}
-                className="myprofile-trash-icon"
-                icon={faTrash}
-              />
-            </Col>
-            <Col xs={1} />
-          </Row>
+          <div style={{ height: 30 }}>
+            <Row>
+              <Col xs={10} />
+              <Col xs={1}>
+                <FontAwesomeIcon
+                  onClick={handleTrash}
+                  className="myprofile-trash-icon"
+                  icon={faTrash}
+                />
+              </Col>
+              <Col xs={1} />
+            </Row>
+          </div>
         )}
         {!showRemoveAccount && (
-          <Row>
-            <Col xs={5} />
-            <Col xs={6}>
-              <div className="myprofile-remove-account-area">
-                <p className="myprofile-remove-account-text">
-                  {capitalizeFirst(strings.myProfile.REMOVE_ACCOUNT)}
-                </p>
-                {!loading && (
-                  <div>
-                    <FontAwesomeIcon
-                      onClick={handleDeleteAccount}
-                      className="myprofile-remove-account-icon yes"
-                      icon={faCheckCircle}
-                    />
-                    <FontAwesomeIcon
-                      onClick={handleCancel}
-                      className="myprofile-remove-account-icon no"
-                      icon={faTimesCircle}
-                    />
-                  </div>
-                )}
-                {loading && <Spinner animation="border" variant="dark" />}
-              </div>
-            </Col>
-            <Col xs={1} />
-          </Row>
+          <div style={{ height: 30 }}>
+            <Row>
+              <Col xs={5} />
+              <Col xs={6}>
+                <div className="myprofile-remove-account-area">
+                  <p className="myprofile-remove-account-text">
+                    {capitalizeFirst(strings.myProfile.REMOVE_ACCOUNT)}
+                  </p>
+                  {!loading && (
+                    <div>
+                      <FontAwesomeIcon
+                        onClick={handleDeleteAccount}
+                        className="myprofile-remove-account-icon yes"
+                        icon={faCheckCircle}
+                      />
+                      <FontAwesomeIcon
+                        onClick={handleCancel}
+                        className="myprofile-remove-account-icon no"
+                        icon={faTimesCircle}
+                      />
+                    </div>
+                  )}
+                  {loading && <Spinner animation="border" variant="dark" />}
+                </div>
+              </Col>
+              <Col xs={1} />
+            </Row>
+          </div>
         )}
         <Row className="mb-3" />
         {!myPasswordFormShown && (
