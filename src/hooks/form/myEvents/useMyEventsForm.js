@@ -4,7 +4,10 @@ import {
   getAddress,
   getAddressClearState,
 } from "../../../redux/myEvents/getAddress/thunk/getAddressThunk";
-import { addNewEvent } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
+import {
+  addNewEvent,
+  editEvent,
+} from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { makeImageBinary } from "../../../shared/makeImageBinary";
 import { getImage } from "../../../shared/getImage";
 import { selectEventAddressClearState } from "../../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
@@ -113,19 +116,37 @@ const useMyEventsForm = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      addNewEvent(
-        inputs.title,
-        inputs.eventImage,
-        addressObj,
-        inputs.description,
-        parseInt(inputs.availablePlaces),
-        inputs.eventDate,
-        parseInt(inputs.tel),
-        userData._id,
-        userData.email
-      )
-    );
+    if (eventToEdit.eventData) {
+      dispatch(
+        editEvent(
+          inputs.title,
+          inputs.eventImage,
+          addressObj,
+          inputs.description,
+          parseInt(inputs.availablePlaces),
+          inputs.eventDate,
+          parseInt(inputs.tel),
+          eventToEdit.eventData.id,
+          eventToEdit.addressData.id,
+          userData._id,
+          userData.email
+        )
+      );
+    } else {
+      dispatch(
+        addNewEvent(
+          inputs.title,
+          inputs.eventImage,
+          addressObj,
+          inputs.description,
+          parseInt(inputs.availablePlaces),
+          inputs.eventDate,
+          parseInt(inputs.tel),
+          userData._id,
+          userData.email
+        )
+      );
+    }
   };
 
   useEffect(() => {
