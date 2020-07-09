@@ -97,7 +97,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
         <Row className="mb-4" />
         {showRemoveAccount && (
           <Row>
-            <Col xs={9} />
+            <Col xs={10} />
             <Col xs={1}>
               <FontAwesomeIcon
                 onClick={handleTrash}
@@ -105,12 +105,12 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
                 icon={faTrash}
               />
             </Col>
-            <Col xs={2} />
+            <Col xs={1} />
           </Row>
         )}
         {!showRemoveAccount && (
           <Row>
-            <Col xs={4} />
+            <Col xs={5} />
             <Col xs={6}>
               <div className="myprofile-remove-account-area">
                 <p className="myprofile-remove-account-text">
@@ -133,13 +133,13 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
                 {loading && <Spinner animation="border" variant="dark" />}
               </div>
             </Col>
-            <Col xs={2} />
+            <Col xs={1} />
           </Row>
         )}
         <Row className="mb-3" />
         {!myPasswordFormShown && (
           <Row>
-            <Col xs={7} />
+            <Col xs={1} />
             <Col xs={3}>
               <Button
                 disabled={userData.isGoogleUser}
@@ -154,7 +154,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
                 {capitalizeFirst(strings.myProfile.BUTTON_EDIT_PASS)}
               </Button>
             </Col>
-            <Col xs={2} />
+            <Col xs={8} />
           </Row>
         )}
         {myPasswordFormShown && (
