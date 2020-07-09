@@ -156,7 +156,7 @@ const useMyEventsForm = () => {
         ...inputs,
         address: selectedAddress.label,
       }));
-      if (locationDetailsRetrieved.displayPosition && !eventToEdit.eventData)
+      if (locationDetailsRetrieved.displayPosition)
         setAddressObj((addressObj) => ({
           ...addressObj,
           label: selectedAddress.label,
@@ -169,11 +169,7 @@ const useMyEventsForm = () => {
           longitude: locationDetailsRetrieved.displayPosition.longitude,
           zoom: generateZoom(selectedAddress),
         }));
-      if (
-        addressObj.streetName &&
-        !addressObj.streetNumber &&
-        !eventToEdit.eventData
-      ) {
+      if (addressObj.streetName && !addressObj.streetNumber) {
         setAddressObj((addressObj) =>
           (({ streetNumber, ...others }) => ({
             ...others,
@@ -182,8 +178,7 @@ const useMyEventsForm = () => {
       } else if (
         addressObj.city &&
         !addressObj.streetName &&
-        !addressObj.streetNumber &&
-        !eventToEdit.eventData
+        !addressObj.streetNumber
       ) {
         setAddressObj((addressObj) =>
           (({ streetName, streetNumber, ...others }) => ({
@@ -194,8 +189,7 @@ const useMyEventsForm = () => {
         addressObj.country &&
         !addressObj.city &&
         !addressObj.streetName &&
-        !addressObj.streetNumber &&
-        !eventToEdit.eventData
+        !addressObj.streetNumber
       ) {
         setAddressObj((addressObj) =>
           (({ streetName, streetNumber, city, ...others }) => ({
