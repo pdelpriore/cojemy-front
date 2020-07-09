@@ -96,7 +96,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-4" />
         {showRemoveAccount && (
-          <div style={{ height: 30 }}>
+          <div className="myprofile-trash-box">
             <Row>
               <Col xs={10} />
               <Col xs={1}>
@@ -111,7 +111,7 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
           </div>
         )}
         {!showRemoveAccount && (
-          <div style={{ height: 30 }}>
+          <div className="myprofile-trash-box">
             <Row>
               <Col xs={5} />
               <Col xs={6}>
