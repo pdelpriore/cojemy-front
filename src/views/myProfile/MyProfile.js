@@ -162,9 +162,6 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
             <Row className="mb-3" />
             <Row className="mb-5" />
             <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
             <Row>
               <Col xs={1} />
               <Col xs={5}>
@@ -177,9 +174,6 @@ const MyProfile = ({ match: { path, url, isExact } }) => {
         {!myPasswordFormShown && (
           <>
             <Row className="mb-3" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
-            <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row>
