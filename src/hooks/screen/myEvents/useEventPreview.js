@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { toEditEvent } from "../../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
-import { removeMyRecipe } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
-import { changeMyRecipesClearState } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
+import {
+  removeEvent,
+  changeEventClearState,
+} from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
+import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
+import { eventPreviewClearState } from "../../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { delayAvailablePlacesCounter } from "./delayAvailablePlacesCounter";
 
@@ -9,7 +13,7 @@ const useEventPreview = () => {
   const dispatch = useDispatch();
 
   const { userData } = useSelector((state) => state.login);
-  const { recipeUpdated } = useSelector((state) => state.isMyRecipeChanged);
+  const { eventUpdated } = useSelector((state) => state.isEventChanged);
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
 
   const [countAvailablePlaces, setCountAvailablePlaces] = useState(0);
@@ -18,9 +22,8 @@ const useEventPreview = () => {
     dispatch(toEditEvent(data));
   };
 
-  const handleTrashClick = (recipeId) => {
-    console.log("trash clicked !");
-    //dispatch(removeMyRecipe(recipeId, userData._id, userData.email));
+  const handleTrashClick = (eventId, addressId) => {
+    dispatch(removeEvent(eventId, addressId, userData._id, userData.email));
   };
 
   useEffect(() => {
@@ -49,9 +52,14 @@ const useEventPreview = () => {
     })();
   }, [eventPreviewData._id]);
 
-  //   useEffect(() => {
-  //     if (recipeUpdated) dispatch(changeMyRecipesClearState());
-  //   }, [recipeUpdated]);
+  useEffect(() => {
+    if (eventUpdated) {
+      dispatch(changeEventClearState());
+      dispatch(showNewEventForm(false));
+      dispatch(eventPreviewClearState());
+    }
+    return () => dispatch(eventPreviewClearState());
+  }, [eventUpdated, dispatch]);
 
   return {
     handleEditClick,

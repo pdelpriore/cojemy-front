@@ -265,8 +265,10 @@ const EventPreview = () => {
                   <Button
                     onClick={(e) => {
                       e.preventDefault();
-                      //handleTrashClick(myRecipePreviewData._id);
-                      handleTrashClick();
+                      handleTrashClick(
+                        eventPreviewData._id,
+                        eventPreviewData.eventAddress._id
+                      );
                     }}
                     className="eventpreview-preview-button-delete"
                     variant="dark"

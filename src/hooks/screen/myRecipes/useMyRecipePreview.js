@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { toEditMyRecipe } from "../../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
-import { removeMyRecipe } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
-import { changeMyRecipesClearState } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
+import {
+  removeMyRecipe,
+  changeMyRecipesClearState,
+} from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useMyRecipePreview = () => {

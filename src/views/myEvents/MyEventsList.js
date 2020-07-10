@@ -20,6 +20,7 @@ const MyEventsList = () => {
   const { loadingEvents, eventsRetrieved, eventsError } = useSelector(
     (state) => state.events
   );
+
   return loadingEvents ? (
     <div className="myevents-loading-area">
       <Spinner animation="border" role="status" variant="light" />

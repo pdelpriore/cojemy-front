@@ -311,6 +311,7 @@ const useMyEventsForm = () => {
       setAddressObj({});
       dispatch(changeEventClearState());
       dispatch(showNewEventForm(false));
+      dispatch(toEditEventClearState());
     }
     return () => {
       dispatch(getAddressClearState());
