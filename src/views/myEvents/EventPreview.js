@@ -30,7 +30,7 @@ const EventPreview = () => {
   } = useEventPreview();
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
-  //const { loading } = useSelector((state) => state.isMyRecipeChanged);
+  const { loadingEventUpdating } = useSelector((state) => state.isEventChanged);
 
   return (
     <animated.div style={props}>
@@ -274,7 +274,7 @@ const EventPreview = () => {
                     variant="dark"
                   >
                     <div className="myrecipes-form-spinner">
-                      {false && (
+                      {loadingEventUpdating && (
                         <Spinner
                           as="span"
                           animation="border"
@@ -284,7 +284,7 @@ const EventPreview = () => {
                         />
                       )}
                     </div>
-                    {false ? (
+                    {loadingEventUpdating ? (
                       <div className="myrecipes-form-button-loading">
                         {capitalizeFirst(
                           strings.myRecipes.BUTTON_REMOVE_LOADING
