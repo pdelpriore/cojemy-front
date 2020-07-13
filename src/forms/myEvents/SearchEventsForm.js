@@ -24,6 +24,23 @@ const SearchEventsForm = () => {
     <Form>
       <Row>
         <Col xs={12}>
+          <Form.Group controlId="formBasicSearchCity">
+            <Form.Label className="myevents-form-text-family">
+              {capitalizeFirst(strings.myEvents.SEARCH_CITY)}
+            </Form.Label>
+            <Form.Control
+              className="myevents-form-text-family-message"
+              onChange={handleOnChange}
+              value={inputs.city || ""}
+              name="city"
+              type="text"
+              placeholder={strings.myEvents.SEARCH_CITY_PLACEHOLDER}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
           <Form.Group controlId="formBasicSearchEventDate">
             <div className="myevents-datepicker-box">
               <Form.Label className="myevents-form-text-family">
@@ -58,23 +75,6 @@ const SearchEventsForm = () => {
                 />
               </div>
             </div>
-          </Form.Group>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          <Form.Group controlId="formBasicSearchCity">
-            <Form.Label className="myevents-form-text-family">
-              {capitalizeFirst(strings.myEvents.SEARCH_CITY)}
-            </Form.Label>
-            <Form.Control
-              className="myevents-form-text-family-message"
-              onChange={handleOnChange}
-              value={inputs.city || ""}
-              name="city"
-              type="text"
-              placeholder={strings.myEvents.SEARCH_CITY_PLACEHOLDER}
-            />
           </Form.Group>
         </Col>
       </Row>
