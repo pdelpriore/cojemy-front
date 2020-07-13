@@ -227,6 +227,8 @@ export const strings = Object.freeze({
     TEL: "contact tel *",
     TEL_PLACEHOLDER: "718523694",
     PARTICIPANTS_PREVIEW: "participants:",
+    SEARCH_CITY: "ville *",
+    SEARCH_CITY_PLACEHOLDER: "ville",
     error: {
       NO_SUGGESTIONS: "pas de résultat",
       NO_PARTICIPANTS: "pas de participants :(",
@@ -235,6 +237,7 @@ export const strings = Object.freeze({
       TITLE: "title",
       DESCRIPTION: "description",
       AVAILABLE_PLACES: "availablePlaces",
+      CITY: "city",
     },
   },
   error: {

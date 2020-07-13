@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import MyEventsList from "./MyEventsList";
 import MyEventsForm from "../../forms/myEvents/MyEventsForm";
+import SearchEventsForm from "../../forms/myEvents/SearchEventsForm";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import MakeEventButtons from "./makeEventButtons";
 import Notification from "../../components/notifications/Notification";
@@ -84,6 +85,14 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
                         {capitalize(strings.myEvents.BUTTON_NEW_EVENT)}
                       </div>
                     </Button>
+                  </Col>
+                  <Col xs={1} />
+                </>
+              ) : eventButtonId === 0 ? (
+                <>
+                  <Col xs={1} />
+                  <Col xs={5}>
+                    <SearchEventsForm />
                   </Col>
                   <Col xs={1} />
                 </>
