@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { searchEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
+import { useDispatch, useSelector } from "react-redux";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
 
 const useSearchEventsForm = () => {
+  const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
+
+  const { userData } = useSelector((state) => state.login);
 
   const handleOnChange = (e) => {
     e.persist();
@@ -27,16 +32,18 @@ const useSearchEventsForm = () => {
       eventDate: new Date(),
     }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+
+  useEffect(() => {
+    dispatch(
+      searchEvents(inputs.eventDate, inputs.city, userData._id, userData.email)
+    );
+  }, [inputs.eventDate, inputs.city, dispatch]);
 
   return {
     inputs,
     handleOnChange,
     handleInitializeDate,
     handleDateTime,
-    handleSubmit,
   };
 };
 

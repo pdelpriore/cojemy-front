@@ -19,10 +19,9 @@ const SearchEventsForm = () => {
     handleOnChange,
     handleInitializeDate,
     handleDateTime,
-    handleSubmit,
   } = useSearchEventsForm();
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicSearchEventDate">
