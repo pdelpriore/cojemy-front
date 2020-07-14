@@ -35,11 +35,9 @@ const RecipeDetails = () => {
   const { detailsLoading, detailsDataRetrieved } = useSelector(
     (state) => state.isRecipeDetailsShown
   );
-  const isCommented =
+  const recipeCommented =
     detailsDataRetrieved.comments.length > 0 &&
-    detailsDataRetrieved.comments.filter(
-      (comment) => comment.commentator.email
-    )[0].commentator.email;
+    detailsDataRetrieved.comments.map((comment) => comment.commentator.email);
   const {
     editShow,
     handleMouseEnter,
@@ -167,8 +165,13 @@ const RecipeDetails = () => {
           <Row>
             <Col xs={1} />
             <Col xs={10}>
-              {((!isCommented &&
+              {((recipeCommented &&
+                !recipeCommented.some((email) =>
+                  userData.email.includes(email)
+                ) &&
                 detailsDataRetrieved.author.email !== userData.email) ||
+                (!recipeCommented &&
+                  detailsDataRetrieved.author.email !== userData.email) ||
                 rateAndComment.commentValue) && (
                 <RateAndComment recipeId={detailsDataRetrieved._id} />
               )}
