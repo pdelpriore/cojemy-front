@@ -18,13 +18,14 @@ const useEventButtons = (buttonQty) => {
   const { userData } = useSelector((state) => state.login);
 
   const toggleActiveClass = (id, category) => {
+    const skip = 1;
+    const limit = 30;
     dispatch(eventCategorySelected(id));
     setActive(
       initialState().map((bool, index) => (index === id ? !bool : bool))
     );
-    // pozniej dolozyc skip i limit !
     if (userData.email) {
-      dispatch(getEvents(category, userData._id, userData.email));
+      dispatch(getEvents(category, userData._id, userData.email, skip, limit));
     }
   };
   return { activesClasses, toggleActiveClass };

@@ -1,8 +1,14 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { Row, Col, ListGroup, Image, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronCircleRight,
+  faChevronCircleLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import { useSpring, animated } from "react-spring";
 import { useSelector, useDispatch } from "react-redux";
+import useMyEvents from "../../hooks/screen/myEvents/useMyEvents";
 import ScrollArea from "react-scrollbar";
 import MyEventsList from "./MyEventsList";
 import MyEventsForm from "../../forms/myEvents/MyEventsForm";
@@ -23,6 +29,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
   );
   const { eventPreviewShown } = useSelector((state) => state.eventPreview);
   const { eventChangeError } = useSelector((state) => state.isEventChanged);
+  const { eventsError } = useSelector((state) => state.events);
   const { logoutError } = useSelector((state) => state.logout);
   const { addressesRetrievedError } = useSelector(
     (state) => state.addressSuggestions
@@ -30,6 +37,10 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
   const { locationDetailsError } = useSelector(
     (state) => state.locationDetails
   );
+  const { searchEventFilled } = useSelector(
+    (state) => state.isSearchEventFormFilled
+  );
+  const { skip, handlePrev, handleNext } = useMyEvents();
 
   const props = useSpring({
     opacity: 1,
@@ -105,6 +116,35 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
               <Col xs={1} />
             </Row>
             <Row className="mb-5" />
+            {eventButtonId === 0 && !searchEventFilled && (
+              <Row>
+                <Col xs={1} />
+                <Col xs={1}>
+                  <FontAwesomeIcon
+                    className={
+                      skip === 1
+                        ? "recipebook-arrows-inactive"
+                        : "recipebook-left-arrow"
+                    }
+                    onClick={skip === 1 ? null : handlePrev}
+                    icon={faChevronCircleLeft}
+                  />
+                </Col>
+                <Col xs={2} />
+                <Col xs={1}>
+                  <FontAwesomeIcon
+                    className={
+                      eventsError
+                        ? "recipebook-arrows-inactive"
+                        : "recipebook-right-arrow"
+                    }
+                    onClick={eventsError ? null : handleNext}
+                    icon={faChevronCircleRight}
+                  />
+                </Col>
+                <Col xs={7} />
+              </Row>
+            )}
             <Row className="mb-5" />
             <Row className="mb-3" />
             <Row>

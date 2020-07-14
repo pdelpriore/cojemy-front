@@ -1,8 +1,8 @@
-export const retrieveEventsQuery = (category, userId, email) => {
+export const retrieveEventsQuery = (category, userId, email, skip, limit) => {
   return {
     query: `
-                  query($category: String!, $userId: ID!, $email: String!) {
-                    retrieveEvents(category: $category, userId: $userId, email: $email) {
+                  query($category: String!, $userId: ID!, $email: String!, $skip: Int, $limit: Int) {
+                    retrieveEvents(category: $category, userId: $userId, email: $email, skip: $skip, limit: $limit) {
                         _id
                         title
                         eventImage
@@ -38,6 +38,6 @@ export const retrieveEventsQuery = (category, userId, email) => {
                     }
                   }
                   `,
-    variables: { category, userId, email },
+    variables: { category, userId, email, skip, limit },
   };
 };

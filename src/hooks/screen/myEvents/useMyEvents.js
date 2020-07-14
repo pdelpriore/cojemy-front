@@ -1,25 +1,23 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { recipeButtonItemsArray } from "../../../shared/buttonItemsArray";
-import { getRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
+import { eventButtonItemsArray } from "../../../shared/buttonItemsArray";
+import { getEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
 
 let skip = 1;
 
-const useRecipeBook = () => {
+const useMyEvents = () => {
   const limit = 30;
   const dispatch = useDispatch();
-  const { recipeButtonId } = useSelector(
-    (state) => state.recipeCategorySelected
-  );
-  const { recipesError } = useSelector((state) => state.recipeBook);
+  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
+  const { eventsError } = useSelector((state) => state.events);
   const { userData } = useSelector((state) => state.login);
 
   const handlePrev = (e) => {
     e.preventDefault();
     skip > 1 && skip--;
     dispatch(
-      getRecipe(
-        recipeButtonItemsArray[recipeButtonId].category,
+      getEvents(
+        eventButtonItemsArray[eventButtonId].category,
         userData._id,
         userData.email,
         skip,
@@ -29,10 +27,10 @@ const useRecipeBook = () => {
   };
   const handleNext = (e) => {
     e.preventDefault();
-    !recipesError && skip++;
+    !eventsError && skip++;
     dispatch(
-      getRecipe(
-        recipeButtonItemsArray[recipeButtonId].category,
+      getEvents(
+        eventButtonItemsArray[eventButtonId].category,
         userData._id,
         userData.email,
         skip,
@@ -48,4 +46,4 @@ const useRecipeBook = () => {
   return { skip, handlePrev, handleNext };
 };
 
-export default useRecipeBook;
+export default useMyEvents;

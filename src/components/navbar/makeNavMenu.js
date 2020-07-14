@@ -19,6 +19,7 @@ import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDe
 import { getEventsClearState } from "../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
 import { eventPreviewClearState } from "../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
+import { searchEventFilled } from "../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { loginUser } from "../../redux/login/userLogged/thunk/userLoggedThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
@@ -98,6 +99,7 @@ const MakeNavMenu = ({ type }) => {
       dispatch(getEventsClearState());
       dispatch(eventPreviewClearState());
       dispatch(toEditEventClearState());
+      dispatch(searchEventFilled(false));
     }
     if (userData.email === undefined) dispatch(clearLogoutState());
   }, [userData, userLoggedOut, dispatch]);

@@ -1,6 +1,6 @@
 import { strings } from "../strings/Strings";
 
-export const buttonItemsArray = [
+export const recipeButtonItemsArray = [
   {
     id: 0,
     name: strings.recipeBook.BUTTON_NEW,
@@ -35,5 +35,23 @@ export const buttonItemsArray = [
     id: 6,
     name: strings.recipeBook.BUTTON_FAST_FOOD,
     category: strings.recipeBook.CAT_FAST_FOOD,
+  },
+];
+
+export const eventButtonItemsArray = [
+  {
+    id: 0,
+    name: strings.myEvents.BUTTON_ALL,
+    category: strings.myEvents.CAT_ALL,
+  },
+  {
+    id: 1,
+    name: strings.myEvents.BUTTON_MY_EVENTS,
+    category: strings.myEvents.CAT_MY_EVENTS,
+  },
+  {
+    id: 2,
+    name: strings.myEvents.BUTTON_EVENTS_JOINED,
+    category: strings.myEvents.CAT_EVENTS_JOINED,
   },
 ];

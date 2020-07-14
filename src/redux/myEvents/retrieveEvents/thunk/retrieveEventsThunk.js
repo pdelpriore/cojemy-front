@@ -4,10 +4,16 @@ import { searchEventsQuery } from "../query/searchEventsQuery";
 import { strings } from "../../../../strings/Strings";
 import { capitalizeFirst } from "../../../../util/Util";
 
-export const getEvents = (category, userId, email) => {
+export const getEvents = (category, userId, email, skip, limit) => {
   return async (dispatch, getState) => {
     dispatch({ type: retrieveEventsCases.LOADING, payload: true });
-    const bodyRequest = retrieveEventsQuery(category, userId, email);
+    const bodyRequest = retrieveEventsQuery(
+      category,
+      userId,
+      email,
+      skip,
+      limit
+    );
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",

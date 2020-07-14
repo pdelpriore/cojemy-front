@@ -204,3 +204,7 @@ export const toEditEventCases = Object.freeze({
   EVENT_TO_EDIT: "toEditEventEventToEdit",
   CLEAR_STATE: "toEditEventClearState",
 });
+
+export const searchEventFilledCases = Object.freeze({
+  FORM_FILLED: "searchEventFilledFormFilled",
+});

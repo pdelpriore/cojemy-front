@@ -4,7 +4,7 @@ import useRecipeButton from "../../hooks/screen/recipeBook/useRecipeButton";
 import { changeRateComment } from "../../redux/recipeBook/changeRateComment/thunk/changeRateCommentThunk";
 import { useSelector, useDispatch } from "react-redux";
 import { capitalize } from "../../util/Util";
-import { buttonItemsArray } from "../../shared/buttonItemsArray";
+import { recipeButtonItemsArray } from "../../shared/buttonItemsArray";
 import "./recipeBook.css";
 
 const MakeRecipeButton = () => {
@@ -21,16 +21,15 @@ const MakeRecipeButton = () => {
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons
   );
-  const buttonItems = buttonItemsArray;
   const { activesClasses, toggleActiveClass } = useRecipeButton(
-    buttonItems.length
+    recipeButtonItemsArray.length
   );
 
   useEffect(() => {
     if (!detailsDataRetrieved.title && !searchInputFilled)
       toggleActiveClass(
-        buttonItems[recipeButtonId].id,
-        buttonItems[recipeButtonId].category
+        recipeButtonItemsArray[recipeButtonId].id,
+        recipeButtonItemsArray[recipeButtonId].category
       );
   }, [detailsDataRetrieved, searchInputFilled]);
 
@@ -39,8 +38,8 @@ const MakeRecipeButton = () => {
       toggleActiveClass(null, null);
     } else {
       toggleActiveClass(
-        buttonItems[recipeButtonId].id,
-        buttonItems[recipeButtonId].category
+        recipeButtonItemsArray[recipeButtonId].id,
+        recipeButtonItemsArray[recipeButtonId].category
       );
     }
     return () => {
@@ -48,7 +47,7 @@ const MakeRecipeButton = () => {
     };
   }, [searchInputFilled, rateCommentChanged, dispatch]);
 
-  return buttonItems.map((buttonItem) => (
+  return recipeButtonItemsArray.map((buttonItem) => (
     <div key={buttonItem.id}>
       <Row>
         <Col xs={2} />

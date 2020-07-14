@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { searchEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
+import { searchEventFilled } from "../../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
@@ -34,9 +35,20 @@ const useSearchEventsForm = () => {
   };
 
   useEffect(() => {
-    dispatch(
-      searchEvents(inputs.eventDate, inputs.city, userData._id, userData.email)
-    );
+    if (inputs.eventDate || inputs.city) {
+      dispatch(
+        searchEvents(
+          inputs.eventDate,
+          inputs.city,
+          userData._id,
+          userData.email
+        )
+      );
+      dispatch(searchEventFilled(true));
+    } else {
+      dispatch(searchEventFilled(false));
+    }
+    return () => dispatch(searchEventFilled(false));
   }, [inputs.eventDate, inputs.city, dispatch]);
 
   return {

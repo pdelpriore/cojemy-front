@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Row, Col, Button } from "react-bootstrap";
+import { eventButtonItemsArray } from "../../shared/buttonItemsArray";
 import { capitalize } from "../../util/Util";
-import { strings } from "../../strings/Strings";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import useEventButtons from "../../hooks/screen/myEvents/useEventButtons";
 import "./myEvents.css";
@@ -11,36 +11,19 @@ const MakeEventButtons = () => {
   const dispatch = useDispatch();
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   const { eventUpdated } = useSelector((state) => state.isEventChanged);
-  const eventButtonItems = [
-    {
-      id: 0,
-      name: strings.myEvents.BUTTON_ALL,
-      category: strings.myEvents.CAT_ALL,
-    },
-    {
-      id: 1,
-      name: strings.myEvents.BUTTON_MY_EVENTS,
-      category: strings.myEvents.CAT_MY_EVENTS,
-    },
-    {
-      id: 2,
-      name: strings.myEvents.BUTTON_EVENTS_JOINED,
-      category: strings.myEvents.CAT_EVENTS_JOINED,
-    },
-  ];
   const { activesClasses, toggleActiveClass } = useEventButtons(
-    eventButtonItems.length
+    eventButtonItemsArray.length
   );
 
   useEffect(() => {
     toggleActiveClass(
-      eventButtonItems[eventButtonId].id,
-      eventButtonItems[eventButtonId].category
+      eventButtonItemsArray[eventButtonId].id,
+      eventButtonItemsArray[eventButtonId].category
     );
     return () => dispatch(showNewEventForm(false));
   }, [eventUpdated, dispatch]);
 
-  return eventButtonItems.map((buttonItem) => (
+  return eventButtonItemsArray.map((buttonItem) => (
     <div key={buttonItem.id}>
       <Row>
         <Col xs={2} />
