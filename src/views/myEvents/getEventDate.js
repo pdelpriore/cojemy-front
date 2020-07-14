@@ -7,9 +7,9 @@ export const getEventDate = (eventDate) => {
         ? `0${eventDate.getDate()}`
         : eventDate.getDate()}
       /
-      {eventDate.getMonth() < 10
-        ? `0${eventDate.getMonth()}`
-        : eventDate.getMonth()}
+      {eventDate.getMonth() + 1 < 10
+        ? `0${eventDate.getMonth() + 1}`
+        : eventDate.getMonth() + 1}
       /{eventDate.getFullYear()}, godz.{" "}
       {eventDate.getHours() < 10
         ? `0${eventDate.getHours()}`

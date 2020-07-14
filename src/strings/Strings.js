@@ -227,8 +227,10 @@ export const strings = Object.freeze({
     TEL: "contact tel *",
     TEL_PLACEHOLDER: "718523694",
     PARTICIPANTS_PREVIEW: "participants:",
-    SEARCH_CITY: "ville *",
-    SEARCH_CITY_PLACEHOLDER: "ville",
+    SEARCH_CITY: "ville",
+    SEARCH_DATE: "date d'événement",
+    DATE_PLACEHOLDER: "01/12/2020, 10:00",
+    SEARCH_DATE_PLACEHOLDER: "01/12/2020",
     error: {
       NO_SUGGESTIONS: "pas de résultat",
       NO_PARTICIPANTS: "pas de participants :(",

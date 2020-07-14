@@ -27,11 +27,12 @@ const useSearchEventsForm = () => {
       eventDate: dateTime,
     }));
   };
-  const handleInitializeDate = () => {
-    setInputs((inputs) => ({
-      ...inputs,
-      eventDate: new Date(),
-    }));
+  const handleOnBLurDate = () => {
+    setInputs((inputs) =>
+      (({ eventDate, ...others }) => ({
+        ...others,
+      }))(inputs)
+    );
   };
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const useSearchEventsForm = () => {
   return {
     inputs,
     handleOnChange,
-    handleInitializeDate,
+    handleOnBLurDate,
     handleDateTime,
   };
 };

@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Form,
-  Row,
-  Col,
-  Button,
-  Image,
-  Spinner,
-  InputGroup,
-} from "react-bootstrap";
+import { Form, Row, Col, Button, Image, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
 import ImageUploader from "react-images-upload";
@@ -276,6 +268,7 @@ const MyEventsForm = () => {
                     dateFormat="d MMMM yyyy, HH:mm"
                     onChangeRaw={(e) => e.preventDefault()}
                     withPortal={true}
+                    placeholderText={strings.myEvents.DATE_PLACEHOLDER}
                   />
                   <FontAwesomeIcon
                     className="myevents-datepicker-icon"

@@ -17,7 +17,7 @@ const SearchEventsForm = () => {
   const {
     inputs,
     handleOnChange,
-    handleInitializeDate,
+    handleOnBLurDate,
     handleDateTime,
   } = useSearchEventsForm();
   return (
@@ -34,7 +34,7 @@ const SearchEventsForm = () => {
               value={inputs.city || ""}
               name="city"
               type="text"
-              placeholder={strings.myEvents.SEARCH_CITY_PLACEHOLDER}
+              placeholder={strings.myEvents.SEARCH_CITY}
             />
           </Form.Group>
         </Col>
@@ -44,30 +44,21 @@ const SearchEventsForm = () => {
           <Form.Group controlId="formBasicSearchEventDate">
             <div className="myevents-datepicker-box">
               <Form.Label className="myevents-form-text-family">
-                {capitalizeFirst(strings.myEvents.EVENT_DATE)}
+                {capitalizeFirst(strings.myEvents.SEARCH_DATE)}
               </Form.Label>
               <div className="myevents-datepicker-icon-box">
                 <DatePicker
-                  onFocus={handleInitializeDate}
                   minDate={new Date()}
-                  minTime={
-                    inputs.eventDate &&
-                    moment(
-                      new Date(inputs.eventDate).setHours(0, 0, 0, 0)
-                    ).isSame(new Date().setHours(0, 0, 0, 0))
-                      ? new Date().getTime()
-                      : new Date().setHours(0, 0, 0, 1)
-                  }
-                  maxTime={new Date().setHours(23, 59, 59, 999)}
-                  timeIntervals={5}
                   className="myevents-datepicker"
                   locale="fr"
-                  showTimeSelect={true}
+                  showTimeSelect={false}
                   onChange={handleDateTime}
                   selected={inputs.eventDate}
-                  dateFormat="d MMMM yyyy, HH:mm"
+                  dateFormat="d MMMM yyyy"
                   onChangeRaw={(e) => e.preventDefault()}
+                  onBlur={handleOnBLurDate}
                   withPortal={true}
+                  placeholderText={strings.myEvents.SEARCH_DATE_PLACEHOLDER}
                 />
                 <FontAwesomeIcon
                   className="myevents-datepicker-icon"

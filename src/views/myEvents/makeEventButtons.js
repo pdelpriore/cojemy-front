@@ -14,14 +14,18 @@ const MakeEventButtons = () => {
   const { activesClasses, toggleActiveClass } = useEventButtons(
     eventButtonItemsArray.length
   );
+  const { searchEventFilled } = useSelector(
+    (state) => state.isSearchEventFormFilled
+  );
 
   useEffect(() => {
-    toggleActiveClass(
-      eventButtonItemsArray[eventButtonId].id,
-      eventButtonItemsArray[eventButtonId].category
-    );
+    if (!searchEventFilled)
+      toggleActiveClass(
+        eventButtonItemsArray[eventButtonId].id,
+        eventButtonItemsArray[eventButtonId].category
+      );
     return () => dispatch(showNewEventForm(false));
-  }, [eventUpdated, dispatch]);
+  }, [eventUpdated, searchEventFilled, dispatch]);
 
   return eventButtonItemsArray.map((buttonItem) => (
     <div key={buttonItem.id}>
