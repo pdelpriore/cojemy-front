@@ -195,8 +195,11 @@ export const retrieveEventsCases = Object.freeze({
 });
 
 export const myEventPreviewCases = Object.freeze({
+  LOADING: "myEventPreviewLoading",
   PREVIEW_SHOWN: "myEventPreviewPreviewShown",
   PREVIEW_DATA_RECEIVED: "myEventPreviewPreviewDataReceived",
+  ERROR: "myEventPreviewError",
+  CLEAR_ERROR_STATE: "myEventPreviewClearErrorState",
   CLEAR_STATE: "myEventPreviewClearState",
 });
 

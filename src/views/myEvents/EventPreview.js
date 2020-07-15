@@ -5,7 +5,11 @@ import { capitalizeFirst, capitalize } from "../../util/Util";
 import { getEventDate } from "./getEventDate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEdit,
+  faTrash,
+  faFileSignature,
+} from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
 import Map from "../../components/map/map/Map";
@@ -27,10 +31,13 @@ const EventPreview = () => {
     handleEditClick,
     handleTrashClick,
     countAvailablePlaces,
+    handleJoinEvent,
   } = useEventPreview();
+  const { userData } = useSelector((state) => state.login);
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   const { loadingEventUpdating } = useSelector((state) => state.isEventChanged);
+  const { loading } = useSelector((state) => state.eventPreview);
 
   return (
     <animated.div style={props}>
@@ -303,6 +310,52 @@ const EventPreview = () => {
                     )}
                   </Button>
                 </div>
+              )}
+              {eventButtonId === 0 && (
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleJoinEvent(eventPreviewData._id);
+                  }}
+                  disabled={eventPreviewData.participants.some((participant) =>
+                    userData.email.includes(participant.email)
+                  )}
+                  className={
+                    !eventPreviewData.participants.some((participant) =>
+                      userData.email.includes(participant.email)
+                    )
+                      ? "eventpreview-preview-button-delete"
+                      : "eventpreview-preview-button-delete-disabled"
+                  }
+                  variant="dark"
+                >
+                  <div className="myrecipes-form-spinner">
+                    {loading && (
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </div>
+                  {loading ? (
+                    <div className="myrecipes-form-button-loading">
+                      {capitalizeFirst(strings.myEvents.BUTTON_JOIN_LOADING)}
+                    </div>
+                  ) : (
+                    <>
+                      <FontAwesomeIcon
+                        className="myrecipes-preview-button-icon"
+                        icon={faFileSignature}
+                      />
+                      <div className="myevents-button-preview-action">
+                        {capitalize(strings.myEvents.BUTTON_JOIN)}
+                      </div>
+                    </>
+                  )}
+                </Button>
               )}
             </Col>
             <Col xs={5} />

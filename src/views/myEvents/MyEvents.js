@@ -31,6 +31,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
   const { eventChangeError } = useSelector((state) => state.isEventChanged);
   const { eventsError } = useSelector((state) => state.events);
   const { logoutError } = useSelector((state) => state.logout);
+  const { eventPreviewError } = useSelector((state) => state.eventPreview);
   const { addressesRetrievedError } = useSelector(
     (state) => state.addressSuggestions
   );
@@ -188,7 +189,8 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
                     eventChangeError ||
                     logoutError ||
                     addressesRetrievedError ||
-                    locationDetailsError
+                    locationDetailsError ||
+                    eventPreviewError
                   }
                 />
               </Col>

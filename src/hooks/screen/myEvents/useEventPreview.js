@@ -5,7 +5,7 @@ import {
   changeEventClearState,
 } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
-import { eventPreviewClearState } from "../../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
+import { joinEvent } from "../../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { delayAvailablePlacesCounter } from "./delayAvailablePlacesCounter";
 
@@ -24,6 +24,10 @@ const useEventPreview = () => {
 
   const handleTrashClick = (eventId, addressId) => {
     dispatch(removeEvent(eventId, addressId, userData._id, userData.email));
+  };
+
+  const handleJoinEvent = (eventId) => {
+    dispatch(joinEvent(eventId, userData._id, userData.email));
   };
 
   useEffect(() => {
@@ -50,21 +54,24 @@ const useEventPreview = () => {
         );
       }
     })();
-  }, [eventPreviewData._id]);
+  }, [
+    eventPreviewData._id,
+    eventPreviewData.availablePlaces,
+    eventPreviewData.participants.length,
+  ]);
 
   useEffect(() => {
     if (eventUpdated) {
       dispatch(changeEventClearState());
       dispatch(showNewEventForm(false));
-      dispatch(eventPreviewClearState());
     }
-    return () => dispatch(eventPreviewClearState());
   }, [eventUpdated, dispatch]);
 
   return {
     handleEditClick,
     handleTrashClick,
     countAvailablePlaces,
+    handleJoinEvent,
   };
 };
 

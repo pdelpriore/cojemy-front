@@ -231,6 +231,8 @@ export const strings = Object.freeze({
     SEARCH_DATE: "date d'événement",
     DATE_PLACEHOLDER: "01/12/2020, 10:00",
     SEARCH_DATE_PLACEHOLDER: "01/12/2020",
+    BUTTON_JOIN: "join this event",
+    BUTTON_JOIN_LOADING: "je t'inscris ...",
     error: {
       NO_SUGGESTIONS: "pas de résultat",
       NO_PARTICIPANTS: "pas de participants :(",

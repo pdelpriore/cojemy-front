@@ -9,6 +9,7 @@ import { clearSignUpGoogleUserState } from "../../redux/googleSignup/thunk/googl
 import { changeUserPasswordClearState } from "../../redux/updateMyProfile/changePassword/thunk/changePasswordThunk";
 import { changeMyRecipesClearState } from "../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
 import { changeEventClearState } from "../../redux/myEvents/changeEvent/thunk/changeEventThunk";
+import { eventPreviewClearErrorState } from "../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
 import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { recipeDetailsClearErrorState } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
@@ -45,6 +46,7 @@ const useNotification = (notificationMessage) => {
     (state) => state.isMyRecipeChanged
   );
   const { eventChangeError } = useSelector((state) => state.isEventChanged);
+  const { eventPreviewError } = useSelector((state) => state.eventPreview);
   const { addressesRetrievedError } = useSelector(
     (state) => state.addressSuggestions
   );
@@ -81,6 +83,8 @@ const useNotification = (notificationMessage) => {
         dispatch(changeUserPasswordClearState());
       } else if (eventChangeError) {
         dispatch(changeEventClearState());
+      } else if (eventPreviewError) {
+        dispatch(eventPreviewClearErrorState());
       } else if (addressesRetrievedError) {
         dispatch(getAddressClearState());
       } else if (locationDetailsError) {
