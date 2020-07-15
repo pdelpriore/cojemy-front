@@ -305,6 +305,12 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+.eventpreview-no-participants {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  text-align: justify;
+  height: 40px;
+}
 .animate {
   animation: scale 500ms;
 }

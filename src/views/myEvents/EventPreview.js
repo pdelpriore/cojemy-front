@@ -216,7 +216,7 @@ const EventPreview = () => {
                     </div>
                   ))
                 ) : (
-                  <div className="eventpreview-description">
+                  <div className="eventpreview-no-participants">
                     {capitalizeFirst(strings.myEvents.error.NO_PARTICIPANTS)}
                   </div>
                 )}
