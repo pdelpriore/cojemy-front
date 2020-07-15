@@ -3,7 +3,6 @@ import { Form, Row, Col } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import DatePicker from "react-datepicker";
-import moment from "moment";
 import { registerLocale } from "react-datepicker";
 import fr from "date-fns/locale/fr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
