@@ -351,7 +351,7 @@ const EventPreview = () => {
                         icon={faFileSignature}
                       />
                       <div className="myevents-button-preview-action">
-                        {capitalize(strings.myEvents.BUTTON_JOIN)}
+                        {capitalizeFirst(strings.myEvents.BUTTON_JOIN)}
                       </div>
                     </>
                   )}
