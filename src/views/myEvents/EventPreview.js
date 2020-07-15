@@ -224,7 +224,7 @@ const EventPreview = () => {
             </Col>
             <Col xs={1} />
           </Row>
-          <Row className="mb-4" />
+          <Row className="mb-1" />
           <Row>
             <Col xs={1} />
             <Col xs={6}>
