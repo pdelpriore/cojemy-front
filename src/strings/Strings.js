@@ -233,6 +233,8 @@ export const strings = Object.freeze({
     SEARCH_DATE_PLACEHOLDER: "01/12/2020",
     BUTTON_JOIN: "join this event",
     BUTTON_JOIN_LOADING: "je t'inscris ...",
+    BUTTON_UNJOIN: "unjoin this event",
+    BUTTON_UNJOIN_LOADING: "je te désinscris ...",
     error: {
       NO_SUGGESTIONS: "pas de résultat",
       NO_PARTICIPANTS: "pas de participants :(",

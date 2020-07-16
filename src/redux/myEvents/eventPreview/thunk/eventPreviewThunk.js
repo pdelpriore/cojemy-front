@@ -4,6 +4,7 @@ import {
   changeEventCases,
 } from "../../../config/cases/Cases";
 import { joinEventQuery } from "../query/joinEventQuery";
+import { unjoinEventQuery } from "../query/unjoinEventQuery";
 import { strings } from "../../../../strings/Strings";
 import { capitalizeFirst } from "../../../../util/Util";
 
@@ -43,6 +44,43 @@ export const joinEvent = (eventId, userId, email) => {
         dispatch({
           type: myEventPreviewCases.PREVIEW_DATA_RECEIVED,
           payload: data.joinEvent,
+        });
+        dispatch({
+          type: changeEventCases.EVENT_CHANGED,
+          payload: true,
+        });
+      }
+    } catch (err) {
+      if (err) {
+        dispatch({ type: myEventPreviewCases.PREVIEW_SHOWN, payload: false });
+        dispatch({
+          type: myEventPreviewCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
+      }
+    }
+  };
+};
+
+export const unjoinEvent = (eventId, userId, email) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: myEventPreviewCases.LOADING, payload: true });
+    const bodyRequest = unjoinEventQuery(eventId, userId, email);
+    try {
+      const response = await fetch(strings.path.SERVER_REQUEST, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(bodyRequest),
+      });
+      const responseData = await response.json();
+      const { data } = responseData;
+      if (data) {
+        dispatch({
+          type: myEventPreviewCases.PREVIEW_DATA_RECEIVED,
+          payload: data.unjoinEvent,
         });
         dispatch({
           type: changeEventCases.EVENT_CHANGED,

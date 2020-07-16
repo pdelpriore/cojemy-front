@@ -5,7 +5,10 @@ import {
   changeEventClearState,
 } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
-import { joinEvent } from "../../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
+import {
+  joinEvent,
+  unjoinEvent,
+} from "../../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { delayAvailablePlacesCounter } from "./delayAvailablePlacesCounter";
 
@@ -28,6 +31,10 @@ const useEventPreview = () => {
 
   const handleJoinEvent = (eventId) => {
     dispatch(joinEvent(eventId, userData._id, userData.email));
+  };
+
+  const handleUnjoinEvent = (eventId) => {
+    dispatch(unjoinEvent(eventId, userData._id, userData.email));
   };
 
   useEffect(() => {
@@ -72,6 +79,7 @@ const useEventPreview = () => {
     handleTrashClick,
     countAvailablePlaces,
     handleJoinEvent,
+    handleUnjoinEvent,
   };
 };
 
