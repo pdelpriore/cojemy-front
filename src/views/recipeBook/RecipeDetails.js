@@ -4,7 +4,11 @@ import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
-import { faUserCircle, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserCircle,
+  faUserPlus,
+  faUserMinus,
+} from "@fortawesome/free-solid-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
@@ -35,9 +39,16 @@ const RecipeDetails = () => {
   const { detailsLoading, detailsDataRetrieved } = useSelector(
     (state) => state.isRecipeDetailsShown
   );
+
   const recipeCommented =
     detailsDataRetrieved.comments.length > 0 &&
     detailsDataRetrieved.comments.map((comment) => comment.commentator.email);
+  const recipeFollowed =
+    detailsDataRetrieved.author.followers.length > 0 &&
+    detailsDataRetrieved.author.followers.map(
+      (follower) => follower && follower.email
+    );
+
   const {
     editShow,
     handleMouseEnter,
@@ -46,6 +57,7 @@ const RecipeDetails = () => {
     handleTrashClick,
     handleClearDetailsState,
     handleFollowRecipeAuthor,
+    handleUnfollowRecipeAuthor,
   } = useRecipeDetails();
   timeago.register("fr", fr);
 
@@ -111,10 +123,19 @@ const RecipeDetails = () => {
               <Button
                 onClick={(e) => {
                   e.preventDefault();
-                  handleFollowRecipeAuthor(
-                    detailsDataRetrieved.author._id,
-                    detailsDataRetrieved._id
-                  );
+                  (recipeFollowed &&
+                    !recipeFollowed.some((email) =>
+                      userData.email.includes(email)
+                    )) ||
+                  !recipeFollowed
+                    ? handleFollowRecipeAuthor(
+                        detailsDataRetrieved.author._id,
+                        detailsDataRetrieved._id
+                      )
+                    : handleUnfollowRecipeAuthor(
+                        detailsDataRetrieved.author._id,
+                        detailsDataRetrieved._id
+                      );
                 }}
                 disabled={userData.email === detailsDataRetrieved.author.email}
                 className="myrecipes-preview-button-delete"
@@ -135,7 +156,11 @@ const RecipeDetails = () => {
                   <div className="myrecipes-form-button-loading">
                     {capitalizeFirst(strings.recipeBookDetails.FOLLOW_LOADING)}
                   </div>
-                ) : (
+                ) : (recipeFollowed &&
+                    !recipeFollowed.some((email) =>
+                      userData.email.includes(email)
+                    )) ||
+                  !recipeFollowed ? (
                   <>
                     <FontAwesomeIcon
                       className="myrecipes-preview-button-icon"
@@ -143,6 +168,16 @@ const RecipeDetails = () => {
                     />
                     <div className="myrecipes-button-text">
                       {capitalizeFirst(strings.recipeBookDetails.FOLLOW)}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <FontAwesomeIcon
+                      className="myrecipes-preview-button-icon"
+                      icon={faUserMinus}
+                    />
+                    <div className="myrecipes-button-text">
+                      {capitalizeFirst(strings.recipeBookDetails.UNFOLLOW)}
                     </div>
                   </>
                 )}

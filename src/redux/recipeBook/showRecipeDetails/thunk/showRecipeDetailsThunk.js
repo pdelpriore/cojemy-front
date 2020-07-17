@@ -6,6 +6,7 @@ import { addRateAndCommentQuery } from "../query/addRateAndCommentQuery";
 import { editRateAndCommentQuery } from "../query/editRateAndCommentQuery";
 import { removeRateAndCommentQuery } from "../query/removeRateAndCommentQuery";
 import { followAuthorQuery } from "../query/followAuthorQuery";
+import { unfollowAuthorQuery } from "../query/unfollowAuthorQuery";
 import { sortCommentsByDate } from "../../../../shared/sortCommentsByDate";
 import { strings } from "../../../../strings/Strings";
 import { capitalizeFirst } from "../../../../util/Util";
@@ -209,6 +210,46 @@ export const followAuthor = (authorId, recipeId, userId, email) => {
           payload: {
             ...data.followAuthorRecipe,
             comments: sortCommentsByDate(data.followAuthorRecipe),
+          },
+        });
+        dispatch({
+          type: changeRateCommentCases.RATE_COMMENT_CHANGED,
+          payload: true,
+        });
+      }
+    } catch (err) {
+      if (err) {
+        dispatch({ type: showRecipeDetailsCases.SHOWN, payload: false });
+        dispatch({
+          type: showRecipeDetailsCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
+      }
+    }
+  };
+};
+
+export const unfollowAuthor = (authorId, recipeId, userId, email) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: showRecipeDetailsCases.LOADING, payload: true });
+    const bodyRequest = unfollowAuthorQuery(authorId, recipeId, userId, email);
+    try {
+      const response = await fetch(strings.path.SERVER_REQUEST, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(bodyRequest),
+      });
+      const responseData = await response.json();
+      const { data } = responseData;
+      if (data) {
+        dispatch({
+          type: showRecipeDetailsCases.DETAILS_RETRIVED,
+          payload: {
+            ...data.unfollowAuthorRecipe,
+            comments: sortCommentsByDate(data.unfollowAuthorRecipe),
           },
         });
         dispatch({
