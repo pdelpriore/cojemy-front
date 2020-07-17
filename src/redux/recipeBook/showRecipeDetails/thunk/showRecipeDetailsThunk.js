@@ -206,7 +206,10 @@ export const followAuthor = (authorId, recipeId, userId, email) => {
       if (data) {
         dispatch({
           type: showRecipeDetailsCases.DETAILS_RETRIVED,
-          payload: data.followAuthorRecipe,
+          payload: {
+            ...data.followAuthorRecipe,
+            comments: sortCommentsByDate(data.followAuthorRecipe),
+          },
         });
         dispatch({
           type: changeRateCommentCases.RATE_COMMENT_CHANGED,
