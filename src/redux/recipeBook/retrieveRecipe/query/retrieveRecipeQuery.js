@@ -13,6 +13,7 @@ export const retrieveRecipeQuery = (category, userId, email, skip, limit) => {
                     ingredients
                     description
                     author {
+                      _id
                         name
                         photo
                         email

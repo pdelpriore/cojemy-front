@@ -129,6 +129,8 @@ export const strings = Object.freeze({
   recipeBookDetails: {
     DESCRIBE: "description:",
     INGREDIENTS: "ingrédients:",
+    FOLLOW: "follow this author",
+    FOLLOW_LOADING: "please wait ...",
   },
   rating: {
     DETAILS: "details",

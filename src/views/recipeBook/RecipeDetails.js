@@ -1,10 +1,10 @@
 import React from "react";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { Row, Col, Spinner, Button } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
@@ -103,6 +103,50 @@ const RecipeDetails = () => {
       <Row className="mb-2" />
       <ScrollArea smoothScrolling={true} className="recipeDetails-main">
         <div>
+          <Row className="mb-1" />
+          <Row>
+            <Col xs={1} />
+            <Col xs={3}>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  //handleTrashClick(myRecipePreviewData._id);
+                }}
+                disabled={userData.email === detailsDataRetrieved.author.email}
+                className="myrecipes-preview-button-delete"
+                variant="dark"
+              >
+                <div className="myrecipes-form-spinner">
+                  {false && (
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  )}
+                </div>
+                {false ? (
+                  <div className="myrecipes-form-button-loading">
+                    {capitalizeFirst(strings.recipeBookDetails.FOLLOW_LOADING)}
+                  </div>
+                ) : (
+                  <>
+                    <FontAwesomeIcon
+                      className="myrecipes-preview-button-icon"
+                      icon={faUserPlus}
+                    />
+                    <div className="myrecipes-button-text">
+                      {capitalizeFirst(strings.recipeBookDetails.FOLLOW)}
+                    </div>
+                  </>
+                )}
+              </Button>
+            </Col>
+            <Col xs={8} />
+          </Row>
+          <Row className="mb-3" />
           <Row>
             <Col xs={1} />
             <Col xs={5}>

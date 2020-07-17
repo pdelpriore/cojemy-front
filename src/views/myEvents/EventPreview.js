@@ -10,6 +10,7 @@ import {
   faTrash,
   faFileSignature,
   faTimes,
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
@@ -104,6 +105,56 @@ const EventPreview = () => {
       <Row className="mb-2" />
       <ScrollArea smoothScrolling={true} className="eventpreview-main">
         <div>
+          {eventButtonId === 0 && (
+            <>
+              <Row className="mb-1" />
+              <Row>
+                <Col xs={1} />
+                <Col xs={3}>
+                  <Button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      //handleTrashClick(myRecipePreviewData._id);
+                    }}
+                    disabled={userData.email === eventPreviewData.author.email}
+                    className="myrecipes-preview-button-delete"
+                    variant="dark"
+                  >
+                    <div className="myrecipes-form-spinner">
+                      {false && (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
+                    {false ? (
+                      <div className="myrecipes-form-button-loading">
+                        {capitalizeFirst(
+                          strings.recipeBookDetails.FOLLOW_LOADING
+                        )}
+                      </div>
+                    ) : (
+                      <>
+                        <FontAwesomeIcon
+                          className="myrecipes-preview-button-icon"
+                          icon={faUserPlus}
+                        />
+                        <div className="myrecipes-button-text">
+                          {capitalizeFirst(strings.recipeBookDetails.FOLLOW)}
+                        </div>
+                      </>
+                    )}
+                  </Button>
+                </Col>
+                <Col xs={8} />
+              </Row>
+              <Row className="mb-3" />
+            </>
+          )}
           <Row>
             <Col xs={1} />
             <Col xs={7}>
