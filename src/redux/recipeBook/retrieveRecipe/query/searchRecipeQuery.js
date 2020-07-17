@@ -13,9 +13,13 @@ export const searchRecipeQuery = (recipeTitle, userId, email) => {
                       ingredients
                       description
                       author {
+                        _id
                           name
                           photo
                           email
+                          followers {
+                            email
+                          }
                       }
                       comments {
                         _id

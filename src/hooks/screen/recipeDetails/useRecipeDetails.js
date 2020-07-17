@@ -6,6 +6,7 @@ import {
   recipeDetailsClearState,
   removeRecipeRateAndComment,
 } from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { followAuthor } from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 
 const useRecipeDetails = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,10 @@ const useRecipeDetails = () => {
     }
   };
 
+  const handleFollowRecipeAuthor = (authorId, recipeId) => {
+    dispatch(followAuthor(authorId, recipeId, userData._id, userData.email));
+  };
+
   const handleClearDetailsState = () => {
     dispatch(recipeDetailsClearState());
   };
@@ -51,6 +56,7 @@ const useRecipeDetails = () => {
     handleEditClick,
     handleTrashClick,
     handleClearDetailsState,
+    handleFollowRecipeAuthor,
   };
 };
 

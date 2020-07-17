@@ -19,9 +19,13 @@ export const addRateAndCommentQuery = (
                       ingredients
                       description
                       author {
+                        _id
                           name
                           photo
                           email
+                          followers {
+                            email
+                          }
                       }
                       comments {
                         _id

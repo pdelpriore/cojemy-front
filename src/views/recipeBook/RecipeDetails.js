@@ -45,6 +45,7 @@ const RecipeDetails = () => {
     handleEditClick,
     handleTrashClick,
     handleClearDetailsState,
+    handleFollowRecipeAuthor,
   } = useRecipeDetails();
   timeago.register("fr", fr);
 
@@ -110,14 +111,17 @@ const RecipeDetails = () => {
               <Button
                 onClick={(e) => {
                   e.preventDefault();
-                  //handleTrashClick(myRecipePreviewData._id);
+                  handleFollowRecipeAuthor(
+                    detailsDataRetrieved.author._id,
+                    detailsDataRetrieved._id
+                  );
                 }}
                 disabled={userData.email === detailsDataRetrieved.author.email}
                 className="myrecipes-preview-button-delete"
                 variant="dark"
               >
                 <div className="myrecipes-form-spinner">
-                  {false && (
+                  {detailsLoading && (
                     <Spinner
                       as="span"
                       animation="border"
@@ -127,7 +131,7 @@ const RecipeDetails = () => {
                     />
                   )}
                 </div>
-                {false ? (
+                {detailsLoading ? (
                   <div className="myrecipes-form-button-loading">
                     {capitalizeFirst(strings.recipeBookDetails.FOLLOW_LOADING)}
                   </div>

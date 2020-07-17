@@ -131,6 +131,7 @@ export const strings = Object.freeze({
     INGREDIENTS: "ingrédients:",
     FOLLOW: "follow this author",
     FOLLOW_LOADING: "please wait ...",
+    UNFOLLOW: "unfollow this author",
   },
   rating: {
     DETAILS: "details",

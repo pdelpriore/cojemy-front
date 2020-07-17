@@ -17,6 +17,9 @@ export const retrieveRecipeQuery = (category, userId, email, skip, limit) => {
                         name
                         photo
                         email
+                        followers {
+                          email
+                        }
                     }
                     comments {
                       _id
