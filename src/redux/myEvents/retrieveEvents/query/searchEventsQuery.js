@@ -25,6 +25,9 @@ export const searchEventsQuery = (date, city, userId, email) => {
                               name
                               photo
                               email
+                              followers {
+                                email
+                              }
                           }
                           participants {
                               _id

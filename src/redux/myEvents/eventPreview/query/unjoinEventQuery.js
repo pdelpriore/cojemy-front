@@ -25,6 +25,9 @@ export const unjoinEventQuery = (eventId, userId, email) => {
                                 name
                                 photo
                                 email
+                                followers {
+                                  email
+                                }
                             }
                             participants {
                                 _id

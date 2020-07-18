@@ -25,6 +25,9 @@ export const retrieveEventsQuery = (category, userId, email, skip, limit) => {
                             name
                             photo
                             email
+                            followers {
+                              email
+                            }
                         }
                         participants {
                             _id
