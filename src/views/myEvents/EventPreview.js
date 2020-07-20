@@ -11,6 +11,7 @@ import {
   faFileSignature,
   faTimes,
   faUserPlus,
+  faUserMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import Img from "react-image";
@@ -29,12 +30,15 @@ const EventPreview = () => {
     config: { duration: 300 },
     from: { opacity: 0 },
   });
+
   const {
     handleEditClick,
     handleTrashClick,
     countAvailablePlaces,
     handleJoinEvent,
     handleUnjoinEvent,
+    handleFollowEventAuthor,
+    handleUnfollowEventAuthor,
   } = useEventPreview();
 
   const { userData } = useSelector((state) => state.login);
@@ -42,6 +46,12 @@ const EventPreview = () => {
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   const { loadingEventUpdating } = useSelector((state) => state.isEventChanged);
   const { loading } = useSelector((state) => state.eventPreview);
+
+  const eventFollowed =
+    eventPreviewData.author.followers.length > 0 &&
+    eventPreviewData.author.followers.map(
+      (follower) => follower && follower.email
+    );
 
   return (
     <animated.div style={props}>
@@ -114,14 +124,26 @@ const EventPreview = () => {
                   <Button
                     onClick={(e) => {
                       e.preventDefault();
-                      //handleTrashClick(myRecipePreviewData._id);
+                      (eventFollowed &&
+                        !eventFollowed.some((email) =>
+                          userData.email.includes(email)
+                        )) ||
+                      !eventFollowed
+                        ? handleFollowEventAuthor(
+                            eventPreviewData.author._id,
+                            eventPreviewData._id
+                          )
+                        : handleUnfollowEventAuthor(
+                            eventPreviewData.author._id,
+                            eventPreviewData._id
+                          );
                     }}
                     disabled={userData.email === eventPreviewData.author.email}
                     className="myrecipes-preview-button-delete"
                     variant="dark"
                   >
                     <div className="myrecipes-form-spinner">
-                      {false && (
+                      {loading && (
                         <Spinner
                           as="span"
                           animation="border"
@@ -131,13 +153,17 @@ const EventPreview = () => {
                         />
                       )}
                     </div>
-                    {false ? (
+                    {loading ? (
                       <div className="myrecipes-form-button-loading">
                         {capitalizeFirst(
                           strings.recipeBookDetails.FOLLOW_LOADING
                         )}
                       </div>
-                    ) : (
+                    ) : (eventFollowed &&
+                        !eventFollowed.some((email) =>
+                          userData.email.includes(email)
+                        )) ||
+                      !eventFollowed ? (
                       <>
                         <FontAwesomeIcon
                           className="myrecipes-preview-button-icon"
@@ -145,6 +171,16 @@ const EventPreview = () => {
                         />
                         <div className="myrecipes-button-text">
                           {capitalizeFirst(strings.recipeBookDetails.FOLLOW)}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <FontAwesomeIcon
+                          className="myrecipes-preview-button-icon"
+                          icon={faUserMinus}
+                        />
+                        <div className="myrecipes-button-text">
+                          {capitalizeFirst(strings.recipeBookDetails.UNFOLLOW)}
                         </div>
                       </>
                     )}
