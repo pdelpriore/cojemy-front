@@ -31,12 +31,12 @@ const RecipesList = () => {
   ) : (
     <div className="recipesList-main-area">
       {recipesRetrieved !== null &&
-        recipesRetrieved.map((retrieveRecipe, index) => (
+        recipesRetrieved.map((recipeRetrieved, index) => (
           <div
             onClick={(e) => {
               e.preventDefault();
               dispatch(changeRecipeListItem(true));
-              dispatch(retrieveRecipeDetails(retrieveRecipe));
+              dispatch(retrieveRecipeDetails(recipeRetrieved));
             }}
             className="recipesList-item"
             key={index}
@@ -46,8 +46,8 @@ const RecipesList = () => {
                 <Img
                   className="recipesList-item-picture"
                   src={
-                    retrieveRecipe.picture
-                      ? strings.path.IMAGE_REQUEST + retrieveRecipe.picture
+                    recipeRetrieved.picture
+                      ? strings.path.IMAGE_REQUEST + recipeRetrieved.picture
                       : require("../../assets/imgs/panret.jpg")
                   }
                   loader={<Spinner animation="border" variant="info" />}
@@ -60,20 +60,20 @@ const RecipesList = () => {
                     <div>
                       <TimeAgo
                         className="recipesList-item-timeago"
-                        datetime={createDate(retrieveRecipe.date)}
+                        datetime={createDate(recipeRetrieved.date)}
                         locale="fr"
                       />
                     </div>
                   </Col>
                 </Row>
                 <div className="recipesList-item-title">
-                  {retrieveRecipe.title}
+                  {recipeRetrieved.title}
                 </div>
                 <div className="recipesList-item-rate-outter">
                   <RatingStars />
                   <div
                     style={{
-                      width: getAverageRating(retrieveRecipe.comments),
+                      width: getAverageRating(recipeRetrieved.comments),
                     }}
                     className="recipesList-item-rate-inner"
                   >
@@ -85,13 +85,13 @@ const RecipesList = () => {
                   <div className="recipesList-item-icon">
                     <FontAwesomeIcon icon={faUser} />
                   </div>
-                  <div>{retrieveRecipe.author.name}</div>
+                  <div>{recipeRetrieved.author.name}</div>
                 </div>
                 <div className="recipesList-item-time">
                   <div className="recipesList-item-icon">
                     <FontAwesomeIcon icon={faClock} />
                   </div>
-                  <div>{retrieveRecipe.cookTime} min.</div>
+                  <div>{recipeRetrieved.cookTime} min.</div>
                 </div>
               </Col>
             </Row>
