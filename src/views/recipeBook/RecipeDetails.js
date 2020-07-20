@@ -34,6 +34,7 @@ const RecipeDetails = () => {
     config: { duration: 300 },
     from: { opacity: 0 },
   });
+
   const { userData } = useSelector((state) => state.login);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const { detailsLoading, detailsDataRetrieved } = useSelector(

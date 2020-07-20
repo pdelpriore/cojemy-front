@@ -5,8 +5,6 @@ import { changeRecipeListItem } from "../../../redux/recipeBook/changeRecipeList
 import {
   recipeDetailsClearState,
   removeRecipeRateAndComment,
-} from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
-import {
   followAuthor,
   unfollowAuthor,
 } from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";

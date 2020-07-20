@@ -8,6 +8,8 @@ import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk
 import {
   joinEvent,
   unjoinEvent,
+  followAuthor,
+  unfollowAuthor,
 } from "../../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { delayAvailablePlacesCounter } from "./delayAvailablePlacesCounter";
@@ -35,6 +37,14 @@ const useEventPreview = () => {
 
   const handleUnjoinEvent = (eventId) => {
     dispatch(unjoinEvent(eventId, userData._id, userData.email));
+  };
+
+  const handleFollowEventAuthor = (authorId, eventId) => {
+    dispatch(followAuthor(authorId, eventId, userData._id, userData.email));
+  };
+
+  const handleUnfollowEventAuthor = (authorId, eventId) => {
+    dispatch(unfollowAuthor(authorId, eventId, userData._id, userData.email));
   };
 
   useEffect(() => {
@@ -80,6 +90,8 @@ const useEventPreview = () => {
     countAvailablePlaces,
     handleJoinEvent,
     handleUnjoinEvent,
+    handleFollowEventAuthor,
+    handleUnfollowEventAuthor,
   };
 };
 
