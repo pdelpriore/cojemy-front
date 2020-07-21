@@ -4,12 +4,12 @@ import {
   removeEvent,
   changeEventClearState,
 } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
-import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import {
   joinEvent,
   unjoinEvent,
   followAuthor,
   unfollowAuthor,
+  eventPreviewClearState,
 } from "../../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { delayAvailablePlacesCounter } from "./delayAvailablePlacesCounter";
@@ -20,6 +20,7 @@ const useEventPreview = () => {
   const { userData } = useSelector((state) => state.login);
   const { eventUpdated } = useSelector((state) => state.isEventChanged);
   const { eventPreviewData } = useSelector((state) => state.eventPreview);
+  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
 
   const [countAvailablePlaces, setCountAvailablePlaces] = useState(0);
 
@@ -78,11 +79,13 @@ const useEventPreview = () => {
   ]);
 
   useEffect(() => {
-    if (eventUpdated) {
+    if (eventUpdated && eventButtonId === 1) {
       dispatch(changeEventClearState());
-      dispatch(showNewEventForm(false));
+      dispatch(eventPreviewClearState());
+    } else if (eventUpdated && (eventButtonId === 0 || eventButtonId === 2)) {
+      dispatch(changeEventClearState());
     }
-  }, [eventUpdated, dispatch]);
+  }, [eventUpdated, eventButtonId, dispatch]);
 
   return {
     handleEditClick,

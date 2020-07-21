@@ -4,6 +4,7 @@ import {
   removeMyRecipe,
   changeMyRecipesClearState,
 } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
+import { myRecipePreviewClearState } from "../../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useMyRecipePreview = () => {
@@ -20,7 +21,10 @@ const useMyRecipePreview = () => {
   };
 
   useEffect(() => {
-    if (recipeUpdated) dispatch(changeMyRecipesClearState());
+    if (recipeUpdated) {
+      dispatch(changeMyRecipesClearState());
+      dispatch(myRecipePreviewClearState());
+    }
   }, [recipeUpdated, dispatch]);
 
   return {

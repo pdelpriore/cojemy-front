@@ -10,10 +10,7 @@ import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
 import { getAverageRating } from "../../shared/getAverageRating";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
-import {
-  myRecipeData,
-  myRecipePreviewClearState,
-} from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
+import { myRecipeData } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
@@ -34,7 +31,6 @@ const MyRecipesList = () => {
     }
     return () => {
       dispatch(showNewRecipeForm(false));
-      dispatch(myRecipePreviewClearState());
     };
   }, [userData._id, userData.email, recipeUpdated, dispatch]);
   timeago.register("fr", fr);
