@@ -32,6 +32,7 @@ import { NavLink } from "react-router-dom";
 import { Link } from "react-scroll";
 import { strings } from "../../strings/Strings";
 import { userGooglePhoto } from "../../shared/testWordsArray";
+import { disconnectIOSocket } from "./disconnectIOSocket";
 import "./navbar.css";
 
 const MakeNavMenu = ({ type }) => {
@@ -81,29 +82,33 @@ const MakeNavMenu = ({ type }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
   const { loading, userLoggedOut } = useSelector((state) => state.logout);
+  const { ioSocket } = useSelector((state) => state.socket);
 
   useEffect(() => {
-    if (userLoggedOut) {
-      dispatch(clearLoginState());
-      dispatch(loginUser(false));
-      dispatch(recipeDetailsClearState());
-      dispatch(myRecipePreviewClearState());
-      dispatch(categorySelectedClearState());
-      dispatch(myRecipesClearState());
-      dispatch(recipeBookClearState());
-      dispatch(toEditRateCommentClearState());
-      dispatch(toEditMyRecipeClearState());
-      dispatch(changeRecipeListItem(true));
-      dispatch(getAddressClearState());
-      dispatch(selectEventAddressClearState());
-      dispatch(getLocationDetailsClearState());
-      dispatch(getEventsClearState());
-      dispatch(eventPreviewClearState());
-      dispatch(toEditEventClearState());
-      dispatch(searchEventFilled(false));
-      dispatch(ioConnectClearState());
-    }
-    if (userData.email === undefined) dispatch(clearLogoutState());
+    (async () => {
+      if (userLoggedOut) {
+        dispatch(clearLoginState());
+        dispatch(loginUser(false));
+        dispatch(recipeDetailsClearState());
+        dispatch(myRecipePreviewClearState());
+        dispatch(categorySelectedClearState());
+        dispatch(myRecipesClearState());
+        dispatch(recipeBookClearState());
+        dispatch(toEditRateCommentClearState());
+        dispatch(toEditMyRecipeClearState());
+        dispatch(changeRecipeListItem(true));
+        dispatch(getAddressClearState());
+        dispatch(selectEventAddressClearState());
+        dispatch(getLocationDetailsClearState());
+        dispatch(getEventsClearState());
+        dispatch(eventPreviewClearState());
+        dispatch(toEditEventClearState());
+        dispatch(searchEventFilled(false));
+        await disconnectIOSocket(ioSocket, userData._id);
+        dispatch(ioConnectClearState());
+      }
+      if (userData.email === undefined) dispatch(clearLogoutState());
+    })();
   }, [userData, userLoggedOut, dispatch]);
 
   return type === strings.navbar.navType.LOGO

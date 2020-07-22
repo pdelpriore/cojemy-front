@@ -22,7 +22,6 @@ const App = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
   const { userLogged } = useSelector((state) => state.isUserLogged);
-  const { ioSocket } = useSelector((state) => state.socket);
 
   const userDataMemoized = useMemo(() => {
     return { ...userData };
@@ -32,12 +31,6 @@ const App = () => {
     if (userLogged) {
       dispatch(ioConnect(userDataMemoized._id));
     }
-    return () => {
-      ioSocket.emit("disconnected", {
-        userId: userDataMemoized._id,
-      });
-      ioSocket.disconnect();
-    };
   }, [userDataMemoized._id, userLogged, dispatch]);
 
   return (
