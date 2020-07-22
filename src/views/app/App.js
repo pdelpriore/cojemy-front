@@ -27,7 +27,11 @@ const App = () => {
   }, [userLogged]);
 
   useEffect(() => {
-    socketClient(strings.path.SERVER_PATH);
+    const socket = socketClient(strings.path.SERVER_PATH);
+    socket.on("id", (id) =>
+      socket.emit("userData", { userId: userData._id, userSocketId: id })
+    );
+    return () => socket.disconnect();
   }, []);
 
   return (
