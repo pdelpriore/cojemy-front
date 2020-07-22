@@ -30,9 +30,16 @@ const App = () => {
 
   useEffect(() => {
     const socket = socketClient(strings.path.SERVER_PATH);
-    socket.on("id", (id) =>
-      dispatch(getUserSocketData({ userId: userData._id, userSocketId: id }))
-    );
+    socket.on("id", (id) => {
+      dispatch(
+        getUserSocketData({
+          userId: userData._id,
+          userSocketId: id,
+          socket: socket,
+        })
+      );
+      socket.emit("userData", { userId: userData._id, userSocketId: id });
+    });
     return () => socket.disconnect();
   }, []);
 
