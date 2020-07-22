@@ -14,11 +14,13 @@ import MyRecipes from "../myRecipes/MyRecipes";
 import Mails from "../mails/Mails";
 import MyEvents from "../myEvents/MyEvents";
 import MyProfile from "../myProfile/MyProfile";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import socketClient from "socket.io-client";
+import { getUserSocketData } from "../../redux/mails/socketData/thunk/getSocketDataThunk";
 import "./app.css";
 
 const App = () => {
+  const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
   const { userLogged } = useSelector((state) => state.isUserLogged);
 
@@ -29,7 +31,7 @@ const App = () => {
   useEffect(() => {
     const socket = socketClient(strings.path.SERVER_PATH);
     socket.on("id", (id) =>
-      socket.emit("userData", { userId: userData._id, userSocketId: id })
+      dispatch(getUserSocketData({ userId: userData._id, userSocketId: id }))
     );
     return () => socket.disconnect();
   }, []);
