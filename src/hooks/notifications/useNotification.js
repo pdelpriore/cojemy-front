@@ -114,6 +114,7 @@ const useNotification = (notificationMessage) => {
     userPasswordChanged,
     changeUserPasswordError,
     eventChangeError,
+    eventPreviewError,
     addressesRetrievedError,
     locationDetailsError,
     detailsDataError,

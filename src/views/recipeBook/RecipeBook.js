@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import ScrollArea from "react-scrollbar";
 import { Row, Col, Image, ListGroup } from "react-bootstrap";

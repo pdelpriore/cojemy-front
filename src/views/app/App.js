@@ -27,21 +27,31 @@ const App = () => {
   const userDataMemoized = useMemo(() => {
     return { ...userData };
   }, [userLogged]);
+  const socket = socketClient(strings.path.SERVER_PATH);
 
   useEffect(() => {
-    const socket = socketClient(strings.path.SERVER_PATH);
-    socket.on("id", (id) => {
-      dispatch(
-        getUserSocketData({
-          userId: userData._id,
+    if (userLogged) {
+      socket.on("id", (id) => {
+        dispatch(
+          getUserSocketData({
+            userId: userDataMemoized._id,
+            userSocketId: id,
+            socket: socket,
+          })
+        );
+        socket.emit("userData", {
+          userId: userDataMemoized._id,
           userSocketId: id,
-          socket: socket,
-        })
-      );
-      socket.emit("userData", { userId: userData._id, userSocketId: id });
-    });
-    return () => socket.disconnect();
-  }, []);
+        });
+      });
+    }
+    return () => {
+      socket.emit("disconnected", {
+        userId: userDataMemoized._id,
+      });
+      socket.disconnect();
+    };
+  }, [userDataMemoized._id, userLogged, dispatch]);
 
   return (
     <>
