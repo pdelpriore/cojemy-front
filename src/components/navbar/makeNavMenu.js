@@ -19,7 +19,7 @@ import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDe
 import { getEventsClearState } from "../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
 import { eventPreviewClearState } from "../../redux/myEvents/eventPreview/thunk/eventPreviewThunk";
 import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
-import { userSocketDataClearState } from "../../redux/mails/socketData/thunk/getSocketDataThunk";
+import { ioConnectClearState } from "../../redux/mails/socketData/thunk/ioConnectThunk";
 import { searchEventFilled } from "../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { loginUser } from "../../redux/login/userLogged/thunk/userLoggedThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -101,7 +101,7 @@ const MakeNavMenu = ({ type }) => {
       dispatch(eventPreviewClearState());
       dispatch(toEditEventClearState());
       dispatch(searchEventFilled(false));
-      dispatch(userSocketDataClearState());
+      dispatch(ioConnectClearState());
     }
     if (userData.email === undefined) dispatch(clearLogoutState());
   }, [userData, userLoggedOut, dispatch]);

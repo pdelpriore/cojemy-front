@@ -35,7 +35,7 @@ import changeEventReducer from "../../myEvents/changeEvent/reducer/changeEventRe
 import eventPreviewReducer from "../../myEvents/eventPreview/reducer/eventPreviewReducer";
 import toEditEventReducer from "../../myEvents/toEditEvent/reducer/toEditEventReducer";
 import searchEventFilledReducer from "../../myEvents/searchEventFilled/reducer/searchEventFilledReducer";
-import getSocketDataReducer from "../../mails/socketData/reducer/getSocketDataReducer";
+import ioConnectReducer from "../../mails/socketData/reducer/ioConnectReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -74,7 +74,7 @@ const allReducers = combineReducers({
   eventPreview: eventPreviewReducer,
   toEditEvent: toEditEventReducer,
   isSearchEventFormFilled: searchEventFilledReducer,
-  socketData: getSocketDataReducer,
+  socket: ioConnectReducer,
 });
 
 export default allReducers;

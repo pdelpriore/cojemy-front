@@ -15,41 +15,28 @@ import Mails from "../mails/Mails";
 import MyEvents from "../myEvents/MyEvents";
 import MyProfile from "../myProfile/MyProfile";
 import { useSelector, useDispatch } from "react-redux";
-import socketClient from "socket.io-client";
-import { getUserSocketData } from "../../redux/mails/socketData/thunk/getSocketDataThunk";
+import { ioConnect } from "../../redux/mails/socketData/thunk/ioConnectThunk";
 import "./app.css";
 
 const App = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
   const { userLogged } = useSelector((state) => state.isUserLogged);
+  const { ioSocket } = useSelector((state) => state.socket);
 
   const userDataMemoized = useMemo(() => {
     return { ...userData };
   }, [userLogged]);
-  const socket = socketClient(strings.path.SERVER_PATH);
 
   useEffect(() => {
     if (userLogged) {
-      socket.on("id", (id) => {
-        dispatch(
-          getUserSocketData({
-            userId: userDataMemoized._id,
-            userSocketId: id,
-            socket: socket,
-          })
-        );
-        socket.emit("userData", {
-          userId: userDataMemoized._id,
-          userSocketId: id,
-        });
-      });
+      dispatch(ioConnect(userDataMemoized._id));
     }
     return () => {
-      socket.emit("disconnected", {
+      ioSocket.emit("disconnected", {
         userId: userDataMemoized._id,
       });
-      socket.disconnect();
+      ioSocket.disconnect();
     };
   }, [userDataMemoized._id, userLogged, dispatch]);
 

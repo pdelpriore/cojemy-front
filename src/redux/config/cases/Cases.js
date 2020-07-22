@@ -212,7 +212,7 @@ export const searchEventFilledCases = Object.freeze({
   FORM_FILLED: "searchEventFilledFormFilled",
 });
 
-export const socketDataCases = Object.freeze({
-  SOCKET_DATA_RETRIEVED: "socketDataSocketDataRetrieved",
-  CLEAR_STATE: "socketDataCLearState",
+export const ioConnectCases = Object.freeze({
+  iO_CONNECTED: "ioConnectIoConnected",
+  CLEAR_STATE: "ioConnectCLearState",
 });
