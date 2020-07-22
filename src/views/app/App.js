@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -15,6 +15,7 @@ import Mails from "../mails/Mails";
 import MyEvents from "../myEvents/MyEvents";
 import MyProfile from "../myProfile/MyProfile";
 import { useSelector } from "react-redux";
+import socketClient from "socket.io-client";
 import "./app.css";
 
 const App = () => {
@@ -24,6 +25,10 @@ const App = () => {
   const userDataMemoized = useMemo(() => {
     return { ...userData };
   }, [userLogged]);
+
+  useEffect(() => {
+    socketClient(strings.path.SERVER_PATH);
+  }, []);
 
   return (
     <>
