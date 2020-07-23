@@ -109,7 +109,7 @@ const MakeNavMenu = ({ type }) => {
       }
       if (userData.email === undefined) dispatch(clearLogoutState());
     })();
-  }, [userData, userLoggedOut, dispatch]);
+  }, [userData, userLoggedOut, ioSocket, dispatch]);
 
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(
