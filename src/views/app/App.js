@@ -29,7 +29,7 @@ const App = () => {
 
   useEffect(() => {
     if (userLogged) {
-      dispatch(ioConnect(userDataMemoized._id));
+      dispatch(ioConnect(userDataMemoized._id, userDataMemoized.email));
     }
   }, [userDataMemoized._id, userLogged, dispatch]);
 
