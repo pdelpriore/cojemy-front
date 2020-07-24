@@ -49,7 +49,7 @@ const useRateAndComment = () => {
         editRecipeRateAndComment(
           recipeId,
           rateAndComment.rateId,
-          rate,
+          parseInt(rate),
           rateAndComment.commentId,
           inputs.comment,
           userData._id,
@@ -60,7 +60,7 @@ const useRateAndComment = () => {
       dispatch(
         addRateAndComment(
           recipeId,
-          rate,
+          parseInt(rate),
           inputs.comment,
           userData._id,
           userData.email

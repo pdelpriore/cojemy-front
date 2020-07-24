@@ -8,8 +8,8 @@ export const removeRateAndCommentQuery = (
 ) => {
   return {
     query: `
-                    mutation {
-                      removeRecipeRateComment(rateId: "${rateId}", commentId: "${commentId}", recipeId: "${recipeId}", commentItemId: "${commentItemId}", userId: "${userId}", email: "${email}") {
+                    mutation($rateId: ID!, $commentId: ID!, $recipeId: ID!, $commentItemId: ID!, $userId: ID!, $email: String!) {
+                      removeRecipeRateComment(rateId: $rateId, commentId: $commentId, recipeId: $recipeId, commentItemId: $commentItemId, userId: $userId, email: $email) {
                           _id
                           title
                           picture
@@ -49,5 +49,13 @@ export const removeRateAndCommentQuery = (
                       }
                     }
                     `,
+    variables: {
+      rateId,
+      commentId,
+      recipeId,
+      commentItemId,
+      userId,
+      email,
+    },
   };
 };
