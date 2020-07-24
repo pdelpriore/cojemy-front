@@ -74,7 +74,7 @@ const allReducers = combineReducers({
   eventPreview: eventPreviewReducer,
   toEditEvent: toEditEventReducer,
   isSearchEventFormFilled: searchEventFilledReducer,
-  socket: ioConnectReducer,
+  socketData: ioConnectReducer,
 });
 
 export default allReducers;

@@ -1,11 +1,11 @@
-export const disconnectIOSocket = (ioSocket, userId) => {
+export const disconnectIOSocket = (socket, userId) => {
   return new Promise((resolve) => {
-    ioSocket.emit("disconnected", {
+    socket.emit("disconnected", {
       userId: userId,
     });
-    ioSocket.on("userDisconnected", (response) => {
+    socket.on("userDisconnected", (response) => {
       if (response) {
-        ioSocket.disconnect();
+        socket.disconnect();
         resolve();
       }
     });

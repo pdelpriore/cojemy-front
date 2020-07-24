@@ -7,8 +7,8 @@ export const ioConnect = (userId, userEmail) => {
     const socket = socketClient(strings.path.SERVER_PATH, {
       query: { userId: userId, userEmail: userEmail },
     });
+    dispatch({ type: ioConnectCases.iO_CONNECTED, payload: socket });
     socket.on("id", (id) => {
-      dispatch({ type: ioConnectCases.iO_CONNECTED, payload: socket });
       socket.emit("userData", {
         userId: userId,
         userSocketId: id,

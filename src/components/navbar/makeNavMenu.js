@@ -82,11 +82,12 @@ const MakeNavMenu = ({ type }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
   const { loading, userLoggedOut } = useSelector((state) => state.logout);
-  const { ioSocket } = useSelector((state) => state.socket);
+  const { socket } = useSelector((state) => state.socketData);
 
   useEffect(() => {
     (async () => {
       if (userLoggedOut) {
+        if (socket.connected) await disconnectIOSocket(socket, userData._id);
         dispatch(clearLoginState());
         dispatch(loginUser(false));
         dispatch(recipeDetailsClearState());
@@ -104,12 +105,11 @@ const MakeNavMenu = ({ type }) => {
         dispatch(eventPreviewClearState());
         dispatch(toEditEventClearState());
         dispatch(searchEventFilled(false));
-        await disconnectIOSocket(ioSocket, userData._id);
-        dispatch(ioConnectClearState());
+        if (socket.disconnected) dispatch(ioConnectClearState());
       }
       if (userData.email === undefined) dispatch(clearLogoutState());
     })();
-  }, [userData, userLoggedOut, ioSocket, dispatch]);
+  }, [userData, userLoggedOut, socket, dispatch]);
 
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(

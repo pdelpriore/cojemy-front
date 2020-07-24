@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useSelector } from "react-redux";
 
 const Mails = ({ match: { path, url, isExact } }) => {
-  const { ioSocket } = useSelector((state) => state.socket);
+  const { socket } = useSelector((state) => state.socketData);
+
   return (
     <div>
       <Navbar path={path} url={url} isExact={isExact} />
