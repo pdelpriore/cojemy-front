@@ -87,25 +87,29 @@ const MakeNavMenu = ({ type }) => {
   useEffect(() => {
     (async () => {
       if (userLoggedOut) {
-        if (socket.connected) await disconnectIOSocket(socket, userData._id);
-        dispatch(clearLoginState());
-        dispatch(loginUser(false));
-        dispatch(recipeDetailsClearState());
-        dispatch(myRecipePreviewClearState());
-        dispatch(categorySelectedClearState());
-        dispatch(myRecipesClearState());
-        dispatch(recipeBookClearState());
-        dispatch(toEditRateCommentClearState());
-        dispatch(toEditMyRecipeClearState());
-        dispatch(changeRecipeListItem(true));
-        dispatch(getAddressClearState());
-        dispatch(selectEventAddressClearState());
-        dispatch(getLocationDetailsClearState());
-        dispatch(getEventsClearState());
-        dispatch(eventPreviewClearState());
-        dispatch(toEditEventClearState());
-        dispatch(searchEventFilled(false));
-        if (socket.disconnected) dispatch(ioConnectClearState());
+        if (socket.connected) {
+          await disconnectIOSocket(socket, userData._id);
+        }
+        if (socket.disconnected) {
+          dispatch(clearLoginState());
+          dispatch(loginUser(false));
+          dispatch(recipeDetailsClearState());
+          dispatch(myRecipePreviewClearState());
+          dispatch(categorySelectedClearState());
+          dispatch(myRecipesClearState());
+          dispatch(recipeBookClearState());
+          dispatch(toEditRateCommentClearState());
+          dispatch(toEditMyRecipeClearState());
+          dispatch(changeRecipeListItem(true));
+          dispatch(getAddressClearState());
+          dispatch(selectEventAddressClearState());
+          dispatch(getLocationDetailsClearState());
+          dispatch(getEventsClearState());
+          dispatch(eventPreviewClearState());
+          dispatch(toEditEventClearState());
+          dispatch(searchEventFilled(false));
+          dispatch(ioConnectClearState());
+        }
       }
       if (userData.email === undefined) dispatch(clearLogoutState());
     })();
