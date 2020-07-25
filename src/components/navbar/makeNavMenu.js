@@ -85,34 +85,27 @@ const MakeNavMenu = ({ type }) => {
   const { socket } = useSelector((state) => state.socketData);
 
   useEffect(() => {
-    (async () => {
-      if (userLoggedOut) {
-        if (socket.connected) {
-          await disconnectIOSocket(socket, userData._id);
-        }
-        if (socket.disconnected) {
-          dispatch(clearLoginState());
-          dispatch(loginUser(false));
-          dispatch(recipeDetailsClearState());
-          dispatch(myRecipePreviewClearState());
-          dispatch(categorySelectedClearState());
-          dispatch(myRecipesClearState());
-          dispatch(recipeBookClearState());
-          dispatch(toEditRateCommentClearState());
-          dispatch(toEditMyRecipeClearState());
-          dispatch(changeRecipeListItem(true));
-          dispatch(getAddressClearState());
-          dispatch(selectEventAddressClearState());
-          dispatch(getLocationDetailsClearState());
-          dispatch(getEventsClearState());
-          dispatch(eventPreviewClearState());
-          dispatch(toEditEventClearState());
-          dispatch(searchEventFilled(false));
-          dispatch(ioConnectClearState());
-        }
-      }
-      if (userData.email === undefined) dispatch(clearLogoutState());
-    })();
+    if (socket.disconnected && userLoggedOut) {
+      dispatch(clearLoginState());
+      dispatch(loginUser(false));
+      dispatch(recipeDetailsClearState());
+      dispatch(myRecipePreviewClearState());
+      dispatch(categorySelectedClearState());
+      dispatch(myRecipesClearState());
+      dispatch(recipeBookClearState());
+      dispatch(toEditRateCommentClearState());
+      dispatch(toEditMyRecipeClearState());
+      dispatch(changeRecipeListItem(true));
+      dispatch(getAddressClearState());
+      dispatch(selectEventAddressClearState());
+      dispatch(getLocationDetailsClearState());
+      dispatch(getEventsClearState());
+      dispatch(eventPreviewClearState());
+      dispatch(toEditEventClearState());
+      dispatch(searchEventFilled(false));
+      dispatch(ioConnectClearState());
+    }
+    if (userData.email === undefined) dispatch(clearLogoutState());
   }, [userData, userLoggedOut, socket, dispatch]);
 
   return type === strings.navbar.navType.LOGO
@@ -184,9 +177,11 @@ const MakeNavMenu = ({ type }) => {
           !loading ? (
             <Nav.Item as="li" key={index}>
               <NavLink
-                onClick={(e) => {
+                onClick={async (e) => {
                   e.preventDefault();
                   if (userData.email !== undefined) {
+                    if (socket.connected)
+                      await disconnectIOSocket(socket, userData._id);
                     dispatch(logoutUser(userData._id, userData.email));
                   }
                 }}
