@@ -8,7 +8,6 @@
 }
 .myevents-form-text-family-message {
   font-family: "OpenSans-Regular";
-  background-color: #22d1ee;
   color: #0e153a;
   font-size: 1vw;
 }
@@ -25,7 +24,6 @@
   justify-content: center;
   align-items: center;
   width: 2vw;
-  background-color: #22d1ee;
   border: 1px solid #22d1ee;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -36,7 +34,6 @@
 }
 .myevents-datepicker {
   width: 10.5vw;
-  background-color: #22d1ee;
   border: 1px solid #22d1ee;
   height: 35px;
   font-family: "OpenSans-Regular";
@@ -44,10 +41,9 @@
 }
 .myevents-datepicker-icon-box {
   display: flex;
-  width: 12.5vw;
+  width: 12vw;
   flex-direction: row;
   align-items: center;
-  background-color: #22d1ee;
   border: 1px solid #22d1ee;
   border-radius: 5px;
 }
@@ -67,8 +63,6 @@
 .myevents-icon-address-box {
   display: flex;
   flex-direction: row;
-  background-color: #22d1ee;
-  border: 1px solid #22d1ee;
   border-radius: 5px;
 }
 .myevents-form-loading-items {

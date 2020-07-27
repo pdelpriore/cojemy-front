@@ -64,7 +64,6 @@ const MyRecipesForm = () => {
                 fileContainerStyle={{
                   height: 75,
                   fontFamily: "OpenSans-Regular",
-                  backgroundColor: "#f3cf7a",
                   border: "1px solid #CED4DA",
                 }}
                 withIcon={false}

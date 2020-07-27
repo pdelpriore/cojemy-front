@@ -89,7 +89,6 @@ const MyEventsForm = () => {
                 fileContainerStyle={{
                   height: 75,
                   fontFamily: "OpenSans-Regular",
-                  backgroundColor: "#22d1ee",
                   border: "1px solid #CED4DA",
                 }}
                 withIcon={false}

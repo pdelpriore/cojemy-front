@@ -59,7 +59,6 @@ const MyProfileForm = () => {
               fileContainerStyle={{
                 height: 70,
                 fontFamily: "OpenSans-Regular",
-                backgroundColor: "#f3cf7a",
                 border: "1px solid #CED4DA",
                 position: "relative",
               }}
