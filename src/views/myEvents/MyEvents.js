@@ -81,71 +81,72 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
-            <Row>
-              {eventButtonId === 1 ? (
-                <>
-                  <Col xs={3} />
-                  <Col xs={3}>
-                    <Button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        dispatch(showNewEventForm(true));
-                      }}
-                      variant="outline-dark"
-                    >
-                      <div className="myevents-button-new-event">
-                        {capitalize(strings.myEvents.BUTTON_NEW_EVENT)}
-                      </div>
-                    </Button>
-                  </Col>
-                  <Col xs={1} />
-                </>
-              ) : eventButtonId === 0 ? (
-                <>
-                  <Col xs={1} />
-                  <Col xs={5}>
-                    <SearchEventsForm />
-                  </Col>
-                  <Col xs={1} />
-                </>
-              ) : (
-                <Col xs={7} />
-              )}
-              <Col xs={4}>
-                <MakeEventButtons />
-              </Col>
-              <Col xs={1} />
-            </Row>
-            <Row className="mb-5" />
-            {eventButtonId === 0 && !searchEventFilled && (
+            <div className="myevents-top-box">
               <Row>
+                {eventButtonId === 1 ? (
+                  <>
+                    <Col xs={3} />
+                    <Col xs={3}>
+                      <Button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(showNewEventForm(true));
+                        }}
+                        variant="outline-dark"
+                      >
+                        <div className="myevents-button-new-event">
+                          {capitalize(strings.myEvents.BUTTON_NEW_EVENT)}
+                        </div>
+                      </Button>
+                    </Col>
+                    <Col xs={1} />
+                  </>
+                ) : eventButtonId === 0 ? (
+                  <>
+                    <Col xs={1} />
+                    <Col xs={5}>
+                      <SearchEventsForm />
+                    </Col>
+                    <Col xs={1} />
+                  </>
+                ) : (
+                  <Col xs={7} />
+                )}
+                <Col xs={4}>
+                  <MakeEventButtons />
+                </Col>
                 <Col xs={1} />
-                <Col xs={1}>
-                  <FontAwesomeIcon
-                    className={
-                      skip === 1
-                        ? "recipebook-arrows-inactive"
-                        : "recipebook-left-arrow"
-                    }
-                    onClick={skip === 1 ? null : handlePrev}
-                    icon={faChevronCircleLeft}
-                  />
-                </Col>
-                <Col xs={2} />
-                <Col xs={1}>
-                  <FontAwesomeIcon
-                    className={
-                      eventsError
-                        ? "recipebook-arrows-inactive"
-                        : "recipebook-right-arrow"
-                    }
-                    onClick={eventsError ? null : handleNext}
-                    icon={faChevronCircleRight}
-                  />
-                </Col>
-                <Col xs={7} />
               </Row>
-            )}
+              {eventButtonId === 0 && !searchEventFilled && (
+                <Row>
+                  <Col xs={1} />
+                  <Col xs={1}>
+                    <FontAwesomeIcon
+                      className={
+                        skip === 1
+                          ? "recipebook-arrows-inactive"
+                          : "recipebook-left-arrow"
+                      }
+                      onClick={skip === 1 ? null : handlePrev}
+                      icon={faChevronCircleLeft}
+                    />
+                  </Col>
+                  <Col xs={2} />
+                  <Col xs={1}>
+                    <FontAwesomeIcon
+                      className={
+                        eventsError
+                          ? "recipebook-arrows-inactive"
+                          : "recipebook-right-arrow"
+                      }
+                      onClick={eventsError ? null : handleNext}
+                      icon={faChevronCircleRight}
+                    />
+                  </Col>
+                  <Col xs={7} />
+                </Row>
+              )}
+            </div>
             <Row className="mb-5" />
             <Row className="mb-3" />
             <Row>
