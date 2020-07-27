@@ -13,7 +13,7 @@ const Mails = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0 },
   });
 
-  const { loading, messages, error } = useMails();
+  const { loading, messages, conversations, error } = useMails();
   return (
     <animated.div className="mails-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
