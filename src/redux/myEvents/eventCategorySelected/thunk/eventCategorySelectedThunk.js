@@ -8,3 +8,9 @@ export const eventCategorySelected = (buttonId) => {
     });
   };
 };
+
+export const eventCategorySelectedClearState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: eventCategorySelectedCases.CLEAR_STATE });
+  };
+};

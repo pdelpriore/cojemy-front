@@ -8,6 +8,8 @@ const eventCategorySelectedReducer = (state = initialState, action) => {
   switch (action.type) {
     case eventCategorySelectedCases.BUTTON_ID_RETRIEVED:
       return { ...state, eventButtonId: action.payload };
+    case eventCategorySelectedCases.CLEAR_STATE:
+      return (state = initialState);
     default:
       return state;
   }
