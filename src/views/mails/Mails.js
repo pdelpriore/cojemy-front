@@ -3,17 +3,17 @@ import Navbar from "../../components/navbar/Navbar";
 import { Row, Col, Button, ListGroup, Image } from "react-bootstrap";
 import ScrollArea from "react-scrollbar";
 import { useSpring, animated } from "react-spring";
-import { useSelector } from "react-redux";
+import useMails from "../../hooks/screen/mails/useMails";
 import "./mails.css";
 
 const Mails = ({ match: { path, url, isExact } }) => {
-  const { socket } = useSelector((state) => state.socketData);
-
   const props = useSpring({
     opacity: 1,
     config: { duration: 200 },
     from: { opacity: 0 },
   });
+
+  const { loading, messages, error } = useMails();
   return (
     <animated.div className="mails-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />
