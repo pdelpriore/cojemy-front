@@ -1,0 +1,17 @@
+.mails-area {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.mails-first-section {
+  width: 50vw;
+  height: 100vh;
+  background-color: #e2f3f5;
+}
+.mails-second-section {
+  width: 50vw;
+  height: 100vh;
+  background-color: #e2f3f5;
+}
