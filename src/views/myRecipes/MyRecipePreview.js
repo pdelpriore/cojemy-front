@@ -10,6 +10,9 @@ import Img from "react-image";
 import useMyRecipePreview from "../../hooks/screen/myRecipes/useMyRecipePreview";
 import { myRecipePreviewClearState } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import { useSelector, useDispatch } from "react-redux";
+import RatingStars from "../../shared/RatingStars";
+import RatingActiveStars from "../../shared/RatingActiveStars";
+import { getAverageRating } from "../../shared/getAverageRating";
 import { useSpring, animated } from "react-spring";
 import ReactPlayer from "react-player";
 import { capitalize } from "../../util/Util";
@@ -55,7 +58,17 @@ const MyRecipePreview = () => {
             loader={<Spinner animation="border" variant="dark" />}
           />
         </Col>
-        <Col xs={2} />
+        <Col xs={2}>
+          <div className="recipeDetails-rate-outter">
+            <RatingStars />
+            <div
+              style={{ width: getAverageRating(myRecipePreviewData.comments) }}
+              className="recipeDetails-rate-inner"
+            >
+              <RatingActiveStars place={strings.rating.DETAILS} />
+            </div>
+          </div>
+        </Col>
         <Col xs={1}>
           <div
             onClick={(e) => {
