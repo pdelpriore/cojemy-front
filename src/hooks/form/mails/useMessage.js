@@ -12,6 +12,7 @@ const useMessage = () => {
   const [error, setError] = useState({});
 
   const { socket } = useSelector((state) => state.socketData);
+  const { userData } = useSelector((state) => state.login);
 
   const handleInputChange = (e) => {
     e.persist();
@@ -27,7 +28,15 @@ const useMessage = () => {
     setInputs({});
   };
 
-  console.log(inputs);
+  useEffect(() => {
+    if (socket.connected && inputs.to) {
+      socket.emit("searchRecipient", {
+        sender: userData._id,
+        searchedUser: inputs.to,
+      });
+      socket.on("searchRecipientResult", (data) => console.log(data));
+    }
+  }, [socket, inputs.to]);
 
   return {
     inputs,
