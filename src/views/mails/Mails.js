@@ -47,8 +47,8 @@ const Mails = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         {!newMessageFormShown && (
           <Row>
-            <Col xs={3} />
-            <Col xs={3}>
+            <Col xs={5} />
+            <Col xs={2}>
               <Button
                 onClick={(e) => {
                   e.preventDefault();
@@ -61,7 +61,7 @@ const Mails = ({ match: { path, url, isExact } }) => {
                 </div>
               </Button>
             </Col>
-            <Col xs={1} />
+            <Col xs={5} />
           </Row>
         )}
         {newMessageFormShown && (
