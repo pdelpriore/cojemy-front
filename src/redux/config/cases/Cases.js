@@ -217,3 +217,7 @@ export const ioConnectCases = Object.freeze({
   iO_CONNECTED: "ioConnectIoConnected",
   CLEAR_STATE: "ioConnectCLearState",
 });
+
+export const showNewMessageFormCases = Object.freeze({
+  FORM_SHOWN: "showNewMessageFormFormShown",
+});

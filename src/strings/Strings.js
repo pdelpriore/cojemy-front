@@ -250,6 +250,11 @@ export const strings = Object.freeze({
       CITY: "city",
     },
   },
+  mails: {
+    BUTTON_NEW_MESSAGE: "nouveau message",
+    TO_PLACEHOLDER: "à",
+    CONTENT_PLACEHOLDER: "contenu du message",
+  },
   error: {
     FETCH_ERROR: "problème de réseau",
   },
