@@ -31,6 +31,7 @@ const useMessage = () => {
   useEffect(() => {
     if (socket.connected && inputs.to) {
       socket.emit("searchRecipient", {
+        sender: userData._id,
         searchedUser: inputs.to,
       });
       socket.on("searchRecipientResult", (data) => console.log(data));
