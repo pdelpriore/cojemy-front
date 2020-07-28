@@ -6,7 +6,6 @@ import { useSpring, animated } from "react-spring";
 import { useDispatch, useSelector } from "react-redux";
 import { showNewMessageForm } from "../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
 import MessageForm from "../../forms/mails/MessageForm";
-import useMails from "../../hooks/screen/mails/useMails";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./mails.css";
@@ -23,7 +22,6 @@ const Mails = ({ match: { path, url, isExact } }) => {
     (state) => state.isNewMessageFormShown
   );
 
-  const { loading, messages, conversations, error } = useMails();
   return (
     <animated.div className="mails-area" style={props}>
       <Navbar path={path} url={url} isExact={isExact} />

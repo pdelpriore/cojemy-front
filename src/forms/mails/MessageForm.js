@@ -1,23 +1,22 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { showNewMessageForm } from "../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
 import { Form, Row, Col, Button, Spinner, ListGroup } from "react-bootstrap";
 import ScrollArea from "react-scrollbar";
+import useMessage from "../../hooks/form/mails/useMessage";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./messageForm.css";
 
 const MessageForm = () => {
-  const dispatch = useDispatch();
+  const { inputs, handleInputChange, handleCancel } = useMessage();
   return (
-    <Form onSubmit={null}>
+    <Form>
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicTo">
             <Form.Control
               className="myprofile-text-family-username"
-              onChange={null}
-              value={null}
+              onChange={handleInputChange}
+              value={inputs.to || ""}
               size="lg"
               name="to"
               type="text"
@@ -44,8 +43,8 @@ const MessageForm = () => {
           <Form.Group controlId="formBasicContent">
             <Form.Control
               className="myprofile-text-family-username"
-              onChange={null}
-              value={null}
+              onChange={handleInputChange}
+              value={inputs.content || ""}
               size="lg"
               name="content"
               type="text"
@@ -82,10 +81,7 @@ const MessageForm = () => {
               )}
             </Button>
             <Button
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(showNewMessageForm(false));
-              }}
+              onClick={handleCancel}
               className="myprofile-form-button-cancel"
               variant="outline-secondary"
             >
