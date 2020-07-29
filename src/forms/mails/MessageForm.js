@@ -1,13 +1,13 @@
 import React from "react";
 import { Form, Row, Col, Button, Spinner, ListGroup } from "react-bootstrap";
 import ScrollArea from "react-scrollbar";
-import useMessage from "../../hooks/form/mails/useMessage";
+import useMessageForm from "../../hooks/form/mails/useMessageForm";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./messageForm.css";
 
 const MessageForm = () => {
-  const { inputs, handleInputChange, handleCancel } = useMessage();
+  const { inputs, handleInputChange, handleCancel } = useMessageForm();
   return (
     <Form>
       <Row>

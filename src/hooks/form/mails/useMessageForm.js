@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { showNewMessageForm } from "../../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
 
-const useMessage = () => {
+const useMessageForm = () => {
   const dispatch = useDispatch();
 
   const [inputs, setInputs] = useState({});
@@ -83,4 +83,4 @@ const useMessage = () => {
   };
 };
 
-export default useMessage;
+export default useMessageForm;
