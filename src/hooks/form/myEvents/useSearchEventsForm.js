@@ -50,7 +50,7 @@ const useSearchEventsForm = () => {
       dispatch(searchEventFilled(false));
     }
     return () => dispatch(searchEventFilled(false));
-  }, [inputs.eventDate, inputs.city, dispatch]);
+  }, [inputs.eventDate, userData._id, userData.email, inputs.city, dispatch]);
 
   return {
     inputs,

@@ -55,6 +55,7 @@ const useSearchRecipe = () => {
   }, [
     searchInputFilled,
     rateCommentChanged,
+    userData._id,
     userData.email,
     inputs.recipe,
     dispatch,
