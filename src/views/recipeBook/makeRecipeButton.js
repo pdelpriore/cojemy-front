@@ -31,7 +31,7 @@ const MakeRecipeButton = () => {
         recipeButtonItemsArray[recipeButtonId].id,
         recipeButtonItemsArray[recipeButtonId].category
       );
-  }, [detailsDataRetrieved, searchInputFilled]);
+  }, [detailsDataRetrieved, recipeButtonId, searchInputFilled]);
 
   useEffect(() => {
     if (searchInputFilled) {
@@ -45,7 +45,7 @@ const MakeRecipeButton = () => {
     return () => {
       dispatch(changeRateComment(false));
     };
-  }, [searchInputFilled, rateCommentChanged, dispatch]);
+  }, [searchInputFilled, recipeButtonId, rateCommentChanged, dispatch]);
 
   return recipeButtonItemsArray.map((buttonItem) => (
     <div key={buttonItem.id}>

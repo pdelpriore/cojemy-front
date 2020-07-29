@@ -18,9 +18,12 @@ const useMyProfilePreview = () => {
         ...inputUserPhoto,
         userPhoto: strings.path.IMAGE_REQUEST + userData.photo,
       }));
+  }, [userData.photo]);
+
+  useEffect(() => {
     if (userData.photo === null && inputUserPhoto && inputUserPhoto.userPhoto)
       setInputUserPhoto({});
-  }, [userData.photo]);
+  }, [userData.photo, inputUserPhoto]);
 
   return { inputUserPhoto, userData };
 };

@@ -107,8 +107,11 @@ const MakeNavMenu = ({ type }) => {
       dispatch(searchEventFilled(false));
       dispatch(ioConnectClearState());
     }
+  }, [userLoggedOut, socket, dispatch]);
+
+  useEffect(() => {
     if (userData.email === undefined) dispatch(clearLogoutState());
-  }, [userData, userLoggedOut, socket, dispatch]);
+  }, [userData.email, dispatch]);
 
   return type === strings.navbar.navType.LOGO
     ? navHomeItems.map(

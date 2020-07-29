@@ -131,8 +131,11 @@ const useMyProfileForm = () => {
     setInputs({});
     setShowOverlay(true);
     setShowEdit(true);
+  }, [profileUpdated]);
+
+  useEffect(() => {
     if (inputs.name === undefined) dispatch(updateMyProfile(false));
-  }, [profileUpdated, dispatch]);
+  }, [inputs.name, dispatch]);
 
   return {
     inputs,

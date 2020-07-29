@@ -25,13 +25,13 @@ const App = () => {
 
   const userDataMemoized = useMemo(() => {
     return { ...userData };
-  }, [userLogged]);
+  }, [userData]);
 
   useEffect(() => {
     if (userLogged) {
       dispatch(ioConnect(userDataMemoized._id, userDataMemoized.email));
     }
-  }, [userDataMemoized._id, userLogged, dispatch]);
+  }, [userDataMemoized._id, userDataMemoized.email, userLogged, dispatch]);
 
   return (
     <>

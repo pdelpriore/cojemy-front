@@ -25,7 +25,7 @@ const MakeEventButtons = () => {
         eventButtonItemsArray[eventButtonId].category
       );
     return () => dispatch(showNewEventForm(false));
-  }, [eventUpdated, searchEventFilled, dispatch]);
+  }, [eventUpdated, searchEventFilled, eventButtonId, dispatch]);
 
   return eventButtonItemsArray.map((buttonItem) => (
     <div key={buttonItem.id}>
