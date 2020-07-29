@@ -18,7 +18,7 @@ const Suggestions = () => {
     return () => dispatch(chooseEventAddress(false));
   }, [dispatch]);
 
-  return addressesRetrieved.length > 0 ? (
+  return addressesRetrieved && addressesRetrieved.length > 0 ? (
     addressesRetrieved.map((suggestion, index) => (
       <div key={index} className="suggestions-box">
         <ListGroup variant="flush">
