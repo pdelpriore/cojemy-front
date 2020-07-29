@@ -42,30 +42,35 @@ const useMessage = () => {
           setRecipients(data);
         }
       });
+    }
+  }, [socket, userData._id, inputs.to]);
+
+  useEffect(() => {
+    if (socket.connected && recipients.length > 0) {
       socket.on("userActive", (userId) => {
-        console.log("active");
-        if (userId && recipients.length > 0) {
-          recipients.forEach((recipient) => {
-            if (recipient._id === userId) {
-              recipient.isConnected = true;
-            }
-          });
+        if (userId) {
+          setRecipients(
+            recipients.map((recipient) =>
+              recipient._id.toString() === userId
+                ? { ...recipient, isConnected: true }
+                : recipient
+            )
+          );
         }
       });
       socket.on("userInactive", (userId) => {
-        console.log("inactive");
-        if (userId && recipients.length > 0) {
-          recipients.forEach((recipient) => {
-            if (recipient._id === userId) {
-              recipient.isConnected = false;
-            }
-          });
+        if (userId) {
+          setRecipients(
+            recipients.map((recipient) =>
+              recipient._id.toString() === userId
+                ? { ...recipient, isConnected: false }
+                : recipient
+            )
+          );
         }
       });
     }
-  }, [socket, inputs.to]);
-
-  console.log(recipients);
+  }, [socket, recipients]);
 
   return {
     inputs,
