@@ -38,10 +38,31 @@ const useMessageForm = () => {
       });
       socket.on("searchRecipientResult", (data) => {
         if (data) {
+          if (error.searchRecipientError) {
+            setError((error) =>
+              (({ searchRecipientError, ...others }) => ({
+                ...others,
+              }))(error)
+            );
+          }
           setLoading(false);
           setRecipients(data);
         }
       });
+      socket.on("searchRecipientError", (err) =>
+        setError((error) => ({
+          ...error,
+          searchRecipientError: err,
+        }))
+      );
+    } else if (socket.connected && !inputs.to) {
+      if (error.searchRecipientError) {
+        setError((error) =>
+          (({ searchRecipientError, ...others }) => ({
+            ...others,
+          }))(error)
+        );
+      }
     }
   }, [socket, userData._id, inputs.to]);
 
@@ -71,6 +92,8 @@ const useMessageForm = () => {
       });
     }
   }, [socket, recipients]);
+
+  console.log(error);
 
   return {
     inputs,
