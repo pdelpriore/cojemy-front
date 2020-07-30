@@ -44,7 +44,7 @@ const Mails = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-5" />
         <Row className="mb-5" />
-        <Row className="mb-5" />
+        <Row className="mb-3" />
         {!newMessageFormShown && (
           <Row>
             <Col xs={5} />

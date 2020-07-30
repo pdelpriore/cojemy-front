@@ -45,6 +45,8 @@ const MessageForm = () => {
               className="myprofile-text-family-username"
               onChange={handleInputChange}
               value={inputs.content || ""}
+              as="textarea"
+              rows="3"
               size="lg"
               name="content"
               type="text"
