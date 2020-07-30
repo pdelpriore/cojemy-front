@@ -11,6 +11,7 @@ const Recipient = ({ recipient }) => {
         <Image
           className="recipient-photo"
           src={
+            recipient.photo &&
             userGooglePhoto.some(
               (element) => recipient.photo && recipient.photo.includes(element)
             )
