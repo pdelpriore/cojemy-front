@@ -13,6 +13,7 @@ const MessageForm = () => {
     recipients,
     handleInputChange,
     handleCancel,
+    loading,
     showRecipientSuggestions,
   } = useMessageForm();
   return (
@@ -20,15 +21,20 @@ const MessageForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicTo">
-            <Form.Control
-              className="myprofile-text-family-username"
-              onChange={handleInputChange}
-              value={inputs.to || ""}
-              size="lg"
-              name="to"
-              type="text"
-              placeholder={strings.mails.TO_PLACEHOLDER}
-            />
+            <div className="myevents-icon-address-box">
+              <Form.Control
+                className="myprofile-text-family-username"
+                onChange={handleInputChange}
+                value={inputs.to || ""}
+                size="lg"
+                name="to"
+                type="text"
+                placeholder={strings.mails.TO_PLACEHOLDER}
+              />
+              <div className="myevents-input-spinner">
+                {loading && <Spinner animation="border" size="sm" />}
+              </div>
+            </div>
             {showRecipientSuggestions && (
               <RecipientSuggestions recipients={recipients} />
             )}
