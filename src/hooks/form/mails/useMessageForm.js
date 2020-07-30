@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { showNewMessageForm } from "../../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
+import { strings } from "../../../strings/Strings";
 
 const useMessageForm = () => {
   const dispatch = useDispatch();
@@ -38,31 +39,30 @@ const useMessageForm = () => {
       });
       socket.on("searchRecipientResult", (data) => {
         if (data) {
-          if (error.searchRecipientError) {
-            setError((error) =>
-              (({ searchRecipientError, ...others }) => ({
-                ...others,
-              }))(error)
-            );
+          if (error.searchRecipientError || error.connectionError) {
+            setError({});
           }
           setLoading(false);
           setRecipients(data);
         }
       });
-      socket.on("searchRecipientError", (err) =>
-        setError((error) => ({
-          ...error,
-          searchRecipientError: err,
-        }))
-      );
+      socket.on("searchRecipientError", (err) => {
+        if (err) {
+          setError((error) => ({
+            ...error,
+            searchRecipientError: err,
+          }));
+        }
+      });
     } else if (socket.connected && !inputs.to) {
-      if (error.searchRecipientError) {
-        setError((error) =>
-          (({ searchRecipientError, ...others }) => ({
-            ...others,
-          }))(error)
-        );
+      if (error.searchRecipientError || error.connectionError) {
+        setError({});
       }
+    } else if (socket.disconnected) {
+      setError((error) => ({
+        ...error,
+        connectionError: strings.mails.error.CONNECTION_ERROR,
+      }));
     }
   }, [socket, userData._id, inputs.to]);
 
@@ -90,10 +90,13 @@ const useMessageForm = () => {
           );
         }
       });
+    } else if (socket.disconnected) {
+      setError((error) => ({
+        ...error,
+        connectionError: strings.mails.error.CONNECTION_ERROR,
+      }));
     }
   }, [socket, recipients]);
-
-  console.log(error);
 
   return {
     inputs,

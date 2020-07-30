@@ -254,6 +254,9 @@ export const strings = Object.freeze({
     BUTTON_NEW_MESSAGE: "nouveau message",
     TO_PLACEHOLDER: "à",
     CONTENT_PLACEHOLDER: "contenu du message",
+    error: {
+      CONNECTION_ERROR: "problème de réseau",
+    },
   },
   error: {
     FETCH_ERROR: "problème de réseau",
