@@ -14,6 +14,7 @@ const MessageForm = () => {
     handleInputChange,
     handleCancel,
     loading,
+    error,
     showRecipientSuggestions,
   } = useMessageForm();
   return (
@@ -29,6 +30,7 @@ const MessageForm = () => {
                 size="lg"
                 name="to"
                 type="text"
+                autoComplete="off"
                 placeholder={strings.mails.TO_PLACEHOLDER}
               />
               <div className="myevents-input-spinner">
@@ -37,6 +39,11 @@ const MessageForm = () => {
             </div>
             {showRecipientSuggestions && (
               <RecipientSuggestions recipients={recipients} />
+            )}
+            {error.searchRecipientError && (
+              <div className="myevents-form-image-error">
+                {error.searchRecipientError}
+              </div>
             )}
           </Form.Group>
         </Col>

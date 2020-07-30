@@ -56,6 +56,8 @@ const useMessageForm = () => {
             ...error,
             searchRecipientError: err,
           }));
+          setLoading(false);
+          setShowRecipientSuggestions(false);
         }
       });
     } else if (socket.connected && !inputs.to) {
@@ -68,6 +70,8 @@ const useMessageForm = () => {
         ...error,
         connectionError: strings.mails.error.CONNECTION_ERROR,
       }));
+      setLoading(false);
+      setShowRecipientSuggestions(false);
     }
   }, [socket, userData._id, inputs.to]);
 
@@ -100,10 +104,10 @@ const useMessageForm = () => {
         ...error,
         connectionError: strings.mails.error.CONNECTION_ERROR,
       }));
+      setLoading(false);
+      setShowRecipientSuggestions(false);
     }
   }, [socket, recipients]);
-
-  console.log(recipients);
 
   return {
     inputs,

@@ -7,7 +7,7 @@ const RecipientSuggestions = ({ recipients }) => {
     recipients &&
     recipients.length > 0 &&
     recipients.map((recipient, index) => (
-      <div key={index} className="suggestions-box">
+      <div key={index} className="recipient-suggestions-box">
         <ListGroup variant="flush">
           <ListGroup.Item
             onClick={(e) => {
