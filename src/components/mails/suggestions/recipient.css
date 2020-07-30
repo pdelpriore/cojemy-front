@@ -1,0 +1,29 @@
+.recipient-box {
+  display: flex;
+  flex-direction: row;
+}
+.recipient-inactive {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ababab;
+  border: 1px solid gray;
+}
+.recipient-active {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #469a1f;
+  border: 1px solid green;
+}
+.recipient-photo {
+  width: 25px;
+  height: 25px;
+}
+.recipient-name {
+  margin-left: 3%;
+}
+.recipient-photo-box {
+  display: flex;
+  flex-direction: row;
+}

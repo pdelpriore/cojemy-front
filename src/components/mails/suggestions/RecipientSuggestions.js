@@ -1,5 +1,6 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
+import Recipient from "./Recipient";
 
 const RecipientSuggestions = ({ recipients }) => {
   return (
@@ -14,7 +15,7 @@ const RecipientSuggestions = ({ recipients }) => {
             }}
             className="suggestion-item"
           >
-            {recipient.name}
+            <Recipient recipient={recipient} />
           </ListGroup.Item>
         </ListGroup>
       </div>

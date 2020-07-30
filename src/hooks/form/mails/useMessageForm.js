@@ -103,6 +103,8 @@ const useMessageForm = () => {
     }
   }, [socket, recipients]);
 
+  console.log(recipients);
+
   return {
     inputs,
     recipients,
