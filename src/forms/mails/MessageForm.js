@@ -2,12 +2,19 @@ import React from "react";
 import { Form, Row, Col, Button, Spinner, ListGroup } from "react-bootstrap";
 import ScrollArea from "react-scrollbar";
 import useMessageForm from "../../hooks/form/mails/useMessageForm";
+import RecipientSuggestions from "../../components/mails/suggestions/RecipientSuggestions";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./messageForm.css";
 
 const MessageForm = () => {
-  const { inputs, handleInputChange, handleCancel } = useMessageForm();
+  const {
+    inputs,
+    recipients,
+    handleInputChange,
+    handleCancel,
+    showRecipientSuggestions,
+  } = useMessageForm();
   return (
     <Form>
       <Row>
@@ -22,6 +29,9 @@ const MessageForm = () => {
               type="text"
               placeholder={strings.mails.TO_PLACEHOLDER}
             />
+            {showRecipientSuggestions && (
+              <RecipientSuggestions recipients={recipients} />
+            )}
           </Form.Group>
         </Col>
       </Row>

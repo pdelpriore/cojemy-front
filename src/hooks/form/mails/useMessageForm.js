@@ -8,6 +8,9 @@ const useMessageForm = () => {
 
   const [inputs, setInputs] = useState({});
   const [loading, setLoading] = useState(false);
+  const [showRecipientSuggestions, setShowRecipientSuggestions] = useState(
+    false
+  );
   const [messages, setMessages] = useState([]);
   const [conversations, setConversations] = useState([]);
   const [recipients, setRecipients] = useState([]);
@@ -33,6 +36,7 @@ const useMessageForm = () => {
   useEffect(() => {
     if (socket.connected && inputs.to) {
       setLoading(true);
+      setShowRecipientSuggestions(true);
       socket.emit("searchRecipient", {
         sender: userData._id,
         searchedUser: inputs.to,
@@ -55,6 +59,7 @@ const useMessageForm = () => {
         }
       });
     } else if (socket.connected && !inputs.to) {
+      setShowRecipientSuggestions(false);
       if (error.searchRecipientError || error.connectionError) {
         setError({});
       }
@@ -100,12 +105,14 @@ const useMessageForm = () => {
 
   return {
     inputs,
+    recipients,
     loading,
     messages,
     conversations,
     error,
     handleInputChange,
     handleCancel,
+    showRecipientSuggestions,
   };
 };
 
