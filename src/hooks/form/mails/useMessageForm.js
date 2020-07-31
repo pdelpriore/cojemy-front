@@ -43,15 +43,6 @@ const useMessageForm = () => {
     dispatch(chooseRecipientClearState());
   };
 
-  const handleOnBlur = () => {
-    setShowRecipientSuggestions(false);
-    setInputs((inputs) =>
-      (({ to, ...others }) => ({
-        ...others,
-      }))(inputs)
-    );
-  };
-
   useEffect(() => {
     if (socket.connected && inputs.to) {
       setLoading(true);
@@ -180,7 +171,6 @@ const useMessageForm = () => {
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
-    handleOnBlur,
     showRecipientSuggestions,
   };
 };
