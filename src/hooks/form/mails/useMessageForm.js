@@ -92,7 +92,7 @@ const useMessageForm = () => {
   ]);
 
   useEffect(() => {
-    if (socket.connected && recipients.length > 0) {
+    if (socket.connected && recipients.length > 0 && !recipient.name) {
       socket.on("userActive", (userId) => {
         if (userId) {
           setRecipients(
@@ -123,10 +123,10 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-  }, [socket, recipients]);
+  }, [socket, recipients, recipient]);
 
   useEffect(() => {
-    if (socket.connected && recipient.name) {
+    if (socket.connected && recipient.name && recipients.length > 0) {
       socket.on("userActive", (userId) => {
         if (userId) {
           if (recipient._id === userId)
@@ -147,11 +147,12 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-  }, [socket, recipient, dispatch]);
+  }, [socket, recipients, recipient, dispatch]);
 
   useEffect(() => {
     if (recipient.name) {
       setShowRecipientSuggestions(false);
+      setRecipients([]);
       setInputs((inputs) =>
         (({ to, ...others }) => ({
           ...others,
