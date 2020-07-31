@@ -147,7 +147,7 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-  }, [socket, recipient._id, recipient.name, dispatch]);
+  }, [socket, recipient, dispatch]);
 
   useEffect(() => {
     if (recipient.name) {
