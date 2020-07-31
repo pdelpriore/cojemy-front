@@ -3,6 +3,8 @@ import { Form, Row, Col, Button, Spinner, ListGroup } from "react-bootstrap";
 import ScrollArea from "react-scrollbar";
 import useMessageForm from "../../hooks/form/mails/useMessageForm";
 import RecipientSuggestions from "../../components/mails/suggestions/RecipientSuggestions";
+import Recipient from "../../components/mails/suggestions/Recipient";
+import { useSelector } from "react-redux";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./messageForm.css";
@@ -17,26 +19,35 @@ const MessageForm = () => {
     error,
     showRecipientSuggestions,
   } = useMessageForm();
+
+  const { recipient } = useSelector((state) => state.isRecipientChosen);
+
   return (
     <Form>
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicTo">
-            <div className="myevents-icon-address-box">
-              <Form.Control
-                className="myprofile-text-family-username"
-                onChange={handleInputChange}
-                value={inputs.to || ""}
-                size="lg"
-                name="to"
-                type="text"
-                autoComplete="off"
-                placeholder={strings.mails.TO_PLACEHOLDER}
-              />
-              <div className="myevents-input-spinner">
-                {loading && <Spinner animation="border" size="sm" />}
+            {!recipient.name ? (
+              <div className="myevents-icon-address-box">
+                <Form.Control
+                  className="myprofile-text-family-username"
+                  onChange={handleInputChange}
+                  value={inputs.to || ""}
+                  size="lg"
+                  name="to"
+                  type="text"
+                  autoComplete="off"
+                  placeholder={strings.mails.TO_PLACEHOLDER}
+                />
+                <div className="myevents-input-spinner">
+                  {loading && <Spinner animation="border" size="sm" />}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="message-form-recipient">
+                <Recipient recipient={recipient} />
+              </div>
+            )}
             {showRecipientSuggestions && (
               <RecipientSuggestions recipients={recipients} />
             )}

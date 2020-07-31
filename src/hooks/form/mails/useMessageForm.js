@@ -73,7 +73,13 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-  }, [socket, userData._id, inputs.to]);
+  }, [
+    socket,
+    userData._id,
+    inputs.to,
+    error.searchRecipientError,
+    error.connectionError,
+  ]);
 
   useEffect(() => {
     if (socket.connected && recipients.length > 0) {

@@ -10,3 +10,15 @@
   color: #212529;
   font-size: 0.9vw;
 }
+.message-form-recipient {
+  display: flex;
+  align-items: center;
+  height: 5vh;
+  border-radius: 5px;
+  padding: 2%;
+  border: 1px solid #ced4da;
+  background-color: #ffffff;
+  font-family: "OpenSans-Regular";
+  color: #212529;
+  font-size: 1vw;
+}

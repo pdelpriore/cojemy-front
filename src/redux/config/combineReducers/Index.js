@@ -37,6 +37,7 @@ import toEditEventReducer from "../../myEvents/toEditEvent/reducer/toEditEventRe
 import searchEventFilledReducer from "../../myEvents/searchEventFilled/reducer/searchEventFilledReducer";
 import ioConnectReducer from "../../mails/socketData/reducer/ioConnectReducer";
 import showNewMessageFormReducer from "../../mails/showNewMessageForm/reducer/showNewMessageReducer";
+import chooseRecipientReducer from "../../mails/chooseRecipient/reducer/chooseRecipientReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -77,6 +78,7 @@ const allReducers = combineReducers({
   isSearchEventFormFilled: searchEventFilledReducer,
   socketData: ioConnectReducer,
   isNewMessageFormShown: showNewMessageFormReducer,
+  isRecipientChosen: chooseRecipientReducer,
 });
 
 export default allReducers;

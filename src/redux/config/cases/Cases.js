@@ -221,3 +221,8 @@ export const ioConnectCases = Object.freeze({
 export const showNewMessageFormCases = Object.freeze({
   FORM_SHOWN: "showNewMessageFormFormShown",
 });
+
+export const chooseRecipientCases = Object.freeze({
+  RECIPIENT_CHOSEN: "chooseRecipientRecipientChosen",
+  CLEAR_STATE: "chooseRecipientClearState",
+});
