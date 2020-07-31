@@ -64,6 +64,22 @@ const Mails = ({ match: { path, url, isExact } }) => {
             <Col xs={5} />
           </Row>
         )}
+        {!newMessageFormShown && (
+          <>
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row>
+              <Col xs={1} />
+              <Col xs={8}>
+                <Image
+                  className="mails-image"
+                  src={require("../../assets/imgs/cookfriendsret.jpg")}
+                />
+              </Col>
+              <Col xs={3} />
+            </Row>
+          </>
+        )}
         {newMessageFormShown && (
           <Row>
             <Col xs={2} />
