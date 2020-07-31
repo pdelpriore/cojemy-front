@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { showNewMessageForm } from "../../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
-import { chooseRecipientClearState } from "../../../redux/mails/chooseRecipient/thunk/chooseRecipientThunk";
+import {
+  chooseRecipient,
+  chooseRecipientClearState,
+} from "../../../redux/mails/chooseRecipient/thunk/chooseRecipientThunk";
 import { strings } from "../../../strings/Strings";
 
 const useMessageForm = () => {
@@ -121,6 +124,30 @@ const useMessageForm = () => {
       setShowRecipientSuggestions(false);
     }
   }, [socket, recipients]);
+
+  useEffect(() => {
+    if (socket.connected && recipient.name) {
+      socket.on("userActive", (userId) => {
+        if (userId) {
+          if (recipient._id === userId)
+            dispatch(chooseRecipient({ ...recipient, isConnected: true }));
+        }
+      });
+      socket.on("userInactive", (userId) => {
+        if (userId) {
+          if (recipient._id === userId)
+            dispatch(chooseRecipient({ ...recipient, isConnected: false }));
+        }
+      });
+    } else if (socket.disconnected) {
+      setError((error) => ({
+        ...error,
+        connectionError: strings.mails.error.CONNECTION_ERROR,
+      }));
+      setLoading(false);
+      setShowRecipientSuggestions(false);
+    }
+  }, [socket, recipient._id, recipient.name, dispatch]);
 
   useEffect(() => {
     if (recipient.name) {
