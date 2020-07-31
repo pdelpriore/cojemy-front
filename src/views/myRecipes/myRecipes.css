@@ -142,8 +142,6 @@
   flex: 1;
   font-size: 1.5vw;
   padding: 5px;
-  border: 1px solid black;
-  border-radius: 50%;
 }
 .myrecipes-button-hidden {
   position: relative;

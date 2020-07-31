@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { Row, Col, Button, ListGroup, Image } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import { useSpring, animated } from "react-spring";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,8 +56,13 @@ const Mails = ({ match: { path, url, isExact } }) => {
                   e.preventDefault();
                   dispatch(showNewMessageForm(true));
                 }}
+                className="myrecipes-button-new-recipe"
                 variant="outline-dark"
               >
+                <FontAwesomeIcon
+                  className="mails-button-icon"
+                  icon={faEnvelope}
+                />
                 <div className="myevents-button-new-event">
                   {capitalize(strings.mails.BUTTON_NEW_MESSAGE)}
                 </div>

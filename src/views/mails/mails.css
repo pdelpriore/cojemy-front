@@ -18,3 +18,8 @@
 .mails-image {
   width: 50vw;
 }
+.mails-button-icon {
+  flex: 1;
+  font-size: 1.5vw;
+  padding: 5px;
+}
