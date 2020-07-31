@@ -18,6 +18,7 @@ const MessageForm = () => {
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
+    handleOnBlur,
     loading,
     error,
     showRecipientSuggestions,
@@ -35,6 +36,7 @@ const MessageForm = () => {
                 <Form.Control
                   className="myprofile-text-family-username"
                   onChange={handleInputChange}
+                  onBlur={handleOnBlur}
                   value={inputs.to || ""}
                   size="lg"
                   name="to"
