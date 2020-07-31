@@ -127,7 +127,7 @@
 }
 .myrecipes-button-text {
   flex: 1;
-  font-size: 0.9vw;
+  font-size: 0.8vw;
   font-family: "OpenSans-Regular";
   text-align: left;
   margin-left: 10px;
@@ -140,7 +140,7 @@
 }
 .myrecipes-button-icon {
   flex: 1;
-  font-size: 1.5vw;
+  font-size: 1.7vw;
   padding: 5px;
 }
 .myrecipes-button-hidden {

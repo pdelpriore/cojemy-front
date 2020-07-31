@@ -6,7 +6,7 @@ import Navbar from "../../components/navbar/Navbar";
 import MyRecipesList from "./MyRecipesList";
 import MyRecipePreview from "./MyRecipePreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListUl } from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import { strings } from "../../strings/Strings";
 import MyRecipesForm from "../../forms/myRecipes/myRecipesForm";
 import Notification from "../../components/notifications/Notification";
@@ -78,7 +78,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
               >
                 <FontAwesomeIcon
                   className="myrecipes-button-icon"
-                  icon={faListUl}
+                  icon={faFileAlt}
                 />
                 <div className="myrecipes-button-text">
                   {capitalize(strings.myRecipes.BUTTON_NEW_RECIPE)}
