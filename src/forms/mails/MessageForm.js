@@ -1,5 +1,7 @@
 import React from "react";
 import { Form, Row, Col, Button, Spinner, ListGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
 import useMessageForm from "../../hooks/form/mails/useMessageForm";
 import RecipientSuggestions from "../../components/mails/suggestions/RecipientSuggestions";
@@ -15,6 +17,7 @@ const MessageForm = () => {
     recipients,
     handleInputChange,
     handleCancel,
+    handleRemoveRecipient,
     loading,
     error,
     showRecipientSuggestions,
@@ -46,6 +49,11 @@ const MessageForm = () => {
             ) : (
               <div className="message-form-recipient">
                 <Recipient recipient={recipient} />
+                <FontAwesomeIcon
+                  onClick={handleRemoveRecipient}
+                  className="message-form-recipient-trash"
+                  icon={faTimes}
+                />
               </div>
             )}
             {showRecipientSuggestions && (

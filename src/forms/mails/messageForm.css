@@ -22,3 +22,11 @@
   color: #212529;
   font-size: 1vw;
 }
+.message-form-recipient-trash {
+  font-size: 0.8vw;
+  margin-left: 2%;
+}
+.message-form-recipient-trash:hover {
+  color: #ee6670;
+  cursor: pointer;
+}

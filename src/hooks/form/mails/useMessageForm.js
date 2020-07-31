@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { showNewMessageForm } from "../../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
+import { chooseRecipientClearState } from "../../../redux/mails/chooseRecipient/thunk/chooseRecipientThunk";
 import { strings } from "../../../strings/Strings";
 
 const useMessageForm = () => {
@@ -18,6 +19,7 @@ const useMessageForm = () => {
 
   const { socket } = useSelector((state) => state.socketData);
   const { userData } = useSelector((state) => state.login);
+  const { recipient } = useSelector((state) => state.isRecipientChosen);
 
   const handleInputChange = (e) => {
     e.persist();
@@ -31,6 +33,11 @@ const useMessageForm = () => {
     e.preventDefault();
     dispatch(showNewMessageForm(false));
     setInputs({});
+  };
+
+  const handleRemoveRecipient = (e) => {
+    e.preventDefault();
+    dispatch(chooseRecipientClearState());
   };
 
   useEffect(() => {
@@ -115,6 +122,10 @@ const useMessageForm = () => {
     }
   }, [socket, recipients]);
 
+  useEffect(() => {
+    if (recipient.name) setShowRecipientSuggestions(false);
+  }, [recipient]);
+
   return {
     inputs,
     recipients,
@@ -124,6 +135,7 @@ const useMessageForm = () => {
     error,
     handleInputChange,
     handleCancel,
+    handleRemoveRecipient,
     showRecipientSuggestions,
   };
 };
