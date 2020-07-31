@@ -68,6 +68,8 @@ const Mails = ({ match: { path, url, isExact } }) => {
           <>
             <Row className="mb-5" />
             <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
             <Row>
               <Col xs={1} />
               <Col xs={8}>
