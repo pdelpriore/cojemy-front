@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleRight,
   faChevronCircleLeft,
+  faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSpring, animated } from "react-spring";
 import { useSelector, useDispatch } from "react-redux";
@@ -92,8 +93,13 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
                           e.preventDefault();
                           dispatch(showNewEventForm(true));
                         }}
+                        className="myrecipes-button-new-recipe"
                         variant="outline-dark"
                       >
+                        <FontAwesomeIcon
+                          className="mails-button-icon"
+                          icon={faCalendarAlt}
+                        />
                         <div className="myevents-button-new-event">
                           {capitalize(strings.myEvents.BUTTON_NEW_EVENT)}
                         </div>
