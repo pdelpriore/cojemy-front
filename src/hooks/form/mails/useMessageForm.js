@@ -123,7 +123,14 @@ const useMessageForm = () => {
   }, [socket, recipients]);
 
   useEffect(() => {
-    if (recipient.name) setShowRecipientSuggestions(false);
+    if (recipient.name) {
+      setShowRecipientSuggestions(false);
+      setInputs((inputs) =>
+        (({ to, ...others }) => ({
+          ...others,
+        }))(inputs)
+      );
+    }
   }, [recipient]);
 
   return {
