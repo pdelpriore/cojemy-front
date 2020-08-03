@@ -24,13 +24,16 @@ const MessageForm = () => {
   } = useMessageForm();
 
   const { recipient } = useSelector((state) => state.isRecipientChosen);
+  const { newMessageSelected } = useSelector(
+    (state) => state.isNewMessageSelected
+  );
 
   return (
     <Form>
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicTo">
-            {!recipient.name ? (
+            {!recipient.name && newMessageSelected ? (
               <div className="myevents-icon-address-box">
                 <Form.Control
                   className="myprofile-text-family-username"

@@ -7,6 +7,7 @@ import ScrollArea from "react-scrollbar";
 import { useSpring, animated } from "react-spring";
 import { useDispatch, useSelector } from "react-redux";
 import { showNewMessageForm } from "../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
+import { newMessage } from "../../redux/mails/newMessageSelected/thunk/newMessageSelectedThunk";
 import MessageForm from "../../forms/mails/MessageForm";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
@@ -54,6 +55,7 @@ const Mails = ({ match: { path, url, isExact } }) => {
               <Button
                 onClick={(e) => {
                   e.preventDefault();
+                  dispatch(newMessage(true));
                   dispatch(showNewMessageForm(true));
                 }}
                 className="myrecipes-button-new-recipe"

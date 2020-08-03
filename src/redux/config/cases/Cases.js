@@ -226,3 +226,7 @@ export const chooseRecipientCases = Object.freeze({
   RECIPIENT_CHOSEN: "chooseRecipientRecipientChosen",
   CLEAR_STATE: "chooseRecipientClearState",
 });
+
+export const newMessageSelectedCases = Object.freeze({
+  SELECTED: "newMessageSelectedSelected",
+});

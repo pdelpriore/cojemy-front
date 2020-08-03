@@ -5,6 +5,7 @@ import {
   chooseRecipient,
   chooseRecipientClearState,
 } from "../../../redux/mails/chooseRecipient/thunk/chooseRecipientThunk";
+import { newMessage } from "../../../redux/mails/newMessageSelected/thunk/newMessageSelectedThunk";
 import { strings } from "../../../strings/Strings";
 
 const useMessageForm = () => {
@@ -23,6 +24,9 @@ const useMessageForm = () => {
   const { socket } = useSelector((state) => state.socketData);
   const { userData } = useSelector((state) => state.login);
   const { recipient } = useSelector((state) => state.isRecipientChosen);
+  const { newMessageSelected } = useSelector(
+    (state) => state.isNewMessageSelected
+  );
 
   const handleInputChange = (e) => {
     e.persist();
@@ -36,6 +40,7 @@ const useMessageForm = () => {
     e.preventDefault();
     dispatch(showNewMessageForm(false));
     setInputs({});
+    if (newMessageSelected) dispatch(newMessage(false));
   };
 
   const handleRemoveRecipient = (e) => {
