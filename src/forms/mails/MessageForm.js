@@ -18,6 +18,7 @@ const MessageForm = () => {
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
+    handleSubmitMessage,
     loading,
     error,
     showRecipientSuggestions,
@@ -104,9 +105,16 @@ const MessageForm = () => {
         <Col xs={12}>
           <div className="myprofile-form-buttons-box">
             <Button
+              onClick={handleSubmitMessage}
               className="myprofile-button-text"
               type="submit"
               variant="outline-dark"
+              disabled={
+                loading ||
+                !recipient.name ||
+                inputs.content === undefined ||
+                inputs.content === ""
+              }
             >
               <div className="myprofile-spinner">
                 {false && (
@@ -121,10 +129,10 @@ const MessageForm = () => {
               </div>
               {false ? (
                 <div className="myprofile-button-loading">
-                  {capitalizeFirst(strings.myProfile.BUTTON_TEXT_LOADING)}
+                  {capitalizeFirst(strings.mails.BUTTON_SEND_LOADING)}
                 </div>
               ) : (
-                <div>{capitalizeFirst(strings.myProfile.BUTTON_TEXT)}</div>
+                <div>{capitalizeFirst(strings.mails.BUTTON_SEND)}</div>
               )}
             </Button>
             <Button

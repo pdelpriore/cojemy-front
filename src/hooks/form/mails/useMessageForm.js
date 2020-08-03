@@ -36,8 +36,14 @@ const useMessageForm = () => {
     }));
   };
 
+  const handleSubmitMessage = (e) => {
+    e.preventDefault();
+    console.log("submitted");
+  };
+
   const handleCancel = (e) => {
     e.preventDefault();
+    if (recipient.name) dispatch(chooseRecipientClearState());
     dispatch(showNewMessageForm(false));
     setInputs({});
     if (newMessageSelected) dispatch(newMessage(false));
@@ -176,6 +182,7 @@ const useMessageForm = () => {
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
+    handleSubmitMessage,
     showRecipientSuggestions,
   };
 };
