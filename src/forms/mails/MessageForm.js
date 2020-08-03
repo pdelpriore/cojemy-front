@@ -53,11 +53,13 @@ const MessageForm = () => {
             ) : (
               <div className="message-form-recipient">
                 <Recipient recipient={recipient} />
-                <FontAwesomeIcon
-                  onClick={handleRemoveRecipient}
-                  className="message-form-recipient-trash"
-                  icon={faTimes}
-                />
+                {newMessageSelected && (
+                  <FontAwesomeIcon
+                    onClick={handleRemoveRecipient}
+                    className="message-form-recipient-trash"
+                    icon={faTimes}
+                  />
+                )}
               </div>
             )}
             {showRecipientSuggestions && (

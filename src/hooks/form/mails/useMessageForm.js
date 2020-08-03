@@ -38,7 +38,20 @@ const useMessageForm = () => {
 
   const handleSubmitMessage = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    setLoading(true);
+    if (socket.connected && recipient.name && inputs.content) {
+      socket.emit("sendNewMessage", {
+        sender: userData._id,
+        recipient: recipient._id,
+        content: inputs.content,
+      });
+    } else if (socket.disconnected) {
+      setLoading(false);
+      setError((error) => ({
+        ...error,
+        connectionError: strings.mails.error.CONNECTION_ERROR,
+      }));
+    }
   };
 
   const handleCancel = (e) => {
@@ -148,6 +161,13 @@ const useMessageForm = () => {
         if (userId) {
           if (recipient._id === userId)
             dispatch(chooseRecipient({ ...recipient, isConnected: false }));
+        }
+      });
+      socket.on("newMessageSent", (response) => {
+        if (response) {
+          setLoading(false);
+          setInputs({});
+          dispatch(newMessage(false));
         }
       });
     } else if (socket.disconnected) {
