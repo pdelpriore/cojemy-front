@@ -39,12 +39,27 @@ const useMessageForm = () => {
   const handleSubmitMessage = (e) => {
     e.preventDefault();
     setLoading(true);
-    if (socket.connected && recipient.name && inputs.content) {
+    if (
+      socket.connected &&
+      recipient.name &&
+      inputs.content &&
+      newMessageSelected
+    ) {
       socket.emit("sendNewMessage", {
         sender: userData._id,
         recipient: recipient._id,
         content: inputs.content,
       });
+    } else if (
+      socket.connected &&
+      recipient.name &&
+      inputs.content &&
+      !newMessageSelected
+    ) {
+      console.log(
+        "tu bedziemy emitowac nowe konwersacje do istniejacego message'a"
+      );
+      setLoading(false);
     } else if (socket.disconnected) {
       setLoading(false);
       setError((error) => ({
