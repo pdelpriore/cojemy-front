@@ -58,6 +58,7 @@ const useMessageForm = () => {
     e.preventDefault();
     if (recipient.name) dispatch(chooseRecipientClearState());
     dispatch(showNewMessageForm(false));
+    setRecipients([]);
     setInputs({});
     if (newMessageSelected) dispatch(newMessage(false));
   };
@@ -163,8 +164,9 @@ const useMessageForm = () => {
             dispatch(chooseRecipient({ ...recipient, isConnected: false }));
         }
       });
-      socket.on("newMessageSent", (response) => {
-        if (response) {
+      socket.on("newMessageSent", (result) => {
+        if (result) {
+          console.log(result);
           setLoading(false);
           setInputs({});
           dispatch(newMessage(false));
