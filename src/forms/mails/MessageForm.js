@@ -119,7 +119,7 @@ const MessageForm = () => {
               }
             >
               <div className="myprofile-spinner">
-                {false && (
+                {loading && (
                   <Spinner
                     as="span"
                     animation="border"
@@ -129,7 +129,7 @@ const MessageForm = () => {
                   />
                 )}
               </div>
-              {false ? (
+              {loading ? (
                 <div className="myprofile-button-loading">
                   {capitalizeFirst(strings.mails.BUTTON_SEND_LOADING)}
                 </div>
