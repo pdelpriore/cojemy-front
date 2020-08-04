@@ -166,7 +166,9 @@ const useMessageForm = () => {
   }, [socket, recipients, recipient]);
 
   useEffect(() => {
-    if (socket.connected && recipient.name && recipients.length > 0) {
+    if (
+      (socket.connected && !inputs.to, recipient.name && recipients.length > 0)
+    ) {
       socket.on("userActive", (userId) => {
         if (userId) {
           if (recipient._id === userId)
@@ -196,7 +198,7 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-  }, [socket, recipients, recipient, dispatch]);
+  }, [socket, inputs, recipients, recipient, dispatch]);
 
   useEffect(() => {
     if (recipient.name) {
@@ -212,7 +214,12 @@ const useMessageForm = () => {
 
   useEffect(() => {
     return () => {
-      if (socket.connected && recipient.name && recipients.length > 0) {
+      if (
+        socket.connected &&
+        !inputs.to &&
+        !recipient.name &&
+        recipients.length === 0
+      ) {
         socket.removeAllListeners("searchRecipientResult");
         socket.removeAllListeners("searchRecipientError");
         socket.removeAllListeners("userActive");
@@ -220,7 +227,7 @@ const useMessageForm = () => {
         socket.removeAllListeners("newMessageSent");
       }
     };
-  }, [socket, recipient, recipients]);
+  }, [socket, inputs, recipients, recipient]);
 
   return {
     inputs,
