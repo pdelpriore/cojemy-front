@@ -184,6 +184,7 @@ const useMessageForm = () => {
       socket.on("newMessageSent", (result) => {
         if (result) {
           console.log(result);
+          // dispatchuj racej conversation, zeby sie nie skasowalo jak bedzie odswiezona strona !
           setConversations(result.messageSent);
           setLoading(false);
           setInputs({});
