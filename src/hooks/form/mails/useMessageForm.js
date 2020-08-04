@@ -182,6 +182,7 @@ const useMessageForm = () => {
       socket.on("newMessageSent", (result) => {
         if (result) {
           console.log(result);
+          setConversations(result.messageSent);
           setLoading(false);
           setInputs({});
           dispatch(newMessage(false));
@@ -211,13 +212,15 @@ const useMessageForm = () => {
 
   useEffect(() => {
     return () => {
-      socket.removeAllListeners("searchRecipientResult");
-      socket.removeAllListeners("searchRecipientError");
-      socket.removeAllListeners("userActive");
-      socket.removeAllListeners("userInactive");
-      socket.removeAllListeners("newMessageSent");
+      if (socket.connected && recipient.name && recipients.length > 0) {
+        socket.removeAllListeners("searchRecipientResult");
+        socket.removeAllListeners("searchRecipientError");
+        socket.removeAllListeners("userActive");
+        socket.removeAllListeners("userInactive");
+        socket.removeAllListeners("newMessageSent");
+      }
     };
-  }, [socket]);
+  }, [socket, recipient, recipients]);
 
   return {
     inputs,

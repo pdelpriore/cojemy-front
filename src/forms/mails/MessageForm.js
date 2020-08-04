@@ -15,6 +15,7 @@ const MessageForm = () => {
   const {
     inputs,
     recipients,
+    conversations,
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
@@ -77,11 +78,13 @@ const MessageForm = () => {
         <Col xs={12}>
           <div className="message-form-conversation-box">
             <ScrollArea smoothScrolling={true}>
-              <ListGroup variant="flush">
-                <ListGroup.Item className="message-form-conversation-item">
-                  message
-                </ListGroup.Item>
-              </ListGroup>
+              {conversations &&
+                conversations.length > 0 &&
+                conversations.map((conversation, index) => (
+                  <ListGroup key={index} variant="flush">
+                    <ListGroup.Item>{conversation.content}</ListGroup.Item>
+                  </ListGroup>
+                ))}
             </ScrollArea>
           </div>
         </Col>
