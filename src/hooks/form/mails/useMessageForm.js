@@ -123,10 +123,6 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-    return () => {
-      socket.removeAllListeners("searchRecipientResult");
-      socket.removeAllListeners("searchRecipientError");
-    };
   }, [
     socket,
     userData._id,
@@ -167,10 +163,6 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-    return () => {
-      socket.removeAllListeners("userActive");
-      socket.removeAllListeners("userInactive");
-    };
   }, [socket, recipients, recipient]);
 
   useEffect(() => {
@@ -203,11 +195,6 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-    return () => {
-      socket.removeAllListeners("userActive");
-      socket.removeAllListeners("userInactive");
-      socket.removeAllListeners("newMessageSent");
-    };
   }, [socket, recipients, recipient, dispatch]);
 
   useEffect(() => {
@@ -221,6 +208,16 @@ const useMessageForm = () => {
       );
     }
   }, [recipient]);
+
+  useEffect(() => {
+    return () => {
+      socket.removeAllListeners("searchRecipientResult");
+      socket.removeAllListeners("searchRecipientError");
+      socket.removeAllListeners("userActive");
+      socket.removeAllListeners("userInactive");
+      socket.removeAllListeners("newMessageSent");
+    };
+  }, [socket]);
 
   return {
     inputs,
