@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useMailsList from "../../hooks/screen/mails/useMailsList";
 import "./mails.css";
 
-const MyRecipesList = () => {
+const MailsList = () => {
   const dispatch = useDispatch();
 
   const { loading, messages, error } = useMailsList();
@@ -65,4 +65,4 @@ const MyRecipesList = () => {
   //   );
 };
 
-export default MyRecipesList;
+export default MailsList;
