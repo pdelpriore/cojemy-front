@@ -11,6 +11,7 @@ import { strings } from "../../../strings/Strings";
 const useMessageForm = () => {
   const dispatch = useDispatch();
 
+  const [isActive, setIsActive] = useState(false);
   const [inputs, setInputs] = useState({});
   const [loading, setLoading] = useState(false);
   const [showRecipientSuggestions, setShowRecipientSuggestions] = useState(
@@ -84,7 +85,12 @@ const useMessageForm = () => {
   };
 
   useEffect(() => {
-    if (socket.connected && inputs.to) {
+    setIsActive(true);
+    return () => setIsActive(false);
+  }, []);
+
+  useEffect(() => {
+    if (socket.connected && inputs.to && isActive) {
       setLoading(true);
       setShowRecipientSuggestions(true);
       socket.emit("searchRecipient", {
@@ -110,12 +116,12 @@ const useMessageForm = () => {
           setShowRecipientSuggestions(false);
         }
       });
-    } else if (socket.connected && !inputs.to) {
+    } else if (socket.connected && !inputs.to && isActive) {
       setShowRecipientSuggestions(false);
       if (error.searchRecipientError || error.connectionError) {
         setError({});
       }
-    } else if (socket.disconnected) {
+    } else if (socket.disconnected && isActive) {
       setError((error) => ({
         ...error,
         connectionError: strings.mails.error.CONNECTION_ERROR,
@@ -126,13 +132,19 @@ const useMessageForm = () => {
   }, [
     socket,
     userData._id,
+    isActive,
     inputs.to,
     error.searchRecipientError,
     error.connectionError,
   ]);
 
   useEffect(() => {
-    if (socket.connected && recipients.length > 0 && !recipient.name) {
+    if (
+      socket.connected &&
+      recipients.length > 0 &&
+      !recipient.name &&
+      isActive
+    ) {
       socket.on("userActive", (userId) => {
         if (userId) {
           setRecipients(
@@ -155,7 +167,7 @@ const useMessageForm = () => {
           );
         }
       });
-    } else if (socket.disconnected) {
+    } else if (socket.disconnected && isActive) {
       setError((error) => ({
         ...error,
         connectionError: strings.mails.error.CONNECTION_ERROR,
@@ -163,11 +175,12 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-  }, [socket, recipients, recipient]);
+  }, [socket, recipients, recipient, isActive]);
 
   useEffect(() => {
     if (
-      (socket.connected && !inputs.to, recipient.name && recipients.length > 0)
+      (socket.connected && !inputs.to,
+      recipient.name && recipients.length === 0 && isActive)
     ) {
       socket.on("userActive", (userId) => {
         if (userId) {
@@ -191,7 +204,7 @@ const useMessageForm = () => {
           dispatch(newMessage(false));
         }
       });
-    } else if (socket.disconnected) {
+    } else if (socket.disconnected && isActive) {
       setError((error) => ({
         ...error,
         connectionError: strings.mails.error.CONNECTION_ERROR,
@@ -199,10 +212,10 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-  }, [socket, inputs, recipients, recipient, dispatch]);
+  }, [socket, inputs, recipients, recipient, isActive, dispatch]);
 
   useEffect(() => {
-    if (recipient.name) {
+    if (recipient.name && isActive) {
       setShowRecipientSuggestions(false);
       setRecipients([]);
       setInputs((inputs) =>
@@ -211,7 +224,7 @@ const useMessageForm = () => {
         }))(inputs)
       );
     }
-  }, [recipient]);
+  }, [recipient, isActive]);
 
   useEffect(() => {
     return () => {
@@ -219,7 +232,8 @@ const useMessageForm = () => {
         socket.connected &&
         !inputs.to &&
         !recipient.name &&
-        recipients.length === 0
+        recipients.length === 0 &&
+        isActive
       ) {
         socket.removeAllListeners("searchRecipientResult");
         socket.removeAllListeners("searchRecipientError");
@@ -228,7 +242,7 @@ const useMessageForm = () => {
         socket.removeAllListeners("newMessageSent");
       }
     };
-  }, [socket, inputs, recipients, recipient]);
+  }, [socket, inputs, recipients, recipient, isActive]);
 
   return {
     inputs,
