@@ -20,7 +20,11 @@ const useMailsList = () => {
       socket.emit("getMessages", userData._id);
     }
     return () => {
-      if (socket.connected && messages.length > 0 && isActive) {
+      if (
+        socket.connected &&
+        (messages.length > 0 || messages.length === 0) &&
+        isActive
+      ) {
         socket.removeAllListeners("getMessages");
       }
     };

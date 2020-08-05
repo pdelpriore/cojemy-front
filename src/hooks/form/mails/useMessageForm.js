@@ -230,8 +230,8 @@ const useMessageForm = () => {
     return () => {
       if (
         socket.connected &&
-        !inputs.to &&
-        !recipient.name &&
+        (!inputs.to || inputs.to) &&
+        (!recipient.name || recipient.name) &&
         recipients.length === 0 &&
         isActive
       ) {
