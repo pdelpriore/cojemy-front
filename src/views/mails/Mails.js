@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { showNewMessageForm } from "../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
 import { newMessage } from "../../redux/mails/newMessageSelected/thunk/newMessageSelectedThunk";
 import MessageForm from "../../forms/mails/MessageForm";
+import MailsList from "./MailsList";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./mails.css";
@@ -37,7 +38,9 @@ const Mails = ({ match: { path, url, isExact } }) => {
                 className="myrecipes-scroll-area"
                 smoothScrolling={true}
               >
-                <ListGroup></ListGroup>
+                <ListGroup>
+                  <MailsList />
+                </ListGroup>
               </ScrollArea>
             </div>
           </Col>
