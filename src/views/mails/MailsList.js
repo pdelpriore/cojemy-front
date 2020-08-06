@@ -4,12 +4,16 @@ import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import TimeAgo from "timeago-react";
+import * as timeago from "timeago.js";
+import fr from "timeago.js/lib/lang/fr";
 import { createDate, capitalize } from "../../util/Util";
 import { useDispatch, useSelector } from "react-redux";
 import useMailsList from "../../hooks/screen/mails/useMailsList";
 import "./mails.css";
 
 const MailsList = () => {
+  timeago.register("fr", fr);
   const dispatch = useDispatch();
 
   const { loading, error } = useMailsList();
@@ -48,7 +52,17 @@ const MailsList = () => {
                 <Row>
                   <Col xs={7} />
                   <Col xs={5}>
-                    <div>data</div>
+                    <div>
+                      <TimeAgo
+                        className="myevents-item-timeago"
+                        datetime={createDate(
+                          message.conversations[
+                            message.conversations.length - 1
+                          ].date
+                        )}
+                        locale="fr"
+                      />
+                    </div>
                   </Col>
                 </Row>
                 <div className="myrecipes-list-item-title">
