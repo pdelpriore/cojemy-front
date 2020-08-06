@@ -235,3 +235,8 @@ export const setConversationCases = Object.freeze({
   CONVERSATION_RETRIEVED: "setConversationConversationRetrieved",
   CLEAR_STATE: "setConversationClearState",
 });
+
+export const setMessagesCases = Object.freeze({
+  MESSAGES_RETRIEVED: "setMessagesMessagesRetrieved",
+  CLEAR_STATE: "setMessagesClearState",
+});

@@ -22,6 +22,7 @@ import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/to
 import { eventCategorySelectedClearState } from "../../redux/myEvents/eventCategorySelected/thunk/eventCategorySelectedThunk";
 import { ioConnectClearState } from "../../redux/mails/socketData/thunk/ioConnectThunk";
 import { setConversationClearState } from "../../redux/mails/setConversation/thunk/setConversationThunk";
+import { setMessagesClearState } from "../../redux/mails/setMessages/thunk/setMessagesThunk";
 import { searchEventFilled } from "../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { loginUser } from "../../redux/login/userLogged/thunk/userLoggedThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -108,6 +109,7 @@ const MakeNavMenu = ({ type }) => {
       dispatch(searchEventFilled(false));
       dispatch(ioConnectClearState());
       dispatch(setConversationClearState());
+      dispatch(setMessagesClearState());
     }
   }, [userLoggedOut, socket, dispatch]);
 

@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setMessages } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
 
 const useMailsList = () => {
+  const dispatch = useDispatch();
+
   const [isActive, setIsActive] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [messages, setMessages] = useState([]);
   const [error, setError] = useState({});
 
   const { socket } = useSelector((state) => state.socketData);
   const { userData } = useSelector((state) => state.login);
+  const { messages } = useSelector((state) => state.userMessages);
 
   useEffect(() => {
     setIsActive(true);
@@ -25,8 +28,7 @@ const useMailsList = () => {
             setError({});
           }
           setLoading(false);
-          // dispatchuj do reduxa wszystkie wiadomosci, zeby nie zniknely po odswiezeniu
-          setMessages(data);
+          dispatch(setMessages(data));
         }
       });
       socket.on("getMessagesError", (err) => {
@@ -51,9 +53,7 @@ const useMailsList = () => {
     };
   }, [socket, messages, isActive, userData._id, error.getMessagesError]);
 
-  console.log(messages);
-
-  return { loading, messages, error };
+  return { loading, error };
 };
 
 export default useMailsList;
