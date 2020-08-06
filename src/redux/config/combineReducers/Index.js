@@ -39,6 +39,7 @@ import ioConnectReducer from "../../mails/socketData/reducer/ioConnectReducer";
 import showNewMessageFormReducer from "../../mails/showNewMessageForm/reducer/showNewMessageReducer";
 import chooseRecipientReducer from "../../mails/chooseRecipient/reducer/chooseRecipientReducer";
 import newMessageSelectedReducer from "../../mails/newMessageSelected/reducer/newMessageSelectedReducer";
+import setConversationReducer from "../../mails/setConversation/reducer/setConversationReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -81,6 +82,7 @@ const allReducers = combineReducers({
   isNewMessageFormShown: showNewMessageFormReducer,
   isRecipientChosen: chooseRecipientReducer,
   isNewMessageSelected: newMessageSelectedReducer,
+  userConversations: setConversationReducer,
 });
 
 export default allReducers;

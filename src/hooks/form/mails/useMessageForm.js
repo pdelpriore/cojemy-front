@@ -6,6 +6,10 @@ import {
   chooseRecipientClearState,
 } from "../../../redux/mails/chooseRecipient/thunk/chooseRecipientThunk";
 import { newMessage } from "../../../redux/mails/newMessageSelected/thunk/newMessageSelectedThunk";
+import {
+  setConversation,
+  setConversationClearState,
+} from "../../../redux/mails/setConversation/thunk/setConversationThunk";
 import { strings } from "../../../strings/Strings";
 
 const useMessageForm = () => {
@@ -18,7 +22,6 @@ const useMessageForm = () => {
     false
   );
   const [messages, setMessages] = useState([]);
-  const [conversations, setConversations] = useState([]);
   const [recipients, setRecipients] = useState([]);
   const [error, setError] = useState({});
 
@@ -28,6 +31,7 @@ const useMessageForm = () => {
   const { newMessageSelected } = useSelector(
     (state) => state.isNewMessageSelected
   );
+  const { conversations } = useSelector((state) => state.userConversations);
 
   const handleInputChange = (e) => {
     e.persist();
@@ -77,6 +81,7 @@ const useMessageForm = () => {
     setRecipients([]);
     setInputs({});
     if (newMessageSelected) dispatch(newMessage(false));
+    if (conversations.length > 0) dispatch(setConversationClearState());
   };
 
   const handleRemoveRecipient = (e) => {
@@ -196,9 +201,7 @@ const useMessageForm = () => {
       });
       socket.on("newMessageSent", (result) => {
         if (result) {
-          console.log(result);
-          // dispatchuj racej conversation, zeby sie nie skasowalo jak bedzie odswiezona strona !
-          setConversations(result.messageSent);
+          dispatch(setConversation(result.messageSent));
           setLoading(false);
           setInputs({});
           dispatch(newMessage(false));
@@ -249,7 +252,6 @@ const useMessageForm = () => {
     recipients,
     loading,
     messages,
-    conversations,
     error,
     handleInputChange,
     handleCancel,

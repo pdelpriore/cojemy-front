@@ -230,3 +230,8 @@ export const chooseRecipientCases = Object.freeze({
 export const newMessageSelectedCases = Object.freeze({
   SELECTED: "newMessageSelectedSelected",
 });
+
+export const setConversationCases = Object.freeze({
+  CONVERSATION_RETRIEVED: "setConversationConversationRetrieved",
+  CLEAR_STATE: "setConversationClearState",
+});

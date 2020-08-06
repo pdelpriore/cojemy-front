@@ -15,7 +15,6 @@ const MessageForm = () => {
   const {
     inputs,
     recipients,
-    conversations,
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
@@ -29,6 +28,7 @@ const MessageForm = () => {
   const { newMessageSelected } = useSelector(
     (state) => state.isNewMessageSelected
   );
+  const { conversations } = useSelector((state) => state.userConversations);
 
   return (
     <Form>
