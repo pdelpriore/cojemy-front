@@ -14,6 +14,7 @@ const MailsList = () => {
 
   const { loading, error } = useMailsList();
   const { messages } = useSelector((state) => state.userMessages);
+  const { userData } = useSelector((state) => state.login);
 
   return loading ? (
     <div className="myrecipes-list-loading-area">
@@ -50,13 +51,27 @@ const MailsList = () => {
                     <div>data</div>
                   </Col>
                 </Row>
-                <div className="myrecipes-list-item-title">recipient name</div>
+                <div className="myrecipes-list-item-title">
+                  {message.recipient.email !== userData.email
+                    ? message.recipient.name
+                    : message.sender.name}
+                </div>
                 <div style={{ height: 5 }} />
-                <div className="myrecipes-list-item-author">
+                <div className="mails-list-item-author">
                   <div className="myrecipes-list-item-icon">
                     <FontAwesomeIcon icon={faEnvelope} />
                   </div>
-                  <div>tresc ostatniej wiadomosci</div>
+                  <div className="mails-message-text">
+                    {message.conversations[message.conversations.length - 1]
+                      .content.length > 64
+                      ? message.conversations[
+                          message.conversations.length - 1
+                        ].content
+                          .substr(0, 64)
+                          .concat(" ...")
+                      : message.conversations[message.conversations.length - 1]
+                          .content}
+                  </div>
                 </div>
               </Col>
             </Row>

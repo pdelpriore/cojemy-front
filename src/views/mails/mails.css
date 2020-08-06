@@ -31,3 +31,13 @@
   border-radius: 50%;
   padding: 5px;
 }
+.mails-list-item-author {
+  display: flex;
+  justify-content: flex-start;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  color: #ceced6;
+}
+.mails-message-text {
+  text-align: justify;
+}
