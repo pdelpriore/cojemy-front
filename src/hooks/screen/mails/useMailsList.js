@@ -19,7 +19,7 @@ const useMailsList = () => {
   }, []);
 
   useEffect(() => {
-    if (socket.connected && messages.length === 0 && isActive) {
+    if (socket.connected && isActive) {
       setLoading(true);
       socket.emit("getMessages", userData._id);
       socket.on("messagesRetrieved", (data) => {
@@ -42,16 +42,12 @@ const useMailsList = () => {
       });
     }
     return () => {
-      if (
-        socket.connected &&
-        (messages.length > 0 || messages.length === 0) &&
-        isActive
-      ) {
+      if (socket.connected && isActive) {
         socket.removeAllListeners("messagesRetrieved");
         socket.removeAllListeners("getMessagesError");
       }
     };
-  }, [socket, messages, isActive, userData._id, error.getMessagesError]);
+  }, [socket, isActive, userData._id, error.getMessagesError, dispatch]);
 
   return { loading, error };
 };
