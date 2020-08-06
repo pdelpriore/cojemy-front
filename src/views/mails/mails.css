@@ -24,11 +24,12 @@
   padding: 5px;
 }
 .mails-list-item-picture {
-  width: 120px;
-  height: 120px;
+  flex: 1;
+  width: 5vw;
+  height: 13vh;
   object-fit: cover;
   border: 1px solid #ddd;
-  border-radius: 50%;
+  border-radius: 10px;
   padding: 5px;
 }
 .mails-list-item-author {
@@ -40,4 +41,18 @@
 }
 .mails-message-text {
   text-align: justify;
+}
+.mails-recipient-inactive {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #ababab;
+  border: 1px solid gray;
+}
+.mails-recipient-active {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #a7ff83;
+  border: 1px solid green;
 }

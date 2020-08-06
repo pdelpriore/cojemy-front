@@ -41,14 +41,27 @@ const MailsList = () => {
             key={index}
           >
             <Row>
-              <Col xs={3}>
-                <Img
-                  className="mails-list-item-picture"
-                  src={require("../../assets/imgs/cookerret.png")}
-                  loader={<Spinner animation="border" variant="info" />}
-                />
+              <Col xs={4}>
+                <div className="recipient-photo-box">
+                  <Img
+                    className="mails-list-item-picture"
+                    src={require("../../assets/imgs/cookerret.png")}
+                    loader={<Spinner animation="border" variant="info" />}
+                  />
+                  <div
+                    className={
+                      message.recipient.email !== userData.email
+                        ? message.recipient.isConnected
+                          ? "mails-recipient-active"
+                          : "mails-recipient-inactive"
+                        : message.sender.isConnected
+                        ? "mails-recipient-active"
+                        : "mails-recipient-inactive"
+                    }
+                  ></div>
+                </div>
               </Col>
-              <Col xs={9}>
+              <Col xs={8}>
                 <Row>
                   <Col xs={7} />
                   <Col xs={5}>
