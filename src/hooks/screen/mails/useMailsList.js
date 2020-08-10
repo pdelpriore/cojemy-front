@@ -113,6 +113,9 @@ const useMailsList = () => {
           socket.emit("getMessages", userData._id);
           socket.on("messagesRetrieved", (data) => {
             if (data) {
+              if (error.getMessagesError) {
+                setError({});
+              }
               setLoading(false);
               dispatch(setMessages(data));
             }
@@ -120,7 +123,7 @@ const useMailsList = () => {
         }
       });
     }
-  }, [socket, userData._id, isActive, dispatch]);
+  }, [socket, userData._id, error.getMessagesError, isActive, dispatch]);
 
   useEffect(() => {
     return () => {
