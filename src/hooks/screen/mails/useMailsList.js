@@ -49,12 +49,6 @@ const useMailsList = () => {
         }
       });
     }
-    return () => {
-      if (socket.connected && isActive) {
-        socket.removeAllListeners("messagesRetrieved");
-        socket.removeAllListeners("getMessagesError");
-      }
-    };
   }, [
     socket,
     isActive,
@@ -110,13 +104,35 @@ const useMailsList = () => {
         }
       });
     }
+  }, [socket, isActive, messages, dispatch]);
+
+  useEffect(() => {
+    if (socket.connected && isActive) {
+      socket.off("newMessageSent").on("newMessageSent", (result) => {
+        if (result) {
+          socket.emit("getMessages", userData._id);
+          socket.on("messagesRetrieved", (data) => {
+            if (data) {
+              setLoading(false);
+              dispatch(setMessages(data));
+            }
+          });
+        }
+      });
+    }
+  }, [socket, userData._id, isActive, dispatch]);
+
+  useEffect(() => {
     return () => {
       if (socket.connected && isActive) {
+        socket.removeAllListeners("messagesRetrieved");
+        socket.removeAllListeners("getMessagesError");
         socket.removeAllListeners("userActive");
         socket.removeAllListeners("userInactive");
+        socket.removeAllListeners("newMessageSent");
       }
     };
-  }, [socket, isActive, messages, dispatch]);
+  }, [socket, isActive]);
 
   return { loading, error };
 };
