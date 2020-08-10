@@ -210,17 +210,17 @@ const useMessageForm = () => {
       });
       socket.off("newMessageSent").on("newMessageSent", (result) => {
         if (result) {
+          setLoading(false);
           dispatch(setConversation(result.messageSent));
           dispatch(setMessageId(result.messageSent[0].message));
-          setLoading(false);
           setInputs({});
           dispatch(newMessage(false));
         }
       });
       socket.off("newConversationSent").on("newConversationSent", (result) => {
         if (result) {
-          dispatch(setConversation(result.newConversationContent));
           setLoading(false);
+          dispatch(setConversation(result.newConversationContent));
           setInputs({});
         }
       });
