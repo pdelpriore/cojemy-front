@@ -260,6 +260,7 @@ const useMessageForm = () => {
         socket.removeAllListeners("userActive");
         socket.removeAllListeners("userInactive");
         socket.removeAllListeners("newMessageSent");
+        socket.removeAllListeners("newConversationSent");
       }
     };
   }, [socket, inputs, recipients, recipient, isActive]);
