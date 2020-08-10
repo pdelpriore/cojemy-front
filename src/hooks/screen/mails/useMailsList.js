@@ -65,6 +65,59 @@ const useMailsList = () => {
     dispatch,
   ]);
 
+  useEffect(() => {
+    if (socket.connected && messages.length > 0 && isActive) {
+      socket.on("userActive", (userId) => {
+        if (userId) {
+          dispatch(
+            setMessages(
+              messages.map((message) => {
+                return message.recipient._id.toString() === userId
+                  ? {
+                      ...message,
+                      recipient: { ...message.recipient, isConnected: true },
+                    }
+                  : message.sender._id.toString() === userId
+                  ? {
+                      ...message,
+                      sender: { ...message.sender, isConnected: true },
+                    }
+                  : message;
+              })
+            )
+          );
+        }
+      });
+      socket.on("userInactive", (userId) => {
+        if (userId) {
+          dispatch(
+            setMessages(
+              messages.map((message) => {
+                return message.recipient._id.toString() === userId
+                  ? {
+                      ...message,
+                      recipient: { ...message.recipient, isConnected: false },
+                    }
+                  : message.sender._id.toString() === userId
+                  ? {
+                      ...message,
+                      sender: { ...message.sender, isConnected: false },
+                    }
+                  : message;
+              })
+            )
+          );
+        }
+      });
+    }
+    return () => {
+      if (socket.connected && isActive) {
+        socket.removeAllListeners("userActive");
+        socket.removeAllListeners("userInactive");
+      }
+    };
+  }, [socket, isActive, messages, dispatch]);
+
   return { loading, error };
 };
 
