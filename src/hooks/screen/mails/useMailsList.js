@@ -15,6 +15,10 @@ const useMailsList = () => {
   const { socket } = useSelector((state) => state.socketData);
   const { userData } = useSelector((state) => state.login);
   const { messages } = useSelector((state) => state.userMessages);
+  const { newMessageSelected } = useSelector(
+    (state) => state.isNewMessageSelected
+  );
+  const { messageId } = useSelector((state) => state.isMessageId);
 
   useEffect(() => {
     setIsActive(true);
@@ -22,7 +26,7 @@ const useMailsList = () => {
   }, []);
 
   useEffect(() => {
-    if (socket.connected && isActive) {
+    if (socket.connected && (!newMessageSelected || messageId) && isActive) {
       setLoading(true);
       socket.emit("getMessages", userData._id);
       socket.on("messagesRetrieved", (data) => {
@@ -51,7 +55,15 @@ const useMailsList = () => {
         socket.removeAllListeners("getMessagesError");
       }
     };
-  }, [socket, isActive, userData._id, error.getMessagesError, dispatch]);
+  }, [
+    socket,
+    isActive,
+    userData._id,
+    error.getMessagesError,
+    messageId,
+    newMessageSelected,
+    dispatch,
+  ]);
 
   return { loading, error };
 };
