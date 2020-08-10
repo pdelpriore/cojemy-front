@@ -41,6 +41,7 @@ import chooseRecipientReducer from "../../mails/chooseRecipient/reducer/chooseRe
 import newMessageSelectedReducer from "../../mails/newMessageSelected/reducer/newMessageSelectedReducer";
 import setConversationReducer from "../../mails/setConversation/reducer/setConversationReducer";
 import setMessagesReducer from "../../mails/setMessages/reducer/setMessagesReducer";
+import setMessageIdReducer from "../../mails/setMessageId/reducer/setMessageIdReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -85,6 +86,7 @@ const allReducers = combineReducers({
   isNewMessageSelected: newMessageSelectedReducer,
   userConversations: setConversationReducer,
   userMessages: setMessagesReducer,
+  isMessageId: setMessageIdReducer,
 });
 
 export default allReducers;

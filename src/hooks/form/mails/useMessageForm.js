@@ -10,6 +10,10 @@ import {
   setConversation,
   setConversationClearState,
 } from "../../../redux/mails/setConversation/thunk/setConversationThunk";
+import {
+  setMessageId,
+  setMessageIdClearState,
+} from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
 import { strings } from "../../../strings/Strings";
 
 const useMessageForm = () => {
@@ -32,6 +36,7 @@ const useMessageForm = () => {
     (state) => state.isNewMessageSelected
   );
   const { conversations } = useSelector((state) => state.userConversations);
+  const { messageId } = useSelector((state) => state.isMessageId);
 
   const handleInputChange = (e) => {
     e.persist();
@@ -59,12 +64,15 @@ const useMessageForm = () => {
       socket.connected &&
       recipient.name &&
       inputs.content &&
-      !newMessageSelected
+      !newMessageSelected &&
+      messageId
     ) {
-      console.log(
-        "tu bedziemy emitowac nowe konwersacje do istniejacego message'a"
-      );
-      setLoading(false);
+      socket.emit("sendNewConversation", {
+        messageId: messageId,
+        sender: userData._id,
+        recipient: recipient._id,
+        content: inputs.content,
+      });
     } else if (socket.disconnected) {
       setLoading(false);
       setError((error) => ({
@@ -78,6 +86,7 @@ const useMessageForm = () => {
     e.preventDefault();
     if (recipient.name) dispatch(chooseRecipientClearState());
     dispatch(showNewMessageForm(false));
+    dispatch(setMessageIdClearState());
     setRecipients([]);
     setInputs({});
     if (newMessageSelected) dispatch(newMessage(false));
@@ -202,9 +211,17 @@ const useMessageForm = () => {
       socket.on("newMessageSent", (result) => {
         if (result) {
           dispatch(setConversation(result.messageSent));
+          dispatch(setMessageId(result.messageSent[0].message));
           setLoading(false);
           setInputs({});
           dispatch(newMessage(false));
+        }
+      });
+      socket.on("newConversationSent", (result) => {
+        if (result) {
+          dispatch(setConversation(result.newConversationContent));
+          setLoading(false);
+          setInputs({});
         }
       });
     } else if (socket.disconnected && isActive) {

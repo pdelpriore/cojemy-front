@@ -240,3 +240,8 @@ export const setMessagesCases = Object.freeze({
   MESSAGES_RETRIEVED: "setMessagesMessagesRetrieved",
   CLEAR_STATE: "setMessagesClearState",
 });
+
+export const setMessageIdCases = Object.freeze({
+  ID_RETRIEVED: "setMessageIdIdRetrieved",
+  CLEAR_STATE: "setMessageIdClearState",
+});

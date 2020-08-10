@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setMessages } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
+import {
+  setMessages,
+  setMessagesClearState,
+} from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
 
 const useMailsList = () => {
   const dispatch = useDispatch();
@@ -38,6 +41,7 @@ const useMailsList = () => {
             getMessagesError: err,
           }));
           setLoading(false);
+          dispatch(setMessagesClearState());
         }
       });
     }
