@@ -208,7 +208,7 @@ const useMessageForm = () => {
             dispatch(chooseRecipient({ ...recipient, isConnected: false }));
         }
       });
-      socket.on("newMessageSent", (result) => {
+      socket.off("newMessageSent").on("newMessageSent", (result) => {
         if (result) {
           dispatch(setConversation(result.messageSent));
           dispatch(setMessageId(result.messageSent[0].message));
@@ -217,7 +217,7 @@ const useMessageForm = () => {
           dispatch(newMessage(false));
         }
       });
-      socket.on("newConversationSent", (result) => {
+      socket.off("newConversationSent").on("newConversationSent", (result) => {
         if (result) {
           dispatch(setConversation(result.newConversationContent));
           setLoading(false);
