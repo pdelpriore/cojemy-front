@@ -31,6 +31,7 @@ const MessageForm = () => {
     handleSubmitMessage,
     loading,
     error,
+    toBottomRef,
     showRecipientSuggestions,
   } = useMessageForm();
 
@@ -90,6 +91,7 @@ const MessageForm = () => {
             <ScrollArea
               className="message-form-conversation-scroll"
               smoothScrolling={true}
+              horizontal={false}
             >
               {conversations &&
                 conversations.length > 0 &&
@@ -125,6 +127,7 @@ const MessageForm = () => {
                       </div>
                       <div className="conversation-content">
                         {conversation.content}
+                        <div ref={toBottomRef} />
                       </div>
                     </ListGroup.Item>
                   </ListGroup>

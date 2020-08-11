@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { showNewMessageForm } from "../../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
 import {
@@ -29,6 +29,8 @@ const useMessageForm = () => {
   const [messages, setMessages] = useState([]);
   const [recipients, setRecipients] = useState([]);
   const [error, setError] = useState({});
+
+  const toBottomRef = useRef(null);
 
   const { socket } = useSelector((state) => state.socketData);
   const { userData } = useSelector((state) => state.login);
@@ -252,6 +254,10 @@ const useMessageForm = () => {
   }, [recipient, isActive]);
 
   useEffect(() => {
+    toBottomRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [conversations]);
+
+  useEffect(() => {
     return () => {
       if (
         socket.connected &&
@@ -276,6 +282,7 @@ const useMessageForm = () => {
     loading,
     messages,
     error,
+    toBottomRef,
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,

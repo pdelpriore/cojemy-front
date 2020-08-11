@@ -38,6 +38,9 @@
   text-align: justify;
   font-family: "OpenSans-Regular";
   font-size: 1vw;
+  background-color: #f3f6f8;
+  border-radius: 5px;
+  padding: 2%;
 }
 .conversation-author {
   font-family: "OpenSans-SemiBold";
