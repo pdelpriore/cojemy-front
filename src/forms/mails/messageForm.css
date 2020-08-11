@@ -16,6 +16,7 @@
 .message-form-recipient {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 5vh;
   border-radius: 5px;
   padding: 2%;

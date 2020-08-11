@@ -254,7 +254,8 @@ const useMessageForm = () => {
   }, [recipient, isActive]);
 
   useEffect(() => {
-    toBottomRef.current.scrollIntoView({ behavior: "smooth" });
+    if (conversations.length > 0)
+      toBottomRef.current.scrollIntoView({ behavior: "smooth" });
   }, [conversations]);
 
   useEffect(() => {

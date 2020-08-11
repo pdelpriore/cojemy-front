@@ -1,6 +1,7 @@
 .recipient-box {
   display: flex;
   flex-direction: row;
+  width: 25vw;
 }
 .recipient-inactive {
   width: 10px;
@@ -22,7 +23,6 @@
 }
 .recipient-name {
   margin-left: 3%;
-  width: 15vw;
 }
 .recipient-photo-box {
   display: flex;
