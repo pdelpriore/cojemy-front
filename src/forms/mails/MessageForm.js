@@ -1,5 +1,13 @@
 import React from "react";
-import { Form, Row, Col, Button, Spinner, ListGroup } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  Button,
+  Image,
+  Spinner,
+  ListGroup,
+} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import ScrollArea from "react-scrollbar";
@@ -9,6 +17,8 @@ import Recipient from "../../components/mails/suggestions/Recipient";
 import { useSelector } from "react-redux";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
+import { userGooglePhoto } from "../../shared/testWordsArray";
+import { getConversationDate } from "./getConversationDate";
 import "./messageForm.css";
 
 const MessageForm = () => {
@@ -82,7 +92,38 @@ const MessageForm = () => {
                 conversations.length > 0 &&
                 conversations.map((conversation, index) => (
                   <ListGroup key={index} variant="flush">
-                    <ListGroup.Item>{conversation.content}</ListGroup.Item>
+                    <ListGroup.Item>
+                      <div className="conversation-area">
+                        <div className="conversation-author-box">
+                          <Image
+                            className="conversation-author-image"
+                            src={
+                              conversation.author.photo &&
+                              userGooglePhoto.some(
+                                (element) =>
+                                  conversation.author.photo &&
+                                  conversation.author.photo.includes(element)
+                              )
+                                ? conversation.author.photo
+                                : conversation.author.photo
+                                ? strings.path.IMAGE_REQUEST +
+                                  conversation.author.photo
+                                : require("../../assets/imgs/cookerret.png")
+                            }
+                            roundedCircle
+                          />
+                          <div className="conversation-author">
+                            {conversation.author.name}
+                          </div>
+                        </div>
+                        <div className="conversation-date">
+                          {getConversationDate(new Date(conversation.date))}
+                        </div>
+                      </div>
+                      <div className="conversation-content">
+                        {conversation.content}
+                      </div>
+                    </ListGroup.Item>
                   </ListGroup>
                 ))}
             </ScrollArea>

@@ -30,3 +30,36 @@
   color: #ee6670;
   cursor: pointer;
 }
+.conversation-content {
+  margin-top: 2%;
+  text-align: justify;
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+}
+.conversation-author {
+  font-family: "OpenSans-SemiBold";
+  font-size: 0.9vw;
+  margin-left: 2%;
+}
+.conversation-author-image {
+  width: 25px;
+  height: 25px;
+}
+.conversation-author-box {
+  display: flex;
+  flex: 3;
+  flex-direction: row;
+  align-items: center;
+}
+.conversation-date {
+  display: flex;
+  flex: 1;
+  font-family: "OpenSans-Regular";
+  font-size: 0.9vw;
+  color: #2e303f;
+}
+.conversation-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
