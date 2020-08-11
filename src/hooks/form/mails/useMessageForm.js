@@ -14,7 +14,6 @@ import {
   setMessageId,
   setMessageIdClearState,
 } from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
-import { sortConversationsByDate } from "./sortConversationsByDate";
 import { strings } from "../../../strings/Strings";
 
 const useMessageForm = () => {
@@ -223,11 +222,7 @@ const useMessageForm = () => {
       socket.off("newConversationSent").on("newConversationSent", (result) => {
         if (result) {
           setLoading(false);
-          dispatch(
-            setConversation(
-              sortConversationsByDate(result.newConversationContent)
-            )
-          );
+          dispatch(setConversation(result.newConversationContent));
           setInputs({});
         }
       });
