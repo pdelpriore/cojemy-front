@@ -262,7 +262,7 @@ const useMessageForm = () => {
   useEffect(() => {
     if (conversations.length > 0 && conversationScrollOnBottom)
       toBottomRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [conversations]);
+  }, [conversations, conversationScrollOnBottom]);
 
   useEffect(() => {
     return () => {
