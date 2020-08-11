@@ -29,10 +29,9 @@ const MessageForm = () => {
     handleCancel,
     handleRemoveRecipient,
     handleSubmitMessage,
-    handleConversationScroll,
+    conversationScrollRef,
     loading,
     error,
-    toBottomRef,
     showRecipientSuggestions,
   } = useMessageForm();
 
@@ -90,10 +89,10 @@ const MessageForm = () => {
         <Col xs={12}>
           <div className="message-form-conversation-box">
             <ScrollArea
+              ref={conversationScrollRef}
               className="message-form-conversation-scroll"
               smoothScrolling={true}
               horizontal={false}
-              onScroll={handleConversationScroll}
             >
               {conversations &&
                 conversations.length > 0 &&
@@ -129,7 +128,6 @@ const MessageForm = () => {
                       </div>
                       <div className="conversation-content">
                         {conversation.content}
-                        <div ref={toBottomRef} />
                       </div>
                     </ListGroup.Item>
                   </ListGroup>

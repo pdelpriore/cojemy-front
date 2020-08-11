@@ -27,12 +27,9 @@ const useMessageForm = () => {
   );
   const [messages, setMessages] = useState([]);
   const [recipients, setRecipients] = useState([]);
-  const [conversationScrollOnBottom, setConversationScrollOnBottom] = useState(
-    false
-  );
   const [error, setError] = useState({});
 
-  const toBottomRef = useRef(null);
+  const conversationScrollRef = useRef(null);
 
   const { socket } = useSelector((state) => state.socketData);
   const { userData } = useSelector((state) => state.login);
@@ -101,14 +98,6 @@ const useMessageForm = () => {
   const handleRemoveRecipient = (e) => {
     e.preventDefault();
     dispatch(chooseRecipientClearState());
-  };
-
-  const handleConversationScroll = (e) => {
-    if (e.topPosition === e.realHeight - e.containerHeight) {
-      setConversationScrollOnBottom(true);
-    } else {
-      setConversationScrollOnBottom(false);
-    }
   };
 
   useEffect(() => {
@@ -260,9 +249,20 @@ const useMessageForm = () => {
   }, [recipient, isActive]);
 
   useEffect(() => {
-    if (conversations.length > 0 && conversationScrollOnBottom)
-      toBottomRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [conversations, conversationScrollOnBottom]);
+    if (conversations.length > 0 && conversationScrollRef.current) {
+      if (
+        conversationScrollRef.current.state.topPosition ===
+        conversationScrollRef.current.state.realHeight -
+          conversationScrollRef.current.state.containerHeight
+      ) {
+        conversationScrollRef.current.scrollArea.scrollYTo(
+          conversationScrollRef.current.state.realHeight -
+            conversationScrollRef.current.state.containerHeight +
+            102
+        );
+      }
+    }
+  }, [conversations, conversationScrollRef.current]);
 
   useEffect(() => {
     return () => {
@@ -289,12 +289,11 @@ const useMessageForm = () => {
     loading,
     messages,
     error,
-    toBottomRef,
+    conversationScrollRef,
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
     handleSubmitMessage,
-    handleConversationScroll,
     showRecipientSuggestions,
   };
 };
