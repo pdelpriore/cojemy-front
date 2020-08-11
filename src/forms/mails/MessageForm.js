@@ -29,6 +29,7 @@ const MessageForm = () => {
     handleCancel,
     handleRemoveRecipient,
     handleSubmitMessage,
+    handleConversationScroll,
     loading,
     error,
     toBottomRef,
@@ -92,6 +93,7 @@ const MessageForm = () => {
               className="message-form-conversation-scroll"
               smoothScrolling={true}
               horizontal={false}
+              onScroll={handleConversationScroll}
             >
               {conversations &&
                 conversations.length > 0 &&

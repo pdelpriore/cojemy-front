@@ -27,6 +27,9 @@ const useMessageForm = () => {
   );
   const [messages, setMessages] = useState([]);
   const [recipients, setRecipients] = useState([]);
+  const [conversationScrollOnBottom, setConversationScrollOnBottom] = useState(
+    false
+  );
   const [error, setError] = useState({});
 
   const toBottomRef = useRef(null);
@@ -98,6 +101,14 @@ const useMessageForm = () => {
   const handleRemoveRecipient = (e) => {
     e.preventDefault();
     dispatch(chooseRecipientClearState());
+  };
+
+  const handleConversationScroll = (e) => {
+    if (e.topPosition === e.realHeight - e.containerHeight) {
+      setConversationScrollOnBottom(true);
+    } else {
+      setConversationScrollOnBottom(false);
+    }
   };
 
   useEffect(() => {
@@ -249,7 +260,7 @@ const useMessageForm = () => {
   }, [recipient, isActive]);
 
   useEffect(() => {
-    if (conversations.length > 0)
+    if (conversations.length > 0 && conversationScrollOnBottom)
       toBottomRef.current.scrollIntoView({ behavior: "smooth" });
   }, [conversations]);
 
@@ -283,6 +294,7 @@ const useMessageForm = () => {
     handleCancel,
     handleRemoveRecipient,
     handleSubmitMessage,
+    handleConversationScroll,
     showRecipientSuggestions,
   };
 };
