@@ -63,8 +63,8 @@ const MailsList = () => {
               </Col>
               <Col xs={8}>
                 <Row>
-                  <Col xs={7} />
-                  <Col xs={5}>
+                  <Col xs={6} />
+                  <Col xs={6}>
                     <div>
                       <TimeAgo
                         className="myevents-item-timeago"
