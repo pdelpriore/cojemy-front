@@ -87,7 +87,10 @@ const MessageForm = () => {
       <Row>
         <Col xs={12}>
           <div className="message-form-conversation-box">
-            <ScrollArea smoothScrolling={true}>
+            <ScrollArea
+              className="message-form-conversation-scroll"
+              smoothScrolling={true}
+            >
               {conversations &&
                 conversations.length > 0 &&
                 conversations.map((conversation, index) => (

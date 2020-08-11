@@ -5,6 +5,9 @@
   overflow: hidden;
   height: 45vh;
 }
+.message-form-conversation-scroll {
+  height: 44vh;
+}
 .message-form-conversation-item {
   font-family: "OpenSans-SemiBold";
   color: #212529;
