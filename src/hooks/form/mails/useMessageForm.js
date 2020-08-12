@@ -249,15 +249,16 @@ const useMessageForm = () => {
     }
   }, [recipient, isActive]);
 
+  let scrollRefCurrentHeight =
+    conversationScrollRef.current &&
+    conversationScrollRef.current.state.realHeight;
+
   useEffect(() => {
     setNewTopPosition(
       conversationScrollRef.current.state.realHeight -
         conversationScrollRef.current.state.containerHeight
     );
-  }, [
-    conversationScrollRef.current &&
-      conversationScrollRef.current.state.realHeight,
-  ]);
+  }, [scrollRefCurrentHeight]);
 
   useEffect(() => {
     conversationScrollRef.current.scrollArea.scrollYTo(newTopPosition);
