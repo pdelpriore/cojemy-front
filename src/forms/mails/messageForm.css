@@ -37,6 +37,7 @@
 .conversation-content {
   margin-top: 2%;
   text-align: justify;
+  word-wrap: break-word;
   font-family: "OpenSans-Regular";
   font-size: 1vw;
   background-color: #f3f6f8;

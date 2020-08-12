@@ -22,6 +22,7 @@ const useMessageForm = () => {
   const [isActive, setIsActive] = useState(false);
   const [inputs, setInputs] = useState({});
   const [loading, setLoading] = useState(false);
+  const [newTopPosition, setNewTopPosition] = useState(null);
   const [showRecipientSuggestions, setShowRecipientSuggestions] = useState(
     false
   );
@@ -249,20 +250,18 @@ const useMessageForm = () => {
   }, [recipient, isActive]);
 
   useEffect(() => {
-    if (conversations.length > 0 && conversationScrollRef.current) {
-      if (
-        conversationScrollRef.current.state.topPosition ===
-        conversationScrollRef.current.state.realHeight -
-          conversationScrollRef.current.state.containerHeight
-      ) {
-        conversationScrollRef.current.scrollArea.scrollYTo(
-          conversationScrollRef.current.state.realHeight -
-            conversationScrollRef.current.state.containerHeight +
-            102
-        );
-      }
-    }
-  }, [conversations]);
+    setNewTopPosition(
+      conversationScrollRef.current.state.realHeight -
+        conversationScrollRef.current.state.containerHeight
+    );
+  }, [
+    conversationScrollRef.current &&
+      conversationScrollRef.current.state.realHeight,
+  ]);
+
+  useEffect(() => {
+    conversationScrollRef.current.scrollArea.scrollYTo(newTopPosition);
+  }, [newTopPosition]);
 
   useEffect(() => {
     return () => {
