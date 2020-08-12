@@ -262,7 +262,7 @@ const useMessageForm = () => {
         );
       }
     }
-  }, [conversations, conversationScrollRef.current]);
+  }, [conversations]);
 
   useEffect(() => {
     return () => {
