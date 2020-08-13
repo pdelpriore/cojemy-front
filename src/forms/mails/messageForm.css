@@ -38,6 +38,7 @@
   margin-top: 2%;
   text-align: justify;
   word-wrap: break-word;
+  white-space: pre-wrap;
   font-family: "OpenSans-Regular";
   font-size: 1vw;
   background-color: #f3f6f8;

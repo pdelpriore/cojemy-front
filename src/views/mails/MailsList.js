@@ -84,7 +84,7 @@ const MailsList = () => {
                   <div className="myrecipes-list-item-icon">
                     <FontAwesomeIcon icon={faEnvelope} />
                   </div>
-                  <div className="mails-message-text">
+                  <div>
                     {message.conversations[message.conversations.length - 1]
                       .content.length > 64
                       ? message.conversations[
