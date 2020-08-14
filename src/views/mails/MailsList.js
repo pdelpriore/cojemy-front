@@ -36,7 +36,7 @@ const MailsList = () => {
           <div
             onClick={(e) => {
               e.preventDefault();
-              dispatch(continueConversation(message));
+              dispatch(continueConversation(message, userData._id));
             }}
             className="myrecipes-list-item"
             key={index}
