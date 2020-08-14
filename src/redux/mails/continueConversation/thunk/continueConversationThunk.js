@@ -4,6 +4,7 @@ import {
   chooseRecipientCases,
   setConversationCases,
 } from "../../../config/cases/Cases";
+import { sortConversationsByDate } from "./sortConversationsByDate";
 
 export const continueConversation = (message) => {
   return (dispatch, getState) => {
@@ -14,7 +15,7 @@ export const continueConversation = (message) => {
     });
     dispatch({
       type: setConversationCases.CONVERSATION_RETRIEVED,
-      payload: message.conversations,
+      payload: sortConversationsByDate(message),
     });
     dispatch({ type: showNewMessageFormCases.FORM_SHOWN, payload: true });
   };
