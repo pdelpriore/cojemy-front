@@ -245,3 +245,7 @@ export const setMessageIdCases = Object.freeze({
   ID_RETRIEVED: "setMessageIdIdRetrieved",
   CLEAR_STATE: "setMessageIdClearState",
 });
+
+export const conversationWindowOpenCases = Object.freeze({
+  WINDOW_OPEN: "conversationWindowOpenWindowOpen",
+});

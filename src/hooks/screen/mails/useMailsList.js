@@ -18,7 +18,7 @@ const useMailsList = () => {
   const { newMessageSelected } = useSelector(
     (state) => state.isNewMessageSelected
   );
-  const { messageId } = useSelector((state) => state.isMessageId);
+  const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
 
   useEffect(() => {
     setIsActive(true);
@@ -26,7 +26,7 @@ const useMailsList = () => {
   }, []);
 
   useEffect(() => {
-    if (socket.connected && (!newMessageSelected || messageId) && isActive) {
+    if (socket.connected && !newMessageSelected && !windowOpen && isActive) {
       setLoading(true);
       socket.emit("getMessages", userData._id);
       socket.on("messagesRetrieved", (data) => {
@@ -54,7 +54,7 @@ const useMailsList = () => {
     isActive,
     userData._id,
     error.getMessagesError,
-    messageId,
+    windowOpen,
     newMessageSelected,
     dispatch,
   ]);

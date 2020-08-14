@@ -3,6 +3,7 @@ import {
   setMessageIdCases,
   chooseRecipientCases,
   setConversationCases,
+  conversationWindowOpenCases,
 } from "../../../config/cases/Cases";
 import { sortConversationsByDate } from "./sortConversationsByDate";
 
@@ -18,6 +19,7 @@ export const continueConversation = (message, userDataId) => {
       type: setConversationCases.CONVERSATION_RETRIEVED,
       payload: sortConversationsByDate(message),
     });
+    dispatch({ type: conversationWindowOpenCases.WINDOW_OPEN, payload: true });
     dispatch({ type: showNewMessageFormCases.FORM_SHOWN, payload: true });
   };
 };

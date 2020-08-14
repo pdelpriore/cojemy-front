@@ -14,6 +14,7 @@ import {
   setMessageId,
   setMessageIdClearState,
 } from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
+import { conversationWindowOpen } from "../../../redux/mails/conversationWindowOpen/thunk/conversationWindowOpenThunk";
 import { strings } from "../../../strings/Strings";
 
 const useMessageForm = () => {
@@ -93,6 +94,7 @@ const useMessageForm = () => {
     setRecipients([]);
     setInputs({});
     if (newMessageSelected) dispatch(newMessage(false));
+    dispatch(conversationWindowOpen(false));
     if (conversations.length > 0) dispatch(setConversationClearState());
   };
 

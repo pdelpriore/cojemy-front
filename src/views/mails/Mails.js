@@ -8,6 +8,7 @@ import { useSpring, animated } from "react-spring";
 import { useDispatch, useSelector } from "react-redux";
 import { showNewMessageForm } from "../../redux/mails/showNewMessageForm/thunk/showNewMessageThunk";
 import { newMessage } from "../../redux/mails/newMessageSelected/thunk/newMessageSelectedThunk";
+import { conversationWindowOpen } from "../../redux/mails/conversationWindowOpen/thunk/conversationWindowOpenThunk";
 import MessageForm from "../../forms/mails/MessageForm";
 import MailsList from "./MailsList";
 import { capitalize } from "../../util/Util";
@@ -60,6 +61,7 @@ const Mails = ({ match: { path, url, isExact } }) => {
                   e.preventDefault();
                   dispatch(newMessage(true));
                   dispatch(showNewMessageForm(true));
+                  dispatch(conversationWindowOpen(true));
                 }}
                 className="myrecipes-button-new-recipe"
                 variant="outline-dark"
