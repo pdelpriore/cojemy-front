@@ -9,6 +9,7 @@ import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
 import { createDate, capitalize } from "../../util/Util";
 import { useDispatch, useSelector } from "react-redux";
+import { continueConversation } from "../../redux/mails/continueConversation/thunk/continueConversationThunk";
 import useMailsList from "../../hooks/screen/mails/useMailsList";
 import "./mails.css";
 
@@ -35,7 +36,7 @@ const MailsList = () => {
           <div
             onClick={(e) => {
               e.preventDefault();
-              //dispatch(myRecipeData(retrieveRecipe));
+              dispatch(continueConversation(message));
             }}
             className="myrecipes-list-item"
             key={index}
