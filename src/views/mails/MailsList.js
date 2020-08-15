@@ -42,8 +42,8 @@ const MailsList = () => {
             key={index}
           >
             <Row>
-              <Col xs={4}>
-                <div className="recipient-photo-box">
+              <Col xs={3}>
+                <div className="mails-list-photo-box">
                   <Img
                     className="mails-list-item-picture"
                     src={require("../../assets/imgs/cookerret.png")}
@@ -62,10 +62,10 @@ const MailsList = () => {
                   ></div>
                 </div>
               </Col>
-              <Col xs={8}>
+              <Col xs={9}>
                 <Row>
-                  <Col xs={6} />
-                  <Col xs={6}>
+                  <Col xs={7} />
+                  <Col xs={5}>
                     <div>
                       <TimeAgo
                         className="myevents-item-timeago"
