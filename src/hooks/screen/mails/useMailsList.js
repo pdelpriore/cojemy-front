@@ -61,7 +61,7 @@ const useMailsList = () => {
 
   useEffect(() => {
     if (socket.connected && messages.length > 0 && isActive) {
-      socket.on("userActive", (userId) => {
+      socket.on("userActiveListInfo", (userId) => {
         if (userId) {
           dispatch(
             setMessages(
@@ -82,7 +82,7 @@ const useMailsList = () => {
           );
         }
       });
-      socket.on("userInactive", (userId) => {
+      socket.on("userInactiveListInfo", (userId) => {
         if (userId) {
           dispatch(
             setMessages(
@@ -132,8 +132,8 @@ const useMailsList = () => {
       if (socket.connected && isActive) {
         socket.removeAllListeners("messagesRetrieved");
         socket.removeAllListeners("getMessagesError");
-        socket.removeAllListeners("userActive");
-        socket.removeAllListeners("userInactive");
+        socket.removeAllListeners("userActiveListInfo");
+        socket.removeAllListeners("userInactiveListInfo");
         socket.removeAllListeners("newMessageSentListInfo");
       }
     };
