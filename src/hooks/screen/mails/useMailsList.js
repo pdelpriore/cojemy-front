@@ -26,6 +26,7 @@ const useMailsList = () => {
   }, []);
 
   useEffect(() => {
+    console.log("render 1");
     if (socket.connected && !newMessageSelected && !windowOpen && isActive) {
       setLoading(true);
       socket.emit("getMessages", userData._id);
@@ -60,6 +61,7 @@ const useMailsList = () => {
   ]);
 
   useEffect(() => {
+    console.log("render 2");
     if (socket.connected && messages.length > 0 && isActive) {
       socket.on("userActive", (userId) => {
         if (userId) {
@@ -107,9 +109,11 @@ const useMailsList = () => {
   }, [socket, isActive, messages, dispatch]);
 
   useEffect(() => {
+    console.log("render 3");
     if (socket.connected && isActive) {
       socket.off("newMessageSent").on("newMessageSent", (result) => {
         if (result) {
+          console.log(result);
           socket.emit("getMessages", userData._id);
           socket.on("messagesRetrieved", (data) => {
             if (data) {

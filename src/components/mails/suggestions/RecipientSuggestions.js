@@ -9,6 +9,7 @@ const RecipientSuggestions = ({ recipients }) => {
 
   const { messages } = useSelector((state) => state.userMessages);
   const messageRecipientIds = messages.map((message) => message.recipient._id);
+  const messageSenderIds = messages.map((message) => message.sender._id);
 
   return (
     recipients &&
@@ -17,9 +18,12 @@ const RecipientSuggestions = ({ recipients }) => {
       <div key={index} className="recipient-suggestions-box">
         <ListGroup variant="flush">
           {messageRecipientIds.length > 0 &&
-          messageRecipientIds.some((element) =>
+          (messageRecipientIds.some((element) =>
             recipient._id.includes(element)
-          ) ? (
+          ) ||
+            messageSenderIds.some((element) =>
+              recipient._id.includes(element)
+            )) ? (
             <ListGroup.Item
               onClick={(e) => {
                 e.preventDefault();
