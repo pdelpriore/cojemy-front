@@ -287,7 +287,8 @@ const EventPreview = () => {
                         src={
                           userGooglePhoto.some(
                             (element) =>
-                              participant.photo && participant.includes(element)
+                              participant.photo &&
+                              participant.photo.includes(element)
                           )
                             ? participant.photo
                             : !userGooglePhoto.some(
@@ -328,7 +329,9 @@ const EventPreview = () => {
                     eventPreviewData.author.email === userData.email ||
                     eventPreviewData.participants.some((participant) =>
                       userData.email.includes(participant.email)
-                    )
+                    ) ||
+                    eventPreviewData.availablePlaces ===
+                      eventPreviewData.participants.length
                   }
                   className={
                     eventPreviewData.author.email !== userData.email &&
