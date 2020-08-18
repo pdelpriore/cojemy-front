@@ -20,6 +20,7 @@ const MailsList = () => {
   const { loading, error } = useMailsList();
   const { messages } = useSelector((state) => state.userMessages);
   const { userData } = useSelector((state) => state.login);
+  const { socket } = useSelector((state) => state.socketData);
 
   return loading ? (
     <div className="myrecipes-list-loading-area">
@@ -36,6 +37,9 @@ const MailsList = () => {
           <div
             onClick={(e) => {
               e.preventDefault();
+              if (userData._id === message.recipient._id) {
+                socket.emit("messageRead", message._id);
+              }
               dispatch(continueConversation(message, userData._id));
             }}
             className="myrecipes-list-item"
@@ -85,7 +89,14 @@ const MailsList = () => {
                   <div className="myrecipes-list-item-icon">
                     <FontAwesomeIcon icon={faEnvelope} />
                   </div>
-                  <div>
+                  <div
+                    className={
+                      userData._id === message.recipient._id &&
+                      !message.isRecipientRead
+                        ? "mails-list-item-message-unread"
+                        : ""
+                    }
+                  >
                     {message.conversations[message.conversations.length - 1]
                       .content.length > 64
                       ? message.conversations[

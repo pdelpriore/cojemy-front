@@ -112,6 +112,24 @@ const useMailsList = () => {
         .off("newMessageSentListInfo")
         .on("newMessageSentListInfo", (result) => {
           if (result) {
+            setLoading(true);
+            socket.emit("getMessages", userData._id);
+            socket.on("messagesRetrieved", (data) => {
+              if (data) {
+                if (error.getMessagesError) {
+                  setError({});
+                }
+                setLoading(false);
+                dispatch(setMessages(data));
+              }
+            });
+          }
+        });
+      socket
+        .off("messageReadSetListInfo")
+        .on("messageReadSetListInfo", (result) => {
+          if (result) {
+            setLoading(true);
             socket.emit("getMessages", userData._id);
             socket.on("messagesRetrieved", (data) => {
               if (data) {
@@ -135,6 +153,7 @@ const useMailsList = () => {
         socket.removeAllListeners("userActiveListInfo");
         socket.removeAllListeners("userInactiveListInfo");
         socket.removeAllListeners("newMessageSentListInfo");
+        socket.removeAllListeners("messageReadSetListInfo");
       }
     };
   }, [socket, isActive]);
