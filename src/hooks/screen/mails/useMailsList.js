@@ -72,15 +72,6 @@ const useMailsList = () => {
               dispatch(setMessages(data));
             }
           });
-          socket.on("getMessagesError", (err) => {
-            if (err) {
-              setError((error) => ({
-                ...error,
-                getMessagesError: err,
-              }));
-              dispatch(setMessagesClearState());
-            }
-          });
         }
       });
     }
@@ -92,14 +83,12 @@ const useMailsList = () => {
         .off("newMessageSentListInfo")
         .on("newMessageSentListInfo", (result) => {
           if (result) {
-            setLoading(true);
             socket.emit("getMessages", userData._id);
             socket.on("messagesRetrieved", (data) => {
               if (data) {
                 if (error.getMessagesError) {
                   setError({});
                 }
-                setLoading(false);
                 dispatch(setMessages(data));
               }
             });
@@ -109,14 +98,12 @@ const useMailsList = () => {
         .off("messageReadSetListInfo")
         .on("messageReadSetListInfo", (result) => {
           if (result) {
-            setLoading(true);
             socket.emit("getMessages", userData._id);
             socket.on("messagesRetrieved", (data) => {
               if (data) {
                 if (error.getMessagesError) {
                   setError({});
                 }
-                setLoading(false);
                 dispatch(setMessages(data));
               }
             });
