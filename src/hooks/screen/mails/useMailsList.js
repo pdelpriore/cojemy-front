@@ -61,46 +61,26 @@ const useMailsList = () => {
 
   useEffect(() => {
     if (socket.connected && messages.length > 0 && isActive) {
-      socket.on("userActiveListInfo", (userId) => {
-        if (userId) {
-          dispatch(
-            setMessages(
-              messages.map((message) => {
-                return message.recipient._id.toString() === userId
-                  ? {
-                      ...message,
-                      recipient: { ...message.recipient, isConnected: true },
-                    }
-                  : message.sender._id.toString() === userId
-                  ? {
-                      ...message,
-                      sender: { ...message.sender, isConnected: true },
-                    }
-                  : message;
-              })
-            )
-          );
-        }
-      });
-      socket.on("userInactiveListInfo", (userId) => {
-        if (userId) {
-          dispatch(
-            setMessages(
-              messages.map((message) => {
-                return message.recipient._id.toString() === userId
-                  ? {
-                      ...message,
-                      recipient: { ...message.recipient, isConnected: false },
-                    }
-                  : message.sender._id.toString() === userId
-                  ? {
-                      ...message,
-                      sender: { ...message.sender, isConnected: false },
-                    }
-                  : message;
-              })
-            )
-          );
+      socket.on("userActiveListInfo", (res) => {
+        if (res || !res) {
+          socket.emit("getMessages", userData._id);
+          socket.on("messagesRetrieved", (data) => {
+            if (data) {
+              if (error.getMessagesError) {
+                setError({});
+              }
+              dispatch(setMessages(data));
+            }
+          });
+          socket.on("getMessagesError", (err) => {
+            if (err) {
+              setError((error) => ({
+                ...error,
+                getMessagesError: err,
+              }));
+              dispatch(setMessagesClearState());
+            }
+          });
         }
       });
     }
@@ -151,7 +131,6 @@ const useMailsList = () => {
         socket.removeAllListeners("messagesRetrieved");
         socket.removeAllListeners("getMessagesError");
         socket.removeAllListeners("userActiveListInfo");
-        socket.removeAllListeners("userInactiveListInfo");
         socket.removeAllListeners("newMessageSentListInfo");
         socket.removeAllListeners("messageReadSetListInfo");
       }
