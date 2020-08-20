@@ -19,6 +19,7 @@ const useMailsList = () => {
     (state) => state.isNewMessageSelected
   );
   const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
+  const { messageId } = useSelector((state) => state.isMessageId);
 
   useEffect(() => {
     setIsActive(true);
@@ -109,8 +110,53 @@ const useMailsList = () => {
             });
           }
         });
+      socket
+        .off("newConversationListInfo")
+        .on("newConversationListInfo", (conversationMessageId) => {
+          if (conversationMessageId) {
+            if (windowOpen && conversationMessageId !== messageId) {
+              socket.emit("messageUnread", conversationMessageId);
+              socket.on("messageUnreadSetListInfo", (result) => {
+                if (result) {
+                  socket.emit("getMessages", userData._id);
+                  socket.on("messagesRetrieved", (data) => {
+                    if (data) {
+                      if (error.getMessagesError) {
+                        setError({});
+                      }
+                      dispatch(setMessages(data));
+                    }
+                  });
+                }
+              });
+            } else if (!windowOpen) {
+              socket.emit("messageUnread", conversationMessageId);
+              socket.on("messageUnreadSetListInfo", (result) => {
+                if (result) {
+                  socket.emit("getMessages", userData._id);
+                  socket.on("messagesRetrieved", (data) => {
+                    if (data) {
+                      if (error.getMessagesError) {
+                        setError({});
+                      }
+                      dispatch(setMessages(data));
+                    }
+                  });
+                }
+              });
+            }
+          }
+        });
     }
-  }, [socket, userData._id, error.getMessagesError, isActive, dispatch]);
+  }, [
+    socket,
+    userData._id,
+    error.getMessagesError,
+    isActive,
+    messageId,
+    windowOpen,
+    dispatch,
+  ]);
 
   useEffect(() => {
     return () => {
@@ -120,6 +166,8 @@ const useMailsList = () => {
         socket.removeAllListeners("userActiveListInfo");
         socket.removeAllListeners("newMessageSentListInfo");
         socket.removeAllListeners("messageReadSetListInfo");
+        socket.removeAllListeners("newConversationListInfo");
+        socket.removeAllListeners("messageUnreadSetListInfo");
       }
     };
   }, [socket, isActive]);

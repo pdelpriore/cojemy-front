@@ -40,6 +40,7 @@ const useMessageForm = () => {
     (state) => state.isNewMessageSelected
   );
   const { conversations } = useSelector((state) => state.userConversations);
+  const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
   const { messageId } = useSelector((state) => state.isMessageId);
 
   const handleInputChange = (e) => {
@@ -223,7 +224,11 @@ const useMessageForm = () => {
         }
       });
       socket.off("newConversationSent").on("newConversationSent", (result) => {
-        if (result) {
+        if (
+          result &&
+          windowOpen &&
+          result.newConversationContent[0].message === messageId
+        ) {
           setLoading(false);
           dispatch(setConversation(result.newConversationContent));
           setInputs({});
@@ -237,7 +242,16 @@ const useMessageForm = () => {
       setLoading(false);
       setShowRecipientSuggestions(false);
     }
-  }, [socket, inputs, recipients, recipient, isActive, dispatch]);
+  }, [
+    socket,
+    inputs,
+    recipients,
+    recipient,
+    windowOpen,
+    messageId,
+    isActive,
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (recipient.name && isActive) {

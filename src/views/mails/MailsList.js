@@ -37,7 +37,16 @@ const MailsList = () => {
           <div
             onClick={(e) => {
               e.preventDefault();
-              if (userData._id === message.recipient._id) {
+              if (
+                (userData._id === message.recipient._id &&
+                  userData._id !==
+                    message.conversations[message.conversations.length - 1]
+                      .author._id) ||
+                (userData._id === message.sender._id &&
+                  userData._id !==
+                    message.conversations[message.conversations.length - 1]
+                      .author._id)
+              ) {
                 socket.emit("messageRead", message._id);
               }
               dispatch(continueConversation(message, userData._id));
@@ -91,7 +100,16 @@ const MailsList = () => {
                   </div>
                   <div
                     className={
-                      userData._id === message.recipient._id &&
+                      ((userData._id === message.recipient._id &&
+                        userData._id !==
+                          message.conversations[
+                            message.conversations.length - 1
+                          ].author._id) ||
+                        (userData._id === message.sender._id &&
+                          userData._id !==
+                            message.conversations[
+                              message.conversations.length - 1
+                            ].author._id)) &&
                       !message.isRecipientRead
                         ? "mails-list-item-message-unread"
                         : ""
