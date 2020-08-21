@@ -110,7 +110,7 @@ const MailsList = () => {
                             message.conversations[
                               message.conversations.length - 1
                             ].author._id)) &&
-                      !message.isRecipientRead
+                      !message.isRead
                         ? "mails-list-item-message-unread"
                         : ""
                     }
