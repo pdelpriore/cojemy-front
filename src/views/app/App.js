@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,25 +14,11 @@ import MyRecipes from "../myRecipes/MyRecipes";
 import Mails from "../mails/Mails";
 import MyEvents from "../myEvents/MyEvents";
 import MyProfile from "../myProfile/MyProfile";
-import { useSelector, useDispatch } from "react-redux";
-import { ioConnect } from "../../redux/mails/socketData/thunk/ioConnectThunk";
+import useApp from "../../hooks/screen/app/useApp";
 import "./app.css";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const { userData } = useSelector((state) => state.login);
-  const { userLogged } = useSelector((state) => state.isUserLogged);
-
-  const userDataMemoized = useMemo(() => {
-    return { ...userData };
-  }, [userData]);
-
-  useEffect(() => {
-    if (userLogged) {
-      dispatch(ioConnect(userDataMemoized._id, userDataMemoized.email));
-    }
-  }, [userDataMemoized._id, userDataMemoized.email, userLogged, dispatch]);
-
+  const { userDataMemoized } = useApp();
   return (
     <>
       <Router>

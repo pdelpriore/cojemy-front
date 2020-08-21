@@ -45,17 +45,17 @@ const useNavMenu = () => {
     return () => setIsActive(false);
   }, []);
 
-  useEffect(() => {
-    if (socket.connected && !newMessageSelected && !windowOpen && isActive) {
-      socket.emit("getMessages", userData._id);
-      socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-        if (data.length > 0) {
-          console.log("nav messages : ", data);
-          //dispatch(setMessages(data));
-        }
-      });
-    }
-  }, [socket, newMessageSelected, windowOpen, userData._id, isActive]);
+  //   useEffect(() => {
+  //     if (socket.connected && !newMessageSelected && !windowOpen && isActive) {
+  //       socket.emit("getMessages", userData._id);
+  //       socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
+  //         if (data.length > 0) {
+  //           console.log("nav messages : ", data);
+  //           //dispatch(setMessages(data));
+  //         }
+  //       });
+  //     }
+  //   }, [socket, newMessageSelected, windowOpen, userData._id, isActive]);
 
   useEffect(() => {
     if (socket.disconnected && isActive && userLoggedOut) {
