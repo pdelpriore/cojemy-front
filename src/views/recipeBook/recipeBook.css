@@ -9,6 +9,7 @@
 .recipebook-first-section {
   height: 100vh;
   width: 50vw;
+  background-color: #e2f3f5;
 }
 .recipebook-list {
   height: 100vh;
@@ -19,6 +20,7 @@
 .recipebook-second-section {
   height: 100vh;
   width: 50vw;
+  background-color: #ededed;
 }
 .recipebook-soup {
   width: 25vw;

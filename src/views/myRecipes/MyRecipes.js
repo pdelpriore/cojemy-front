@@ -93,7 +93,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
             <Col xs={6}>
               <Image
                 className="myrecipes-image"
-                src={require("../../assets/imgs/recipebookret.jpg")}
+                src={require("../../assets/imgs/recipebookret.png")}
               />
             </Col>
             <Col xs={5} />
