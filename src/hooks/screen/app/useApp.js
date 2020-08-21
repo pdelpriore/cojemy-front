@@ -43,7 +43,7 @@ const useApp = () => {
     socket,
     newMessageSelected,
     windowOpen,
-    userDataMemoized,
+    userDataMemoized._id,
     isActive,
     dispatch,
   ]);
