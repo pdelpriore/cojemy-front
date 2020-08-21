@@ -32,7 +32,7 @@ const useApp = () => {
       !windowOpen &&
       isActive
     ) {
-      socket.emit("getMessages", userData._id);
+      socket.emit("getMessages", userDataMemoized._id);
       socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
         if (data.length > 0) {
           dispatch(setMessages(data));
@@ -43,7 +43,7 @@ const useApp = () => {
     socket,
     newMessageSelected,
     windowOpen,
-    userData._id,
+    userDataMemoized,
     isActive,
     dispatch,
   ]);
