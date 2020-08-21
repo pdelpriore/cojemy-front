@@ -76,7 +76,14 @@ const useMailsList = () => {
         }
       });
     }
-  }, [socket, isActive, messages, dispatch]);
+  }, [
+    socket,
+    isActive,
+    messages,
+    error.getMessagesError,
+    userData._id,
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (socket.connected && isActive) {
