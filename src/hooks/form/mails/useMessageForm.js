@@ -117,16 +117,18 @@ const useMessageForm = () => {
         sender: userData._id,
         searchedUser: inputs.to,
       });
-      socket.on("searchRecipientResult", (data) => {
-        if (data) {
-          if (error.searchRecipientError || error.connectionError) {
-            setError({});
+      socket
+        .off("searchRecipientResult")
+        .on("searchRecipientResult", (data) => {
+          if (data) {
+            if (error.searchRecipientError || error.connectionError) {
+              setError({});
+            }
+            setLoading(false);
+            setRecipients(data);
           }
-          setLoading(false);
-          setRecipients(data);
-        }
-      });
-      socket.on("searchRecipientError", (err) => {
+        });
+      socket.off("searchRecipientError").on("searchRecipientError", (err) => {
         if (err) {
           setError((error) => ({
             ...error,
@@ -165,7 +167,7 @@ const useMessageForm = () => {
       !recipient.name &&
       isActive
     ) {
-      socket.on("userActive", (userId) => {
+      socket.off("userActive").on("userActive", (userId) => {
         if (userId) {
           setRecipients(
             recipients.map((recipient) =>
@@ -176,7 +178,7 @@ const useMessageForm = () => {
           );
         }
       });
-      socket.on("userInactive", (userId) => {
+      socket.off("userInactive").on("userInactive", (userId) => {
         if (userId) {
           setRecipients(
             recipients.map((recipient) =>
@@ -202,13 +204,13 @@ const useMessageForm = () => {
       (socket.connected && !inputs.to,
       recipient.name && recipients.length === 0 && isActive)
     ) {
-      socket.on("userActive", (userId) => {
+      socket.off("userActive").on("userActive", (userId) => {
         if (userId) {
           if (recipient._id === userId)
             dispatch(chooseRecipient({ ...recipient, isConnected: true }));
         }
       });
-      socket.on("userInactive", (userId) => {
+      socket.off("userInactive").on("userInactive", (userId) => {
         if (userId) {
           if (recipient._id === userId)
             dispatch(chooseRecipient({ ...recipient, isConnected: false }));
@@ -279,25 +281,6 @@ const useMessageForm = () => {
   useEffect(() => {
     conversationScrollRef.current.scrollArea.scrollYTo(newTopPosition);
   }, [newTopPosition]);
-
-  useEffect(() => {
-    return () => {
-      if (
-        socket.connected &&
-        (!inputs.to || inputs.to) &&
-        (!recipient.name || recipient.name) &&
-        recipients.length === 0 &&
-        isActive
-      ) {
-        socket.removeAllListeners("searchRecipientResult");
-        socket.removeAllListeners("searchRecipientError");
-        socket.removeAllListeners("userActive");
-        socket.removeAllListeners("userInactive");
-        socket.removeAllListeners("newMessageSent");
-        socket.removeAllListeners("newConversationSent");
-      }
-    };
-  }, [socket, inputs, recipients, recipient, isActive]);
 
   return {
     inputs,

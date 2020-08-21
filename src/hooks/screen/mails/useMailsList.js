@@ -30,7 +30,7 @@ const useMailsList = () => {
     if (socket.connected && !newMessageSelected && !windowOpen && isActive) {
       setLoading(true);
       socket.emit("getMessages", userData._id);
-      socket.on("messagesRetrieved", (data) => {
+      socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
         if (data) {
           if (error.getMessagesError) {
             setError({});
@@ -39,7 +39,7 @@ const useMailsList = () => {
           dispatch(setMessages(data));
         }
       });
-      socket.on("getMessagesError", (err) => {
+      socket.off("getMessagesError").on("getMessagesError", (err) => {
         if (err) {
           setError((error) => ({
             ...error,
@@ -62,10 +62,10 @@ const useMailsList = () => {
 
   useEffect(() => {
     if (socket.connected && messages.length > 0 && isActive) {
-      socket.on("userActiveListInfo", (res) => {
+      socket.off("userActiveListInfo").on("userActiveListInfo", (res) => {
         if (res || !res) {
           socket.emit("getMessages", userData._id);
-          socket.on("messagesRetrieved", (data) => {
+          socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
             if (data) {
               if (error.getMessagesError) {
                 setError({});
@@ -85,7 +85,7 @@ const useMailsList = () => {
         .on("newMessageSentListInfo", (result) => {
           if (result) {
             socket.emit("getMessages", userData._id);
-            socket.on("messagesRetrieved", (data) => {
+            socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
               if (data) {
                 if (error.getMessagesError) {
                   setError({});
@@ -100,7 +100,7 @@ const useMailsList = () => {
         .on("messageReadSetListInfo", (result) => {
           if (result) {
             socket.emit("getMessages", userData._id);
-            socket.on("messagesRetrieved", (data) => {
+            socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
               if (data) {
                 if (error.getMessagesError) {
                   setError({});
@@ -116,34 +116,42 @@ const useMailsList = () => {
           if (conversationMessageId) {
             if (windowOpen && conversationMessageId !== messageId) {
               socket.emit("messageUnread", conversationMessageId);
-              socket.on("messageUnreadSetListInfo", (result) => {
-                if (result) {
-                  socket.emit("getMessages", userData._id);
-                  socket.on("messagesRetrieved", (data) => {
-                    if (data) {
-                      if (error.getMessagesError) {
-                        setError({});
-                      }
-                      dispatch(setMessages(data));
-                    }
-                  });
-                }
-              });
+              socket
+                .off("messageUnreadSetListInfo")
+                .on("messageUnreadSetListInfo", (result) => {
+                  if (result) {
+                    socket.emit("getMessages", userData._id);
+                    socket
+                      .off("messagesRetrieved")
+                      .on("messagesRetrieved", (data) => {
+                        if (data) {
+                          if (error.getMessagesError) {
+                            setError({});
+                          }
+                          dispatch(setMessages(data));
+                        }
+                      });
+                  }
+                });
             } else if (!windowOpen) {
               socket.emit("messageUnread", conversationMessageId);
-              socket.on("messageUnreadSetListInfo", (result) => {
-                if (result) {
-                  socket.emit("getMessages", userData._id);
-                  socket.on("messagesRetrieved", (data) => {
-                    if (data) {
-                      if (error.getMessagesError) {
-                        setError({});
-                      }
-                      dispatch(setMessages(data));
-                    }
-                  });
-                }
-              });
+              socket
+                .off("messageUnreadSetListInfo")
+                .on("messageUnreadSetListInfo", (result) => {
+                  if (result) {
+                    socket.emit("getMessages", userData._id);
+                    socket
+                      .off("messagesRetrieved")
+                      .on("messagesRetrieved", (data) => {
+                        if (data) {
+                          if (error.getMessagesError) {
+                            setError({});
+                          }
+                          dispatch(setMessages(data));
+                        }
+                      });
+                  }
+                });
             }
           }
         });
@@ -157,20 +165,6 @@ const useMailsList = () => {
     windowOpen,
     dispatch,
   ]);
-
-  useEffect(() => {
-    return () => {
-      if (socket.connected && isActive) {
-        socket.removeAllListeners("messagesRetrieved");
-        socket.removeAllListeners("getMessagesError");
-        socket.removeAllListeners("userActiveListInfo");
-        socket.removeAllListeners("newMessageSentListInfo");
-        socket.removeAllListeners("messageReadSetListInfo");
-        socket.removeAllListeners("newConversationListInfo");
-        socket.removeAllListeners("messageUnreadSetListInfo");
-      }
-    };
-  }, [socket, isActive]);
 
   return { loading, error };
 };
