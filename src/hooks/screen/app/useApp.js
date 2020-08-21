@@ -30,6 +30,7 @@ const useApp = () => {
       (socket.connected || socket.disconnected) &&
       !newMessageSelected &&
       !windowOpen &&
+      userLogged &&
       isActive
     ) {
       socket.emit("getMessages", userDataMemoized._id);
@@ -45,6 +46,7 @@ const useApp = () => {
     windowOpen,
     userDataMemoized._id,
     isActive,
+    userLogged,
     dispatch,
   ]);
 
