@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearLoginState } from "../../../redux/login/loginUser/thunk/loginThunk";
 import { clearLogoutState } from "../../../redux/logout/thunk/logoutThunk";
@@ -23,15 +23,42 @@ import { setMessagesClearState } from "../../../redux/mails/setMessages/thunk/se
 import { setMessageIdClearState } from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
 import { searchEventFilled } from "../../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { loginUser } from "../../../redux/login/userLogged/thunk/userLoggedThunk";
+import { setMessages } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
 
 const useNavMenu = () => {
   const dispatch = useDispatch();
+
+  const [messagesUnread, setMessagesUnread] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+
   const { userData } = useSelector((state) => state.login);
   const { loading, userLoggedOut } = useSelector((state) => state.logout);
+  const { newMessageSelected } = useSelector(
+    (state) => state.isNewMessageSelected
+  );
+  const { messages } = useSelector((state) => state.userMessages);
+  const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
   const { socket } = useSelector((state) => state.socketData);
 
   useEffect(() => {
-    if (socket.disconnected && userLoggedOut) {
+    setIsActive(true);
+    return () => setIsActive(false);
+  }, []);
+
+  useEffect(() => {
+    if (socket.connected && !newMessageSelected && !windowOpen && isActive) {
+      socket.emit("getMessages", userData._id);
+      socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
+        if (data.length > 0) {
+          console.log("nav messages : ", data);
+          //dispatch(setMessages(data));
+        }
+      });
+    }
+  }, [socket, newMessageSelected, windowOpen, userData._id, isActive]);
+
+  useEffect(() => {
+    if (socket.disconnected && isActive && userLoggedOut) {
       dispatch(clearLoginState());
       dispatch(loginUser(false));
       dispatch(recipeDetailsClearState());
@@ -55,11 +82,11 @@ const useNavMenu = () => {
       dispatch(setMessagesClearState());
       dispatch(setMessageIdClearState());
     }
-  }, [userLoggedOut, socket, dispatch]);
+  }, [userLoggedOut, socket, isActive, dispatch]);
 
   useEffect(() => {
-    if (userData.email === undefined) dispatch(clearLogoutState());
-  }, [userData.email, dispatch]);
+    if (userData.email === undefined && isActive) dispatch(clearLogoutState());
+  }, [userData.email, isActive, dispatch]);
 
   return { loading };
 };

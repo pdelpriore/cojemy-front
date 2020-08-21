@@ -31,7 +31,7 @@ const useMailsList = () => {
       setLoading(true);
       socket.emit("getMessages", userData._id);
       socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-        if (data) {
+        if (data.length > 0) {
           if (error.getMessagesError) {
             setError({});
           }
@@ -66,7 +66,7 @@ const useMailsList = () => {
         if (res || !res) {
           socket.emit("getMessages", userData._id);
           socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-            if (data) {
+            if (data.length > 0) {
               if (error.getMessagesError) {
                 setError({});
               }
@@ -93,7 +93,7 @@ const useMailsList = () => {
           if (result) {
             socket.emit("getMessages", userData._id);
             socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-              if (data) {
+              if (data.length > 0) {
                 if (error.getMessagesError) {
                   setError({});
                 }
@@ -108,7 +108,7 @@ const useMailsList = () => {
           if (result) {
             socket.emit("getMessages", userData._id);
             socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-              if (data) {
+              if (data.length > 0) {
                 if (error.getMessagesError) {
                   setError({});
                 }
@@ -131,7 +131,7 @@ const useMailsList = () => {
                     socket
                       .off("messagesRetrieved")
                       .on("messagesRetrieved", (data) => {
-                        if (data) {
+                        if (data.length > 0) {
                           if (error.getMessagesError) {
                             setError({});
                           }
@@ -150,7 +150,7 @@ const useMailsList = () => {
                     socket
                       .off("messagesRetrieved")
                       .on("messagesRetrieved", (data) => {
-                        if (data) {
+                        if (data.length > 0) {
                           if (error.getMessagesError) {
                             setError({});
                           }

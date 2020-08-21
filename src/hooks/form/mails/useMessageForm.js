@@ -120,7 +120,7 @@ const useMessageForm = () => {
       socket
         .off("searchRecipientResult")
         .on("searchRecipientResult", (data) => {
-          if (data) {
+          if (data.length > 0) {
             if (error.searchRecipientError || error.connectionError) {
               setError({});
             }
@@ -217,7 +217,7 @@ const useMessageForm = () => {
         }
       });
       socket.off("newMessageSent").on("newMessageSent", (result) => {
-        if (result) {
+        if (result.length > 0) {
           setLoading(false);
           dispatch(setConversation(result.messageSent));
           dispatch(setMessageId(result.messageSent[0].message));
@@ -227,7 +227,7 @@ const useMessageForm = () => {
       });
       socket.off("newConversationSent").on("newConversationSent", (result) => {
         if (
-          result &&
+          result.length > 0 &&
           windowOpen &&
           result.newConversationContent[0].message === messageId
         ) {
