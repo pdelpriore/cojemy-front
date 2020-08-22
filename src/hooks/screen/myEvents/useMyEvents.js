@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { eventButtonItemsArray } from "../../../shared/buttonItemsArray";
 import { getEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
 
-let skip = 1;
-
 const useMyEvents = () => {
-  const limit = 30;
+  const [skip, setSkip] = useState(1);
+  const [limit, setLimit] = useState(30);
+
   const dispatch = useDispatch();
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
   const { eventsError } = useSelector((state) => state.events);
@@ -14,20 +14,18 @@ const useMyEvents = () => {
 
   const handlePrev = (e) => {
     e.preventDefault();
-    skip > 1 && skip--;
-    dispatch(
-      getEvents(
-        eventButtonItemsArray[eventButtonId].category,
-        userData._id,
-        userData.email,
-        skip,
-        limit
-      )
-    );
+    skip > 1 && setSkip(skip - 1);
   };
   const handleNext = (e) => {
     e.preventDefault();
-    !eventsError && skip++;
+    !eventsError && setSkip(skip + 1);
+  };
+
+  useEffect(() => {
+    setSkip(1);
+  }, []);
+
+  useEffect(() => {
     dispatch(
       getEvents(
         eventButtonItemsArray[eventButtonId].category,
@@ -37,11 +35,7 @@ const useMyEvents = () => {
         limit
       )
     );
-  };
-
-  useEffect(() => {
-    skip = 1;
-  }, []);
+  }, [skip, limit, eventButtonId, userData._id, userData.email, dispatch]);
 
   return { skip, handlePrev, handleNext };
 };

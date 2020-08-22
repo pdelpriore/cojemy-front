@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { recipeButtonItemsArray } from "../../../shared/buttonItemsArray";
 import { getRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
 
-let skip = 1;
-
 const useRecipeBook = () => {
-  const limit = 30;
+  const [skip, setSkip] = useState(1);
+  const [limit, setLimit] = useState(30);
+
   const dispatch = useDispatch();
   const { recipeButtonId } = useSelector(
     (state) => state.recipeCategorySelected
@@ -16,20 +16,18 @@ const useRecipeBook = () => {
 
   const handlePrev = (e) => {
     e.preventDefault();
-    skip > 1 && skip--;
-    dispatch(
-      getRecipe(
-        recipeButtonItemsArray[recipeButtonId].category,
-        userData._id,
-        userData.email,
-        skip,
-        limit
-      )
-    );
+    skip > 1 && setSkip(skip - 1);
   };
   const handleNext = (e) => {
     e.preventDefault();
-    !recipesError && skip++;
+    !recipesError && setSkip(skip + 1);
+  };
+
+  useEffect(() => {
+    setSkip(1);
+  }, []);
+
+  useEffect(() => {
     dispatch(
       getRecipe(
         recipeButtonItemsArray[recipeButtonId].category,
@@ -39,11 +37,7 @@ const useRecipeBook = () => {
         limit
       )
     );
-  };
-
-  useEffect(() => {
-    skip = 1;
-  }, []);
+  }, [skip, limit, recipeButtonId, userData._id, userData.email, dispatch]);
 
   return { skip, handlePrev, handleNext };
 };
