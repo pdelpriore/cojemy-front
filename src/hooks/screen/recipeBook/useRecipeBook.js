@@ -24,7 +24,7 @@ const useRecipeBook = () => {
 
   useEffect(() => {
     setSkip(1);
-  }, []);
+  }, [recipeButtonId]);
 
   useEffect(() => {
     const limit = 30;
@@ -37,7 +37,7 @@ const useRecipeBook = () => {
         limit
       )
     );
-  }, [skip, recipeButtonId, userData._id, userData.email, dispatch]);
+  }, [skip, userData._id, userData.email, dispatch]);
 
   return { skip, handlePrev, handleNext };
 };

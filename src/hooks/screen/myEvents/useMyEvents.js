@@ -22,7 +22,7 @@ const useMyEvents = () => {
 
   useEffect(() => {
     setSkip(1);
-  }, []);
+  }, [eventButtonId]);
 
   useEffect(() => {
     const limit = 30;
@@ -35,7 +35,7 @@ const useMyEvents = () => {
         limit
       )
     );
-  }, [skip, eventButtonId, userData._id, userData.email, dispatch]);
+  }, [skip, userData._id, userData.email, dispatch]);
 
   return { skip, handlePrev, handleNext };
 };
