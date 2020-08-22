@@ -11,7 +11,7 @@ const MakeRecipeButton = () => {
     toggleActiveClass,
     buttonPressedCount,
     setButtonPressedCount,
-  } = useRecipeButton(recipeButtonItemsArray.length);
+  } = useRecipeButton();
 
   return recipeButtonItemsArray.map((buttonItem) => (
     <div key={buttonItem.id}>

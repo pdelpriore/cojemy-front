@@ -6,12 +6,12 @@ import { categorySelected } from "../../../redux/recipeBook/recipeCategorySelect
 import { changeRateComment } from "../../../redux/recipeBook/changeRateComment/thunk/changeRateCommentThunk";
 import { recipeButtonItemsArray } from "../../../shared/buttonItemsArray";
 
-const useRecipeButton = (buttonQty) => {
+const useRecipeButton = () => {
   const dispatch = useDispatch();
 
   const initialState = () => {
     let buttonInitialStates = [];
-    for (let i = 0; i < buttonQty; i++) {
+    for (let i = 0; i < recipeButtonItemsArray.length; i++) {
       buttonInitialStates.push(false);
     }
     return buttonInitialStates;
