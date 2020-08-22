@@ -1,31 +1,14 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { eventButtonItemsArray } from "../../shared/buttonItemsArray";
 import { capitalize } from "../../util/Util";
-import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import useEventButtons from "../../hooks/screen/myEvents/useEventButtons";
 import "./myEvents.css";
 
 const MakeEventButtons = () => {
-  const dispatch = useDispatch();
-  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
-  const { eventUpdated } = useSelector((state) => state.isEventChanged);
   const { activesClasses, toggleActiveClass } = useEventButtons(
     eventButtonItemsArray.length
   );
-  const { searchEventFilled } = useSelector(
-    (state) => state.isSearchEventFormFilled
-  );
-
-  useEffect(() => {
-    if (!searchEventFilled)
-      toggleActiveClass(
-        eventButtonItemsArray[eventButtonId].id,
-        eventButtonItemsArray[eventButtonId].category
-      );
-    return () => dispatch(showNewEventForm(false));
-  }, [eventUpdated, searchEventFilled, eventButtonId, dispatch]);
 
   return eventButtonItemsArray.map((buttonItem) => (
     <div key={buttonItem.id}>

@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { eventCategorySelected } from "../../../redux/myEvents/eventCategorySelected/thunk/eventCategorySelectedThunk";
 import { getEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
+import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
+import { eventButtonItemsArray } from "../../../shared/buttonItemsArray";
 
 const useEventButtons = (buttonQty) => {
   const dispatch = useDispatch();
+
   const initialState = () => {
     let buttonInitialStates = [];
     for (let i = 0; i < buttonQty; i++) {
@@ -16,6 +19,11 @@ const useEventButtons = (buttonQty) => {
   const [activesClasses, setActive] = useState(initialState());
 
   const { userData } = useSelector((state) => state.login);
+  const { searchEventFilled } = useSelector(
+    (state) => state.isSearchEventFormFilled
+  );
+  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
+  const { eventUpdated } = useSelector((state) => state.isEventChanged);
 
   const toggleActiveClass = (id, category) => {
     const skip = 1;
@@ -28,6 +36,16 @@ const useEventButtons = (buttonQty) => {
       dispatch(getEvents(category, userData._id, userData.email, skip, limit));
     }
   };
+
+  useEffect(() => {
+    if (!searchEventFilled)
+      toggleActiveClass(
+        eventButtonItemsArray[eventButtonId].id,
+        eventButtonItemsArray[eventButtonId].category
+      );
+    return () => dispatch(showNewEventForm(false));
+  }, [eventUpdated, searchEventFilled, eventButtonId, dispatch]);
+
   return { activesClasses, toggleActiveClass };
 };
 
