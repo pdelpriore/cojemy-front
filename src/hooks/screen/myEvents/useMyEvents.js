@@ -5,7 +5,6 @@ import { getEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieve
 
 const useMyEvents = () => {
   const [skip, setSkip] = useState(1);
-  const [limit, setLimit] = useState(30);
 
   const dispatch = useDispatch();
   const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
@@ -26,6 +25,7 @@ const useMyEvents = () => {
   }, []);
 
   useEffect(() => {
+    const limit = 30;
     dispatch(
       getEvents(
         eventButtonItemsArray[eventButtonId].category,
@@ -35,7 +35,7 @@ const useMyEvents = () => {
         limit
       )
     );
-  }, [skip, limit, eventButtonId, userData._id, userData.email, dispatch]);
+  }, [skip, eventButtonId, userData._id, userData.email, dispatch]);
 
   return { skip, handlePrev, handleNext };
 };

@@ -5,7 +5,6 @@ import { getRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrie
 
 const useRecipeBook = () => {
   const [skip, setSkip] = useState(1);
-  const [limit, setLimit] = useState(30);
 
   const dispatch = useDispatch();
   const { recipeButtonId } = useSelector(
@@ -28,6 +27,7 @@ const useRecipeBook = () => {
   }, []);
 
   useEffect(() => {
+    const limit = 30;
     dispatch(
       getRecipe(
         recipeButtonItemsArray[recipeButtonId].category,
@@ -37,7 +37,7 @@ const useRecipeBook = () => {
         limit
       )
     );
-  }, [skip, limit, recipeButtonId, userData._id, userData.email, dispatch]);
+  }, [skip, recipeButtonId, userData._id, userData.email, dispatch]);
 
   return { skip, handlePrev, handleNext };
 };
