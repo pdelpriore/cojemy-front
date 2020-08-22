@@ -6,9 +6,7 @@ import useEventButtons from "../../hooks/screen/myEvents/useEventButtons";
 import "./myEvents.css";
 
 const MakeEventButtons = () => {
-  const { activesClasses, toggleActiveClass } = useEventButtons(
-    eventButtonItemsArray.length
-  );
+  const { activesClasses, toggleActiveClass } = useEventButtons();
 
   return eventButtonItemsArray.map((buttonItem) => (
     <div key={buttonItem.id}>

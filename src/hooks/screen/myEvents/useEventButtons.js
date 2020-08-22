@@ -5,12 +5,12 @@ import { getEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieve
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { eventButtonItemsArray } from "../../../shared/buttonItemsArray";
 
-const useEventButtons = (buttonQty) => {
+const useEventButtons = () => {
   const dispatch = useDispatch();
 
   const initialState = () => {
     let buttonInitialStates = [];
-    for (let i = 0; i < buttonQty; i++) {
+    for (let i = 0; i < eventButtonItemsArray.length; i++) {
       buttonInitialStates.push(false);
     }
     return buttonInitialStates;
