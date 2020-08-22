@@ -21,9 +21,12 @@ const MakeRecipeButton = () => {
   const { searchInputFilled } = useSelector(
     (state) => state.turnOffRecipeButtons
   );
-  const { activesClasses, toggleActiveClass } = useRecipeButton(
-    recipeButtonItemsArray.length
-  );
+  const {
+    activesClasses,
+    toggleActiveClass,
+    buttonPressedCount,
+    setButtonPressedCount,
+  } = useRecipeButton(recipeButtonItemsArray.length);
 
   useEffect(() => {
     if (!detailsDataRetrieved.title && !searchInputFilled)
@@ -55,6 +58,7 @@ const MakeRecipeButton = () => {
           <Button
             onClick={(e) => {
               e.preventDefault();
+              setButtonPressedCount(buttonPressedCount + 1);
               toggleActiveClass(buttonItem.id, buttonItem.category);
             }}
             variant="dark"

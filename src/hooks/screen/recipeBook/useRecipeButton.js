@@ -27,7 +27,6 @@ const useRecipeButton = (buttonQty) => {
       setActive(initialState());
     } else {
       dispatch(categorySelected(id));
-      setButtonPressedCount(buttonPressedCount + 1);
       setActive(
         initialState().map((bool, index) => (index === id ? !bool : bool))
       );
@@ -44,11 +43,15 @@ const useRecipeButton = (buttonQty) => {
   }, []);
 
   useEffect(() => {
-    if (buttonPressedCount > 0)
-      dispatch(recipeButtonTurnedOn(buttonPressedCount));
+    dispatch(recipeButtonTurnedOn(buttonPressedCount));
   }, [buttonPressedCount, dispatch]);
 
-  return { activesClasses, toggleActiveClass };
+  return {
+    activesClasses,
+    toggleActiveClass,
+    buttonPressedCount,
+    setButtonPressedCount,
+  };
 };
 
 export default useRecipeButton;
