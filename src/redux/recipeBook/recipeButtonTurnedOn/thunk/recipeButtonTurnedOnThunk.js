@@ -1,10 +1,7 @@
 import { recipeButtonTurnedOnCases } from "../../../config/cases/Cases";
 
-let count = 0;
-
-export const recipeButtonTurnedOn = () => {
+export const recipeButtonTurnedOn = (count) => {
   return (dispatch, getState) => {
-    count++;
     dispatch({
       type: recipeButtonTurnedOnCases.BUTTON_PRESSES,
       payload: count,

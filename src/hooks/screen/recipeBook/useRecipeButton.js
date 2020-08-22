@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRecipe } from "../../../redux/recipeBook/retrieveRecipe/thunk/retrieveRecipesThunk";
 import { recipeButtonTurnedOn } from "../../../redux/recipeBook/recipeButtonTurnedOn/thunk/recipeButtonTurnedOnThunk";
@@ -16,6 +16,8 @@ const useRecipeButton = (buttonQty) => {
   };
 
   const [activesClasses, setActive] = useState(initialState());
+  const [buttonPressedCount, setButtonPressedCount] = useState(0);
+
   const { userData } = useSelector((state) => state.login);
 
   const toggleActiveClass = (id, category) => {
@@ -25,7 +27,7 @@ const useRecipeButton = (buttonQty) => {
       setActive(initialState());
     } else {
       dispatch(categorySelected(id));
-      dispatch(recipeButtonTurnedOn());
+      setButtonPressedCount(buttonPressedCount + 1);
       setActive(
         initialState().map((bool, index) => (index === id ? !bool : bool))
       );
@@ -36,6 +38,16 @@ const useRecipeButton = (buttonQty) => {
       }
     }
   };
+
+  useEffect(() => {
+    setButtonPressedCount(0);
+  }, []);
+
+  useEffect(() => {
+    if (buttonPressedCount > 0)
+      dispatch(recipeButtonTurnedOn(buttonPressedCount));
+  }, [buttonPressedCount, dispatch]);
+
   return { activesClasses, toggleActiveClass };
 };
 
