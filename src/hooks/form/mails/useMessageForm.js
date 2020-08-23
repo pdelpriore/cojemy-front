@@ -217,7 +217,7 @@ const useMessageForm = () => {
         }
       });
       socket.off("newMessageSent").on("newMessageSent", (result) => {
-        if (result.length > 0) {
+        if (result) {
           setLoading(false);
           dispatch(setConversation(result.messageSent));
           dispatch(setMessageId(result.messageSent[0].message));
@@ -227,7 +227,7 @@ const useMessageForm = () => {
       });
       socket.off("newConversationSent").on("newConversationSent", (result) => {
         if (
-          result.length > 0 &&
+          result &&
           windowOpen &&
           result.newConversationContent[0].message === messageId
         ) {
