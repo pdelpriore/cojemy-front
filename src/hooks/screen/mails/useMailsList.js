@@ -87,21 +87,19 @@ const useMailsList = () => {
 
   useEffect(() => {
     if (socket.connected && isActive) {
-      socket
-        .off("newMessageSentListInfo")
-        .on("newMessageSentListInfo", (result) => {
-          if (result) {
-            socket.emit("getMessages", userData._id);
-            socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-              if (data.length > 0) {
-                if (error.getMessagesError) {
-                  setError({});
-                }
-                dispatch(setMessages(data));
+      socket.off("newMessageSentInfo").on("newMessageSentInfo", (result) => {
+        if (result) {
+          socket.emit("getMessages", userData._id);
+          socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
+            if (data.length > 0) {
+              if (error.getMessagesError) {
+                setError({});
               }
-            });
-          }
-        });
+              dispatch(setMessages(data));
+            }
+          });
+        }
+      });
       socket
         .off("messageReadSetListInfo")
         .on("messageReadSetListInfo", (result) => {
@@ -118,14 +116,14 @@ const useMailsList = () => {
           }
         });
       socket
-        .off("newConversationListInfo")
-        .on("newConversationListInfo", (conversationMessageId) => {
+        .off("newConversationInfo")
+        .on("newConversationInfo", (conversationMessageId) => {
           if (conversationMessageId) {
             if (windowOpen && conversationMessageId !== messageId) {
               socket.emit("messageUnread", conversationMessageId);
               socket
-                .off("messageUnreadSetListInfo")
-                .on("messageUnreadSetListInfo", (result) => {
+                .off("messageUnreadSetInfo")
+                .on("messageUnreadSetInfo", (result) => {
                   if (result) {
                     socket.emit("getMessages", userData._id);
                     socket
@@ -143,8 +141,8 @@ const useMailsList = () => {
             } else if (!windowOpen) {
               socket.emit("messageUnread", conversationMessageId);
               socket
-                .off("messageUnreadSetListInfo")
-                .on("messageUnreadSetListInfo", (result) => {
+                .off("messageUnreadSetInfo")
+                .on("messageUnreadSetInfo", (result) => {
                   if (result) {
                     socket.emit("getMessages", userData._id);
                     socket
@@ -179,10 +177,7 @@ const useMailsList = () => {
         socket.removeAllListeners("messagesRetrieved");
         socket.removeAllListeners("getMessagesError");
         socket.removeAllListeners("userActiveListInfo");
-        socket.removeAllListeners("newMessageSentListInfo");
         socket.removeAllListeners("messageReadSetListInfo");
-        socket.removeAllListeners("newConversationListInfo");
-        socket.removeAllListeners("messageUnreadSetListInfo");
       }
     };
   }, [socket, isActive]);
