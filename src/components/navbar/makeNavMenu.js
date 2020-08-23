@@ -20,7 +20,7 @@ const MakeNavMenu = ({ type }) => {
 
   const { socket } = useSelector((state) => state.socketData);
   const { userData } = useSelector((state) => state.login);
-  const { loading } = useNavMenu();
+  const { loading, unreadMessages } = useNavMenu();
 
   const navHomeItems = [
     { name: strings.navbar.navHomeItems.LOGO, path: strings.path.HOME },
@@ -165,6 +165,19 @@ const MakeNavMenu = ({ type }) => {
               </Nav.Item>
             </div>
           )
+        ) : item.name === strings.navbar.navUserLoggedItems.MAILS ? (
+          <div className="navbar-mails-box" key={index}>
+            <div className="navbar-mails-counter-box">
+              {unreadMessages > 0 && (
+                <div className="navbar-mails-counter">{unreadMessages}</div>
+              )}
+            </div>
+            <Nav.Item as="li">
+              <NavLink to={item.path} exact>
+                {capitalizeFirst(item.name)}
+              </NavLink>
+            </Nav.Item>
+          </div>
         ) : item.name === strings.navbar.navUserLoggedItems.USER_PHOTO ? (
           userData.photo ? (
             <Img

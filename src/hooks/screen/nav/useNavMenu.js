@@ -23,6 +23,7 @@ import { setMessagesClearState } from "../../../redux/mails/setMessages/thunk/se
 import { setMessageIdClearState } from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
 import { searchEventFilled } from "../../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { loginUser } from "../../../redux/login/userLogged/thunk/userLoggedThunk";
+import { countUnreadMessages } from "./countUnreadMessages";
 
 const useNavMenu = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const useNavMenu = () => {
   const { loading, userLoggedOut } = useSelector((state) => state.logout);
   const { socket } = useSelector((state) => state.socketData);
   const { messages } = useSelector((state) => state.userMessages);
+  const unreadMessages = countUnreadMessages(messages, userData);
 
   useEffect(() => {
     setIsActive(true);
@@ -70,7 +72,7 @@ const useNavMenu = () => {
     if (userData.email === undefined && isActive) dispatch(clearLogoutState());
   }, [userData.email, isActive, dispatch]);
 
-  return { loading };
+  return { loading, unreadMessages };
 };
 
 export default useNavMenu;

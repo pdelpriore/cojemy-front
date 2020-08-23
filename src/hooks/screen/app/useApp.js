@@ -10,10 +10,6 @@ const useApp = () => {
 
   const { userData } = useSelector((state) => state.login);
   const { userLogged } = useSelector((state) => state.isUserLogged);
-  const { newMessageSelected } = useSelector(
-    (state) => state.isNewMessageSelected
-  );
-  const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
   const { socket } = useSelector((state) => state.socketData);
 
   const userDataMemoized = useMemo(() => {
@@ -26,13 +22,7 @@ const useApp = () => {
   }, []);
 
   useEffect(() => {
-    if (
-      (socket.connected || socket.disconnected) &&
-      !newMessageSelected &&
-      !windowOpen &&
-      userLogged &&
-      isActive
-    ) {
+    if ((socket.connected || socket.disconnected) && userLogged && isActive) {
       socket.emit("getMessages", userDataMemoized._id);
       socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
         if (data.length > 0) {
@@ -40,15 +30,7 @@ const useApp = () => {
         }
       });
     }
-  }, [
-    socket,
-    newMessageSelected,
-    windowOpen,
-    userDataMemoized._id,
-    isActive,
-    userLogged,
-    dispatch,
-  ]);
+  }, [socket, userDataMemoized._id, isActive, userLogged, dispatch]);
 
   useEffect(() => {
     if (userLogged) {

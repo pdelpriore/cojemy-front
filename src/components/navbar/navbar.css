@@ -3,12 +3,14 @@
   z-index: 1;
   top: 0;
   width: 100%;
-  height: 10%;
 }
 ul {
+  display: flex;
+  align-items: flex-end;
   list-style: none;
 }
 li {
+  font-size: 1vw;
   font-family: "Nunito-SemiBold";
   text-align: center;
   transition: 0.2s;
@@ -24,7 +26,7 @@ li:not(.logo) > a.active {
   display: flex;
   justify-content: left;
   font-family: "Nunito-Bold";
-  font-size: x-large;
+  font-size: 1.4vw;
 }
 .logo:hover {
   cursor: pointer;
@@ -50,9 +52,34 @@ a:hover {
   color: #212529;
 }
 .navbar-user-photo {
-  width: 20px;
-  height: 20px;
+  width: 1.3vw;
+  height: 1.3vw;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid #212541;
+  margin-bottom: 0.5%;
+}
+.navbar-mails-box {
+  display: flex;
+  flex-direction: column;
+}
+.navbar-mails-counter-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 9vw;
+  height: 1.2vw;
+}
+.navbar-mails-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nunito-Regular";
+  font-size: 0.6vw;
+  color: #ffffff;
+  background-color: #f11213;
+  width: 1.2vw;
+  height: 1.2vw;
+  border-radius: 50%;
+  border: 1px solid #2e303f;
 }
