@@ -1,7 +1,10 @@
 import { useMemo, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ioConnect } from "../../../redux/mails/socketData/thunk/ioConnectThunk";
-import { setMessages } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
+import {
+  setMessages,
+  setMessagesClearState,
+} from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
 
 const useApp = () => {
   const dispatch = useDispatch();
@@ -27,6 +30,11 @@ const useApp = () => {
       socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
         if (data.length > 0) {
           dispatch(setMessages(data));
+        }
+      });
+      socket.off("getMessagesError").on("getMessagesError", (err) => {
+        if (err) {
+          dispatch(setMessagesClearState());
         }
       });
     }
