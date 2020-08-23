@@ -282,6 +282,19 @@ const useMessageForm = () => {
     conversationScrollRef.current.scrollArea.scrollYTo(newTopPosition);
   }, [newTopPosition]);
 
+  useEffect(() => {
+    return () => {
+      if (socket.connected && isActive) {
+        socket.removeAllListeners("searchRecipientResult");
+        socket.removeAllListeners("searchRecipientError");
+        socket.removeAllListeners("userActive");
+        socket.removeAllListeners("userInactive");
+        socket.removeAllListeners("newMessageSent");
+        socket.removeAllListeners("newConversationSent");
+      }
+    };
+  }, [socket, isActive]);
+
   return {
     inputs,
     recipients,

@@ -38,6 +38,12 @@ const useApp = () => {
         }
       });
     }
+    return () => {
+      if ((socket.connected || socket.disconnected) && userLogged && isActive) {
+        socket.removeAllListeners("messagesRetrieved");
+        socket.removeAllListeners("getMessagesError");
+      }
+    };
   }, [socket, userDataMemoized._id, isActive, userLogged, dispatch]);
 
   useEffect(() => {

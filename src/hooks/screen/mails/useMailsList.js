@@ -173,6 +173,20 @@ const useMailsList = () => {
     dispatch,
   ]);
 
+  useEffect(() => {
+    return () => {
+      if (socket.connected && isActive) {
+        socket.removeAllListeners("messagesRetrieved");
+        socket.removeAllListeners("getMessagesError");
+        socket.removeAllListeners("userActiveListInfo");
+        socket.removeAllListeners("newMessageSentListInfo");
+        socket.removeAllListeners("messageReadSetListInfo");
+        socket.removeAllListeners("newConversationListInfo");
+        socket.removeAllListeners("messageUnreadSetListInfo");
+      }
+    };
+  }, [socket, isActive]);
+
   return { loading, error };
 };
 
