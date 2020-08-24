@@ -13,6 +13,8 @@ const useApp = () => {
 
   const { userData } = useSelector((state) => state.login);
   const { userLogged } = useSelector((state) => state.isUserLogged);
+  const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
+  const { messageId } = useSelector((state) => state.isMessageId);
   const { socket } = useSelector((state) => state.socketData);
 
   const userDataMemoized = useMemo(() => {
@@ -37,35 +39,55 @@ const useApp = () => {
           dispatch(setMessagesClearState());
         }
       });
-      socket.off("newMessageSentInfo").on("newMessageSentInfo", (result) => {
-        if (result) {
-          socket.emit("getMessages", userDataMemoized._id);
-          socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-            if (data.length > 0) {
-              dispatch(setMessages(data));
-            }
-          });
-        }
-      });
       socket
-        .off("newConversationInfo")
-        .on("newConversationInfo", (conversationMessageId) => {
+        .off("newMessageSentAppInfo")
+        .on("newMessageSentAppInfo", (result) => {
+          if (result) {
+            socket.emit("getMessages", userDataMemoized._id);
+            socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
+              if (data.length > 0) {
+                dispatch(setMessages(data));
+              }
+            });
+          }
+        });
+      socket
+        .off("newConversationAppInfo")
+        .on("newConversationAppInfo", (conversationMessageId) => {
           if (conversationMessageId) {
-            socket.emit("messageUnread", conversationMessageId);
-            socket
-              .off("messageUnreadSetInfo")
-              .on("messageUnreadSetInfo", (result) => {
-                if (result) {
-                  socket.emit("getMessages", userDataMemoized._id);
-                  socket
-                    .off("messagesRetrieved")
-                    .on("messagesRetrieved", (data) => {
-                      if (data.length > 0) {
-                        dispatch(setMessages(data));
-                      }
-                    });
-                }
-              });
+            if (windowOpen && conversationMessageId !== messageId) {
+              socket.emit("messageUnread", conversationMessageId);
+              socket
+                .off("messageUnreadSetInfo")
+                .on("messageUnreadSetInfo", (result) => {
+                  if (result) {
+                    socket.emit("getMessages", userDataMemoized._id);
+                    socket
+                      .off("messagesRetrieved")
+                      .on("messagesRetrieved", (data) => {
+                        if (data.length > 0) {
+                          dispatch(setMessages(data));
+                        }
+                      });
+                  }
+                });
+            } else if (!windowOpen) {
+              socket.emit("messageUnread", conversationMessageId);
+              socket
+                .off("messageUnreadSetInfo")
+                .on("messageUnreadSetInfo", (result) => {
+                  if (result) {
+                    socket.emit("getMessages", userDataMemoized._id);
+                    socket
+                      .off("messagesRetrieved")
+                      .on("messagesRetrieved", (data) => {
+                        if (data.length > 0) {
+                          dispatch(setMessages(data));
+                        }
+                      });
+                  }
+                });
+            }
           }
         });
     }
@@ -73,12 +95,20 @@ const useApp = () => {
       if ((socket.connected || socket.disconnected) && userLogged && isActive) {
         socket.removeAllListeners("messagesRetrieved");
         socket.removeAllListeners("getMessagesError");
-        socket.removeAllListeners("newMessageSentInfo");
-        socket.removeAllListeners("newConversationInfo");
+        socket.removeAllListeners("newMessageSentAppInfo");
+        socket.removeAllListeners("newConversationAppInfo");
         socket.removeAllListeners("messageUnreadSetInfo");
       }
     };
-  }, [socket, userDataMemoized._id, isActive, userLogged, dispatch]);
+  }, [
+    socket,
+    userDataMemoized._id,
+    isActive,
+    userLogged,
+    windowOpen,
+    messageId,
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (userLogged) {

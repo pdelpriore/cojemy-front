@@ -87,19 +87,21 @@ const useMailsList = () => {
 
   useEffect(() => {
     if (socket.connected && isActive) {
-      socket.off("newMessageSentInfo").on("newMessageSentInfo", (result) => {
-        if (result) {
-          socket.emit("getMessages", userData._id);
-          socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-            if (data.length > 0) {
-              if (error.getMessagesError) {
-                setError({});
+      socket
+        .off("newMessageSentListInfo")
+        .on("newMessageSentListInfo", (result) => {
+          if (result) {
+            socket.emit("getMessages", userData._id);
+            socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
+              if (data.length > 0) {
+                if (error.getMessagesError) {
+                  setError({});
+                }
+                dispatch(setMessages(data));
               }
-              dispatch(setMessages(data));
-            }
-          });
-        }
-      });
+            });
+          }
+        });
       socket
         .off("messageReadSetListInfo")
         .on("messageReadSetListInfo", (result) => {
@@ -116,8 +118,8 @@ const useMailsList = () => {
           }
         });
       socket
-        .off("newConversationInfo")
-        .on("newConversationInfo", (conversationMessageId) => {
+        .off("newConversationListInfo")
+        .on("newConversationListInfo", (conversationMessageId) => {
           if (conversationMessageId) {
             if (windowOpen && conversationMessageId !== messageId) {
               socket.emit("messageUnread", conversationMessageId);
@@ -178,6 +180,8 @@ const useMailsList = () => {
         socket.removeAllListeners("getMessagesError");
         socket.removeAllListeners("userActiveListInfo");
         socket.removeAllListeners("messageReadSetListInfo");
+        socket.removeAllListeners("newMessageSentListInfo");
+        socket.removeAllListeners("newConversationListInfo");
       }
     };
   }, [socket, isActive]);
