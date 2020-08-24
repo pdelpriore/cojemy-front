@@ -39,7 +39,7 @@ const useApp = () => {
       });
       socket.off("newMessageSentInfo").on("newMessageSentInfo", (result) => {
         if (result) {
-          socket.emit("getMessages", userData._id);
+          socket.emit("getMessages", userDataMemoized._id);
           socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
             if (data.length > 0) {
               dispatch(setMessages(data));
@@ -56,7 +56,7 @@ const useApp = () => {
               .off("messageUnreadSetInfo")
               .on("messageUnreadSetInfo", (result) => {
                 if (result) {
-                  socket.emit("getMessages", userData._id);
+                  socket.emit("getMessages", userDataMemoized._id);
                   socket
                     .off("messagesRetrieved")
                     .on("messagesRetrieved", (data) => {
