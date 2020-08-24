@@ -106,17 +106,7 @@ const useMessageForm = () => {
 
   useEffect(() => {
     setIsActive(true);
-    return () => {
-      setIsActive(false);
-      if (recipient.name) dispatch(chooseRecipientClearState());
-      dispatch(showNewMessageForm(false));
-      dispatch(setMessageIdClearState());
-      setRecipients([]);
-      setInputs({});
-      if (newMessageSelected) dispatch(newMessage(false));
-      dispatch(conversationWindowOpen(false));
-      if (conversations.length > 0) dispatch(setConversationClearState());
-    };
+    return () => setIsActive(false);
   }, []);
 
   useEffect(() => {

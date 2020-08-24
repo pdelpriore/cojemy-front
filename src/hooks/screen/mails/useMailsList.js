@@ -124,8 +124,8 @@ const useMailsList = () => {
             if (windowOpen && conversationMessageId !== messageId) {
               socket.emit("messageUnread", conversationMessageId);
               socket
-                .off("messageUnreadSetInfo")
-                .on("messageUnreadSetInfo", (result) => {
+                .off("messageUnreadSetListInfo")
+                .on("messageUnreadSetListInfo", (result) => {
                   if (result) {
                     socket.emit("getMessages", userData._id);
                     socket
@@ -143,8 +143,8 @@ const useMailsList = () => {
             } else if (!windowOpen) {
               socket.emit("messageUnread", conversationMessageId);
               socket
-                .off("messageUnreadSetInfo")
-                .on("messageUnreadSetInfo", (result) => {
+                .off("messageUnreadSetListInfo")
+                .on("messageUnreadSetListInfo", (result) => {
                   if (result) {
                     socket.emit("getMessages", userData._id);
                     socket
@@ -180,6 +180,7 @@ const useMailsList = () => {
         socket.removeAllListeners("getMessagesError");
         socket.removeAllListeners("userActiveListInfo");
         socket.removeAllListeners("messageReadSetListInfo");
+        socket.removeAllListeners("messageUnreadSetListInfo");
         socket.removeAllListeners("newMessageSentListInfo");
         socket.removeAllListeners("newConversationListInfo");
       }

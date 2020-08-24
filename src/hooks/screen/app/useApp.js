@@ -29,12 +29,12 @@ const useApp = () => {
   useEffect(() => {
     if ((socket.connected || socket.disconnected) && userLogged && isActive) {
       socket.emit("getMessages", userDataMemoized._id);
-      socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
+      socket.off("messagesRetrievedApp").on("messagesRetrievedApp", (data) => {
         if (data.length > 0) {
           dispatch(setMessages(data));
         }
       });
-      socket.off("getMessagesError").on("getMessagesError", (err) => {
+      socket.off("getMessagesErrorApp").on("getMessagesErrorApp", (err) => {
         if (err) {
           dispatch(setMessagesClearState());
         }
@@ -58,8 +58,8 @@ const useApp = () => {
             if (windowOpen && conversationMessageId !== messageId) {
               socket.emit("messageUnread", conversationMessageId);
               socket
-                .off("messageUnreadSetInfo")
-                .on("messageUnreadSetInfo", (result) => {
+                .off("messageUnreadSetAppInfo")
+                .on("messageUnreadSetAppInfo", (result) => {
                   if (result) {
                     socket.emit("getMessages", userDataMemoized._id);
                     socket
@@ -74,8 +74,8 @@ const useApp = () => {
             } else if (!windowOpen) {
               socket.emit("messageUnread", conversationMessageId);
               socket
-                .off("messageUnreadSetInfo")
-                .on("messageUnreadSetInfo", (result) => {
+                .off("messageUnreadSetAppInfo")
+                .on("messageUnreadSetAppInfo", (result) => {
                   if (result) {
                     socket.emit("getMessages", userDataMemoized._id);
                     socket
@@ -93,11 +93,11 @@ const useApp = () => {
     }
     return () => {
       if ((socket.connected || socket.disconnected) && userLogged && isActive) {
-        socket.removeAllListeners("messagesRetrieved");
-        socket.removeAllListeners("getMessagesError");
+        socket.removeAllListeners("messagesRetrievedApp");
+        socket.removeAllListeners("getMessagesErrorApp");
         socket.removeAllListeners("newMessageSentAppInfo");
         socket.removeAllListeners("newConversationAppInfo");
-        socket.removeAllListeners("messageUnreadSetInfo");
+        socket.removeAllListeners("messageUnreadSetAppInfo");
       }
     };
   }, [
