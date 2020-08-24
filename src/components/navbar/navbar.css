@@ -48,8 +48,9 @@ a:hover {
   color: #3e3636;
 }
 .navbar-user-icon {
-  font-size: 1.2vw;
+  font-size: 1.3vw;
   color: #212529;
+  margin-bottom: 0.5%;
 }
 .navbar-user-photo {
   width: 1.3vw;
