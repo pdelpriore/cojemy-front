@@ -29,7 +29,12 @@ const useApp = () => {
   }, []);
 
   useEffect(() => {
-    if ((socket.connected || socket.disconnected) && userLogged && isActive) {
+    if (
+      (socket.connected || socket.disconnected) &&
+      userLogged &&
+      !mailsActive &&
+      isActive
+    ) {
       socket.emit("getMessages", userDataMemoized._id);
       socket.off("messagesRetrievedApp").on("messagesRetrievedApp", (data) => {
         if (data.length > 0) {
@@ -41,70 +46,68 @@ const useApp = () => {
           dispatch(setMessagesClearState());
         }
       });
-      if (!mailsActive) {
-        socket
-          .off("newMessageSentAppInfo")
-          .on("newMessageSentAppInfo", (result) => {
-            if (result) {
-              socket.emit("getMessages", userDataMemoized._id);
+      socket
+        .off("newMessageSentAppInfo")
+        .on("newMessageSentAppInfo", (result) => {
+          if (result) {
+            socket.emit("getMessages", userDataMemoized._id);
+            socket
+              .off("messagesRetrievedApp")
+              .on("messagesRetrievedApp", (data) => {
+                if (data.length > 0) {
+                  dispatch(setMessages(data));
+                }
+              });
+          }
+        });
+      socket
+        .off("newConversationAppInfo")
+        .on("newConversationAppInfo", (conversationMessageId) => {
+          if (conversationMessageId) {
+            if (windowOpen && conversationMessageId === messageId) {
+              socket.emit("messageUnread", conversationMessageId);
               socket
-                .off("messagesRetrievedApp")
-                .on("messagesRetrievedApp", (data) => {
-                  if (data.length > 0) {
-                    dispatch(setMessages(data));
+                .off("messageUnreadSetAppInfo")
+                .on("messageUnreadSetAppInfo", (result) => {
+                  if (result) {
+                    socket.emit("getMessages", userDataMemoized._id);
+                    socket
+                      .off("messagesRetrievedApp")
+                      .on("messagesRetrievedApp", (data) => {
+                        if (data.length > 0) {
+                          dispatch(setMessages(data));
+                          dispatch(
+                            setConversation(
+                              data.filter(
+                                (message) =>
+                                  message._id.toString() ===
+                                  conversationMessageId.toString()
+                              )[0].conversations
+                            )
+                          );
+                        }
+                      });
+                  }
+                });
+            } else {
+              socket.emit("messageUnread", conversationMessageId);
+              socket
+                .off("messageUnreadSetAppInfo")
+                .on("messageUnreadSetAppInfo", (result) => {
+                  if (result) {
+                    socket.emit("getMessages", userDataMemoized._id);
+                    socket
+                      .off("messagesRetrievedApp")
+                      .on("messagesRetrievedApp", (data) => {
+                        if (data.length > 0) {
+                          dispatch(setMessages(data));
+                        }
+                      });
                   }
                 });
             }
-          });
-        socket
-          .off("newConversationAppInfo")
-          .on("newConversationAppInfo", (conversationMessageId) => {
-            if (conversationMessageId) {
-              if (windowOpen && conversationMessageId === messageId) {
-                socket.emit("messageUnread", conversationMessageId);
-                socket
-                  .off("messageUnreadSetAppInfo")
-                  .on("messageUnreadSetAppInfo", (result) => {
-                    if (result) {
-                      socket.emit("getMessages", userDataMemoized._id);
-                      socket
-                        .off("messagesRetrievedApp")
-                        .on("messagesRetrievedApp", (data) => {
-                          if (data.length > 0) {
-                            dispatch(setMessages(data));
-                            dispatch(
-                              setConversation(
-                                data.filter(
-                                  (message) =>
-                                    message._id.toString() ===
-                                    conversationMessageId.toString()
-                                )[0].conversations
-                              )
-                            );
-                          }
-                        });
-                    }
-                  });
-              } else {
-                socket.emit("messageUnread", conversationMessageId);
-                socket
-                  .off("messageUnreadSetAppInfo")
-                  .on("messageUnreadSetAppInfo", (result) => {
-                    if (result) {
-                      socket.emit("getMessages", userDataMemoized._id);
-                      socket
-                        .off("messagesRetrievedApp")
-                        .on("messagesRetrievedApp", (data) => {
-                          if (data.length > 0) {
-                            dispatch(setMessages(data));
-                          }
-                        });
-                    }
-                  });
-              }
-            }
-          });
-      }
+          }
+        });
     }
     return () => {
       if ((socket.connected || socket.disconnected) && userLogged && isActive) {
