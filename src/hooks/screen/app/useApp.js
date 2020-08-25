@@ -5,6 +5,7 @@ import {
   setMessages,
   setMessagesClearState,
 } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
+import { setConversation } from "../../../redux/mails/setConversation/thunk/setConversationThunk";
 
 const useApp = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const useApp = () => {
   const { userLogged } = useSelector((state) => state.isUserLogged);
   const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
   const { messageId } = useSelector((state) => state.isMessageId);
+  const { mailsActive } = useSelector((state) => state.isMailsComponentActive);
   const { socket } = useSelector((state) => state.socketData);
 
   const userDataMemoized = useMemo(() => {
@@ -39,60 +41,70 @@ const useApp = () => {
           dispatch(setMessagesClearState());
         }
       });
-      socket
-        .off("newMessageSentAppInfo")
-        .on("newMessageSentAppInfo", (result) => {
-          if (result) {
-            socket.emit("getMessages", userDataMemoized._id);
-            socket
-              .off("messagesRetrievedApp")
-              .on("messagesRetrievedApp", (data) => {
-                if (data.length > 0) {
-                  dispatch(setMessages(data));
-                }
-              });
-          }
-        });
-      socket
-        .off("newConversationAppInfo")
-        .on("newConversationAppInfo", (conversationMessageId) => {
-          if (conversationMessageId) {
-            if (windowOpen && conversationMessageId !== messageId) {
-              socket.emit("messageUnread", conversationMessageId);
+      if (!mailsActive) {
+        socket
+          .off("newMessageSentAppInfo")
+          .on("newMessageSentAppInfo", (result) => {
+            if (result) {
+              socket.emit("getMessages", userDataMemoized._id);
               socket
-                .off("messageUnreadSetAppInfo")
-                .on("messageUnreadSetAppInfo", (result) => {
-                  if (result) {
-                    socket.emit("getMessages", userDataMemoized._id);
-                    socket
-                      .off("messagesRetrievedApp")
-                      .on("messagesRetrievedApp", (data) => {
-                        if (data.length > 0) {
-                          dispatch(setMessages(data));
-                        }
-                      });
-                  }
-                });
-            } else if (!windowOpen) {
-              console.log("use app");
-              socket.emit("messageUnread", conversationMessageId);
-              socket
-                .off("messageUnreadSetAppInfo")
-                .on("messageUnreadSetAppInfo", (result) => {
-                  if (result) {
-                    socket.emit("getMessages", userDataMemoized._id);
-                    socket
-                      .off("messagesRetrievedApp")
-                      .on("messagesRetrievedApp", (data) => {
-                        if (data.length > 0) {
-                          dispatch(setMessages(data));
-                        }
-                      });
+                .off("messagesRetrievedApp")
+                .on("messagesRetrievedApp", (data) => {
+                  if (data.length > 0) {
+                    dispatch(setMessages(data));
                   }
                 });
             }
-          }
-        });
+          });
+        socket
+          .off("newConversationAppInfo")
+          .on("newConversationAppInfo", (conversationMessageId) => {
+            if (conversationMessageId) {
+              if (windowOpen && conversationMessageId === messageId) {
+                socket.emit("messageUnread", conversationMessageId);
+                socket
+                  .off("messageUnreadSetAppInfo")
+                  .on("messageUnreadSetAppInfo", (result) => {
+                    if (result) {
+                      socket.emit("getMessages", userDataMemoized._id);
+                      socket
+                        .off("messagesRetrievedApp")
+                        .on("messagesRetrievedApp", (data) => {
+                          if (data.length > 0) {
+                            dispatch(setMessages(data));
+                            dispatch(
+                              setConversation(
+                                data.filter(
+                                  (message) =>
+                                    message._id.toString() ===
+                                    conversationMessageId.toString()
+                                )[0].conversations
+                              )
+                            );
+                          }
+                        });
+                    }
+                  });
+              } else {
+                socket.emit("messageUnread", conversationMessageId);
+                socket
+                  .off("messageUnreadSetAppInfo")
+                  .on("messageUnreadSetAppInfo", (result) => {
+                    if (result) {
+                      socket.emit("getMessages", userDataMemoized._id);
+                      socket
+                        .off("messagesRetrievedApp")
+                        .on("messagesRetrievedApp", (data) => {
+                          if (data.length > 0) {
+                            dispatch(setMessages(data));
+                          }
+                        });
+                    }
+                  });
+              }
+            }
+          });
+      }
     }
     return () => {
       if ((socket.connected || socket.disconnected) && userLogged && isActive) {
@@ -110,6 +122,7 @@ const useApp = () => {
     userLogged,
     windowOpen,
     messageId,
+    mailsActive,
     dispatch,
   ]);
 

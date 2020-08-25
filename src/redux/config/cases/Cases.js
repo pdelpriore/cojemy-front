@@ -249,3 +249,7 @@ export const setMessageIdCases = Object.freeze({
 export const conversationWindowOpenCases = Object.freeze({
   WINDOW_OPEN: "conversationWindowOpenWindowOpen",
 });
+
+export const mailsComponentActiveCases = Object.freeze({
+  MAILS_ACTIVE: "mailsComponentActiveMailsActive",
+});
