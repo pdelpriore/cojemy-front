@@ -141,6 +141,7 @@ const useMailsList = () => {
                   }
                 });
             } else if (!windowOpen) {
+              console.log("use list");
               socket.emit("messageUnread", conversationMessageId);
               socket
                 .off("messageUnreadSetListInfo")

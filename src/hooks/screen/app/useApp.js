@@ -44,11 +44,13 @@ const useApp = () => {
         .on("newMessageSentAppInfo", (result) => {
           if (result) {
             socket.emit("getMessages", userDataMemoized._id);
-            socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-              if (data.length > 0) {
-                dispatch(setMessages(data));
-              }
-            });
+            socket
+              .off("messagesRetrievedApp")
+              .on("messagesRetrievedApp", (data) => {
+                if (data.length > 0) {
+                  dispatch(setMessages(data));
+                }
+              });
           }
         });
       socket
@@ -63,8 +65,8 @@ const useApp = () => {
                   if (result) {
                     socket.emit("getMessages", userDataMemoized._id);
                     socket
-                      .off("messagesRetrieved")
-                      .on("messagesRetrieved", (data) => {
+                      .off("messagesRetrievedApp")
+                      .on("messagesRetrievedApp", (data) => {
                         if (data.length > 0) {
                           dispatch(setMessages(data));
                         }
@@ -72,6 +74,7 @@ const useApp = () => {
                   }
                 });
             } else if (!windowOpen) {
+              console.log("use app");
               socket.emit("messageUnread", conversationMessageId);
               socket
                 .off("messageUnreadSetAppInfo")
@@ -79,8 +82,8 @@ const useApp = () => {
                   if (result) {
                     socket.emit("getMessages", userDataMemoized._id);
                     socket
-                      .off("messagesRetrieved")
-                      .on("messagesRetrieved", (data) => {
+                      .off("messagesRetrievedApp")
+                      .on("messagesRetrievedApp", (data) => {
                         if (data.length > 0) {
                           dispatch(setMessages(data));
                         }
