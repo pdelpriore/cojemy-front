@@ -73,21 +73,21 @@ const useMailsList = () => {
           if (error.getMessagesError) {
             setError({});
           }
-          dispatch(setMessages(data));
           const messageUnread = data.filter(
             (message) => message._id.toString() === messageId
           )[0];
           if (
-            (userData._id === messageUnread.recipient._id &&
+            messageUnread._id &&
+            ((userData._id === messageUnread.recipient._id &&
               userData._id !==
                 messageUnread.conversations[
                   messageUnread.conversations.length - 1
                 ].author._id) ||
-            (userData._id === messageUnread.sender._id &&
-              userData._id !==
-                messageUnread.conversations[
-                  messageUnread.conversations.length - 1
-                ].author._id)
+              (userData._id === messageUnread.sender._id &&
+                userData._id !==
+                  messageUnread.conversations[
+                    messageUnread.conversations.length - 1
+                  ].author._id))
           ) {
             socket.emit("messageRead", messageUnread._id);
             socket

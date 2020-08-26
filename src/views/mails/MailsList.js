@@ -88,6 +88,7 @@ const MailsList = () => {
                   </div>
                   <div
                     className={
+                      !message.isRead &&
                       ((userData._id === message.recipient._id &&
                         userData._id !==
                           message.conversations[
@@ -97,8 +98,7 @@ const MailsList = () => {
                           userData._id !==
                             message.conversations[
                               message.conversations.length - 1
-                            ].author._id)) &&
-                      !message.isRead
+                            ].author._id))
                         ? "mails-list-item-message-unread"
                         : ""
                     }
