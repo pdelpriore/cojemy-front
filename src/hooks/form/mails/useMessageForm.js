@@ -261,16 +261,8 @@ const useMessageForm = () => {
     if (mailError === capitalizeFirst(strings.mails.error.CONNECTION_ERROR)) {
       setLoading(false);
       setSearchLoading(false);
-      if (recipient.name) dispatch(chooseRecipientClearState());
-      dispatch(showNewMessageForm(false));
-      dispatch(setMessageIdClearState());
-      setRecipients([]);
-      setInputs({});
-      if (newMessageSelected) dispatch(newMessage(false));
-      dispatch(conversationWindowOpen(false));
-      if (conversations.length > 0) dispatch(setConversationClearState());
     }
-  }, [mailError, recipient.name, conversations, newMessageSelected, dispatch]);
+  }, [mailError]);
 
   useEffect(() => {
     return () => {
