@@ -261,8 +261,14 @@ const useMessageForm = () => {
     if (mailError === capitalizeFirst(strings.mails.error.CONNECTION_ERROR)) {
       setLoading(false);
       setSearchLoading(false);
+      if (recipient.name) dispatch(chooseRecipientClearState());
+      dispatch(setMessageIdClearState());
+      setRecipients([]);
+      setInputs({});
+      if (newMessageSelected) dispatch(newMessage(false));
+      if (conversations.length > 0) dispatch(setConversationClearState());
     }
-  }, [mailError]);
+  }, [mailError, recipient.name, newMessageSelected, conversations, dispatch]);
 
   useEffect(() => {
     return () => {
