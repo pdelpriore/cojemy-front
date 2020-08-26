@@ -31,6 +31,7 @@ const MessageForm = () => {
     handleSubmitMessage,
     conversationScrollRef,
     loading,
+    searchLoading,
     error,
     showRecipientSuggestions,
   } = useMessageForm();
@@ -59,7 +60,7 @@ const MessageForm = () => {
                   placeholder={strings.mails.TO_PLACEHOLDER}
                 />
                 <div className="myevents-input-spinner">
-                  {loading && <Spinner animation="border" size="sm" />}
+                  {searchLoading && <Spinner animation="border" size="sm" />}
                 </div>
               </div>
             ) : (

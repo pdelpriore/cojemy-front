@@ -23,6 +23,7 @@ const useMessageForm = () => {
   const [isActive, setIsActive] = useState(false);
   const [inputs, setInputs] = useState({});
   const [loading, setLoading] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
   const [newTopPosition, setNewTopPosition] = useState(null);
   const [showRecipientSuggestions, setShowRecipientSuggestions] = useState(
     false
@@ -111,7 +112,7 @@ const useMessageForm = () => {
 
   useEffect(() => {
     if (socket.connected && inputs.to && isActive) {
-      setLoading(true);
+      setSearchLoading(true);
       setShowRecipientSuggestions(true);
       socket.emit("searchRecipient", {
         sender: userData._id,
@@ -124,7 +125,7 @@ const useMessageForm = () => {
             if (error.searchRecipientError || error.connectionError) {
               setError({});
             }
-            setLoading(false);
+            setSearchLoading(false);
             setRecipients(data);
           }
         });
@@ -134,7 +135,7 @@ const useMessageForm = () => {
             ...error,
             searchRecipientError: err,
           }));
-          setLoading(false);
+          setSearchLoading(false);
           setShowRecipientSuggestions(false);
         }
       });
@@ -148,7 +149,7 @@ const useMessageForm = () => {
         ...error,
         connectionError: strings.mails.error.CONNECTION_ERROR,
       }));
-      setLoading(false);
+      setSearchLoading(false);
       setShowRecipientSuggestions(false);
     }
   }, [
@@ -299,6 +300,7 @@ const useMessageForm = () => {
     inputs,
     recipients,
     loading,
+    searchLoading,
     messages,
     error,
     conversationScrollRef,
