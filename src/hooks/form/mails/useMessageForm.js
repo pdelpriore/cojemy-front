@@ -29,7 +29,6 @@ const useMessageForm = () => {
   const [showRecipientSuggestions, setShowRecipientSuggestions] = useState(
     false
   );
-  const [messages, setMessages] = useState([]);
   const [recipients, setRecipients] = useState([]);
   const [error, setError] = useState({});
 
@@ -81,12 +80,6 @@ const useMessageForm = () => {
         recipient: recipient._id,
         content: inputs.content,
       });
-    } else if (socket.disconnected) {
-      setLoading(false);
-      setError((error) => ({
-        ...error,
-        connectionError: strings.mails.error.CONNECTION_ERROR,
-      }));
     }
   };
 
@@ -124,7 +117,7 @@ const useMessageForm = () => {
         .off("searchRecipientResult")
         .on("searchRecipientResult", (data) => {
           if (data.length > 0) {
-            if (error.searchRecipientError || error.connectionError) {
+            if (error.searchRecipientError) {
               setError({});
             }
             setSearchLoading(false);
@@ -133,26 +126,19 @@ const useMessageForm = () => {
         });
       socket.off("searchRecipientError").on("searchRecipientError", (err) => {
         if (err) {
+          setSearchLoading(false);
           setError((error) => ({
             ...error,
             searchRecipientError: err,
           }));
-          setSearchLoading(false);
           setShowRecipientSuggestions(false);
         }
       });
     } else if (socket.connected && !inputs.to && isActive) {
       setShowRecipientSuggestions(false);
-      if (error.searchRecipientError || error.connectionError) {
+      if (error.searchRecipientError) {
         setError({});
       }
-    } else if (socket.disconnected && isActive) {
-      setError((error) => ({
-        ...error,
-        connectionError: strings.mails.error.CONNECTION_ERROR,
-      }));
-      setSearchLoading(false);
-      setShowRecipientSuggestions(false);
     }
   }, [
     socket,
@@ -192,13 +178,6 @@ const useMessageForm = () => {
           );
         }
       });
-    } else if (socket.disconnected && isActive) {
-      setError((error) => ({
-        ...error,
-        connectionError: strings.mails.error.CONNECTION_ERROR,
-      }));
-      setLoading(false);
-      setShowRecipientSuggestions(false);
     }
   }, [socket, recipients, recipient, isActive]);
 
@@ -239,13 +218,6 @@ const useMessageForm = () => {
           setInputs({});
         }
       });
-    } else if (socket.disconnected && isActive) {
-      setError((error) => ({
-        ...error,
-        connectionError: strings.mails.error.CONNECTION_ERROR,
-      }));
-      setLoading(false);
-      setShowRecipientSuggestions(false);
     }
   }, [
     socket,
@@ -318,7 +290,6 @@ const useMessageForm = () => {
     recipients,
     loading,
     searchLoading,
-    messages,
     error,
     conversationScrollRef,
     handleInputChange,

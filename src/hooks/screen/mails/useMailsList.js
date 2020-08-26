@@ -17,7 +17,6 @@ const useMailsList = () => {
 
   const [isActive, setIsActive] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
 
   const { socket } = useSelector((state) => state.socketData);
   const { userData } = useSelector((state) => state.login);
@@ -64,7 +63,6 @@ const useMailsList = () => {
     isActive,
     mailError,
     userData._id,
-    error.getMessagesError,
     windowOpen,
     newMessageSelected,
     dispatch,
@@ -111,15 +109,7 @@ const useMailsList = () => {
           });
       }
     }
-  }, [
-    socket,
-    windowOpen,
-    messageId,
-    userData._id,
-    error.getMessagesError,
-    isActive,
-    dispatch,
-  ]);
+  }, [socket, windowOpen, messageId, userData._id, isActive, dispatch]);
 
   useEffect(() => {
     if (socket.connected && messages.length > 0 && isActive) {
@@ -134,14 +124,7 @@ const useMailsList = () => {
         }
       });
     }
-  }, [
-    socket,
-    isActive,
-    messages,
-    error.getMessagesError,
-    userData._id,
-    dispatch,
-  ]);
+  }, [socket, isActive, messages, userData._id, dispatch]);
 
   useEffect(() => {
     if (socket.connected && isActive) {
@@ -239,15 +222,7 @@ const useMailsList = () => {
         });
       });
     }
-  }, [
-    socket,
-    userData._id,
-    error.getMessagesError,
-    isActive,
-    messageId,
-    windowOpen,
-    dispatch,
-  ]);
+  }, [socket, userData._id, isActive, messageId, windowOpen, dispatch]);
 
   useEffect(() => {
     return () => {
@@ -265,7 +240,7 @@ const useMailsList = () => {
     };
   }, [socket, isActive]);
 
-  return { loading, error };
+  return { loading };
 };
 
 export default useMailsList;
