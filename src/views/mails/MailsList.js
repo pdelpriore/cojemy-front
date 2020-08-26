@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
-import { strings } from "../../strings/Strings";
 import Img from "react-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
 import fr from "timeago.js/lib/lang/fr";
-import { createDate, capitalize } from "../../util/Util";
+import { createDate } from "../../util/Util";
 import { useDispatch, useSelector } from "react-redux";
 import { continueConversation } from "../../redux/mails/continueConversation/thunk/continueConversationThunk";
 import useMailsList from "../../hooks/screen/mails/useMailsList";
@@ -20,7 +19,6 @@ const MailsList = () => {
   const { loading } = useMailsList();
   const { messages } = useSelector((state) => state.userMessages);
   const { userData } = useSelector((state) => state.login);
-  const { socket } = useSelector((state) => state.socketData);
   const { mailError } = useSelector((state) => state.hasMailError);
 
   return loading ? (
