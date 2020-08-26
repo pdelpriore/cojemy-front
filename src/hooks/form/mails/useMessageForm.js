@@ -16,6 +16,7 @@ import {
 } from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
 import { conversationWindowOpen } from "../../../redux/mails/conversationWindowOpen/thunk/conversationWindowOpenThunk";
 import { strings } from "../../../strings/Strings";
+import { capitalizeFirst } from "../../../util/Util";
 
 const useMessageForm = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const useMessageForm = () => {
   const { conversations } = useSelector((state) => state.userConversations);
   const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
   const { messageId } = useSelector((state) => state.isMessageId);
+  const { mailError } = useSelector((state) => state.hasMailError);
 
   const handleInputChange = (e) => {
     e.persist();
@@ -282,6 +284,21 @@ const useMessageForm = () => {
   useEffect(() => {
     conversationScrollRef.current.scrollArea.scrollYTo(newTopPosition);
   }, [newTopPosition]);
+
+  useEffect(() => {
+    if (mailError === capitalizeFirst(strings.mails.error.CONNECTION_ERROR)) {
+      setLoading(false);
+      setSearchLoading(false);
+      if (recipient.name) dispatch(chooseRecipientClearState());
+      dispatch(showNewMessageForm(false));
+      dispatch(setMessageIdClearState());
+      setRecipients([]);
+      setInputs({});
+      if (newMessageSelected) dispatch(newMessage(false));
+      dispatch(conversationWindowOpen(false));
+      if (conversations.length > 0) dispatch(setConversationClearState());
+    }
+  }, [mailError, recipient.name, conversations, newMessageSelected, dispatch]);
 
   useEffect(() => {
     return () => {
