@@ -194,6 +194,11 @@ const useMailsList = () => {
             }
           }
         });
+    }
+  }, [socket, userData._id, isActive, messageId, windowOpen, dispatch]);
+
+  useEffect(() => {
+    if (socket.connected && isActive) {
       socket.off("disconnect").on("disconnect", () => {
         setLoading(false);
         dispatch(
@@ -222,7 +227,7 @@ const useMailsList = () => {
         });
       });
     }
-  }, [socket, userData._id, isActive, messageId, windowOpen, dispatch]);
+  }, [socket, userData._id, isActive, dispatch]);
 
   useEffect(() => {
     return () => {
