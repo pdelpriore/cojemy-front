@@ -17,19 +17,18 @@ const MailsList = () => {
   timeago.register("fr", fr);
   const dispatch = useDispatch();
 
-  const { loading, error } = useMailsList();
+  const { loading } = useMailsList();
   const { messages } = useSelector((state) => state.userMessages);
   const { userData } = useSelector((state) => state.login);
   const { socket } = useSelector((state) => state.socketData);
+  const { mailError } = useSelector((state) => state.hasMailError);
 
   return loading ? (
     <div className="myrecipes-list-loading-area">
       <Spinner animation="border" role="status" variant="light" />
     </div>
-  ) : error.getMessagesError ? (
-    <div className="myrecipes-list-item-norecipes">
-      {error.getMessagesError}
-    </div>
+  ) : mailError ? (
+    <div className="myrecipes-list-item-norecipes">{mailError}</div>
   ) : (
     <div className="myrecipes-list-main-area">
       {messages.length > 0 &&

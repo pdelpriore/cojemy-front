@@ -253,3 +253,8 @@ export const conversationWindowOpenCases = Object.freeze({
 export const mailsComponentActiveCases = Object.freeze({
   MAILS_ACTIVE: "mailsComponentActiveMailsActive",
 });
+
+export const mailErrorCases = Object.freeze({
+  ERROR_RETRIEVED: "mailErrorErrorRetrieved",
+  CLEAR_STATE: "mailErrorClearState",
+});

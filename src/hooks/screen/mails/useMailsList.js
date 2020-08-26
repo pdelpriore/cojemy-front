@@ -5,6 +5,12 @@ import {
   setMessagesClearState,
 } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
 import { mailsComponentActive } from "../../../redux/mails/mailsComponentActive/thunk/mailsComponentActiveThunk";
+import {
+  setMailError,
+  mailErrorClearState,
+} from "../../../redux/mails/mailError/thunk/mailErrorThunk";
+import { strings } from "../../../strings/Strings";
+import { capitalizeFirst } from "../../../util/Util";
 
 const useMailsList = () => {
   const dispatch = useDispatch();
@@ -21,6 +27,7 @@ const useMailsList = () => {
   );
   const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
   const { messageId } = useSelector((state) => state.isMessageId);
+  const { mailError } = useSelector((state) => state.hasMailError);
 
   useEffect(() => {
     setIsActive(true);
@@ -37,8 +44,8 @@ const useMailsList = () => {
       socket.emit("getMessages", userData._id);
       socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
         if (data.length > 0) {
-          if (error.getMessagesError) {
-            setError({});
+          if (mailError) {
+            dispatch(mailErrorClearState());
           }
           setLoading(false);
           dispatch(setMessages(data));
@@ -46,11 +53,8 @@ const useMailsList = () => {
       });
       socket.off("getMessagesError").on("getMessagesError", (err) => {
         if (err) {
-          setError((error) => ({
-            ...error,
-            getMessagesError: err,
-          }));
           setLoading(false);
+          dispatch(setMailError(err));
           dispatch(setMessagesClearState());
         }
       });
@@ -58,6 +62,7 @@ const useMailsList = () => {
   }, [
     socket,
     isActive,
+    mailError,
     userData._id,
     error.getMessagesError,
     windowOpen,
@@ -99,9 +104,6 @@ const useMailsList = () => {
                 .off("messagesRetrieved")
                 .on("messagesRetrieved", (data) => {
                   if (data.length > 0) {
-                    if (error.getMessagesError) {
-                      setError({});
-                    }
                     dispatch(setMessages(data));
                   }
                 });
@@ -126,9 +128,6 @@ const useMailsList = () => {
           socket.emit("getMessages", userData._id);
           socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
             if (data.length > 0) {
-              if (error.getMessagesError) {
-                setError({});
-              }
               dispatch(setMessages(data));
             }
           });
@@ -153,8 +152,8 @@ const useMailsList = () => {
             socket.emit("getMessages", userData._id);
             socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
               if (data.length > 0) {
-                if (error.getMessagesError) {
-                  setError({});
+                if (mailError) {
+                  dispatch(mailErrorClearState());
                 }
                 dispatch(setMessages(data));
               }
@@ -168,9 +167,6 @@ const useMailsList = () => {
             socket.emit("getMessages", userData._id);
             socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
               if (data.length > 0) {
-                if (error.getMessagesError) {
-                  setError({});
-                }
                 dispatch(setMessages(data));
               }
             });
@@ -191,9 +187,6 @@ const useMailsList = () => {
                       .off("messagesRetrieved")
                       .on("messagesRetrieved", (data) => {
                         if (data.length > 0) {
-                          if (error.getMessagesError) {
-                            setError({});
-                          }
                           dispatch(setMessages(data));
                         }
                       });
@@ -210,9 +203,6 @@ const useMailsList = () => {
                       .off("messagesRetrieved")
                       .on("messagesRetrieved", (data) => {
                         if (data.length > 0) {
-                          if (error.getMessagesError) {
-                            setError({});
-                          }
                           dispatch(setMessages(data));
                         }
                       });
@@ -221,6 +211,33 @@ const useMailsList = () => {
             }
           }
         });
+      socket.off("disconnect").on("disconnect", () => {
+        setLoading(false);
+        dispatch(
+          setMailError(capitalizeFirst(strings.mails.error.CONNECTION_ERROR))
+        );
+        dispatch(setMessagesClearState());
+      });
+      socket.off("reconnect").on("reconnect", () => {
+        setLoading(true);
+        socket.emit("getMessages", userData._id);
+        socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
+          if (data.length > 0) {
+            if (mailError) {
+              dispatch(mailErrorClearState());
+            }
+            setLoading(false);
+            dispatch(setMessages(data));
+          }
+        });
+        socket.off("getMessagesError").on("getMessagesError", (err) => {
+          if (err) {
+            setLoading(false);
+            dispatch(setMailError(err));
+            dispatch(setMessagesClearState());
+          }
+        });
+      });
     }
   }, [
     socket,
@@ -242,6 +259,8 @@ const useMailsList = () => {
         socket.removeAllListeners("messageUnreadSetListInfo");
         socket.removeAllListeners("newMessageSentListInfo");
         socket.removeAllListeners("newConversationListInfo");
+        socket.removeAllListeners("disconnect");
+        socket.removeAllListeners("reconnect");
       }
     };
   }, [socket, isActive]);

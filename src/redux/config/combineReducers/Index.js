@@ -44,6 +44,7 @@ import setMessagesReducer from "../../mails/setMessages/reducer/setMessagesReduc
 import setMessageIdReducer from "../../mails/setMessageId/reducer/setMessageIdReducer";
 import conversationWindowOpenReducer from "../../mails/conversationWindowOpen/reducer/conversationWindowOpenReducer";
 import mailsComponentActiveReducer from "../../mails/mailsComponentActive/reducer/mailsComponentActiveReducer";
+import mailErrorReducer from "../../mails/mailError/reducer/mailErrorReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -91,6 +92,7 @@ const allReducers = combineReducers({
   isMessageId: setMessageIdReducer,
   isConversationWindowOpen: conversationWindowOpenReducer,
   isMailsComponentActive: mailsComponentActiveReducer,
+  hasMailError: mailErrorReducer,
 });
 
 export default allReducers;
