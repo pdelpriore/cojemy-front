@@ -66,59 +66,48 @@ const useMailsList = () => {
   ]);
 
   useEffect(() => {
-    if (socket.connected && windowOpen && messageId && isActive) {
-      socket.emit("getMessages", userData._id);
-      socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
-        if (data.length > 0) {
-          if (error.getMessagesError) {
-            setError({});
-          }
-          const messageUnread = data.filter(
-            (message) => message._id.toString() === messageId
-          )[0];
-          if (
-            messageUnread._id &&
-            ((userData._id === messageUnread.recipient._id &&
-              userData._id !==
-                messageUnread.conversations[
-                  messageUnread.conversations.length - 1
-                ].author._id) ||
-              (userData._id === messageUnread.sender._id &&
-                userData._id !==
-                  messageUnread.conversations[
-                    messageUnread.conversations.length - 1
-                  ].author._id))
-          ) {
-            socket.emit("messageRead", messageUnread._id);
-            socket
-              .off("messageReadSetListInfo")
-              .on("messageReadSetListInfo", (result) => {
-                if (result) {
-                  socket.emit("getMessages", userData._id);
-                  socket
-                    .off("messagesRetrieved")
-                    .on("messagesRetrieved", (data) => {
-                      if (data.length > 0) {
-                        if (error.getMessagesError) {
-                          setError({});
-                        }
-                        dispatch(setMessages(data));
-                      }
-                    });
-                }
-              });
-          }
-        }
-      });
-      socket.off("getMessagesError").on("getMessagesError", (err) => {
-        if (err) {
-          setError((error) => ({
-            ...error,
-            getMessagesError: err,
-          }));
-          dispatch(setMessagesClearState());
-        }
-      });
+    if (
+      socket.connected &&
+      windowOpen &&
+      messageId &&
+      messages.length > 0 &&
+      isActive
+    ) {
+      const messageUnread = messages.filter(
+        (message) => message._id.toString() === messageId
+      )[0];
+      if (
+        messageUnread &&
+        messageUnread._id &&
+        ((userData._id === messageUnread.recipient._id &&
+          userData._id !==
+            messageUnread.conversations[messageUnread.conversations.length - 1]
+              .author._id) ||
+          (userData._id === messageUnread.sender._id &&
+            userData._id !==
+              messageUnread.conversations[
+                messageUnread.conversations.length - 1
+              ].author._id))
+      ) {
+        socket.emit("messageRead", messageUnread._id);
+        socket
+          .off("messageReadSetListInfo")
+          .on("messageReadSetListInfo", (result) => {
+            if (result) {
+              socket.emit("getMessages", userData._id);
+              socket
+                .off("messagesRetrieved")
+                .on("messagesRetrieved", (data) => {
+                  if (data.length > 0) {
+                    if (error.getMessagesError) {
+                      setError({});
+                    }
+                    dispatch(setMessages(data));
+                  }
+                });
+            }
+          });
+      }
     }
   }, [
     socket,
