@@ -97,7 +97,11 @@ const MailsList = () => {
                     <div>
                       <TimeAgo
                         className="myevents-item-timeago"
-                        datetime={createDate(message.date)}
+                        datetime={createDate(
+                          message.conversations[
+                            message.conversations.length - 1
+                          ].date
+                        )}
                         locale="fr"
                       />
                     </div>
