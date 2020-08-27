@@ -258,17 +258,20 @@ const useMessageForm = () => {
   }, [newTopPosition]);
 
   useEffect(() => {
-    if (mailError === capitalizeFirst(strings.mails.error.CONNECTION_ERROR)) {
+    if (
+      mailError === capitalizeFirst(strings.mails.error.CONNECTION_ERROR) &&
+      isActive
+    ) {
       setLoading(false);
       setSearchLoading(false);
-      if (recipient.name) dispatch(chooseRecipientClearState());
+      dispatch(chooseRecipientClearState());
       dispatch(setMessageIdClearState());
       setRecipients([]);
       setInputs({});
       if (newMessageSelected) dispatch(newMessage(false));
       if (conversations.length > 0) dispatch(setConversationClearState());
     }
-  }, [mailError, recipient.name, newMessageSelected, conversations, dispatch]);
+  }, [mailError, newMessageSelected, conversations, isActive, dispatch]);
 
   useEffect(() => {
     return () => {

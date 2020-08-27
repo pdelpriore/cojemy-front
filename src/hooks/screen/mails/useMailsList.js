@@ -26,7 +26,6 @@ const useMailsList = () => {
   );
   const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
   const { messageId } = useSelector((state) => state.isMessageId);
-  const { mailError } = useSelector((state) => state.hasMailError);
 
   useEffect(() => {
     setIsActive(true);
@@ -43,9 +42,7 @@ const useMailsList = () => {
       socket.emit("getMessages", userData._id);
       socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
         if (data.length > 0) {
-          if (mailError) {
-            dispatch(mailErrorClearState());
-          }
+          dispatch(mailErrorClearState());
           setLoading(false);
           dispatch(setMessages(data));
         }
@@ -61,7 +58,6 @@ const useMailsList = () => {
   }, [
     socket,
     isActive,
-    mailError,
     userData._id,
     windowOpen,
     newMessageSelected,
@@ -135,9 +131,7 @@ const useMailsList = () => {
             socket.emit("getMessages", userData._id);
             socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
               if (data.length > 0) {
-                if (mailError) {
-                  dispatch(mailErrorClearState());
-                }
+                dispatch(mailErrorClearState());
                 dispatch(setMessages(data));
               }
             });
@@ -211,9 +205,7 @@ const useMailsList = () => {
         socket.emit("getMessages", userData._id);
         socket.off("messagesRetrieved").on("messagesRetrieved", (data) => {
           if (data.length > 0) {
-            if (mailError) {
-              dispatch(mailErrorClearState());
-            }
+            dispatch(mailErrorClearState());
             setLoading(false);
             dispatch(setMessages(data));
           }
