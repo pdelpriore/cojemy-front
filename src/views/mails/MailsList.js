@@ -10,6 +10,8 @@ import { createDate } from "../../util/Util";
 import { useDispatch, useSelector } from "react-redux";
 import { continueConversation } from "../../redux/mails/continueConversation/thunk/continueConversationThunk";
 import useMailsList from "../../hooks/screen/mails/useMailsList";
+import { strings } from "../../strings/Strings";
+import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./mails.css";
 
 const MailsList = () => {
@@ -44,7 +46,35 @@ const MailsList = () => {
                 <div className="mails-list-photo-box">
                   <Img
                     className="mails-list-item-picture"
-                    src={require("../../assets/imgs/cookerret.png")}
+                    src={
+                      message.recipient._id !== userData._id
+                        ? userGooglePhoto.some(
+                            (element) =>
+                              message.recipient.photo &&
+                              message.recipient.photo.includes(element)
+                          )
+                          ? message.recipient.photo
+                          : !userGooglePhoto.some(
+                              (element) =>
+                                message.recipient.photo &&
+                                message.recipient.photo.includes(element)
+                            ) && message.recipient.photo
+                          ? strings.path.IMAGE_REQUEST + message.recipient.photo
+                          : require("../../assets/imgs/cookerret.png")
+                        : userGooglePhoto.some(
+                            (element) =>
+                              message.sender.photo &&
+                              message.sender.photo.includes(element)
+                          )
+                        ? message.sender.photo
+                        : !userGooglePhoto.some(
+                            (element) =>
+                              message.sender.photo &&
+                              message.sender.photo.includes(element)
+                          ) && message.sender.photo
+                        ? strings.path.IMAGE_REQUEST + message.sender.photo
+                        : require("../../assets/imgs/cookerret.png")
+                    }
                     loader={<Spinner animation="border" variant="info" />}
                   />
                   <div
@@ -74,7 +104,7 @@ const MailsList = () => {
                   </Col>
                 </Row>
                 <div className="myrecipes-list-item-title">
-                  {message.recipient.email !== userData.email
+                  {message.recipient._id !== userData._id
                     ? message.recipient.name
                     : message.sender.name}
                 </div>
