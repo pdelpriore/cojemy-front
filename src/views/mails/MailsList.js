@@ -24,13 +24,13 @@ const MailsList = () => {
   const { mailError } = useSelector((state) => state.hasMailError);
 
   return loading ? (
-    <div className="myrecipes-list-loading-area">
+    <div className="mails-list-loading-area">
       <Spinner animation="border" role="status" variant="light" />
     </div>
   ) : mailError ? (
-    <div className="myrecipes-list-item-norecipes">{mailError}</div>
+    <div className="mails-list-item-norecipes">{mailError}</div>
   ) : (
-    <div className="myrecipes-list-main-area">
+    <div className="mails-list-main-area">
       {messages.length > 0 &&
         messages.map((message, index) => (
           <div
@@ -38,7 +38,7 @@ const MailsList = () => {
               e.preventDefault();
               dispatch(continueConversation(message, userData._id));
             }}
-            className="myrecipes-list-item"
+            className="mails-list-item"
             key={index}
           >
             <Row>
@@ -96,7 +96,7 @@ const MailsList = () => {
                   <Col xs={5}>
                     <div>
                       <TimeAgo
-                        className="myevents-item-timeago"
+                        className="mails-item-timeago"
                         datetime={createDate(
                           message.conversations[
                             message.conversations.length - 1
@@ -107,14 +107,14 @@ const MailsList = () => {
                     </div>
                   </Col>
                 </Row>
-                <div className="myrecipes-list-item-title">
+                <div className="mails-list-item-title">
                   {message.recipient._id !== userData._id
                     ? message.recipient.name
                     : message.sender.name}
                 </div>
                 <div style={{ height: 5 }} />
                 <div className="mails-list-item-author">
-                  <div className="myrecipes-list-item-icon">
+                  <div className="mails-list-item-icon">
                     <FontAwesomeIcon icon={faEnvelope} />
                   </div>
                   <div

@@ -103,13 +103,13 @@
 }
 .recipesList-item-title {
   font-family: "OpenSans-SemiBold";
-  font-size: 1.2vw;
+  font-size: 1.1vw;
   text-align: left;
   color: #ceced6;
 }
 .recipesList-item-picture {
-  width: 7.4vw;
-  height: 15.6vh;
+  width: 7.5vw;
+  height: 7.5vw;
   object-fit: cover;
   border: 1px solid #ddd;
   border-radius: 10px;
