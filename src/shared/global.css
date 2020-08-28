@@ -7,7 +7,9 @@
 
 .global-form-label {
   font-family: var(--font-family-ossb);
+  color: var(--label-font-color);
 }
 .global-button-label {
   font-family: var(--font-family-osr);
+  font-size: var(--font-size);
 }

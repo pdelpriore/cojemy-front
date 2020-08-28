@@ -8,6 +8,7 @@ import useGoogleLogin from "../../hooks/googleButton/login/useGoogleLogin";
 import { GoogleLogin } from "react-google-login";
 import { IdClient } from "../../config/Security";
 import "./loginForm.css";
+import "../../shared/global.css";
 
 const LoginForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm();
@@ -21,13 +22,13 @@ const LoginForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label className="login-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.login.EMAIL)}
             </Form.Label>
             <Form.Control
               onChange={handleInputChange}
               value={inputs.email || ""}
-              className="login-placeholder"
+              className="login-form-control"
               size="lg"
               name="email"
               type="email"
@@ -39,13 +40,13 @@ const LoginForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label className="login-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.login.PASSWORD)}
             </Form.Label>
             <Form.Control
               onChange={handleInputChange}
               value={inputs.password || ""}
-              className="login-placeholder"
+              className="login-form-control"
               size="lg"
               name="password"
               type="password"
@@ -58,7 +59,7 @@ const LoginForm = () => {
         <Col xs={12}>
           <div className="login-button">
             <Button
-              className="login-button-send"
+              className="global-button-label"
               disabled={
                 loading ||
                 inputs.email === undefined ||
