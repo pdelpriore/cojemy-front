@@ -8,6 +8,7 @@ import useGoogleSignup from "../../hooks/googleButton/signup/useGoogleSignup";
 import { GoogleLogin } from "react-google-login";
 import { IdClient } from "../../config/Security";
 import "./signupForm.css";
+import "../../shared/global.css";
 
 const SignupForm = () => {
   const { loading } = useSelector((state) => state.signup);
@@ -22,13 +23,13 @@ const SignupForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicUserName">
-            <Form.Label className="signup-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.signup.USER_NAME)}
             </Form.Label>
             <Form.Control
               onChange={handleInputChange}
               value={inputs.name || ""}
-              className="signup-placeholder"
+              className="signup-form-control"
               size="lg"
               name="name"
               type="text"
@@ -40,13 +41,13 @@ const SignupForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label className="signup-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.signup.EMAIL)}
             </Form.Label>
             <Form.Control
               onChange={handleInputChange}
               value={inputs.email || ""}
-              className="signup-placeholder"
+              className="signup-form-control"
               size="lg"
               name="email"
               type="email"
@@ -58,13 +59,13 @@ const SignupForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicConfirmEmail">
-            <Form.Label className="signup-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.signup.CONFIRM_EMAIL)}
             </Form.Label>
             <Form.Control
               onChange={handleInputChange}
               value={inputs.confirmEmail || ""}
-              className="signup-placeholder"
+              className="signup-form-control"
               size="lg"
               name="confirmEmail"
               type="email"
@@ -76,13 +77,13 @@ const SignupForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label className="signup-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.signup.PASSWORD)}
             </Form.Label>
             <Form.Control
               onChange={handleInputChange}
               value={inputs.password || ""}
-              className="signup-placeholder"
+              className="signup-form-control"
               size="lg"
               name="password"
               type="password"
@@ -105,7 +106,7 @@ const SignupForm = () => {
               inputs.password === undefined ||
               inputs.password === ""
             }
-            className="signup-button"
+            className="global-button-label"
             type="submit"
             variant="outline-dark"
           >
