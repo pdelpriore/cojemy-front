@@ -8,9 +8,9 @@ import fr from "date-fns/locale/fr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import useSearchEventsForm from "../../hooks/form/myEvents/useSearchEventsForm";
-import "react-datepicker/dist/react-datepicker.css";
 import "./myEventsForm.css";
 import "../../shared/global.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 const SearchEventsForm = () => {
   registerLocale("fr", fr);

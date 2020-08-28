@@ -21,9 +21,9 @@ import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/to
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
-import "react-datepicker/dist/react-datepicker.css";
 import "./myEventsForm.css";
 import "../../shared/global.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 const MyEventsForm = () => {
   registerLocale("fr", fr);
