@@ -5,6 +5,7 @@ import { capitalizeFirst } from "../../util/Util";
 import useMyPasswordForm from "../../hooks/form/myProfile/useMyPasswordForm";
 import { useSelector } from "react-redux";
 import "./myProfileForm.css";
+import "../../shared/global.css";
 
 const MyPasswordForm = () => {
   const {
@@ -19,11 +20,11 @@ const MyPasswordForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicCurrentPassword">
-            <Form.Label className="myprofile-form-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.myProfile.CURRENT_PASS)}
             </Form.Label>
             <Form.Control
-              className="myprofile-text-family-username"
+              className="myprofile-form-control"
               onChange={handleOnChange}
               value={inputs.currentPass || ""}
               size="lg"
@@ -37,11 +38,11 @@ const MyPasswordForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicNewPassword">
-            <Form.Label className="myprofile-form-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.myProfile.NEW_PASS)}
             </Form.Label>
             <Form.Control
-              className="myprofile-text-family-username"
+              className="myprofile-form-control"
               onChange={handleOnChange}
               value={inputs.newPass || ""}
               size="lg"
@@ -55,11 +56,11 @@ const MyPasswordForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicConfirmPassword">
-            <Form.Label className="myprofile-form-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.myProfile.CONFIRM_PASS)}
             </Form.Label>
             <Form.Control
-              className="myprofile-text-family-username"
+              className="myprofile-form-control"
               onChange={handleOnChange}
               value={inputs.confirmPass || ""}
               size="lg"
@@ -83,7 +84,7 @@ const MyPasswordForm = () => {
                 inputs.confirmPass === undefined ||
                 inputs.confirmPass === ""
               }
-              className="myprofile-button-text"
+              className="global-button-label"
               type="submit"
               variant="outline-dark"
             >
@@ -108,7 +109,7 @@ const MyPasswordForm = () => {
             </Button>
             <Button
               onClick={handleCancel}
-              className="myprofile-form-button-cancel"
+              className="global-button-label"
               variant="outline-secondary"
             >
               {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}

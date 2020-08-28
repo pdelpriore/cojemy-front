@@ -8,6 +8,7 @@ import ImageUploader from "react-images-upload";
 import useMyProfileForm from "../../hooks/form/myProfile/useMyProfileForm";
 import { useSelector } from "react-redux";
 import "./myProfileForm.css";
+import "../../shared/global.css";
 
 const MyProfileForm = () => {
   const {
@@ -31,11 +32,11 @@ const MyProfileForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicUserName">
-            <Form.Label className="myprofile-form-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.myProfile.USER_NAME)}
             </Form.Label>
             <Form.Control
-              className="myprofile-text-family-username"
+              className="myprofile-form-control"
               onChange={handleInputChange}
               value={inputs.name || ""}
               size="sm"
@@ -52,7 +53,7 @@ const MyProfileForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicPhoto">
-            <Form.Label className="myprofile-form-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.myRecipes.PICTURE)}
             </Form.Label>
             <ImageUploader
@@ -128,7 +129,7 @@ const MyProfileForm = () => {
         <Col xs={12}>
           {showEdit && (
             <Button
-              className="myprofile-button-text"
+              className="global-button-label"
               variant="dark"
               onClick={handleEdit}
             >
@@ -138,7 +139,7 @@ const MyProfileForm = () => {
           {!showEdit && (
             <div className="myprofile-form-buttons-box">
               <Button
-                className="myprofile-button-text"
+                className="global-button-label"
                 type="submit"
                 variant="outline-dark"
                 disabled={
@@ -169,7 +170,7 @@ const MyProfileForm = () => {
               </Button>
               <Button
                 onClick={handleCancel}
-                className="myprofile-form-button-cancel"
+                className="global-button-label"
                 variant="outline-secondary"
               >
                 {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}

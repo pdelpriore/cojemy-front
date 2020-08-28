@@ -1,14 +1,8 @@
-.myprofile-form-text-family {
-  font-family: "OpenSans-SemiBold";
-}
-.myprofile-text-family-username {
+.myprofile-form-control {
   position: relative;
   font-family: "OpenSans-Regular";
   color: #071a52;
   font-size: 1vw;
-}
-.myprofile-button-text {
-  font-family: "OpenSans-Regular";
 }
 .myprofile-spinner {
   float: left;
@@ -37,9 +31,6 @@
   height: 100%;
   border-radius: 5px;
   opacity: 0.1;
-}
-.myprofile-form-button-cancel {
-  font-family: "OpenSans-Regular";
 }
 .myprofile-form-buttons-box {
   display: flex;
