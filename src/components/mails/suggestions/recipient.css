@@ -4,15 +4,15 @@
   width: 25vw;
 }
 .recipient-inactive {
-  width: 0.6vw;
-  height: 0.6vw;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #ababab;
   border: 1px solid gray;
 }
 .recipient-active {
-  width: 0.6vw;
-  height: 0.6vw;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #a7ff83;
   border: 1px solid green;
