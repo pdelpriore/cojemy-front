@@ -17,6 +17,7 @@
   margin-left: 20px;
   white-space: nowrap;
   overflow: hidden;
+  font-size: 1vw;
 }
 .myprofile-form-trash:hover {
   color: #ee6670;

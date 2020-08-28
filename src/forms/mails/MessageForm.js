@@ -20,6 +20,7 @@ import { capitalizeFirst } from "../../util/Util";
 import { userGooglePhoto } from "../../shared/testWordsArray";
 import { getConversationDate } from "./getConversationDate";
 import "./messageForm.css";
+import "../../shared/global.css";
 
 const MessageForm = () => {
   const {
@@ -50,7 +51,7 @@ const MessageForm = () => {
             {!recipient.name && newMessageSelected ? (
               <div className="myevents-icon-address-box">
                 <Form.Control
-                  className="myprofile-text-family-username"
+                  className="global-form-control"
                   onChange={handleInputChange}
                   value={inputs.to || ""}
                   size="lg"
@@ -141,7 +142,7 @@ const MessageForm = () => {
         <Col xs={12}>
           <Form.Group controlId="formBasicContent">
             <Form.Control
-              className="myprofile-text-family-username"
+              className="global-form-control"
               onChange={handleInputChange}
               value={inputs.content || ""}
               as="textarea"
@@ -156,10 +157,10 @@ const MessageForm = () => {
       </Row>
       <Row>
         <Col xs={12}>
-          <div className="myprofile-form-buttons-box">
+          <div className="message-form-buttons-box">
             <Button
               onClick={handleSubmitMessage}
-              className="myprofile-button-text"
+              className="global-button-label"
               type="submit"
               variant="outline-dark"
               disabled={
@@ -169,7 +170,7 @@ const MessageForm = () => {
                 inputs.content === ""
               }
             >
-              <div className="myprofile-spinner">
+              <div className="message-spinner">
                 {loading && (
                   <Spinner
                     as="span"
@@ -181,7 +182,7 @@ const MessageForm = () => {
                 )}
               </div>
               {loading ? (
-                <div className="myprofile-button-loading">
+                <div className="message-button-loading">
                   {capitalizeFirst(strings.mails.BUTTON_SEND_LOADING)}
                 </div>
               ) : (
@@ -190,7 +191,7 @@ const MessageForm = () => {
             </Button>
             <Button
               onClick={handleCancel}
-              className="myprofile-form-button-cancel"
+              className="global-button-label"
               variant="outline-secondary"
             >
               {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}
