@@ -8,8 +8,9 @@ import fr from "date-fns/locale/fr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import useSearchEventsForm from "../../hooks/form/myEvents/useSearchEventsForm";
-import "./myEventsForm.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "./myEventsForm.css";
+import "../../shared/global.css";
 
 const SearchEventsForm = () => {
   registerLocale("fr", fr);
@@ -24,11 +25,11 @@ const SearchEventsForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicSearchCity">
-            <Form.Label className="myevents-form-text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.myEvents.SEARCH_CITY)}
             </Form.Label>
             <Form.Control
-              className="myevents-form-text-family-message"
+              className="global-form-control"
               onChange={handleOnChange}
               value={inputs.city || ""}
               name="city"
@@ -42,7 +43,7 @@ const SearchEventsForm = () => {
         <Col xs={12}>
           <Form.Group controlId="formBasicSearchEventDate">
             <div className="myevents-datepicker-box">
-              <Form.Label className="myevents-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myEvents.SEARCH_DATE)}
               </Form.Label>
               <div className="myevents-datepicker-icon-box">

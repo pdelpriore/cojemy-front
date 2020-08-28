@@ -21,8 +21,9 @@ import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/to
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
-import "./myEventsForm.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "./myEventsForm.css";
+import "../../shared/global.css";
 
 const MyEventsForm = () => {
   registerLocale("fr", fr);
@@ -64,11 +65,11 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicTitle">
-              <Form.Label className="myevents-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myEvents.TITLE)}
               </Form.Label>
               <Form.Control
-                className="myevents-form-text-family-message"
+                className="global-form-control"
                 onChange={handleOnChange}
                 value={inputs.title || ""}
                 name="title"
@@ -82,7 +83,7 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicPhoto">
-              <Form.Label className="myevents-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myEvents.PHOTO)}
               </Form.Label>
               <ImageUploader
@@ -149,12 +150,12 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicAddress">
-              <Form.Label className="myevents-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myEvents.ADDRESS)}
               </Form.Label>
               <div className="myevents-icon-address-box">
                 <Form.Control
-                  className="myevents-form-text-family-message address"
+                  className="global-form-control"
                   onChange={handleOnChange}
                   value={inputs.address || ""}
                   name="address"
@@ -204,11 +205,11 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicDescription">
-              <Form.Label className="myevents-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myEvents.DESCRIPTION)}
               </Form.Label>
               <Form.Control
-                className="myevents-form-text-family-message"
+                className="global-form-control"
                 onChange={handleOnChange}
                 value={inputs.description || ""}
                 as="textarea"
@@ -223,11 +224,11 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicAvailablePlaces">
-              <Form.Label className="myevents-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myEvents.AVAILABLE_PLACES)}
               </Form.Label>
               <Form.Control
-                className="myevents-form-text-family-message"
+                className="global-form-control"
                 onChange={handleOnChange}
                 value={inputs.availablePlaces || ""}
                 name="availablePlaces"
@@ -242,7 +243,7 @@ const MyEventsForm = () => {
           <Col xs={12}>
             <Form.Group controlId="formBasicEventDate">
               <div className="myevents-datepicker-box">
-                <Form.Label className="myevents-form-text-family">
+                <Form.Label className="global-form-label">
                   {capitalizeFirst(strings.myEvents.EVENT_DATE)}
                 </Form.Label>
                 <div className="myevents-datepicker-icon-box">
@@ -281,11 +282,11 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicContactTel">
-              <Form.Label className="myevents-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myEvents.TEL)}
               </Form.Label>
               <Form.Control
-                className="myevents-form-text-family-message"
+                className="global-form-control"
                 onChange={handleOnChange}
                 value={inputs.tel || ""}
                 name="tel"
@@ -298,7 +299,7 @@ const MyEventsForm = () => {
         </Row>
         <Row>
           <Col xs={12}>
-            <div className="myrecipes-form-buttons-box">
+            <div className="myevents-form-button-box">
               {!eventToEdit.eventData ? (
                 <Button
                   disabled={
@@ -317,10 +318,10 @@ const MyEventsForm = () => {
                     inputs.tel === undefined
                   }
                   type="submit"
-                  className="myrecipes-form-button-text"
+                  className="global-button-label"
                   variant="outline-dark"
                 >
-                  <div className="myrecipes-form-spinner">
+                  <div className="myevents-form-spinner">
                     {loadingEventUpdating && (
                       <Spinner
                         as="span"
@@ -332,7 +333,7 @@ const MyEventsForm = () => {
                     )}
                   </div>
                   {loadingEventUpdating ? (
-                    <div className="myrecipes-form-button-loading">
+                    <div className="myevents-form-button-loading">
                       {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                     </div>
                   ) : (
@@ -357,10 +358,10 @@ const MyEventsForm = () => {
                     inputs.tel === undefined
                   }
                   type="submit"
-                  className="myrecipes-form-button-text"
+                  className="global-button-label"
                   variant="outline-dark"
                 >
-                  <div className="myrecipes-form-spinner">
+                  <div className="myevents-form-spinner">
                     {false && (
                       <Spinner
                         as="span"
@@ -372,7 +373,7 @@ const MyEventsForm = () => {
                     )}
                   </div>
                   {false ? (
-                    <div className="myrecipes-form-button-loading">
+                    <div className="myevents-form-button-loading">
                       {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
                     </div>
                   ) : (
@@ -391,7 +392,7 @@ const MyEventsForm = () => {
                   dispatch(getLocationDetailsClearState());
                   dispatch(toEditEventClearState());
                 }}
-                className="myevents-form-button-cancel"
+                className="global-button-label"
                 variant="outline-secondary"
               >
                 {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}

@@ -3,21 +3,10 @@
   padding-right: 20px;
   padding-left: 10px;
 }
-.myevents-form-text-family {
-  font-family: "OpenSans-SemiBold";
-}
-.myevents-form-text-family-message {
-  font-family: "OpenSans-Regular";
-  color: #0e153a;
-  font-size: 1vw;
-}
 .address {
   font-size: 0.6vw;
   border: 1px solid #22d1ee;
   height: 35px;
-}
-.myevents-form-button-cancel {
-  font-family: "OpenSans-Regular";
 }
 .myevents-input-spinner {
   display: flex;
@@ -38,6 +27,20 @@
   height: 35px;
   font-family: "OpenSans-Regular";
   font-size: 1vw;
+}
+.myevents-form-button-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myevents-form-button-loading {
+  margin-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 1vw;
+}
+.myevents-form-spinner {
+  float: left;
 }
 .myevents-datepicker-icon-box {
   display: flex;
