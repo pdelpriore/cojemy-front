@@ -171,8 +171,8 @@
   border-bottom: 2px black solid;
 }
 .recipeDetails-author-photo {
-  width: 40px;
-  height: 40px;
+  width: 2vw;
+  height: 2vw;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid #212529;
@@ -186,7 +186,7 @@
 }
 .recipeDetails-picture {
   width: 15vw;
-  height: 30vh;
+  height: 15vw;
   object-fit: cover;
   border: 1px solid #572529;
   border-radius: 20px;
@@ -199,11 +199,16 @@
 .recipeDetails-ingredients-item {
   font-family: "OpenSans-Regular";
   font-size: 1.1vw;
+  text-align: justify;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 .recipeDetails-ingredients-description {
   font-family: "OpenSans-Regular";
   font-size: 1vw;
   text-align: justify;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 .recipeDetails-player-wrapper {
   position: relative;

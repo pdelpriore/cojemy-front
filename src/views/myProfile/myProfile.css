@@ -17,8 +17,8 @@
   background-color: #ededed;
 }
 .myprofile-user-image {
-  width: 200px;
-  height: 200px;
+  width: 10vw;
+  height: 10vw;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid #212530;
