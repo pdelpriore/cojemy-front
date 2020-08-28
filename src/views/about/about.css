@@ -7,7 +7,6 @@
 }
 .about-area {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   margin-bottom: 2%;
   background-color: #e0c45c;
@@ -15,14 +14,14 @@
   padding: 2%;
 }
 .image-area {
-  flex: 1;
-  width: 130px;
-  height: 130px;
+  justify-content: left;
+  width: 7vw;
+  height: 7vw;
   border: 2px #85203b solid;
   object-fit: cover;
 }
 .text-area {
-  flex: 6;
+  justify-content: right;
   font-size: 3vw;
   margin-left: 10%;
   font-family: "Nunito-SemiBold";
