@@ -1,14 +1,8 @@
-.text-family {
-  font-family: "OpenSans-SemiBold";
-}
-.text-family-message-contact {
+.contact-form-control {
   font-family: "OpenSans-Regular";
   background-color: #17b978;
   color: #071a52;
   font-size: 1.3vw;
-}
-.button-text {
-  font-family: "OpenSans-Regular";
 }
 .contact-spinner {
   float: left;

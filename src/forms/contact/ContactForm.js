@@ -5,6 +5,7 @@ import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import { useSelector } from "react-redux";
 import "./contactForm.css";
+import "../../shared/global.css";
 
 const ContactForm = () => {
   const { loading } = useSelector((state) => state.customerContact);
@@ -14,11 +15,11 @@ const ContactForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicSubject">
-            <Form.Label className="text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.contact.SUBJECT)}
             </Form.Label>
             <Form.Control
-              className="text-family-message-contact"
+              className="contact-form-control"
               onChange={handleInputChange}
               value={inputs.subject || ""}
               size="lg"
@@ -32,11 +33,11 @@ const ContactForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label className="text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.contact.EMAIL)}
             </Form.Label>
             <Form.Control
-              className="text-family-message-contact"
+              className="contact-form-control"
               onChange={handleInputChange}
               value={inputs.email || ""}
               size="lg"
@@ -50,11 +51,11 @@ const ContactForm = () => {
       <Row>
         <Col xs={12}>
           <Form.Group controlId="formBasicMessage">
-            <Form.Label className="text-family">
+            <Form.Label className="global-form-label">
               {capitalizeFirst(strings.contact.MESSAGE)}
             </Form.Label>
             <Form.Control
-              className="text-family-message-contact"
+              className="contact-form-control"
               as="textarea"
               rows="4"
               onChange={handleInputChange}
@@ -80,7 +81,7 @@ const ContactForm = () => {
               inputs.email === ""
             }
             type="submit"
-            className="button-text"
+            className="global-button-label"
             variant="outline-dark"
           >
             <div className="contact-spinner">
