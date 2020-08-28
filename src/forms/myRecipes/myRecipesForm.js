@@ -12,6 +12,7 @@ import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import "./myRecipesForm.css";
+import "../../shared/global.css";
 
 const MyRecipesForm = () => {
   const dispatch = useDispatch();
@@ -39,11 +40,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicTitle">
-              <Form.Label className="myrecipes-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myRecipes.TITLE)}
               </Form.Label>
               <Form.Control
-                className="myrecipes-form-text-family-message"
+                className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.title || ""}
                 name="title"
@@ -57,7 +58,7 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicPicture">
-              <Form.Label className="myrecipes-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myRecipes.PICTURE)}
               </Form.Label>
               <ImageUploader
@@ -126,11 +127,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicVideo">
-              <Form.Label className="myrecipes-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myRecipes.VIDEO)}
               </Form.Label>
               <Form.Control
-                className="myrecipes-form-text-family-message"
+                className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.video || ""}
                 name="video"
@@ -179,11 +180,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicCategory">
-              <Form.Label className="myrecipes-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myRecipes.CATEGORY)}
               </Form.Label>
               <Form.Control
-                className="myrecipes-form-text-family-message"
+                className="global-form-control"
                 as="select"
                 name="category"
                 value={inputs.category || ""}
@@ -217,11 +218,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicCookTime">
-              <Form.Label className="myrecipes-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myRecipes.COOK_TIME)}
               </Form.Label>
               <Form.Control
-                className="myrecipes-form-text-family-message"
+                className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.cookTime || ""}
                 name="cookTime"
@@ -235,11 +236,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicIngredients">
-              <Form.Label className="myrecipes-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myRecipes.INGREDIENTS)}
               </Form.Label>
               <Form.Control
-                className="myrecipes-form-text-family-message"
+                className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.ingredients || ""}
                 name="ingredients"
@@ -252,11 +253,11 @@ const MyRecipesForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicDescription">
-              <Form.Label className="myrecipes-form-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.myRecipes.DESCRIPTION)}
               </Form.Label>
               <Form.Control
-                className="myrecipes-form-text-family-message"
+                className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.description || ""}
                 as="textarea"
@@ -289,7 +290,7 @@ const MyRecipesForm = () => {
                     inputs.description === ""
                   }
                   type="submit"
-                  className="myrecipes-form-button-text"
+                  className="global-button-label"
                   variant="outline-dark"
                 >
                   <div className="myrecipes-form-spinner">
@@ -329,7 +330,7 @@ const MyRecipesForm = () => {
                     inputs.description === ""
                   }
                   type="submit"
-                  className="myrecipes-form-button-text"
+                  className="global-button-label"
                   variant="outline-dark"
                 >
                   <div className="myrecipes-form-spinner">
@@ -360,7 +361,7 @@ const MyRecipesForm = () => {
                   dispatch(showNewRecipeForm(false));
                   dispatch(toEditMyRecipeClearState());
                 }}
-                className="myrecipes-form-button-cancel"
+                className="global-button-label"
                 variant="outline-secondary"
               >
                 {capitalizeFirst(strings.rating.BUTTON_CANCEL_TEXT)}

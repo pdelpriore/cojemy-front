@@ -13,3 +13,8 @@
   font-family: var(--font-family-osr);
   font-size: var(--font-size);
 }
+.global-form-control {
+  font-family: var(--font-family-osr);
+  color: #071a52;
+  font-size: var(--font-size);
+}

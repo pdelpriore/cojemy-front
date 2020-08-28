@@ -1,11 +1,3 @@
-.myrecipes-form-text-family {
-  font-family: "OpenSans-SemiBold";
-}
-.myrecipes-form-text-family-message {
-  font-family: "OpenSans-Regular";
-  color: #071a52;
-  font-size: 1vw;
-}
 .myrecipes-form-scroll-area {
   height: 90vh;
   padding: 20px;
@@ -27,6 +19,7 @@
   margin-left: 15px;
   white-space: nowrap;
   overflow: hidden;
+  font-size: 1vw;
 }
 .myrecipes-form-video-error {
   font-family: "OpenSans-SemiBold";
@@ -36,16 +29,10 @@
 .myrecipes-form-spinner {
   float: left;
 }
-.myrecipes-form-button-text {
-  font-family: "OpenSans-Regular";
-}
 .myrecipes-form-buttons-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.myrecipes-form-button-cancel {
-  font-family: "OpenSans-Regular";
 }
 .myrecipes-form-loading-items {
   display: flex;
