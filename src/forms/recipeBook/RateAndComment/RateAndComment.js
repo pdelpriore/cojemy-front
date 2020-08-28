@@ -80,13 +80,13 @@ const RateAndComment = ({ recipeId }) => {
             <Row>
               <Col xs={12}>
                 <Form.Group controlId="formBasicRateComment">
-                  <Form.Label className="rate-text-family">
+                  <Form.Label className="rate-form-label">
                     {capitalizeFirst(strings.rating.COMMENT)}
                   </Form.Label>
                   <Form.Control
                     onChange={handleInputChange}
                     value={inputs.comment || ""}
-                    className="rate-placeholder"
+                    className="rate-form-control"
                     as="textarea"
                     rows="4"
                     size="lg"

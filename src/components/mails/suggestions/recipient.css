@@ -4,22 +4,22 @@
   width: 25vw;
 }
 .recipient-inactive {
-  width: 10px;
-  height: 10px;
+  width: 0.6vw;
+  height: 0.6vw;
   border-radius: 50%;
   background-color: #ababab;
   border: 1px solid gray;
 }
 .recipient-active {
-  width: 10px;
-  height: 10px;
+  width: 0.6vw;
+  height: 0.6vw;
   border-radius: 50%;
   background-color: #a7ff83;
   border: 1px solid green;
 }
 .recipient-photo {
-  width: 30px;
-  height: 30px;
+  width: 2vw;
+  height: 2vw;
 }
 .recipient-name {
   margin-left: 3%;

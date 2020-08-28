@@ -7,6 +7,7 @@ import { showRemindPassComponent } from "../../redux/remindPassword/showRemindPa
 import { useSelector, useDispatch } from "react-redux";
 import { strings } from "../../strings/Strings";
 import "./remindPassword.css";
+import "../../shared/global.css";
 
 const RemindPasswordForm = () => {
   const { inputs, handleInputChange, handleSubmit } = useRemindPassForm();
@@ -22,13 +23,13 @@ const RemindPasswordForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicRemindPasswordEmail">
-              <Form.Label className="remindPass-text-family">
+              <Form.Label className="global-form-label">
                 {capitalizeFirst(strings.remindPass.EMAIL)}
               </Form.Label>
               <Form.Control
                 onChange={handleInputChange}
                 value={inputs.email || ""}
-                className="remindPass-placeholder"
+                className="remindPass-form-control"
                 size="lg"
                 name="email"
                 type="email"
@@ -41,7 +42,7 @@ const RemindPasswordForm = () => {
           <Col xs={12}>
             <div className="remindPass-button">
               <Button
-                className="remindPass-button-send"
+                className="global-button-label"
                 disabled={
                   loading || inputs.email === undefined || inputs.email === ""
                 }
@@ -72,7 +73,7 @@ const RemindPasswordForm = () => {
                   e.preventDefault();
                   dispatch(showRemindPassComponent(false));
                 }}
-                className="remindPass-button-cancel"
+                className="global-button-label"
                 variant="outline-danger"
               >
                 {capitalizeFirst(strings.remindPass.BUTTON_TEXT_CANCEL)}

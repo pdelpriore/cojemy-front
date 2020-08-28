@@ -26,7 +26,7 @@ const SearchRecipeForm = () => {
                 <Form.Control
                   onChange={handleInputChange}
                   value={inputs.recipe || ""}
-                  className="searchrecipe-placeholder"
+                  className="searchrecipe-form-control"
                   size="sm"
                   name="recipe"
                   type="text"
