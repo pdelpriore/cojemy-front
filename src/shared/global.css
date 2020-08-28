@@ -1,13 +1,12 @@
 :root {
   --font-family-ossb: "OpenSans-SemiBold";
   --font-family-osr: "OpenSans-Regular";
-  --label-font-color: #84203a;
   --font-size: 1vw;
 }
 
 .global-form-label {
   font-family: var(--font-family-ossb);
-  color: var(--label-font-color);
+  color: #84203a;
 }
 .global-button-label {
   font-family: var(--font-family-osr);
@@ -15,6 +14,6 @@
 }
 .global-form-control {
   font-family: var(--font-family-osr);
-  color: #071a52;
   font-size: var(--font-size);
+  color: #071a52;
 }
