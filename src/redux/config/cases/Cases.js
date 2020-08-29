@@ -258,3 +258,7 @@ export const mailErrorCases = Object.freeze({
   ERROR_RETRIEVED: "mailErrorErrorRetrieved",
   CLEAR_STATE: "mailErrorClearState",
 });
+
+export const showCalendarCases = Object.freeze({
+  CALENDAR_SHOWN: "showCalendarCalendarShown",
+});

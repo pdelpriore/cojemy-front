@@ -15,6 +15,7 @@ import { getLocationDetailsClearState } from "../../../redux/myEvents/getLocatio
 import { changeEventClearState } from "../../../redux/myEvents/changeEvent/thunk/changeEventThunk";
 import { toEditEventClearState } from "../../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
+import { showCalendar } from "../../../redux/myEvents/showCalendar/thunk/showCalendarThunk";
 import { generateZoom } from "../../../shared/generateZoom";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
@@ -98,6 +99,10 @@ const useMyEventsForm = () => {
         }));
       }
     }
+  };
+  const handleShowCalendar = (e) => {
+    e.preventDefault();
+    dispatch(showCalendar(true));
   };
   const handleRemoveImage = (e) => {
     e.preventDefault();
@@ -334,6 +339,7 @@ const useMyEventsForm = () => {
     handleOnChange,
     handleDateTime,
     handleInitializeDate,
+    handleShowCalendar,
     handlePicture,
     handleRemoveImage,
     handleSubmit,

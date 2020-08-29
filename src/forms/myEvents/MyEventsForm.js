@@ -38,6 +38,7 @@ const MyEventsForm = () => {
     handleOnChange,
     handleDateTime,
     handleInitializeDate,
+    handleShowCalendar,
     handlePicture,
     handleRemoveImage,
     handleSubmit,
@@ -272,8 +273,9 @@ const MyEventsForm = () => {
                   /> */}
                 <Form.Control
                   className="global-form-control"
-                  onChange={handleDateTime}
-                  value={inputs.eventDate || ""}
+                  //onChange={handleDateTime}
+                  //value={inputs.eventDate || ""}
+                  onClick={handleShowCalendar}
                   type="text"
                   placeholder={strings.myEvents.DATE_PLACEHOLDER}
                 />
