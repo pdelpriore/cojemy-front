@@ -32,7 +32,7 @@ const Calendar = () => {
                   <div className="calendar-days-in-month">
                     {numberOfDaysInMonth.map((number, index) =>
                       index < firstDayOfWeekInMonth - 1 ? (
-                        <div></div>
+                        <div key={index}></div>
                       ) : (
                         <div className="calendar-number-of-day" key={index}>
                           {number}
