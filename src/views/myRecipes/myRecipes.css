@@ -13,7 +13,7 @@
 .myrecipes-second-section {
   width: 50vw;
   height: 100vh;
-  background-color: #ededed;
+  background-color: #ffffff;
 }
 .myrecipes-list {
   height: 100vh;
@@ -209,6 +209,9 @@
   text-align: justify;
   word-wrap: break-word;
   white-space: pre-wrap;
+  background-color: #f3f6f8;
+  padding: 1%;
+  border-radius: 5px;
 }
 .recipeDetails-player-wrapper {
   position: relative;

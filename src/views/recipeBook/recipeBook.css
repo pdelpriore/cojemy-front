@@ -20,7 +20,7 @@
 .recipebook-second-section {
   height: 100vh;
   width: 50vw;
-  background-color: #ededed;
+  background-color: #ffffff;
 }
 .recipebook-soup {
   width: 25vw;
@@ -192,6 +192,9 @@
   text-align: justify;
   word-wrap: break-word;
   white-space: pre-wrap;
+  background-color: #f3f6f8;
+  padding: 1%;
+  border-radius: 5px;
 }
 .recipeDetails-comments-area {
   display: flex;
