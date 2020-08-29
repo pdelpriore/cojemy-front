@@ -51,7 +51,7 @@ const MessageForm = () => {
             {!recipient.name && newMessageSelected ? (
               <div className="myevents-icon-address-box">
                 <Form.Control
-                  className="global-form-control"
+                  className="message-form-control"
                   onChange={handleInputChange}
                   value={inputs.to || ""}
                   size="lg"
@@ -142,7 +142,7 @@ const MessageForm = () => {
         <Col xs={12}>
           <Form.Group controlId="formBasicContent">
             <Form.Control
-              className="global-form-control"
+              className="message-form-control"
               onChange={handleInputChange}
               value={inputs.content || ""}
               as="textarea"

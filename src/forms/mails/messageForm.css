@@ -22,6 +22,12 @@
 .message-form-conversation-scroll {
   height: 44vh;
 }
+.message-form-control {
+  font-family: "OpenSans-Regular";
+  font-size: 1vw;
+  color: #071a52;
+  background-color: #ffffff;
+}
 .message-form-conversation-item {
   font-family: "OpenSans-SemiBold";
   color: #212529;
