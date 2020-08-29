@@ -243,12 +243,11 @@ const MyEventsForm = () => {
         <Row>
           <Col xs={12}>
             <Form.Group controlId="formBasicEventDate">
-              <div className="myevents-datepicker-box">
-                <Form.Label className="global-form-label">
-                  {capitalizeFirst(strings.myEvents.EVENT_DATE)}
-                </Form.Label>
-                <div className="myevents-datepicker-icon-box">
-                  <DatePicker
+              <Form.Label className="global-form-label">
+                {capitalizeFirst(strings.myEvents.EVENT_DATE)}
+              </Form.Label>
+              <div className="myevents-datepicker-icon-box">
+                {/* <DatePicker
                     onFocus={handleInitializeDate}
                     minDate={new Date()}
                     minTime={
@@ -270,7 +269,15 @@ const MyEventsForm = () => {
                     onChangeRaw={(e) => e.preventDefault()}
                     withPortal={true}
                     placeholderText={strings.myEvents.DATE_PLACEHOLDER}
-                  />
+                  /> */}
+                <Form.Control
+                  className="global-form-control"
+                  onChange={handleDateTime}
+                  value={inputs.eventDate || ""}
+                  type="text"
+                  placeholder={strings.myEvents.DATE_PLACEHOLDER}
+                />
+                <div className="myevents-datepicker-icon-wrapper">
                   <FontAwesomeIcon
                     className="myevents-datepicker-icon"
                     icon={faCalendarAlt}
