@@ -31,10 +31,24 @@ const Calendar = () => {
                   </div>
                   <div className="calendar-days-in-month">
                     {numberOfDaysInMonth.map((number, index) =>
-                      index < firstDayOfWeekInMonth - 1 ? (
-                        <div key={index}></div>
+                      firstDayOfWeekInMonth > 0 ? (
+                        <div
+                          className={
+                            index < firstDayOfWeekInMonth - 1
+                              ? ""
+                              : "calendar-number-of-day"
+                          }
+                          key={index}
+                        >
+                          {number}
+                        </div>
                       ) : (
-                        <div className="calendar-number-of-day" key={index}>
+                        <div
+                          className={
+                            index < 7 - 1 ? "" : "calendar-number-of-day"
+                          }
+                          key={index}
+                        >
                           {number}
                         </div>
                       )
