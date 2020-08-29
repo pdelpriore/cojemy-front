@@ -17,13 +17,21 @@ const useCalendar = () => {
     strings.myEvents.calendar.NDZ,
   ];
 
-  let firstDayOfWeekInMonth = getFirstDayOfWeekInMonth(1, 2020);
+  // tutaj 1 reprezentuje miesiac luty
+  let firstDayOfWeekInMonth = getFirstDayOfWeekInMonth(2, 2020);
 
   const numberOfDaysInMonth = [];
-  for (let i = 0; i < firstDayOfWeekInMonth - 1; i++) {
-    numberOfDaysInMonth.push("");
+  if (firstDayOfWeekInMonth > 0) {
+    for (let i = 0; i < firstDayOfWeekInMonth - 1; i++) {
+      numberOfDaysInMonth.push("");
+    }
+  } else {
+    for (let i = 0; i < 7 - 1; i++) {
+      numberOfDaysInMonth.push("");
+    }
   }
-  for (let i = 1; i <= getDaysInMonth(2, 2020); i++) {
+
+  for (let i = 1; i <= getDaysInMonth(3, 2020); i++) {
     numberOfDaysInMonth.push(i);
   }
 
