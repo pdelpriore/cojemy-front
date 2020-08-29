@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { eventButtonItemsArray } from "../../../shared/buttonItemsArray";
 import { getEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
+import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 
 const useMyEvents = () => {
   const [skip, setSkip] = useState(1);
@@ -19,6 +20,10 @@ const useMyEvents = () => {
     e.preventDefault();
     !eventsError && setSkip(skip + 1);
   };
+
+  useEffect(() => {
+    return () => dispatch(showNewEventForm(false));
+  }, [dispatch]);
 
   useEffect(() => {
     setSkip(1);
