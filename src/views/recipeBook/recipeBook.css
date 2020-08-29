@@ -201,9 +201,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 2%;
-  text-align: justify;
-  word-wrap: break-word;
-  white-space: pre-wrap;
 }
 .recipeDetails-comments-photo {
   width: 1vw;
@@ -229,6 +226,11 @@
   font-family: "OpenSans-Regular";
   text-align: justify;
   font-size: 0.9vw;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background-color: #f3f6f8;
+  padding: 1%;
+  border-radius: 5px;
 }
 .recipeDetails-comments-timeago {
   width: 6.7vw;
