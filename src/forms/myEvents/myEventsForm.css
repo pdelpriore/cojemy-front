@@ -67,6 +67,7 @@
 .myevents-icon-address-box {
   display: flex;
   flex-direction: row;
+  align-items: center;
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
