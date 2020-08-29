@@ -249,6 +249,15 @@ export const strings = Object.freeze({
       AVAILABLE_PLACES: "availablePlaces",
       CITY: "city",
     },
+    calendar: {
+      PON: "pon",
+      WT: "wt",
+      SR: "sr",
+      CZW: "czw",
+      PIA: "pia",
+      SOB: "sob",
+      NDZ: "ndz",
+    },
   },
   mails: {
     BUTTON_NEW_MESSAGE: "nouveau message",

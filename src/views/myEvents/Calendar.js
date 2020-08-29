@@ -1,8 +1,14 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
+import useCalendar from "../../hooks/screen/myEvents/useCalendar";
 import "./myEvents.css";
 
 const Calendar = () => {
+  const {
+    dayNames,
+    numberOfDaysInMonth,
+    firstDayOfWeekInMonth,
+  } = useCalendar();
   return (
     <div className="calendar-main">
       <Row className="mb-5" />
@@ -15,7 +21,26 @@ const Calendar = () => {
           <div className="calendar-box">
             <Row>
               <Col xs={7}>
-                <div>calendar</div>
+                <div>
+                  <div className="calendar-day-names">
+                    {dayNames.map((day, index) => (
+                      <div key={index} className="calendar-day">
+                        {day.toUpperCase()}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="calendar-days-in-month">
+                    {numberOfDaysInMonth.map((number, index) =>
+                      index < firstDayOfWeekInMonth - 1 ? (
+                        <div></div>
+                      ) : (
+                        <div className="calendar-number-of-day" key={index}>
+                          {number}
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
               </Col>
               <Col xs={1} />
               <Col xs={4}>
