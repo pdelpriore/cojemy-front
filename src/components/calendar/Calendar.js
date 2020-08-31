@@ -9,6 +9,7 @@ const Calendar = () => {
     dayNames,
     numberOfDaysInMonth,
     firstDayOfWeekInMonth,
+    todayDayNumber,
   } = useCalendar();
   return (
     <div className="calendar-box">
@@ -29,7 +30,11 @@ const Calendar = () => {
                     className={
                       index < firstDayOfWeekInMonth - 1
                         ? ""
-                        : `calendar-number-of-day ${
+                        : `${
+                            dayNumber < todayDayNumber
+                              ? "calendar-number-of-day-before-today"
+                              : "calendar-number-of-day"
+                          } ${
                             Number.isInteger(dayNumber) &&
                             isWeekend(dayNumber - 1)
                               ? "weekend"
@@ -45,7 +50,11 @@ const Calendar = () => {
                     className={
                       index < 7 - 1
                         ? ""
-                        : `calendar-number-of-day ${
+                        : `${
+                            dayNumber < todayDayNumber
+                              ? "calendar-number-of-day-before-today"
+                              : "calendar-number-of-day"
+                          } ${
                             Number.isInteger(dayNumber) &&
                             isWeekend(dayNumber - 1)
                               ? "weekend"
