@@ -3,13 +3,12 @@ import { Row, Col } from "react-bootstrap";
 import useCalendar from "../../hooks/screen/myEvents/useCalendar";
 import "./calendar.css";
 
-const Calendar = ({ testFn }) => {
+const Calendar = () => {
   const {
     dayNames,
     numberOfDaysInMonth,
     firstDayOfWeekInMonth,
   } = useCalendar();
-  testFn("test");
   return (
     <div className="calendar-box">
       <Row>

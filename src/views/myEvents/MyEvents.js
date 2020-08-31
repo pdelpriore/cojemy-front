@@ -221,7 +221,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
         <Row>
           <Col xs={4} />
           <Col xs={4}>
-            <Calendar testFn={(data) => console.log(data)} />
+            <Calendar />
           </Col>
           <Col xs={4} />
         </Row>
