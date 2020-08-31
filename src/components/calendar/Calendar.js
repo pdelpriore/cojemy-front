@@ -102,7 +102,6 @@ const Calendar = () => {
         </Col>
       </Row>
       <Row className="mb-5" />
-      <Row className="mb-5" />
       <Row>
         <Col xs={2} />
         <Col xs={8}>
