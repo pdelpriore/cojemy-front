@@ -12,12 +12,20 @@ const Calendar = () => {
     firstDayOfWeekInMonth,
     now,
     todayDayNumber,
+    chosenMonth,
   } = useCalendar();
   return (
     <div className="calendar-box">
       <Row>
         <Col xs={7}>
           <div>
+            <Row>
+              <Col xs={2} />
+              <Col xs={8}>
+                <div className="calendar-month-name">{`${chosenMonth} ${now.getFullYear()}`}</div>
+              </Col>
+              <Col xs={2} />
+            </Row>
             <div className="calendar-day-names">
               {dayNames.map((day, index) => (
                 <div key={index} className="calendar-day">

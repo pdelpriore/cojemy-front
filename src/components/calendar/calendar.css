@@ -51,3 +51,8 @@
   color: #1f4287;
   border-radius: 3px;
 }
+.calendar-month-name {
+  font-size: 1.2vw;
+  font-family: "OpenSans-SemiBold";
+  text-align: center;
+}

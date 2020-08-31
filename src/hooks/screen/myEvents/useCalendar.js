@@ -9,13 +9,28 @@ const useCalendar = () => {
   const todayDayNumber = now.getDate();
 
   const dayNames = [
-    strings.myEvents.calendar.PON,
-    strings.myEvents.calendar.WT,
-    strings.myEvents.calendar.SR,
-    strings.myEvents.calendar.CZW,
-    strings.myEvents.calendar.PIA,
-    strings.myEvents.calendar.SOB,
-    strings.myEvents.calendar.NDZ,
+    strings.myEvents.calendar.days.MON,
+    strings.myEvents.calendar.days.THU,
+    strings.myEvents.calendar.days.WED,
+    strings.myEvents.calendar.days.THU,
+    strings.myEvents.calendar.days.FRI,
+    strings.myEvents.calendar.days.SAT,
+    strings.myEvents.calendar.days.SUN,
+  ];
+
+  const months = [
+    strings.myEvents.calendar.months.JAN,
+    strings.myEvents.calendar.months.FEB,
+    strings.myEvents.calendar.months.MAR,
+    strings.myEvents.calendar.months.APR,
+    strings.myEvents.calendar.months.MAY,
+    strings.myEvents.calendar.months.JUN,
+    strings.myEvents.calendar.months.JUL,
+    strings.myEvents.calendar.months.AUG,
+    strings.myEvents.calendar.months.SEP,
+    strings.myEvents.calendar.months.OCT,
+    strings.myEvents.calendar.months.NOV,
+    strings.myEvents.calendar.months.DEC,
   ];
 
   // tutaj 1 reprezentuje miesiac luty, 2 marzec, itd.
@@ -23,6 +38,10 @@ const useCalendar = () => {
   const [firstDayOfWeekInMonth, setFirstDayOfWeekInMonth] = useState(
     getFirstDayOfWeekInMonth(now.getMonth(), now.getFullYear())
   );
+  const [daysInMonth, setDaysInMonth] = useState(
+    getDaysInMonth(now.getMonth() + 1, now.getFullYear())
+  );
+  const [chosenMonth, setChosenMonth] = useState(months[now.getMonth()]);
 
   const numberOfDaysInMonth = [];
   if (firstDayOfWeekInMonth > 0) {
@@ -35,11 +54,7 @@ const useCalendar = () => {
     }
   }
 
-  for (
-    let i = 1;
-    i <= getDaysInMonth(now.getMonth() + 1, now.getFullYear());
-    i++
-  ) {
+  for (let i = 1; i <= daysInMonth; i++) {
     numberOfDaysInMonth.push(i);
   }
 
@@ -49,6 +64,7 @@ const useCalendar = () => {
     firstDayOfWeekInMonth,
     now,
     todayDayNumber,
+    chosenMonth,
   };
 };
 
