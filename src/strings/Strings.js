@@ -252,7 +252,7 @@ export const strings = Object.freeze({
     calendar: {
       days: {
         MON: "pon",
-        THU: "wt",
+        TUE: "wt",
         WED: "sr",
         THU: "czw",
         FRI: "pia",

@@ -10,7 +10,7 @@ const useCalendar = () => {
 
   const dayNames = [
     strings.myEvents.calendar.days.MON,
-    strings.myEvents.calendar.days.THU,
+    strings.myEvents.calendar.days.TUE,
     strings.myEvents.calendar.days.WED,
     strings.myEvents.calendar.days.THU,
     strings.myEvents.calendar.days.FRI,
