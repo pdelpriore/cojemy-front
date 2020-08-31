@@ -6,13 +6,12 @@ import { isWeekend } from "../../components/calendar/isWeekend";
 import "./calendar.css";
 
 const Calendar = () => {
-  const now = new Date();
-  const todayDayNumber = now.getDate();
-
   const {
     dayNames,
     numberOfDaysInMonth,
     firstDayOfWeekInMonth,
+    now,
+    todayDayNumber,
   } = useCalendar();
   return (
     <div className="calendar-box">
@@ -41,7 +40,7 @@ const Calendar = () => {
                               : "calendar-number-of-day"
                           } ${
                             Number.isInteger(dayNumber) &&
-                            isWeekend(dayNumber - 1)
+                            isWeekend(dayNumber - 2)
                               ? `${
                                   moment(now.setDate(dayNumber)).isBefore(
                                     now.setDate(todayDayNumber)

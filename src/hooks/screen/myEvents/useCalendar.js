@@ -5,6 +5,9 @@ import { getFirstDayOfWeekInMonth } from "../../../components/calendar/getFirstD
 import { strings } from "../../../strings/Strings";
 
 const useCalendar = () => {
+  const now = new Date();
+  const todayDayNumber = now.getDate();
+
   const dayNames = [
     strings.myEvents.calendar.PON,
     strings.myEvents.calendar.WT,
@@ -16,7 +19,10 @@ const useCalendar = () => {
   ];
 
   // tutaj 1 reprezentuje miesiac luty, 2 marzec, itd.
-  let firstDayOfWeekInMonth = getFirstDayOfWeekInMonth(2, 2020);
+  // now.getMonth() zwraca 7 zamiast 8 w przypadku sierpnia, itd.
+  const [firstDayOfWeekInMonth, setFirstDayOfWeekInMonth] = useState(
+    getFirstDayOfWeekInMonth(now.getMonth(), now.getFullYear())
+  );
 
   const numberOfDaysInMonth = [];
   if (firstDayOfWeekInMonth > 0) {
@@ -29,7 +35,11 @@ const useCalendar = () => {
     }
   }
 
-  for (let i = 1; i <= getDaysInMonth(3, 2020); i++) {
+  for (
+    let i = 1;
+    i <= getDaysInMonth(now.getMonth() + 1, now.getFullYear());
+    i++
+  ) {
     numberOfDaysInMonth.push(i);
   }
 
@@ -37,6 +47,8 @@ const useCalendar = () => {
     dayNames,
     numberOfDaysInMonth,
     firstDayOfWeekInMonth,
+    now,
+    todayDayNumber,
   };
 };
 
