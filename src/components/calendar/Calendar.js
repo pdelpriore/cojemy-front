@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import useCalendar from "../../hooks/screen/myEvents/useCalendar";
-import "./myEvents.css";
+import "./calendar.css";
 
 const Calendar = () => {
   const {

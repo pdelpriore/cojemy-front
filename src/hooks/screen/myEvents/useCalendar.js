@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { getDaysInMonth } from "../../../components/calendar/getDaysInMonth";
+import { getFirstDayOfWeekInMonth } from "../../../components/calendar/getFirstDayOfWeekInMonth";
 import { strings } from "../../../strings/Strings";
 
 const useCalendar = () => {
-  const getDaysInMonth = (month, year) => new Date(year, month, 0).getDate();
-  const getFirstDayOfWeekInMonth = (month, year) =>
-    new Date(year, month, 1).getDay();
-
   const dayNames = [
     strings.myEvents.calendar.PON,
     strings.myEvents.calendar.WT,
@@ -17,7 +15,7 @@ const useCalendar = () => {
     strings.myEvents.calendar.NDZ,
   ];
 
-  // tutaj 1 reprezentuje miesiac luty
+  // tutaj 1 reprezentuje miesiac luty, 2 marzec, itd.
   let firstDayOfWeekInMonth = getFirstDayOfWeekInMonth(2, 2020);
 
   const numberOfDaysInMonth = [];

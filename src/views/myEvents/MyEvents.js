@@ -18,7 +18,7 @@ import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/sh
 import MakeEventButtons from "./makeEventButtons";
 import Notification from "../../components/notifications/Notification";
 import EventPreview from "./EventPreview";
-import Calendar from "./Calendar";
+import Calendar from "../../components/calendar/Calendar";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./myEvents.css";
