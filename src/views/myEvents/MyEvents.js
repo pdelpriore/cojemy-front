@@ -214,7 +214,19 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
           </div>
         )}
       </div>
-      <Calendar />
+      <div className="myevents-calendar-overlay">
+        <Row className="mb-5" />
+        <Row className="mb-5" />
+        <Row className="mb-5" />
+        <Row className="mb-5" />
+        <Row>
+          <Col xs={3} />
+          <Col xs={6}>
+            <Calendar testFn={(data) => console.log(data)} />
+          </Col>
+          <Col xs={3} />
+        </Row>
+      </div>
     </animated.div>
   );
 };
