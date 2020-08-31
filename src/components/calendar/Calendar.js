@@ -55,8 +55,8 @@ const Calendar = ({ testFn }) => {
       <Row className="mb-5" />
       <Row className="mb-5" />
       <Row>
-        <Col xs={4} />
-        <Col xs={4}>
+        <Col xs={2} />
+        <Col xs={8}>
           <Row>
             <Col xs={5}>
               <div>button submit</div>
@@ -67,7 +67,7 @@ const Calendar = ({ testFn }) => {
             </Col>
           </Row>
         </Col>
-        <Col xs={4} />
+        <Col xs={2} />
       </Row>
     </div>
   );

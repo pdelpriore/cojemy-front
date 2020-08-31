@@ -218,13 +218,12 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-5" />
         <Row className="mb-5" />
-        <Row className="mb-5" />
         <Row>
-          <Col xs={3} />
-          <Col xs={6}>
+          <Col xs={4} />
+          <Col xs={4}>
             <Calendar testFn={(data) => console.log(data)} />
           </Col>
-          <Col xs={3} />
+          <Col xs={4} />
         </Row>
       </div>
     </animated.div>
