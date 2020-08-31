@@ -41,7 +41,16 @@ const useCalendar = () => {
   const [daysInMonth, setDaysInMonth] = useState(
     getDaysInMonth(now.getMonth() + 1, now.getFullYear())
   );
-  const [chosenMonth, setChosenMonth] = useState(months[now.getMonth()]);
+  const [monthIndex, setMonthIndex] = useState(now.getMonth());
+  const [chosenMonth, setChosenMonth] = useState(months[monthIndex]);
+
+  const handleNextMonth = () => {
+    //monthIndex + 1 maksymalnie do roku
+  };
+
+  const handlePreviousMonth = () => {
+    //monthIndex - 1 zablokuj jesli month < now
+  };
 
   const numberOfDaysInMonth = [];
   if (firstDayOfWeekInMonth > 0) {
