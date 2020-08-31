@@ -7,27 +7,29 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 1fr;
-  font-size: 1vw;
+  gap: 1%;
+  font-size: 1.2vw;
   font-family: "Nunito-SemiBold";
   text-align: center;
-  padding: 1%;
+  padding: 2%;
   height: 100%;
 }
 .calendar-day {
-  border: 1px solid #4d4d4d;
+  border: 0.5px solid #4d4d4d;
 }
 .calendar-days-in-month {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  font-size: 1vw;
+  gap: 1%;
+  font-size: 1.2vw;
   font-family: "Nunito-Regular";
   text-align: center;
-  padding: 1%;
+  padding: 2%;
   height: 100%;
 }
 .calendar-number-of-day {
-  border: 1px solid #4d4d4d;
+  border: 0.5px solid #4d4d4d;
   transition: 0.2s;
 }
 .calendar-number-of-day:hover {

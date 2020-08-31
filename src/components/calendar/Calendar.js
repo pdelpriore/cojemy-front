@@ -17,7 +17,7 @@ const Calendar = () => {
             <div className="calendar-day-names">
               {dayNames.map((day, index) => (
                 <div key={index} className="calendar-day">
-                  {day.toUpperCase()}
+                  {day}
                 </div>
               ))}
             </div>
