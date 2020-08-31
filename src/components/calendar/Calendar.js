@@ -6,12 +6,13 @@ import { isWeekend } from "../../components/calendar/isWeekend";
 import "./calendar.css";
 
 const Calendar = () => {
+  const todayDayNumber = new Date().getDate();
   const now = new Date();
+
   const {
     dayNames,
     numberOfDaysInMonth,
     firstDayOfWeekInMonth,
-    todayDayNumber,
   } = useCalendar();
   return (
     <div className="calendar-box">

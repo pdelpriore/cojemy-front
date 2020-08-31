@@ -5,7 +5,6 @@ import { getFirstDayOfWeekInMonth } from "../../../components/calendar/getFirstD
 import { strings } from "../../../strings/Strings";
 
 const useCalendar = () => {
-  const todayDayNumber = new Date().getDate();
   const dayNames = [
     strings.myEvents.calendar.PON,
     strings.myEvents.calendar.WT,
@@ -38,7 +37,6 @@ const useCalendar = () => {
     dayNames,
     numberOfDaysInMonth,
     firstDayOfWeekInMonth,
-    todayDayNumber,
   };
 };
 
