@@ -26,6 +26,7 @@ const Calendar = () => {
               </Col>
               <Col xs={2} />
             </Row>
+            <Row className="mb-3" />
             <div className="calendar-day-names">
               {dayNames.map((day, index) => (
                 <div key={index} className="calendar-day">
