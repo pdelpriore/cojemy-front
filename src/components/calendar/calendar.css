@@ -36,3 +36,7 @@
   cursor: pointer;
   transform: scale(1.05);
 }
+.weekend {
+  border: 0.5px solid #278ea5;
+  color: #278ea5;
+}

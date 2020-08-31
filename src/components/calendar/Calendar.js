@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import useCalendar from "../../hooks/screen/myEvents/useCalendar";
+import { isWeekend } from "../../components/calendar/isWeekend";
 import "./calendar.css";
 
 const Calendar = () => {
@@ -22,24 +23,32 @@ const Calendar = () => {
               ))}
             </div>
             <div className="calendar-days-in-month">
-              {numberOfDaysInMonth.map((number, index) =>
+              {numberOfDaysInMonth.map((dayNumber, index) =>
                 firstDayOfWeekInMonth > 0 ? (
                   <div
                     className={
                       index < firstDayOfWeekInMonth - 1
                         ? ""
-                        : "calendar-number-of-day"
+                        : `calendar-number-of-day ${
+                            isWeekend(dayNumber - 1) ? "weekend" : ""
+                          }`
                     }
                     key={index}
                   >
-                    {number}
+                    {dayNumber}
                   </div>
                 ) : (
                   <div
-                    className={index < 7 - 1 ? "" : "calendar-number-of-day"}
+                    className={
+                      index < 7 - 1
+                        ? ""
+                        : `calendar-number-of-day ${
+                            isWeekend(dayNumber - 1) ? "weekend" : ""
+                          }`
+                    }
                     key={index}
                   >
-                    {number}
+                    {dayNumber}
                   </div>
                 )
               )}
