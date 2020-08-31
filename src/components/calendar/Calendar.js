@@ -6,8 +6,8 @@ import { isWeekend } from "../../components/calendar/isWeekend";
 import "./calendar.css";
 
 const Calendar = () => {
-  const todayDayNumber = new Date().getDate();
   const now = new Date();
+  const todayDayNumber = now.getDate();
 
   const {
     dayNames,
