@@ -48,7 +48,7 @@ const Calendar = () => {
                               : "calendar-number-of-day"
                           } ${
                             Number.isInteger(dayNumber) &&
-                            isWeekend(dayNumber - 2)
+                            isWeekend(dayNumber + firstDayOfWeekInMonth - 1)
                               ? `${
                                   moment(now.setDate(dayNumber)).isBefore(
                                     now.setDate(todayDayNumber)
@@ -76,7 +76,7 @@ const Calendar = () => {
                               : "calendar-number-of-day"
                           } ${
                             Number.isInteger(dayNumber) &&
-                            isWeekend(dayNumber - 1)
+                            isWeekend(dayNumber + 7 - 1)
                               ? `${
                                   moment(now.setDate(dayNumber)).isBefore(
                                     now.setDate(todayDayNumber)
