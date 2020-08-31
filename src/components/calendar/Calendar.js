@@ -1,10 +1,12 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import useCalendar from "../../hooks/screen/myEvents/useCalendar";
+import moment from "moment";
 import { isWeekend } from "../../components/calendar/isWeekend";
 import "./calendar.css";
 
 const Calendar = () => {
+  const now = new Date();
   const {
     dayNames,
     numberOfDaysInMonth,
@@ -31,13 +33,21 @@ const Calendar = () => {
                       index < firstDayOfWeekInMonth - 1
                         ? ""
                         : `${
-                            dayNumber < todayDayNumber
+                            moment(now.setDate(dayNumber)).isBefore(
+                              now.setDate(todayDayNumber)
+                            )
                               ? "calendar-number-of-day-before-today"
                               : "calendar-number-of-day"
                           } ${
                             Number.isInteger(dayNumber) &&
                             isWeekend(dayNumber - 1)
-                              ? "weekend"
+                              ? `${
+                                  moment(now.setDate(dayNumber)).isBefore(
+                                    now.setDate(todayDayNumber)
+                                  )
+                                    ? "weekend-before-today"
+                                    : "weekend"
+                                }`
                               : ""
                           }`
                     }
@@ -51,13 +61,21 @@ const Calendar = () => {
                       index < 7 - 1
                         ? ""
                         : `${
-                            dayNumber < todayDayNumber
+                            moment(now.setDate(dayNumber)).isBefore(
+                              now.setDate(todayDayNumber)
+                            )
                               ? "calendar-number-of-day-before-today"
                               : "calendar-number-of-day"
                           } ${
                             Number.isInteger(dayNumber) &&
                             isWeekend(dayNumber - 1)
-                              ? "weekend"
+                              ? `${
+                                  moment(now.setDate(dayNumber)).isBefore(
+                                    now.setDate(todayDayNumber)
+                                  )
+                                    ? "weekend-before-today"
+                                    : "weekend"
+                                }`
                               : ""
                           }`
                     }
