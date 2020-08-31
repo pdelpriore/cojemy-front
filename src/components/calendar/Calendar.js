@@ -30,7 +30,10 @@ const Calendar = () => {
                       index < firstDayOfWeekInMonth - 1
                         ? ""
                         : `calendar-number-of-day ${
-                            isWeekend(dayNumber - 1) ? "weekend" : ""
+                            Number.isInteger(dayNumber) &&
+                            isWeekend(dayNumber - 1)
+                              ? "weekend"
+                              : ""
                           }`
                     }
                     key={index}
@@ -43,7 +46,10 @@ const Calendar = () => {
                       index < 7 - 1
                         ? ""
                         : `calendar-number-of-day ${
-                            isWeekend(dayNumber - 1) ? "weekend" : ""
+                            Number.isInteger(dayNumber) &&
+                            isWeekend(dayNumber - 1)
+                              ? "weekend"
+                              : ""
                           }`
                     }
                     key={index}
