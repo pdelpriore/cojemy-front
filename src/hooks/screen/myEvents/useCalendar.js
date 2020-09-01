@@ -76,7 +76,7 @@ const useCalendar = () => {
     );
     setDaysInMonth(getDaysInMonth(monthIndex + 1, now.getFullYear()));
     setChosenMonth(months[monthIndex]);
-  }, [monthIndex]);
+  }, [monthIndex, months, now]);
 
   return {
     dayNames,
