@@ -7,27 +7,30 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 1fr;
-  gap: 1%;
+  gap: 1.5%;
   font-size: 1.2vw;
   font-family: "Nunito-SemiBold";
   text-align: center;
   padding: 2%;
   height: 100%;
+  width: 100%;
 }
 .calendar-day {
   border: 0.5px solid #4d4d4d;
   border-radius: 3px;
+  background-color: #ededed;
 }
 .calendar-days-in-month {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: 1%;
+  gap: 1.5%;
   font-size: 1.2vw;
   font-family: "OpenSans-Regular";
   text-align: center;
   padding: 2%;
   height: 100%;
+  width: 100%;
 }
 .calendar-number-of-day {
   border: 0.5px solid #4d4d4d;
