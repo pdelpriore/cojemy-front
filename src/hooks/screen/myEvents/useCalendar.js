@@ -38,9 +38,6 @@ const useCalendar = () => {
   const [newSelectedDate, setNewSelectedDate] = useState(
     getNewSelectedDate(monthIndex, now.getFullYear())
   );
-  const [firstDayOfWeekInMonth, setFirstDayOfWeekInMonth] = useState(
-    newSelectedDate.firstDay
-  );
   const [daysInMonth, setDaysInMonth] = useState(
     getDaysInMonth(monthIndex + 1, now.getFullYear())
   );
@@ -61,8 +58,8 @@ const useCalendar = () => {
   };
 
   const numberOfDaysInMonth = [];
-  if (firstDayOfWeekInMonth > 0) {
-    for (let i = 0; i < firstDayOfWeekInMonth - 1; i++) {
+  if (newSelectedDate.firstDay > 0) {
+    for (let i = 0; i < newSelectedDate.firstDay - 1; i++) {
       numberOfDaysInMonth.push("");
     }
   } else {
@@ -80,7 +77,6 @@ const useCalendar = () => {
   }, [monthIndex]);
 
   useEffect(() => {
-    setFirstDayOfWeekInMonth(newSelectedDate.firstDay);
     setDaysInMonth(getDaysInMonth(monthIndex + 1, now.getFullYear()));
     setSelectedMonth(months[newSelectedDate.selectedMonth]);
   }, [newSelectedDate, monthIndex, months, now]);
@@ -88,7 +84,6 @@ const useCalendar = () => {
   return {
     dayNames,
     numberOfDaysInMonth,
-    firstDayOfWeekInMonth,
     now,
     todayDayNumber,
     selectedMonth,

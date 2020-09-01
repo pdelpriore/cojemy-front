@@ -14,7 +14,6 @@ const Calendar = () => {
   const {
     dayNames,
     numberOfDaysInMonth,
-    firstDayOfWeekInMonth,
     now,
     todayDayNumber,
     selectedMonth,
@@ -86,10 +85,10 @@ const Calendar = () => {
             </div>
             <div className="calendar-days-in-month">
               {numberOfDaysInMonth.map((dayNumber, index) =>
-                firstDayOfWeekInMonth > 0 ? (
+                newSelectedDate.firstDay > 0 ? (
                   <div
                     className={
-                      index < firstDayOfWeekInMonth - 1
+                      index < newSelectedDate.firstDay - 1
                         ? ""
                         : `${
                             moment(now.setDate(dayNumber)).isBefore(
@@ -99,7 +98,7 @@ const Calendar = () => {
                               : "calendar-number-of-day"
                           } ${
                             Number.isInteger(dayNumber) &&
-                            isWeekend(dayNumber + firstDayOfWeekInMonth - 1)
+                            isWeekend(dayNumber + newSelectedDate.firstDay - 1)
                               ? `${
                                   moment(now.setDate(dayNumber)).isBefore(
                                     now.setDate(todayDayNumber)
