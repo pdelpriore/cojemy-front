@@ -59,3 +59,26 @@
   font-family: "OpenSans-SemiBold";
   text-align: center;
 }
+.calendar-left-arrow {
+  font-size: 1.5vw;
+  color: #3c4049;
+}
+.calendar-left-arrow:hover {
+  font-size: 1.5vw;
+  color: #2e303f;
+  cursor: pointer;
+}
+.calendar-right-arrow {
+  font-size: 1.5vw;
+  color: #3c4049;
+}
+.calendar-right-arrow:hover {
+  font-size: 1.5vw;
+  color: #2e303f;
+  cursor: pointer;
+}
+.calendar-arrows-inactive {
+  font-size: 1.5vw;
+  color: #3c4049;
+  opacity: 0.7;
+}

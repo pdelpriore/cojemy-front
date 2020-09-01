@@ -1,5 +1,10 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronCircleRight,
+  faChevronCircleLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import useCalendar from "../../hooks/screen/myEvents/useCalendar";
 import moment from "moment";
 import { isWeekend } from "../../components/calendar/isWeekend";
@@ -13,12 +18,51 @@ const Calendar = () => {
     now,
     todayDayNumber,
     chosenMonth,
+    monthIndex,
+    handlePreviousMonth,
+    handleNextMonth,
   } = useCalendar();
   return (
     <div className="calendar-box">
       <Row>
         <Col xs={7}>
           <div>
+            <Row>
+              <Col xs={1} />
+              <Col xs={2}>
+                <FontAwesomeIcon
+                  className={
+                    monthIndex === now.getMonth()
+                      ? "calendar-arrows-inactive"
+                      : "calendar-left-arrow"
+                  }
+                  //  className={
+                  //    skip === 1
+                  //      ? "recipebook-arrows-inactive"
+                  //      : "recipebook-left-arrow"
+                  //  }
+                  onClick={
+                    monthIndex === now.getMonth() ? null : handlePreviousMonth
+                  }
+                  icon={faChevronCircleLeft}
+                />
+              </Col>
+              <Col xs={6} />
+              <Col xs={2}>
+                <FontAwesomeIcon
+                  className="calendar-right-arrow"
+                  // className={
+                  //   recipesError
+                  //     ? "recipebook-arrows-inactive"
+                  //     : "recipebook-right-arrow"
+                  // }
+                  //onClick={recipesError ? null : handleNext}
+                  onClick={handleNextMonth}
+                  icon={faChevronCircleRight}
+                />
+              </Col>
+              <Col xs={1} />
+            </Row>
             <Row>
               <Col xs={2} />
               <Col xs={8}>

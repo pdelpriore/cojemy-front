@@ -35,21 +35,24 @@ const useCalendar = () => {
 
   // tutaj 1 reprezentuje miesiac luty, 2 marzec, itd.
   // now.getMonth() zwraca 7 zamiast 8 w przypadku sierpnia, itd.
+  const [monthIndex, setMonthIndex] = useState(now.getMonth());
   const [firstDayOfWeekInMonth, setFirstDayOfWeekInMonth] = useState(
-    getFirstDayOfWeekInMonth(now.getMonth(), now.getFullYear())
+    getFirstDayOfWeekInMonth(monthIndex, now.getFullYear())
   );
   const [daysInMonth, setDaysInMonth] = useState(
-    getDaysInMonth(now.getMonth() + 1, now.getFullYear())
+    getDaysInMonth(monthIndex + 1, now.getFullYear())
   );
-  const [monthIndex, setMonthIndex] = useState(now.getMonth());
   const [chosenMonth, setChosenMonth] = useState(months[monthIndex]);
 
-  const handleNextMonth = () => {
-    //monthIndex + 1 maksymalnie do roku
-  };
-
-  const handlePreviousMonth = () => {
+  const handlePreviousMonth = (e) => {
     //monthIndex - 1 zablokuj jesli month < now
+    e.preventDefault();
+    monthIndex >= now.getMonth() && setMonthIndex(monthIndex - 1);
+  };
+  const handleNextMonth = (e) => {
+    //monthIndex + 1 maksymalnie do roku
+    e.preventDefault();
+    setMonthIndex(monthIndex + 1);
   };
 
   const numberOfDaysInMonth = [];
@@ -67,6 +70,14 @@ const useCalendar = () => {
     numberOfDaysInMonth.push(i);
   }
 
+  useEffect(() => {
+    setFirstDayOfWeekInMonth(
+      getFirstDayOfWeekInMonth(monthIndex, now.getFullYear())
+    );
+    setDaysInMonth(getDaysInMonth(monthIndex + 1, now.getFullYear()));
+    setChosenMonth(months[monthIndex]);
+  }, [monthIndex]);
+
   return {
     dayNames,
     numberOfDaysInMonth,
@@ -74,6 +85,9 @@ const useCalendar = () => {
     now,
     todayDayNumber,
     chosenMonth,
+    monthIndex,
+    handlePreviousMonth,
+    handleNextMonth,
   };
 };
 
