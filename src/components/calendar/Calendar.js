@@ -17,8 +17,9 @@ const Calendar = () => {
     firstDayOfWeekInMonth,
     now,
     todayDayNumber,
-    chosenMonth,
+    selectedMonth,
     monthIndex,
+    newSelectedDate,
     handlePreviousMonth,
     handleNextMonth,
   } = useCalendar();
@@ -36,11 +37,6 @@ const Calendar = () => {
                       ? "calendar-arrows-inactive"
                       : "calendar-left-arrow"
                   }
-                  //  className={
-                  //    skip === 1
-                  //      ? "recipebook-arrows-inactive"
-                  //      : "recipebook-left-arrow"
-                  //  }
                   onClick={
                     monthIndex === now.getMonth() ? null : handlePreviousMonth
                   }
@@ -50,14 +46,24 @@ const Calendar = () => {
               <Col xs={6} />
               <Col xs={2}>
                 <FontAwesomeIcon
-                  className="calendar-right-arrow"
-                  // className={
-                  //   recipesError
-                  //     ? "recipebook-arrows-inactive"
-                  //     : "recipebook-right-arrow"
-                  // }
-                  //onClick={recipesError ? null : handleNext}
-                  onClick={handleNextMonth}
+                  className={
+                    moment(
+                      moment(now.setHours(0, 0, 0, 0)).add(
+                        moment.duration(1, "y")
+                      )._d
+                    ).isSame(newSelectedDate.newDate.setHours(0, 0, 0, 0))
+                      ? "calendar-arrows-inactive"
+                      : "calendar-right-arrow"
+                  }
+                  onClick={
+                    moment(
+                      moment(now.setHours(0, 0, 0, 0)).add(
+                        moment.duration(1, "y")
+                      )._d
+                    ).isSame(newSelectedDate.newDate.setHours(0, 0, 0, 0))
+                      ? null
+                      : handleNextMonth
+                  }
                   icon={faChevronCircleRight}
                 />
               </Col>
@@ -66,7 +72,7 @@ const Calendar = () => {
             <Row>
               <Col xs={2} />
               <Col xs={8}>
-                <div className="calendar-month-name">{`${chosenMonth} ${now.getFullYear()}`}</div>
+                <div className="calendar-month-name">{`${selectedMonth} ${newSelectedDate.selectedYear}`}</div>
               </Col>
               <Col xs={2} />
             </Row>

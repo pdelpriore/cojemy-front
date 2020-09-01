@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
 import { getDaysInMonth } from "../../../components/calendar/getDaysInMonth";
-import { getFirstDayOfWeekInMonth } from "../../../components/calendar/getFirstDayOfWeekInMonth";
+import { getNewSelectedDate } from "../../../components/calendar/getNewSelectedDate";
 import { strings } from "../../../strings/Strings";
 
 const useCalendar = () => {
@@ -33,26 +34,30 @@ const useCalendar = () => {
     strings.myEvents.calendar.months.DEC,
   ];
 
-  // tutaj 1 reprezentuje miesiac luty, 2 marzec, itd.
-  // now.getMonth() zwraca 7 zamiast 8 w przypadku sierpnia, itd.
   const [monthIndex, setMonthIndex] = useState(now.getMonth());
+  const [newSelectedDate, setNewSelectedDate] = useState(
+    getNewSelectedDate(monthIndex, now.getFullYear())
+  );
   const [firstDayOfWeekInMonth, setFirstDayOfWeekInMonth] = useState(
-    getFirstDayOfWeekInMonth(monthIndex, now.getFullYear())
+    newSelectedDate.firstDay
   );
   const [daysInMonth, setDaysInMonth] = useState(
     getDaysInMonth(monthIndex + 1, now.getFullYear())
   );
-  const [chosenMonth, setChosenMonth] = useState(months[monthIndex]);
+  const [selectedMonth, setSelectedMonth] = useState(
+    months[newSelectedDate.selectedMonth]
+  );
 
   const handlePreviousMonth = (e) => {
-    //monthIndex - 1 zablokuj jesli month < now
     e.preventDefault();
     monthIndex >= now.getMonth() && setMonthIndex(monthIndex - 1);
   };
   const handleNextMonth = (e) => {
-    //monthIndex + 1 maksymalnie do roku
     e.preventDefault();
-    setMonthIndex(monthIndex + 1);
+    !moment(
+      moment(now.setHours(0, 0, 0, 0)).add(moment.duration(1, "y"))._d
+    ).isSame(newSelectedDate.newDate.setHours(0, 0, 0, 0)) &&
+      setMonthIndex(monthIndex + 1);
   };
 
   const numberOfDaysInMonth = [];
@@ -71,12 +76,14 @@ const useCalendar = () => {
   }
 
   useEffect(() => {
-    setFirstDayOfWeekInMonth(
-      getFirstDayOfWeekInMonth(monthIndex, now.getFullYear())
-    );
+    setNewSelectedDate(getNewSelectedDate(monthIndex, now.getFullYear()));
+  }, [monthIndex]);
+
+  useEffect(() => {
+    setFirstDayOfWeekInMonth(newSelectedDate.firstDay);
     setDaysInMonth(getDaysInMonth(monthIndex + 1, now.getFullYear()));
-    setChosenMonth(months[monthIndex]);
-  }, [monthIndex, months, now]);
+    setSelectedMonth(months[newSelectedDate.selectedMonth]);
+  }, [newSelectedDate, monthIndex, months, now]);
 
   return {
     dayNames,
@@ -84,8 +91,9 @@ const useCalendar = () => {
     firstDayOfWeekInMonth,
     now,
     todayDayNumber,
-    chosenMonth,
+    selectedMonth,
     monthIndex,
+    newSelectedDate,
     handlePreviousMonth,
     handleNextMonth,
   };
