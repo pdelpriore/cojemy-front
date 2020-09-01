@@ -91,21 +91,45 @@ const Calendar = () => {
                       index < newSelectedDate.firstDay - 1
                         ? ""
                         : `${
-                            moment(now.setDate(dayNumber)).isBefore(
-                              now.setDate(todayDayNumber)
-                            )
+                            moment(
+                              new Date(
+                                newSelectedDate.newDate.getFullYear(),
+                                newSelectedDate.newDate.getMonth(),
+                                newSelectedDate.newDate.setDate(dayNumber),
+                                0,
+                                0,
+                                0,
+                                0
+                              )
+                            ).isBefore(now.setHours(0, 0, 0, 0))
                               ? "calendar-number-of-day-before-today"
                               : "calendar-number-of-day"
                           } ${
                             Number.isInteger(dayNumber) &&
                             isWeekend(dayNumber + newSelectedDate.firstDay - 1)
                               ? `${
-                                  moment(now.setDate(dayNumber)).isBefore(
-                                    now.setDate(todayDayNumber)
-                                  )
+                                  moment(
+                                    new Date(
+                                      newSelectedDate.newDate.getFullYear(),
+                                      newSelectedDate.newDate.getMonth(),
+                                      newSelectedDate.newDate.setDate(
+                                        dayNumber
+                                      ),
+                                      0,
+                                      0,
+                                      0,
+                                      0
+                                    )
+                                  ).isBefore(now.setHours(0, 0, 0, 0))
                                     ? "weekend-before-today"
                                     : "weekend"
                                 }`
+                              : ""
+                          } ${
+                            moment(
+                              newSelectedDate.newDate.setDate(dayNumber)
+                            ).isSame(now)
+                              ? "today"
                               : ""
                           }`
                     }
@@ -119,21 +143,45 @@ const Calendar = () => {
                       index < 7 - 1
                         ? ""
                         : `${
-                            moment(now.setDate(dayNumber)).isBefore(
-                              now.setDate(todayDayNumber)
-                            )
+                            moment(
+                              new Date(
+                                newSelectedDate.newDate.getFullYear(),
+                                newSelectedDate.newDate.getMonth(),
+                                newSelectedDate.newDate.setDate(dayNumber),
+                                0,
+                                0,
+                                0,
+                                0
+                              )
+                            ).isBefore(now.setHours(0, 0, 0, 0))
                               ? "calendar-number-of-day-before-today"
                               : "calendar-number-of-day"
                           } ${
                             Number.isInteger(dayNumber) &&
                             isWeekend(dayNumber + 7 - 1)
                               ? `${
-                                  moment(now.setDate(dayNumber)).isBefore(
-                                    now.setDate(todayDayNumber)
-                                  )
+                                  moment(
+                                    new Date(
+                                      newSelectedDate.newDate.getFullYear(),
+                                      newSelectedDate.newDate.getMonth(),
+                                      newSelectedDate.newDate.setDate(
+                                        dayNumber
+                                      ),
+                                      0,
+                                      0,
+                                      0,
+                                      0
+                                    )
+                                  ).isBefore(now.setHours(0, 0, 0, 0))
                                     ? "weekend-before-today"
                                     : "weekend"
                                 }`
+                              : ""
+                          } ${
+                            moment(
+                              newSelectedDate.newDate.setDate(dayNumber)
+                            ).isSame(now)
+                              ? "today"
                               : ""
                           }`
                     }
