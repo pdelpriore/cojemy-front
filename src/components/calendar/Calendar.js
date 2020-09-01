@@ -15,7 +15,6 @@ const Calendar = () => {
     dayNames,
     numberOfDaysInMonth,
     now,
-    todayDayNumber,
     selectedMonth,
     monthIndex,
     newSelectedDate,
@@ -84,58 +83,41 @@ const Calendar = () => {
               ))}
             </div>
             <div className="calendar-days-in-month">
-              {numberOfDaysInMonth.map((dayNumber, index) =>
+              {numberOfDaysInMonth.map((day, index) =>
                 newSelectedDate.firstDay > 0 ? (
                   <div
                     className={
                       index < newSelectedDate.firstDay - 1
                         ? ""
                         : `${
-                            moment(
-                              new Date(
-                                newSelectedDate.newDate.getFullYear(),
-                                newSelectedDate.newDate.getMonth(),
-                                newSelectedDate.newDate.setDate(dayNumber),
-                                0,
-                                0,
-                                0,
-                                0
-                              )
-                            ).isBefore(now.setHours(0, 0, 0, 0))
+                            moment(day && day).isBefore(
+                              now.setHours(0, 0, 0, 0)
+                            )
                               ? "calendar-number-of-day-before-today"
                               : "calendar-number-of-day"
                           } ${
-                            Number.isInteger(dayNumber) &&
-                            isWeekend(dayNumber + newSelectedDate.firstDay - 1)
+                            Number.isInteger(day && day.getDate()) &&
+                            isWeekend(
+                              day &&
+                                day.getDate() + newSelectedDate.firstDay - 1
+                            )
                               ? `${
-                                  moment(
-                                    new Date(
-                                      newSelectedDate.newDate.getFullYear(),
-                                      newSelectedDate.newDate.getMonth(),
-                                      newSelectedDate.newDate.setDate(
-                                        dayNumber
-                                      ),
-                                      0,
-                                      0,
-                                      0,
-                                      0
-                                    )
-                                  ).isBefore(now.setHours(0, 0, 0, 0))
+                                  moment(day && day).isBefore(
+                                    now.setHours(0, 0, 0, 0)
+                                  )
                                     ? "weekend-before-today"
                                     : "weekend"
                                 }`
                               : ""
                           } ${
-                            moment(
-                              newSelectedDate.newDate.setDate(dayNumber)
-                            ).isSame(now)
+                            moment(day && day).isSame(now.setHours(0, 0, 0, 0))
                               ? "today"
                               : ""
                           }`
                     }
                     key={index}
                   >
-                    {dayNumber}
+                    {day && day.getDate()}
                   </div>
                 ) : (
                   <div
@@ -143,51 +125,31 @@ const Calendar = () => {
                       index < 7 - 1
                         ? ""
                         : `${
-                            moment(
-                              new Date(
-                                newSelectedDate.newDate.getFullYear(),
-                                newSelectedDate.newDate.getMonth(),
-                                newSelectedDate.newDate.setDate(dayNumber),
-                                0,
-                                0,
-                                0,
-                                0
-                              )
-                            ).isBefore(now.setHours(0, 0, 0, 0))
+                            moment(day && day).isBefore(
+                              now.setHours(0, 0, 0, 0)
+                            )
                               ? "calendar-number-of-day-before-today"
                               : "calendar-number-of-day"
                           } ${
-                            Number.isInteger(dayNumber) &&
-                            isWeekend(dayNumber + 7 - 1)
+                            Number.isInteger(day && day.getDate()) &&
+                            isWeekend(day && day.getDate() + 7 - 1)
                               ? `${
-                                  moment(
-                                    new Date(
-                                      newSelectedDate.newDate.getFullYear(),
-                                      newSelectedDate.newDate.getMonth(),
-                                      newSelectedDate.newDate.setDate(
-                                        dayNumber
-                                      ),
-                                      0,
-                                      0,
-                                      0,
-                                      0
-                                    )
-                                  ).isBefore(now.setHours(0, 0, 0, 0))
+                                  moment(day && day).isBefore(
+                                    now.setHours(0, 0, 0, 0)
+                                  )
                                     ? "weekend-before-today"
                                     : "weekend"
                                 }`
                               : ""
                           } ${
-                            moment(
-                              newSelectedDate.newDate.setDate(dayNumber)
-                            ).isSame(now)
+                            moment(day && day).isSame(now.setHours(0, 0, 0, 0))
                               ? "today"
                               : ""
                           }`
                     }
                     key={index}
                   >
-                    {dayNumber}
+                    {day && day.getDate()}
                   </div>
                 )
               )}

@@ -7,7 +7,6 @@ import { strings } from "../../../strings/Strings";
 
 const useCalendar = () => {
   const now = new Date();
-  const todayDayNumber = now.getDate();
 
   const dayNames = [
     strings.myEvents.calendar.days.MON,
@@ -69,7 +68,17 @@ const useCalendar = () => {
   }
 
   for (let i = 1; i <= daysInMonth; i++) {
-    numberOfDaysInMonth.push(i);
+    numberOfDaysInMonth.push(
+      new Date(
+        newSelectedDate.selectedYear,
+        newSelectedDate.selectedMonth,
+        i,
+        0,
+        0,
+        0,
+        0
+      )
+    );
   }
 
   useEffect(() => {
@@ -85,7 +94,6 @@ const useCalendar = () => {
     dayNames,
     numberOfDaysInMonth,
     now,
-    todayDayNumber,
     selectedMonth,
     monthIndex,
     newSelectedDate,
