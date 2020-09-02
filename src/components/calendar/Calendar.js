@@ -97,7 +97,6 @@ const Calendar = () => {
                                 ? "calendar-number-of-day-before-today"
                                 : "calendar-number-of-day"
                             } ${
-                              Number.isInteger(day && day.getDate()) &&
                               isWeekend(
                                 day &&
                                   day.getDate() + newSelectedDate.firstDay - 1
@@ -134,7 +133,6 @@ const Calendar = () => {
                                 ? "calendar-number-of-day-before-today"
                                 : "calendar-number-of-day"
                             } ${
-                              Number.isInteger(day && day.getDate()) &&
                               isWeekend(day && day.getDate() + 7 - 1)
                                 ? `${
                                     moment(day && day).isBefore(
