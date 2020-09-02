@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
+import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleRight,
@@ -24,8 +25,12 @@ const Calendar = () => {
     handleNextMonth,
     handleSelectDate,
   } = useCalendar();
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+  });
   return (
-    <div className="calendar-box">
+    <animated.div style={props} className="calendar-box">
       <Row>
         <Col xs={7}>
           <div>
@@ -217,7 +222,7 @@ const Calendar = () => {
         </Col>
         <Col xs={2} />
       </Row>
-    </div>
+    </animated.div>
   );
 };
 
