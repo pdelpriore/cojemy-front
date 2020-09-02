@@ -90,3 +90,13 @@
   background-color: #3c4049;
   color: #ffffff;
 }
+.calendar-selected-day-box {
+  height: 40px;
+}
+.calendar-selected-day {
+  background-color: #ededed;
+  font-size: 1.5vw;
+  border-radius: 5px;
+  font-family: "OpenSans-SemiBold";
+  text-align: center;
+}

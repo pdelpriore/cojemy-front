@@ -8,6 +8,7 @@ import {
 import useCalendar from "../../hooks/screen/myEvents/useCalendar";
 import moment from "moment";
 import { isWeekend } from "../../components/calendar/isWeekend";
+import { getSelectedDay } from "./getSelectedDay";
 import "./calendar.css";
 
 const Calendar = () => {
@@ -179,6 +180,18 @@ const Calendar = () => {
                   )
                 )}
             </div>
+            <Row className="mb-4" />
+            <Row>
+              <Col xs={1} />
+              <Col xs={10}>
+                <div className="calendar-selected-day-box">
+                  <div className="calendar-selected-day">
+                    {selectedDay.date && getSelectedDay(selectedDay.date)}
+                  </div>
+                </div>
+              </Col>
+              <Col xs={1} />
+            </Row>
           </div>
         </Col>
         <Col xs={1} />
