@@ -224,6 +224,7 @@ const Calendar = () => {
                         name="hours"
                         type="text"
                         autoComplete="off"
+                        disabled={!selectedDay.date}
                         placeholder={strings.myEvents.calendar.HOUR_PLACEHOLDER}
                       ></Form.Control>
                       <div className="calendar-timer-colon"> : </div>
@@ -235,6 +236,7 @@ const Calendar = () => {
                         name="minutes"
                         type="text"
                         autoComplete="off"
+                        disabled={!selectedDay.date}
                         placeholder={
                           strings.myEvents.calendar.MINUTES_PLACEHOLDER
                         }
