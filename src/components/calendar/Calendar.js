@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Form } from "react-bootstrap";
 import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,7 +10,10 @@ import useCalendar from "../../hooks/screen/myEvents/useCalendar";
 import moment from "moment";
 import { isWeekend } from "../../components/calendar/isWeekend";
 import { getSelectedDay } from "./getSelectedDay";
+import { strings } from "../../strings/Strings";
+import { capitalizeFirst } from "../../util/Util";
 import "./calendar.css";
+import "../../shared/global.css";
 
 const Calendar = () => {
   const {
@@ -21,6 +24,8 @@ const Calendar = () => {
     monthIndex,
     newSelectedDate,
     selectedDay,
+    inputs,
+    handleInputChange,
     handlePreviousMonth,
     handleNextMonth,
     handleSelectDate,
@@ -201,9 +206,43 @@ const Calendar = () => {
             </Row>
           </div>
         </Col>
-        <Col xs={1} />
-        <Col xs={4}>
-          <div>timer</div>
+        <Col xs={5}>
+          <div className="calendar-timer-box">
+            <Form>
+              <Row>
+                <Col xs={12}>
+                  <Form.Group controlId="formBasicCalendar">
+                    <Form.Label className="global-form-label">
+                      {capitalizeFirst(strings.myEvents.calendar.HOUR)}
+                    </Form.Label>
+                    <div className="calendar-timer-inputs-box">
+                      <Form.Control
+                        onChange={handleInputChange}
+                        value={inputs.hours || ""}
+                        className="global-form-control"
+                        maxLength="2"
+                        name="hours"
+                        type="text"
+                        placeholder={strings.myEvents.calendar.HOUR_PLACEHOLDER}
+                      ></Form.Control>
+                      <div className="calendar-timer-colon"> : </div>
+                      <Form.Control
+                        onChange={handleInputChange}
+                        value={inputs.minutes || ""}
+                        className="global-form-control"
+                        maxLength="2"
+                        name="minutes"
+                        type="text"
+                        placeholder={
+                          strings.myEvents.calendar.MINUTES_PLACEHOLDER
+                        }
+                      ></Form.Control>
+                    </div>
+                  </Form.Group>
+                </Col>
+              </Row>
+            </Form>
+          </div>
         </Col>
       </Row>
       <Row className="mb-5" />

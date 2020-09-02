@@ -44,6 +44,7 @@ const useCalendar = () => {
     months[newSelectedDate.selectedMonth]
   );
   const [selectedDay, setSelectedDay] = useState({});
+  const [inputs, setInputs] = useState({});
 
   const handlePreviousMonth = (e) => {
     e.preventDefault();
@@ -58,6 +59,18 @@ const useCalendar = () => {
   };
   const handleSelectDate = (data) => {
     setSelectedDay(data);
+  };
+  const handleInputChange = (e) => {
+    e.persist();
+    setInputs((inputs) => ({
+      ...inputs,
+      [e.target.name]:
+        e.target.name === strings.myEvents.calendar.inputNames.HOURS
+          ? e.target.value.replace(/[^0-9]+/g, "")
+          : e.target.name === strings.myEvents.calendar.inputNames.MINUTES
+          ? e.target.value.replace(/[^0-9]+/g, "")
+          : e.target.value,
+    }));
   };
 
   const numberOfDaysInMonth = [];
@@ -94,6 +107,21 @@ const useCalendar = () => {
     setSelectedMonth(months[newSelectedDate.selectedMonth]);
   }, [newSelectedDate, monthIndex, months, now]);
 
+  useEffect(() => {
+    const initialDate = new Date();
+    setInputs((inputs) => ({
+      ...inputs,
+      hours:
+        initialDate.getHours() < 10
+          ? `0${initialDate.getHours()}`
+          : initialDate.getHours(),
+      minutes:
+        initialDate.getMinutes() < 10
+          ? `0${initialDate.getMinutes()}`
+          : initialDate.getMinutes(),
+    }));
+  }, []);
+
   return {
     dayNames,
     numberOfDaysInMonth,
@@ -102,6 +130,8 @@ const useCalendar = () => {
     monthIndex,
     newSelectedDate,
     selectedDay,
+    inputs,
+    handleInputChange,
     handlePreviousMonth,
     handleNextMonth,
     handleSelectDate,

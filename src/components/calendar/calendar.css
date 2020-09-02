@@ -100,3 +100,21 @@
   font-family: "OpenSans-SemiBold";
   text-align: center;
 }
+.calendar-timer-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.calendar-timer-inputs-box {
+  display: flex;
+  flex-direction: row;
+}
+.calendar-timer-colon {
+  height: 100%;
+  line-height: 100%;
+  font-family: "Nunito-SemiBold";
+  font-size: 2vw;
+  padding: 1%;
+}

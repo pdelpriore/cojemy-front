@@ -273,6 +273,13 @@ export const strings = Object.freeze({
         NOV: "listopad",
         DEC: "grudzień",
       },
+      HOUR: "godzina",
+      HOUR_PLACEHOLDER: "godziny",
+      MINUTES_PLACEHOLDER: "minuty",
+      inputNames: {
+        HOURS: "hours",
+        MINUTES: "minutes",
+      },
     },
   },
   mails: {
