@@ -223,6 +223,7 @@ const Calendar = () => {
                         maxLength="2"
                         name="hours"
                         type="text"
+                        autoComplete="off"
                         placeholder={strings.myEvents.calendar.HOUR_PLACEHOLDER}
                       ></Form.Control>
                       <div className="calendar-timer-colon"> : </div>
@@ -233,6 +234,7 @@ const Calendar = () => {
                         maxLength="2"
                         name="minutes"
                         type="text"
+                        autoComplete="off"
                         placeholder={
                           strings.myEvents.calendar.MINUTES_PLACEHOLDER
                         }

@@ -122,6 +122,34 @@ const useCalendar = () => {
     }));
   }, []);
 
+  useEffect(() => {
+    const dateNow = new Date();
+    if (
+      selectedDay.date &&
+      (inputs.hours.length > 1 || inputs.minutes.length > 1) &&
+      moment(
+        selectedDay.date.setHours(
+          parseInt(inputs.hours),
+          parseInt(inputs.minutes),
+          0,
+          0
+        )
+      ).isBefore(dateNow)
+    ) {
+      setInputs((inputs) => ({
+        ...inputs,
+        hours:
+          dateNow.getHours() < 10
+            ? `0${dateNow.getHours()}`
+            : dateNow.getHours(),
+        minutes:
+          dateNow.getMinutes() < 10
+            ? `0${dateNow.getMinutes()}`
+            : dateNow.getMinutes(),
+      }));
+    }
+  }, [selectedDay.date, inputs.hours, inputs.minutes]);
+
   return {
     dayNames,
     numberOfDaysInMonth,
