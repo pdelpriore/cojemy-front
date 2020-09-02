@@ -43,6 +43,7 @@ const useCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState(
     months[newSelectedDate.selectedMonth]
   );
+  const [selectedDay, setSelectedDay] = useState({});
 
   const handlePreviousMonth = (e) => {
     e.preventDefault();
@@ -54,6 +55,9 @@ const useCalendar = () => {
       moment(now.setHours(0, 0, 0, 0)).add(moment.duration(1, "y"))._d
     ).isSame(newSelectedDate.newDate.setHours(0, 0, 0, 0)) &&
       setMonthIndex(monthIndex + 1);
+  };
+  const handleSelectDate = (data) => {
+    setSelectedDay(data);
   };
 
   const numberOfDaysInMonth = [];
@@ -97,8 +101,10 @@ const useCalendar = () => {
     selectedMonth,
     monthIndex,
     newSelectedDate,
+    selectedDay,
     handlePreviousMonth,
     handleNextMonth,
+    handleSelectDate,
   };
 };
 

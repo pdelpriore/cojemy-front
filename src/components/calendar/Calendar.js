@@ -18,8 +18,10 @@ const Calendar = () => {
     selectedMonth,
     monthIndex,
     newSelectedDate,
+    selectedDay,
     handlePreviousMonth,
     handleNextMonth,
+    handleSelectDate,
   } = useCalendar();
   return (
     <div className="calendar-box">
@@ -115,8 +117,18 @@ const Calendar = () => {
                               )
                                 ? "today"
                                 : ""
+                            } ${
+                              index === selectedDay.index ? "selected-date" : ""
                             }`
                       }
+                      onClick={(e) => {
+                        e.preventDefault();
+                        return moment(day && day).isBefore(
+                          now.setHours(0, 0, 0, 0)
+                        )
+                          ? null
+                          : handleSelectDate({ date: day, index: index });
+                      }}
                       key={index}
                     >
                       {day && day.getDate()}
@@ -148,8 +160,18 @@ const Calendar = () => {
                               )
                                 ? "today"
                                 : ""
+                            } ${
+                              index === selectedDay.index ? "selected-date" : ""
                             }`
                       }
+                      onClick={(e) => {
+                        e.preventDefault();
+                        return moment(day && day).isBefore(
+                          now.setHours(0, 0, 0, 0)
+                        )
+                          ? null
+                          : handleSelectDate({ date: day, index: index });
+                      }}
                       key={index}
                     >
                       {day && day.getDate()}

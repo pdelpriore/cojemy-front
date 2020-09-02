@@ -86,3 +86,7 @@
   font-family: "OpenSans-SemiBold";
   border: 2px solid #3c4049;
 }
+.selected-date {
+  background-color: #3c4049;
+  color: #ceced6;
+}
