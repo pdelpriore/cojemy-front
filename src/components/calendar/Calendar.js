@@ -185,9 +185,11 @@ const Calendar = () => {
               <Col xs={1} />
               <Col xs={10}>
                 <div className="calendar-selected-day-box">
-                  <div className="calendar-selected-day">
-                    {selectedDay.date && getSelectedDay(selectedDay.date)}
-                  </div>
+                  {selectedDay.date && (
+                    <div className="calendar-selected-day">
+                      {getSelectedDay(selectedDay.date)}
+                    </div>
+                  )}
                 </div>
               </Col>
               <Col xs={1} />
