@@ -106,10 +106,9 @@ const useCalendar = () => {
   useEffect(() => {
     setInputs((inputs) => ({
       ...inputs,
-      hour: new Date().toLocaleTimeString("pl-PL", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
+      hour: moment(moment(new Date()).add(moment.duration(2, "h"))._d).format(
+        "HH:mm"
+      ),
     }));
   }, []);
 
