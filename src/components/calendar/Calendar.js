@@ -200,17 +200,15 @@ const Calendar = () => {
                     <Form.Label className="global-form-label">
                       {strings.myEvents.calendar.HOUR}
                     </Form.Label>
-                    <div className="calendar-timer-inputs-box">
-                      <Form.Control
-                        onChange={handleInputChange}
-                        className="global-form-control"
-                        name="hour"
-                        type="time"
-                        value={inputs.hour || ""}
-                        disabled={!selectedDay.date}
-                        placeholder={strings.myEvents.calendar.HOUR_PLACEHOLDER}
-                      ></Form.Control>
-                    </div>
+                    <Form.Control
+                      onChange={handleInputChange}
+                      className="calendar-time-form-control"
+                      name="hour"
+                      type="time"
+                      value={inputs.hour || ""}
+                      disabled={!selectedDay.date}
+                      placeholder={strings.myEvents.calendar.HOUR_PLACEHOLDER}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
               </Row>

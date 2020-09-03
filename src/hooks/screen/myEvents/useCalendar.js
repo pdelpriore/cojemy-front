@@ -140,6 +140,8 @@ const useCalendar = () => {
     }
   }, [inputs.hour, selectedDay.date]);
 
+  console.log(error);
+
   return {
     dayNames,
     numberOfDaysInMonth,
