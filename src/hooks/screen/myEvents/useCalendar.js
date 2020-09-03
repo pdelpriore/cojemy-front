@@ -128,19 +128,25 @@ const useCalendar = () => {
           0
         )
       ).isBefore(
-        dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
+        moment(
+          moment(
+            dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
+          ).add(moment.duration(2, "h"))._d
+        )
       )
     ) {
       setError((error) => ({
         ...error,
-        timeError: strings.myEvents.calendar.error.TIME_BEFORE,
+        timeError: `${strings.myEvents.calendar.error.TIME_BEFORE} ${moment(
+          moment(
+            dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
+          ).add(moment.duration(2, "h"))._d
+        ).format("HH:mm")}`,
       }));
     } else {
       setError({});
     }
   }, [inputs.hour, selectedDay.date]);
-
-  console.log(error);
 
   return {
     dayNames,

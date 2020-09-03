@@ -275,7 +275,7 @@ export const strings = Object.freeze({
       },
       HOUR: "godzina",
       error: {
-        TIME_BEFORE: "nieprawidlowa godzina.",
+        TIME_BEFORE: "wydarzenie moze sie rozpoczac najwczesniej o :",
       },
     },
   },
