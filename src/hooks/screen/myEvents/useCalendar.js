@@ -126,7 +126,8 @@ const useCalendar = () => {
     const dateNow = new Date();
     if (
       selectedDay.date &&
-      (inputs.hours.length > 1 || inputs.minutes.length > 1) &&
+      ((inputs.hours.length > 1 && inputs.hours) ||
+        (inputs.minutes.length > 1 && inputs.minutes)) &&
       moment(
         selectedDay.date.setHours(
           parseInt(inputs.hours),
@@ -147,6 +148,17 @@ const useCalendar = () => {
             ? `0${dateNow.getMinutes()}`
             : dateNow.getMinutes(),
       }));
+    }
+  }, [selectedDay.date, inputs.hours, inputs.minutes]);
+
+  useEffect(() => {
+    if (selectedDay.date && inputs.hours && inputs.minutes) {
+      selectedDay.date.setHours(
+        parseInt(inputs.hours),
+        parseInt(inputs.minutes),
+        0,
+        0
+      );
     }
   }, [selectedDay.date, inputs.hours, inputs.minutes]);
 
