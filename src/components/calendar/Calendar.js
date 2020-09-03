@@ -9,7 +9,6 @@ import {
 import useCalendar from "../../hooks/screen/myEvents/useCalendar";
 import moment from "moment";
 import { isWeekend } from "../../components/calendar/isWeekend";
-import { getSelectedDay } from "./getSelectedDay";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./calendar.css";
@@ -190,20 +189,6 @@ const Calendar = () => {
                   )
                 )}
             </div>
-            <Row className="mb-4" />
-            <Row>
-              <Col xs={1} />
-              <Col xs={10}>
-                <div className="calendar-selected-day-box">
-                  {selectedDay.date && (
-                    <div className="calendar-selected-day">
-                      {getSelectedDay(selectedDay.date)}
-                    </div>
-                  )}
-                </div>
-              </Col>
-              <Col xs={1} />
-            </Row>
           </div>
         </Col>
         <Col xs={5}>
@@ -213,33 +198,17 @@ const Calendar = () => {
                 <Col xs={12}>
                   <Form.Group controlId="formBasicCalendar">
                     <Form.Label className="global-form-label">
-                      {capitalizeFirst(strings.myEvents.calendar.HOUR)}
+                      {strings.myEvents.calendar.HOUR}
                     </Form.Label>
                     <div className="calendar-timer-inputs-box">
                       <Form.Control
                         onChange={handleInputChange}
-                        value={inputs.hours || ""}
                         className="global-form-control"
-                        maxLength="2"
-                        name="hours"
-                        type="text"
-                        autoComplete="off"
+                        name="hour"
+                        type="time"
+                        value={inputs.hour}
                         disabled={!selectedDay.date}
                         placeholder={strings.myEvents.calendar.HOUR_PLACEHOLDER}
-                      ></Form.Control>
-                      <div className="calendar-timer-colon"> : </div>
-                      <Form.Control
-                        onChange={handleInputChange}
-                        value={inputs.minutes || ""}
-                        className="global-form-control"
-                        maxLength="2"
-                        name="minutes"
-                        type="text"
-                        autoComplete="off"
-                        disabled={!selectedDay.date}
-                        placeholder={
-                          strings.myEvents.calendar.MINUTES_PLACEHOLDER
-                        }
                       ></Form.Control>
                     </div>
                   </Form.Group>

@@ -274,12 +274,6 @@ export const strings = Object.freeze({
         DEC: "grudzień",
       },
       HOUR: "godzina",
-      HOUR_PLACEHOLDER: "08",
-      MINUTES_PLACEHOLDER: "30",
-      inputNames: {
-        HOURS: "hours",
-        MINUTES: "minutes",
-      },
     },
   },
   mails: {

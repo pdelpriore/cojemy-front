@@ -64,12 +64,7 @@ const useCalendar = () => {
     e.persist();
     setInputs((inputs) => ({
       ...inputs,
-      [e.target.name]:
-        e.target.name === strings.myEvents.calendar.inputNames.HOURS
-          ? e.target.value.replace(/[^0-9]+/g, "")
-          : e.target.name === strings.myEvents.calendar.inputNames.MINUTES
-          ? e.target.value.replace(/[^0-9]+/g, "")
-          : e.target.value,
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -108,59 +103,17 @@ const useCalendar = () => {
   }, [newSelectedDate, monthIndex, months, now]);
 
   useEffect(() => {
-    const initialDate = new Date();
     setInputs((inputs) => ({
       ...inputs,
-      hours:
-        initialDate.getHours() < 10
-          ? `0${initialDate.getHours()}`
-          : initialDate.getHours(),
-      minutes:
-        initialDate.getMinutes() < 10
-          ? `0${initialDate.getMinutes()}`
-          : initialDate.getMinutes(),
+      hour: new Date().toLocaleTimeString("pl-PL", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
     }));
   }, []);
 
-  useEffect(() => {
-    const dateNow = new Date();
-    if (
-      selectedDay.date &&
-      ((inputs.hours.length > 1 && inputs.hours) ||
-        (inputs.minutes.length > 1 && inputs.minutes)) &&
-      moment(
-        selectedDay.date.setHours(
-          parseInt(inputs.hours),
-          parseInt(inputs.minutes),
-          0,
-          0
-        )
-      ).isBefore(dateNow)
-    ) {
-      setInputs((inputs) => ({
-        ...inputs,
-        hours:
-          dateNow.getHours() < 10
-            ? `0${dateNow.getHours()}`
-            : dateNow.getHours(),
-        minutes:
-          dateNow.getMinutes() < 10
-            ? `0${dateNow.getMinutes()}`
-            : dateNow.getMinutes(),
-      }));
-    }
-  }, [selectedDay.date, inputs.hours, inputs.minutes]);
-
-  useEffect(() => {
-    if (selectedDay.date && inputs.hours && inputs.minutes) {
-      selectedDay.date.setHours(
-        parseInt(inputs.hours),
-        parseInt(inputs.minutes),
-        0,
-        0
-      );
-    }
-  }, [selectedDay.date, inputs.hours, inputs.minutes]);
+  console.log(selectedDay);
+  console.log(inputs.hour);
 
   return {
     dayNames,
