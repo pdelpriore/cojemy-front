@@ -274,6 +274,9 @@ export const strings = Object.freeze({
         DEC: "grudzień",
       },
       HOUR: "godzina",
+      error: {
+        TIME_BEFORE: "nieprawidlowa godzina.",
+      },
     },
   },
   mails: {

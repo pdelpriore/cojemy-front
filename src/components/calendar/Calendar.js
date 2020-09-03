@@ -206,7 +206,7 @@ const Calendar = () => {
                         className="global-form-control"
                         name="hour"
                         type="time"
-                        value={inputs.hour}
+                        value={inputs.hour || ""}
                         disabled={!selectedDay.date}
                         placeholder={strings.myEvents.calendar.HOUR_PLACEHOLDER}
                       ></Form.Control>

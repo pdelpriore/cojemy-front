@@ -45,6 +45,7 @@ const useCalendar = () => {
   );
   const [selectedDay, setSelectedDay] = useState({});
   const [inputs, setInputs] = useState({});
+  const [error, setError] = useState({});
 
   const handlePreviousMonth = (e) => {
     e.preventDefault();
@@ -112,8 +113,32 @@ const useCalendar = () => {
     }));
   }, []);
 
-  console.log(selectedDay);
-  console.log(inputs.hour);
+  useEffect(() => {
+    const dateNow = new Date();
+    const inputsSplit = inputs.hour && inputs.hour.split(":");
+    if (
+      selectedDay.date &&
+      inputsSplit &&
+      inputs.hour &&
+      moment(
+        selectedDay.date.setHours(
+          parseInt(inputsSplit[0]),
+          parseInt(inputsSplit[1]),
+          0,
+          0
+        )
+      ).isBefore(
+        dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
+      )
+    ) {
+      setError((error) => ({
+        ...error,
+        timeError: strings.myEvents.calendar.error.TIME_BEFORE,
+      }));
+    } else {
+      setError({});
+    }
+  }, [inputs.hour, selectedDay.date]);
 
   return {
     dayNames,
