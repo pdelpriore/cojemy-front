@@ -1,7 +1,7 @@
 import { selectEventDateCases } from "../../../config/cases/Cases";
 
 const initialState = {
-  eventDate: {},
+  eventDate: null,
 };
 
 const selectEventDateReducer = (state = initialState, action) => {

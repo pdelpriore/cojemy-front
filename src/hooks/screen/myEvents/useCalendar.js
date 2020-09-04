@@ -46,7 +46,7 @@ const useCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState(
     months[newSelectedDate.selectedMonth]
   );
-  const [selectedDay, setSelectedDay] = useState({});
+  const [selectedDay, setSelectedDay] = useState(null);
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState({});
 
@@ -118,18 +118,15 @@ const useCalendar = () => {
   }, [newSelectedDate, monthIndex, months, now]);
 
   useEffect(() => {
-    if (eventDate.date) {
+    if (eventDate) {
       setInputs((inputs) => ({
         ...inputs,
-        hour: new Date(eventDate.date).toLocaleTimeString("pl-PL", {
+        hour: new Date(eventDate).toLocaleTimeString("pl-PL", {
           hour: "2-digit",
           minute: "2-digit",
         }),
       }));
-      setSelectedDay({
-        date: new Date(eventDate.date),
-        index: eventDate.index,
-      });
+      setSelectedDay(new Date(eventDate));
     } else {
       setInputs((inputs) => ({
         ...inputs,
@@ -144,11 +141,11 @@ const useCalendar = () => {
     const dateNow = new Date();
     const inputsSplit = inputs.hour && inputs.hour.split(":");
     if (
-      selectedDay.date &&
+      selectedDay &&
       inputsSplit &&
       inputs.hour &&
       moment(
-        selectedDay.date.setHours(
+        selectedDay.setHours(
           parseInt(inputsSplit[0]),
           parseInt(inputsSplit[1]),
           0,
@@ -173,7 +170,7 @@ const useCalendar = () => {
     } else {
       setError({});
     }
-  }, [inputs.hour, selectedDay.date]);
+  }, [inputs.hour, selectedDay]);
 
   return {
     dayNames,

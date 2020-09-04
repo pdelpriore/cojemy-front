@@ -252,8 +252,11 @@ const MyEventsForm = () => {
               <div className="myevents-datepicker-icon-box">
                 <Form.Control
                   className="global-form-control"
+                  onChange={() => {}}
                   value={
-                    moment(eventDate.date).format("DD/MM/YYYY, HH:mm") || ""
+                    eventDate
+                      ? moment(eventDate).format("DD/MM/YYYY, HH:mm")
+                      : ""
                   }
                   onClick={handleShowCalendar}
                   type="text"

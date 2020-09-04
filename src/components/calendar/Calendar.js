@@ -129,17 +129,14 @@ const Calendar = () => {
                               )
                                 ? "today"
                                 : ""
-                            } ${
-                              index === selectedDay.index ? "selected-date" : ""
-                            }`
+                            } ${index === 1 ? "selected-date" : ""}`
                       }
                       onClick={(e) => {
                         e.preventDefault();
-                        return moment(day && day).isBefore(
-                          now.setHours(0, 0, 0, 0)
-                        )
+                        return day &&
+                          moment(day).isBefore(now.setHours(0, 0, 0, 0))
                           ? null
-                          : handleSelectDate({ date: day, index: index });
+                          : handleSelectDate(day);
                       }}
                       key={index}
                     >
@@ -172,17 +169,14 @@ const Calendar = () => {
                               )
                                 ? "today"
                                 : ""
-                            } ${
-                              index === selectedDay.index ? "selected-date" : ""
-                            }`
+                            } ${index === 1 ? "selected-date" : ""}`
                       }
                       onClick={(e) => {
                         e.preventDefault();
-                        return moment(day && day).isBefore(
-                          now.setHours(0, 0, 0, 0)
-                        )
+                        return day &&
+                          moment(day).isBefore(now.setHours(0, 0, 0, 0))
                           ? null
-                          : handleSelectDate({ date: day, index: index });
+                          : handleSelectDate(day);
                       }}
                       key={index}
                     >
@@ -196,9 +190,9 @@ const Calendar = () => {
               <Col xs={1} />
               <Col xs={10}>
                 <div className="calendar-selected-day-box">
-                  {selectedDay.date && (
+                  {selectedDay && (
                     <div className="calendar-selected-day">
-                      {getDateTime(selectedDay.date)}
+                      {getDateTime(selectedDay)}
                     </div>
                   )}
                 </div>
@@ -222,7 +216,7 @@ const Calendar = () => {
                       name="hour"
                       type="time"
                       value={inputs.hour || ""}
-                      disabled={!selectedDay.date}
+                      disabled={!selectedDay}
                     ></Form.Control>
                   </Form.Group>
                 </Col>
@@ -242,11 +236,11 @@ const Calendar = () => {
             <Col xs={5}>
               <Button
                 variant="dark"
-                disabled={!selectedDay.date || error.timeError}
+                disabled={!selectedDay || error.timeError}
                 onClick={handleSave}
               >
                 <div className="calendar-button">
-                  {!eventDate.date
+                  {!eventDate
                     ? capitalizeFirst(strings.myEvents.calendar.button.SAVE)
                     : capitalizeFirst(strings.myEvents.calendar.button.EDIT)}
                 </div>
