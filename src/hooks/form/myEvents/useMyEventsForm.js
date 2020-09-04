@@ -16,6 +16,10 @@ import { changeEventClearState } from "../../../redux/myEvents/changeEvent/thunk
 import { toEditEventClearState } from "../../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { showCalendar } from "../../../redux/myEvents/showCalendar/thunk/showCalendarThunk";
+import {
+  selectEventDate,
+  selectEventDateClearState,
+} from "../../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
 import { generateZoom } from "../../../shared/generateZoom";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
@@ -130,7 +134,7 @@ const useMyEventsForm = () => {
           addressObj,
           inputs.description,
           parseInt(inputs.availablePlaces),
-          new Date(eventDate.date),
+          new Date(eventDate),
           parseInt(inputs.tel),
           eventToEdit.eventData.id,
           eventToEdit.addressData.id,
@@ -146,7 +150,7 @@ const useMyEventsForm = () => {
           addressObj,
           inputs.description,
           parseInt(inputs.availablePlaces),
-          new Date(eventDate.date),
+          new Date(eventDate),
           parseInt(inputs.tel),
           userData._id,
           userData.email
@@ -276,6 +280,7 @@ const useMyEventsForm = () => {
           eventToEdit.eventData.eventImage &&
           (await getImage(eventToEdit.eventData.eventImage));
         if (result || result === null) setLoadingImage(false);
+        dispatch(selectEventDate(new Date(eventToEdit.eventData.eventDate)));
         setInputs((inputs) => ({
           ...inputs,
           title: eventToEdit.eventData.title,
@@ -286,7 +291,6 @@ const useMyEventsForm = () => {
           address: eventToEdit.addressData.label,
           description: eventToEdit.eventData.description,
           availablePlaces: eventToEdit.eventData.availablePlaces.toString(),
-          eventDate: new Date(eventToEdit.eventData.eventDate),
           tel: eventToEdit.eventData.tel,
         }));
         if (result === null)
@@ -309,7 +313,7 @@ const useMyEventsForm = () => {
         }));
       })();
     }
-  }, [eventToEdit]);
+  }, [eventToEdit, dispatch]);
 
   useEffect(() => {
     if (eventUpdated) {
@@ -321,6 +325,7 @@ const useMyEventsForm = () => {
       dispatch(selectEventAddressClearState());
       dispatch(getLocationDetailsClearState());
       dispatch(toEditEventClearState());
+      dispatch(selectEventDateClearState());
     }
     return () => {
       dispatch(getAddressClearState());
