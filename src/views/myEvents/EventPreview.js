@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Spinner, Button } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst, capitalize } from "../../util/Util";
-import { getEventDate } from "./getEventDate";
+import { getDateTime } from "../../shared/getDateTime";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -246,7 +246,7 @@ const EventPreview = () => {
                     </div>
                     <div style={{ height: 10 }} />
                     <div className="eventpreview-address-text data">
-                      {getEventDate(new Date(eventPreviewData.eventDate))}
+                      {getDateTime(new Date(eventPreviewData.eventDate))}
                     </div>
                     <div style={{ height: 25 }} />
                     <div className="eventpreview-address-text tel">

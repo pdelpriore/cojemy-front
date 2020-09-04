@@ -110,3 +110,13 @@
   color: #071a52;
   background-color: #f3f6f8;
 }
+.calendar-selected-day-box {
+  height: 40px;
+}
+.calendar-selected-day {
+  background-color: #ededed;
+  font-size: 1.5vw;
+  border-radius: 5px;
+  font-family: "OpenSans-SemiBold";
+  text-align: center;
+}

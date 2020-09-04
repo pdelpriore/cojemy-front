@@ -9,6 +9,7 @@ import {
 import useCalendar from "../../hooks/screen/myEvents/useCalendar";
 import moment from "moment";
 import { isWeekend } from "../../components/calendar/isWeekend";
+import { getDateTime } from "../../shared/getDateTime";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./calendar.css";
@@ -189,6 +190,20 @@ const Calendar = () => {
                   )
                 )}
             </div>
+            <Row className="mb-4" />
+            <Row>
+              <Col xs={1} />
+              <Col xs={10}>
+                <div className="calendar-selected-day-box">
+                  {selectedDay.date && (
+                    <div className="calendar-selected-day">
+                      {getDateTime(selectedDay.date)}
+                    </div>
+                  )}
+                </div>
+              </Col>
+              <Col xs={1} />
+            </Row>
           </div>
         </Col>
         <Col xs={5}>
