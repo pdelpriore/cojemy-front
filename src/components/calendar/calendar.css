@@ -94,6 +94,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100%;
   width: 100%;
 }
@@ -115,8 +116,15 @@
 }
 .calendar-selected-day {
   background-color: #ededed;
-  font-size: 1.5vw;
+  font-size: 1vw;
   border-radius: 5px;
   font-family: "OpenSans-SemiBold";
   text-align: center;
+  padding: 2%;
+}
+.calendar-time-error {
+  font-family: "OpenSans-SemiBold";
+  font-size: 0.9vw;
+  color: red;
+  height: 55px;
 }

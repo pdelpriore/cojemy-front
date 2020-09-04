@@ -156,6 +156,7 @@ const useCalendar = () => {
     newSelectedDate,
     selectedDay,
     inputs,
+    error,
     handleInputChange,
     handlePreviousMonth,
     handleNextMonth,
