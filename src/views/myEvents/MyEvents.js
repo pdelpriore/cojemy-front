@@ -43,6 +43,8 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
   const { searchEventFilled } = useSelector(
     (state) => state.isSearchEventFormFilled
   );
+  const { calendarShown } = useSelector((state) => state.isCalendarShown);
+
   const { skip, handlePrev, handleNext } = useMyEvents();
 
   const props = useSpring({
@@ -214,18 +216,20 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
           </div>
         )}
       </div>
-      <div className="myevents-calendar-overlay">
-        <Row className="mb-5" />
-        <Row className="mb-5" />
-        <Row className="mb-5" />
-        <Row>
-          <Col xs={4} />
-          <Col xs={4}>
-            <Calendar />
-          </Col>
-          <Col xs={4} />
-        </Row>
-      </div>
+      {calendarShown && (
+        <div className="myevents-calendar-overlay">
+          <Row className="mb-5" />
+          <Row className="mb-5" />
+          <Row className="mb-5" />
+          <Row>
+            <Col xs={4} />
+            <Col xs={4}>
+              <Calendar />
+            </Col>
+            <Col xs={4} />
+          </Row>
+        </div>
+      )}
     </animated.div>
   );
 };

@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { showCalendar } from "../../../redux/myEvents/showCalendar/thunk/showCalendarThunk";
 import moment from "moment";
 import { getDaysInMonth } from "../../../components/calendar/getDaysInMonth";
 import { getNewSelectedDate } from "../../../components/calendar/getNewSelectedDate";
 import { strings } from "../../../strings/Strings";
 
 const useCalendar = () => {
+  const dispatch = useDispatch();
   const now = new Date();
 
   const dayNames = [
@@ -67,6 +69,10 @@ const useCalendar = () => {
       ...inputs,
       [e.target.name]: e.target.value,
     }));
+  };
+  const handleCancel = (e) => {
+    e.preventDefault();
+    dispatch(showCalendar(false));
   };
 
   const numberOfDaysInMonth = [];
@@ -161,6 +167,7 @@ const useCalendar = () => {
     handlePreviousMonth,
     handleNextMonth,
     handleSelectDate,
+    handleCancel,
   };
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleRight,
@@ -29,6 +29,7 @@ const Calendar = () => {
     handlePreviousMonth,
     handleNextMonth,
     handleSelectDate,
+    handleCancel,
   } = useCalendar();
 
   return (
@@ -236,11 +237,22 @@ const Calendar = () => {
         <Col xs={8}>
           <Row>
             <Col xs={5}>
-              <div>button submit</div>
+              <Button
+                variant="dark"
+                disabled={!selectedDay.date || error.timeError}
+              >
+                <div className="calendar-button">
+                  {capitalizeFirst(strings.myEvents.calendar.button.SAVE)}
+                </div>
+              </Button>
             </Col>
             <Col xs={2} />
             <Col xs={5}>
-              <div>button cancel</div>
+              <Button variant="info" onClick={handleCancel}>
+                <div className="calendar-button">
+                  {capitalizeFirst(strings.myEvents.calendar.button.CANCEL)}
+                </div>
+              </Button>
             </Col>
           </Row>
         </Col>

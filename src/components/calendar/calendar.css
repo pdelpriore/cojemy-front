@@ -128,3 +128,7 @@
   color: red;
   height: 55px;
 }
+.calendar-button {
+  font-size: 1vw;
+  font-family: "OpenSans-Regular";
+}

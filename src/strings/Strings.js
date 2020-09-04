@@ -277,6 +277,10 @@ export const strings = Object.freeze({
       error: {
         TIME_BEFORE: "wydarzenie moze sie rozpoczac najwczesniej o ",
       },
+      button: {
+        SAVE: "zapisz",
+        CANCEL: "anuluj",
+      },
     },
   },
   mails: {
