@@ -208,7 +208,7 @@ const Calendar = () => {
             <Form>
               <Row>
                 <Col xs={12}>
-                  <Form.Group controlId="formBasicCalendar">
+                  <Form.Group controlId="formBasicTimer">
                     <Form.Label className="global-form-label">
                       {strings.myEvents.calendar.HOUR}
                     </Form.Label>
@@ -219,7 +219,6 @@ const Calendar = () => {
                       type="time"
                       value={inputs.hour || ""}
                       disabled={!selectedDay.date}
-                      placeholder={strings.myEvents.calendar.HOUR_PLACEHOLDER}
                     ></Form.Control>
                   </Form.Group>
                 </Col>
