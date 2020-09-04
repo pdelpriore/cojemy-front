@@ -39,6 +39,7 @@ const useMyEventsForm = () => {
   const { eventUpdated } = useSelector((state) => state.isEventChanged);
   const { userData } = useSelector((state) => state.login);
   const { eventToEdit } = useSelector((state) => state.toEditEvent);
+  const { eventDate } = useSelector((state) => state.eventDateSelected);
 
   const handleOnChange = (e) => {
     e.persist();
@@ -129,7 +130,7 @@ const useMyEventsForm = () => {
           addressObj,
           inputs.description,
           parseInt(inputs.availablePlaces),
-          inputs.eventDate,
+          new Date(eventDate.date),
           parseInt(inputs.tel),
           eventToEdit.eventData.id,
           eventToEdit.addressData.id,
@@ -145,7 +146,7 @@ const useMyEventsForm = () => {
           addressObj,
           inputs.description,
           parseInt(inputs.availablePlaces),
-          inputs.eventDate,
+          new Date(eventDate.date),
           parseInt(inputs.tel),
           userData._id,
           userData.email

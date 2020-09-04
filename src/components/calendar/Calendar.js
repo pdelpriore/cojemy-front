@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleRight,
@@ -29,8 +30,10 @@ const Calendar = () => {
     handlePreviousMonth,
     handleNextMonth,
     handleSelectDate,
+    handleSave,
     handleCancel,
   } = useCalendar();
+  const { eventDate } = useSelector((state) => state.eventDateSelected);
 
   return (
     <div className="calendar-box">
@@ -240,9 +243,12 @@ const Calendar = () => {
               <Button
                 variant="dark"
                 disabled={!selectedDay.date || error.timeError}
+                onClick={handleSave}
               >
                 <div className="calendar-button">
-                  {capitalizeFirst(strings.myEvents.calendar.button.SAVE)}
+                  {!eventDate.date
+                    ? capitalizeFirst(strings.myEvents.calendar.button.SAVE)
+                    : capitalizeFirst(strings.myEvents.calendar.button.EDIT)}
                 </div>
               </Button>
             </Col>

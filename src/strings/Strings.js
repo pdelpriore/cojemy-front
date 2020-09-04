@@ -278,7 +278,8 @@ export const strings = Object.freeze({
         TIME_BEFORE: "wydarzenie moze sie rozpoczac najwczesniej o ",
       },
       button: {
-        SAVE: "zapisz",
+        SAVE: "wybierz",
+        EDIT: "popraw",
         CANCEL: "anuluj",
       },
     },

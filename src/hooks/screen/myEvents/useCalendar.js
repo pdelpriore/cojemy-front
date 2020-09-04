@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { showCalendar } from "../../../redux/myEvents/showCalendar/thunk/showCalendarThunk";
+import { selectEventDate } from "../../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
 import moment from "moment";
 import { getDaysInMonth } from "../../../components/calendar/getDaysInMonth";
 import { getNewSelectedDate } from "../../../components/calendar/getNewSelectedDate";
@@ -49,6 +50,8 @@ const useCalendar = () => {
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState({});
 
+  const { eventDate } = useSelector((state) => state.eventDateSelected);
+
   const handlePreviousMonth = (e) => {
     e.preventDefault();
     monthIndex >= now.getMonth() && setMonthIndex(monthIndex - 1);
@@ -69,6 +72,11 @@ const useCalendar = () => {
       ...inputs,
       [e.target.name]: e.target.value,
     }));
+  };
+  const handleSave = (e) => {
+    e.preventDefault();
+    dispatch(selectEventDate(selectedDay));
+    dispatch(showCalendar(false));
   };
   const handleCancel = (e) => {
     e.preventDefault();
@@ -110,13 +118,27 @@ const useCalendar = () => {
   }, [newSelectedDate, monthIndex, months, now]);
 
   useEffect(() => {
-    setInputs((inputs) => ({
-      ...inputs,
-      hour: moment(moment(new Date()).add(moment.duration(2, "h"))._d).format(
-        "HH:mm"
-      ),
-    }));
-  }, []);
+    if (eventDate.date) {
+      setInputs((inputs) => ({
+        ...inputs,
+        hour: new Date(eventDate.date).toLocaleTimeString("pl-PL", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      }));
+      setSelectedDay({
+        date: new Date(eventDate.date),
+        index: eventDate.index,
+      });
+    } else {
+      setInputs((inputs) => ({
+        ...inputs,
+        hour: moment(moment(new Date()).add(moment.duration(2, "h"))._d).format(
+          "HH:mm"
+        ),
+      }));
+    }
+  }, [eventDate]);
 
   useEffect(() => {
     const dateNow = new Date();
@@ -167,6 +189,7 @@ const useCalendar = () => {
     handlePreviousMonth,
     handleNextMonth,
     handleSelectDate,
+    handleSave,
     handleCancel,
   };
 };

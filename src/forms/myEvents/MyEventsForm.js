@@ -55,6 +55,7 @@ const MyEventsForm = () => {
   );
   const { loadingEventUpdating } = useSelector((state) => state.isEventChanged);
   const { eventToEdit } = useSelector((state) => state.toEditEvent);
+  const { eventDate } = useSelector((state) => state.eventDateSelected);
 
   return (
     <ScrollArea
@@ -248,33 +249,11 @@ const MyEventsForm = () => {
                 {capitalizeFirst(strings.myEvents.EVENT_DATE)}
               </Form.Label>
               <div className="myevents-datepicker-icon-box">
-                {/* <DatePicker
-                    onFocus={handleInitializeDate}
-                    minDate={new Date()}
-                    minTime={
-                      inputs.eventDate &&
-                      moment(
-                        new Date(inputs.eventDate).setHours(0, 0, 0, 0)
-                      ).isSame(new Date().setHours(0, 0, 0, 0))
-                        ? new Date().getTime()
-                        : new Date().setHours(0, 0, 0, 1)
-                    }
-                    maxTime={new Date().setHours(23, 59, 59, 999)}
-                    timeIntervals={5}
-                    className="myevents-datepicker"
-                    locale="fr"
-                    showTimeSelect={true}
-                    onChange={handleDateTime}
-                    selected={inputs.eventDate}
-                    dateFormat="d MMMM yyyy, HH:mm"
-                    onChangeRaw={(e) => e.preventDefault()}
-                    withPortal={true}
-                    placeholderText={strings.myEvents.DATE_PLACEHOLDER}
-                  /> */}
                 <Form.Control
                   className="global-form-control"
-                  //onChange={handleDateTime}
-                  //value={inputs.eventDate || ""}
+                  value={
+                    moment(eventDate.date).format("DD/MM/YYYY, HH:mm") || ""
+                  }
                   onClick={handleShowCalendar}
                   type="text"
                   placeholder={strings.myEvents.DATE_PLACEHOLDER}
