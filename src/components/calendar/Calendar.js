@@ -129,7 +129,14 @@ const Calendar = () => {
                               )
                                 ? "today"
                                 : ""
-                            } ${index === 1 ? "selected-date" : ""}`
+                            } ${
+                              moment(day && day).isSame(
+                                selectedDay && selectedDay,
+                                "day"
+                              )
+                                ? "selected-date"
+                                : ""
+                            }`
                       }
                       onClick={(e) => {
                         e.preventDefault();
@@ -169,7 +176,14 @@ const Calendar = () => {
                               )
                                 ? "today"
                                 : ""
-                            } ${index === 1 ? "selected-date" : ""}`
+                            } ${
+                              moment(day && day).isSame(
+                                selectedDay && selectedDay,
+                                "day"
+                              )
+                                ? "selected-date"
+                                : ""
+                            }`
                       }
                       onClick={(e) => {
                         e.preventDefault();
