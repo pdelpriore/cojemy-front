@@ -305,8 +305,8 @@ const MyEventsForm = () => {
                     inputs.description === "" ||
                     inputs.availablePlaces === undefined ||
                     inputs.availablePlaces === "" ||
-                    inputs.eventDate === undefined ||
-                    inputs.eventDate === "" ||
+                    !eventDate ||
+                    eventDate === "" ||
                     inputs.tel === "" ||
                     inputs.tel === undefined
                   }
@@ -345,8 +345,8 @@ const MyEventsForm = () => {
                     inputs.description === "" ||
                     inputs.availablePlaces === undefined ||
                     inputs.availablePlaces === "" ||
-                    inputs.eventDate === undefined ||
-                    inputs.eventDate === "" ||
+                    !eventDate ||
+                    eventDate === "" ||
                     inputs.tel === "" ||
                     inputs.tel === undefined
                   }
