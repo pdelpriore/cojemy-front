@@ -65,18 +65,6 @@ const useMyEventsForm = () => {
           : e.target.value,
     }));
   };
-  const handleDateTime = (dateTime) => {
-    setInputs((inputs) => ({
-      ...inputs,
-      eventDate: dateTime,
-    }));
-  };
-  const handleInitializeDate = () => {
-    setInputs((inputs) => ({
-      ...inputs,
-      eventDate: new Date(),
-    }));
-  };
   const handlePicture = async (picture) => {
     try {
       setLoadingImage(true);
@@ -343,8 +331,6 @@ const useMyEventsForm = () => {
     error,
     loadingImage,
     handleOnChange,
-    handleDateTime,
-    handleInitializeDate,
     handleShowCalendar,
     handlePicture,
     handleRemoveImage,

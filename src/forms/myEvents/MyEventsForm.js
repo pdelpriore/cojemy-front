@@ -6,10 +6,7 @@ import ImageUploader from "react-images-upload";
 import useMyEventsForm from "../../hooks/form/myEvents/useMyEventsForm";
 import Suggestions from "../../components/map/suggestions/Suggestions";
 import Map from "../../components/map/map/Map";
-import DatePicker from "react-datepicker";
 import moment from "moment";
-import { registerLocale } from "react-datepicker";
-import fr from "date-fns/locale/fr";
 import { generateZoom } from "../../shared/generateZoom";
 import { selectEventAddressClearState } from "../../redux/myEvents/selectEventAddress/thunk/selectEventAddressThunk";
 import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
@@ -27,8 +24,8 @@ import "../../shared/global.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 const MyEventsForm = () => {
-  registerLocale("fr", fr);
   const dispatch = useDispatch();
+
   const {
     inputs,
     addressObj,
@@ -37,13 +34,12 @@ const MyEventsForm = () => {
     error,
     loadingImage,
     handleOnChange,
-    handleDateTime,
-    handleInitializeDate,
     handleShowCalendar,
     handlePicture,
     handleRemoveImage,
     handleSubmit,
   } = useMyEventsForm();
+
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
   const { loadingLocationDetails } = useSelector(
     (state) => state.locationDetails
