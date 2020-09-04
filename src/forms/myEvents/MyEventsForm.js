@@ -19,6 +19,7 @@ import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
+import { selectEventDateClearState } from "../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import "./myEventsForm.css";
@@ -380,6 +381,7 @@ const MyEventsForm = () => {
                   dispatch(selectEventAddressClearState());
                   dispatch(getLocationDetailsClearState());
                   dispatch(toEditEventClearState());
+                  dispatch(selectEventDateClearState());
                 }}
                 className="global-button-label"
                 variant="outline-secondary"
