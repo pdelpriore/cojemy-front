@@ -4,6 +4,7 @@ import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import useSearchEventsForm from "../../hooks/form/myEvents/useSearchEventsForm";
 import { useSelector } from "react-redux";
 import moment from "moment";
@@ -11,7 +12,12 @@ import "./myEventsForm.css";
 import "../../shared/global.css";
 
 const SearchEventsForm = () => {
-  const { inputs, handleOnChange, handleShowCalendar } = useSearchEventsForm();
+  const {
+    inputs,
+    handleOnChange,
+    handleShowCalendar,
+    handleRemoveDate,
+  } = useSearchEventsForm();
 
   const { eventDate } = useSelector((state) => state.eventDateSelected);
 
@@ -40,24 +46,35 @@ const SearchEventsForm = () => {
             <Form.Label className="global-form-label">
               {capitalizeFirst(strings.myEvents.SEARCH_DATE)}
             </Form.Label>
-            <div className="myevents-datepicker-icon-box">
-              <Form.Control
-                className="global-form-control"
-                onChange={() => {}}
-                value={
-                  eventDate ? moment(eventDate).format("DD/MM/YYYY, HH:mm") : ""
-                }
-                onClick={handleShowCalendar}
-                type="text"
-                placeholder={strings.myEvents.DATE_PLACEHOLDER}
-                autoComplete="off"
-              />
-              <div className="myevents-datepicker-icon-wrapper">
-                <FontAwesomeIcon
-                  className="myevents-datepicker-icon"
-                  icon={faCalendarAlt}
+            <div className="myevents-form-selected-date-wrapper">
+              <div className="myevents-datepicker-icon-box">
+                <Form.Control
+                  className="global-form-control"
+                  onChange={() => {}}
+                  value={
+                    eventDate
+                      ? moment(eventDate).format("DD/MM/YYYY, HH:mm")
+                      : ""
+                  }
+                  onClick={handleShowCalendar}
+                  type="text"
+                  placeholder={strings.myEvents.DATE_PLACEHOLDER}
+                  autoComplete="off"
                 />
+                <div className="myevents-datepicker-icon-wrapper">
+                  <FontAwesomeIcon
+                    className="myevents-datepicker-icon"
+                    icon={faCalendarAlt}
+                  />
+                </div>
               </div>
+              {eventDate && (
+                <FontAwesomeIcon
+                  onClick={handleRemoveDate}
+                  className="myevents-form-trash-date"
+                  icon={faTimes}
+                />
+              )}
             </div>
           </Form.Group>
         </Col>

@@ -33,6 +33,7 @@ const Calendar = () => {
     handleSave,
     handleCancel,
   } = useCalendar();
+
   const { eventDate } = useSelector((state) => state.eventDateSelected);
 
   return (
@@ -203,13 +204,11 @@ const Calendar = () => {
             <Row>
               <Col xs={1} />
               <Col xs={10}>
-                <div className="calendar-selected-day-box">
-                  {selectedDay && (
-                    <div className="calendar-selected-day">
-                      {getDateTime(selectedDay)}
-                    </div>
-                  )}
-                </div>
+                {selectedDay && (
+                  <div className="calendar-selected-day">
+                    {getDateTime(selectedDay)}
+                  </div>
+                )}
               </Col>
               <Col xs={1} />
             </Row>

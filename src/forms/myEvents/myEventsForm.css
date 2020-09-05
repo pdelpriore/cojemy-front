@@ -81,3 +81,16 @@
   font-size: 0.9vw;
   margin-left: 5px;
 }
+.myevents-form-trash-date {
+  font-size: 1vw;
+  margin-left: 2%;
+}
+.myevents-form-trash-date:hover {
+  color: #ee6670;
+  cursor: pointer;
+}
+.myevents-form-selected-date-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

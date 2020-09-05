@@ -3,6 +3,7 @@ import { searchEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retri
 import { searchEventFilled } from "../../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { showCalendar } from "../../../redux/myEvents/showCalendar/thunk/showCalendarThunk";
+import { selectEventDateClearState } from "../../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
 
@@ -27,6 +28,10 @@ const useSearchEventsForm = () => {
     e.preventDefault();
     dispatch(showCalendar(true));
   };
+  const handleRemoveDate = (e) => {
+    e.preventDefault();
+    dispatch(selectEventDateClearState());
+  };
 
   useEffect(() => {
     if (eventDate || inputs.city) {
@@ -49,6 +54,7 @@ const useSearchEventsForm = () => {
     inputs,
     handleOnChange,
     handleShowCalendar,
+    handleRemoveDate,
   };
 };
 
