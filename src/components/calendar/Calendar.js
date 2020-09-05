@@ -24,7 +24,7 @@ const Calendar = () => {
     selectedMonth,
     monthIndex,
     newSelectedDate,
-    selectedDay,
+    date,
     inputs,
     error,
     handleInputChange,
@@ -129,10 +129,7 @@ const Calendar = () => {
                                 ? "today"
                                 : ""
                             } ${
-                              moment(day).isSame(
-                                selectedDay && selectedDay,
-                                "day"
-                              )
+                              moment(day).isSame(date && date, "day")
                                 ? "selected-date"
                                 : ""
                             }`
@@ -173,10 +170,7 @@ const Calendar = () => {
                                 ? "today"
                                 : ""
                             } ${
-                              moment(day).isSame(
-                                selectedDay && selectedDay,
-                                "day"
-                              )
+                              moment(day).isSame(date && date, "day")
                                 ? "selected-date"
                                 : ""
                             }`
@@ -199,11 +193,11 @@ const Calendar = () => {
             <Row>
               <Col xs={1} />
               <Col xs={10}>
-                {selectedDay && (
+                {date && (
                   <div className="calendar-selected-day">
                     {eventButtonId === 0
-                      ? getDate(selectedDay)
-                      : getDateTime(selectedDay)}
+                      ? getDate(new Date(date))
+                      : getDateTime(new Date(date))}
                   </div>
                 )}
               </Col>
@@ -227,7 +221,7 @@ const Calendar = () => {
                         name="hour"
                         type="time"
                         value={inputs.hour || ""}
-                        disabled={!selectedDay}
+                        disabled={!date}
                       ></Form.Control>
                     </Form.Group>
                   </Col>
@@ -248,7 +242,7 @@ const Calendar = () => {
             <Col xs={5}>
               <Button
                 variant="dark"
-                disabled={!selectedDay || error.timeError}
+                disabled={!date || error.timeError}
                 onClick={handleSave}
               >
                 <div className="calendar-button">

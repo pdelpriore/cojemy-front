@@ -47,6 +47,7 @@ const useCalendar = () => {
     months[newSelectedDate.selectedMonth]
   );
   const [selectedDay, setSelectedDay] = useState(null);
+  const [date, setDate] = useState(null);
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState({});
 
@@ -128,7 +129,7 @@ const useCalendar = () => {
             minute: "2-digit",
           }),
         }));
-        setSelectedDay(new Date(eventDate));
+        setDate(new Date(eventDate));
       } else {
         setInputs((inputs) => ({
           ...inputs,
@@ -142,20 +143,28 @@ const useCalendar = () => {
 
   useEffect(() => {
     if (eventButtonId !== 0) {
-      const dateNow = new Date();
       const inputsSplit = inputs.hour && inputs.hour.split(":");
-      if (
-        selectedDay &&
-        inputsSplit &&
-        inputs.hour &&
-        moment(
+      if (selectedDay && inputsSplit && inputs.hour) {
+        setDate(
           selectedDay.setHours(
             parseInt(inputsSplit[0]),
             parseInt(inputsSplit[1]),
             0,
             0
           )
-        ).isBefore(
+        );
+      }
+    } else {
+      setDate(selectedDay);
+    }
+  }, [inputs.hour, selectedDay, eventButtonId]);
+
+  useEffect(() => {
+    if (eventButtonId !== 0) {
+      const dateNow = new Date();
+      if (
+        date &&
+        moment(date).isBefore(
           moment(
             moment(
               dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
@@ -175,7 +184,7 @@ const useCalendar = () => {
         setError({});
       }
     }
-  }, [inputs.hour, selectedDay, eventButtonId]);
+  }, [date, eventButtonId]);
 
   return {
     dayNames,
@@ -184,9 +193,9 @@ const useCalendar = () => {
     selectedMonth,
     monthIndex,
     newSelectedDate,
-    selectedDay,
     inputs,
     error,
+    date,
     handleInputChange,
     handlePreviousMonth,
     handleNextMonth,
