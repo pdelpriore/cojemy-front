@@ -37,7 +37,7 @@ const useSearchEventsForm = () => {
     if (eventDate || inputs.city) {
       dispatch(
         searchEvents(
-          new Date(eventDate),
+          eventDate ? new Date(eventDate) : null,
           inputs.city,
           userData._id,
           userData.email
