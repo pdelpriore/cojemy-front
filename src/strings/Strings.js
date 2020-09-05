@@ -279,7 +279,7 @@ export const strings = Object.freeze({
       },
       button: {
         SAVE: "wybierz",
-        EDIT: "popraw",
+        EDIT: "zmień",
         CANCEL: "anuluj",
       },
     },

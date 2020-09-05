@@ -107,19 +107,17 @@ const Calendar = () => {
                       className={
                         index < newSelectedDate.firstDay - 1
                           ? ""
-                          : `${
-                              moment(day && day).isBefore(
-                                now.setHours(0, 0, 0, 0)
-                              )
+                          : day &&
+                            `${
+                              moment(day).isBefore(now.setHours(0, 0, 0, 0))
                                 ? "calendar-number-of-day-before-today"
                                 : "calendar-number-of-day"
                             } ${
                               isWeekend(
-                                day &&
-                                  day.getDate() + newSelectedDate.firstDay - 1
+                                day.getDate() + newSelectedDate.firstDay - 1
                               )
                                 ? `${
-                                    moment(day && day).isBefore(
+                                    moment(day).isBefore(
                                       now.setHours(0, 0, 0, 0)
                                     )
                                       ? "weekend-before-today"
@@ -127,13 +125,11 @@ const Calendar = () => {
                                   }`
                                 : ""
                             } ${
-                              moment(day && day).isSame(
-                                now.setHours(0, 0, 0, 0)
-                              )
+                              moment(day).isSame(now.setHours(0, 0, 0, 0))
                                 ? "today"
                                 : ""
                             } ${
-                              moment(day && day).isSame(
+                              moment(day).isSame(
                                 selectedDay && selectedDay,
                                 "day"
                               )
@@ -157,16 +153,15 @@ const Calendar = () => {
                       className={
                         index < 7 - 1
                           ? ""
-                          : `${
-                              moment(day && day).isBefore(
-                                now.setHours(0, 0, 0, 0)
-                              )
+                          : day &&
+                            `${
+                              moment(day).isBefore(now.setHours(0, 0, 0, 0))
                                 ? "calendar-number-of-day-before-today"
                                 : "calendar-number-of-day"
                             } ${
-                              isWeekend(day && day.getDate() + 7 - 1)
+                              isWeekend(day.getDate() + 7 - 1)
                                 ? `${
-                                    moment(day && day).isBefore(
+                                    moment(day).isBefore(
                                       now.setHours(0, 0, 0, 0)
                                     )
                                       ? "weekend-before-today"
@@ -174,13 +169,11 @@ const Calendar = () => {
                                   }`
                                 : ""
                             } ${
-                              moment(day && day).isSame(
-                                now.setHours(0, 0, 0, 0)
-                              )
+                              moment(day).isSame(now.setHours(0, 0, 0, 0))
                                 ? "today"
                                 : ""
                             } ${
-                              moment(day && day).isSame(
+                              moment(day).isSame(
                                 selectedDay && selectedDay,
                                 "day"
                               )
