@@ -77,7 +77,7 @@ const useCalendar = () => {
   };
   const handleSave = (e) => {
     e.preventDefault();
-    dispatch(selectEventDate(selectedDay));
+    dispatch(selectEventDate(new Date(date)));
     dispatch(showCalendar(false));
   };
   const handleCancel = (e) => {
