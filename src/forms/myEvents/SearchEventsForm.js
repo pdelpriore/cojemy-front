@@ -52,13 +52,11 @@ const SearchEventsForm = () => {
                   className="global-form-control"
                   onChange={() => {}}
                   value={
-                    eventDate
-                      ? moment(eventDate).format("DD/MM/YYYY, HH:mm")
-                      : ""
+                    eventDate ? moment(eventDate).format("DD/MM/YYYY") : ""
                   }
                   onClick={handleShowCalendar}
                   type="text"
-                  placeholder={strings.myEvents.DATE_PLACEHOLDER}
+                  placeholder={strings.myEvents.SEARCH_DATE_PLACEHOLDER}
                   autoComplete="off"
                 />
                 <div className="myevents-datepicker-icon-wrapper">

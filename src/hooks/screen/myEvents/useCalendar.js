@@ -51,6 +51,7 @@ const useCalendar = () => {
   const [error, setError] = useState({});
 
   const { eventDate } = useSelector((state) => state.eventDateSelected);
+  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
 
   const handlePreviousMonth = (e) => {
     e.preventDefault();
@@ -63,8 +64,8 @@ const useCalendar = () => {
     ).isSame(newSelectedDate.newDate.setHours(0, 0, 0, 0)) &&
       setMonthIndex(monthIndex + 1);
   };
-  const handleSelectDate = (data) => {
-    setSelectedDay(data);
+  const handleSelectDate = (date) => {
+    setSelectedDay(date);
   };
   const handleInputChange = (e) => {
     e.persist();
@@ -118,59 +119,63 @@ const useCalendar = () => {
   }, [newSelectedDate, monthIndex, months, now]);
 
   useEffect(() => {
-    if (eventDate) {
-      setInputs((inputs) => ({
-        ...inputs,
-        hour: new Date(eventDate).toLocaleTimeString("pl-PL", {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      }));
-      setSelectedDay(new Date(eventDate));
-    } else {
-      setInputs((inputs) => ({
-        ...inputs,
-        hour: moment(moment(new Date()).add(moment.duration(2, "h"))._d).format(
-          "HH:mm"
-        ),
-      }));
+    if (eventButtonId !== 0) {
+      if (eventDate) {
+        setInputs((inputs) => ({
+          ...inputs,
+          hour: new Date(eventDate).toLocaleTimeString("pl-PL", {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        }));
+        setSelectedDay(new Date(eventDate));
+      } else {
+        setInputs((inputs) => ({
+          ...inputs,
+          hour: moment(
+            moment(new Date()).add(moment.duration(2, "h"))._d
+          ).format("HH:mm"),
+        }));
+      }
     }
-  }, [eventDate]);
+  }, [eventDate, eventButtonId]);
 
   useEffect(() => {
-    const dateNow = new Date();
-    const inputsSplit = inputs.hour && inputs.hour.split(":");
-    if (
-      selectedDay &&
-      inputsSplit &&
-      inputs.hour &&
-      moment(
-        selectedDay.setHours(
-          parseInt(inputsSplit[0]),
-          parseInt(inputsSplit[1]),
-          0,
-          0
-        )
-      ).isBefore(
+    if (eventButtonId !== 0) {
+      const dateNow = new Date();
+      const inputsSplit = inputs.hour && inputs.hour.split(":");
+      if (
+        selectedDay &&
+        inputsSplit &&
+        inputs.hour &&
         moment(
+          selectedDay.setHours(
+            parseInt(inputsSplit[0]),
+            parseInt(inputsSplit[1]),
+            0,
+            0
+          )
+        ).isBefore(
           moment(
-            dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
-          ).add(moment.duration(2, "h"))._d
+            moment(
+              dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
+            ).add(moment.duration(2, "h"))._d
+          )
         )
-      )
-    ) {
-      setError((error) => ({
-        ...error,
-        timeError: `${strings.myEvents.calendar.error.TIME_BEFORE} ${moment(
-          moment(
-            dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
-          ).add(moment.duration(2, "h"))._d
-        ).format("HH:mm")}`,
-      }));
-    } else {
-      setError({});
+      ) {
+        setError((error) => ({
+          ...error,
+          timeError: `${strings.myEvents.calendar.error.TIME_BEFORE} ${moment(
+            moment(
+              dateNow.setHours(dateNow.getHours(), dateNow.getMinutes(), 0, 0)
+            ).add(moment.duration(2, "h"))._d
+          ).format("HH:mm")}`,
+        }));
+      } else {
+        setError({});
+      }
     }
-  }, [inputs.hour, selectedDay]);
+  }, [inputs.hour, selectedDay, eventButtonId]);
 
   return {
     dayNames,

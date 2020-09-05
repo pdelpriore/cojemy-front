@@ -10,6 +10,7 @@ import useCalendar from "../../hooks/screen/myEvents/useCalendar";
 import moment from "moment";
 import { isWeekend } from "../../components/calendar/isWeekend";
 import { getDateTime } from "../../shared/getDateTime";
+import { getDate } from "./getDate";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./calendar.css";
@@ -35,11 +36,12 @@ const Calendar = () => {
   } = useCalendar();
 
   const { eventDate } = useSelector((state) => state.eventDateSelected);
+  const { eventButtonId } = useSelector((state) => state.eventCategorySelected);
 
   return (
     <div className="calendar-box">
       <Row>
-        <Col xs={7}>
+        <Col xs={eventButtonId === 0 ? 12 : 7}>
           <div>
             <Row>
               <Col xs={1} />
@@ -206,7 +208,9 @@ const Calendar = () => {
               <Col xs={10}>
                 {selectedDay && (
                   <div className="calendar-selected-day">
-                    {getDateTime(selectedDay)}
+                    {eventButtonId === 0
+                      ? getDate(selectedDay)
+                      : getDateTime(selectedDay)}
                   </div>
                 )}
               </Col>
@@ -214,32 +218,34 @@ const Calendar = () => {
             </Row>
           </div>
         </Col>
-        <Col xs={5}>
-          <div className="calendar-timer-box">
-            <Form>
-              <Row>
-                <Col xs={12}>
-                  <Form.Group controlId="formBasicTimer">
-                    <Form.Label className="global-form-label">
-                      {strings.myEvents.calendar.HOUR}
-                    </Form.Label>
-                    <Form.Control
-                      onChange={handleInputChange}
-                      className="calendar-time-form-control"
-                      name="hour"
-                      type="time"
-                      value={inputs.hour || ""}
-                      disabled={!selectedDay}
-                    ></Form.Control>
-                  </Form.Group>
-                </Col>
-              </Row>
-            </Form>
-            <div className="calendar-time-error">
-              {error.timeError ? error.timeError : null}
+        {eventButtonId !== 0 && (
+          <Col xs={5}>
+            <div className="calendar-timer-box">
+              <Form>
+                <Row>
+                  <Col xs={12}>
+                    <Form.Group controlId="formBasicTimer">
+                      <Form.Label className="global-form-label">
+                        {strings.myEvents.calendar.HOUR}
+                      </Form.Label>
+                      <Form.Control
+                        onChange={handleInputChange}
+                        className="calendar-time-form-control"
+                        name="hour"
+                        type="time"
+                        value={inputs.hour || ""}
+                        disabled={!selectedDay}
+                      ></Form.Control>
+                    </Form.Group>
+                  </Col>
+                </Row>
+              </Form>
+              <div className="calendar-time-error">
+                {error.timeError ? error.timeError : null}
+              </div>
             </div>
-          </div>
-        </Col>
+          </Col>
+        )}
       </Row>
       <Row className="mb-5" />
       <Row>
