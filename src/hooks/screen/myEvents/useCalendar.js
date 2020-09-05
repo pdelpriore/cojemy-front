@@ -129,7 +129,7 @@ const useCalendar = () => {
             minute: "2-digit",
           }),
         }));
-        setDate(new Date(eventDate));
+        setSelectedDay(new Date(eventDate));
       } else {
         setInputs((inputs) => ({
           ...inputs,
