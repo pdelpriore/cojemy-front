@@ -21,7 +21,6 @@ import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import "./myEventsForm.css";
 import "../../shared/global.css";
-import "react-datepicker/dist/react-datepicker.css";
 
 const MyEventsForm = () => {
   const dispatch = useDispatch();
@@ -257,6 +256,7 @@ const MyEventsForm = () => {
                   onClick={handleShowCalendar}
                   type="text"
                   placeholder={strings.myEvents.DATE_PLACEHOLDER}
+                  autoComplete="off"
                 />
                 <div className="myevents-datepicker-icon-wrapper">
                   <FontAwesomeIcon

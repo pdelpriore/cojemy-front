@@ -16,10 +16,7 @@ import { changeEventClearState } from "../../../redux/myEvents/changeEvent/thunk
 import { toEditEventClearState } from "../../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { showCalendar } from "../../../redux/myEvents/showCalendar/thunk/showCalendarThunk";
-import {
-  selectEventDate,
-  selectEventDateClearState,
-} from "../../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
+import { selectEventDate } from "../../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
 import { generateZoom } from "../../../shared/generateZoom";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
@@ -313,7 +310,6 @@ const useMyEventsForm = () => {
       dispatch(selectEventAddressClearState());
       dispatch(getLocationDetailsClearState());
       dispatch(toEditEventClearState());
-      dispatch(selectEventDateClearState());
     }
     return () => {
       dispatch(getAddressClearState());

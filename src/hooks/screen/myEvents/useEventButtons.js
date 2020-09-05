@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { eventCategorySelected } from "../../../redux/myEvents/eventCategorySelected/thunk/eventCategorySelectedThunk";
 import { getEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
+import { selectEventDateClearState } from "../../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
 import { eventButtonItemsArray } from "../../../shared/buttonItemsArray";
 
 const useEventButtons = () => {
@@ -38,11 +39,13 @@ const useEventButtons = () => {
   };
 
   useEffect(() => {
-    if (!searchEventFilled)
+    if (!searchEventFilled) {
+      dispatch(selectEventDateClearState());
       toggleActiveClass(
         eventButtonItemsArray[eventButtonId].id,
         eventButtonItemsArray[eventButtonId].category
       );
+    }
     return () => dispatch(showNewEventForm(false));
   }, [eventUpdated, searchEventFilled, eventButtonId, dispatch]);
 

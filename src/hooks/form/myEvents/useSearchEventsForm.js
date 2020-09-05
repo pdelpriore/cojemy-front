@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { searchEvents } from "../../../redux/myEvents/retrieveEvents/thunk/retrieveEventsThunk";
 import { searchEventFilled } from "../../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { useDispatch, useSelector } from "react-redux";
+import { showCalendar } from "../../../redux/myEvents/showCalendar/thunk/showCalendarThunk";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
 
@@ -10,6 +11,7 @@ const useSearchEventsForm = () => {
   const [inputs, setInputs] = useState({});
 
   const { userData } = useSelector((state) => state.login);
+  const { eventDate } = useSelector((state) => state.eventDateSelected);
 
   const handleOnChange = (e) => {
     e.persist();
@@ -21,25 +23,16 @@ const useSearchEventsForm = () => {
           : e.target.value,
     }));
   };
-  const handleDateTime = (dateTime) => {
-    setInputs((inputs) => ({
-      ...inputs,
-      eventDate: dateTime,
-    }));
-  };
-  const handleOnBLurDate = () => {
-    setInputs((inputs) =>
-      (({ eventDate, ...others }) => ({
-        ...others,
-      }))(inputs)
-    );
+  const handleShowCalendar = (e) => {
+    e.preventDefault();
+    dispatch(showCalendar(true));
   };
 
   useEffect(() => {
-    if (inputs.eventDate || inputs.city) {
+    if (eventDate || inputs.city) {
       dispatch(
         searchEvents(
-          inputs.eventDate,
+          new Date(eventDate),
           inputs.city,
           userData._id,
           userData.email
@@ -50,13 +43,12 @@ const useSearchEventsForm = () => {
       dispatch(searchEventFilled(false));
     }
     return () => dispatch(searchEventFilled(false));
-  }, [inputs.eventDate, userData._id, userData.email, inputs.city, dispatch]);
+  }, [eventDate, userData._id, userData.email, inputs.city, dispatch]);
 
   return {
     inputs,
     handleOnChange,
-    handleOnBLurDate,
-    handleDateTime,
+    handleShowCalendar,
   };
 };
 
