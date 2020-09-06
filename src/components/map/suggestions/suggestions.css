@@ -11,6 +11,7 @@
   font-family: "OpenSans-SemiBold";
   color: #212529;
   font-size: 0.9vw;
+  background-color: #fbf9fa;
 }
 .suggestion-item:hover {
   cursor: pointer;
