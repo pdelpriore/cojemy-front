@@ -89,7 +89,7 @@ const MyEventsForm = () => {
                   height: 75,
                   fontFamily: "OpenSans-Regular",
                   border: "1px solid #CED4DA",
-                  backgroundColor: "#f3f6f8",
+                  backgroundColor: "#e2f3f5",
                 }}
                 withIcon={false}
                 singleImage={true}
