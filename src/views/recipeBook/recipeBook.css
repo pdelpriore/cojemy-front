@@ -193,7 +193,7 @@
   word-wrap: break-word;
   white-space: pre-wrap;
   background-color: #f3f6f8;
-  padding: 1%;
+  padding: 2%;
   border-radius: 5px;
 }
 .recipeDetails-comments-area {
@@ -229,7 +229,7 @@
   word-wrap: break-word;
   white-space: pre-wrap;
   background-color: #f3f6f8;
-  padding: 1%;
+  padding: 2%;
   border-radius: 5px;
 }
 .recipeDetails-comments-timeago {
