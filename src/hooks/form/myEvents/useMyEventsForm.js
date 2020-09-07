@@ -48,7 +48,12 @@ const useMyEventsForm = () => {
       ...inputs,
       [e.target.name]:
         e.target.name === strings.myEvents.inputName.TITLE
-          ? capitalizeFirst(e.target.value.replace(/[^0-9a-zA-Z-_.:,! ]+/g, ""))
+          ? capitalizeFirst(
+              e.target.value.replace(
+                /[^0-9a-zA-Z-_.:,!\s\u00a9\u00ae\u2000-\u3300\ud83c\ud000-\udfff\ud83d\ud000-\udfff\ud83e\ud000-\udfff]+/g,
+                ""
+              )
+            )
           : e.target.name === strings.myEvents.inputName.DESCRIPTION
           ? capitalizeFirst(e.target.value)
           : e.target.name === strings.myEvents.inputName.AVAILABLE_PLACES
