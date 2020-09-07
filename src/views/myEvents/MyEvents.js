@@ -19,6 +19,7 @@ import MakeEventButtons from "./makeEventButtons";
 import Notification from "../../components/notifications/Notification";
 import EventPreview from "./EventPreview";
 import Calendar from "../../components/calendar/Calendar";
+import Emoji from "../../components/emojis/Emoji";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./myEvents.css";
@@ -230,6 +231,17 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
           </Row>
         </div>
       )}
+      <div className="myevents-calendar-overlay">
+        <Row className="mb-5" />
+        <Row className="mb-5" />
+        <Row>
+          <Col xs={3} />
+          <Col xs={6}>
+            <Emoji />
+          </Col>
+          <Col xs={3} />
+        </Row>
+      </div>
     </animated.div>
   );
 };

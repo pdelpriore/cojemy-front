@@ -1,0 +1,9 @@
+.emoji-scroll-container {
+  height: 80vh;
+}
+.emoji-box {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  gap: 1%;
+}
