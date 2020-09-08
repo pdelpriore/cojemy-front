@@ -31,6 +31,35 @@ export const getEmojis = () => {
   };
 };
 
+export const getEmojiCategories = () => {
+  return async (dispatch, getState) => {
+    dispatch({ type: getEmojisCases.LOADING, payload: true });
+    try {
+      const response = await fetch("http://localhost:4000/emojicategories", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const responseData = await response.json();
+      if (responseData) {
+        dispatch({
+          type: getEmojisCases.CATEGORIES_RETRIEVED,
+          payload: responseData,
+        });
+      }
+    } catch (err) {
+      if (err) {
+        dispatch({ type: showEmojisCases.EMOJIS_SHOWN, payload: false });
+        dispatch({
+          type: getEmojisCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
+      }
+    }
+  };
+};
+
 export const getEmojisClearState = () => {
   return (dispatch, getState) => {
     dispatch({ type: getEmojisCases.CLEAR_STATE });

@@ -7,13 +7,13 @@ import "./emoji.css";
 const Emoji = () => {
   const dispatch = useDispatch();
   const {
-    emojis,
+    emojisFiltered,
     categories,
     categoryIndex,
     handleSelectCategory,
   } = useEmoji();
 
-  const { emojiLoading, emojisAll } = useSelector((state) => state.emojis);
+  const { emojiLoading } = useSelector((state) => state.emojis);
 
   return (
     <div className="emoji-box">
@@ -38,6 +38,12 @@ const Emoji = () => {
                 </div>
               ))}
           </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={3} />
+        <Col xs={9}>
+          <div className="emoji-list"></div>
         </Col>
       </Row>
     </div>

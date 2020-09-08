@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getEmojis } from "../../../redux/emoji/getEmojis/thunk/getEmojisThunk";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getEmojis,
+  getEmojiCategories,
+} from "../../../redux/emoji/getEmojis/thunk/getEmojisThunk";
 import { strings } from "../../../strings/Strings";
 
 const useEmoji = () => {
@@ -32,8 +35,11 @@ const useEmoji = () => {
     strings.emojis.categories_eng.FLAGS,
   ];
 
-  const [emojis, setEmojis] = useState(null);
   const [categoryIndex, setCategoryIndex] = useState(0);
+  const [emojisFiltered, setEmojisFiltered] = useState([]);
+  const [emojiFilteredBySubGroup, setEmojiFilteredBySubGroup] = useState({});
+
+  const { emojisAll, emojiCategories } = useSelector((state) => state.emojis);
 
   const handleSelectCategory = (catIndex) => {
     setCategoryIndex(catIndex);
@@ -41,9 +47,32 @@ const useEmoji = () => {
 
   useEffect(() => {
     dispatch(getEmojis());
-  }, []);
+    dispatch(getEmojiCategories());
+  }, [dispatch]);
 
-  return { emojis, categories, categoryIndex, handleSelectCategory };
+  useEffect(() => {
+    setEmojisFiltered(
+      emojisAll.filter((emoji) => emoji.group === categories_eng[categoryIndex])
+    );
+  }, [categoryIndex]);
+
+  useEffect(() => {
+    if (emojisFiltered.length > 0) {
+      emojiCategories[categoryIndex].subCategories.forEach((subCat) => {
+        let subCatFiltered = emojisFiltered.filter(
+          (emoji) => emoji.subGroup === subCat
+        );
+        setEmojiFilteredBySubGroup((emojiFilteredBySubGroup) => ({
+          ...emojiFilteredBySubGroup,
+          [subCat]: subCatFiltered,
+        }));
+      });
+    }
+  }, [emojisFiltered, emojiCategories, categoryIndex]);
+
+  console.log(emojiFilteredBySubGroup);
+
+  return { emojisFiltered, categories, categoryIndex, handleSelectCategory };
 };
 
 export default useEmoji;

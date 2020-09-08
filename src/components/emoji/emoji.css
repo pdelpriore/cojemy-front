@@ -23,3 +23,15 @@
   cursor: pointer;
   border-bottom: 2px solid red;
 }
+.emoji-list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
+  gap: 1.5%;
+  font-size: 1.2vw;
+  font-family: "OpenSans-Regular";
+  text-align: center;
+  padding: 2%;
+  height: 100%;
+  width: 100%;
+}
