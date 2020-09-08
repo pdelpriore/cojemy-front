@@ -1,8 +1,10 @@
-import { getEmojisCases } from "../../../config/cases/Cases";
+import { getEmojisCases, showEmojisCases } from "../../../config/cases/Cases";
+import { strings } from "../../../../strings/Strings";
+import { capitalizeFirst } from "../../../../util/Util";
 
 export const getEmojis = () => {
   return async (dispatch, getState) => {
-    //dispatch({ type: getEmojisCases.LOADING, payload: true });
+    dispatch({ type: getEmojisCases.LOADING, payload: true });
     try {
       const response = await fetch("http://localhost:4000/emojis", {
         method: "post",
@@ -12,14 +14,25 @@ export const getEmojis = () => {
       });
       const responseData = await response.json();
       if (responseData) {
-        console.log(responseData);
+        dispatch({
+          type: getEmojisCases.EMOJIS_RETRIEVED,
+          payload: responseData,
+        });
       }
     } catch (err) {
-      if (err) console.log(err);
-      // dispatch({
-      //   type: getLocationDetailsCases.ERROR,
-      //   payload: capitalizeFirst(strings.error.FETCH_ERROR),
-      // });
+      if (err) {
+        dispatch({ type: showEmojisCases.EMOJIS_SHOWN, payload: false });
+        dispatch({
+          type: getEmojisCases.ERROR,
+          payload: capitalizeFirst(strings.error.FETCH_ERROR),
+        });
+      }
     }
+  };
+};
+
+export const getEmojisClearState = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: getEmojisCases.CLEAR_STATE });
   };
 };

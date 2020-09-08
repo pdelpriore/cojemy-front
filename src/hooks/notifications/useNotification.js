@@ -14,6 +14,7 @@ import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getA
 import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { recipeDetailsClearErrorState } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { removeAccountClearState } from "../../redux/updateMyProfile/removeAccount/thunk/removeAccountThunk";
+import { getEmojisClearState } from "../../redux/emoji/getEmojis/thunk/getEmojisThunk";
 
 const useNotification = (notificationMessage) => {
   const [notifications, setNotification] = useState({});
@@ -33,6 +34,7 @@ const useNotification = (notificationMessage) => {
   );
   const { loginError } = useSelector((state) => state.login);
   const { logoutError } = useSelector((state) => state.logout);
+  const { emojiError } = useSelector((state) => state.emojis);
   const { userPasswordChanged, changeUserPasswordError } = useSelector(
     (state) => state.isUserPasswordChanged
   );
@@ -93,6 +95,8 @@ const useNotification = (notificationMessage) => {
         dispatch(recipeDetailsClearErrorState());
       } else if (removingAccountError) {
         dispatch(removeAccountClearState());
+      } else if (emojiError) {
+        dispatch(getEmojisClearState());
       }
       setShow(false);
       setNotification({});
@@ -108,6 +112,7 @@ const useNotification = (notificationMessage) => {
     remindPassError,
     loginError,
     logoutError,
+    emojiError,
     userGoogleSignedup,
     errorGoogleSignup,
     myRecipeChangeError,

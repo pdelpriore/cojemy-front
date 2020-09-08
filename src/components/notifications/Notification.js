@@ -16,6 +16,7 @@ const Notification = ({ notificationMessage }) => {
   const { remindPassError } = useSelector((state) => state.remindPass);
   const { loginError } = useSelector((state) => state.login);
   const { logoutError } = useSelector((state) => state.logout);
+  const { emojiError } = useSelector((state) => state.emojis);
   const { changeUserPasswordError } = useSelector(
     (state) => state.isUserPasswordChanged
   );
@@ -48,6 +49,7 @@ const Notification = ({ notificationMessage }) => {
         notification === remindPassError ||
         notification === loginError ||
         notification === logoutError ||
+        notification === emojiError ||
         notification === errorGoogleSignup ||
         notification === myRecipeChangeError ||
         notification === changeUserPasswordError ||
@@ -70,6 +72,7 @@ const Notification = ({ notificationMessage }) => {
         notification === remindPassError ||
         notification === loginError ||
         notification === logoutError ||
+        notification === emojiError ||
         notification === errorGoogleSignup ||
         notification === myRecipeChangeError ||
         notification === changeUserPasswordError ||

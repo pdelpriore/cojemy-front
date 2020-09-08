@@ -14,6 +14,8 @@ import {
   setMessageId,
   setMessageIdClearState,
 } from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
+import { showEmojis } from "../../../redux/emoji/showEmojis/thunk/showEmojisThunk";
+import { getEmojisClearState } from "../../../redux/emoji/getEmojis/thunk/getEmojisThunk";
 import { conversationWindowOpen } from "../../../redux/mails/conversationWindowOpen/thunk/conversationWindowOpenThunk";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
@@ -268,6 +270,8 @@ const useMessageForm = () => {
       dispatch(setMessageIdClearState());
       setRecipients([]);
       setInputs({});
+      dispatch(showEmojis(false));
+      dispatch(getEmojisClearState());
       if (newMessageSelected) dispatch(newMessage(false));
       if (conversations.length > 0) dispatch(setConversationClearState());
     }

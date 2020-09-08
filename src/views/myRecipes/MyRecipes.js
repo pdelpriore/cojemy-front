@@ -27,6 +27,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
     (state) => state.isMyRecipeChanged
   );
   const { logoutError } = useSelector((state) => state.logout);
+  const { emojiError } = useSelector((state) => state.emojis);
 
   const props = useSpring({
     opacity: 1,
@@ -124,7 +125,9 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
                 <Row className="mb-5" />
                 <Row className="mb-4" />
                 <Notification
-                  notificationMessage={myRecipeChangeError || logoutError}
+                  notificationMessage={
+                    myRecipeChangeError || logoutError || emojiError
+                  }
                 />
               </Col>
               <Col xs={1} />
