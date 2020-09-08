@@ -267,3 +267,13 @@ export const selectEventDateCases = Object.freeze({
   DATE_RETRIEVED: "selectEventDate_DateRetrieved",
   CLEAR_STATE: "selectEventDate_ClearState",
 });
+
+export const showEmojisCases = Object.freeze({
+  EMOJIS_SHOWN: "showEmojis_EmojisShown",
+});
+
+export const getEmojisCases = Object.freeze({
+  LOADING: "getEmojis_Loading",
+  EMOJIS_RETRIEVED: "getEmojis_EmojisRetrieved",
+  CLEAR_STATE: "getEmojis_ClearState",
+});
