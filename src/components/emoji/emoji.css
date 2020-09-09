@@ -38,6 +38,10 @@
 .emoji-list-item:hover {
   cursor: pointer;
 }
+.emoji-list-item-selected {
+  background-color: #dee1ec;
+  border-radius: 5px;
+}
 .emoji-scroll-area {
   height: 60vh;
 }

@@ -11,7 +11,9 @@ const Emoji = () => {
     categories,
     categoryIndex,
     emojiFilteredBySubGroup,
+    selectedEmoji,
     handleSelectCategory,
+    handleEmoji,
   } = useEmoji();
 
   const { emojiLoading } = useSelector((state) => state.emojis);
@@ -57,7 +59,18 @@ const Emoji = () => {
                 (emojiSubGroup, index) => (
                   <div className="emoji-list-container" key={index}>
                     {emojiSubGroup.map((emoji, index) => (
-                      <div className="emoji-list-item" key={index}>
+                      <div
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleEmoji(emoji);
+                        }}
+                        className={
+                          selectedEmoji === emoji.character
+                            ? "emoji-list-item-selected"
+                            : "emoji-list-item"
+                        }
+                        key={index}
+                      >
                         {emoji.character}
                       </div>
                     ))}

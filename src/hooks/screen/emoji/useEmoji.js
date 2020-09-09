@@ -36,11 +36,15 @@ const useEmoji = () => {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [emojisFiltered, setEmojisFiltered] = useState([]);
   const [emojiFilteredBySubGroup, setEmojiFilteredBySubGroup] = useState({});
+  const [selectedEmoji, setSelectedEmoji] = useState("");
 
   const { emojisAll, emojiCategories } = useSelector((state) => state.emojis);
 
   const handleSelectCategory = (catIndex) => {
     setCategoryIndex(catIndex);
+  };
+  const handleEmoji = (emoji) => {
+    setSelectedEmoji(emoji.character);
   };
 
   useEffect(() => {
@@ -76,7 +80,9 @@ const useEmoji = () => {
     categories,
     categoryIndex,
     emojiFilteredBySubGroup,
+    selectedEmoji,
     handleSelectCategory,
+    handleEmoji,
   };
 };
 
