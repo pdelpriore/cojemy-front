@@ -288,7 +288,6 @@ export const strings = Object.freeze({
     categories: {
       EMOTIONS: "emocje",
       BODY: "ludzie",
-      COMPONENT: "komponent",
       ANIMALS: "zwierzeta",
       FOOD: "jedzenie",
       TRAVEL: "podroze",
@@ -300,7 +299,6 @@ export const strings = Object.freeze({
     categories_eng: {
       EMOTIONS: "smileys-emotion",
       BODY: "people-body",
-      COMPONENT: "component",
       ANIMALS: "animals-nature",
       FOOD: "food-drink",
       TRAVEL: "travel-places",

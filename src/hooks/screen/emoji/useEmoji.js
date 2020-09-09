@@ -12,7 +12,6 @@ const useEmoji = () => {
   const categories = [
     strings.emojis.categories.EMOTIONS,
     strings.emojis.categories.BODY,
-    strings.emojis.categories.COMPONENT,
     strings.emojis.categories.ANIMALS,
     strings.emojis.categories.FOOD,
     strings.emojis.categories.TRAVEL,
@@ -25,7 +24,6 @@ const useEmoji = () => {
   const categories_eng = [
     strings.emojis.categories_eng.EMOTIONS,
     strings.emojis.categories_eng.BODY,
-    strings.emojis.categories_eng.COMPONENT,
     strings.emojis.categories_eng.ANIMALS,
     strings.emojis.categories_eng.FOOD,
     strings.emojis.categories_eng.TRAVEL,
@@ -51,6 +49,7 @@ const useEmoji = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    setEmojiFilteredBySubGroup({});
     setEmojisFiltered(
       emojisAll.filter((emoji) => emoji.group === categories_eng[categoryIndex])
     );
@@ -58,7 +57,10 @@ const useEmoji = () => {
 
   useEffect(() => {
     if (emojisFiltered.length > 0) {
-      emojiCategories[categoryIndex].subCategories.forEach((subCat) => {
+      const emojiCategoriesFiltered = emojiCategories.filter(
+        (emoji) => emoji.slug !== "component"
+      );
+      emojiCategoriesFiltered[categoryIndex].subCategories.forEach((subCat) => {
         let subCatFiltered = emojisFiltered.filter(
           (emoji) => emoji.subGroup === subCat
         );
@@ -69,8 +71,6 @@ const useEmoji = () => {
       });
     }
   }, [emojisFiltered, emojiCategories, categoryIndex]);
-
-  console.log(emojiFilteredBySubGroup);
 
   return { emojisFiltered, categories, categoryIndex, handleSelectCategory };
 };
