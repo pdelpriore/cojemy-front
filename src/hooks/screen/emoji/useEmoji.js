@@ -53,14 +53,18 @@ const useEmoji = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setEmojiFilteredBySubGroup({});
-    setEmojisFiltered(
-      emojisAll.filter((emoji) => emoji.group === categories_eng[categoryIndex])
-    );
-  }, [categoryIndex]);
+    if (emojisAll.length > 0) {
+      setEmojiFilteredBySubGroup({});
+      setEmojisFiltered(
+        emojisAll.filter(
+          (emoji) => emoji.group === categories_eng[categoryIndex]
+        )
+      );
+    }
+  }, [categoryIndex, emojisAll]);
 
   useEffect(() => {
-    if (emojisFiltered.length > 0) {
+    if (emojisFiltered.length > 0 && emojiCategories.length > 0) {
       const emojiCategoriesFiltered = emojiCategories.filter(
         (emoji) => emoji.slug !== "component"
       );
