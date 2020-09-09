@@ -237,11 +237,11 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-5" />
         <Row>
-          <Col xs={2} />
-          <Col xs={8}>
+          <Col xs={4} />
+          <Col xs={4}>
             <Emoji />
           </Col>
-          <Col xs={2} />
+          <Col xs={4} />
         </Row>
       </div>
     </animated.div>

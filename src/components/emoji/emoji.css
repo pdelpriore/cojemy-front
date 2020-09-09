@@ -5,10 +5,10 @@
 }
 .emoji-category-names {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   grid-template-rows: 1fr;
   gap: 1.5%;
-  font-size: 0.9vw;
+  font-size: 0.8vw;
   font-family: "Nunito-SemiBold";
   text-align: center;
   padding: 2%;
@@ -35,8 +35,13 @@
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.emoji-list-item {
+  transition: 0.2s;
+  padding: 2%;
+}
 .emoji-list-item:hover {
   cursor: pointer;
+  transform: scale(1.05);
 }
 .emoji-list-item-selected {
   background-color: #dee1ec;

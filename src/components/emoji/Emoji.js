@@ -21,8 +21,7 @@ const Emoji = () => {
   return (
     <div className="emoji-box">
       <Row>
-        <Col xs={2} />
-        <Col xs={9}>
+        <Col xs={12}>
           <div className="emoji-category-names">
             {categories.length > 0 &&
               categories.map((category, index) => (
@@ -43,11 +42,10 @@ const Emoji = () => {
               ))}
           </div>
         </Col>
-        <Col xs={1} />
       </Row>
+      <Row className="mb-2" />
       <Row>
-        <Col xs={1} />
-        <Col xs={10}>
+        <Col xs={12}>
           <ScrollArea
             className="emoji-scroll-area"
             smoothScrolling={true}
@@ -79,7 +77,6 @@ const Emoji = () => {
               )}
           </ScrollArea>
         </Col>
-        <Col xs={1} />
       </Row>
     </div>
   );
