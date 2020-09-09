@@ -8,7 +8,7 @@
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: 1fr;
   gap: 1.5%;
-  font-size: 1vw;
+  font-size: 0.9vw;
   font-family: "Nunito-SemiBold";
   text-align: center;
   padding: 2%;
@@ -23,17 +23,20 @@
   cursor: pointer;
   border-bottom: 2px solid red;
 }
-.emoji-list {
+.emoji-list-container {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   grid-template-rows: auto;
-  gap: 1.5%;
   font-size: 1.2vw;
   font-family: "OpenSans-Regular";
   text-align: center;
-  padding: 2%;
+  padding: 3%;
   height: 100%;
   width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.emoji-list-item:hover {
+  cursor: pointer;
 }
 .emoji-scroll-area {
   height: 60vh;

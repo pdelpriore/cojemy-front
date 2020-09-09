@@ -19,7 +19,8 @@ const Emoji = () => {
   return (
     <div className="emoji-box">
       <Row>
-        <Col xs={12}>
+        <Col xs={2} />
+        <Col xs={9}>
           <div className="emoji-category-names">
             {categories.length > 0 &&
               categories.map((category, index) => (
@@ -40,24 +41,32 @@ const Emoji = () => {
               ))}
           </div>
         </Col>
+        <Col xs={1} />
       </Row>
       <Row>
-        <Col xs={3} />
-        <Col xs={9}>
-          <ScrollArea className="emoji-scroll-area" smoothScrolling={true}>
-            <div className="emoji-list">
-              {Object.values(emojiFilteredBySubGroup).map(
+        <Col xs={1} />
+        <Col xs={10}>
+          <ScrollArea
+            className="emoji-scroll-area"
+            smoothScrolling={true}
+            horizontal={false}
+          >
+            {emojiFilteredBySubGroup &&
+              Object.values(emojiFilteredBySubGroup).length > 0 &&
+              Object.values(emojiFilteredBySubGroup).map(
                 (emojiSubGroup, index) => (
-                  <div style={{ marginBottom: 15 }} key={index}>
+                  <div className="emoji-list-container" key={index}>
                     {emojiSubGroup.map((emoji, index) => (
-                      <div key={index}>{emoji.character}</div>
+                      <div className="emoji-list-item" key={index}>
+                        {emoji.character}
+                      </div>
                     ))}
                   </div>
                 )
               )}
-            </div>
           </ScrollArea>
         </Col>
+        <Col xs={1} />
       </Row>
     </div>
   );
