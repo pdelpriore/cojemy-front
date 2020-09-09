@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
+import ScrollArea from "react-scrollbar";
 import useEmoji from "../../hooks/screen/emoji/useEmoji";
 import { useSelector, useDispatch } from "react-redux";
 import "./emoji.css";
@@ -7,9 +8,9 @@ import "./emoji.css";
 const Emoji = () => {
   const dispatch = useDispatch();
   const {
-    emojisFiltered,
     categories,
     categoryIndex,
+    emojiFilteredBySubGroup,
     handleSelectCategory,
   } = useEmoji();
 
@@ -43,7 +44,19 @@ const Emoji = () => {
       <Row>
         <Col xs={3} />
         <Col xs={9}>
-          <div className="emoji-list"></div>
+          <ScrollArea className="emoji-scroll-area" smoothScrolling={true}>
+            <div className="emoji-list">
+              {Object.values(emojiFilteredBySubGroup).map(
+                (emojiSubGroup, index) => (
+                  <div style={{ marginBottom: 15 }} key={index}>
+                    {emojiSubGroup.map((emoji, index) => (
+                      <div key={index}>{emoji.character}</div>
+                    ))}
+                  </div>
+                )
+              )}
+            </div>
+          </ScrollArea>
         </Col>
       </Row>
     </div>

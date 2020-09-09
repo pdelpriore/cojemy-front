@@ -72,7 +72,12 @@ const useEmoji = () => {
     }
   }, [emojisFiltered, emojiCategories, categoryIndex]);
 
-  return { emojisFiltered, categories, categoryIndex, handleSelectCategory };
+  return {
+    categories,
+    categoryIndex,
+    emojiFilteredBySubGroup,
+    handleSelectCategory,
+  };
 };
 
 export default useEmoji;
