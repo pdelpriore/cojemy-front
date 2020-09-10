@@ -118,6 +118,16 @@ const useMyEventsForm = () => {
   const handleFocus = (e) => {
     setInputHasFocus(e.target.name);
   };
+  const handleBlur = (e) => {
+    if (
+      (e.relatedTarget &&
+        e.relatedTarget.className &&
+        !e.relatedTarget.className.includes("btn")) ||
+      e.relatedTarget === null
+    ) {
+      setInputHasFocus("");
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (eventToEdit.eventData) {
@@ -342,6 +352,7 @@ const useMyEventsForm = () => {
     handleRemoveImage,
     handleSubmit,
     handleFocus,
+    handleBlur,
   };
 };
 

@@ -40,6 +40,7 @@ const MyEventsForm = () => {
     handleRemoveImage,
     handleSubmit,
     handleFocus,
+    handleBlur,
   } = useMyEventsForm();
 
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
@@ -73,6 +74,7 @@ const MyEventsForm = () => {
                 className="global-form-control"
                 onChange={handleOnChange}
                 onFocus={handleFocus}
+                onBlur={handleBlur}
                 value={inputs.title || ""}
                 name="title"
                 type="text"
@@ -161,6 +163,7 @@ const MyEventsForm = () => {
                   className="global-form-control"
                   onChange={handleOnChange}
                   onFocus={handleFocus}
+                  onBlur={handleBlur}
                   value={inputs.address || ""}
                   name="address"
                   type="text"
@@ -217,6 +220,7 @@ const MyEventsForm = () => {
                 onChange={handleOnChange}
                 value={inputs.description || ""}
                 onFocus={handleFocus}
+                onBlur={handleBlur}
                 as="textarea"
                 rows="4"
                 name="description"
@@ -236,6 +240,7 @@ const MyEventsForm = () => {
                 className="global-form-control"
                 onChange={handleOnChange}
                 onFocus={handleFocus}
+                onBlur={handleBlur}
                 value={inputs.availablePlaces || ""}
                 name="availablePlaces"
                 type="text"
@@ -262,6 +267,7 @@ const MyEventsForm = () => {
                   }
                   onClick={handleShowCalendar}
                   onFocus={handleFocus}
+                  onBlur={handleBlur}
                   type="text"
                   placeholder={strings.myEvents.DATE_PLACEHOLDER}
                   autoComplete="off"
@@ -286,6 +292,7 @@ const MyEventsForm = () => {
                 className="global-form-control"
                 onChange={handleOnChange}
                 onFocus={handleFocus}
+                onBlur={handleBlur}
                 value={inputs.tel || ""}
                 name="tel"
                 type="text"
