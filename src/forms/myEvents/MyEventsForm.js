@@ -12,7 +12,7 @@ import { selectEventAddressClearState } from "../../redux/myEvents/selectEventAd
 import { getAddressClearState } from "../../redux/myEvents/getAddress/thunk/getAddressThunk";
 import { getLocationDetailsClearState } from "../../redux/myEvents/getLocationDetails/thunk/getLocationDetailsThunk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
+import { faCalendarAlt, faGrin } from "@fortawesome/free-regular-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
@@ -306,103 +306,128 @@ const MyEventsForm = () => {
           <Col xs={12}>
             <div className="myevents-form-button-box">
               {!eventToEdit.eventData ? (
-                <Button
-                  disabled={
-                    loadingEventUpdating ||
-                    inputs.title === undefined ||
-                    inputs.title === "" ||
-                    error.imageError ||
-                    !addressObj.country ||
-                    inputs.description === undefined ||
-                    inputs.description === "" ||
-                    inputs.availablePlaces === undefined ||
-                    inputs.availablePlaces === "" ||
-                    !eventDate ||
-                    eventDate === "" ||
-                    inputs.tel === "" ||
-                    inputs.tel === undefined
-                  }
-                  type="submit"
-                  className="global-button-label"
-                  variant="outline-dark"
-                >
-                  <div className="myevents-form-spinner">
-                    {loadingEventUpdating && (
-                      <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
+                <div className="global-emoji-wrapper">
+                  <Button
+                    disabled={
+                      loadingEventUpdating ||
+                      inputs.title === undefined ||
+                      inputs.title === "" ||
+                      error.imageError ||
+                      !addressObj.country ||
+                      inputs.description === undefined ||
+                      inputs.description === "" ||
+                      inputs.availablePlaces === undefined ||
+                      inputs.availablePlaces === "" ||
+                      !eventDate ||
+                      eventDate === "" ||
+                      inputs.tel === "" ||
+                      inputs.tel === undefined
+                    }
+                    type="submit"
+                    className="global-button-label"
+                    variant="outline-dark"
+                  >
+                    <div className="myevents-form-spinner">
+                      {loadingEventUpdating && (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
+                    {loadingEventUpdating ? (
+                      <div className="myevents-form-button-loading">
+                        {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                      </div>
+                    ) : (
+                      <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
                     )}
-                  </div>
-                  {loadingEventUpdating ? (
-                    <div className="myevents-form-button-loading">
-                      {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
-                    </div>
-                  ) : (
-                    <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
-                  )}
-                </Button>
-              ) : (
-                <Button
-                  disabled={
-                    loadingEventUpdating ||
-                    inputs.title === undefined ||
-                    inputs.title === "" ||
-                    error.imageError ||
-                    !addressObj.country ||
-                    inputs.description === undefined ||
-                    inputs.description === "" ||
-                    inputs.availablePlaces === undefined ||
-                    inputs.availablePlaces === "" ||
-                    !eventDate ||
-                    eventDate === "" ||
-                    inputs.tel === "" ||
-                    inputs.tel === undefined
-                  }
-                  type="submit"
-                  className="global-button-label"
-                  variant="outline-dark"
-                >
-                  <div className="myevents-form-spinner">
-                    {false && (
-                      <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
-                    )}
-                  </div>
-                  {false ? (
-                    <div className="myevents-form-button-loading">
-                      {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
-                    </div>
-                  ) : (
-                    <div>
-                      {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
-                    </div>
-                  )}
-                </Button>
-              )}
-              <Button
-                disabled={
-                  inputHasFocus !== "title" && inputHasFocus !== "description"
-                }
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(showEmojis(true));
-                }}
-                size="sm"
-                variant="dark"
-              >
-                <div className="global-emoji-button">
-                  {strings.emojis.EMOJIS}
+                  </Button>
+                  <Button
+                    className="global-emoji-button"
+                    disabled={
+                      inputHasFocus !== "title" &&
+                      inputHasFocus !== "description"
+                    }
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(showEmojis(true));
+                    }}
+                    size="sm"
+                    variant="light"
+                  >
+                    <FontAwesomeIcon
+                      className="global-emoji-button-icon"
+                      icon={faGrin}
+                    />
+                  </Button>
                 </div>
-              </Button>
+              ) : (
+                <div className="global-emoji-wrapper">
+                  <Button
+                    disabled={
+                      loadingEventUpdating ||
+                      inputs.title === undefined ||
+                      inputs.title === "" ||
+                      error.imageError ||
+                      !addressObj.country ||
+                      inputs.description === undefined ||
+                      inputs.description === "" ||
+                      inputs.availablePlaces === undefined ||
+                      inputs.availablePlaces === "" ||
+                      !eventDate ||
+                      eventDate === "" ||
+                      inputs.tel === "" ||
+                      inputs.tel === undefined
+                    }
+                    type="submit"
+                    className="global-button-label"
+                    variant="outline-dark"
+                  >
+                    <div className="myevents-form-spinner">
+                      {loadingEventUpdating && (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
+                    {loadingEventUpdating ? (
+                      <div className="myevents-form-button-loading">
+                        {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                      </div>
+                    ) : (
+                      <div>
+                        {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
+                      </div>
+                    )}
+                  </Button>
+                  <Button
+                    className="global-emoji-button"
+                    disabled={
+                      inputHasFocus !== "title" &&
+                      inputHasFocus !== "description"
+                    }
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(showEmojis(true));
+                    }}
+                    size="sm"
+                    variant="light"
+                  >
+                    <FontAwesomeIcon
+                      className="global-emoji-button-icon"
+                      icon={faGrin}
+                    />
+                  </Button>
+                </div>
+              )}
               <Button
                 onClick={(e) => {
                   e.preventDefault();

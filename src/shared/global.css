@@ -18,6 +18,13 @@
   color: #071a52;
   background-color: #e2f3f5;
 }
+.global-emoji-button-icon {
+  font-size: 1.2vw;
+}
+.global-emoji-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
 .global-emoji-button {
-  font-size: 0.8vw;
+  margin-left: 10%;
 }
