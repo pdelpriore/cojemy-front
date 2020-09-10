@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Row, Col, Button, Image, Spinner } from "react-bootstrap";
 import { strings } from "../../strings/Strings";
-import { capitalizeFirst, capitalize } from "../../util/Util";
+import { capitalizeFirst } from "../../util/Util";
 import ImageUploader from "react-images-upload";
 import useMyEventsForm from "../../hooks/form/myEvents/useMyEventsForm";
 import Suggestions from "../../components/map/suggestions/Suggestions";
@@ -17,6 +17,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toEditEventClearState } from "../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { selectEventDateClearState } from "../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
+import { showEmojis } from "../../redux/emoji/showEmojis/thunk/showEmojisThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import "./myEventsForm.css";
@@ -32,11 +33,13 @@ const MyEventsForm = () => {
     showSuggestions,
     error,
     loadingImage,
+    inputHasFocus,
     handleOnChange,
     handleShowCalendar,
     handlePicture,
     handleRemoveImage,
     handleSubmit,
+    handleFocus,
   } = useMyEventsForm();
 
   const { loadingAddresses } = useSelector((state) => state.addressSuggestions);
@@ -69,6 +72,7 @@ const MyEventsForm = () => {
               <Form.Control
                 className="global-form-control"
                 onChange={handleOnChange}
+                onFocus={handleFocus}
                 value={inputs.title || ""}
                 name="title"
                 type="text"
@@ -156,6 +160,7 @@ const MyEventsForm = () => {
                 <Form.Control
                   className="global-form-control"
                   onChange={handleOnChange}
+                  onFocus={handleFocus}
                   value={inputs.address || ""}
                   name="address"
                   type="text"
@@ -211,6 +216,7 @@ const MyEventsForm = () => {
                 className="global-form-control"
                 onChange={handleOnChange}
                 value={inputs.description || ""}
+                onFocus={handleFocus}
                 as="textarea"
                 rows="4"
                 name="description"
@@ -229,6 +235,7 @@ const MyEventsForm = () => {
               <Form.Control
                 className="global-form-control"
                 onChange={handleOnChange}
+                onFocus={handleFocus}
                 value={inputs.availablePlaces || ""}
                 name="availablePlaces"
                 type="text"
@@ -254,6 +261,7 @@ const MyEventsForm = () => {
                       : ""
                   }
                   onClick={handleShowCalendar}
+                  onFocus={handleFocus}
                   type="text"
                   placeholder={strings.myEvents.DATE_PLACEHOLDER}
                   autoComplete="off"
@@ -277,6 +285,7 @@ const MyEventsForm = () => {
               <Form.Control
                 className="global-form-control"
                 onChange={handleOnChange}
+                onFocus={handleFocus}
                 value={inputs.tel || ""}
                 name="tel"
                 type="text"
@@ -372,6 +381,21 @@ const MyEventsForm = () => {
                   )}
                 </Button>
               )}
+              <Button
+                disabled={
+                  inputHasFocus !== "title" && inputHasFocus !== "description"
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(showEmojis(true));
+                }}
+                size="sm"
+                variant="dark"
+              >
+                <div className="global-emoji-button">
+                  {strings.emojis.EMOJIS}
+                </div>
+              </Button>
               <Button
                 onClick={(e) => {
                   e.preventDefault();

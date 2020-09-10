@@ -46,6 +46,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
     (state) => state.isSearchEventFormFilled
   );
   const { calendarShown } = useSelector((state) => state.isCalendarShown);
+  const { emojisShown } = useSelector((state) => state.isEmojiShown);
 
   const { skip, handlePrev, handleNext } = useMyEvents();
 
@@ -233,17 +234,19 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
           </Row>
         </div>
       )}
-      <div className="myevents-calendar-overlay">
-        <Row className="mb-5" />
-        <Row className="mb-4" />
-        <Row>
-          <Col xs={4} />
-          <Col xs={4}>
-            <Emoji />
-          </Col>
-          <Col xs={4} />
-        </Row>
-      </div>
+      {emojisShown && (
+        <div className="myevents-calendar-overlay">
+          <Row className="mb-5" />
+          <Row className="mb-4" />
+          <Row>
+            <Col xs={4} />
+            <Col xs={4}>
+              <Emoji />
+            </Col>
+            <Col xs={4} />
+          </Row>
+        </div>
+      )}
     </animated.div>
   );
 };

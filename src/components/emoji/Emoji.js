@@ -16,6 +16,7 @@ const Emoji = () => {
     selectedEmoji,
     handleSelectCategory,
     handleEmoji,
+    handleCancel,
   } = useEmoji();
 
   const { emojiLoading } = useSelector((state) => state.emojis);
@@ -98,10 +99,7 @@ const Emoji = () => {
             </Col>
             <Col xs={2} />
             <Col xs={5}>
-              <Button
-                variant="info"
-                //onClick={handleCancel}
-              >
+              <Button variant="info" onClick={handleCancel}>
                 <div className="emoji-button">
                   {capitalizeFirst(strings.myEvents.calendar.button.CANCEL)}
                 </div>

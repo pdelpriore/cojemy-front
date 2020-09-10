@@ -285,6 +285,7 @@ export const strings = Object.freeze({
     },
   },
   emojis: {
+    EMOJIS: "emotikony",
     categories: {
       EMOTIONS: "emocje",
       BODY: "ludzie",

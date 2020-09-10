@@ -29,6 +29,7 @@ const useMyEventsForm = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [loadingImage, setLoadingImage] = useState(false);
+  const [inputHasFocus, setInputHasFocus] = useState("");
 
   const { selectedAddress } = useSelector(
     (state) => state.selectedEventAddress
@@ -113,6 +114,9 @@ const useMyEventsForm = () => {
         }))(error)
       );
     }
+  };
+  const handleFocus = (e) => {
+    setInputHasFocus(e.target.name);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -331,11 +335,13 @@ const useMyEventsForm = () => {
     showSuggestions,
     error,
     loadingImage,
+    inputHasFocus,
     handleOnChange,
     handleShowCalendar,
     handlePicture,
     handleRemoveImage,
     handleSubmit,
+    handleFocus,
   };
 };
 

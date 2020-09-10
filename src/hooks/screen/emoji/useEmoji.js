@@ -4,6 +4,7 @@ import {
   getEmojis,
   getEmojiCategories,
 } from "../../../redux/emoji/getEmojis/thunk/getEmojisThunk";
+import { showEmojis } from "../../../redux/emoji/showEmojis/thunk/showEmojisThunk";
 import { strings } from "../../../strings/Strings";
 
 const useEmoji = () => {
@@ -46,6 +47,10 @@ const useEmoji = () => {
   const handleEmoji = (emoji) => {
     setSelectedEmoji(emoji.character);
   };
+  const handleCancel = (e) => {
+    e.preventDefault();
+    dispatch(showEmojis(false));
+  };
 
   useEffect(() => {
     dispatch(getEmojis());
@@ -87,6 +92,7 @@ const useEmoji = () => {
     selectedEmoji,
     handleSelectCategory,
     handleEmoji,
+    handleCancel,
   };
 };
 
