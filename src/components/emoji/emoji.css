@@ -50,3 +50,7 @@
 .emoji-scroll-area {
   height: 60vh;
 }
+.emoji-button {
+  font-size: 0.9vw;
+  font-family: "OpenSans-Regular";
+}

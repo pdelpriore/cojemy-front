@@ -1,8 +1,10 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import ScrollArea from "react-scrollbar";
 import useEmoji from "../../hooks/screen/emoji/useEmoji";
 import { useSelector, useDispatch } from "react-redux";
+import { strings } from "../../strings/Strings";
+import { capitalizeFirst } from "../../util/Util";
 import "./emoji.css";
 
 const Emoji = () => {
@@ -77,6 +79,37 @@ const Emoji = () => {
               )}
           </ScrollArea>
         </Col>
+      </Row>
+      <Row className="mb-4" />
+      <Row>
+        <Col xs={2} />
+        <Col xs={8}>
+          <Row>
+            <Col xs={5}>
+              <Button
+                variant="dark"
+                disabled={!selectedEmoji}
+                //onClick={handleSave}
+              >
+                <div className="emoji-button">
+                  {capitalizeFirst(strings.myEvents.calendar.button.SAVE)}
+                </div>
+              </Button>
+            </Col>
+            <Col xs={2} />
+            <Col xs={5}>
+              <Button
+                variant="info"
+                //onClick={handleCancel}
+              >
+                <div className="emoji-button">
+                  {capitalizeFirst(strings.myEvents.calendar.button.CANCEL)}
+                </div>
+              </Button>
+            </Col>
+          </Row>
+        </Col>
+        <Col xs={2} />
       </Row>
     </div>
   );

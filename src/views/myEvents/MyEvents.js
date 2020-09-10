@@ -235,7 +235,7 @@ const MyEvents = ({ match: { path, url, isExact } }) => {
       )}
       <div className="myevents-calendar-overlay">
         <Row className="mb-5" />
-        <Row className="mb-5" />
+        <Row className="mb-4" />
         <Row>
           <Col xs={4} />
           <Col xs={4}>
