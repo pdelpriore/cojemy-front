@@ -54,3 +54,9 @@
   font-size: 0.9vw;
   font-family: "OpenSans-Regular";
 }
+.emoji-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Spinner } from "react-bootstrap";
 import ScrollArea from "react-scrollbar";
 import useEmoji from "../../hooks/screen/emoji/useEmoji";
 import { useSelector, useDispatch } from "react-redux";
@@ -50,36 +50,42 @@ const Emoji = () => {
       <Row className="mb-2" />
       <Row>
         <Col xs={12}>
-          <ScrollArea
-            className="emoji-scroll-area"
-            smoothScrolling={true}
-            horizontal={false}
-          >
-            {emojiFilteredBySubGroup &&
-              Object.values(emojiFilteredBySubGroup).length > 0 &&
-              Object.values(emojiFilteredBySubGroup).map(
-                (emojiSubGroup, index) => (
-                  <div className="emoji-list-container" key={index}>
-                    {emojiSubGroup.map((emoji, index) => (
-                      <div
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleEmoji(emoji);
-                        }}
-                        className={
-                          selectedEmoji === emoji.character
-                            ? "emoji-list-item-selected"
-                            : "emoji-list-item"
-                        }
-                        key={index}
-                      >
-                        {emoji.character}
-                      </div>
-                    ))}
-                  </div>
-                )
-              )}
-          </ScrollArea>
+          {!emojiLoading ? (
+            <ScrollArea
+              className="emoji-scroll-area"
+              smoothScrolling={true}
+              horizontal={false}
+            >
+              {emojiFilteredBySubGroup &&
+                Object.values(emojiFilteredBySubGroup).length > 0 &&
+                Object.values(emojiFilteredBySubGroup).map(
+                  (emojiSubGroup, index) => (
+                    <div className="emoji-list-container" key={index}>
+                      {emojiSubGroup.map((emoji, index) => (
+                        <div
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleEmoji(emoji);
+                          }}
+                          className={
+                            selectedEmoji === emoji.character
+                              ? "emoji-list-item-selected"
+                              : "emoji-list-item"
+                          }
+                          key={index}
+                        >
+                          {emoji.character}
+                        </div>
+                      ))}
+                    </div>
+                  )
+                )}
+            </ScrollArea>
+          ) : (
+            <div className="emoji-spinner">
+              <Spinner animation="border" variant="dark" />
+            </div>
+          )}
         </Col>
       </Row>
       <Row className="mb-4" />
