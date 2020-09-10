@@ -279,3 +279,8 @@ export const getEmojisCases = Object.freeze({
   ERROR: "getEmojis_Error",
   CLEAR_STATE: "getEmojis_ClearState",
 });
+
+export const selectEmojiCases = Object.freeze({
+  EMOJI_SELECTED: "selectEmoji_EmojiSelected",
+  CLEAR_STATE: "selectEmoji_ClearState",
+});

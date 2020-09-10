@@ -16,6 +16,7 @@ const Emoji = () => {
     selectedEmoji,
     handleSelectCategory,
     handleEmoji,
+    handleSave,
     handleCancel,
   } = useEmoji();
 
@@ -90,7 +91,7 @@ const Emoji = () => {
               <Button
                 variant="dark"
                 disabled={!selectedEmoji}
-                //onClick={handleSave}
+                onClick={handleSave}
               >
                 <div className="emoji-button">
                   {capitalizeFirst(strings.myEvents.calendar.button.SAVE)}

@@ -16,6 +16,7 @@ import { changeEventClearState } from "../../../redux/myEvents/changeEvent/thunk
 import { toEditEventClearState } from "../../../redux/myEvents/toEditEvent/thunk/toEditEventThunk";
 import { showNewEventForm } from "../../../redux/myEvents/showNewEventForm/thunk/showNewEventFormThunk";
 import { showCalendar } from "../../../redux/myEvents/showCalendar/thunk/showCalendarThunk";
+import { showEmojis } from "../../../redux/emoji/showEmojis/thunk/showEmojisThunk";
 import { selectEventDate } from "../../../redux/myEvents/selectEventDate/thunk/selectEventDateThunk";
 import { generateZoom } from "../../../shared/generateZoom";
 import { strings } from "../../../strings/Strings";
@@ -42,6 +43,7 @@ const useMyEventsForm = () => {
   const { userData } = useSelector((state) => state.login);
   const { eventToEdit } = useSelector((state) => state.toEditEvent);
   const { eventDate } = useSelector((state) => state.eventDateSelected);
+  const { emojiCharacter } = useSelector((state) => state.selectedEmoji);
 
   const handleOnChange = (e) => {
     e.persist();
@@ -162,6 +164,16 @@ const useMyEventsForm = () => {
       );
     }
   };
+
+  useEffect(() => {
+    if (emojiCharacter) {
+      setInputs((inputs) => ({
+        ...inputs,
+        [inputHasFocus]: inputs[inputHasFocus].concat(emojiCharacter),
+      }));
+      dispatch(showEmojis(false));
+    }
+  }, [emojiCharacter, inputHasFocus, dispatch]);
 
   useEffect(() => {
     if (inputs.address) {

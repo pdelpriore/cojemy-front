@@ -49,6 +49,7 @@ import showCalendarReducer from "../../myEvents/showCalendar/reducer/showCalenda
 import selectEventDateReducer from "../../myEvents/selectEventDate/reducer/selectEventDateReducer";
 import showEmojisReducer from "../../emoji/showEmojis/reducer/showEmojisReducer";
 import getEmojisReducer from "../../emoji/getEmojis/reducer/getEmojisReducer";
+import selectEmojiReducer from "../../emoji/selectEmoji/reducer/selectEmojiReducer";
 
 const allReducers = combineReducers({
   signup: signupReducer,
@@ -101,6 +102,7 @@ const allReducers = combineReducers({
   eventDateSelected: selectEventDateReducer,
   isEmojiShown: showEmojisReducer,
   emojis: getEmojisReducer,
+  selectedEmoji: selectEmojiReducer,
 });
 
 export default allReducers;
