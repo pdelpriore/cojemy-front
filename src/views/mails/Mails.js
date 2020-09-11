@@ -11,6 +11,7 @@ import { newMessage } from "../../redux/mails/newMessageSelected/thunk/newMessag
 import { conversationWindowOpen } from "../../redux/mails/conversationWindowOpen/thunk/conversationWindowOpenThunk";
 import MessageForm from "../../forms/mails/MessageForm";
 import MailsList from "./MailsList";
+import Emoji from "../../components/emoji/Emoji";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./mails.css";
@@ -26,6 +27,7 @@ const Mails = ({ match: { path, url, isExact } }) => {
   const { newMessageFormShown } = useSelector(
     (state) => state.isNewMessageFormShown
   );
+  const { emojisShown } = useSelector((state) => state.isEmojiShown);
 
   return (
     <animated.div className="mails-area" style={props}>
@@ -104,6 +106,19 @@ const Mails = ({ match: { path, url, isExact } }) => {
           </Row>
         )}
       </div>
+      {emojisShown && (
+        <div className="myevents-calendar-overlay">
+          <Row className="mb-5" />
+          <Row className="mb-4" />
+          <Row>
+            <Col xs={4} />
+            <Col xs={4}>
+              <Emoji />
+            </Col>
+            <Col xs={4} />
+          </Row>
+        </div>
+      )}
     </animated.div>
   );
 };

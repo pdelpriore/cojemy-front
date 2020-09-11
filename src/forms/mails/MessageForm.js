@@ -10,11 +10,13 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faGrin } from "@fortawesome/free-regular-svg-icons";
 import ScrollArea from "react-scrollbar";
 import useMessageForm from "../../hooks/form/mails/useMessageForm";
 import RecipientSuggestions from "../../components/mails/suggestions/RecipientSuggestions";
 import Recipient from "../../components/mails/suggestions/Recipient";
-import { useSelector } from "react-redux";
+import { showEmojis } from "../../redux/emoji/showEmojis/thunk/showEmojisThunk";
+import { useSelector, useDispatch } from "react-redux";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import { userGooglePhoto } from "../../shared/testWordsArray";
@@ -23,13 +25,17 @@ import "./messageForm.css";
 import "../../shared/global.css";
 
 const MessageForm = () => {
+  const dispatch = useDispatch();
   const {
     inputs,
     recipients,
+    inputHasFocus,
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
     handleSubmitMessage,
+    handleFocus,
+    handleBlur,
     conversationScrollRef,
     loading,
     searchLoading,
@@ -54,6 +60,8 @@ const MessageForm = () => {
                   className="message-form-control"
                   onChange={handleInputChange}
                   value={inputs.to || ""}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                   size="lg"
                   name="to"
                   type="text"
@@ -145,6 +153,8 @@ const MessageForm = () => {
               className="message-form-control"
               onChange={handleInputChange}
               value={inputs.content || ""}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
               as="textarea"
               rows="3"
               size="lg"
@@ -158,37 +168,58 @@ const MessageForm = () => {
       <Row>
         <Col xs={12}>
           <div className="message-form-buttons-box">
-            <Button
-              onClick={handleSubmitMessage}
-              className="global-button-label"
-              type="submit"
-              variant="outline-dark"
-              disabled={
-                loading ||
-                !recipient.name ||
-                inputs.content === undefined ||
-                inputs.content === ""
-              }
-            >
-              <div className="message-spinner">
-                {loading && (
-                  <Spinner
-                    as="span"
-                    animation="border"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-              {loading ? (
-                <div className="message-button-loading">
-                  {capitalizeFirst(strings.mails.BUTTON_SEND_LOADING)}
+            <div className="global-emoji-wrapper">
+              <Button
+                onClick={handleSubmitMessage}
+                className="global-button-label"
+                type="submit"
+                variant="outline-dark"
+                disabled={
+                  loading ||
+                  !recipient.name ||
+                  inputs.content === undefined ||
+                  inputs.content === ""
+                }
+              >
+                <div className="message-spinner">
+                  {loading && (
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  )}
                 </div>
-              ) : (
-                <div>{capitalizeFirst(strings.mails.BUTTON_SEND)}</div>
-              )}
-            </Button>
+                {loading ? (
+                  <div className="message-button-loading">
+                    {capitalizeFirst(strings.mails.BUTTON_SEND_LOADING)}
+                  </div>
+                ) : (
+                  <div>{capitalizeFirst(strings.mails.BUTTON_SEND)}</div>
+                )}
+              </Button>
+              <Button
+                className="global-emoji-button"
+                disabled={
+                  inputHasFocus !== "content" ||
+                  inputs.content === "" ||
+                  inputs.content === undefined
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(showEmojis(true));
+                }}
+                size="sm"
+                variant="light"
+              >
+                <FontAwesomeIcon
+                  className="global-emoji-button-icon"
+                  icon={faGrin}
+                />
+              </Button>
+            </div>
             <Button
               onClick={handleCancel}
               className="global-button-label"

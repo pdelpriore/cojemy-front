@@ -1,6 +1,7 @@
 .mails-area {
   display: flex;
   flex-direction: row;
+  position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;

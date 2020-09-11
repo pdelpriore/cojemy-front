@@ -33,6 +33,7 @@ const useMessageForm = () => {
   );
   const [recipients, setRecipients] = useState([]);
   const [error, setError] = useState({});
+  const [inputHasFocus, setInputHasFocus] = useState("");
 
   const conversationScrollRef = useRef(null);
 
@@ -46,6 +47,7 @@ const useMessageForm = () => {
   const { windowOpen } = useSelector((state) => state.isConversationWindowOpen);
   const { messageId } = useSelector((state) => state.isMessageId);
   const { mailError } = useSelector((state) => state.hasMailError);
+  const { emojiCharacter } = useSelector((state) => state.selectedEmoji);
 
   const handleInputChange = (e) => {
     e.persist();
@@ -53,6 +55,19 @@ const useMessageForm = () => {
       ...inputs,
       [e.target.name]: e.target.value,
     }));
+  };
+  const handleFocus = (e) => {
+    setInputHasFocus(e.target.name);
+  };
+  const handleBlur = (e) => {
+    if (
+      (e.relatedTarget &&
+        e.relatedTarget.className &&
+        !e.relatedTarget.className.includes("btn")) ||
+      e.relatedTarget === null
+    ) {
+      setInputHasFocus("");
+    }
   };
 
   const handleSubmitMessage = (e) => {
@@ -106,6 +121,16 @@ const useMessageForm = () => {
     setIsActive(true);
     return () => setIsActive(false);
   }, []);
+
+  useEffect(() => {
+    if (emojiCharacter) {
+      setInputs((inputs) => ({
+        ...inputs,
+        [inputHasFocus]: inputs[inputHasFocus].concat(emojiCharacter),
+      }));
+      dispatch(showEmojis(false));
+    }
+  }, [emojiCharacter, inputHasFocus, dispatch]);
 
   useEffect(() => {
     if (socket.connected && inputs.to && isActive) {
@@ -297,10 +322,13 @@ const useMessageForm = () => {
     searchLoading,
     error,
     conversationScrollRef,
+    inputHasFocus,
     handleInputChange,
     handleCancel,
     handleRemoveRecipient,
     handleSubmitMessage,
+    handleFocus,
+    handleBlur,
     showRecipientSuggestions,
   };
 };
