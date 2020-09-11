@@ -23,3 +23,5 @@ export const unacceptableWordsArray = [
 ];
 
 export const userGooglePhoto = ["googleusercontent.com"];
+
+export const unsupportedEmojis = ["1F972", "1F978"];

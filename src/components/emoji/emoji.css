@@ -26,7 +26,7 @@
 }
 .emoji-list-container {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   grid-template-rows: auto;
   font-size: 1.2vw;
   font-family: "OpenSans-Regular";
