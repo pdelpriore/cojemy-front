@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import { capitalize } from "../../util/Util";
 import "./myRecipes.css";
+import "../../shared/global.css";
 
 const MyRecipes = ({ match: { path, url, isExact } }) => {
   const dispatch = useDispatch();
@@ -145,7 +146,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
         )}
       </div>
       {emojisShown && (
-        <div className="myevents-calendar-overlay">
+        <div className="global-emoji-overlay">
           <Row className="mb-5" />
           <Row className="mb-4" />
           <Row>

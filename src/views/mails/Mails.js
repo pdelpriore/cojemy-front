@@ -15,6 +15,7 @@ import Emoji from "../../components/emoji/Emoji";
 import { capitalize } from "../../util/Util";
 import { strings } from "../../strings/Strings";
 import "./mails.css";
+import "../../shared/global.css";
 
 const Mails = ({ match: { path, url, isExact } }) => {
   const dispatch = useDispatch();
@@ -107,7 +108,7 @@ const Mails = ({ match: { path, url, isExact } }) => {
         )}
       </div>
       {emojisShown && (
-        <div className="myevents-calendar-overlay">
+        <div className="global-emoji-overlay">
           <Row className="mb-5" />
           <Row className="mb-4" />
           <Row>

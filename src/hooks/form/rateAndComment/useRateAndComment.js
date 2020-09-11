@@ -4,15 +4,18 @@ import {
   addRateAndComment,
   editRecipeRateAndComment,
 } from "../../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
+import { showEmojis } from "../../../redux/emoji/showEmojis/thunk/showEmojisThunk";
 import { toEditRateCommentClearState } from "../../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { useDispatch, useSelector } from "react-redux";
 
 const useRateAndComment = () => {
+  const dispatch = useDispatch();
+
   const [rate, setRate] = useState("");
   const [rateHover, setRateHover] = useState("");
   const [inputs, setInputs] = useState({});
+  const [inputHasFocus, setInputHasFocus] = useState("");
 
-  const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.login);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const { recipeListItemChanged } = useSelector(
@@ -21,6 +24,7 @@ const useRateAndComment = () => {
   const { rateCommentChanged } = useSelector(
     (state) => state.isRateCommentChanged
   );
+  const { emojiCharacter } = useSelector((state) => state.selectedEmoji);
 
   const handleMouseEnter = (e) => {
     setRateHover(e.currentTarget.dataset.value);
@@ -41,6 +45,19 @@ const useRateAndComment = () => {
       ...inputs,
       [e.target.name]: capitalizeFirst(e.target.value),
     }));
+  };
+  const handleFocus = (e) => {
+    setInputHasFocus(e.target.name);
+  };
+  const handleBlur = (e) => {
+    if (
+      (e.relatedTarget &&
+        e.relatedTarget.className &&
+        !e.relatedTarget.className.includes("btn")) ||
+      e.relatedTarget === null
+    ) {
+      setInputHasFocus("");
+    }
   };
 
   const handleOnSubmit = (recipeId) => {
@@ -68,6 +85,16 @@ const useRateAndComment = () => {
       );
     }
   };
+
+  useEffect(() => {
+    if (emojiCharacter) {
+      setInputs((inputs) => ({
+        ...inputs,
+        [inputHasFocus]: inputs[inputHasFocus].concat(emojiCharacter),
+      }));
+      dispatch(showEmojis(false));
+    }
+  }, [emojiCharacter, inputHasFocus, dispatch]);
 
   useEffect(() => {
     if (rateCommentChanged) {
@@ -100,11 +127,14 @@ const useRateAndComment = () => {
     rate,
     rateHover,
     inputs,
+    inputHasFocus,
     handleClick,
     handleMouseEnter,
     handleMouseLeave,
     handleInputChange,
     handleOnSubmit,
+    handleFocus,
+    handleBlur,
   };
 };
 

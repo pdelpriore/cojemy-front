@@ -4,11 +4,14 @@ import useRateAndComment from "../../../hooks/form/rateAndComment/useRateAndComm
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faGrin } from "@fortawesome/free-regular-svg-icons";
 import { initializeStarRating } from "../../../shared/initializeStarRating";
+import { showEmojis } from "../../../redux/emoji/showEmojis/thunk/showEmojisThunk";
 import { toEditRateCommentClearState } from "../../../redux/recipeBook/toEditRecipeRateComment/thunk/toEditRateCommentThunk";
 import { strings } from "../../../strings/Strings";
 import { capitalizeFirst } from "../../../util/Util";
 import "./rateAndComment.css";
+import "../../../shared/global.css";
 
 const RateAndComment = ({ recipeId }) => {
   const dispatch = useDispatch();
@@ -16,12 +19,16 @@ const RateAndComment = ({ recipeId }) => {
     rate,
     rateHover,
     inputs,
+    inputHasFocus,
     handleMouseEnter,
     handleMouseLeave,
     handleClick,
     handleInputChange,
     handleOnSubmit,
+    handleFocus,
+    handleBlur,
   } = useRateAndComment();
+
   const { detailsLoading } = useSelector((state) => state.isRecipeDetailsShown);
   const { rateAndComment } = useSelector((state) => state.toEditRateComment);
   const stars = initializeStarRating(strings.rating.RATE_AND_COMMENT);
@@ -52,6 +59,7 @@ const RateAndComment = ({ recipeId }) => {
       {ratingStar}
     </div>
   ));
+
   return (
     <>
       <Row>
@@ -86,6 +94,8 @@ const RateAndComment = ({ recipeId }) => {
                   <Form.Control
                     onChange={handleInputChange}
                     value={inputs.comment || ""}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                     className="rate-form-control"
                     as="textarea"
                     rows="4"
@@ -103,77 +113,119 @@ const RateAndComment = ({ recipeId }) => {
               <Col xs={10}>
                 {!rateAndComment.commentValue ? (
                   <div className="rate-button">
-                    <Button
-                      className="rate-button-send"
-                      disabled={
-                        detailsLoading ||
-                        inputs.comment === undefined ||
-                        inputs.comment === "" ||
-                        rate === ""
-                      }
-                      type="submit"
-                      variant="outline-dark"
-                    >
-                      <div className="rate-spinner">
-                        {detailsLoading && (
-                          <Spinner
-                            as="span"
-                            animation="border"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                          />
-                        )}
-                        {detailsLoading ? (
-                          <div className="rate-loading-text">
-                            {capitalizeFirst(
-                              strings.rating.BUTTON_TEXT_LOADING
-                            )}
-                          </div>
-                        ) : (
-                          <div>
-                            {capitalizeFirst(strings.rating.BUTTON_TEXT)}
-                          </div>
-                        )}
-                      </div>
-                    </Button>
+                    <div className="global-emoji-wrapper">
+                      <Button
+                        className="rate-button-send"
+                        disabled={
+                          detailsLoading ||
+                          inputs.comment === undefined ||
+                          inputs.comment === "" ||
+                          rate === ""
+                        }
+                        type="submit"
+                        variant="outline-dark"
+                      >
+                        <div className="rate-spinner">
+                          {detailsLoading && (
+                            <Spinner
+                              as="span"
+                              animation="border"
+                              size="sm"
+                              role="status"
+                              aria-hidden="true"
+                            />
+                          )}
+                          {detailsLoading ? (
+                            <div className="rate-loading-text">
+                              {capitalizeFirst(
+                                strings.rating.BUTTON_TEXT_LOADING
+                              )}
+                            </div>
+                          ) : (
+                            <div>
+                              {capitalizeFirst(strings.rating.BUTTON_TEXT)}
+                            </div>
+                          )}
+                        </div>
+                      </Button>
+                      <Button
+                        className="global-emoji-button"
+                        disabled={
+                          inputHasFocus !== "comment" ||
+                          inputs.comment === "" ||
+                          inputs.comment === undefined
+                        }
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(showEmojis(true));
+                        }}
+                        size="sm"
+                        variant="light"
+                      >
+                        <FontAwesomeIcon
+                          className="global-emoji-button-icon"
+                          icon={faGrin}
+                        />
+                      </Button>
+                    </div>
                   </div>
                 ) : (
                   <div className="rate-button">
-                    <Button
-                      className="rate-button-send"
-                      disabled={
-                        detailsLoading ||
-                        inputs.comment === undefined ||
-                        inputs.comment === "" ||
-                        rate === ""
-                      }
-                      type="submit"
-                      variant="outline-dark"
-                    >
-                      <div className="rate-spinner">
-                        {detailsLoading && (
-                          <Spinner
-                            as="span"
-                            animation="border"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                          />
-                        )}
-                        {detailsLoading ? (
-                          <div className="rate-loading-text">
-                            {capitalizeFirst(
-                              strings.rating.BUTTON_EDIT_TEXT_LOADING
-                            )}
-                          </div>
-                        ) : (
-                          <div>
-                            {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
-                          </div>
-                        )}
-                      </div>
-                    </Button>
+                    <div className="global-emoji-wrapper">
+                      <Button
+                        className="rate-button-send"
+                        disabled={
+                          detailsLoading ||
+                          inputs.comment === undefined ||
+                          inputs.comment === "" ||
+                          rate === ""
+                        }
+                        type="submit"
+                        variant="outline-dark"
+                      >
+                        <div className="rate-spinner">
+                          {detailsLoading && (
+                            <Spinner
+                              as="span"
+                              animation="border"
+                              size="sm"
+                              role="status"
+                              aria-hidden="true"
+                            />
+                          )}
+                          {detailsLoading ? (
+                            <div className="rate-loading-text">
+                              {capitalizeFirst(
+                                strings.rating.BUTTON_EDIT_TEXT_LOADING
+                              )}
+                            </div>
+                          ) : (
+                            <div>
+                              {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
+                            </div>
+                          )}
+                        </div>
+                      </Button>
+                      <Button
+                        className="global-emoji-button"
+                        disabled={
+                          inputHasFocus !== "comment" ||
+                          inputs.comment === "" ||
+                          inputs.comment === undefined
+                        }
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(showEmojis(true));
+                        }}
+                        size="sm"
+                        variant="light"
+                      >
+                        <FontAwesomeIcon
+                          className="global-emoji-button-icon"
+                          icon={faGrin}
+                        />
+                      </Button>
+                    </div>
                     <Button
                       onClick={(e) => {
                         e.preventDefault();

@@ -12,10 +12,12 @@ import MakeRecipeButton from "./makeRecipeButton";
 import RecipesList from "./RecipesList";
 import RecipeDetails from "./RecipeDetails";
 import SearchRecipeForm from "../../forms/recipeBook/searchRecipe/SearchRecipeForm";
+import Emoji from "../../components/emoji/Emoji";
 import useRecipeBook from "../../hooks/screen/recipeBook/useRecipeBook";
 import Notification from "../../components/notifications/Notification";
 import { useSelector } from "react-redux";
 import "./recipeBook.css";
+import "../../shared/global.css";
 
 const RecipeBook = ({ match: { path, url, isExact } }) => {
   const props = useSpring({
@@ -31,6 +33,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
     (state) => state.turnOffRecipeButtons
   );
   const { logoutError } = useSelector((state) => state.logout);
+  const { emojisShown } = useSelector((state) => state.isEmojiShown);
 
   const { skip, handlePrev, handleNext } = useRecipeBook();
   return (
@@ -133,6 +136,19 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
           </div>
         )}
       </div>
+      {emojisShown && (
+        <div className="global-emoji-overlay">
+          <Row className="mb-5" />
+          <Row className="mb-4" />
+          <Row>
+            <Col xs={4} />
+            <Col xs={4}>
+              <Emoji />
+            </Col>
+            <Col xs={4} />
+          </Row>
+        </div>
+      )}
     </animated.div>
   );
 };
