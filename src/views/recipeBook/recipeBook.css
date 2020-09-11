@@ -142,6 +142,7 @@
 }
 .recipesList-item-simplebar {
   height: 99vh !important;
+  z-index: 1;
 }
 .recipeDetails-main {
   padding-left: 2%;

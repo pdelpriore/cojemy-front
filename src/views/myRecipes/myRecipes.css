@@ -24,6 +24,7 @@
 }
 .myrecipes-scroll-area {
   height: 99vh !important;
+  z-index: 1;
 }
 .myrecipes-list-loading-area {
   display: flex;

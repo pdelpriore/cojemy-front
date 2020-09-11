@@ -35,6 +35,7 @@
 }
 .myevents-list-simplebar {
   height: 99vh !important;
+  z-index: 1;
 }
 .myevents-button-text {
   width: 6.5vw;
