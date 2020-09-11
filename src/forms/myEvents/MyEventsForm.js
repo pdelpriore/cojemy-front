@@ -349,8 +349,12 @@ const MyEventsForm = () => {
                   <Button
                     className="global-emoji-button"
                     disabled={
-                      inputHasFocus !== "title" &&
-                      inputHasFocus !== "description"
+                      (inputHasFocus !== "title" ||
+                        inputs.title === "" ||
+                        inputs.title === undefined) &&
+                      (inputHasFocus !== "description" ||
+                        inputs.description === "" ||
+                        inputs.description === undefined)
                     }
                     onClick={(e) => {
                       e.preventDefault();
@@ -411,8 +415,12 @@ const MyEventsForm = () => {
                   <Button
                     className="global-emoji-button"
                     disabled={
-                      inputHasFocus !== "title" &&
-                      inputHasFocus !== "description"
+                      (inputHasFocus !== "title" ||
+                        inputs.title === "" ||
+                        inputs.title === undefined) &&
+                      (inputHasFocus !== "description" ||
+                        inputs.description === "" ||
+                        inputs.description === undefined)
                     }
                     onClick={(e) => {
                       e.preventDefault();

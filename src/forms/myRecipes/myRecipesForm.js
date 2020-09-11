@@ -7,8 +7,10 @@ import ImageUploader from "react-images-upload";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faGrin } from "@fortawesome/free-regular-svg-icons";
 import { toEditMyRecipeClearState } from "../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
+import { showEmojis } from "../../redux/emoji/showEmojis/thunk/showEmojisThunk";
 import { useSelector, useDispatch } from "react-redux";
 import ScrollArea from "react-scrollbar";
 import "./myRecipesForm.css";
@@ -20,6 +22,9 @@ const MyRecipesForm = () => {
     inputs,
     error,
     loadingImage,
+    inputHasFocus,
+    handleFocus,
+    handleBlur,
     handleInputsChange,
     handlePicture,
     handleRemoveImage,
@@ -28,8 +33,10 @@ const MyRecipesForm = () => {
     handlePlayerReady,
     handleSubmit,
   } = useNewRecipeForm();
+
   const { loading } = useSelector((state) => state.isMyRecipeChanged);
   const { myRecipeToEdit } = useSelector((state) => state.toEditMyRecipe);
+
   return (
     <ScrollArea
       className="myrecipes-form-scroll-area"
@@ -47,6 +54,8 @@ const MyRecipesForm = () => {
                 className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.title || ""}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 name="title"
                 type="text"
                 maxLength="21"
@@ -135,6 +144,8 @@ const MyRecipesForm = () => {
                 className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.video || ""}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 name="video"
                 type="text"
                 placeholder={strings.myRecipes.VIDEO_PLACEHOLDER}
@@ -226,6 +237,8 @@ const MyRecipesForm = () => {
                 className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.cookTime || ""}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 name="cookTime"
                 type="text"
                 maxLength="3"
@@ -244,6 +257,8 @@ const MyRecipesForm = () => {
                 className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.ingredients || ""}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 name="ingredients"
                 type="text"
                 placeholder={strings.myRecipes.INGREDIENTS_EX}
@@ -261,6 +276,8 @@ const MyRecipesForm = () => {
                 className="global-form-control"
                 onChange={handleInputsChange}
                 value={inputs.description || ""}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 as="textarea"
                 rows="4"
                 name="description"
@@ -274,87 +291,135 @@ const MyRecipesForm = () => {
           <Col xs={12}>
             <div className="myrecipes-form-buttons-box">
               {!myRecipeToEdit.recipeTitle ? (
-                <Button
-                  disabled={
-                    loading ||
-                    inputs.title === undefined ||
-                    inputs.title === "" ||
-                    error.imageError ||
-                    error.playerError ||
-                    inputs.category === undefined ||
-                    inputs.category === "" ||
-                    inputs.cookTime === undefined ||
-                    inputs.cookTime === "" ||
-                    inputs.ingredients === undefined ||
-                    inputs.ingredients === "" ||
-                    inputs.description === undefined ||
-                    inputs.description === ""
-                  }
-                  type="submit"
-                  className="global-button-label"
-                  variant="outline-dark"
-                >
-                  <div className="myrecipes-form-spinner">
-                    {loading && (
-                      <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
-                    )}
-                  </div>
-                  {loading ? (
-                    <div className="myrecipes-form-button-loading">
-                      {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                <div className="global-emoji-wrapper">
+                  <Button
+                    disabled={
+                      loading ||
+                      inputs.title === undefined ||
+                      inputs.title === "" ||
+                      error.imageError ||
+                      error.playerError ||
+                      inputs.category === undefined ||
+                      inputs.category === "" ||
+                      inputs.cookTime === undefined ||
+                      inputs.cookTime === "" ||
+                      inputs.ingredients === undefined ||
+                      inputs.ingredients === "" ||
+                      inputs.description === undefined ||
+                      inputs.description === ""
+                    }
+                    type="submit"
+                    className="global-button-label"
+                    variant="outline-dark"
+                  >
+                    <div className="myrecipes-form-spinner">
+                      {loading && (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      )}
                     </div>
-                  ) : (
-                    <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
-                  )}
-                </Button>
+                    {loading ? (
+                      <div className="myrecipes-form-button-loading">
+                        {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                      </div>
+                    ) : (
+                      <div>{capitalizeFirst(strings.contact.BUTTON_TEXT)}</div>
+                    )}
+                  </Button>
+                  <Button
+                    className="global-emoji-button"
+                    disabled={
+                      (inputHasFocus !== "title" ||
+                        inputs.title === "" ||
+                        inputs.title === undefined) &&
+                      (inputHasFocus !== "description" ||
+                        inputs.description === "" ||
+                        inputs.description === undefined)
+                    }
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(showEmojis(true));
+                    }}
+                    size="sm"
+                    variant="light"
+                  >
+                    <FontAwesomeIcon
+                      className="global-emoji-button-icon"
+                      icon={faGrin}
+                    />
+                  </Button>
+                </div>
               ) : (
-                <Button
-                  disabled={
-                    loading ||
-                    inputs.title === undefined ||
-                    inputs.title === "" ||
-                    error.imageError ||
-                    error.playerError ||
-                    inputs.category === undefined ||
-                    inputs.category === "" ||
-                    inputs.cookTime === undefined ||
-                    inputs.cookTime === "" ||
-                    inputs.ingredients === undefined ||
-                    inputs.ingredients === "" ||
-                    inputs.description === undefined ||
-                    inputs.description === ""
-                  }
-                  type="submit"
-                  className="global-button-label"
-                  variant="outline-dark"
-                >
-                  <div className="myrecipes-form-spinner">
-                    {loading && (
-                      <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
+                <div className="global-emoji-wrapper">
+                  <Button
+                    disabled={
+                      loading ||
+                      inputs.title === undefined ||
+                      inputs.title === "" ||
+                      error.imageError ||
+                      error.playerError ||
+                      inputs.category === undefined ||
+                      inputs.category === "" ||
+                      inputs.cookTime === undefined ||
+                      inputs.cookTime === "" ||
+                      inputs.ingredients === undefined ||
+                      inputs.ingredients === "" ||
+                      inputs.description === undefined ||
+                      inputs.description === ""
+                    }
+                    type="submit"
+                    className="global-button-label"
+                    variant="outline-dark"
+                  >
+                    <div className="myrecipes-form-spinner">
+                      {loading && (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
+                    {loading ? (
+                      <div className="myrecipes-form-button-loading">
+                        {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
+                      </div>
+                    ) : (
+                      <div>
+                        {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
+                      </div>
                     )}
-                  </div>
-                  {loading ? (
-                    <div className="myrecipes-form-button-loading">
-                      {capitalizeFirst(strings.contact.BUTTON_TEXT_LOADING)}
-                    </div>
-                  ) : (
-                    <div>
-                      {capitalizeFirst(strings.rating.BUTTON_EDIT_TEXT)}
-                    </div>
-                  )}
-                </Button>
+                  </Button>
+                  <Button
+                    className="global-emoji-button"
+                    disabled={
+                      (inputHasFocus !== "title" ||
+                        inputs.title === "" ||
+                        inputs.title === undefined) &&
+                      (inputHasFocus !== "description" ||
+                        inputs.description === "" ||
+                        inputs.description === undefined)
+                    }
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(showEmojis(true));
+                    }}
+                    size="sm"
+                    variant="light"
+                  >
+                    <FontAwesomeIcon
+                      className="global-emoji-button-icon"
+                      icon={faGrin}
+                    />
+                  </Button>
+                </div>
               )}
               <Button
                 onClick={(e) => {

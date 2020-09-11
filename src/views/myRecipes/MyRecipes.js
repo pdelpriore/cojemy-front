@@ -10,6 +10,7 @@ import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import { strings } from "../../strings/Strings";
 import MyRecipesForm from "../../forms/myRecipes/myRecipesForm";
 import Notification from "../../components/notifications/Notification";
+import Emoji from "../../components/emoji/Emoji";
 import { useDispatch, useSelector } from "react-redux";
 import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk/showNewRecipeFormThunk";
 import { capitalize } from "../../util/Util";
@@ -28,6 +29,7 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
   );
   const { logoutError } = useSelector((state) => state.logout);
   const { emojiError } = useSelector((state) => state.emojis);
+  const { emojisShown } = useSelector((state) => state.isEmojiShown);
 
   const props = useSpring({
     opacity: 1,
@@ -142,6 +144,19 @@ const MyRecipes = ({ match: { path, url, isExact } }) => {
           </div>
         )}
       </div>
+      {emojisShown && (
+        <div className="myevents-calendar-overlay">
+          <Row className="mb-5" />
+          <Row className="mb-4" />
+          <Row>
+            <Col xs={4} />
+            <Col xs={4}>
+              <Emoji />
+            </Col>
+            <Col xs={4} />
+          </Row>
+        </div>
+      )}
     </animated.div>
   );
 };

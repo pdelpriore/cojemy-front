@@ -9,6 +9,7 @@ import {
   editMyRecipe,
   changeMyRecipesClearState,
 } from "../../../redux/myRecipes/changeMyRecipes/thunk/changeMyRecipesThunk";
+import { showEmojis } from "../../../redux/emoji/showEmojis/thunk/showEmojisThunk";
 import { toEditMyRecipeClearState } from "../../../redux/myRecipes/toEditMyRecipe/thunk/toEditMyRecipeThunk";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -17,10 +18,12 @@ const useNewRecipeForm = () => {
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState({});
   const [loadingImage, setLoadingImage] = useState(false);
+  const [inputHasFocus, setInputHasFocus] = useState("");
 
   const { userData } = useSelector((state) => state.login);
   const { recipeUpdated } = useSelector((state) => state.isMyRecipeChanged);
   const { myRecipeToEdit } = useSelector((state) => state.toEditMyRecipe);
+  const { emojiCharacter } = useSelector((state) => state.selectedEmoji);
 
   const handleInputsChange = (e) => {
     e.persist();
@@ -127,6 +130,19 @@ const useNewRecipeForm = () => {
       );
     }
   };
+  const handleFocus = (e) => {
+    setInputHasFocus(e.target.name);
+  };
+  const handleBlur = (e) => {
+    if (
+      (e.relatedTarget &&
+        e.relatedTarget.className &&
+        !e.relatedTarget.className.includes("btn")) ||
+      e.relatedTarget === null
+    ) {
+      setInputHasFocus("");
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -161,6 +177,16 @@ const useNewRecipeForm = () => {
       );
     }
   };
+
+  useEffect(() => {
+    if (emojiCharacter) {
+      setInputs((inputs) => ({
+        ...inputs,
+        [inputHasFocus]: inputs[inputHasFocus].concat(emojiCharacter),
+      }));
+      dispatch(showEmojis(false));
+    }
+  }, [emojiCharacter, inputHasFocus, dispatch]);
 
   useEffect(() => {
     if (myRecipeToEdit.recipeTitle) {
@@ -235,6 +261,9 @@ const useNewRecipeForm = () => {
     inputs,
     error,
     loadingImage,
+    inputHasFocus,
+    handleFocus,
+    handleBlur,
     handleInputsChange,
     handlePicture,
     handleRemoveImage,
