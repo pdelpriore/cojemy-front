@@ -89,10 +89,12 @@ const useEmoji = () => {
         let subCatFiltered = emojisFiltered.filter(
           (emoji) => emoji.subGroup === subCat
         );
-        setEmojiFilteredBySubGroup((emojiFilteredBySubGroup) => ({
-          ...emojiFilteredBySubGroup,
-          [subCat]: subCatFiltered,
-        }));
+        if (subCatFiltered.length > 0) {
+          setEmojiFilteredBySubGroup((emojiFilteredBySubGroup) => ({
+            ...emojiFilteredBySubGroup,
+            [subCat]: subCatFiltered,
+          }));
+        }
       });
     }
   }, [emojisFiltered, emojiCategories, categoryIndex]);
