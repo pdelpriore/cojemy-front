@@ -9,6 +9,7 @@ import {
   selectEmoji,
   selectEmojiClearState,
 } from "../../../redux/emoji/selectEmoji/thunk/selectEmojiThunk";
+import { isEmojiSupported } from "is-emoji-supported";
 import { strings } from "../../../strings/Strings";
 
 const useEmoji = () => {
@@ -71,7 +72,9 @@ const useEmoji = () => {
       setEmojiFilteredBySubGroup({});
       setEmojisFiltered(
         emojisAll.filter(
-          (emoji) => emoji.group === categories_eng[categoryIndex]
+          (emoji) =>
+            isEmojiSupported(emoji.character) &&
+            emoji.group === categories_eng[categoryIndex]
         )
       );
     }
