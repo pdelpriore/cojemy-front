@@ -14,13 +14,12 @@ const Emoji = () => {
     categoryIndex,
     emojiFilteredBySubGroup,
     selectedEmoji,
+    loading,
     handleSelectCategory,
     handleEmoji,
     handleSave,
     handleCancel,
   } = useEmoji();
-
-  const { emojiLoading } = useSelector((state) => state.emojis);
 
   return (
     <div className="emoji-box">
@@ -50,7 +49,7 @@ const Emoji = () => {
       <Row className="mb-2" />
       <Row>
         <Col xs={12}>
-          {!emojiLoading ? (
+          {!loading ? (
             <ScrollArea
               className="emoji-scroll-area"
               smoothScrolling={true}

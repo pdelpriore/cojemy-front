@@ -21,6 +21,7 @@ import { ioConnectClearState } from "../../../redux/mails/socketData/thunk/ioCon
 import { setConversationClearState } from "../../../redux/mails/setConversation/thunk/setConversationThunk";
 import { setMessagesClearState } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
 import { setMessageIdClearState } from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
+import { getEmojisClearState } from "../../../redux/emoji/getEmojis/thunk/getEmojisThunk";
 import { searchEventFilled } from "../../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { loginUser } from "../../../redux/login/userLogged/thunk/userLoggedThunk";
 import { countUnreadMessages } from "./countUnreadMessages";
@@ -65,6 +66,7 @@ const useNavMenu = () => {
       dispatch(setConversationClearState());
       dispatch(setMessagesClearState());
       dispatch(setMessageIdClearState());
+      dispatch(getEmojisClearState());
     }
   }, [userLoggedOut, socket, isActive, dispatch]);
 

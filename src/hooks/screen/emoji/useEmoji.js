@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getEmojis,
-  getEmojiCategories,
-} from "../../../redux/emoji/getEmojis/thunk/getEmojisThunk";
 import { showEmojis } from "../../../redux/emoji/showEmojis/thunk/showEmojisThunk";
 import {
   selectEmoji,
   selectEmojiClearState,
 } from "../../../redux/emoji/selectEmoji/thunk/selectEmojiThunk";
-import { isEmojiSupported } from "is-emoji-supported";
 import { strings } from "../../../strings/Strings";
 
 const useEmoji = () => {
@@ -43,6 +38,7 @@ const useEmoji = () => {
   const [emojisFiltered, setEmojisFiltered] = useState([]);
   const [emojiFilteredBySubGroup, setEmojiFilteredBySubGroup] = useState({});
   const [selectedEmoji, setSelectedEmoji] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { emojisAll, emojiCategories } = useSelector((state) => state.emojis);
 
@@ -62,19 +58,12 @@ const useEmoji = () => {
   };
 
   useEffect(() => {
-    dispatch(getEmojis());
-    dispatch(getEmojiCategories());
-    return () => dispatch(selectEmojiClearState());
-  }, [dispatch]);
-
-  useEffect(() => {
     if (emojisAll.length > 0) {
+      setLoading(true);
       setEmojiFilteredBySubGroup({});
       setEmojisFiltered(
         emojisAll.filter(
-          (emoji) =>
-            isEmojiSupported(emoji.character) &&
-            emoji.group === categories_eng[categoryIndex]
+          (emoji) => emoji.group === categories_eng[categoryIndex]
         )
       );
     }
@@ -96,14 +85,20 @@ const useEmoji = () => {
           }));
         }
       });
+      setLoading(false);
     }
   }, [emojisFiltered, emojiCategories, categoryIndex]);
+
+  useEffect(() => {
+    return () => dispatch(selectEmojiClearState());
+  }, [dispatch]);
 
   return {
     categories,
     categoryIndex,
     emojiFilteredBySubGroup,
     selectedEmoji,
+    loading,
     handleSelectCategory,
     handleEmoji,
     handleSave,

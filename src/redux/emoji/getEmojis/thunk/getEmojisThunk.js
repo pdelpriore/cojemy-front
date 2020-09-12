@@ -1,10 +1,10 @@
 import { getEmojisCases, showEmojisCases } from "../../../config/cases/Cases";
+import { isEmojiSupported } from "is-emoji-supported";
 import { strings } from "../../../../strings/Strings";
 import { capitalizeFirst } from "../../../../util/Util";
 
 export const getEmojis = () => {
   return async (dispatch, getState) => {
-    dispatch({ type: getEmojisCases.LOADING, payload: true });
     try {
       const response = await fetch(strings.path.GET_EMOJIS, {
         method: "post",
@@ -13,10 +13,12 @@ export const getEmojis = () => {
         },
       });
       const responseData = await response.json();
-      if (responseData) {
+      if (responseData.length > 0) {
         dispatch({
           type: getEmojisCases.EMOJIS_RETRIEVED,
-          payload: responseData,
+          payload: responseData.filter((emoji) =>
+            isEmojiSupported(emoji.character)
+          ),
         });
       }
     } catch (err) {
@@ -33,7 +35,6 @@ export const getEmojis = () => {
 
 export const getEmojiCategories = () => {
   return async (dispatch, getState) => {
-    dispatch({ type: getEmojisCases.LOADING, payload: true });
     try {
       const response = await fetch(strings.path.GET_EMOJI_CAT, {
         method: "post",

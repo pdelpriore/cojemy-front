@@ -273,7 +273,6 @@ export const showEmojisCases = Object.freeze({
 });
 
 export const getEmojisCases = Object.freeze({
-  LOADING: "getEmojis_Loading",
   EMOJIS_RETRIEVED: "getEmojis_EmojisRetrieved",
   CATEGORIES_RETRIEVED: "getEmojis_CategoriesRetrieved",
   ERROR: "getEmojis_Error",

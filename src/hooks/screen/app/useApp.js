@@ -5,6 +5,10 @@ import {
   setMessages,
   setMessagesClearState,
 } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
+import {
+  getEmojis,
+  getEmojiCategories,
+} from "../../../redux/emoji/getEmojis/thunk/getEmojisThunk";
 import { setConversation } from "../../../redux/mails/setConversation/thunk/setConversationThunk";
 
 const useApp = () => {
@@ -132,6 +136,8 @@ const useApp = () => {
   useEffect(() => {
     if (userLogged) {
       dispatch(ioConnect(userDataMemoized._id, userDataMemoized.email));
+      dispatch(getEmojis());
+      dispatch(getEmojiCategories());
     }
   }, [userDataMemoized._id, userDataMemoized.email, userLogged, dispatch]);
 
