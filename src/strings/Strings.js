@@ -234,7 +234,7 @@ export const strings = Object.freeze({
     EVENT_DATE: "data wydarzenia *",
     EVENT_DATE_PLACEHOLDER: "data wydarzenia",
     TEL: "telefon kontaktowy *",
-    TEL_PLACEHOLDER: "718523694",
+    TEL_PLACEHOLDER: "601100200",
     PARTICIPANTS_PREVIEW: "uczestnicy:",
     SEARCH_CITY: "miasto",
     SEARCH_DATE: "data wydarzenia",
