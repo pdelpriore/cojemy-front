@@ -205,22 +205,22 @@ const MyRecipesForm = () => {
                 <option disabled={true} value="">
                   {capitalizeFirst(strings.myRecipes.CHOOSE_CATEGORY)}
                 </option>
-                <option value={strings.myRecipes.category.LUNCH || ""}>
+                <option value={strings.recipeBook.CAT_LUNCH || ""}>
                   {capitalize(strings.myRecipes.category.LUNCH)}
                 </option>
-                <option value={strings.myRecipes.category.DESSERTS || ""}>
+                <option value={strings.recipeBook.CAT_DESSERT || ""}>
                   {capitalize(strings.myRecipes.category.DESSERTS)}
                 </option>
-                <option value={strings.myRecipes.category.DRINKS || ""}>
+                <option value={strings.recipeBook.CAT_DRINKS || ""}>
                   {capitalize(strings.myRecipes.category.DRINKS)}
                 </option>
-                <option value={strings.myRecipes.category.EVENING || ""}>
+                <option value={strings.recipeBook.CAT_EVENING || ""}>
                   {capitalize(strings.myRecipes.category.EVENING)}
                 </option>
-                <option value={strings.myRecipes.category.SALADES || ""}>
+                <option value={strings.recipeBook.CAT_SALADES || ""}>
                   {capitalize(strings.myRecipes.category.SALADES)}
                 </option>
-                <option value={strings.myRecipes.category.FAST_FOOD || ""}>
+                <option value={strings.recipeBook.CAT_FAST_FOOD || ""}>
                   {capitalize(strings.myRecipes.category.FAST_FOOD)}
                 </option>
               </Form.Control>

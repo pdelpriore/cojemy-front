@@ -6,7 +6,7 @@ export const getLocationDetails = (locationId) => {
   return async (dispatch, getState) => {
     dispatch({ type: getLocationDetailsCases.LOADING, payload: true });
     try {
-      const response = await fetch("http://localhost:4000/heremaplocation", {
+      const response = await fetch(strings.path.GET_LOCATION, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

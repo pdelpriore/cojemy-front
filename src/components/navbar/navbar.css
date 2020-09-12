@@ -68,7 +68,7 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 9.4vw;
+  width: 7vw;
   height: 1vw;
 }
 .navbar-mails-counter {

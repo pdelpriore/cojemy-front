@@ -6,7 +6,7 @@ export const getAddress = (addressValue) => {
   return async (dispatch, getState) => {
     dispatch({ type: getAddressCases.LOADING, payload: true });
     try {
-      const response = await fetch("http://localhost:4000/heremaprequest", {
+      const response = await fetch(strings.path.GET_ADDRESSES, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

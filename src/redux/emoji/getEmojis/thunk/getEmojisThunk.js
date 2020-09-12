@@ -6,7 +6,7 @@ export const getEmojis = () => {
   return async (dispatch, getState) => {
     dispatch({ type: getEmojisCases.LOADING, payload: true });
     try {
-      const response = await fetch("http://localhost:4000/emojis", {
+      const response = await fetch(strings.path.GET_EMOJIS, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const getEmojiCategories = () => {
   return async (dispatch, getState) => {
     dispatch({ type: getEmojisCases.LOADING, payload: true });
     try {
-      const response = await fetch("http://localhost:4000/emojicategories", {
+      const response = await fetch(strings.path.GET_EMOJI_CAT, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
