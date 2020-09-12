@@ -14,7 +14,7 @@ import ScrollArea from "react-scrollbar";
 import Img from "react-image";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
-import fr from "timeago.js/lib/lang/fr";
+import pl from "timeago.js/lib/lang/pl";
 import { createDate } from "../../util/Util";
 import { useSelector } from "react-redux";
 import CommentRate from "./CommentRate";
@@ -60,7 +60,8 @@ const RecipeDetails = () => {
     handleFollowRecipeAuthor,
     handleUnfollowRecipeAuthor,
   } = useRecipeDetails();
-  timeago.register("fr", fr);
+
+  timeago.register("pl", pl);
 
   return (
     <animated.div style={props}>
@@ -314,7 +315,7 @@ const RecipeDetails = () => {
                       <TimeAgo
                         className="recipeDetails-comments-timeago"
                         datetime={createDate(item.comment.date)}
-                        locale="fr"
+                        locale="pl"
                       />
                     </div>
                     <div className="recipeDetails-comments-rate">

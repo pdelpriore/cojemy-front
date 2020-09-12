@@ -13,7 +13,7 @@ import { showNewRecipeForm } from "../../redux/myRecipes/showNewRecipeForm/thunk
 import { myRecipeData } from "../../redux/myRecipes/myRecipePreview/thunk/myRecipePreviewThunk";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
-import fr from "timeago.js/lib/lang/fr";
+import pl from "timeago.js/lib/lang/pl";
 import { useDispatch, useSelector } from "react-redux";
 import "./myRecipes.css";
 
@@ -33,7 +33,8 @@ const MyRecipesList = () => {
       dispatch(showNewRecipeForm(false));
     };
   }, [userData._id, userData.email, recipeUpdated, dispatch]);
-  timeago.register("fr", fr);
+
+  timeago.register("pl", pl);
 
   return loadingMyRecipes ? (
     <div className="myrecipes-list-loading-area">
@@ -73,7 +74,7 @@ const MyRecipesList = () => {
                       <TimeAgo
                         className="myrecipes-list-item-timeago"
                         datetime={createDate(retrieveRecipe.date)}
-                        locale="fr"
+                        locale="pl"
                       />
                     </div>
                   </Col>

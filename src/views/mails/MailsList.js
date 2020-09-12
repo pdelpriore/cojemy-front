@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
-import fr from "timeago.js/lib/lang/fr";
+import pl from "timeago.js/lib/lang/pl";
 import { createDate } from "../../util/Util";
 import { useDispatch, useSelector } from "react-redux";
 import { continueConversation } from "../../redux/mails/continueConversation/thunk/continueConversationThunk";
@@ -15,7 +15,7 @@ import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./mails.css";
 
 const MailsList = () => {
-  timeago.register("fr", fr);
+  timeago.register("pl", pl);
   const dispatch = useDispatch();
 
   const { loading } = useMailsList();
@@ -102,7 +102,7 @@ const MailsList = () => {
                             message.conversations.length - 1
                           ].date
                         )}
-                        locale="fr"
+                        locale="pl"
                       />
                     </div>
                   </Col>

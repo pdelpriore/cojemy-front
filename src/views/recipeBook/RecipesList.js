@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createDate } from "../../util/Util";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
-import fr from "timeago.js/lib/lang/fr";
+import pl from "timeago.js/lib/lang/pl";
 import RatingStars from "../../shared/RatingStars";
 import RatingActiveStars from "../../shared/RatingActiveStars";
 import { getAverageRating } from "../../shared/getAverageRating";
@@ -21,7 +21,7 @@ const RecipesList = () => {
   const { loadingRecipes, recipesRetrieved, recipesError } = useSelector(
     (state) => state.recipeBook
   );
-  timeago.register("fr", fr);
+  timeago.register("pl", pl);
   return loadingRecipes ? (
     <div className="recipesList-loading-area">
       <Spinner animation="border" role="status" variant="light" />
@@ -61,7 +61,7 @@ const RecipesList = () => {
                       <TimeAgo
                         className="recipesList-item-timeago"
                         datetime={createDate(recipeRetrieved.date)}
-                        locale="fr"
+                        locale="pl"
                       />
                     </div>
                   </Col>

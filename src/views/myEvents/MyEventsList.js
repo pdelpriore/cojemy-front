@@ -9,12 +9,12 @@ import { faUsers, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import TimeAgo from "timeago-react";
 import * as timeago from "timeago.js";
-import fr from "timeago.js/lib/lang/fr";
+import pl from "timeago.js/lib/lang/pl";
 import { createDate } from "../../util/Util";
 import "./myEvents.css";
 
 const MyEventsList = () => {
-  timeago.register("fr", fr);
+  timeago.register("pl", pl);
 
   const dispatch = useDispatch();
   const { loadingEvents, eventsRetrieved, eventsError } = useSelector(
@@ -59,7 +59,7 @@ const MyEventsList = () => {
                       <TimeAgo
                         className="myevents-item-timeago"
                         datetime={createDate(eventRetrieved.creationDate)}
-                        locale="fr"
+                        locale="pl"
                       />
                     </div>
                   </Col>
