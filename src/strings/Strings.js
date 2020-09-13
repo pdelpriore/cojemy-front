@@ -211,6 +211,8 @@ export const strings = Object.freeze({
     CONFIRME_PASS_PLACEHOLDER: "potwierdź nowe hasło",
     PASSWORD_CHANGED: "twoje hasło zostało zmienione",
     REMOVE_ACCOUNT: "na pewno chcesz usunąć konto ?",
+    PHOTO: "zdjęcie",
+    PICKER: "wybierz zdjęcie",
   },
   myEvents: {
     BUTTON_ALL: "lista wydarzeń",
@@ -244,6 +246,7 @@ export const strings = Object.freeze({
     BUTTON_JOIN_LOADING: "zapisuję ...",
     BUTTON_UNJOIN: "zrezygnuj",
     BUTTON_UNJOIN_LOADING: "wypisuję ...",
+    PICKER: "wybierz zdjęcie",
     error: {
       NO_SUGGESTIONS: "brak wydarzeń",
       NO_PARTICIPANTS: "narazie nikt się nie zapisał :(",

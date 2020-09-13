@@ -54,7 +54,7 @@ const MyProfileForm = () => {
         <Col xs={12}>
           <Form.Group controlId="formBasicPhoto">
             <Form.Label className="global-form-label">
-              {capitalizeFirst(strings.myRecipes.PICTURE)}
+              {capitalizeFirst(strings.myProfile.PHOTO)}
             </Form.Label>
             <ImageUploader
               fileContainerStyle={{
@@ -68,7 +68,7 @@ const MyProfileForm = () => {
               singleImage={true}
               withLabel={true}
               label={capitalizeFirst(strings.myRecipes.MAX_PICTURE_SIZE)}
-              buttonText={capitalizeFirst(strings.myRecipes.CHOOSE_PICTURE)}
+              buttonText={capitalizeFirst(strings.myProfile.PICKER)}
               onChange={handlePicture}
               imgExtension={[".jpg", "jpeg", ".gif", ".png", ".gif"]}
               fileTypeError={capitalizeFirst(
