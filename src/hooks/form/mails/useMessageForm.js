@@ -83,6 +83,7 @@ const useMessageForm = () => {
         sender: userData._id,
         recipient: recipient._id,
         content: inputs.content,
+        date: new Date(),
       });
     } else if (
       socket.connected &&
@@ -96,6 +97,7 @@ const useMessageForm = () => {
         sender: userData._id,
         recipient: recipient._id,
         content: inputs.content,
+        date: new Date(),
       });
     }
   };

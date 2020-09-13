@@ -6,7 +6,7 @@ import { capitalizeFirst } from "../../../util/Util";
 export const signupGoogleUser = (name, email, photo, tokenId) => {
   return async (dispatch, getState) => {
     dispatch({ type: signupGoogleUserCases.LOADING, payload: true });
-    const bodyRequest = googleSignupQuery(name, email, photo);
+    const bodyRequest = googleSignupQuery(name, email, photo, new Date());
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",

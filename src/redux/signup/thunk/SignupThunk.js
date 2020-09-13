@@ -6,7 +6,13 @@ import { capitalizeFirst } from "../../../util/Util";
 export const signupUser = (name, email, confirmEmail, password) => {
   return async (dispatch, getState) => {
     dispatch({ type: signupCases.LOADING, payload: true });
-    const bodyRequest = signupQuery(name, email, confirmEmail, password);
+    const bodyRequest = signupQuery(
+      name,
+      email,
+      confirmEmail,
+      password,
+      new Date()
+    );
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
         method: "post",

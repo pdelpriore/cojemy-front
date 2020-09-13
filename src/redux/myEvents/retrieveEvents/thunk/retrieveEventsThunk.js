@@ -12,7 +12,8 @@ export const getEvents = (category, userId, email, skip, limit) => {
       userId,
       email,
       skip,
-      limit
+      limit,
+      new Date()
     );
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {

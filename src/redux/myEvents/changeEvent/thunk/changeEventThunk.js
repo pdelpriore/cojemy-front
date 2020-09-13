@@ -27,7 +27,8 @@ export const addNewEvent = (
       eventDate,
       tel,
       userId,
-      email
+      email,
+      new Date()
     );
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {

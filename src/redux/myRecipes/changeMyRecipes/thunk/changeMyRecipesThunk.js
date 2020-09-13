@@ -27,7 +27,8 @@ export const addMyRecipe = (
       ingredients,
       description,
       userId,
-      email
+      email,
+      new Date()
     );
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {

@@ -41,7 +41,8 @@ export const addRateAndComment = (recipeId, rate, comment, userId, email) => {
       rate,
       comment,
       userId,
-      email
+      email,
+      new Date()
     );
     try {
       const response = await fetch(strings.path.SERVER_REQUEST, {
