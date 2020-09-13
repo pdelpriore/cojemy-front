@@ -139,7 +139,7 @@ const EventPreview = () => {
                           );
                     }}
                     disabled={userData.email === eventPreviewData.author.email}
-                    className="myrecipes-preview-button-delete"
+                    className="eventpreview-follow-button"
                     variant="dark"
                   >
                     <div className="myrecipes-form-spinner">

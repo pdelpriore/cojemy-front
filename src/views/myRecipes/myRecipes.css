@@ -252,6 +252,11 @@
 .myrecipes-preview-button-delete:hover {
   background-color: #dc3545;
 }
+.recipeDetails-follow-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .myrecipes-preview-button-icon {
   width: 1vw;
 }

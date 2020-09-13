@@ -140,7 +140,7 @@ const RecipeDetails = () => {
                       );
                 }}
                 disabled={userData.email === detailsDataRetrieved.author.email}
-                className="myrecipes-preview-button-delete"
+                className="recipeDetails-follow-button"
                 variant="dark"
               >
                 <div className="myrecipes-form-spinner">

@@ -334,6 +334,11 @@
   height: 100%;
   z-index: 1;
 }
+.eventpreview-follow-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 @keyframes scale {
   0% {
