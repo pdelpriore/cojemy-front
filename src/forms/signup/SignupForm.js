@@ -51,6 +51,7 @@ const SignupForm = () => {
               size="lg"
               name="email"
               type="email"
+              autoComplete="off"
               placeholder={strings.signup.EMAIL_PLACEHOLDER}
             ></Form.Control>
           </Form.Group>
@@ -69,6 +70,7 @@ const SignupForm = () => {
               size="lg"
               name="confirmEmail"
               type="email"
+              autoComplete="off"
               placeholder={strings.signup.CONFIRM_EMAIL_PLACEHOLDER}
             ></Form.Control>
           </Form.Group>

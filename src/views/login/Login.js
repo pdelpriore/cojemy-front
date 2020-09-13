@@ -94,7 +94,7 @@ const Login = ({ match: { path, url, isExact } }) => {
         </Row>
       </div>
       <div className="login-third-section">
-        <Row className="mb-5" />
+        <Row className="mb-3" />
         <Row>
           <Col xs={1} />
           <Col xs={3}>

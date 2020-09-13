@@ -95,9 +95,6 @@ export const strings = Object.freeze({
     BUTTON_TEXT_LOADING: "rejestruję ...",
     CHECK_EMAIL:
       "Sprawdź swoją skrzynkę mailową i potwierdź że jesteś właścicielem wcześniej podanego adresu",
-    inputName: {
-      USER_NAME: "name",
-    },
   },
   signupGoogle: {
     BUTTON_TEXT: "załóż konto !",
