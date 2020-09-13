@@ -80,7 +80,7 @@ export const strings = Object.freeze({
     PASSWORD_PLACEHOLDER: "hasło",
     BUTTON_TEXT: "zaloguj się !",
     BUTTON_TEXT_LOADING: "loguję ...",
-    FORGOT_PASSWORD: "zapomniałeś hasło ?",
+    FORGOT_PASSWORD: "zapomniałeś hasła ?",
   },
   signup: {
     USER_NAME: "nazwa użytkownika (min. 5 znaków) *",
