@@ -37,3 +37,17 @@
   height: 100%;
   z-index: 1;
 }
+.global-list-picture-loading-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7.5vw;
+  height: 7.5vw;
+}
+.global-preview-picture-loading-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  height: 15vw;
+}

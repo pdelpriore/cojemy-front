@@ -15,6 +15,7 @@ import { getAverageRating } from "../../shared/getAverageRating";
 import { retrieveRecipeDetails } from "../../redux/recipeBook/showRecipeDetails/thunk/showRecipeDetailsThunk";
 import { changeRecipeListItem } from "../../redux/recipeBook/changeRecipeListItem/thunk/changeRecipeListItemThunk";
 import "./recipeBook.css";
+import "../../shared/global.css";
 
 const RecipesList = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,11 @@ const RecipesList = () => {
                       ? strings.path.IMAGE_REQUEST + recipeRetrieved.picture
                       : require("../../assets/imgs/panret.jpg")
                   }
-                  loader={<Spinner animation="border" variant="info" />}
+                  loader={
+                    <div className="global-list-picture-loading-box">
+                      <Spinner animation="border" variant="info" />
+                    </div>
+                  }
                 />
               </Col>
               <Col xs={9}>

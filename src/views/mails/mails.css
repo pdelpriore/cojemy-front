@@ -23,6 +23,13 @@
   font-size: 1.5vw;
   padding: 5px;
 }
+.mails-loading-picture-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6vw;
+  height: 6vw;
+}
 .mails-list-item-picture {
   width: 6vw;
   height: 6vw;

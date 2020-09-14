@@ -75,7 +75,11 @@ const MailsList = () => {
                         ? strings.path.IMAGE_REQUEST + message.sender.photo
                         : require("../../assets/imgs/cookerret.png")
                     }
-                    loader={<Spinner animation="border" variant="info" />}
+                    loader={
+                      <div className="mails-loading-picture-box">
+                        <Spinner animation="border" variant="info" />
+                      </div>
+                    }
                   />
                   <div
                     className={

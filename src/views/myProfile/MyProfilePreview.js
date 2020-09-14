@@ -4,6 +4,7 @@ import Img from "react-image";
 import useMyProfilePreview from "../../hooks/screen/myProfile/useMyProfilePreview";
 import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./myProfile.css";
+import "../../shared/global.css";
 
 const MyProfilePreview = () => {
   const { inputUserPhoto, userData } = useMyProfilePreview();
@@ -23,7 +24,11 @@ const MyProfilePreview = () => {
                 ? inputUserPhoto.userPhoto
                 : require("../../assets/imgs/cookerret.png")
             }
-            loader={<Spinner animation="border" variant="dark" />}
+            loader={
+              <div className="global-list-picture-loading-box">
+                <Spinner animation="border" variant="dark" />
+              </div>
+            }
           />
         </Col>
       </Row>

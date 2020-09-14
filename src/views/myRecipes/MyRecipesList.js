@@ -16,6 +16,7 @@ import * as timeago from "timeago.js";
 import pl from "timeago.js/lib/lang/pl";
 import { useDispatch, useSelector } from "react-redux";
 import "./myRecipes.css";
+import "../../shared/global.css";
 
 const MyRecipesList = () => {
   const dispatch = useDispatch();
@@ -63,7 +64,11 @@ const MyRecipesList = () => {
                       ? strings.path.IMAGE_REQUEST + retrieveRecipe.picture
                       : require("../../assets/imgs/panret.jpg")
                   }
-                  loader={<Spinner animation="border" variant="info" />}
+                  loader={
+                    <div className="global-list-picture-loading-box">
+                      <Spinner animation="border" variant="info" />
+                    </div>
+                  }
                 />
               </Col>
               <Col xs={9}>

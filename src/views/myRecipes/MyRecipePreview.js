@@ -18,6 +18,7 @@ import ReactPlayer from "react-player";
 import { capitalize } from "../../util/Util";
 import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./myRecipes.css";
+import "../../shared/global.css";
 
 const MyRecipePreview = () => {
   const dispatch = useDispatch();
@@ -95,7 +96,11 @@ const MyRecipePreview = () => {
                     ? strings.path.IMAGE_REQUEST + myRecipePreviewData.picture
                     : require("../../assets/imgs/panret.jpg")
                 }
-                loader={<Spinner animation="border" variant="dark" />}
+                loader={
+                  <div className="global-preview-picture-loading-box">
+                    <Spinner animation="border" variant="dark" />
+                  </div>
+                }
               />
             </Col>
             <Col xs={5}>

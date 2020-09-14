@@ -201,7 +201,11 @@ const EventPreview = () => {
                     ? strings.path.IMAGE_REQUEST + eventPreviewData.eventImage
                     : require("../../assets/imgs/eventret.jpg")
                 }
-                loader={<Spinner animation="border" variant="dark" />}
+                loader={
+                  <div className="eventpreview-loading-picture-box">
+                    <Spinner animation="border" variant="dark" />
+                  </div>
+                }
               />
             </Col>
             <Col xs={4} />

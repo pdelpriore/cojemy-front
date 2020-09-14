@@ -27,6 +27,7 @@ import { useSpring, animated } from "react-spring";
 import ReactPlayer from "react-player";
 import { userGooglePhoto } from "../../shared/testWordsArray";
 import "./recipeBook.css";
+import "../../shared/global.css";
 
 const RecipeDetails = () => {
   const props = useSpring({
@@ -198,7 +199,11 @@ const RecipeDetails = () => {
                     ? strings.path.IMAGE_REQUEST + detailsDataRetrieved.picture
                     : require("../../assets/imgs/panret.jpg")
                 }
-                loader={<Spinner animation="border" variant="dark" />}
+                loader={
+                  <div className="global-preview-picture-loading-box">
+                    <Spinner animation="border" variant="dark" />
+                  </div>
+                }
               />
             </Col>
             <Col xs={5}>

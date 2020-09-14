@@ -120,6 +120,13 @@
   padding: 5px;
   object-fit: cover;
 }
+.eventpreview-loading-picture-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7.5vw;
+  height: 7.5vw;
+}
 .myevents-item-timeago {
   font-family: "OpenSans-Regular";
   white-space: nowrap;
@@ -184,12 +191,19 @@
   height: 80vh;
 }
 .eventpreview-picture {
-  width: 30vw;
-  height: 30vw;
+  width: 25vw;
+  height: 15vw;
   object-fit: cover;
   border: 1px solid #572529;
   border-radius: 20px;
   padding: 10px;
+}
+.eventpreview-loading-picture-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  height: 15vw;
 }
 .eventpreview-description-text {
   font-family: "OpenSans-SemiBold";

@@ -12,6 +12,7 @@ import * as timeago from "timeago.js";
 import pl from "timeago.js/lib/lang/pl";
 import { createDate } from "../../util/Util";
 import "./myEvents.css";
+import "../../shared/global.css";
 
 const MyEventsList = () => {
   timeago.register("pl", pl);
@@ -48,7 +49,11 @@ const MyEventsList = () => {
                       ? strings.path.IMAGE_REQUEST + eventRetrieved.eventImage
                       : require("../../assets/imgs/eventret.jpg")
                   }
-                  loader={<Spinner animation="border" variant="info" />}
+                  loader={
+                    <div className="global-list-picture-loading-box">
+                      <Spinner animation="border" variant="info" />
+                    </div>
+                  }
                 />
               </Col>
               <Col xs={9}>
