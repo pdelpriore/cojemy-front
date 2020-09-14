@@ -170,7 +170,7 @@ const EventPreview = () => {
                           icon={faUserPlus}
                         />
                         <div className="myrecipes-button-text">
-                          {capitalizeFirst(strings.recipeBookDetails.FOLLOW)}
+                          {capitalizeFirst(strings.myEvents.FOLLOW)}
                         </div>
                       </>
                     ) : (
@@ -215,7 +215,7 @@ const EventPreview = () => {
             <Col xs={1} />
             <Col xs={10}>
               <div className="eventpreview-description-text">
-                {capitalizeFirst(strings.recipeBookDetails.DESCRIBE)}
+                {capitalizeFirst(strings.myEvents.DESCRIPTION_PLACEHOLDER)}
               </div>
               <div style={{ height: 10 }} />
               <div className="eventpreview-description">

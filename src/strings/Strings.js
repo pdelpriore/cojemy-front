@@ -244,6 +244,7 @@ export const strings = Object.freeze({
     BUTTON_UNJOIN: "zrezygnuj",
     BUTTON_UNJOIN_LOADING: "wypisuję ...",
     PICKER: "wybierz zdjęcie",
+    FOLLOW: "obserwuj autora wydarzenia",
     error: {
       NO_SUGGESTIONS: "brak wydarzeń",
       NO_PARTICIPANTS: "narazie nikt się nie zapisał :(",
