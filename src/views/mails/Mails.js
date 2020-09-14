@@ -56,34 +56,45 @@ const Mails = ({ match: { path, url, isExact } }) => {
         <Row className="mb-5" />
         <Row className="mb-3" />
         {!newMessageFormShown && (
-          <Row>
-            <Col xs={5} />
-            <Col xs={2}>
-              <Button
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(newMessage(true));
-                  dispatch(showNewMessageForm(true));
-                  dispatch(conversationWindowOpen(true));
-                }}
-                className="myrecipes-button-new-recipe"
-                variant="outline-dark"
-              >
-                <FontAwesomeIcon
-                  className="mails-button-icon"
-                  icon={faEnvelope}
-                />
-                <div className="myevents-button-new-event">
-                  {capitalize(strings.mails.BUTTON_NEW_MESSAGE)}
+          <>
+            <Row>
+              <Col xs={5} />
+              <Col xs={2}>
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(newMessage(true));
+                    dispatch(showNewMessageForm(true));
+                    dispatch(conversationWindowOpen(true));
+                  }}
+                  className="myrecipes-button-new-recipe"
+                  variant="outline-dark"
+                >
+                  <FontAwesomeIcon
+                    className="mails-button-icon"
+                    icon={faEnvelope}
+                  />
+                  <div className="myevents-button-new-event">
+                    {capitalize(strings.mails.BUTTON_NEW_MESSAGE)}
+                  </div>
+                </Button>
+              </Col>
+              <Col xs={5} />
+            </Row>
+            <Row className="mb-5" />
+            <Row>
+              <Col xs={1} />
+              <Col xs={10}>
+                <div className="mails-clean-message-info">
+                  {strings.mails.CLEAN_MESSAGE_INFO}
                 </div>
-              </Button>
-            </Col>
-            <Col xs={5} />
-          </Row>
+              </Col>
+              <Col xs={1} />
+            </Row>
+          </>
         )}
         {!newMessageFormShown && (
           <>
-            <Row className="mb-5" />
             <Row className="mb-5" />
             <Row className="mb-5" />
             <Row>

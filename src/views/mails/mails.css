@@ -23,6 +23,11 @@
   font-size: 1.5vw;
   padding: 5px;
 }
+.mails-clean-message-info {
+  font-size: 1vw;
+  font-family: "OpenSans-SemiBold";
+  color: #2e303f;
+}
 .mails-loading-picture-box {
   display: flex;
   justify-content: center;

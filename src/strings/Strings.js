@@ -319,6 +319,8 @@ export const strings = Object.freeze({
     CONTENT_PLACEHOLDER: "treść wiadomości",
     BUTTON_SEND: "wyślij",
     BUTTON_SEND_LOADING: "wysyłam ...",
+    CLEAN_MESSAGE_INFO:
+      "* Wiadomości będą usuwane automatycznie po około 3-ch dniach",
     error: {
       CONNECTION_ERROR: "problem z połączeniem sieciowym",
     },
