@@ -11,17 +11,11 @@
   font-family: "OpenSans-SemiBold";
   color: #212529;
   font-size: 0.9vw;
-  background-color: #fbf9fa;
+  background-color: #43dde6;
 }
 .suggestion-item:hover {
   cursor: pointer;
   background-color: #ededed;
-}
-.suggestion-item-inactive {
-  font-family: "OpenSans-SemiBold";
-  background-color: #ced4da;
-  font-size: 0.9vw;
-  opacity: 0.7;
 }
 .no-result {
   font-family: "OpenSans-SemiBold";
