@@ -84,14 +84,16 @@ const MessageForm = () => {
                 )}
               </div>
             )}
-            {showRecipientSuggestions && (
-              <RecipientSuggestions recipients={recipients} />
-            )}
-            {error.searchRecipientError && (
-              <div className="myevents-form-image-error">
-                {error.searchRecipientError}
-              </div>
-            )}
+            <div className="message-form-adress-suggestion-group">
+              {showRecipientSuggestions && (
+                <RecipientSuggestions recipients={recipients} />
+              )}
+              {error.searchRecipientError && (
+                <div className="myevents-form-image-error">
+                  {error.searchRecipientError}
+                </div>
+              )}
+            </div>
           </Form.Group>
         </Col>
       </Row>

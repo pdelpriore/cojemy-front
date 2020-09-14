@@ -17,12 +17,30 @@
   background-color: #a7ff83;
   border: 1px solid green;
 }
+.recipient-item {
+  font-family: "OpenSans-SemiBold";
+  color: #212529;
+  font-size: 0.9vw;
+  background-color: #fbf9fa;
+}
+.recipient-item:hover {
+  cursor: pointer;
+  background-color: #ededed;
+}
+.recipient-item-inactive {
+  font-family: "OpenSans-SemiBold";
+  background-color: #ced4da;
+  font-size: 0.9vw;
+  opacity: 0.7;
+}
 .recipient-photo {
   width: 2vw;
   height: 2vw;
 }
 .recipient-name {
   margin-left: 3%;
+  font-size: 1vw;
+  font-family: "OpenSans-Regular";
 }
 .recipient-photo-box {
   display: flex;
@@ -30,7 +48,6 @@
 }
 .recipient-suggestions-box {
   position: relative;
-  left: 0;
   max-height: 60px;
   border-radius: 5px;
   overflow: hidden;

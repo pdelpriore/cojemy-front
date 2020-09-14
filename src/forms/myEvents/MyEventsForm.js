@@ -176,7 +176,9 @@ const MyEventsForm = () => {
                   )}
                 </div>
               </div>
-              {showSuggestions && <Suggestions />}
+              <div className="myevents-form-adress-suggestion-group">
+                {showSuggestions && <Suggestions />}
+              </div>
             </Form.Group>
           </Col>
         </Row>

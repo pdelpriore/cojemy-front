@@ -28,7 +28,7 @@ const RecipientSuggestions = ({ recipients }) => {
               onClick={(e) => {
                 e.preventDefault();
               }}
-              className="suggestion-item-inactive"
+              className="recipient-item-inactive"
             >
               <Recipient recipient={recipient} />
             </ListGroup.Item>
@@ -38,7 +38,7 @@ const RecipientSuggestions = ({ recipients }) => {
                 e.preventDefault();
                 dispatch(chooseRecipient(recipient));
               }}
-              className="suggestion-item"
+              className="recipient-item"
             >
               <Recipient recipient={recipient} />
             </ListGroup.Item>

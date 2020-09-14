@@ -1,11 +1,11 @@
 .suggestions-box {
   position: relative;
-  left: 0;
   max-height: 60px;
   border-radius: 5px;
   overflow: hidden;
   margin: 5px;
   animation: fadein 500ms;
+  width: 20vw;
 }
 .suggestion-item {
   font-family: "OpenSans-SemiBold";

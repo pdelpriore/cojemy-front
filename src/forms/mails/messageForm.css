@@ -3,6 +3,12 @@
   justify-content: space-between;
   align-items: center;
 }
+.message-form-adress-suggestion-group {
+  position: absolute;
+  float: left;
+  z-index: 2;
+  background-color: white;
+}
 .message-spinner {
   float: left;
 }

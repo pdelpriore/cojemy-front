@@ -3,6 +3,12 @@
   padding-right: 20px;
   padding-left: 10px;
 }
+.myevents-form-adress-suggestion-group {
+  position: absolute;
+  float: left;
+  z-index: 2;
+  background-color: white;
+}
 .address {
   font-size: 0.6vw;
   border: 1px solid #22d1ee;
