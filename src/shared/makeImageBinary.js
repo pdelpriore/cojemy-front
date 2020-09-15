@@ -17,6 +17,8 @@ export const makeImageBinary = (picture) => {
         reject(capitalizeFirst(strings.myRecipes.error.IMAGE_UNACCEPTABLE));
       } else if (picture.length > 0 && picture[0].size > 9000000) {
         reject(capitalizeFirst(strings.myRecipes.error.IMAGE_SIZE_ERROR));
+      } else if (picture.length === 0) {
+        reject();
       }
 
       if (
@@ -25,7 +27,7 @@ export const makeImageBinary = (picture) => {
         picture[0].size <= 100000
       ) {
         const fileReader = new FileReader();
-        picture.length > 0 && fileReader.readAsDataURL(picture[0]);
+        fileReader.readAsDataURL(picture[0]);
         fileReader.onloadend = () => {
           resolve({
             image: fileReader.result,

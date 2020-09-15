@@ -48,20 +48,22 @@ const useNewRecipeForm = () => {
 
   const handlePicture = async (picture) => {
     try {
-      setLoadingImage(true);
-      const result = await makeImageBinary(picture);
-      if (result) {
-        setLoadingImage(false);
-        setInputs((inputs) => ({
-          ...inputs,
-          recipeImage: result,
-        }));
-        if (error.imageError) {
-          setError((error) =>
-            (({ imageError, ...others }) => ({
-              ...others,
-            }))(error)
-          );
+      if (picture.length > 0) {
+        setLoadingImage(true);
+        const result = await makeImageBinary(picture);
+        if (result) {
+          setLoadingImage(false);
+          setInputs((inputs) => ({
+            ...inputs,
+            recipeImage: result,
+          }));
+          if (error.imageError) {
+            setError((error) =>
+              (({ imageError, ...others }) => ({
+                ...others,
+              }))(error)
+            );
+          }
         }
       }
     } catch (err) {
