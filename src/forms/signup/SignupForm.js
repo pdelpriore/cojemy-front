@@ -6,7 +6,6 @@ import { capitalizeFirst } from "../../util/Util";
 import useSignupForm from "../../hooks/form/signup/useSignupForm";
 import useGoogleSignup from "../../hooks/googleButton/signup/useGoogleSignup";
 import { GoogleLogin } from "react-google-login";
-import { IdClient } from "../../config/Security";
 import "./signupForm.css";
 import "../../shared/global.css";
 
@@ -166,7 +165,7 @@ const SignupForm = () => {
                 )}
               </Button>
             )}
-            clientId={IdClient}
+            clientId={process.env.REACT_APP_ID_CLIENT}
             onSuccess={handleGoogleSuccessResponse}
             onFailure={handleGoogleFailureResponse}
             cookiePolicy={"single_host_origin"}

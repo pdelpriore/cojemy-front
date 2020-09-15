@@ -1,8 +1,7 @@
 import createEncryptor from "redux-persist-transform-encrypt";
-import { storeKey } from "../../config/Security";
 
 const encryptor = createEncryptor({
-  secretKey: storeKey,
+  secretKey: process.env.REACT_APP_STORE_KEY,
   onError: (err) => console.log(err),
 });
 

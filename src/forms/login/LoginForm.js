@@ -6,7 +6,6 @@ import { capitalizeFirst } from "../../util/Util";
 import useLoginForm from "../../hooks/form/login/useLoginForm";
 import useGoogleLogin from "../../hooks/googleButton/login/useGoogleLogin";
 import { GoogleLogin } from "react-google-login";
-import { IdClient } from "../../config/Security";
 import "./loginForm.css";
 import "../../shared/global.css";
 
@@ -125,7 +124,7 @@ const LoginForm = () => {
                 )}
               </Button>
             )}
-            clientId={IdClient}
+            clientId={process.env.REACT_APP_ID_CLIENT}
             onSuccess={handleGoogleSuccessResponse}
             onFailure={handleGoogleFailureResponse}
             cookiePolicy={"single_host_origin"}
