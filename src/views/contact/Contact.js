@@ -17,7 +17,7 @@ const Contact = () => {
     <div className="contact-section" id={strings.navbar.navHomeItems.CONTACT}>
       <Row className="mb-5" />
       <Row className="mb-5" />
-      <Row className="mb-5" />
+      <Row className="mb-4" />
       <Row>
         <Col xs={12}>
           <div className="first-section">

@@ -68,7 +68,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             <Col xs={1} />
           </Row>
           <Row className="mb-5" />
-          <Row className="mb-5" />
+          <Row className="mb-4" />
           <Row>
             <Col xs={1} />
             <Col xs={4}>
