@@ -107,7 +107,7 @@ const MyRecipePreview = () => {
               <div className="recipeDetails-ingredients-text">
                 {capitalizeFirst(strings.recipeBookDetails.INGREDIENTS)}
               </div>
-              <div style={{ height: 10 }} />
+              <div style={{ height: 5 }} />
               {myRecipePreviewData.ingredients.map((ingredient, index) => (
                 <div className="recipeDetails-ingredients-item" key={index}>
                   - {ingredient}
