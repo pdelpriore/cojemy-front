@@ -1,5 +1,5 @@
 {
-  "name": "front",
+  "name": "cojemy-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,7 +17,6 @@
     "is-emoji-supported": "0.0.5",
     "moment": "^2.27.0",
     "react": "^16.13.1",
-    "react-adsense": "^0.1.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.13.1",
     "react-google-login": "^5.1.1",

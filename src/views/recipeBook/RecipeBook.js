@@ -16,7 +16,6 @@ import Emoji from "../../components/emoji/Emoji";
 import useRecipeBook from "../../hooks/screen/recipeBook/useRecipeBook";
 import Notification from "../../components/notifications/Notification";
 import { useSelector } from "react-redux";
-import AdSense from "react-adsense";
 import "./recipeBook.css";
 import "../../shared/global.css";
 
@@ -113,20 +112,7 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
                   icon={faChevronCircleRight}
                 />
               </Col>
-              <Col xs={6}>
-                <AdSense.Google
-                  client={process.env.REACT_APP_CLIENT_AD_SENSE}
-                  slot="7806394673"
-                  style={{
-                    width: "25vw",
-                    height: "9vw",
-                    float: "left",
-                    borderRadius: 5,
-                  }}
-                  format=""
-                />
-              </Col>
-              <Col xs={1} />
+              <Col xs={7} />
             </Row>
           )}
           <Row className="mb-1" />
