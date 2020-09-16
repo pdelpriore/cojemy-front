@@ -82,6 +82,10 @@ const MyRecipesForm = () => {
                 withLabel={true}
                 label={capitalizeFirst(strings.myRecipes.MAX_PICTURE_SIZE)}
                 buttonText={capitalizeFirst(strings.myRecipes.CHOOSE_PICTURE)}
+                buttonStyles={{
+                  fontFamily: "OpenSans-Regular",
+                  fontSize: "1vw",
+                }}
                 onChange={handlePicture}
                 imgExtension={[".jpg", "jpeg", ".gif", ".png", ".gif"]}
                 fileTypeError={capitalizeFirst(
