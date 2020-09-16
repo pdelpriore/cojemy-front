@@ -2,13 +2,11 @@ import React from "react";
 import { Row, Col, Button, Spinner } from "react-bootstrap";
 import ScrollArea from "react-scrollbar";
 import useEmoji from "../../hooks/screen/emoji/useEmoji";
-import { useSelector, useDispatch } from "react-redux";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
 import "./emoji.css";
 
 const Emoji = () => {
-  const dispatch = useDispatch();
   const {
     categories,
     categoryIndex,
