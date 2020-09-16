@@ -105,7 +105,7 @@ const MyRecipesForm = () => {
         ) : (
           inputs.recipeImage && (
             <Row>
-              <Col xs={9}>
+              <Col xs={8}>
                 <Image
                   src={
                     inputs.recipeImage.image ? inputs.recipeImage.image : null
@@ -113,7 +113,6 @@ const MyRecipesForm = () => {
                   thumbnail
                 />
               </Col>
-              <Col xs={1} />
               <Col xs={1}>
                 <FontAwesomeIcon
                   className="myrecipes-form-trash"
@@ -121,7 +120,7 @@ const MyRecipesForm = () => {
                   onClick={handleRemoveImage}
                 />
               </Col>
-              <Col xs={1} />
+              <Col xs={2} />
             </Row>
           )
         )}

@@ -125,13 +125,12 @@ const MyEventsForm = () => {
         ) : (
           inputs.eventImage && (
             <Row>
-              <Col xs={9}>
+              <Col xs={8}>
                 <Image
                   src={inputs.eventImage.image ? inputs.eventImage.image : null}
                   thumbnail
                 />
               </Col>
-              <Col xs={1} />
               <Col xs={1}>
                 <FontAwesomeIcon
                   className="myevents-form-trash"
@@ -139,7 +138,7 @@ const MyEventsForm = () => {
                   onClick={handleRemoveImage}
                 />
               </Col>
-              <Col xs={1} />
+              <Col xs={2} />
             </Row>
           )
         )}

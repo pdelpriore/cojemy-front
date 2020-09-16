@@ -40,6 +40,7 @@
   width: 25vw;
 }
 .myprofile-button-show-pass-form {
+  font-size: 1vw;
   font-family: "OpenSans-Regular";
   white-space: nowrap;
 }

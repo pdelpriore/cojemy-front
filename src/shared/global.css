@@ -5,6 +5,7 @@
 }
 
 .global-form-label {
+  font-size: var(--font-size);
   font-family: var(--font-family-ossb);
   color: #84203a;
 }

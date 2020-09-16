@@ -1,7 +1,7 @@
 .myevents-form-scroll-area {
   height: 90vh;
-  padding-right: 20px;
-  padding-left: 10px;
+  padding-right: 5%;
+  padding-left: 3%;
 }
 .myevents-form-adress-suggestion-group {
   position: absolute;
@@ -60,6 +60,9 @@
 .myevents-datepicker-icon {
   font-size: 1.2vw;
   margin-left: 1.5px;
+}
+.myevents-form-trash {
+  font-size: 1vw;
 }
 .myevents-form-trash:hover {
   color: #ee6670;
