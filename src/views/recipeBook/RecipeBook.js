@@ -16,6 +16,7 @@ import Emoji from "../../components/emoji/Emoji";
 import useRecipeBook from "../../hooks/screen/recipeBook/useRecipeBook";
 import Notification from "../../components/notifications/Notification";
 import { useSelector } from "react-redux";
+import AdSense from "react-adsense";
 import "./recipeBook.css";
 import "../../shared/global.css";
 
@@ -77,13 +78,11 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             <Col xs={1} />
             <Col xs={5}>
               <Row className="mb-5" />
-              <Row className="mb-3" />
-              <Row>
-                <Image
-                  className="recipebook-soup"
-                  src={require("../../assets/imgs/soupret.jpg")}
-                />
-              </Row>
+              <Row className="mb-2" />
+              <Image
+                className="recipebook-soup"
+                src={require("../../assets/imgs/soupret.jpg")}
+              />
             </Col>
             <Col xs={1} />
           </Row>
@@ -114,7 +113,20 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
                   icon={faChevronCircleRight}
                 />
               </Col>
-              <Col xs={7} />
+              <Col xs={1} />
+              <Col xs={5}>
+                <AdSense.Google
+                  client={process.env.REACT_APP_CLIENT_AD_SENSE}
+                  slot="7806394673"
+                  style={{
+                    display: "block",
+                    borderRadius: "5px",
+                  }}
+                  layout="in-article"
+                  format="fluid"
+                />
+              </Col>
+              <Col xs={1} />
             </Row>
           )}
           <Row className="mb-1" />
