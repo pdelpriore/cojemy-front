@@ -73,11 +73,12 @@ const Login = ({ match: { path, url, isExact } }) => {
               </div>
             )}
           </Col>
-          <Col xs={3} />
-        </Row>
-        <Row>
-          <Col xs={9} />
           <Col xs={2}>
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-5" />
+            <Row className="mb-4" />
             {!show && (
               <p
                 onClick={(e) => {
