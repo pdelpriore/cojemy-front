@@ -47,9 +47,9 @@
   background-color: #2e303f;
 }
 .recipe-button-icon {
-  width: 1.8vw;
-  height: 1.8vw;
-  padding: 20px;
+  width: 2.4vw;
+  height: 2.4vw;
+  padding: 5%;
   margin-right: 10px;
   border-radius: 50%;
   background-image: url("../../assets/imgs/knobovenret.jpg");
