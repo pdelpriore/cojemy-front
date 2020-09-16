@@ -113,17 +113,17 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
                   icon={faChevronCircleRight}
                 />
               </Col>
-              <Col xs={1} />
-              <Col xs={5}>
+              <Col xs={6}>
                 <AdSense.Google
                   client={process.env.REACT_APP_CLIENT_AD_SENSE}
                   slot="7806394673"
                   style={{
-                    display: "block",
-                    borderRadius: "5px",
+                    width: "25vw",
+                    height: "9vw",
+                    float: "left",
+                    borderRadius: 5,
                   }}
-                  layout="in-article"
-                  format="fluid"
+                  format=""
                 />
               </Col>
               <Col xs={1} />
