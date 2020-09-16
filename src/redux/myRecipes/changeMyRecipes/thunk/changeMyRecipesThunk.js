@@ -36,7 +36,7 @@ export const addMyRecipe = (
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -94,7 +94,7 @@ export const editMyRecipe = (
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -130,7 +130,7 @@ export const removeMyRecipe = (recipeId, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();

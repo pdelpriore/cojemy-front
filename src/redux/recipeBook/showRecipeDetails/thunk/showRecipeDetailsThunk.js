@@ -50,7 +50,7 @@ export const addRateAndComment = (recipeId, rate, comment, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -106,7 +106,7 @@ export const editRecipeRateAndComment = (
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -160,7 +160,7 @@ export const removeRecipeRateAndComment = (
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -200,7 +200,7 @@ export const followAuthor = (authorId, recipeId, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -240,7 +240,7 @@ export const unfollowAuthor = (authorId, recipeId, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();

@@ -37,7 +37,7 @@ export const joinEvent = (eventId, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -74,7 +74,7 @@ export const unjoinEvent = (eventId, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -111,7 +111,7 @@ export const followAuthor = (authorId, eventId, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -148,7 +148,7 @@ export const unfollowAuthor = (authorId, eventId, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();

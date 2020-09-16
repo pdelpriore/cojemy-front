@@ -25,7 +25,7 @@ export const changeUserPassword = (
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();

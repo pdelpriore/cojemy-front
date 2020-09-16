@@ -36,7 +36,7 @@ export const addNewEvent = (
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -96,7 +96,7 @@ export const editEvent = (
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -132,7 +132,7 @@ export const removeEvent = (eventId, addressId, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();

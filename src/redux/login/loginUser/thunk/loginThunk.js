@@ -19,7 +19,7 @@ export const loginUser = (email, password) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -54,7 +54,7 @@ export const loginUserGoogle = (email, tokenId) => {
           "x-auth": tokenId,
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
@@ -96,7 +96,7 @@ export const updateUserProfile = (name, profileImage, userId, email) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "same-origin",
         body: JSON.stringify(bodyRequest),
       });
       const responseData = await response.json();
