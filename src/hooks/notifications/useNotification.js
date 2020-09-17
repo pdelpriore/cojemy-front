@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import cookie from "react-cookies";
 import { clearSignUpState } from "../../redux/signup/thunk/SignupThunk";
 import { clearCustomerContactState } from "../../redux/customerContact/thunk/customerContactThunk";
 import { clearRemindPasswordState } from "../../redux/remindPassword/remindUserPassword/thunk/remindPasswordThunk";
@@ -61,6 +62,7 @@ const useNotification = (notificationMessage) => {
   const { removingAccountError } = useSelector(
     (state) => state.isAccountRemoved
   );
+  const emailConfirmed = cookie.load("emailConfirmed");
 
   const dispatch = useDispatch();
 
@@ -97,6 +99,8 @@ const useNotification = (notificationMessage) => {
         dispatch(removeAccountClearState());
       } else if (emojiError) {
         dispatch(getEmojisClearState());
+      } else if (emailConfirmed) {
+        cookie.remove("emailConfirmed", { path: "/" });
       }
       setShow(false);
       setNotification({});
