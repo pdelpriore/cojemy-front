@@ -19,6 +19,7 @@
     "react": "^16.13.1",
     "react-adsense": "^0.1.0",
     "react-bootstrap": "^1.0.0-beta.16",
+    "react-cookies": "^0.1.1",
     "react-dom": "^16.13.1",
     "react-google-login": "^5.1.1",
     "react-image": "^2.4.0",
