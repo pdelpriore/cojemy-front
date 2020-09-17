@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
-import cookie from "react-cookies";
 import { showRemindPassComponent } from "../../redux/remindPassword/showRemindPass/thunk/showRemindPassThunk";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
@@ -30,7 +29,6 @@ const Login = ({ match: { path, url, isExact } }) => {
     (state) => state.remindPass
   );
   const { userData, loginError } = useSelector((state) => state.login);
-  const emailConfirmed = cookie.load("emailConfirmed");
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -113,8 +111,6 @@ const Login = ({ match: { path, url, isExact } }) => {
                   ? loginError
                   : userGoogleSignedup !== null
                   ? capitalizeFirst(strings.signupGoogle.GOOGLE_USER_CREATED)
-                  : emailConfirmed
-                  ? emailConfirmed
                   : null
               }
             />

@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Image, Row, Col, Button } from "react-bootstrap";
+import cookie from "react-cookies";
+import Notification from "../../components/notifications/Notification";
 import { useSpring, animated } from "react-spring";
 import { strings } from "../../strings/Strings";
 import { capitalizeFirst } from "../../util/Util";
@@ -11,6 +13,7 @@ const Main = () => {
     opacity: 1,
     from: { opacity: 0 },
   });
+  const emailConfirmed = cookie.load("emailConfirmed");
   return (
     <animated.div
       style={props}
@@ -47,6 +50,12 @@ const Main = () => {
               </NavLink>
             </div>
           </div>
+          <Row className="mb-5" />
+          <Row className="mb-5" />
+          <Row className="mb-5" />
+          <Notification
+            notificationMessage={emailConfirmed ? emailConfirmed : null}
+          />
         </Col>
         <Col xs={6}>
           <Image
