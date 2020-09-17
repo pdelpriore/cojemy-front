@@ -50,7 +50,9 @@ const Main = () => {
               </NavLink>
             </div>
           </div>
-          <div sty={{ height: 20 }} />
+          <Row className="mb-5" />
+          <Row className="mb-5" />
+          <Row className="mb-5" />
           <Notification
             notificationMessage={emailConfirmed ? emailConfirmed : null}
           />
