@@ -128,6 +128,7 @@ const useNotification = (notificationMessage) => {
     locationDetailsError,
     detailsDataError,
     removingAccountError,
+    emailConfirmed,
     dispatch,
   ]);
 
