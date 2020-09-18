@@ -5,7 +5,6 @@ import "./incompatible.css";
 const Incompatible = () => {
   return (
     <div className="incompatible-main">
-      <Row className="mb-5" />
       <Row>
         <Col xs={1} />
         <Col xs={10}>
