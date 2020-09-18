@@ -1,6 +1,7 @@
 .myrecipes-form-scroll-area {
   height: 90vh;
-  padding: 18px;
+  padding-right: 5%;
+  padding-left: 3%;
 }
 .myrecipes-form-player-wrapper {
   position: relative;
