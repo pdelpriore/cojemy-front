@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
-import cookie from "react-cookies";
 import { showRemindPassComponent } from "../../redux/remindPassword/showRemindPass/thunk/showRemindPassThunk";
 import { Row, Col, Image } from "react-bootstrap";
 import { useSpring, useTransition, animated } from "react-spring";
-import { useHistory } from "react-router-dom";
+import useLogin from "../../hooks/screen/login/useLogin";
 import LoginForm from "../../forms/login/LoginForm";
 import Notification from "../../components/notifications/Notification";
 import { strings } from "../../strings/Strings";
@@ -14,6 +13,8 @@ import RemindPasswordForm from "../../forms/remindPassword/RemindPasswordForm";
 import "./login.css";
 
 const Login = ({ match: { path, url, isExact } }) => {
+  const dispatch = useDispatch();
+
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 },
@@ -23,21 +24,16 @@ const Login = ({ match: { path, url, isExact } }) => {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
   });
+
+  const { emailConfirmed } = useLogin();
+
   const { userSignedup } = useSelector((state) => state.signup);
   const { userGoogleSignedup } = useSelector((state) => state.signGoogle);
   const { show } = useSelector((state) => state.isRemindPassFormShown);
   const { passwordSent, remindPassError } = useSelector(
     (state) => state.remindPass
   );
-  const { userData, loginError } = useSelector((state) => state.login);
-  const emailConfirmed = cookie.load("emailConfirmed");
-
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  useEffect(() => {
-    if (userData.email !== undefined) history.push(strings.path.RECIPE_BOOK);
-  }, [userData, history]);
+  const { loginError } = useSelector((state) => state.login);
 
   return (
     <animated.div style={props} className="login-area">

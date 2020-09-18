@@ -20,6 +20,13 @@ import { getEmojisClearState } from "../../redux/emoji/getEmojis/thunk/getEmojis
 const useNotification = (notificationMessage) => {
   const [notifications, setNotification] = useState({});
   const [show, setShow] = useState(false);
+  const [emailConfirmed, setEmailConfirmed] = useState(null);
+
+  useEffect(() => {
+    const cookieEmailConfirmed = cookie.load("emailConfirmed");
+    if (cookieEmailConfirmed) setEmailConfirmed(cookieEmailConfirmed);
+    return () => setEmailConfirmed(null);
+  }, []);
 
   useEffect(() => {
     setNotification((notifications) => ({
@@ -62,7 +69,6 @@ const useNotification = (notificationMessage) => {
   const { removingAccountError } = useSelector(
     (state) => state.isAccountRemoved
   );
-  const emailConfirmed = cookie.load("emailConfirmed");
 
   const dispatch = useDispatch();
 
