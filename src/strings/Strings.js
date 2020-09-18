@@ -1,7 +1,7 @@
 export const strings = Object.freeze({
   path: {
     HOME: "/",
-    GRAPHQL: "http://localhost:4000/graphql",
+    GRAPHQL: "http://cojemy.herokuapp.com/graphql",
     LOGIN: "/logowanie",
     SIGNUP: "/rejestracja",
     SIGNOUT: "/wylogowanie",
@@ -11,15 +11,15 @@ export const strings = Object.freeze({
     MY_EVENTS: "/wydarzenia",
     MY_PROFILE: "/mojprofil",
     LINKEDIN: "http://www.linkedin.com/in/pawe%C5%82-del-priore-b55bbb1a8",
-    SERVER_REQUEST: "http://localhost:4000/graphql",
+    SERVER_REQUEST: "http://cojemy.herokuapp.com/graphql",
     USER_PHOTO: "#",
-    IMAGE_REQUEST: "http://localhost:4000",
-    SERVER_PATH: "http://localhost:4000",
-    MAP_REQUEST: "http://localhost:4000/heremaprender",
-    GET_ADDRESSES: "http://localhost:4000/heremaprequest",
-    GET_LOCATION: "http://localhost:4000/heremaplocation",
-    GET_EMOJIS: "http://localhost:4000/emojis",
-    GET_EMOJI_CAT: "http://localhost:4000/emojicategories",
+    IMAGE_REQUEST: "http://cojemy.herokuapp.com",
+    SERVER_PATH: "http://cojemy.herokuapp.com",
+    MAP_REQUEST: "http://cojemy.herokuapp.com/heremaprender",
+    GET_ADDRESSES: "http://cojemy.herokuapp.com/heremaprequest",
+    GET_LOCATION: "http://cojemy.herokuapp.com/heremaplocation",
+    GET_EMOJIS: "http://cojemy.herokuapp.com/emojis",
+    GET_EMOJI_CAT: "http://cojemy.herokuapp.com/emojicategories",
   },
   navbar: {
     navType: {
