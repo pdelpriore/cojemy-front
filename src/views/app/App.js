@@ -14,12 +14,15 @@ import MyRecipes from "../myRecipes/MyRecipes";
 import Mails from "../mails/Mails";
 import MyEvents from "../myEvents/MyEvents";
 import MyProfile from "../myProfile/MyProfile";
+import Incompatible from "../../components/incompatible/Incompatible";
 import useApp from "../../hooks/screen/app/useApp";
 import "./app.css";
 
 const App = () => {
-  const { userDataMemoized } = useApp();
-  return (
+  const { userDataMemoized, viewport } = useApp();
+  return viewport <= 600 ? (
+    <Incompatible />
+  ) : (
     <>
       <Router>
         <Switch>

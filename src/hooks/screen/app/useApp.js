@@ -15,6 +15,7 @@ const useApp = () => {
   const dispatch = useDispatch();
 
   const [isActive, setIsActive] = useState(false);
+  const [viewport, setViewport] = useState(null);
 
   const { userData } = useSelector((state) => state.login);
   const { userLogged } = useSelector((state) => state.isUserLogged);
@@ -28,6 +29,7 @@ const useApp = () => {
   }, [userData]);
 
   useEffect(() => {
+    setViewport(window.innerWidth);
     setIsActive(true);
     return () => setIsActive(false);
   }, []);
@@ -141,7 +143,7 @@ const useApp = () => {
     }
   }, [userDataMemoized._id, userDataMemoized.email, userLogged, dispatch]);
 
-  return { userDataMemoized };
+  return { userDataMemoized, viewport };
 };
 
 export default useApp;

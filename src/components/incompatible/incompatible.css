@@ -1,0 +1,16 @@
+.incompatible-main {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../assets/imgs/oops.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.incompatible-text {
+  font-size: 5vw;
+  font-family: "Nunito-SemiBold";
+  text-align: center;
+  word-wrap: break-word;
+  color: black;
+}
