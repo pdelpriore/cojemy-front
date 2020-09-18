@@ -328,5 +328,6 @@ export const strings = Object.freeze({
   },
   error: {
     FETCH_ERROR: "problem z połączeniem sieciowym",
+    INCOMPATIBLE: "aplikacja niekompatybilna z urządzeniami mobilnymi",
   },
 });
