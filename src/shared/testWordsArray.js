@@ -9,17 +9,17 @@ export const unacceptableWordsArray = [
   "sex",
   "penis",
   "cum",
-  "sperme",
   "redtube",
   "xnxx",
   "xhamster",
-  "fellation",
-  "baise",
-  "enculé",
   "deepthroat",
   "anal",
-  "sodomie",
-  "bite",
+  "kutas",
+  "kurwa",
+  "chuj",
+  "gówno",
+  "pizda",
+  "cipa",
 ];
 
 export const userGooglePhoto = ["googleusercontent.com"];
