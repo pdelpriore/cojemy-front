@@ -12,6 +12,9 @@
   width: 50vw;
   background-color: #e2f3f5;
 }
+.recipebook-notification-wrap {
+  height: 5vh;
+}
 .recipebook-list {
   height: 100vh;
   border-radius: 5px;

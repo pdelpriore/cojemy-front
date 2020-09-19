@@ -63,9 +63,11 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
           <Row>
             <Col xs={1} />
             <Col xs={5}>
-              <Notification
-                notificationMessage={logoutError || detailsDataError}
-              />
+              <div className="recipebook-notification-wrap">
+                <Notification
+                  notificationMessage={logoutError || detailsDataError}
+                />
+              </div>
             </Col>
             <Col xs={1} />
             <Col xs={4}>
