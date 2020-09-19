@@ -331,7 +331,7 @@ const RecipeDetails = () => {
                       {item.comment.content}
                     </div>
                   </div>
-                  {editShow && (
+                  {editShow && item.commentator.email === userData.email && (
                     <div
                       className="recipeDetails-comments-edit-box"
                       onMouseEnter={handleMouseEnter}
