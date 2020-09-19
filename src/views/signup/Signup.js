@@ -46,6 +46,14 @@ const Signup = ({ match: { path, url, isExact } }) => {
           </Col>
           <Col xs={2} />
         </Row>
+        <Row className="mb-5" />
+        <Row>
+          <Col xs={2} />
+          <Col xs={6}>
+            <Notification notificationMessage={error || errorGoogleSignup} />
+          </Col>
+          <Col xs={4} />
+        </Row>
       </div>
       <div className="signup-second-section">
         <Row className="mb-5" />
@@ -60,15 +68,6 @@ const Signup = ({ match: { path, url, isExact } }) => {
                 {item}
               </animated.div>
             ))}
-          </Col>
-          <Col xs={4} />
-        </Row>
-        <Row className="mb-5" />
-        <Row className="mb-5" />
-        <Row>
-          <Col xs={2} />
-          <Col xs={6}>
-            <Notification notificationMessage={error || errorGoogleSignup} />
           </Col>
           <Col xs={4} />
         </Row>

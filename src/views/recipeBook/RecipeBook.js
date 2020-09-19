@@ -61,7 +61,13 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
           <Row className="mb-5" />
           <Row className="mb-4" />
           <Row>
-            <Col xs={7} />
+            <Col xs={1} />
+            <Col xs={5}>
+              <Notification
+                notificationMessage={logoutError || detailsDataError}
+              />
+            </Col>
+            <Col xs={1} />
             <Col xs={4}>
               <SearchRecipeForm />
             </Col>
@@ -116,15 +122,6 @@ const RecipeBook = ({ match: { path, url, isExact } }) => {
             </Row>
           )}
           <Row className="mb-1" />
-          <Row>
-            <Col xs={5} />
-            <Col xs={6}>
-              <Notification
-                notificationMessage={logoutError || detailsDataError}
-              />
-            </Col>
-            <Col xs={1} />
-          </Row>
         </div>
         {detailsShown && (
           <div className="recipebook-recipes-details">
