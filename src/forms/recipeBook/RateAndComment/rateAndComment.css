@@ -28,6 +28,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
+  white-space: nowrap;
 }
 .rate-button-send {
   font-family: "OpenSans-Regular";
