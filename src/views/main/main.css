@@ -1,0 +1,38 @@
+.main-section {
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ffd460;
+}
+.shape-top-left {
+  position: relative;
+  border-radius: 10% 60% 40% 25%;
+  background-color: #f11213;
+  height: 15vh;
+  width: 15vw;
+}
+.shape-top-right {
+  position: relative;
+  border-radius: 10% 40% 60% 25%;
+  transform: rotateY(180deg);
+  background-color: #f11213;
+  height: 18vh;
+  width: 15vw;
+}
+.image {
+  width: 45vw;
+}
+.box {
+  height: 50vh;
+}
+.main-text {
+  font-family: "Nunito-SemiBold";
+  font-size: 3.1vw;
+  color: #000000;
+}
+.main-sub-text {
+  font-family: "OpenSans-Regular";
+}
+.button {
+  font-family: "OpenSans-Regular";
+  margin-top: 2%;
+}

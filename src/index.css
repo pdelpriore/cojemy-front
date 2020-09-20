@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@font-face {
+  font-family: "Nunito-Regular";
+  src: local("Nunito-Regular"),
+    url("./fonts/nunito//Nunito-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Nunito-Bold";
+  src: local("Nunito-Bold"),
+    url("./fonts/nunito/Nunito-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Nunito-SemiBold";
+  src: local("Nunito-SemiBold"),
+    url("./fonts/nunito/Nunito-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: local("OpenSans-Regular"),
+    url("./fonts/openSans/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: local("OpenSans-Bold"),
+    url("./fonts/openSans/OpenSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-SemiBold";
+  src: local("OpenSans-SemiBold"),
+    url("./fonts/openSans/OpenSans-SemiBold.ttf") format("truetype");
+}
