@@ -1,0 +1,24 @@
+.login-area {
+  height: 100vh;
+  width: 100vw;
+  background-color: #4fc1e9;
+  overflow: hidden;
+}
+.login-first-section {
+  height: 40vh;
+  background-color: #4fc1e9;
+  border-bottom: 2px #7c2039 solid;
+  overflow: hidden;
+}
+.login-second-section {
+  height: 60vh;
+  background-color: #5be7c4;
+  overflow: hidden;
+}
+.login-image {
+  width: 23vw;
+}
+.text-test {
+  color: #000000;
+  font-family: "Nunito-Regular";
+}

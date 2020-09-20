@@ -1,0 +1,20 @@
+export const useScrollToTop = (initialScrollState = false) => {
+  const [scrollToTop, setScrollToTop] = useState(initialScrollState);
+
+  useEffect(() => {
+    if (scrollToTop) {
+      setScrollToTop(false);
+      try {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }, [scrollToTop, setScrollToTop]);
+
+  return setScrollToTop;
+};
