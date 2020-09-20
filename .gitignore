@@ -9,6 +9,7 @@
 package.json
 package-lock.json
 yarn.lock
+something
 
 # testing
 /coverage
