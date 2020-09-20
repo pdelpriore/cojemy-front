@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 /src/config
+.env
+package.json
+package-lock.json
+yarn.lock
 
 # testing
 /coverage
