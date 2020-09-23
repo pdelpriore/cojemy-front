@@ -247,15 +247,15 @@ const useMessageForm = () => {
         ) {
           setLoading(false);
           dispatch(setConversation(result.newConversationContent));
-          if (
-            userData._id ===
-              result.newConversationContent[
-                result.newConversationContent.length - 1
-              ].author._id ||
-            inputs.content === "" ||
-            inputs.content === undefined
-          )
-            setInputs({});
+          // if (
+          //   userData._id ===
+          //     result.newConversationContent[
+          //       result.newConversationContent.length - 1
+          //     ].author._id ||
+          //   inputs.content === "" ||
+          //   inputs.content === undefined
+          // )
+          setInputs({});
         }
       });
     }
