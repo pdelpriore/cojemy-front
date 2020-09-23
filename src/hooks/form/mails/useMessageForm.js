@@ -212,8 +212,11 @@ const useMessageForm = () => {
 
   useEffect(() => {
     if (
-      (socket.connected && !inputs.to,
-      recipient.name && recipients.length === 0 && isActive)
+      socket.connected &&
+      !inputs.to &&
+      recipient.name &&
+      recipients.length === 0 &&
+      isActive
     ) {
       socket.off("userActive").on("userActive", (userId) => {
         if (userId) {
