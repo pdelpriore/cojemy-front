@@ -212,8 +212,11 @@ const useMessageForm = () => {
 
   useEffect(() => {
     if (
-      (socket.connected && !inputs.to,
-      recipient.name && recipients.length === 0 && isActive)
+      socket.connected &&
+      !inputs.to &&
+      recipient.name &&
+      recipients.length === 0 &&
+      isActive
     ) {
       socket.off("userActive").on("userActive", (userId) => {
         if (userId) {
@@ -244,7 +247,15 @@ const useMessageForm = () => {
         ) {
           setLoading(false);
           dispatch(setConversation(result.newConversationContent));
-          setInputs({});
+          if (
+            userData._id ===
+              result.newConversationContent[
+                result.newConversationContent.length - 1
+              ].author._id ||
+            inputs.content === "" ||
+            inputs.content === undefined
+          )
+            setInputs({});
         }
       });
     }
@@ -253,6 +264,7 @@ const useMessageForm = () => {
     inputs,
     recipients,
     recipient,
+    userData._id,
     windowOpen,
     messageId,
     isActive,
