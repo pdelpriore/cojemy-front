@@ -10,29 +10,9 @@ import { strings } from "../../../strings/Strings";
 const useEmoji = () => {
   const dispatch = useDispatch();
 
-  const categories = [
-    strings.emojis.categories.EMOTIONS,
-    strings.emojis.categories.BODY,
-    strings.emojis.categories.ANIMALS,
-    strings.emojis.categories.FOOD,
-    strings.emojis.categories.TRAVEL,
-    strings.emojis.categories.ACTIVITIES,
-    strings.emojis.categories.OBJECTS,
-    strings.emojis.categories.SYMBOLS,
-    strings.emojis.categories.FLAGS,
-  ];
+  const categories = Object.values(strings.emojis.categories);
 
-  const categories_eng = [
-    strings.emojis.categories_eng.EMOTIONS,
-    strings.emojis.categories_eng.BODY,
-    strings.emojis.categories_eng.ANIMALS,
-    strings.emojis.categories_eng.FOOD,
-    strings.emojis.categories_eng.TRAVEL,
-    strings.emojis.categories_eng.ACTIVITIES,
-    strings.emojis.categories_eng.OBJECTS,
-    strings.emojis.categories_eng.SYMBOLS,
-    strings.emojis.categories_eng.FLAGS,
-  ];
+  const categories_eng = Object.values(strings.emojis.categories_eng);
 
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [emojisFiltered, setEmojisFiltered] = useState([]);

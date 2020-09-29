@@ -11,30 +11,9 @@ const useCalendar = () => {
   const dispatch = useDispatch();
   const now = new Date();
 
-  const dayNames = [
-    strings.myEvents.calendar.days.MON,
-    strings.myEvents.calendar.days.TUE,
-    strings.myEvents.calendar.days.WED,
-    strings.myEvents.calendar.days.THU,
-    strings.myEvents.calendar.days.FRI,
-    strings.myEvents.calendar.days.SAT,
-    strings.myEvents.calendar.days.SUN,
-  ];
+  const dayNames = Object.values(strings.myEvents.calendar.days);
 
-  const months = [
-    strings.myEvents.calendar.months.JAN,
-    strings.myEvents.calendar.months.FEB,
-    strings.myEvents.calendar.months.MAR,
-    strings.myEvents.calendar.months.APR,
-    strings.myEvents.calendar.months.MAY,
-    strings.myEvents.calendar.months.JUN,
-    strings.myEvents.calendar.months.JUL,
-    strings.myEvents.calendar.months.AUG,
-    strings.myEvents.calendar.months.SEP,
-    strings.myEvents.calendar.months.OCT,
-    strings.myEvents.calendar.months.NOV,
-    strings.myEvents.calendar.months.DEC,
-  ];
+  const months = Object.values(strings.myEvents.calendar.months);
 
   const [monthIndex, setMonthIndex] = useState(now.getMonth());
   const [newSelectedDate, setNewSelectedDate] = useState(
