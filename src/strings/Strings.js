@@ -246,7 +246,7 @@ export const strings = Object.freeze({
     PICKER: "wybierz zdjęcie",
     FOLLOW: "obserwuj autora wydarzenia",
     error: {
-      NO_SUGGESTIONS: "brak wydarzeń",
+      NO_SUGGESTIONS: "adres nieprawidłowy",
       NO_PARTICIPANTS: "narazie nikt się nie zapisał :(",
     },
     inputName: {
