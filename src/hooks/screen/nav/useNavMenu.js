@@ -22,6 +22,7 @@ import { setConversationClearState } from "../../../redux/mails/setConversation/
 import { setMessagesClearState } from "../../../redux/mails/setMessages/thunk/setMessagesThunk";
 import { setMessageIdClearState } from "../../../redux/mails/setMessageId/thunk/setMessageIdThunk";
 import { getEmojisClearState } from "../../../redux/emoji/getEmojis/thunk/getEmojisThunk";
+import { mailsComponentActive } from "../../../redux/mails/mailsComponentActive/thunk/mailsComponentActiveThunk";
 import { searchEventFilled } from "../../../redux/myEvents/searchEventFilled/thunk/searchEventFilledThunk";
 import { loginUser } from "../../../redux/login/userLogged/thunk/userLoggedThunk";
 import { countUnreadMessages } from "./countUnreadMessages";
@@ -67,6 +68,7 @@ const useNavMenu = () => {
       dispatch(setMessagesClearState());
       dispatch(setMessageIdClearState());
       dispatch(getEmojisClearState());
+      dispatch(mailsComponentActive(false));
     }
   }, [userLoggedOut, socket, isActive, dispatch]);
 
